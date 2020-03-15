@@ -47,7 +47,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `internados` | Total de pacientes COVID-19 internados | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `internados_uci` | Pacientes COVID-19 internados em Unidades de Cuidado Intensivos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `lab` | Total de casos suspeitos a aguardar resultados laboratoriais | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `suspeitos` | Total de casos suspeitos (tendo a [definição sido actualizada](https://www.dgs.pt/directrizes-da-dgs/orientacoes-e-circulares-informativas/orientacao-n-002a2020-de-25012020-atualizada-a-250220201.aspx) a 29/03/2020)   | Inteiro >= 0 |
+| `suspeitos` | Total de casos suspeitos (tendo a [definição sido actualizada](https://www.dgs.pt/directrizes-da-dgs/orientacoes-e-circulares-informativas/orientacao-n-002a2020-de-25012020-atualizada-a-250220201.aspx) a 29/02/2020)   | Inteiro >= 0 |
 | `vigilancia` | Total de casos sob vigilância pelas autoridades de saúde | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `infirmados` | Total de casos cuja suspeita de infecção não se confirmou | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `cadeias_transmissao` | Número de cadeias de transmissão do SARS-CoV-2 activas | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
