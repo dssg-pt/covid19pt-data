@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 14 de Março de 2020, 12h
+📅️ **Última actualização**: 15 de Março de 2020, 12h
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
@@ -49,6 +49,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `lab` | Total de casos suspeitos a aguardar resultados laboratoriais | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `suspeitos` | Total de casos suspeitos (tendo a [definição sido actualizada](https://www.dgs.pt/directrizes-da-dgs/orientacoes-e-circulares-informativas/orientacao-n-002a2020-de-25012020-atualizada-a-250220201.aspx) a 29/03/2020)   | Inteiro >= 0 |
 | `vigilancia` | Total de casos sob vigilância pelas autoridades de saúde | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `infirmados` | Total de casos cuja suspeita de infecção não se confirmou | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `cadeias_transmissao` | Número de cadeias de transmissão do SARS-CoV-2 activas | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `transmissao_importada` | Número de casos confirmados com transmissão por via de infectados de outros países | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `transmissao_comunitaria` | Número de casos confirmados com transmissão por via da respectiva comunidade local | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
