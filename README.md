@@ -54,6 +54,9 @@ Uma explicação do conteúdo em `data.csv`.
 | `transmissao_importada` | Número de casos confirmados com transmissão por via de infectados de outros países | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `transmissao_comunitaria` | Número de casos confirmados com transmissão por via da respectiva comunidade local | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 
+> Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
+
+
 Relativamente à coluna `data`, esta corresponde à data em que a DGS disponibilizou esta informação, que nem sempre corresponde à data de recolha. A partir de 03-03-2020, é possível verificar nalguns relatórios de situação (disponíveis na pasta `archive/`) a data efectiva de recolha da informação apresentada. 
 
 Nos seus relatórios de situação, a DGS reporta alguma informação epidemiológica extra, como género e grupo etário dos infectados, que poderá vir a ser adicionada caso haja interesse para tal. 
