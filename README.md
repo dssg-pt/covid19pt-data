@@ -53,17 +53,18 @@ Uma explicação do conteúdo em `data.csv`.
 | `cadeias_transmissao` | Número de cadeias de transmissão do SARS-CoV-2 activas | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `transmissao_importada` | Número de casos confirmados com transmissão por via de infectados de outros países | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `transmissao_comunitaria` | Número de casos confirmados com transmissão por via da respectiva comunidade local | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `n_confirmados_feminino` | Número de casos confirmados com género feminino |
-| `n_confirmados_masculino` | Número de casos confirmados com género masculino |
-| `n_confirmados_0_9` | Número de casos confirmados com a faixa etária até 9 anos |
-| `n_confirmados_10_19` | Número de casos confirmados com a faixa etária entre os 10 e os 19 anos |
-| `n_confirmados_20_29` | Número de casos confirmados com a faixa etária entre os 20 e os 29 anos |
-| `n_confirmados_30_39` | Número de casos confirmados com a faixa etária entre os 30 e os 39 anos |
-| `n_confirmados_40_49` | Número de casos confirmados com a faixa etária entre os 40 e os 49 anos |
-| `n_confirmados_50_59` | Número de casos confirmados com a faixa etária entre os 50 e os 59 anos |
-| `n_confirmados_60_69` | Número de casos confirmados com a faixa etária entre os 60 e os 69 anos |
-| `n_confirmados_70_79` | Número de casos confirmados com a faixa etária entre os 70 e os 79 anos |
-| `n_confirmados_80_plus` | Número de casos confirmados com a idade superior a 80 anos |
+| `n_confirmados_feminino` | Número de casos confirmados com género feminino | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_masculino` | Número de casos confirmados com género masculino |Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_0_9` | Número de casos confirmados com a faixa etária até 9 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_10_19` | Número de casos confirmados com a faixa etária entre os 10 e os 19 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_20_29` | Número de casos confirmados com a faixa etária entre os 20 e os 29 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_30_39` | Número de casos confirmados com a faixa etária entre os 30 e os 39 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_40_49` | Número de casos confirmados com a faixa etária entre os 40 e os 49 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_50_59` | Número de casos confirmados com a faixa etária entre os 50 e os 59 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_60_69` | Número de casos confirmados com a faixa etária entre os 60 e os 69 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_70_79` | Número de casos confirmados com a faixa etária entre os 70 e os 79 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `n_confirmados_80_plus` | Número de casos confirmados com a idade superior a 80 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 
