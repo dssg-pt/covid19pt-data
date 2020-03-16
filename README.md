@@ -22,6 +22,7 @@ O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. 
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
 + `notebooks/`: contém um _notebook_ Python com um simples de como carregar e visualizar os dados.
++ `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
 
 # 📔 Dicionário dos dados
 
