@@ -53,6 +53,24 @@ Uma explicação do conteúdo em `data.csv`.
 | `cadeias_transmissao` | Número de cadeias de transmissão do SARS-CoV-2 activas | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `transmissao_importada` | Número de casos confirmados com transmissão por via de infectados de outros países | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `transmissao_comunitaria` | Número de casos confirmados com transmissão por via da respectiva comunidade local | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_0_9_f` | Número de casos confirmados do sexo feminino na faixa etária 0-9 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_0_9_m` | Número de casos confirmados do sexo masculino na faixa etária 0-9 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_10_19_f` | Número de casos confirmados do sexo feminino na faixa etária 10-19 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_10_19_m` | Número de casos confirmados do sexo masculino na faixa etária 10-19 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_20_29_f` | Número de casos confirmados do sexo feminino na faixa etária 20-29 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_20_29_m` | Número de casos confirmados do sexo masculino na faixa etária 20-29 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_30_39_f` | Número de casos confirmados do sexo feminino na faixa etária 30-39 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_30_39_m` | Número de casos confirmados do sexo masculino na faixa etária 30-39 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_40_49_f` | Número de casos confirmados do sexo feminino na faixa etária 40-49 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_40_49_m` | Número de casos confirmados do sexo masculino na faixa etária 40-49 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_50_59_f` | Número de casos confirmados do sexo feminino na faixa etária 50-59 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_50_59_m` | Número de casos confirmados do sexo masculino na faixa etária 50-59 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_60_69_f` | Número de casos confirmados do sexo feminino na faixa etária 60-69 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_60_69_m` | Número de casos confirmados do sexo masculino na faixa etária 60-69 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_70_79_f` | Número de casos confirmados do sexo feminino na faixa etária 70-79 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_70_79_m` | Número de casos confirmados do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_80_plus_f` | Número de casos confirmados do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 
