@@ -32,7 +32,8 @@ Uma explicação do conteúdo em `data.csv`.
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
-| `data` | Data de publicação dos dados (nem sempre os dados reflectem a realidade desse dia, podendo nalguns casos estar desfasados) | Data no formato DD-MM-YYYY |
+| `data_dados` | Data e hora da recolha dos dados apresentados (quando omitida nos relatórios, assume-se como sendo a data da publicação dos dados) | DD-MM-YYYY HH:MM ou DD-MM-YYYY quando a hora não é disponibilizada|
+| `data_publicacao` | Data e hora de publicação dos dados | DD-MM-YYYY HH:MM ou DD-MM-YYYY quando a hora não é disponibilizada ou `NaN` para os dias em que a DGS não publicou relatórios|
 | `confirmados` | Casos confirmados      | Inteiro >= 0 |
 | `confirmados_arsnorte` | Casos confirmados na ARS Norte      | Inteiro >= 0 |
 | `confirmados_arscentro` | Casos confirmados na ARS Centro      | Inteiro >= 0 |
@@ -72,13 +73,15 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_70_79_m` | Número de casos confirmados do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_f` | Número de casos confirmados do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldade respiratória | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleia ou dores de cabeça | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
-
-
-Relativamente à coluna `data`, esta corresponde à data em que a DGS disponibilizou esta informação, que nem sempre corresponde à data de recolha. A partir de 03-03-2020, é possível verificar nalguns relatórios de situação (disponíveis na pasta `archive/`) a data efectiva de recolha da informação apresentada. 
-
-Nos seus relatórios de situação, a DGS reporta alguma informação epidemiológica extra, como género e grupo etário dos infectados, que poderá vir a ser adicionada caso haja interesse para tal. 
 
 Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída. 
 
