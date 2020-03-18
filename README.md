@@ -4,6 +4,8 @@
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
+👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
+
 # 🤔 Contexto
 
 Embora a comunicação e partilha de dados por parte do Ministério de Saúde Português tenha melhorado consideravelmente ao longo da crise do COVID-19, ainda está longe de ideal (havendo a destacar o exemplo do [repositório da Protecção Civil Italiana no GitHub](https://github.com/pcm-dpc/COVID-19)).
@@ -21,7 +23,7 @@ _Porque tudo começa com bons dados._
 O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. 
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
-+ `notebooks/`: contém um _notebook_ Python com um simples de como carregar e visualizar os dados.
++ `notebooks/`: contém um _notebook_ Python com um exemplo simples de como carregar e visualizar os dados.
 + `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
 
 # 📔 Dicionário dos dados
@@ -42,44 +44,43 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_arsalgarve` | Casos confirmados na ARS Algarve    | Inteiro >= 0 |
 | `confirmados_acores` | Casos confirmados na Região Autónoma dos Açores | Inteiro >= 0 |
 | `confirmados_madeira` | Casos confirmados na Região Autónoma da Madeira  |  Inteiro >= 0 |
-| `confirmados_estrangeiro` | Casos confirmados no estrangeiro | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_novos` | Número de novos casos confirmados comparativamente ao dia anterior | Inteiro >= 0 |
+| `confirmados_estrangeiro` | Casos confirmados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_novos` | Número de novos casos confirmados comparativamente ao dia anterior. É uma coluna calculada a partir da diferença nos casos `confirmados` entre dias consecutivos. | Inteiro >= 0 |
 | `recuperados` | Total de casos recuperados | Inteiro >= 0 |
 | `obitos` | Total de óbitos | Inteiro >= 0 |
-| `internados` | Número de pacientes COVID-19 internados | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `internados_uci` | Número de pacientes COVID-19 internados em Unidades de Cuidados Intensivos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `lab` | Número de casos suspeitos a aguardar resultados laboratoriais | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `internados` | Número de pacientes COVID-19 internados | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `internados_uci` | Número de pacientes COVID-19 internados em Unidades de Cuidados Intensivos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `lab` | Número de casos suspeitos a aguardar resultados laboratoriais | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `suspeitos` | Total de casos suspeitos (tendo a [definição sido actualizada](https://www.dgs.pt/directrizes-da-dgs/orientacoes-e-circulares-informativas/orientacao-n-002a2020-de-25012020-atualizada-a-250220201.aspx) a 29/02/2020) desde 01/01/2020  | Inteiro >= 0 |
-| `vigilancia` | Número de casos sob vigilância pelas autoridades de saúde | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `n_confirmados` | Número de casos cuja suspeita de infecção não se confirmou | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `cadeias_transmissao` | Número de cadeias de transmissão do SARS-CoV-2 activas | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `transmissao_importada` | Número de casos confirmados com transmissão por via de infectados de outros países | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `transmissao_comunitaria` | Número de casos confirmados com transmissão por via da respectiva comunidade local | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_0_9_f` | Número de casos confirmados do sexo feminino na faixa etária 0-9 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_0_9_m` | Número de casos confirmados do sexo masculino na faixa etária 0-9 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_10_19_f` | Número de casos confirmados do sexo feminino na faixa etária 10-19 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_10_19_m` | Número de casos confirmados do sexo masculino na faixa etária 10-19 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_20_29_f` | Número de casos confirmados do sexo feminino na faixa etária 20-29 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_20_29_m` | Número de casos confirmados do sexo masculino na faixa etária 20-29 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_30_39_f` | Número de casos confirmados do sexo feminino na faixa etária 30-39 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_30_39_m` | Número de casos confirmados do sexo masculino na faixa etária 30-39 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_40_49_f` | Número de casos confirmados do sexo feminino na faixa etária 40-49 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_40_49_m` | Número de casos confirmados do sexo masculino na faixa etária 40-49 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_50_59_f` | Número de casos confirmados do sexo feminino na faixa etária 50-59 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_50_59_m` | Número de casos confirmados do sexo masculino na faixa etária 50-59 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_60_69_f` | Número de casos confirmados do sexo feminino na faixa etária 60-69 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_60_69_m` | Número de casos confirmados do sexo masculino na faixa etária 60-69 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_70_79_f` | Número de casos confirmados do sexo feminino na faixa etária 70-79 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_70_79_m` | Número de casos confirmados do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_80_plus_f` | Número de casos confirmados do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldade respiratória | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleia ou dores de cabeça | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
-| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada | 1 >= Decimal >= 0 ou `NaN` para os dias em que a DGS não reportava este indicador |
+| `vigilancia` | Número de casos sob vigilância pelas autoridades de saúde | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `n_confirmados` | Número de casos cuja suspeita de infecção não se confirmou | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `cadeias_transmissao` | Número de cadeias de transmissão do SARS-CoV-2 activas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `transmissao_importada` | Número de casos confirmados com transmissão por via de infectados de outros países | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_0_9_f` | Número de casos confirmados do sexo feminino na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_0_9_m` | Número de casos confirmados do sexo masculino na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_10_19_f` | Número de casos confirmados do sexo feminino na faixa etária 10-19 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_10_19_m` | Número de casos confirmados do sexo masculino na faixa etária 10-19 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_20_29_f` | Número de casos confirmados do sexo feminino na faixa etária 20-29 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_20_29_m` | Número de casos confirmados do sexo masculino na faixa etária 20-29 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_30_39_f` | Número de casos confirmados do sexo feminino na faixa etária 30-39 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_30_39_m` | Número de casos confirmados do sexo masculino na faixa etária 30-39 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_40_49_f` | Número de casos confirmados do sexo feminino na faixa etária 40-49 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_40_49_m` | Número de casos confirmados do sexo masculino na faixa etária 40-49 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_50_59_f` | Número de casos confirmados do sexo feminino na faixa etária 50-59 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_50_59_m` | Número de casos confirmados do sexo masculino na faixa etária 50-59 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_60_69_f` | Número de casos confirmados do sexo feminino na faixa etária 60-69 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_60_69_m` | Número de casos confirmados do sexo masculino na faixa etária 60-69 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_70_79_f` | Número de casos confirmados do sexo feminino na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_70_79_m` | Número de casos confirmados do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_80_plus_f` | Número de casos confirmados do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldade respiratória | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleia ou dores de cabeça | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 
