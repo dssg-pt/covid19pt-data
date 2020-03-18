@@ -28,7 +28,7 @@ Contém três datasets do Portal Transparência SNS24, na sua versão original e
 
 - [Atividade do Síndrome Gripal nos Cuidados de Saúde Primários](https://transparencia.sns.gov.pt/explore/dataset/atendimentos-nos-csp-gripe/export/?disjunctive.ars&sort=dia)
 - [Atividade Operacional SNS24](https://transparencia.sns.gov.pt/explore/dataset/atividade-operacional-sns-24/table/?sort=periodo)
-- [Atividade do Síndrome Gripal nos Cuidados de Saúde Primários](https://transparencia.sns.gov.pt/explore/dataset/atendimentos-nos-csp-gripe/information/?disjunctive.ars&sort=dia)
+- [Atividade Prestação SNS 24 para a Síndrome Gripal](https://transparencia.sns.gov.pt/explore/dataset/atividade-prestacao-sns-24-para-a-sindrome-gripal/table/?sort=periodo)
 
 
 
