@@ -3,6 +3,7 @@
 O repositório está organizado da seguinte forma:
 + `noticias/`: Dados da categoria "Notícias"
 + `populacional/`: Dados da categoria "Populacional"
++ `saude/`: Dados da categoria "Saúde", até agora do Portal Transparência SNS. 
 
 ## 📰 Notícias
 
@@ -20,6 +21,16 @@ Contém dois datasets descritivos da população portuguesa, do PORDATA:
 - [Índice de dependência de idosos](https://www.pordata.pt/Municipios/%C3%8Dndice+de+depend%C3%AAncia+de+idosos-461)
 
 É fornecido o ficheiro acima, para 2018, e uma versão simplificada em CSV, contendo as contagens para as regiões NUTS II (Usadas pela DGS para reportar os casos)
+
+## 🏥 Saúde
+
+Contém três datasets do Portal Transparência SNS24 (ficando a faltar os scripts para download a partir de uma API).
+
+- [Atividade do Síndrome Gripal nos Cuidados de Saúde Primários](https://transparencia.sns.gov.pt/explore/dataset/atendimentos-nos-csp-gripe/export/?disjunctive.ars&sort=dia)
+- [Atividade Operacional SNS24](https://transparencia.sns.gov.pt/explore/dataset/atividade-operacional-sns-24/table/?sort=periodo)
+- [Atividade do Síndrome Gripal nos Cuidados de Saúde Primários] (https://transparencia.sns.gov.pt/explore/dataset/atendimentos-nos-csp-gripe/information/?disjunctive.ars&sort=dia)
+
+
 
 
 
