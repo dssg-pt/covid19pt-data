@@ -19,6 +19,8 @@ Uma explicação do conteúdo em `atividade-prestacao-sns-24-para-a-sindrome-gri
 
 📝 _CSP_: Cuidados de Saúde Primários 
 
+📝 _CIAV_ : Centro de Informação Antivenenos
+
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
 | `periodo` | Data de medição | Data no formato DD-MM-YYYY |
