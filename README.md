@@ -32,8 +32,8 @@ Uma explicação do conteúdo em `data.csv`.
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
-| `data_dados` | Data e hora da recolha dos dados apresentados (quando omitida nos relatórios, assume-se como sendo a data da publicação dos dados) | DD-MM-YYYY HH:MM ou DD-MM-YYYY quando a hora não é disponibilizada|
-| `data_publicacao` | Data e hora de publicação dos dados | DD-MM-YYYY HH:MM ou DD-MM-YYYY quando a hora não é disponibilizada ou `NaN` para os dias em que a DGS não publicou relatórios|
+| `data` | Data da publicação dos dados | DD-MM-YYYY |
+| `data_dados` | Data e hora da recolha dos dados apresentados (quando omitida nos relatórios, assume-se como sendo a data da publicação dos dados) | DD-MM-YYYY HH:MM|
 | `confirmados` | Casos confirmados      | Inteiro >= 0 |
 | `confirmados_arsnorte` | Casos confirmados na ARS Norte      | Inteiro >= 0 |
 | `confirmados_arscentro` | Casos confirmados na ARS Centro      | Inteiro >= 0 |
