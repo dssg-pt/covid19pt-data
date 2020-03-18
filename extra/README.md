@@ -4,6 +4,7 @@ O repositório está organizado da seguinte forma:
 + `noticias/`: Dados da categoria "Notícias"
 + `populacional/`: Dados da categoria "Populacional"
 + `saude/`: Dados da categoria "Saúde", até agora do Portal Transparência SNS. 
++ `medidas_governamentais/`: Dados das medidas governamentais ordenadas por data
 
 ## 📰 Notícias
 
@@ -35,5 +36,10 @@ Contém três datasets do Portal Transparência SNS24, na sua versão original e
 
 
 
+## :bank: Medidas Governamentais
 
+Contém csv contendo as medidas governamentais tomadas em cada data desde o início do surto. Baseado em:
+
+- [Website da República Portuguesa](https://www.portugal.gov.pt/)
+- [Pandemia de COVID-19 em Portugal](https://pt.m.wikipedia.org/wiki/Pandemia_de_COVID-19_em_Portugal)
 
