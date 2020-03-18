@@ -24,11 +24,13 @@ Contém dois datasets descritivos da população portuguesa, do PORDATA:
 
 ## 🏥 Saúde
 
-Contém três datasets do Portal Transparência SNS24 (ficando a faltar os scripts para download a partir de uma API).
+Contém três datasets do Portal Transparência SNS24, na sua versão original e numa versão limpa e pré-processada por nós. O dicionário de dados encontra-se dentro de cada pasta, ficando a faltar os scripts para download a partir de uma API.
 
 - [Atividade do Síndrome Gripal nos Cuidados de Saúde Primários](https://transparencia.sns.gov.pt/explore/dataset/atendimentos-nos-csp-gripe/export/?disjunctive.ars&sort=dia)
 - [Atividade Operacional SNS24](https://transparencia.sns.gov.pt/explore/dataset/atividade-operacional-sns-24/table/?sort=periodo)
-- [Atividade do Síndrome Gripal nos Cuidados de Saúde Primários] (https://transparencia.sns.gov.pt/explore/dataset/atendimentos-nos-csp-gripe/information/?disjunctive.ars&sort=dia)
+- [Atividade do Síndrome Gripal nos Cuidados de Saúde Primários](https://transparencia.sns.gov.pt/explore/dataset/atendimentos-nos-csp-gripe/information/?disjunctive.ars&sort=dia)
+
+
 
 
 
