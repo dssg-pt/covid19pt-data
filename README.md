@@ -82,25 +82,6 @@ Uma explicação do conteúdo em `data.csv`.
 | `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
 
-
-# Web Scraper para FAQ de https://www.covid19portugal.pt/
-
-Requirements:
-
-    1. scrapy
-
-Spiders localizados em: scrapy/spiders
-
-Para iniciar o scrap das perguntas e resposta do https://www.covid19portugal.pt/:
-
-    $ cd scrapy/spiders
-    $ runspider covid19portugalFAQ.py 
-
-
-Será gerado uma lista em formato json em: extra/covid19portugalFAQ/covid19portugalFAQ.json
-
-
-
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 
 Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída. 
