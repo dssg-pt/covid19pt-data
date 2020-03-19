@@ -5,6 +5,7 @@ O repositório está organizado da seguinte forma:
 + `populacional/`: Dados da categoria "Populacional"
 + `saude/`: Dados da categoria "Saúde", até agora do Portal Transparência SNS. 
 + `medidas_governamentais/`: Dados das medidas governamentais ordenadas por data
++ `covid19portugalFAQ/`: Dados das perguntas mais frequentes do website oficial do ISPUP, covid19portugal.pt
 
 ## 📰 Notícias
 
