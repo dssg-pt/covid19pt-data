@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 19 de Março de 2020, 17h30
+📅️ **Última actualização**: 20 de Março de 2020, 12h30
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
@@ -34,8 +34,8 @@ Uma explicação do conteúdo em `data.csv`.
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
-| `data` | Data da publicação dos dados | DD-MM-YYYY |
-| `data_dados` | Data e hora da recolha dos dados apresentados (quando omitida nos relatórios, assume-se como sendo a data da publicação dos dados) | DD-MM-YYYY HH:MM|
+| `data` | Data da publicação dos dados. | DD-MM-YYYY |
+| `data_dados` | Data e hora da recolha dos dados apresentados (quando omitida nos relatórios, assume-se como sendo a data da publicação dos dados). **Geralmente, os dados são reportados até às 24h do dia anterior à `data` (equivalentes às 00h do dia de `data`, sendo este último o formato utilizado).** | DD-MM-YYYY HH:MM|
 | `confirmados` | Casos confirmados      | Inteiro >= 0 |
 | `confirmados_arsnorte` | Casos confirmados na ARS Norte      | Inteiro >= 0 |
 | `confirmados_arscentro` | Casos confirmados na ARS Centro      | Inteiro >= 0 |
