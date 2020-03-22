@@ -24,6 +24,11 @@ O repositório está organizado da seguinte forma:
 + `notebooks/`: contém um _notebook_ Python com um simples de como carregar e visualizar os dados.
 + `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
 
+# API Rest para os dados portugueses e mundiais
+Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
+
+Dados em versão API com resposta JSON, atualização diária conforme esta base de dados e dados da OMS para o endpoint dos dados mundiais por país. [Acesso via RapidApi](https://rapidapi.com/gitgrupoift/api/covid-19-dados-abertos), com exemplos de requisição e resposta, exemplos de clients e SDK.
+
 # 📔 Dicionário dos dados
 
 Uma explicação do conteúdo em `data.csv`. 
