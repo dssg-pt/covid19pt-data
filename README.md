@@ -6,6 +6,8 @@
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
 
+⚔️ **Taikai Fight COVID-19 Open Challenge** Juntámos esforços com a Taikai para estimular o uso de dados abertos para estudar esta pandemia. Vejam [como podem ajudar](https://taikai.network/taikai/challenges/covid-19/categories/data-science-for-social-good-portugal). No website damos algumas sugestões de projetos, mas obviamente que a vossa criatividade é o limite!
+
 # 🤔 Contexto
 
 Embora a comunicação e partilha de dados por parte do Ministério de Saúde Português tenha melhorado consideravelmente ao longo da crise do COVID-19, ainda está longe de ideal (havendo a destacar o exemplo do [repositório da Protecção Civil Italiana no GitHub](https://github.com/pcm-dpc/COVID-19)).
