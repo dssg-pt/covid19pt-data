@@ -3,6 +3,7 @@ from os.path import isfile, join
 import pandas as pd
 import numpy as np
 import textract
+import re
 
 
 
@@ -24,7 +25,7 @@ def get_reports(path):
             date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "-")
 
             # most recent format
-            if date > "19-03-2020" and date < "23-03-2020":
+            if date > "22-03-2020":
 
                 file = {
                     "file_path": file_path,
@@ -74,6 +75,9 @@ def extract_data(reports):
     obitos_arslvt = []
     obitos_arsalentejo = []
     obitos_arsalgarve = []
+    recuperados_arsnorte = []
+    recuperados_arscentro = []
+    recuperados_arslvt = []
     confirmados_f = []
     confirmados_m = []
     confirmados_0_9_f = []
@@ -110,12 +114,17 @@ def extract_data(reports):
         text = report["text"]
         lines = text.split("\n")
 
+        # collect all lines that are just numbers
         numbers = get_all_numbers_from_list(lines)
+
+        # collect all percentages
         percentages = get_all_percentages_from_list(lines)
 
         [confirmados_value, n_confirmados_value, lab_value, recuperados_value, vigilancia_value, suspeitos_value,
-         confirmados_acores_value, confirmados_madeira_value, confirmados_arsnorte_value, obitos_arsnorte_value,
-         confirmados_arscentro_value, obitos_arscentro_value, confirmados_arslvt_value, obitos_arslvt_value,
+         confirmados_acores_value, confirmados_madeira_value,
+         confirmados_arsnorte_value, obitos_arsnorte_value, recuperados_arsnorte_value,
+         confirmados_arscentro_value, obitos_arscentro_value, recuperados_arscentro_value,
+         confirmados_arslvt_value, obitos_arslvt_value, recuperados_arslvt_value,
          confirmados_estrangeiro_value, confirmados_arsalentejo_value, obitos_arsalentejo_value,
          confirmados_arsalgarve_value, obitos_arsalgarve_value,
          confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
@@ -125,7 +134,7 @@ def extract_data(reports):
          confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
          confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, confirmados_f_value,
          internados_value, internados_uci_value
-        ] = numbers[:41]
+        ] = numbers[:44]
 
         dates.append(report["date"])
         confirmados.append(confirmados_value)
@@ -137,16 +146,25 @@ def extract_data(reports):
 
         confirmados_acores.append(confirmados_acores_value)
         confirmados_madeira.append(confirmados_madeira_value)
+
         confirmados_arsnorte.append(confirmados_arsnorte_value)
         obitos_arsnorte.append(obitos_arsnorte_value)
+        recuperados_arsnorte.append(recuperados_arsnorte_value)
+
         confirmados_arscentro.append(confirmados_arscentro_value)
         obitos_arscentro.append(obitos_arscentro_value)
+        recuperados_arscentro.append(recuperados_arscentro_value)
+
         confirmados_arslvt.append(confirmados_arslvt_value)
         obitos_arslvt.append(obitos_arslvt_value)
+        recuperados_arslvt.append(recuperados_arslvt_value)
+
         confirmados_arsalentejo.append(confirmados_arsalentejo_value)
         obitos_arsalentejo.append(obitos_arsalentejo_value)
+
         confirmados_arsalgarve.append(confirmados_arsalgarve_value)
         obitos_arsalgarve.append(obitos_arsalgarve_value)
+
         confirmados_estrangeiro.append(confirmados_estrangeiro_value)
 
         obitos_value = obitos_arsnorte_value + obitos_arscentro_value + obitos_arslvt_value + obitos_arsalentejo_value + obitos_arsalgarve_value
@@ -197,10 +215,15 @@ def extract_data(reports):
         "confirmados_acores": confirmados_acores,
         "confirmados_madeira": confirmados_madeira,
         "confirmados_arsnorte": confirmados_arsnorte,
+        "obitos_arsnorte": obitos_arsnorte,
         "confirmados_arscentro": confirmados_arscentro,
+        "obitos_arscentro": obitos_arscentro,
         "confirmados_arslvt": confirmados_arslvt,
+        "obitos_arslvt": obitos_arslvt,
         "confirmados_arsalentejo": confirmados_arsalentejo,
+        "obitos_arsalentejo": obitos_arsalentejo,
         "confirmados_arsalgarve": confirmados_arsalgarve,
+        "obitos_arsalgarve": obitos_arsalgarve,
         "confirmados_estrangeiro": confirmados_estrangeiro,
         "confirmados_f": confirmados_f,
         "confirmados_m": confirmados_m,
@@ -269,18 +292,14 @@ def get_all_percentages_from_list(lines):
 
 
 def get_transmissao_importada_value(lines):
+    index_bottom = lines.index("Casos importados") + 1
+    index_upper = lines.index("suspeitos (desde 1 de janeiro ") - 1
     counter = 0
 
-    for line in lines:
-
-        if " (" in line:
-            line = line.split(" (")[1]
-
-            if ")" in line:
-                line = line.split(")")[0]
-
-                if is_int(line):
-                    counter += int(line)
+    for i in range(index_bottom, index_upper):
+        number = re.findall(r'[0-9]+', lines[i])
+        if number:
+            counter += int(number[0])
 
     return counter
 
@@ -295,7 +314,7 @@ def is_int(s):
 
 def get_dataframe_from_csv(path_to_file):
     df = pd.read_csv(path_to_file)
-    df = df.iloc[23:]
+    df = df.iloc[26:]
     return df
 
 
@@ -328,43 +347,64 @@ def save_new_data(new_dataframe):
 
     for i in range(new_dataframe.shape[0]):
         r = new_dataframe.iloc[i]
-        rows.append([r["data"], "FILL", r["confirmados"], r["confirmados_arsnorte"],
-                r["confirmados_arscentro"], r["confirmados_arslvt"], r["confirmados_arsalentejo"],
-                r["confirmados_arsalgarve"],
-                r["confirmados_acores"], r["confirmados_madeira"], r["confirmados_estrangeiro"], "FILL",
-                r["recuperados"], r["obitos"], r["internados"], r["internados_uci"],
-                r["lab"],
-                r["suspeitos"],
-                r["vigilancia"],
-                r["n_confirmados"],
-                "FILL",
-                r["transmissao_importada"],
-                r["confirmados_0_9_f"],
-                r["confirmados_0_9_m"],
-                r["confirmados_10_19_f"],
-                r["confirmados_10_19_m"],
-                r["confirmados_20_29_f"],
-                r["confirmados_20_29_m"],
-                r["confirmados_30_39_f"],
-                r["confirmados_30_39_m"],
-                r["confirmados_40_49_f"],
-                r["confirmados_40_49_m"],
-                r["confirmados_50_59_f"],
-                r["confirmados_50_59_m"],
-                r["confirmados_60_69_f"],
-                r["confirmados_60_69_m"],
-                r["confirmados_70_79_f"],
-                r["confirmados_70_79_m"],
-                r["confirmados_80_plus_f"],
-                r["confirmados_80_plus_m"],
-                r["sintomas_tosse"],
-                r["sintomas_febre"],
-                r["sintomas_dificuldade_respiratoria"],
-                r["sintomas_cefaleia"],
-                r["sintomas_dores_musculares"],
-                r["sintomas_fraqueza_generalizada"],
-                r["confirmados_f"],
-                r["confirmados_m"]])
+        rows.append([
+            r["data"],
+            "FILL_DATA_DADOS", # DATA DADOS -> substituir por hora
+            r["confirmados"],
+            r["confirmados_arsnorte"],
+            r["confirmados_arscentro"],
+            r["confirmados_arslvt"],
+            r["confirmados_arsalentejo"],
+            r["confirmados_arsalgarve"],
+            r["confirmados_acores"],
+            r["confirmados_madeira"],
+            r["confirmados_estrangeiro"],
+            "", # confirmados_novos -> vazio
+            r["recuperados"],
+            r["obitos"],
+            r["internados"],
+            r["internados_uci"],
+            r["lab"],
+            r["suspeitos"],
+            r["vigilancia"],
+            r["n_confirmados"],
+            "", # cadeias transmissao -> vazio
+            r["transmissao_importada"],
+            r["confirmados_0_9_f"],
+            r["confirmados_0_9_m"],
+            r["confirmados_10_19_f"],
+            r["confirmados_10_19_m"],
+            r["confirmados_20_29_f"],
+            r["confirmados_20_29_m"],
+            r["confirmados_30_39_f"],
+            r["confirmados_30_39_m"],
+            r["confirmados_40_49_f"],
+            r["confirmados_40_49_m"],
+            r["confirmados_50_59_f"],
+            r["confirmados_50_59_m"],
+            r["confirmados_60_69_f"],
+            r["confirmados_60_69_m"],
+            r["confirmados_70_79_f"],
+            r["confirmados_70_79_m"],
+            r["confirmados_80_plus_f"],
+            r["confirmados_80_plus_m"],
+            r["sintomas_tosse"],
+            r["sintomas_febre"],
+            r["sintomas_dificuldade_respiratoria"],
+            r["sintomas_cefaleia"],
+            r["sintomas_dores_musculares"],
+            r["sintomas_fraqueza_generalizada"],
+            r["confirmados_f"],
+            r["confirmados_m"],
+            r["obitos_arsnorte"],
+            r["obitos_arscentro"],
+            r["obitos_arslvt"],
+            r["obitos_arsalentejo"],
+            r["obitos_arsalgarve"],
+            0, # obitos acores -> nao ha informacao no relatorio
+            0, # obitos_madeira -> nao ha informacao no relatorio
+            0, # obitos_estrangeiro -> nao ha informacao no relatorio
+        ])
 
     df = pd.DataFrame(rows)
     print(df)
@@ -387,14 +427,12 @@ if __name__ == '__main__':
     # TEST
     test_data(original_dataframe, new_dataframe)
 
-
     # If data has the expected format
-    # Save data from 20-03-2020 to today into new csv
+    # Save data from 23-03-2020 to today into new csv
     # Replace FILL with correct values
-    if len_numbers == 41:
+    if len_numbers == 44:
         save_new_data(new_dataframe)
 
-
     else:
-        print("Please extract_data function")
+        print("Please update 'extract_data' function")
 
