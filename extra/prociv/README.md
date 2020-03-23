@@ -8,6 +8,8 @@ Podem ser usados como um proxy da mobilidade da população, por exemplo.
 
 Os dados desta pasta foram extraídos a partir de:
 
-https://github.com/centraldedados/protecao_civil/
+https://github.com/centraldedados/protecao_civil/,
 
-Note-se que foram retiradas 14 linhas, pois tinham um número anómalo de colunas. 
+onde se encontra também a documentação das tabelas. 
+
+Note-se que foram retiradas 14 linhas (ficheiro `removed_rows.csv`), pois tinham um número anómalo de colunas. 
