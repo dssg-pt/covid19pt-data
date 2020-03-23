@@ -6,7 +6,7 @@
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
 
-⚔️ **Taikai Fight COVID-19 Open Challenge:** Juntámos esforços com a Taikai para estimular o uso de dados abertos para estudar esta pandemia. Vejam [como podem ajudar](https://taikai.network/taikai/challenges/covid-19/categories/data-science-for-social-good-portugal). No website damos algumas sugestões de projetos, mas obviamente que a vossa criatividade é o limite!
+⚔️ **TAIKAI Fight COVID-19 Open Challenge:** Juntámos esforços com a TAIKAI para estimular o uso de dados abertos para estudar esta pandemia. Vejam [como podem ajudar](https://taikai.network/taikai/challenges/covid-19/categories/data-science-for-social-good-portugal). No website damos algumas sugestões de projetos, mas obviamente que a vossa criatividade é o limite!
 
 # 🤔 Contexto
 
@@ -20,6 +20,13 @@ A estrutura base deste ficheiro, desenhada para fácil manipulação em Excel/Py
 
 _Porque tudo começa com bons dados._
 
+# 👁️ Aplicações deste repositório
++ [Como achatar a curva? O que revelam as experiências dos países](https://www.publico.pt/interactivo/coronavirus-como-achatar-curva-que-revelam-experiencias-paises), por Rui Barros e Dinis Correia (Público)
++ [Ainda há Covid-19 amanhã?](https://aquelemiguel.github.io/ainda-ha-covid-19-amanha/), por [Miguel Mano](https://github.com/aquelemiguel)
++ [COVID-19 Portugal Data](https://ruicalheno133.github.io/covid-19-dashboard/), por [Rui Calheno](https://github.com/ruicalheno133)
++ [Resumo COVID-19](https://covid19pt.github.io/covid-19-pt/covid-resumo/), por [Pedro Lima](https://github.com/pvl)
++ [COVID-19 Cases](https://app.powerbi.com/view?r=eyJrIjoiYzcyYTg1ZDYtZjI2Zi00NWNhLWJhYzUtZTM1NjliZjlkOGExIiwidCI6ImIwMzNhNWMyLTFhNGUtNDIwMS1iNGZiLWIwZDkzYjlhMGIxOSIsImMiOjl9), por [@hrmartins](https://github.com/hrmartins)
+
 # 🧱 Estrutura
 
 O repositório está organizado da seguinte forma:
@@ -28,7 +35,7 @@ O repositório está organizado da seguinte forma:
 + `notebooks/`: contém um _notebook_ Python com um exemplo simples de como carregar e visualizar os dados.
 + `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
 
-# API Rest para os dados portugueses e mundiais
+# 📡 API Rest para os dados portugueses e mundiais
 Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
 
 Dados em versão API com resposta JSON, atualização diária conforme esta base de dados e dados da OMS para o endpoint dos dados mundiais por país. [Acesso via RapidApi](https://rapidapi.com/gitgrupoift/api/covid-19-dados-abertos), com exemplos de requisição e resposta, exemplos de clients e SDK.
