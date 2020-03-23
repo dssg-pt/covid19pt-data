@@ -52,7 +52,7 @@ def process_raw_text(report_text_raw):
     return "\n".join(lines)
 
 
-def extract_data(reports):
+def extract_data(reports, original_dataframe):
     dates = []
 
     confirmados = []
@@ -107,6 +107,7 @@ def extract_data(reports):
     sintomas_dores_musculares = []
     sintomas_fraqueza_generalizada = []
     transmissao_importada = []
+    confirmados_novos = []
 
     numbers = None
 
@@ -169,6 +170,11 @@ def extract_data(reports):
 
         obitos_value = obitos_arsnorte_value + obitos_arscentro_value + obitos_arslvt_value + obitos_arsalentejo_value + obitos_arsalgarve_value
         obitos.append(obitos_value)
+
+        index_last_row = original_dataframe.index[original_dataframe['data'] == report["date"]].tolist()[0] - 1
+        confirmados_old = original_dataframe.loc[index_last_row]["confirmados"]
+        confirmados_novos_value = confirmados - confirmados_old
+        confirmados_novos.append(confirmados_novos_value)
 
         confirmados_f.append(confirmados_f_value)
         confirmados_m.append(confirmados_m_value)
@@ -254,7 +260,8 @@ def extract_data(reports):
         "sintomas_cefaleia": sintomas_cefaleia,
         "sintomas_dores_musculares": sintomas_dores_musculares,
         "sintomas_fraqueza_generalizada": sintomas_fraqueza_generalizada,
-        "transmissao_importada": transmissao_importada
+        "transmissao_importada": transmissao_importada,
+        "confirmados_novos": confirmados_novos
     }
 
     df = pd.DataFrame(data)
@@ -314,7 +321,6 @@ def is_int(s):
 
 def get_dataframe_from_csv(path_to_file):
     df = pd.read_csv(path_to_file)
-    df = df.iloc[26:]
     return df
 
 
@@ -359,7 +365,7 @@ def save_new_data(new_dataframe):
             r["confirmados_acores"],
             r["confirmados_madeira"],
             r["confirmados_estrangeiro"],
-            "", # confirmados_novos -> vazio
+            r["confirmados_novos"],
             r["recuperados"],
             r["obitos"],
             r["internados"],
@@ -422,9 +428,10 @@ if __name__ == '__main__':
     reports = get_reports_text(reports)
 
     # extract data from reports
-    new_dataframe, len_numbers = extract_data(reports)
+    new_dataframe, len_numbers = extract_data(reports, original_dataframe)
 
     # TEST
+    original_dataframe = original_dataframe.iloc[26:]
     test_data(original_dataframe, new_dataframe)
 
     # If data has the expected format
