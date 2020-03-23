@@ -173,7 +173,7 @@ def extract_data(reports, original_dataframe):
 
         index_last_row = original_dataframe.index[original_dataframe['data'] == report["date"]].tolist()[0] - 1
         confirmados_old = original_dataframe.loc[index_last_row]["confirmados"]
-        confirmados_novos_value = confirmados - confirmados_old
+        confirmados_novos_value = int(confirmados - confirmados_old)
         confirmados_novos.append(confirmados_novos_value)
 
         confirmados_f.append(confirmados_f_value)
