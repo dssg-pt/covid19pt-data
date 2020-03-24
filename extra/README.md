@@ -45,3 +45,7 @@ Contém csv contendo as medidas governamentais tomadas em cada data desde o iní
 - [Website da República Portuguesa](https://www.portugal.gov.pt/)
 - [Pandemia de COVID-19 em Portugal](https://pt.m.wikipedia.org/wiki/Pandemia_de_COVID-19_em_Portugal)
 
+## 🗃️ Proteção Civil
+
+Contém um ficheiro com as ocorrências da Proteção Civil, extraída a partir da [Central de Dados](https://github.com/centraldedados/protecao_civil/). 
+
