@@ -12,4 +12,4 @@ https://github.com/centraldedados/protecao_civil/,
 
 onde se encontra também a documentação das tabelas. 
 
-Note-se que foram retiradas 14 linhas (ficheiro `removed_rows.csv`), pois tinham um número anómalo de colunas. 
+Note-se que foram retiradas 14 linhas (ficheiro `removed_rows.csv`), pois tinham um número anómalo de colunas. Para leitura correta das strings, o encoding usado para abrir e guardar os dados foi `latin-1`. 
