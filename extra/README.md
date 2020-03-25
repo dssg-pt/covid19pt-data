@@ -10,11 +10,13 @@ O repositório está organizado da seguinte forma:
 
 ## 📰 Notícias
 
-De momento, contém apenas um 
+Contém: 
 
-+ `download_listanoticias_publico.ipynb`: notebook Python para fazer download da data, título e descrição de notícias do Público relacionadas 
++ `download_listanoticias_publico.ipynb`: notebook Python para fazer download da data, título e descrição de notícias do Público relacionadas com Coronavírus.
++ `download_news_sample_observador.csv`: notebook Python para fazer download da data, título, descrição e conteúdo de notícias do Observador com a temática de Coronavírus.
 com o coronavírus. (Um obrigado ao Rui Barros pela ajuda!)
-+ `news_sample.csv`: Exemplo de um output do notebook acima.
++ `news_sample.csv`: Exemplo de um output do notebook de download de dados do Público.
++ `news_sample_observador.csv`: Exemplo de um output do notebook de download de dados do Observador.
 
 ## 🧑 Populacional
 
