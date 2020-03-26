@@ -1,8 +1,10 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 25 de Março de 2020, 12h30
+📅️ **Última actualização**: 26 de Março de 2020, 12h30
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
+
+❗**Dados de casos confirmados por concelho**: Apesar da DGS estar actualmente a fornecer dados de casos confirmados por concelho, optamos por não os incluir (assim como recursos geográficos complementares) em virtude da incerteza metodológica e do grau de incompletude que actualmente os caracteriza. Iremos rever esta decisão à medida que a situação se desenvolve. 
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
 
@@ -89,12 +91,12 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_80_plus_f` | Número de casos confirmados do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldade respiratória | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleia ou dores de cabeça | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldades respiratórias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_f` | Número total de confirmados do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
 | `confirmados_m` | Número total de confirmados do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
 | `obitos_arsnorte` | Total de óbitos na ARS Norte      | Inteiro >= 0 |
