@@ -15,4 +15,4 @@ jobs:
       - name: Validation Tests
         run: |
           pip install pytest pandas
-          pytest tests/tests.py
+          pytest tests/tests
