@@ -2,7 +2,7 @@ name: Validate CSV
 on:
   push:
     branches:
-      - master
+      - github_actions
 jobs:
   run:
     name: Run
