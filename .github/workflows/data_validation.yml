@@ -15,9 +15,7 @@ jobs:
 
       - uses: actions/checkout@v2
       
-      - uses: cclauss/GitHub-Action-for-pytest@master
-        with:
-            args: pytest tests/tests.py
+      - run: pytest tests/tests.py
 
       - uses: dssg-pt/covid19pt-data@github_actions
         with:
