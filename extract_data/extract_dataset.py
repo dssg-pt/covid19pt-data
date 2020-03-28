@@ -22,10 +22,10 @@ def get_reports(path):
             file_path = "{}{}".format(path, f)
 
             # date of report
-            date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "/")
+            date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "-")
 
             # most recent format
-            if date > "23/03/2020":
+            if date > "27/03/2020":
 
                 file = {
                     "file_path": file_path,
@@ -53,14 +53,18 @@ def process_raw_text(report_text_raw):
 
 
 def extract_data(reports, original_dataframe):
+    # Dates
     dates = []
 
+    # Valores Iniciais
     confirmados = []
     n_confirmados = []
     lab = []
     recuperados = []
     vigilancia = []
     suspeitos = []
+
+    # Confirmados
     confirmados_acores = []
     confirmados_madeira = []
     confirmados_arsnorte = []
@@ -69,6 +73,8 @@ def extract_data(reports, original_dataframe):
     confirmados_arsalentejo = []
     confirmados_arsalgarve = []
     confirmados_estrangeiro = []
+
+    # Obitos
     obitos = []
     obitos_acores = []
     obitos_madeira = []
@@ -78,9 +84,16 @@ def extract_data(reports, original_dataframe):
     obitos_arsalentejo = []
     obitos_arsalgarve = []
     obitos_estrangeiro = []
+
+    # Recuperados
     recuperados_arsnorte = []
     recuperados_arscentro = []
     recuperados_arslvt = []
+    recuperados_arsalentejo = []
+    recuperados_arsalgarve = []
+    recuperados_estrangeiro = []
+
+    # Confirmados Faixa Etaria
     confirmados_f = []
     confirmados_m = []
     confirmados_0_9_f = []
@@ -101,8 +114,34 @@ def extract_data(reports, original_dataframe):
     confirmados_70_79_m = []
     confirmados_80_plus_f = []
     confirmados_80_plus_m = []
+
+    # Obitos Faixa Etaria
+    obitos_f = []
+    obitos_m = []
+    obitos_0_9_f = []
+    obitos_0_9_m = []
+    obitos_10_19_f = []
+    obitos_10_19_m = []
+    obitos_20_29_f = []
+    obitos_20_29_m =[ ]
+    obitos_30_39_f = []
+    obitos_30_39_m = []
+    obitos_40_49_f = []
+    obitos_40_49_m = []
+    obitos_50_59_f = []
+    obitos_50_59_m = []
+    obitos_60_69_f = []
+    obitos_60_69_m = []
+    obitos_70_79_f = []
+    obitos_70_79_m = []
+    obitos_80_plus_f = []
+    obitos_80_plus_m = []
+
+    # Internados
     internados = []
     internados_uci = []
+
+    # Sintomas
     sintomas_tosse = []
     sintomas_febre = []
     sintomas_dificuldade_respiratoria = []
@@ -112,36 +151,19 @@ def extract_data(reports, original_dataframe):
     transmissao_importada = []
     confirmados_novos = []
 
-    numbers = None
 
     for report in reports:
         text = report["text"]
         lines = text.split("\n")
 
-        # collect all percentages
-        percentages = get_all_percentages_from_list(lines)
+        print(text)
 
-        # Should be 17 values
-        [confirmados_acores_value, obitos_acores_value, confirmados_madeira_value,
-         confirmados_arsnorte_value, obitos_arsnorte_value, recuperados_arsnorte_value,
-         confirmados_arscentro_value, obitos_arscentro_value, recuperados_arscentro_value,
-         confirmados_arslvt_value, obitos_arslvt_value, recuperados_arslvt_value,
-         confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_estrangeiro_value,
-         confirmados_arsalgarve_value, obitos_arsalgarve_value
-        ] = get_all_numbers_from_list(lines, "Açores", "Região de residência")
+        """ INITIAL VALUES ON LEFT """
 
-        [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value, obitos_value,
-         vigilancia_value] = get_all_numbers_from_list(lines, "suspeitos (desde 1 de janeiro ", "Açores")
+        [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
+         obitos_value] = get_all_numbers_from_list(lines, "suspeitos (desde 1 de janeiro ", "Região de residência")[:6]
 
-        [confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
-         confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
-         confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value,
-         confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
-         confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
-         confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value,
-        ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS")
-
-        [internados_value, internados_uci_value] = get_all_numbers_from_list(lines, "INTERNADOS", "A metodologia de recolha destes dados vai ser alterada nos próximos dias.")
+        [vigilancia_value] = get_all_numbers_from_list(lines, "pelas Autoridades de Saúde", "Legenda")
 
         dates.append(report["date"])
         confirmados.append(confirmados_value)
@@ -152,37 +174,69 @@ def extract_data(reports, original_dataframe):
         suspeitos.append(suspeitos_value)
         obitos.append(obitos_value)
 
+
+        """ CONFIMADOS, OBITOS E RECUPERADOS POR REGIAO """
+
+        # Should be 17 values
+        [confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
+         confirmados_arsnorte_value, obitos_arsnorte_value, recuperados_arsnorte_value,
+         confirmados_arscentro_value, obitos_arscentro_value, recuperados_arscentro_value,
+        ] = get_all_numbers_from_list(lines, "Açores", "suspeitos (desde 1 de janeiro ")
+
+
+        [confirmados_arslvt_value, obitos_arslvt_value, recuperados_arslvt_value,
+         confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
+        ] = get_all_numbers_from_list(lines, "suspeitos (desde 1 de janeiro ", "Região de residência")[6:]
+
+        # Acores
         confirmados_acores.append(confirmados_acores_value)
         obitos_acores.append(obitos_acores_value)
 
+        # Madeira
         confirmados_madeira.append(confirmados_madeira_value)
-        obitos_madeira.append(0)
+        obitos_madeira.append(obitos_madeira_value)
 
+        # Norte
         confirmados_arsnorte.append(confirmados_arsnorte_value)
         obitos_arsnorte.append(obitos_arsnorte_value)
         recuperados_arsnorte.append(recuperados_arsnorte_value)
 
+        # Centro
         confirmados_arscentro.append(confirmados_arscentro_value)
         obitos_arscentro.append(obitos_arscentro_value)
         recuperados_arscentro.append(recuperados_arscentro_value)
 
+        # Lisboa
         confirmados_arslvt.append(confirmados_arslvt_value)
         obitos_arslvt.append(obitos_arslvt_value)
         recuperados_arslvt.append(recuperados_arslvt_value)
 
+        # Alentejo
         confirmados_arsalentejo.append(confirmados_arsalentejo_value)
         obitos_arsalentejo.append(obitos_arsalentejo_value)
 
+        # Algarve
         confirmados_arsalgarve.append(confirmados_arsalgarve_value)
         obitos_arsalgarve.append(obitos_arsalgarve_value)
 
-        confirmados_estrangeiro.append(confirmados_estrangeiro_value)
-        obitos_estrangeiro.append(0)
+
+        """ CONFIRMADOS NOVOS"""
 
         index_last_row = original_dataframe.index[original_dataframe['data'] == report["date"]].tolist()[0] - 1
         confirmados_old = original_dataframe.loc[index_last_row]["confirmados"]
-        confirmados_novos_value = int(confirmados - confirmados_old)
+        confirmados_novos_value = int(confirmados_value - confirmados_old)
         confirmados_novos.append(confirmados_novos_value)
+
+
+        """ CONFIMADOS POR FAIXA ETARIA """
+
+        [confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
+         confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
+         confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value,
+         confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
+         confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
+         confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value,
+        ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOSCASOS CONFIRMADOS")
 
         confirmados_m_value = sum([confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
                                      confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
@@ -193,6 +247,7 @@ def extract_data(reports, original_dataframe):
                                    confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value,
                                    ])
 
+        # Append Confirmados Values
         confirmados_f.append(confirmados_f_value)
         confirmados_m.append(confirmados_m_value)
         confirmados_0_9_f.append(confirmados_0_9_f_value)
@@ -214,18 +269,75 @@ def extract_data(reports, original_dataframe):
         confirmados_80_plus_f.append(confirmados_80_plus_f_value)
         confirmados_80_plus_m.append(confirmados_80_plus_m_value)
 
+
+        """ OBITOS POR FAIXA ETARIA """
+
+        [obitos_0_9_m_value, obitos_10_19_m_value, obitos_20_29_m_value,
+         obitos_30_39_m_value, obitos_40_49_m_value, obitos_50_59_m_value,
+         obitos_60_69_m_value, obitos_70_79_m_value, obitos_80_plus_m_value,
+         obitos_0_9_f_value, obitos_10_19_f_value, obitos_20_29_f_value,
+         obitos_30_39_f_value, obitos_40_49_f_value, obitos_50_59_f_value,
+         obitos_60_69_f_value, obitos_70_79_f_value, obitos_80_plus_f_value,
+        ] = get_all_numbers_from_list(lines, "CARACTERIZAÇÃO DOS ÓBITOS OCORRIDOS", "Saiba mais em https://covid19.min-saude.pt/")
+
+        obitos_m_value = sum([obitos_0_9_m_value, obitos_10_19_m_value, obitos_20_29_m_value,
+                                     obitos_30_39_m_value, obitos_40_49_m_value, obitos_50_59_m_value,
+                                     obitos_60_69_m_value, obitos_70_79_m_value, obitos_80_plus_m_value])
+
+        obitos_f_value = sum([obitos_0_9_f_value, obitos_10_19_f_value, obitos_20_29_f_value,
+                                   obitos_30_39_f_value, obitos_40_49_f_value, obitos_50_59_f_value,
+                                   obitos_60_69_f_value, obitos_70_79_f_value, obitos_80_plus_f_value,
+                                   ])
+
+        # Append Obitos Values
+        obitos_f.append(obitos_f_value)
+        obitos_m.append(obitos_m_value)
+        obitos_0_9_f.append(obitos_0_9_f_value)
+        obitos_0_9_m.append(obitos_0_9_m_value)
+        obitos_10_19_f.append(obitos_10_19_f_value)
+        obitos_10_19_m.append(obitos_10_19_m_value)
+        obitos_20_29_f.append(obitos_20_29_f_value)
+        obitos_20_29_m.append(obitos_20_29_m_value)
+        obitos_30_39_f.append(obitos_30_39_f_value)
+        obitos_30_39_m.append(obitos_30_39_m_value)
+        obitos_40_49_f.append(obitos_40_49_f_value)
+        obitos_40_49_m.append(obitos_40_49_m_value)
+        obitos_50_59_f.append(obitos_50_59_f_value)
+        obitos_50_59_m.append(obitos_50_59_m_value)
+        obitos_60_69_f.append(obitos_60_69_f_value)
+        obitos_60_69_m.append(obitos_60_69_m_value)
+        obitos_70_79_f.append(obitos_70_79_f_value)
+        obitos_70_79_m.append(obitos_70_79_m_value)
+        obitos_80_plus_f.append(obitos_80_plus_f_value)
+        obitos_80_plus_m.append(obitos_80_plus_m_value)
+
+
+        """ INTERNADOS """
+
+        [internados_value, internados_uci_value] = get_all_numbers_from_list(lines, "INTERNADOS", "Informação reportada pelos Hospitais, Administrações Regionais de Saúde e Regiões Autónomas")
+
         internados.append(internados_value)
         internados_uci.append(internados_uci_value)
 
-        sintomas_febre.append(percentages[-6])
-        sintomas_tosse.append(percentages[-5])
+
+        """ SINTOMAS """
+
+        # collect all percentages
+        percentages = get_all_percentages_from_list(lines)
+
+        sintomas_febre.append(percentages[-5])
+        sintomas_tosse.append(percentages[-6])
         sintomas_dificuldade_respiratoria.append(percentages[-4])
         sintomas_cefaleia.append(percentages[-3])
         sintomas_dores_musculares.append(percentages[-2])
         sintomas_fraqueza_generalizada.append(percentages[-1])
 
+
+        """ TRANSMISSAO IMPORTADA """
+
         transmissao_importada_value = get_transmissao_importada_value(lines)
         transmissao_importada.append(transmissao_importada_value)
+
 
     data = {
         "data": dates,
@@ -238,19 +350,20 @@ def extract_data(reports, original_dataframe):
         "confirmados_acores": confirmados_acores,
         "confirmados_madeira": confirmados_madeira,
         "confirmados_arsnorte": confirmados_arsnorte,
-        "obitos_arsnorte": obitos_arsnorte,
         "confirmados_arscentro": confirmados_arscentro,
-        "obitos_arscentro": obitos_arscentro,
         "confirmados_arslvt": confirmados_arslvt,
-        "obitos_arslvt": obitos_arslvt,
         "confirmados_arsalentejo": confirmados_arsalentejo,
-        "obitos_arsalentejo": obitos_arsalentejo,
         "confirmados_arsalgarve": confirmados_arsalgarve,
+        "obitos_arsnorte": obitos_arsnorte,
+        "obitos_arscentro": obitos_arscentro,
+        "obitos_arslvt": obitos_arslvt,
+        "obitos_arsalentejo": obitos_arsalentejo,
         "obitos_arsalgarve": obitos_arsalgarve,
-        "confirmados_estrangeiro": confirmados_estrangeiro,
-        "obitos_estrangeiro": obitos_estrangeiro,
         "obitos_acores": obitos_acores,
         "obitos_madeira": obitos_madeira,
+        "recuperados_arsnorte": recuperados_arsnorte,
+        "recuperados_arscentro": recuperados_arscentro,
+        "recuperados_arslvt": recuperados_arslvt,
         "confirmados_f": confirmados_f,
         "confirmados_m": confirmados_m,
         "confirmados_0_9_f": confirmados_0_9_f,
@@ -271,6 +384,26 @@ def extract_data(reports, original_dataframe):
         "confirmados_70_79_m": confirmados_70_79_m,
         "confirmados_80_plus_f": confirmados_80_plus_f,
         "confirmados_80_plus_m": confirmados_80_plus_m,
+        "obitos_f": obitos_f,
+        "obitos_m": obitos_m,
+        "obitos_0_9_f": obitos_0_9_f,
+        "obitos_0_9_m": obitos_0_9_m,
+        "obitos_10_19_f": obitos_10_19_f,
+        "obitos_10_19_m": obitos_10_19_m,
+        "obitos_20_29_f": obitos_20_29_f,
+        "obitos_20_29_m": obitos_20_29_m,
+        "obitos_30_39_f": obitos_30_39_f,
+        "obitos_30_39_m": obitos_30_39_m,
+        "obitos_40_49_f": obitos_40_49_f,
+        "obitos_40_49_m": obitos_40_49_m,
+        "obitos_50_59_f": obitos_50_59_f,
+        "obitos_50_59_m": obitos_50_59_m,
+        "obitos_60_69_f": obitos_60_69_f,
+        "obitos_60_69_m": obitos_60_69_m,
+        "obitos_70_79_f": obitos_70_79_f,
+        "obitos_70_79_m": obitos_70_79_m,
+        "obitos_80_plus_f": obitos_80_plus_f,
+        "obitos_80_plus_m": obitos_80_plus_m,
         "obitos": obitos,
         "internados": internados,
         "internados_uci": internados_uci,
@@ -324,7 +457,7 @@ def get_all_percentages_from_list(lines):
 
 def get_transmissao_importada_value(lines):
     index_bottom = lines.index("CASOS IMPORTADOS")
-    index_upper = lines.index("Caso não exista informação disponível sobre ")
+    index_upper = lines.index("Caso não exista informação disponível sobre data de ")
     counter = 0
 
     for i in range(index_bottom, index_upper):
@@ -388,7 +521,7 @@ def save_new_data(new_dataframe):
             r["confirmados_arsalgarve"],
             r["confirmados_acores"],
             r["confirmados_madeira"],
-            r["confirmados_estrangeiro"],
+            "", #r["confirmados_estrangeiro"],
             r["confirmados_novos"],
             r["recuperados"],
             r["obitos"],
@@ -433,7 +566,35 @@ def save_new_data(new_dataframe):
             r["obitos_arsalgarve"],
             r["obitos_acores"],
             r["obitos_madeira"],
-            r["obitos_estrangeiro"]
+            "", #r["obitos_estrangeiro"],
+            r["recuperados_arsnorte"],
+            r["recuperados_arscentro"],
+            r["recuperados_arslvt"],
+            0, #r["recuperados_arsalentejo"],
+            0, #r["recuperados_arsalgarve"],
+            0, #r["recuperados_acores"],
+            0, #r["recuperados_madeira"],
+            0, #r["recuperados_estrangeiro"],
+            r["obitos_0_9_f"],
+            r["obitos_0_9_m"],
+            r["obitos_10_19_f"],
+            r["obitos_10_19_m"],
+            r["obitos_20_29_f"],
+            r["obitos_20_29_m"],
+            r["obitos_30_39_f"],
+            r["obitos_30_39_m"],
+            r["obitos_40_49_f"],
+            r["obitos_40_49_m"],
+            r["obitos_50_59_f"],
+            r["obitos_50_59_m"],
+            r["obitos_60_69_f"],
+            r["obitos_60_69_m"],
+            r["obitos_70_79_f"],
+            r["obitos_70_79_m"],
+            r["obitos_80_plus_f"],
+            r["obitos_80_plus_m"],
+            r["obitos_f"],
+            r["obitos_m"]
         ])
 
     df = pd.DataFrame(rows)
@@ -454,7 +615,7 @@ if __name__ == '__main__':
     new_dataframe = extract_data(reports, original_dataframe)
 
     # TEST
-    original_dataframe = original_dataframe.iloc[27:]
+    original_dataframe = original_dataframe.iloc[31:]
     test_data(original_dataframe, new_dataframe)
 
     save_new_data(new_dataframe)
