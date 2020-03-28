@@ -1,0 +1,21 @@
+name: Validate CSV 
+on:
+  push:
+    branches:
+      - master
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+
+      - uses: actions/checkout@v2
+
+      - uses: dssg-pt/covid19pt-data@github_actions
+        with:
+          myInput: teste
+        id: validate_data_format
