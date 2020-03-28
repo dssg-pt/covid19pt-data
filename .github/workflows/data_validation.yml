@@ -8,12 +8,16 @@ jobs:
     name: Run
     runs-on: ubuntu-latest
     steps:
-      # - name: Set up Python 3.7
-      #  uses: actions/setup-python@v1
-      #  with:
-      #    python-version: "3.7"
+       - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
 
       - uses: actions/checkout@v2
+      
+      - uses: cclauss/GitHub-Action-for-pytest@master
+        with:
+            args: pytest tests/tests.py
 
       - uses: dssg-pt/covid19pt-data@github_actions
         with:
