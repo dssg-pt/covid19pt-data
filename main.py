@@ -5,7 +5,7 @@ import pandas as pd
 def main():
     data = pd.read_csv('data.csv')
 
-	assert data['confirmados'].iloc[0] == 0
+    assert data['confirmados'].iloc[0] == 0, "CSV was changed"
 
 
 
