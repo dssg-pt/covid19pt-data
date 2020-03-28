@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/checkout@v2
       
-      - run: pytest tests/tests.py
+      - run: pytest /app/tests/tests.py
 
       - uses: dssg-pt/covid19pt-data@github_actions
         with:
