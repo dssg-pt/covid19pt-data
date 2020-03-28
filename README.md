@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 27 de Março de 2020, 13h30
+📅️ **Última actualização**: 27 de Março de 2020, 13h00
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
@@ -60,7 +60,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_arsalgarve` | Casos confirmados na ARS Algarve    | Inteiro >= 0 |
 | `confirmados_acores` | Casos confirmados na Região Autónoma dos Açores | Inteiro >= 0 |
 | `confirmados_madeira` | Casos confirmados na Região Autónoma da Madeira  |  Inteiro >= 0 |
-| `confirmados_estrangeiro` | Casos confirmados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_estrangeiro` | Casos confirmados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador. **A partir de 28-03-2020, este indicador deixou de ser reportados e os respectivos casos imputados às ARS/Regiões de origem.** |
 | `confirmados_novos` | Número de novos casos confirmados comparativamente ao dia anterior. É uma coluna calculada a partir da diferença nos casos `confirmados` entre dias consecutivos. | Inteiro >= 0 |
 | `recuperados` | Total de casos recuperados | Inteiro >= 0 |
 | `obitos` | Total de óbitos | Inteiro >= 0 |
@@ -105,15 +105,15 @@ Uma explicação do conteúdo em `data.csv`.
 | `obitos_arsalgarve` | Total de óbitos na ARS Algarve    | Inteiro >= 0 |
 | `obitos_acores` | Total de óbitos na Região Autónoma dos Açores | Inteiro >= 0 |
 | `obitos_madeira` | Total de óbitos na Região Autónoma da Madeira  |  Inteiro >= 0 |
-| `obitos_estrangeiro` | Total de óbitos no estrangeiro | Inteiro >= 0 |
+| `obitos_estrangeiro` | Total de óbitos no estrangeiro | Inteiro >= 0. **A partir de 28-03-2020, este indicador deixou de ser reportados e os respectivos casos imputados às ARS/Regiões de origem.** |
 | `recuperados_arsnorte` | Total de pacientes recuperados na ARS Norte      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_arscentro` | Total de pacientes recuperados na ARS Centro      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_arslvt` | Total de pacientes recuperados na ARS Lisboa e Vale do Tejo      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_alentejo` | Total de pacientes recuperados na ARS Alentejo | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_arsalgarve` | Total de pacientes recuperados na ARS Algarve | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `recupeardos_acores` | Total de pacientes recuperados na Região Autónoma dos Açores | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_acores` | Total de pacientes recuperados na Região Autónoma dos Açores | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_madeira` | Total de pacientes recuperados na Região Autónoma da Madeira  |  Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `obitos_estrangeiro` | Total de pacientes recuperados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_estrangeiro` | Total de pacientes recuperados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador. **A partir de 28-03-2020, este indicador deixou de ser reportados e os respectivos casos imputados às ARS/Regiões de origem.** |
 | `obitos_0_9_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_0_9_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_10_19_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 10-19 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
