@@ -90,7 +90,10 @@ def _check_datetime_format_publication(date):
 def test_dates():
     
     #TODO: Optimize this. 
-    data = pd.read_csv('../data.csv')
+    # Loading the CSV
+    current_dir = Path(__file__).parent.absolute()
+    csv_filepath = current_dir / ".." / "data.csv"
+    data = pd.read_csv(csv_filepath)
     
     # Data de publicação
     data_update = data['data']
@@ -335,7 +338,9 @@ def test_delimiter_comma():
     """
     Tests that the delimiter is a comma
     """
-    with open("../data.csv", newline="") as csvfile:
+    current_dir = Path(__file__).parent.absolute()
+    csv_filepath = current_dir / ".." / "data.csv"
+    with open(csv_filepath, newline="") as csvfile:
         csv.Sniffer().sniff(csvfile.read(1024), delimiters=",")
 
 
