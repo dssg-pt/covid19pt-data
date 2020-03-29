@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 27 de Março de 2020, 13h00
+📅️ **Última actualização**: 28 de Março de 2020, 13h00
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
@@ -28,6 +28,8 @@ _Porque tudo começa com bons dados._
 + [COVID-19 Portugal Data](https://ruicalheno133.github.io/covid-19-dashboard/), por [Rui Calheno](https://github.com/ruicalheno133)
 + [Resumo COVID-19](https://covid19pt.github.io/covid-19-pt/covid-resumo/), por [Pedro Lima](https://github.com/pvl)
 + [COVID-19 Cases](https://app.powerbi.com/view?r=eyJrIjoiYzcyYTg1ZDYtZjI2Zi00NWNhLWJhYzUtZTM1NjliZjlkOGExIiwidCI6ImIwMzNhNWMyLTFhNGUtNDIwMS1iNGZiLWIwZDkzYjlhMGIxOSIsImMiOjl9), por [@hrmartins](https://github.com/hrmartins)
++ [Novos casos diários do vírus de corona COVID-19 por região](http://lundici.it/covid19-portugal/), por [@giuppo](https://github.com/giuppo)
++ [Dashboard tech4COVID19](https://app.powerbi.com/view?r=eyJrIjoiYTVjOTk1OGEtYWEyZi00NTU4LWJhYmYtZTYwYzVlNzAwNjMyIiwidCI6ImE3NjA2YjE0LWJhY2EtNGZjMS04Nzc3LTkyZDIzNzc2YjIzNiIsImMiOjl9), por [Manuel Banza](https://github.com/ManuelBanza)
 
 # 🧱 Estrutura
 
