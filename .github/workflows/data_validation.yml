@@ -1,23 +1,35 @@
-name: Validate CSV 
+name: Validate DGS csv
+
 on:
-  push:
+  pull_request:
     branches:
-      - github_actions
+      - master
+
 jobs:
-  run:
-    name: Run
+  build:
+
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+
     steps:
-       #- name: Set up Python 3.7
-       # uses: actions/setup-python@v1
-       # with:
-       #   python-version: "3.7"
-
       - uses: actions/checkout@v2
-      
-      - run: pytest /app/tests/tests.py
-
-      - uses: dssg-pt/covid19pt-data@github_actions
+      - name: Setup Python # Set Python version
+        uses: actions/setup-python@v1
         with:
-          myInput: teste
-        id: validate_data_format
+          python-version: ${{ matrix.python-version }}
+      # Install pip and pytest
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pandas numpy pytest pytest-mock 
+      - name: Validate data with pytest
+        run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-results
+          path: tests/junit/test-results.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: always()
