@@ -6,14 +6,17 @@ O repositório está organizado da seguinte forma:
 + `saude/`: Dados da categoria "Saúde", até agora do Portal Transparência SNS. 
 + `medidas_governamentais/`: Dados das medidas governamentais ordenadas por data
 + `covid19portugalFAQ/`: Dados das perguntas mais frequentes do website oficial do ISPUP, covid19portugal.pt
++ `prociv/`: Dados das ocorrências da Proteção Civil. 
 
 ## 📰 Notícias
 
-De momento, contém apenas um 
+Contém: 
 
-+ `download_listanoticias_publico.ipynb`: notebook Python para fazer download da data, título e descrição de notícias do Público relacionadas 
++ `download_listanoticias_publico.ipynb`: notebook Python para fazer download da data, título e descrição de notícias do Público relacionadas com Coronavírus.
++ `download_news_sample_observador.csv`: notebook Python para fazer download da data, título, descrição e conteúdo de notícias do Observador com a temática de Coronavírus.
 com o coronavírus. (Um obrigado ao Rui Barros pela ajuda!)
-+ `news_sample.csv`: Exemplo de um output do notebook acima.
++ `news_sample.csv`: Exemplo de um output do notebook de download de dados do Público.
++ `news_sample_observador.csv`: Exemplo de um output do notebook de download de dados do Observador.
 
 ## 🧑 Populacional
 
@@ -43,4 +46,8 @@ Contém csv contendo as medidas governamentais tomadas em cada data desde o iní
 
 - [Website da República Portuguesa](https://www.portugal.gov.pt/)
 - [Pandemia de COVID-19 em Portugal](https://pt.m.wikipedia.org/wiki/Pandemia_de_COVID-19_em_Portugal)
+
+## 🗃️ Proteção Civil
+
+Contém um ficheiro com as ocorrências da Proteção Civil, extraída a partir da [Central de Dados](https://github.com/centraldedados/protecao_civil/). 
 

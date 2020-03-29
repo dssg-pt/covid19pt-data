@@ -1,8 +1,10 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 23 de Março de 2020, 12h30
+📅️ **Última actualização**: 29 de Março de 2020, 13h00
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
+
+❗**Dados de casos confirmados por concelho**: Apesar da DGS estar actualmente a fornecer dados de casos confirmados por concelho, optamos por não os incluir (assim como recursos geográficos complementares) em virtude da incerteza metodológica e do grau de incompletude que actualmente os caracteriza. Iremos rever esta decisão à medida que a situação se desenvolve. 
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
 
@@ -26,6 +28,8 @@ _Porque tudo começa com bons dados._
 + [COVID-19 Portugal Data](https://ruicalheno133.github.io/covid-19-dashboard/), por [Rui Calheno](https://github.com/ruicalheno133)
 + [Resumo COVID-19](https://covid19pt.github.io/covid-19-pt/covid-resumo/), por [Pedro Lima](https://github.com/pvl)
 + [COVID-19 Cases](https://app.powerbi.com/view?r=eyJrIjoiYzcyYTg1ZDYtZjI2Zi00NWNhLWJhYzUtZTM1NjliZjlkOGExIiwidCI6ImIwMzNhNWMyLTFhNGUtNDIwMS1iNGZiLWIwZDkzYjlhMGIxOSIsImMiOjl9), por [@hrmartins](https://github.com/hrmartins)
++ [Novos casos diários do vírus de corona COVID-19 por região](http://lundici.it/covid19-portugal/), por [@giuppo](https://github.com/giuppo)
++ [Dashboard tech4COVID19](https://app.powerbi.com/view?r=eyJrIjoiYTVjOTk1OGEtYWEyZi00NTU4LWJhYmYtZTYwYzVlNzAwNjMyIiwidCI6ImE3NjA2YjE0LWJhY2EtNGZjMS04Nzc3LTkyZDIzNzc2YjIzNiIsImMiOjl9), por [Manuel Banza](https://github.com/ManuelBanza)
 
 # 🧱 Estrutura
 
@@ -58,7 +62,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_arsalgarve` | Casos confirmados na ARS Algarve    | Inteiro >= 0 |
 | `confirmados_acores` | Casos confirmados na Região Autónoma dos Açores | Inteiro >= 0 |
 | `confirmados_madeira` | Casos confirmados na Região Autónoma da Madeira  |  Inteiro >= 0 |
-| `confirmados_estrangeiro` | Casos confirmados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_estrangeiro` | Casos confirmados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador. **A partir de 28-03-2020, este indicador deixou de ser reportados e os respectivos casos imputados às ARS/Regiões de origem.** |
 | `confirmados_novos` | Número de novos casos confirmados comparativamente ao dia anterior. É uma coluna calculada a partir da diferença nos casos `confirmados` entre dias consecutivos. | Inteiro >= 0 |
 | `recuperados` | Total de casos recuperados | Inteiro >= 0 |
 | `obitos` | Total de óbitos | Inteiro >= 0 |
@@ -88,13 +92,12 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_70_79_m` | Número de casos confirmados do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_f` | Número de casos confirmados do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldade respiratória | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleia ou dores de cabeça | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldades respiratórias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_f` | Número total de confirmados do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
 | `confirmados_m` | Número total de confirmados do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
 | `obitos_arsnorte` | Total de óbitos na ARS Norte      | Inteiro >= 0 |
@@ -104,9 +107,38 @@ Uma explicação do conteúdo em `data.csv`.
 | `obitos_arsalgarve` | Total de óbitos na ARS Algarve    | Inteiro >= 0 |
 | `obitos_acores` | Total de óbitos na Região Autónoma dos Açores | Inteiro >= 0 |
 | `obitos_madeira` | Total de óbitos na Região Autónoma da Madeira  |  Inteiro >= 0 |
-| `obitos_estrangeiro` | Total de óbitos no estrangeiro | Inteiro >= 0 |
+| `obitos_estrangeiro` | Total de óbitos no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador. **A partir de 28-03-2020, este indicador deixou de ser reportados e os respectivos casos imputados às ARS/Regiões de origem.** |
+| `recuperados_arsnorte` | Total de pacientes recuperados na ARS Norte      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_arscentro` | Total de pacientes recuperados na ARS Centro      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_arslvt` | Total de pacientes recuperados na ARS Lisboa e Vale do Tejo      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_alentejo` | Total de pacientes recuperados na ARS Alentejo | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_arsalgarve` | Total de pacientes recuperados na ARS Algarve | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_acores` | Total de pacientes recuperados na Região Autónoma dos Açores | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_madeira` | Total de pacientes recuperados na Região Autónoma da Madeira  |  Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_estrangeiro` | Total de pacientes recuperados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador. **A partir de 28-03-2020, este indicador deixou de ser reportados e os respectivos casos imputados às ARS/Regiões de origem.** |
+| `obitos_0_9_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_0_9_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_10_19_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 10-19 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_10_19_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 10-19 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_20_29_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 20-29 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_20_29_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 20-29 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_30_39_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 30-39 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_30_39_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 30-39 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_40_49_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 40-49 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_40_49_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 40-49 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_50_59_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 50-59 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_50_59_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 50-59 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_60_69_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 60-69 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_60_69_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 60-69 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_70_79_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_70_79_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_80_plus_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_80_plus_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `obitos_f` | Número total de óbitos de pacientes do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
+| `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
+> A 26/03/2020, a soma do número de pacientes recuperados por ARS/Região Autónoma nem sempre é igual ao número total de recuperados. A DGS reportou os dados desta forma, indicando que o diferencial correspondia a "_21 casos recuperados laboratorialmente_" e a "_aguardar mais informação._"
 
 Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída. 
 
