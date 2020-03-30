@@ -14,36 +14,35 @@ def get_reports(path):
     list_of_paths = listdir(path)
     list_of_paths.sort()
 
+    # get all reports
     for f in list_of_paths:
-
-        if isfile(join(path, f)):
-
-            # report filename
-            file_path = "{}{}".format(path, f)
-
-            # date of report
-            date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "-")
-
-            # most recent format
-            if date > "27/03/2020":
-
-                file = {
-                    "file_path": file_path,
-                    "date": date
-                }
-
-                files.append(file)
+        file = get_report(path, f)
+        if file:
+            files.append(file)
 
     return files
 
 
-def get_reports_text(reports):
-    for report in reports:
-        report_text_raw = textract.process(report["file_path"]).decode("utf-8")
-        report["text_raw"] = report_text_raw
-        report["text"] = process_raw_text(report_text_raw)
+def get_report(path, f):
+    if isfile(join(path, f)):
 
-    return reports
+        # report filename
+        file_path = "{}{}".format(path, f)
+
+        # date of report
+        date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "-")
+
+        # if has most recent format
+        if date > "27-03-2020":
+            text_raw = textract.process(file_path).decode("utf-8")
+            text = process_raw_text(text_raw)
+            file = {
+                "file_path": file_path,
+                "date": date,
+                "text_raw": text_raw,
+                "text": text
+            }
+            return file
 
 
 def process_raw_text(report_text_raw):
@@ -156,7 +155,7 @@ def extract_data(reports, original_dataframe):
         text = report["text"]
         lines = text.split("\n")
 
-        print(text)
+        # print(text)
 
         """ INITIAL VALUES ON LEFT """
 
@@ -482,7 +481,6 @@ def get_dataframe_from_csv(path_to_file):
 
 
 def test_data(original_dataframe, new_dataframe):
-
     # Iterate through all the common columns
     for column in original_dataframe.columns:
         original_column = original_dataframe[column].values
@@ -505,118 +503,108 @@ def test_data(original_dataframe, new_dataframe):
 
 
 
-def save_new_data(new_dataframe):
-    rows = []
+def save_new_data(r):
 
-    for i in range(new_dataframe.shape[0]):
-        r = new_dataframe.iloc[i]
-        rows.append([
-            r["data"],
-            "{} 00:00".format(r["data"]), # DATA DADOS -> substituir por hora
-            r["confirmados"],
-            r["confirmados_arsnorte"],
-            r["confirmados_arscentro"],
-            r["confirmados_arslvt"],
-            r["confirmados_arsalentejo"],
-            r["confirmados_arsalgarve"],
-            r["confirmados_acores"],
-            r["confirmados_madeira"],
-            "", #r["confirmados_estrangeiro"],
-            r["confirmados_novos"],
-            r["recuperados"],
-            r["obitos"],
-            r["internados"],
-            r["internados_uci"],
-            r["lab"],
-            r["suspeitos"],
-            r["vigilancia"],
-            r["n_confirmados"],
-            "", # cadeias transmissao -> vazio
-            r["transmissao_importada"],
-            r["confirmados_0_9_f"],
-            r["confirmados_0_9_m"],
-            r["confirmados_10_19_f"],
-            r["confirmados_10_19_m"],
-            r["confirmados_20_29_f"],
-            r["confirmados_20_29_m"],
-            r["confirmados_30_39_f"],
-            r["confirmados_30_39_m"],
-            r["confirmados_40_49_f"],
-            r["confirmados_40_49_m"],
-            r["confirmados_50_59_f"],
-            r["confirmados_50_59_m"],
-            r["confirmados_60_69_f"],
-            r["confirmados_60_69_m"],
-            r["confirmados_70_79_f"],
-            r["confirmados_70_79_m"],
-            r["confirmados_80_plus_f"],
-            r["confirmados_80_plus_m"],
-            r["sintomas_tosse"],
-            r["sintomas_febre"],
-            r["sintomas_dificuldade_respiratoria"],
-            r["sintomas_cefaleia"],
-            r["sintomas_dores_musculares"],
-            r["sintomas_fraqueza_generalizada"],
-            r["confirmados_f"],
-            r["confirmados_m"],
-            r["obitos_arsnorte"],
-            r["obitos_arscentro"],
-            r["obitos_arslvt"],
-            r["obitos_arsalentejo"],
-            r["obitos_arsalgarve"],
-            r["obitos_acores"],
-            r["obitos_madeira"],
-            "", #r["obitos_estrangeiro"],
-            r["recuperados_arsnorte"],
-            r["recuperados_arscentro"],
-            r["recuperados_arslvt"],
-            0, #r["recuperados_arsalentejo"],
-            0, #r["recuperados_arsalgarve"],
-            0, #r["recuperados_acores"],
-            0, #r["recuperados_madeira"],
-            0, #r["recuperados_estrangeiro"],
-            r["obitos_0_9_f"],
-            r["obitos_0_9_m"],
-            r["obitos_10_19_f"],
-            r["obitos_10_19_m"],
-            r["obitos_20_29_f"],
-            r["obitos_20_29_m"],
-            r["obitos_30_39_f"],
-            r["obitos_30_39_m"],
-            r["obitos_40_49_f"],
-            r["obitos_40_49_m"],
-            r["obitos_50_59_f"],
-            r["obitos_50_59_m"],
-            r["obitos_60_69_f"],
-            r["obitos_60_69_m"],
-            r["obitos_70_79_f"],
-            r["obitos_70_79_m"],
-            r["obitos_80_plus_f"],
-            r["obitos_80_plus_m"],
-            r["obitos_f"],
-            r["obitos_m"]
-        ])
+    row = [[
+        r["data"],
+        "{} 00:00".format(r["data"]), # DATA DADOS -> substituir por hora
+        r["confirmados"],
+        r["confirmados_arsnorte"],
+        r["confirmados_arscentro"],
+        r["confirmados_arslvt"],
+        r["confirmados_arsalentejo"],
+        r["confirmados_arsalgarve"],
+        r["confirmados_acores"],
+        r["confirmados_madeira"],
+        "", #r["confirmados_estrangeiro"],
+        r["confirmados_novos"],
+        r["recuperados"],
+        r["obitos"],
+        r["internados"],
+        r["internados_uci"],
+        r["lab"],
+        r["suspeitos"],
+        r["vigilancia"],
+        r["n_confirmados"],
+        "", # cadeias transmissao -> vazio
+        r["transmissao_importada"],
+        r["confirmados_0_9_f"],
+        r["confirmados_0_9_m"],
+        r["confirmados_10_19_f"],
+        r["confirmados_10_19_m"],
+        r["confirmados_20_29_f"],
+        r["confirmados_20_29_m"],
+        r["confirmados_30_39_f"],
+        r["confirmados_30_39_m"],
+        r["confirmados_40_49_f"],
+        r["confirmados_40_49_m"],
+        r["confirmados_50_59_f"],
+        r["confirmados_50_59_m"],
+        r["confirmados_60_69_f"],
+        r["confirmados_60_69_m"],
+        r["confirmados_70_79_f"],
+        r["confirmados_70_79_m"],
+        r["confirmados_80_plus_f"],
+        r["confirmados_80_plus_m"],
+        r["sintomas_tosse"],
+        r["sintomas_febre"],
+        r["sintomas_dificuldade_respiratoria"],
+        r["sintomas_cefaleia"],
+        r["sintomas_dores_musculares"],
+        r["sintomas_fraqueza_generalizada"],
+        r["confirmados_f"],
+        r["confirmados_m"],
+        r["obitos_arsnorte"],
+        r["obitos_arscentro"],
+        r["obitos_arslvt"],
+        r["obitos_arsalentejo"],
+        r["obitos_arsalgarve"],
+        r["obitos_acores"],
+        r["obitos_madeira"],
+        "", #r["obitos_estrangeiro"],
+        r["recuperados_arsnorte"],
+        r["recuperados_arscentro"],
+        r["recuperados_arslvt"],
+        0, #r["recuperados_arsalentejo"],
+        0, #r["recuperados_arsalgarve"],
+        0, #r["recuperados_acores"],
+        0, #r["recuperados_madeira"],
+        0, #r["recuperados_estrangeiro"],
+        r["obitos_0_9_f"],
+        r["obitos_0_9_m"],
+        r["obitos_10_19_f"],
+        r["obitos_10_19_m"],
+        r["obitos_20_29_f"],
+        r["obitos_20_29_m"],
+        r["obitos_30_39_f"],
+        r["obitos_30_39_m"],
+        r["obitos_40_49_f"],
+        r["obitos_40_49_m"],
+        r["obitos_50_59_f"],
+        r["obitos_50_59_m"],
+        r["obitos_60_69_f"],
+        r["obitos_60_69_m"],
+        r["obitos_70_79_f"],
+        r["obitos_70_79_m"],
+        r["obitos_80_plus_f"],
+        r["obitos_80_plus_m"],
+        r["obitos_f"],
+        r["obitos_m"]
+    ]]
 
-    df = pd.DataFrame(rows)
-    df.to_csv("new_data.csv", header=False, index=False)
+    df = pd.DataFrame(row)
+    df.to_csv("../data.csv", mode='a', header=False, index=False)
 
 
 
 if __name__ == '__main__':
-    original_dataframe = get_dataframe_from_csv("../data.csv")
-
-    path_to_reports_directory = "../dgs-reports-archive/"
-
-    reports = get_reports(path_to_reports_directory)
-
-    reports = get_reports_text(reports)
-
-    # extract data from reports
-    new_dataframe = extract_data(reports, original_dataframe)
-
     # TEST
+    reports = get_reports("../dgs-reports-archive/")
+    original_dataframe = get_dataframe_from_csv("../data.csv")
+    new_dataframe = extract_data(reports, original_dataframe)
     original_dataframe = original_dataframe.iloc[31:]
     test_data(original_dataframe, new_dataframe)
 
-    save_new_data(new_dataframe)
+    # Save new line into data.csv file
+    save_new_data(new_dataframe.iloc[-1])
 
