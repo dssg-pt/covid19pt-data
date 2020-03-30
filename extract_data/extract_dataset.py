@@ -160,9 +160,9 @@ def extract_data(reports, original_dataframe):
         """ INITIAL VALUES ON LEFT """
 
         [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
-         obitos_value] = get_all_numbers_from_list(lines, "suspeitos (desde 1 de janeiro ", "Região de residência")[:6]
+         obitos_value] = get_all_numbers_from_list(lines, "Óbitos", "Região de residência")[:6]
 
-        [vigilancia_value] = get_all_numbers_from_list(lines, "pelas Autoridades de Saúde", "Legenda")
+        [vigilancia_value] = get_all_numbers_from_list(lines, "Região de residência", "Legenda")
 
         dates.append(report["date"])
         confirmados.append(confirmados_value)
@@ -180,12 +180,12 @@ def extract_data(reports, original_dataframe):
         [confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
          confirmados_arsnorte_value, obitos_arsnorte_value, recuperados_arsnorte_value,
          confirmados_arscentro_value, obitos_arscentro_value, recuperados_arscentro_value,
-        ] = get_all_numbers_from_list(lines, "Açores", "suspeitos (desde 1 de janeiro ")
+        ] = get_all_numbers_from_list(lines, "Açores", "Óbitos")
 
 
         [confirmados_arslvt_value, obitos_arslvt_value, recuperados_arslvt_value,
          confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
-        ] = get_all_numbers_from_list(lines, "suspeitos (desde 1 de janeiro ", "Região de residência")[6:]
+        ] = get_all_numbers_from_list(lines, "Óbitos", "Região de residência")[6:]
 
         # Acores
         confirmados_acores.append(confirmados_acores_value)
