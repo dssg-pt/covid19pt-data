@@ -12,7 +12,7 @@ def get_reports(path):
 
     # get all files' names in directory
     list_of_paths = listdir(path)
-    list_of_paths.sort()
+    list_of_paths.sort(key=lambda x: int(x[x.rfind('-') + 1:x.find('_')]))
 
     # get all reports
     for f in list_of_paths:
@@ -33,7 +33,7 @@ def get_report(path, f):
         date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "-")
 
         # if has most recent format
-        if date > "27-03-2020":
+        if date > "29-03-2020":
             text_raw = textract.process(file_path).decode("utf-8")
             text = process_raw_text(text_raw)
             file = {
@@ -154,8 +154,8 @@ def extract_data(reports, original_dataframe):
     for report in reports:
         text = report["text"]
         lines = text.split("\n")
-
-        # print(text)
+        print(report["date"])
+        print(report["text"])
 
         """ INITIAL VALUES ON LEFT """
 
@@ -235,7 +235,7 @@ def extract_data(reports, original_dataframe):
          confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
          confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
          confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value,
-        ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOSCASOS CONFIRMADOS")
+        ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS")
 
         confirmados_m_value = sum([confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
                                      confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
@@ -456,7 +456,7 @@ def get_all_percentages_from_list(lines):
 
 def get_transmissao_importada_value(lines):
     index_bottom = lines.index("CASOS IMPORTADOS")
-    index_upper = lines.index("Caso não exista informação disponível sobre data de ")
+    index_upper = lines.index("00-09 anos")
     counter = 0
 
     for i in range(index_bottom, index_upper):
@@ -602,7 +602,7 @@ if __name__ == '__main__':
     reports = get_reports("../dgs-reports-archive/")
     original_dataframe = get_dataframe_from_csv("../data.csv")
     new_dataframe = extract_data(reports, original_dataframe)
-    original_dataframe = original_dataframe.iloc[31:]
+    original_dataframe = original_dataframe.iloc[33:]
     test_data(original_dataframe, new_dataframe)
 
     # Save new line into data.csv file
