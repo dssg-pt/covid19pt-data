@@ -154,8 +154,8 @@ def extract_data(reports, original_dataframe):
     for report in reports:
         text = report["text"]
         lines = text.split("\n")
-        print(report["date"])
-        print(report["text"])
+
+        print(lines)
 
         """ INITIAL VALUES ON LEFT """
 
@@ -593,14 +593,15 @@ def save_new_data(r):
     ]]
 
     df = pd.DataFrame(row)
-    df.to_csv("../data.csv", mode='a', header=False, index=False)
+    print(df)
+    df.to_csv("./data.csv", mode='a', header=False, index=False)
 
 
 
 if __name__ == '__main__':
     # TEST
-    reports = get_reports("../dgs-reports-archive/")
-    original_dataframe = get_dataframe_from_csv("../data.csv")
+    reports = get_reports("./dgs-reports-archive/")
+    original_dataframe = get_dataframe_from_csv("./data.csv")
     new_dataframe = extract_data(reports, original_dataframe)
     original_dataframe = original_dataframe.iloc[33:]
     test_data(original_dataframe, new_dataframe)
