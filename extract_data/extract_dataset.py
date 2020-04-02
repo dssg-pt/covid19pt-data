@@ -4,10 +4,19 @@ import pandas as pd
 import numpy as np
 import textract
 import re
+import datetime
 
 
+def get_number_of_reports_with_recent_format():
+    today = datetime.date.today()
+    d1 = today.strftime("%d-%m-%Y")
+    d2 = "02-04-2020"
+    date1 = datetime.datetime.strptime(d1, "%d-%m-%Y")
+    date2 = datetime.datetime.strptime(d2, "%d-%m-%Y")
+    return abs((date2 - date1).days)
 
-def get_reports(path):
+
+def get_reports(path, number_of_reports):
     files = []
 
     # get all files' names in directory
@@ -15,8 +24,8 @@ def get_reports(path):
     list_of_paths.sort(key=lambda x: int(x[x.rfind('-') + 1:x.find('_')]))
 
     # get all reports
-    for f in list_of_paths:
-        file = get_report(path, f)
+    for i in range(len(list_of_paths) - number_of_reports - 1, len(list_of_paths)):
+        file = get_report(path, list_of_paths[i])
         if file:
             files.append(file)
 
@@ -32,17 +41,16 @@ def get_report(path, f):
         # date of report
         date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "-")
 
-        # if has most recent format
-        if date > "29-03-2020":
-            text_raw = textract.process(file_path).decode("utf-8")
-            text = process_raw_text(text_raw)
-            file = {
-                "file_path": file_path,
-                "date": date,
-                "text_raw": text_raw,
-                "text": text
-            }
-            return file
+        print(date)
+        text_raw = textract.process(file_path).decode("utf-8")
+        text = process_raw_text(text_raw)
+        file = {
+            "file_path": file_path,
+            "date": date,
+            "text_raw": text_raw,
+            "text": text
+        }
+        return file
 
 
 def process_raw_text(report_text_raw):
@@ -85,9 +93,9 @@ def extract_data(reports, original_dataframe):
     obitos_estrangeiro = []
 
     # Recuperados
-    recuperados_arsnorte = []
-    recuperados_arscentro = []
-    recuperados_arslvt = []
+    #recuperados_arsnorte = []
+    #recuperados_arscentro = []
+    #recuperados_arslvt = []
     recuperados_arsalentejo = []
     recuperados_arsalgarve = []
     recuperados_estrangeiro = []
@@ -178,12 +186,12 @@ def extract_data(reports, original_dataframe):
 
         # Should be 17 values
         [confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
-         confirmados_arsnorte_value, obitos_arsnorte_value, recuperados_arsnorte_value,
-         confirmados_arscentro_value, obitos_arscentro_value, recuperados_arscentro_value,
+         confirmados_arsnorte_value, obitos_arsnorte_value, #recuperados_arsnorte_value,
+         confirmados_arscentro_value, obitos_arscentro_value, #recuperados_arscentro_value,
         ] = get_all_numbers_from_list(lines, "Açores", "Óbitos")
 
 
-        [confirmados_arslvt_value, obitos_arslvt_value, recuperados_arslvt_value,
+        [confirmados_arslvt_value, obitos_arslvt_value, #recuperados_arslvt_value,
          confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
         ] = get_all_numbers_from_list(lines, "Óbitos", "Região de residência")[6:]
 
@@ -198,17 +206,17 @@ def extract_data(reports, original_dataframe):
         # Norte
         confirmados_arsnorte.append(confirmados_arsnorte_value)
         obitos_arsnorte.append(obitos_arsnorte_value)
-        recuperados_arsnorte.append(recuperados_arsnorte_value)
+        #recuperados_arsnorte.append(recuperados_arsnorte_value)
 
         # Centro
         confirmados_arscentro.append(confirmados_arscentro_value)
         obitos_arscentro.append(obitos_arscentro_value)
-        recuperados_arscentro.append(recuperados_arscentro_value)
+        #recuperados_arscentro.append(recuperados_arscentro_value)
 
         # Lisboa
         confirmados_arslvt.append(confirmados_arslvt_value)
         obitos_arslvt.append(obitos_arslvt_value)
-        recuperados_arslvt.append(recuperados_arslvt_value)
+        #recuperados_arslvt.append(recuperados_arslvt_value)
 
         # Alentejo
         confirmados_arsalentejo.append(confirmados_arsalentejo_value)
@@ -324,8 +332,8 @@ def extract_data(reports, original_dataframe):
         # collect all percentages
         percentages = get_all_percentages_from_list(lines)
 
-        sintomas_febre.append(percentages[-5])
-        sintomas_tosse.append(percentages[-6])
+        sintomas_febre.append(percentages[-6])
+        sintomas_tosse.append(percentages[-5])
         sintomas_dificuldade_respiratoria.append(percentages[-4])
         sintomas_cefaleia.append(percentages[-3])
         sintomas_dores_musculares.append(percentages[-2])
@@ -360,9 +368,9 @@ def extract_data(reports, original_dataframe):
         "obitos_arsalgarve": obitos_arsalgarve,
         "obitos_acores": obitos_acores,
         "obitos_madeira": obitos_madeira,
-        "recuperados_arsnorte": recuperados_arsnorte,
-        "recuperados_arscentro": recuperados_arscentro,
-        "recuperados_arslvt": recuperados_arslvt,
+        #"recuperados_arsnorte": recuperados_arsnorte,
+        #"recuperados_arscentro": recuperados_arscentro,
+        #"recuperados_arslvt": recuperados_arslvt,
         "confirmados_f": confirmados_f,
         "confirmados_m": confirmados_m,
         "confirmados_0_9_f": confirmados_0_9_f,
@@ -562,14 +570,14 @@ def save_new_data(r):
         r["obitos_acores"],
         r["obitos_madeira"],
         "", #r["obitos_estrangeiro"],
-        r["recuperados_arsnorte"],
-        r["recuperados_arscentro"],
-        r["recuperados_arslvt"],
-        0, #r["recuperados_arsalentejo"],
-        0, #r["recuperados_arsalgarve"],
-        0, #r["recuperados_acores"],
-        0, #r["recuperados_madeira"],
-        0, #r["recuperados_estrangeiro"],
+        "", #["recuperados_arsnorte"],
+        "", #["recuperados_arscentro"],
+        "", #["recuperados_arslvt"],
+        "", #r["recuperados_arsalentejo"],
+        "", #r["recuperados_arsalgarve"],
+        "", #r["recuperados_acores"],
+        "", #r["recuperados_madeira"],
+        "", #r["recuperados_estrangeiro"],
         r["obitos_0_9_f"],
         r["obitos_0_9_m"],
         r["obitos_10_19_f"],
@@ -599,11 +607,13 @@ def save_new_data(r):
 
 
 if __name__ == '__main__':
+    number_of_reports = get_number_of_reports_with_recent_format()
+
     # TEST
-    reports = get_reports("./dgs-reports-archive/")
+    reports = get_reports("./dgs-reports-archive/", number_of_reports)
     original_dataframe = get_dataframe_from_csv("./data.csv")
     new_dataframe = extract_data(reports, original_dataframe)
-    original_dataframe = original_dataframe.iloc[33:]
+    original_dataframe = original_dataframe.iloc[original_dataframe.shape[0] - number_of_reports - 1:]
     test_data(original_dataframe, new_dataframe)
 
     # Save new line into data.csv file
