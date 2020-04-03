@@ -309,7 +309,7 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
             ],
             ["obitos"],
         ),
-        (
+            pytest.param(
             [
                 "recuperados_arsnorte",
                 "recuperados_arscentro",
@@ -319,8 +319,7 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
                 "recuperados_acores",
                 "recuperados_madeira",
             ],
-            ["recuperados"],
-        ),
+            ["recuperados"], marks=pytest.mark.xfail)
     ],
 )
         
