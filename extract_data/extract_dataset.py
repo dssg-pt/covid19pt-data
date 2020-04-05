@@ -7,16 +7,16 @@ import re
 import datetime
 
 
-def get_number_of_reports_with_recent_format():
-    today = datetime.date.today()
-    d1 = today.strftime("%d-%m-%Y")
-    d2 = "02-04-2020"
+DAY_RECENT_FORMAT = "05-04-2020"
+
+
+def has_recent_format(d1):
     date1 = datetime.datetime.strptime(d1, "%d-%m-%Y")
-    date2 = datetime.datetime.strptime(d2, "%d-%m-%Y")
-    return abs((date2 - date1).days)
+    date2 = datetime.datetime.strptime(DAY_RECENT_FORMAT, "%d-%m-%Y")
+    return date1 >= date2
 
 
-def get_reports(path, number_of_reports):
+def get_reports(path):
     files = []
 
     # get all files' names in directory
@@ -24,7 +24,7 @@ def get_reports(path, number_of_reports):
     list_of_paths.sort(key=lambda x: int(x[x.rfind('-') + 1:x.find('_')]))
 
     # get all reports
-    for i in range(len(list_of_paths) - number_of_reports - 1, len(list_of_paths)):
+    for i in range(len(list_of_paths)):
         file = get_report(path, list_of_paths[i])
         if file:
             files.append(file)
@@ -41,16 +41,16 @@ def get_report(path, f):
         # date of report
         date = file_path.split("-")[-1].split('.pdf')[0][-10:].replace("_", "-")
 
-        print(date)
-        text_raw = textract.process(file_path).decode("utf-8")
-        text = process_raw_text(text_raw)
-        file = {
-            "file_path": file_path,
-            "date": date,
-            "text_raw": text_raw,
-            "text": text
-        }
-        return file
+        if has_recent_format(date):
+            text_raw = textract.process(file_path).decode("utf-8")
+            text = process_raw_text(text_raw)
+            file = {
+                "file_path": file_path,
+                "date": date,
+                "text_raw": text_raw,
+                "text": text
+            }
+            return file
 
 
 def process_raw_text(report_text_raw):
@@ -165,12 +165,17 @@ def extract_data(reports, original_dataframe):
 
         print(lines)
 
-        """ INITIAL VALUES ON LEFT """
-
         [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
-         obitos_value] = get_all_numbers_from_list(lines, "Óbitos", "Região de residência")[:6]
+         obitos_value, vigilancia_value,
+         confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
+         confirmados_arsnorte_value, obitos_arsnorte_value,  # recuperados_arsnorte_value,
+         confirmados_arscentro_value, obitos_arscentro_value,  # recuperados_arscentro_value,
+         confirmados_arslvt_value, obitos_arslvt_value,  #recuperados_arslvt_value,
+         confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
+        ] = get_all_numbers_from_list(lines, "Óbitos", "Região de residência")
 
-        [vigilancia_value] = get_all_numbers_from_list(lines, "Região de residência", "Legenda")
+
+        """ INITIAL VALUES ON LEFT """
 
         dates.append(report["date"])
         confirmados.append(confirmados_value)
@@ -183,18 +188,6 @@ def extract_data(reports, original_dataframe):
 
 
         """ CONFIMADOS, OBITOS E RECUPERADOS POR REGIAO """
-
-        # Should be 17 values
-        [confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
-         confirmados_arsnorte_value, obitos_arsnorte_value, #recuperados_arsnorte_value,
-         confirmados_arscentro_value, obitos_arscentro_value, #recuperados_arscentro_value,
-        ] = get_all_numbers_from_list(lines, "Açores", "Óbitos")
-
-
-        [confirmados_arslvt_value, obitos_arslvt_value, #recuperados_arslvt_value,
-         confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
-        ] = get_all_numbers_from_list(lines, "Óbitos", "Região de residência")[6:]
-
         # Acores
         confirmados_acores.append(confirmados_acores_value)
         obitos_acores.append(obitos_acores_value)
@@ -321,7 +314,7 @@ def extract_data(reports, original_dataframe):
 
         """ INTERNADOS """
 
-        [internados_value, internados_uci_value] = get_all_numbers_from_list(lines, "INTERNADOS", "Informação reportada pelos Hospitais, Administrações Regionais de Saúde e Regiões Autónomas")
+        [internados_value, internados_uci_value] = get_all_numbers_from_list(lines, "INTERNADOS", "FEBRE")
 
         internados.append(internados_value)
         internados_uci.append(internados_uci_value)
@@ -607,15 +600,13 @@ def save_new_data(r):
 
 
 if __name__ == '__main__':
-    number_of_reports = get_number_of_reports_with_recent_format()
-
     # TEST
-    reports = get_reports("./dgs-reports-archive/", number_of_reports)
+    reports = get_reports("./dgs-reports-archive/")
+    number_of_reports = len(reports)
     original_dataframe = get_dataframe_from_csv("./data.csv")
     new_dataframe = extract_data(reports, original_dataframe)
-    original_dataframe = original_dataframe.iloc[original_dataframe.shape[0] - number_of_reports - 1:]
+    original_dataframe = original_dataframe.iloc[original_dataframe.shape[0] - number_of_reports:]
     test_data(original_dataframe, new_dataframe)
 
     # Save new line into data.csv file
     save_new_data(new_dataframe.iloc[-1])
-
