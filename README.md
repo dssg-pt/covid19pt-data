@@ -30,6 +30,10 @@ _Porque tudo começa com bons dados._
 + [COVID-19 Cases](https://app.powerbi.com/view?r=eyJrIjoiYzcyYTg1ZDYtZjI2Zi00NWNhLWJhYzUtZTM1NjliZjlkOGExIiwidCI6ImIwMzNhNWMyLTFhNGUtNDIwMS1iNGZiLWIwZDkzYjlhMGIxOSIsImMiOjl9), por [@hrmartins](https://github.com/hrmartins)
 + [Novos casos diários do vírus de corona COVID-19 por região](http://lundici.it/covid19-portugal/), por [@giuppo](https://github.com/giuppo)
 + [Dashboard tech4COVID19](https://app.powerbi.com/view?r=eyJrIjoiYTVjOTk1OGEtYWEyZi00NTU4LWJhYmYtZTYwYzVlNzAwNjMyIiwidCI6ImE3NjA2YjE0LWJhY2EtNGZjMS04Nzc3LTkyZDIzNzc2YjIzNiIsImMiOjl9), por [Manuel Banza](https://github.com/ManuelBanza)
++ [COVID-19 Portugal](https://covid19portugal.herokuapp.com/), por [Frederico Pimpão](https://github.com/fredericopimpao)
++ [Estatisticas COVID-19](https://jrab.herokuapp.com/), por [@jrabasilio](https://github.com/jrabasilio)
++ [COVID-19 em Portugal](https://dnunessandro.github.io/covid19/), por [@dnunessandro](https://github.com/dnunessandro)
++ [Measuring Icebergs: Using Different Methods to Estimate the Number of COVID-19 Cases in Portugal and Spain](https://github.com/GCGImdea/coronasurveys/blob/master/reports/2020-03-29-CaseEstimation.pdf), por [CoronaSurveys Research Team](https://coronasurveys.com/)
 
 # 🧱 Estrutura
 
