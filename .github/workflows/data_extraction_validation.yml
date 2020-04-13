@@ -12,16 +12,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.7]
+    container: python:3
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Python # Set Python version
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
