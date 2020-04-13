@@ -1,4 +1,4 @@
-name: Extract and validate DGS data (from PDF file)
+name: Extract and validate DGS data (from downloaded PDF file)
 
 on:
   pull_request:
