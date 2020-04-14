@@ -1,0 +1,45 @@
+name: Extract and validate DGS data (from downloaded PDF file)
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    if: startsWith(github.head_ref, 'refs/heads/dados')
+    runs-on: ubuntu-latest
+    container: python:3
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r .github/workflows/requirements.txt
+      - name: Download PDF
+        run: | 
+          wget -c -P .github/workflows/ $(cat .github/workflows/report_link.txt)
+      - name: Process PDF
+        run: | 
+          python .github/workflows/process_report.py
+      - name: Run data extraction
+        run: | 
+          python .github/workflows/extract_dataset.py
+      - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
+        run: |
+          git add -A dgs-reports-archive/
+      - name: Commit all changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update data for today 
+          branch: ${{ github.head_ref }}
+      - name: Validate data with pytest
+        run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-results
+          path: tests/junit/test-results.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: always()

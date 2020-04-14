@@ -1,0 +1,5 @@
+pytest
+pandas
+numpy
+pytest-mock
+textract
