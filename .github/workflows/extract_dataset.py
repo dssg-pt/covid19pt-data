@@ -540,6 +540,10 @@ def save_new_data(r, path_to_csv):
     df = pd.DataFrame(row)
     df.to_csv(path_to_csv, mode='a', header=False, index=False)
 
+def _extract_report_id(r):
+    r_file = r[r.rfind('/'):]
+    r_id = int(r_file[r_file.rfind('-') + 1:r_file.find('_')])
+    return r_id
 
 
 if __name__ == '__main__':
@@ -550,7 +554,7 @@ if __name__ == '__main__':
     # Get the latest report 
     reports_path = reports_folder = Path(__file__).resolve().parents[2] / 'dgs-reports-archive'
     reports_list = [str(f) for f in list(reports_path.iterdir()) if str(f).endswith('.pdf')]
-    reports_list.sort(key=lambda x: int(x[x.rfind('-')+1:x.find('_')]))
+    reports_list.sort(key=_extract_report_id)
 
     # Run data extraction on the report
     report = get_report(reports_list[-1])
