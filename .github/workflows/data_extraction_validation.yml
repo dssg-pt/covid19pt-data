@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: startsWith(github.head_ref, 'refs/heads/dados')
+    if: startsWith(github.head_ref, 'dados')
     runs-on: ubuntu-latest
     container: python:3
 
