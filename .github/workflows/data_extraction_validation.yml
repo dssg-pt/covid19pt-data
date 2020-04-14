@@ -29,6 +29,14 @@ jobs:
       - name: Run data extraction
         run: | 
           python .github/workflows/extract_dataset.py
+                - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
+        run: |
+          git add -A dgs-reports-archive/
+      - name: Commit all changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update data for today 
+          branch: ${{ github.head_ref }}
       - name: Validate data with pytest
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
       - name: Upload pytest test results
@@ -38,13 +46,3 @@ jobs:
           path: tests/junit/test-results.xml
         # Use always() to always run this step to publish test results when there are test failures
         if: always()
-
-      - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
-        run: |
-          git add -A dgs-reports-archive/
-
-      - name: Commit all changes
-        uses: stefanzweifel/git-auto-commit-action@v4.1.1
-        with:
-          commit_message: Update data for today 
-          branch: ${{ github.head_ref }}

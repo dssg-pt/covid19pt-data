@@ -20,6 +20,7 @@ def get_reports_list(reports_folder):
 
 def get_latest_report_date_id(reports_list):
     reports_list = [str(r) for r in reports_list]
+    print(reports_list)
     reports_list.sort(key=lambda x: int(x[x.rfind('-') + 1:x.find('_')]))
 
     latest_name = reports_list[-1]
