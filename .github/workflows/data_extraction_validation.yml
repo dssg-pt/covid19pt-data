@@ -29,7 +29,7 @@ jobs:
       - name: Run data extraction
         run: | 
           python .github/workflows/extract_dataset.py
-                - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
+      - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
         run: |
           git add -A dgs-reports-archive/
       - name: Commit all changes
