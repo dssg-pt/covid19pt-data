@@ -18,18 +18,23 @@ def get_reports_list(reports_folder):
     return reports
 
 
+def _extract_report_id(r):
+    r_file = r[r.rfind('/'):]
+    r_id = int(r_file[r_file.rfind('-') + 1:r_file.find('_')])
+    return r_id
+
 def get_latest_report_date_id(reports_list):
     reports_list = [str(r) for r in reports_list]
-    print(reports_list)
-    reports_list.sort(key=lambda x: int(x[x.rfind('-') + 1:x.find('_')]))
+    reports_list.sort(key=_extract_report_id)
 
     latest_name = reports_list[-1]
-    latest_id = int(latest_name[latest_name.rfind('-') + 1:latest_name.find('_')])
+    latest_name_file = latest_name[latest_name.rfind('/')+1:]
+    latest_id = int(latest_name_file[latest_name_file.rfind('-') + 1:latest_name_file.find('_')])
 
     # Now, let's extract the date from the report
-    latest_year = int(latest_name.split('_')[-1].split('.')[0])
-    latest_month = int(latest_name.split('_')[-2])
-    latest_day = int(latest_name.split('_')[-3])
+    latest_year = int(latest_name_file.split('_')[-1].split('.')[0])
+    latest_month = int(latest_name_file.split('_')[-2])
+    latest_day = int(latest_name_file.split('_')[-3])
 
     latest_date = datetime.datetime(latest_year, latest_month, latest_day)
     
