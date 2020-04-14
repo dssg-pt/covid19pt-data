@@ -538,6 +538,10 @@ def save_new_data(r, path_to_csv):
     ]]
 
     df = pd.DataFrame(row)
+    
+    with open(path_to_csv) as f:
+        f.write('\n')
+    
     df.to_csv(path_to_csv, mode='a', header=False, index=False)
 
 def _extract_report_id(r):
@@ -545,10 +549,9 @@ def _extract_report_id(r):
     r_id = int(r_file[r_file.rfind('-') + 1:r_file.find('_')])
     return r_id
 
-
 if __name__ == '__main__':
+
     # Constants
-    PATH_TO_DGS_REPORTS = "./dgs-reports-archive/"
     PATH_TO_DATA_CSV = str(Path(__file__).resolve().parents[2] / 'data.csv')
     
     # Get the latest report 
