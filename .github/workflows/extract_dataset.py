@@ -538,8 +538,9 @@ def save_new_data(r, path_to_csv):
     ]]
 
     df = pd.DataFrame(row)
-    
-    with open(path_to_csv) as f:
+
+    # So data gets written into a new line 
+    with open(path_to_csv, 'w') as f:
         f.write('\n')
     
     df.to_csv(path_to_csv, mode='a', header=False, index=False)
