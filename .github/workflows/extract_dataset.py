@@ -540,7 +540,7 @@ def save_new_data(r, path_to_csv):
     df = pd.DataFrame(row)
 
     # So data gets written into a new line 
-    with open(path_to_csv, 'w') as f:
+    with open(path_to_csv, 'a') as f:
         f.write('\n')
     
     df.to_csv(path_to_csv, mode='a', header=False, index=False)
