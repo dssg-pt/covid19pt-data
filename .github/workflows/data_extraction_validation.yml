@@ -4,13 +4,10 @@ on:
   pull_request:
     branches:
       - master
-  push: 
-    branches:
-      - feature-automatic_extraction
 
 jobs:
   build:
-
+    if: startsWith(github.head_ref, 'refs/heads/dados')
     runs-on: ubuntu-latest
     container: python:3
 
