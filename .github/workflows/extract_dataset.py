@@ -558,11 +558,7 @@ def save_new_data(r, path_to_csv):
 
     df = pd.DataFrame(row)
 
-    # So data gets written into a new line 
-    with open(path_to_csv, 'a') as f:
-        f.write('\n')
-    
-    df.to_csv(path_to_csv, mode='a', header=False, index=False)
+    df.to_csv(path_to_csv, header=False, index=False, mode='a', line_terminator='\n')
 
 def _extract_report_id(r):
     r_file = r[r.rfind('/'):]
