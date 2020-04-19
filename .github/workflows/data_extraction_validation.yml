@@ -31,6 +31,9 @@ jobs:
       - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
         run: |
           git add -A dgs-reports-archive/
+      - name: Update data about test samples
+        run: | 
+          python .github/workflows/update_amostras.py
       - name: Commit all changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
