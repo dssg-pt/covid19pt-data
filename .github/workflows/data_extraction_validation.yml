@@ -41,6 +41,8 @@ jobs:
           branch: ${{ github.head_ref }}
       - name: Validate data with pytest
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
+      - name: Validate samples with pytest
+        run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
       - name: Upload pytest test results
         uses: actions/upload-artifact@master
         with:
