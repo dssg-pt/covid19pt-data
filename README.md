@@ -157,9 +157,7 @@ Relativamente ao conteúdo em `amostras.csv`:
 | `amostras` | Número total de amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
 | `amostras_novas` | Número diário de novas amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
 
-> Relativamente a estes dados, o [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) dá conta de que _"correspondem ao número de 
-amostras processadas para diagnóstico de SARS-CoV-2 em laboratórios públicos e privados desde o dia 1 de março. Os dados diários após 2 de abril de 2020 ainda estão 
-a ser recolhidos, pelo que os valores no gráfico poderão sofrer alterações."_
+> Relativamente a estes dados, o [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) dá conta de que _"correspondem ao número de amostras processadas para diagnóstico de SARS-CoV-2 em laboratórios públicos e privados desde o dia 1 de março."_ Dizem ainda que _"Os dados diários após 2 de abril de 2020 ainda estão a ser recolhidos, pelo que os valores no gráfico poderão sofrer alterações."_ De facto, há a possibilidade de, a cada dia, dados referentes a dias anteriores serem alterados, provavelmente pelo facto de a informação relativa ao processamento de amostras ser recebida pela DGS com alguns dias de desfasamento.
 
 # 💡 Problemas, inconsistências e melhorias
 
