@@ -48,5 +48,10 @@ jobs:
         with:
           name: pytest-results
           path: tests/junit/test-results.xml
+      - name: Upload pytest samples test results 
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-amostras-results
+          path: tests/junit/test-amostras-results.xml
         # Use always() to always run this step to publish test results when there are test failures
         if: always()
