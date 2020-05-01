@@ -153,7 +153,7 @@ Uma explicação do conteúdo em `data.csv`.
 
 Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída. 
 
-Relativamente ao conteúdo em `amostras.csv`:
+Relativamente ao conteúdo em `amostras.csv`:  
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
