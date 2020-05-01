@@ -52,7 +52,16 @@ def clean_table(t):
         [t.rename(columns={i: "concelho", i + 1: "casos"}).iloc[:, [i, i + 1]] for i in range(0, t.shape[1], 2)],
         axis=0, ignore_index=True)
     t.dropna(inplace=True)
+
+    # remove carriage return from names
     t['concelho'] = t['concelho'].apply(lambda x: re.sub('\\r', ' ', x))
+
+    # remove ambiguous case count rows
+    ix = t[t['casos'].apply(lambda x: not x.isdigit())].index
+    if len(ix) > 0:
+        warnings.warn(f"Dropping ambiguous row {t.loc[ix]}")
+        t = t.drop(index=ix)
+
     t['casos'].astype('int')
 
     if any(t['concelho'].duplicated()):

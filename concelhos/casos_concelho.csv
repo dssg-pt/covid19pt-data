@@ -1539,6 +1539,622 @@ cod_distrito,cod_concelho,nome_concelho,casos,dia
 7,5,Évora,12,28-03-2020
 1,10,Ílhavo,12,28-03-2020
 10,12,Óbidos,,28-03-2020
+14,1,Abrantes,,29-03-2020
+9,1,Aguiar da Beira,,29-03-2020
+7,1,Alandroal,,29-03-2020
+1,2,Albergaria-a-Velha,32,29-03-2020
+8,1,Albufeira,,29-03-2020
+14,2,Alcanena,,29-03-2020
+10,1,Alcobaça,,29-03-2020
+15,2,Alcochete,3,29-03-2020
+8,2,Alcoutim,,29-03-2020
+15,1,Alcácer do Sal,,29-03-2020
+11,1,Alenquer,,29-03-2020
+4,1,Alfândega da Fé,,29-03-2020
+17,1,Alijó,,29-03-2020
+8,3,Aljezur,,29-03-2020
+2,1,Aljustrel,,29-03-2020
+15,3,Almada,64,29-03-2020
+9,2,Almeida,,29-03-2020
+14,3,Almeirim,,29-03-2020
+2,2,Almodôvar,,29-03-2020
+14,4,Alpiarça,3,29-03-2020
+12,1,Alter do Chão,,29-03-2020
+10,2,Alvaiázere,4,29-03-2020
+2,3,Alvito,,29-03-2020
+11,15,Amadora,53,29-03-2020
+13,1,Amarante,5,29-03-2020
+3,1,Amares,9,29-03-2020
+1,3,Anadia,4,29-03-2020
+43,1,Angra do Heroísmo,5,29-03-2020
+10,3,Ansião,,29-03-2020
+16,1,Arcos de Valdevez,,29-03-2020
+6,1,Arganil,,29-03-2020
+18,1,Armamar,,29-03-2020
+1,4,Arouca,,29-03-2020
+7,2,Arraiolos,,29-03-2020
+12,2,Arronches,,29-03-2020
+11,2,Arruda dos Vinhos,,29-03-2020
+1,5,Aveiro,95,29-03-2020
+12,3,Avis,,29-03-2020
+11,3,Azambuja,,29-03-2020
+13,2,Baião,4,29-03-2020
+3,2,Barcelos,29,29-03-2020
+2,4,Barrancos,,29-03-2020
+15,4,Barreiro,17,29-03-2020
+10,4,Batalha,,29-03-2020
+2,5,Beja,,29-03-2020
+5,1,Belmonte,,29-03-2020
+14,5,Benavente,,29-03-2020
+10,5,Bombarral,,29-03-2020
+7,3,Borba,,29-03-2020
+17,2,Boticas,,29-03-2020
+3,3,Braga,208,29-03-2020
+4,2,Bragança,38,29-03-2020
+3,4,Cabeceiras de Basto,,29-03-2020
+11,4,Cadaval,,29-03-2020
+10,6,Caldas da Rainha,3,29-03-2020
+31,1,Calheta (Madeira),,29-03-2020
+45,1,Calheta (São Jorge),4,29-03-2020
+16,2,Caminha,3,29-03-2020
+12,4,Campo Maior,,29-03-2020
+6,2,Cantanhede,,29-03-2020
+4,3,Carrazeda de Ansiães,3,29-03-2020
+18,2,Carregal do Sal,,29-03-2020
+14,6,Cartaxo,,29-03-2020
+11,5,Cascais,110,29-03-2020
+10,7,Castanheira de Pêra,,29-03-2020
+5,2,Castelo Branco,,29-03-2020
+1,6,Castelo de Paiva,,29-03-2020
+12,5,Castelo de Vide,,29-03-2020
+18,3,Castro Daire,,29-03-2020
+8,4,Castro Marim,,29-03-2020
+2,6,Castro Verde,,29-03-2020
+9,3,Celorico da Beira,,29-03-2020
+3,5,Celorico de Basto,,29-03-2020
+14,7,Chamusca,,29-03-2020
+17,3,Chaves,,29-03-2020
+18,4,Cinfães,3,29-03-2020
+6,3,Coimbra,199,29-03-2020
+6,4,Condeixa-a-Nova,,29-03-2020
+14,8,Constância,,29-03-2020
+14,9,Coruche,4,29-03-2020
+49,1,Corvo,,29-03-2020
+5,3,Covilhã,,29-03-2020
+12,6,Crato,,29-03-2020
+2,7,Cuba,,29-03-2020
+31,2,Câmara de Lobos,6,29-03-2020
+12,7,Elvas,,29-03-2020
+14,10,Entroncamento,,29-03-2020
+1,7,Espinho,27,29-03-2020
+3,6,Esposende,,29-03-2020
+1,8,Estarreja,,29-03-2020
+7,4,Estremoz,,29-03-2020
+3,7,Fafe,5,29-03-2020
+8,5,Faro,20,29-03-2020
+13,3,Felgueiras,37,29-03-2020
+2,8,Ferreira do Alentejo,,29-03-2020
+14,11,Ferreira do Zêzere,,29-03-2020
+6,5,Figueira da Foz,3,29-03-2020
+9,4,Figueira de Castelo Rodrigo,,29-03-2020
+10,8,Figueiró dos Vinhos,,29-03-2020
+9,5,Fornos de Algodres,,29-03-2020
+4,4,Freixo de Espada à Cinta,,29-03-2020
+12,8,Fronteira,,29-03-2020
+31,3,Funchal,23,29-03-2020
+5,4,Fundão,,29-03-2020
+12,9,Gavião,,29-03-2020
+14,12,Golegã,,29-03-2020
+13,4,Gondomar,242,29-03-2020
+9,6,Gouveia,,29-03-2020
+15,5,Grândola,3,29-03-2020
+9,7,Guarda,,29-03-2020
+3,8,Guimarães,70,29-03-2020
+6,6,Góis,,29-03-2020
+47,1,Horta,4,29-03-2020
+5,5,Idanha-a-Nova,,29-03-2020
+8,6,Lagoa (Algarve),,29-03-2020
+42,1,Lagoa (São Miguel),,29-03-2020
+8,7,Lagos,,29-03-2020
+48,1,Lajes das Flores,,29-03-2020
+46,1,Lajes do Pico,,29-03-2020
+18,5,Lamego,4,29-03-2020
+10,9,Leiria,,29-03-2020
+11,6,Lisboa,594,29-03-2020
+8,8,Loulé,15,29-03-2020
+11,7,Loures,64,29-03-2020
+11,8,Lourinhã,,29-03-2020
+13,5,Lousada,42,29-03-2020
+6,7,Lousã,3,29-03-2020
+4,5,Macedo de Cavaleiros,5,29-03-2020
+31,4,Machico,,29-03-2020
+46,2,Madalena,3,29-03-2020
+11,9,Mafra,27,29-03-2020
+13,6,Maia,296,29-03-2020
+18,6,Mangualde,,29-03-2020
+9,8,Manteigas,,29-03-2020
+13,7,Marco de Canaveses,,29-03-2020
+10,10,Marinha Grande,,29-03-2020
+12,10,Marvão,,29-03-2020
+13,8,Matosinhos,254,29-03-2020
+14,13,Mação,,29-03-2020
+1,11,Mealhada,4,29-03-2020
+9,9,Meda,,29-03-2020
+16,3,Melgaço,,29-03-2020
+17,4,Mesão Frio,,29-03-2020
+6,8,Mira,,29-03-2020
+6,9,Miranda do Corvo,3,29-03-2020
+4,6,Miranda do Douro,,29-03-2020
+4,7,Mirandela,,29-03-2020
+4,8,Mogadouro,,29-03-2020
+18,7,Moimenta da Beira,,29-03-2020
+15,6,Moita,12,29-03-2020
+8,9,Monchique,,29-03-2020
+17,5,Mondim de Basto,,29-03-2020
+12,11,Monforte,,29-03-2020
+17,6,Montalegre,,29-03-2020
+7,6,Montemor-o-Novo,,29-03-2020
+6,10,Montemor-o-Velho,,29-03-2020
+15,7,Montijo,11,29-03-2020
+16,4,Monção,3,29-03-2020
+7,7,Mora,,29-03-2020
+18,8,Mortágua,,29-03-2020
+2,10,Moura,,29-03-2020
+7,8,Mourão,,29-03-2020
+1,12,Murtosa,6,29-03-2020
+17,7,Murça,,29-03-2020
+2,9,Mértola,,29-03-2020
+10,11,Nazaré,,29-03-2020
+18,9,Nelas,4,29-03-2020
+12,12,Nisa,,29-03-2020
+42,2,Nordeste,,29-03-2020
+2,11,Odemira,,29-03-2020
+11,16,Odivelas,63,29-03-2020
+11,10,Oeiras,74,29-03-2020
+5,6,Oleiros,,29-03-2020
+8,10,Olhão,3,29-03-2020
+1,13,Oliveira de Azeméis,67,29-03-2020
+18,10,Oliveira de Frades,,29-03-2020
+1,14,Oliveira do Bairro,9,29-03-2020
+6,11,Oliveira do Hospital,,29-03-2020
+2,12,Ourique,,29-03-2020
+14,21,Ourém,5,29-03-2020
+1,15,Ovar,159,29-03-2020
+15,8,Palmela,7,29-03-2020
+6,12,Pampilhosa da Serra,,29-03-2020
+13,10,Paredes,34,29-03-2020
+16,5,Paredes de Coura,,29-03-2020
+13,9,Paços de Ferreira,31,29-03-2020
+10,13,Pedrógão Grande,,29-03-2020
+6,13,Penacova,3,29-03-2020
+13,11,Penafiel,,29-03-2020
+18,11,Penalva do Castelo,,29-03-2020
+5,7,Penamacor,,29-03-2020
+18,12,Penedono,,29-03-2020
+6,14,Penela,,29-03-2020
+10,14,Peniche,,29-03-2020
+17,8,Peso da Régua,5,29-03-2020
+9,10,Pinhel,,29-03-2020
+10,15,Pombal,18,29-03-2020
+42,3,Ponta Delgada,7,29-03-2020
+31,5,Ponta do Sol,5,29-03-2020
+16,6,Ponte da Barca,,29-03-2020
+16,7,Ponte de Lima,3,29-03-2020
+12,13,Ponte de Sor,,29-03-2020
+12,14,Portalegre,,29-03-2020
+7,9,Portel,,29-03-2020
+8,11,Portimão,18,29-03-2020
+13,12,Porto,417,29-03-2020
+31,6,Porto Moniz,,29-03-2020
+32,1,Porto Santo,,29-03-2020
+10,16,Porto de Mós,,29-03-2020
+42,4,Povoação,,29-03-2020
+43,2,Praia da Vitória,3,29-03-2020
+5,8,Proença-a-Nova,,29-03-2020
+3,9,Póvoa de Lanhoso,,29-03-2020
+13,13,Póvoa de Varzim,,29-03-2020
+7,10,Redondo,,29-03-2020
+7,11,Reguengos de Monsaraz,3,29-03-2020
+18,13,Resende,26,29-03-2020
+31,7,Ribeira Brava,,29-03-2020
+42,5,Ribeira Grande,,29-03-2020
+17,9,Ribeira de Pena,,29-03-2020
+14,14,Rio Maior,,29-03-2020
+17,10,Sabrosa,,29-03-2020
+9,11,Sabugal,,29-03-2020
+14,15,Salvaterra de Magos,,29-03-2020
+18,14,Santa Comba Dão,,29-03-2020
+31,8,Santa Cruz,4,29-03-2020
+44,1,Santa Cruz da Graciosa,,29-03-2020
+48,2,Santa Cruz das Flores,,29-03-2020
+1,9,Santa Maria da Feira,136,29-03-2020
+17,11,Santa Marta de Penaguião,,29-03-2020
+31,9,Santana,,29-03-2020
+14,16,Santarém,22,29-03-2020
+15,9,Santiago do Cacém,,29-03-2020
+13,14,Santo Tirso,42,29-03-2020
+14,17,Sardoal,,29-03-2020
+9,12,Seia,,29-03-2020
+15,10,Seixal,66,29-03-2020
+18,18,Sernancelhe,,29-03-2020
+2,13,Serpa,,29-03-2020
+5,9,Sertã,,29-03-2020
+15,11,Sesimbra,10,29-03-2020
+15,12,Setúbal,,29-03-2020
+1,17,Sever do Vouga,3,29-03-2020
+8,13,Silves,5,29-03-2020
+15,13,Sines,4,29-03-2020
+11,11,Sintra,148,29-03-2020
+11,12,Sobral de Monte Agraço,,29-03-2020
+6,15,Soure,6,29-03-2020
+12,15,Sousel,,29-03-2020
+18,17,Sátão,,29-03-2020
+8,12,São Brás de Alportel,,29-03-2020
+1,16,São João da Madeira,28,29-03-2020
+18,15,São João da Pesqueira,,29-03-2020
+18,16,São Pedro do Sul,3,29-03-2020
+46,3,São Roque do Pico,,29-03-2020
+31,10,São Vicente,,29-03-2020
+18,19,Tabuaço,,29-03-2020
+18,20,Tarouca,,29-03-2020
+8,14,Tavira,,29-03-2020
+3,10,Terras de Bouro,,29-03-2020
+14,18,Tomar,3,29-03-2020
+18,21,Tondela,,29-03-2020
+4,9,Torre de Moncorvo,,29-03-2020
+14,19,Torres Novas,,29-03-2020
+11,13,Torres Vedras,11,29-03-2020
+9,13,Trancoso,,29-03-2020
+13,18,Trofa,29,29-03-2020
+6,16,Tábua,,29-03-2020
+1,18,Vagos,5,29-03-2020
+1,19,Vale de Cambra,24,29-03-2020
+16,8,Valença,,29-03-2020
+13,15,Valongo,184,29-03-2020
+17,12,Valpaços,3,29-03-2020
+45,2,Velas,6,29-03-2020
+7,12,Vendas Novas,,29-03-2020
+7,13,Viana do Alentejo,,29-03-2020
+16,9,Viana do Castelo,33,29-03-2020
+2,14,Vidigueira,,29-03-2020
+3,11,Vieira do Minho,,29-03-2020
+4,10,Vila Flor,,29-03-2020
+11,14,Vila Franca de Xira,22,29-03-2020
+42,6,Vila Franca do Campo,,29-03-2020
+14,20,Vila Nova da Barquinha,,29-03-2020
+16,10,Vila Nova de Cerveira,,29-03-2020
+3,12,Vila Nova de Famalicão,61,29-03-2020
+9,14,Vila Nova de Foz Côa,,29-03-2020
+13,17,Vila Nova de Gaia,351,29-03-2020
+18,22,Vila Nova de Paiva,,29-03-2020
+6,17,Vila Nova de Poiares,,29-03-2020
+17,13,Vila Pouca de Aguiar,3,29-03-2020
+17,14,Vila Real,103,29-03-2020
+8,16,Vila Real de Santo António,5,29-03-2020
+5,11,Vila Velha de Ródão,,29-03-2020
+3,13,Vila Verde,,29-03-2020
+7,14,Vila Viçosa,,29-03-2020
+5,10,Vila de Rei,,29-03-2020
+8,15,Vila do Bispo,,29-03-2020
+13,16,Vila do Conde,32,29-03-2020
+41,1,Vila do Porto,,29-03-2020
+4,11,Vimioso,3,29-03-2020
+4,12,Vinhais,,29-03-2020
+18,23,Viseu,,29-03-2020
+3,14,Vizela,5,29-03-2020
+18,24,Vouzela,,29-03-2020
+1,1,Águeda,15,29-03-2020
+7,5,Évora,20,29-03-2020
+1,10,Ílhavo,12,29-03-2020
+10,12,Óbidos,,29-03-2020
+14,1,Abrantes,7,30-03-2020
+9,1,Aguiar da Beira,,30-03-2020
+7,1,Alandroal,,30-03-2020
+1,2,Albergaria-a-Velha,50,30-03-2020
+8,1,Albufeira,,30-03-2020
+14,2,Alcanena,3,30-03-2020
+10,1,Alcobaça,,30-03-2020
+15,2,Alcochete,3,30-03-2020
+8,2,Alcoutim,,30-03-2020
+15,1,Alcácer do Sal,,30-03-2020
+11,1,Alenquer,4,30-03-2020
+4,1,Alfândega da Fé,,30-03-2020
+17,1,Alijó,,30-03-2020
+8,3,Aljezur,,30-03-2020
+2,1,Aljustrel,,30-03-2020
+15,3,Almada,68,30-03-2020
+9,2,Almeida,6,30-03-2020
+14,3,Almeirim,9,30-03-2020
+2,2,Almodôvar,,30-03-2020
+14,4,Alpiarça,3,30-03-2020
+12,1,Alter do Chão,,30-03-2020
+10,2,Alvaiázere,4,30-03-2020
+2,3,Alvito,,30-03-2020
+11,15,Amadora,63,30-03-2020
+13,1,Amarante,6,30-03-2020
+3,1,Amares,9,30-03-2020
+1,3,Anadia,5,30-03-2020
+43,1,Angra do Heroísmo,5,30-03-2020
+10,3,Ansião,,30-03-2020
+16,1,Arcos de Valdevez,,30-03-2020
+6,1,Arganil,,30-03-2020
+18,1,Armamar,,30-03-2020
+1,4,Arouca,,30-03-2020
+7,2,Arraiolos,,30-03-2020
+12,2,Arronches,,30-03-2020
+11,2,Arruda dos Vinhos,,30-03-2020
+1,5,Aveiro,95,30-03-2020
+12,3,Avis,,30-03-2020
+11,3,Azambuja,3,30-03-2020
+13,2,Baião,4,30-03-2020
+3,2,Barcelos,35,30-03-2020
+2,4,Barrancos,,30-03-2020
+15,4,Barreiro,23,30-03-2020
+10,4,Batalha,,30-03-2020
+2,5,Beja,,30-03-2020
+5,1,Belmonte,,30-03-2020
+14,5,Benavente,,30-03-2020
+10,5,Bombarral,,30-03-2020
+7,3,Borba,,30-03-2020
+17,2,Boticas,,30-03-2020
+3,3,Braga,213,30-03-2020
+4,2,Bragança,44,30-03-2020
+3,4,Cabeceiras de Basto,,30-03-2020
+11,4,Cadaval,,30-03-2020
+10,6,Caldas da Rainha,8,30-03-2020
+31,1,Calheta (Madeira),,30-03-2020
+45,1,Calheta (São Jorge),4,30-03-2020
+16,2,Caminha,3,30-03-2020
+12,4,Campo Maior,,30-03-2020
+6,2,Cantanhede,8,30-03-2020
+4,3,Carrazeda de Ansiães,3,30-03-2020
+18,2,Carregal do Sal,,30-03-2020
+14,6,Cartaxo,13,30-03-2020
+11,5,Cascais,119,30-03-2020
+10,7,Castanheira de Pêra,,30-03-2020
+5,2,Castelo Branco,,30-03-2020
+1,6,Castelo de Paiva,,30-03-2020
+12,5,Castelo de Vide,,30-03-2020
+18,3,Castro Daire,,30-03-2020
+8,4,Castro Marim,,30-03-2020
+2,6,Castro Verde,,30-03-2020
+9,3,Celorico da Beira,,30-03-2020
+3,5,Celorico de Basto,,30-03-2020
+14,7,Chamusca,,30-03-2020
+17,3,Chaves,,30-03-2020
+18,4,Cinfães,5,30-03-2020
+6,3,Coimbra,229,30-03-2020
+6,4,Condeixa-a-Nova,15,30-03-2020
+14,8,Constância,,30-03-2020
+14,9,Coruche,5,30-03-2020
+49,1,Corvo,,30-03-2020
+5,3,Covilhã,,30-03-2020
+12,6,Crato,,30-03-2020
+2,7,Cuba,,30-03-2020
+31,2,Câmara de Lobos,6,30-03-2020
+12,7,Elvas,,30-03-2020
+14,10,Entroncamento,,30-03-2020
+1,7,Espinho,29,30-03-2020
+3,6,Esposende,8,30-03-2020
+1,8,Estarreja,,30-03-2020
+7,4,Estremoz,,30-03-2020
+3,7,Fafe,6,30-03-2020
+8,5,Faro,21,30-03-2020
+13,3,Felgueiras,42,30-03-2020
+2,8,Ferreira do Alentejo,,30-03-2020
+14,11,Ferreira do Zêzere,,30-03-2020
+6,5,Figueira da Foz,7,30-03-2020
+9,4,Figueira de Castelo Rodrigo,,30-03-2020
+10,8,Figueiró dos Vinhos,,30-03-2020
+9,5,Fornos de Algodres,,30-03-2020
+4,4,Freixo de Espada à Cinta,,30-03-2020
+12,8,Fronteira,,30-03-2020
+31,3,Funchal,23,30-03-2020
+5,4,Fundão,,30-03-2020
+12,9,Gavião,,30-03-2020
+14,12,Golegã,,30-03-2020
+13,4,Gondomar,276,30-03-2020
+9,6,Gouveia,,30-03-2020
+15,5,Grândola,6,30-03-2020
+9,7,Guarda,4,30-03-2020
+3,8,Guimarães,75,30-03-2020
+6,6,Góis,3,30-03-2020
+47,1,Horta,6,30-03-2020
+5,5,Idanha-a-Nova,,30-03-2020
+8,6,Lagoa (Algarve),,30-03-2020
+42,1,Lagoa (São Miguel),,30-03-2020
+8,7,Lagos,,30-03-2020
+48,1,Lajes das Flores,,30-03-2020
+46,1,Lajes do Pico,,30-03-2020
+18,5,Lamego,4,30-03-2020
+10,9,Leiria,,30-03-2020
+11,6,Lisboa,633,30-03-2020
+8,8,Loulé,17,30-03-2020
+11,7,Loures,72,30-03-2020
+11,8,Lourinhã,,30-03-2020
+13,5,Lousada,44,30-03-2020
+6,7,Lousã,4,30-03-2020
+4,5,Macedo de Cavaleiros,7,30-03-2020
+31,4,Machico,,30-03-2020
+46,2,Madalena,3,30-03-2020
+11,9,Mafra,31,30-03-2020
+13,6,Maia,313,30-03-2020
+18,6,Mangualde,,30-03-2020
+9,8,Manteigas,,30-03-2020
+13,7,Marco de Canaveses,,30-03-2020
+10,10,Marinha Grande,7,30-03-2020
+12,10,Marvão,,30-03-2020
+13,8,Matosinhos,295,30-03-2020
+14,13,Mação,,30-03-2020
+1,11,Mealhada,5,30-03-2020
+9,9,Meda,,30-03-2020
+16,3,Melgaço,4,30-03-2020
+17,4,Mesão Frio,,30-03-2020
+6,8,Mira,,30-03-2020
+6,9,Miranda do Corvo,4,30-03-2020
+4,6,Miranda do Douro,,30-03-2020
+4,7,Mirandela,,30-03-2020
+4,8,Mogadouro,,30-03-2020
+18,7,Moimenta da Beira,,30-03-2020
+15,6,Moita,,30-03-2020
+8,9,Monchique,,30-03-2020
+17,5,Mondim de Basto,,30-03-2020
+12,11,Monforte,,30-03-2020
+17,6,Montalegre,,30-03-2020
+7,6,Montemor-o-Novo,,30-03-2020
+6,10,Montemor-o-Velho,12,30-03-2020
+15,7,Montijo,11,30-03-2020
+16,4,Monção,3,30-03-2020
+7,7,Mora,,30-03-2020
+18,8,Mortágua,,30-03-2020
+2,10,Moura,,30-03-2020
+7,8,Mourão,,30-03-2020
+1,12,Murtosa,6,30-03-2020
+17,7,Murça,,30-03-2020
+2,9,Mértola,,30-03-2020
+10,11,Nazaré,,30-03-2020
+18,9,Nelas,5,30-03-2020
+12,12,Nisa,,30-03-2020
+42,2,Nordeste,,30-03-2020
+2,11,Odemira,,30-03-2020
+11,16,Odivelas,64,30-03-2020
+11,10,Oeiras,79,30-03-2020
+5,6,Oleiros,,30-03-2020
+8,10,Olhão,3,30-03-2020
+1,13,Oliveira de Azeméis,71,30-03-2020
+18,10,Oliveira de Frades,7,30-03-2020
+1,14,Oliveira do Bairro,,30-03-2020
+6,11,Oliveira do Hospital,,30-03-2020
+2,12,Ourique,,30-03-2020
+14,21,Ourém,5,30-03-2020
+1,15,Ovar,241,30-03-2020
+15,8,Palmela,9,30-03-2020
+6,12,Pampilhosa da Serra,,30-03-2020
+13,10,Paredes,35,30-03-2020
+16,5,Paredes de Coura,,30-03-2020
+13,9,Paços de Ferreira,35,30-03-2020
+10,13,Pedrógão Grande,,30-03-2020
+6,13,Penacova,5,30-03-2020
+13,11,Penafiel,,30-03-2020
+18,11,Penalva do Castelo,,30-03-2020
+5,7,Penamacor,,30-03-2020
+18,12,Penedono,,30-03-2020
+6,14,Penela,,30-03-2020
+10,14,Peniche,3,30-03-2020
+17,8,Peso da Régua,6,30-03-2020
+9,10,Pinhel,,30-03-2020
+10,15,Pombal,19,30-03-2020
+42,3,Ponta Delgada,7,30-03-2020
+31,5,Ponta do Sol,5,30-03-2020
+16,6,Ponte da Barca,,30-03-2020
+16,7,Ponte de Lima,5,30-03-2020
+12,13,Ponte de Sor,,30-03-2020
+12,14,Portalegre,,30-03-2020
+7,9,Portel,,30-03-2020
+8,11,Portimão,19,30-03-2020
+13,12,Porto,941,30-03-2020
+31,6,Porto Moniz,,30-03-2020
+32,1,Porto Santo,3,30-03-2020
+10,16,Porto de Mós,,30-03-2020
+42,4,Povoação,,30-03-2020
+43,2,Praia da Vitória,5,30-03-2020
+5,8,Proença-a-Nova,,30-03-2020
+3,9,Póvoa de Lanhoso,12,30-03-2020
+13,13,Póvoa de Varzim,24,30-03-2020
+7,10,Redondo,,30-03-2020
+7,11,Reguengos de Monsaraz,4,30-03-2020
+18,13,Resende,27,30-03-2020
+31,7,Ribeira Brava,,30-03-2020
+42,5,Ribeira Grande,,30-03-2020
+17,9,Ribeira de Pena,,30-03-2020
+14,14,Rio Maior,4,30-03-2020
+17,10,Sabrosa,,30-03-2020
+9,11,Sabugal,,30-03-2020
+14,15,Salvaterra de Magos,,30-03-2020
+18,14,Santa Comba Dão,,30-03-2020
+31,8,Santa Cruz,4,30-03-2020
+44,1,Santa Cruz da Graciosa,,30-03-2020
+48,2,Santa Cruz das Flores,,30-03-2020
+1,9,Santa Maria da Feira,154,30-03-2020
+17,11,Santa Marta de Penaguião,,30-03-2020
+31,9,Santana,,30-03-2020
+14,16,Santarém,26,30-03-2020
+15,9,Santiago do Cacém,6,30-03-2020
+13,14,Santo Tirso,44,30-03-2020
+14,17,Sardoal,,30-03-2020
+9,12,Seia,4,30-03-2020
+15,10,Seixal,68,30-03-2020
+18,18,Sernancelhe,,30-03-2020
+2,13,Serpa,,30-03-2020
+5,9,Sertã,,30-03-2020
+15,11,Sesimbra,,30-03-2020
+15,12,Setúbal,,30-03-2020
+1,17,Sever do Vouga,3,30-03-2020
+8,13,Silves,5,30-03-2020
+15,13,Sines,4,30-03-2020
+11,11,Sintra,159,30-03-2020
+11,12,Sobral de Monte Agraço,,30-03-2020
+6,15,Soure,8,30-03-2020
+12,15,Sousel,,30-03-2020
+18,17,Sátão,,30-03-2020
+8,12,São Brás de Alportel,,30-03-2020
+1,16,São João da Madeira,32,30-03-2020
+18,15,São João da Pesqueira,,30-03-2020
+18,16,São Pedro do Sul,3,30-03-2020
+46,3,São Roque do Pico,3,30-03-2020
+31,10,São Vicente,,30-03-2020
+18,19,Tabuaço,,30-03-2020
+18,20,Tarouca,,30-03-2020
+8,14,Tavira,,30-03-2020
+3,10,Terras de Bouro,,30-03-2020
+14,18,Tomar,9,30-03-2020
+18,21,Tondela,,30-03-2020
+4,9,Torre de Moncorvo,3,30-03-2020
+14,19,Torres Novas,4,30-03-2020
+11,13,Torres Vedras,13,30-03-2020
+9,13,Trancoso,5,30-03-2020
+13,18,Trofa,30,30-03-2020
+6,16,Tábua,,30-03-2020
+1,18,Vagos,5,30-03-2020
+1,19,Vale de Cambra,25,30-03-2020
+16,8,Valença,,30-03-2020
+13,15,Valongo,202,30-03-2020
+17,12,Valpaços,3,30-03-2020
+45,2,Velas,6,30-03-2020
+7,12,Vendas Novas,,30-03-2020
+7,13,Viana do Alentejo,,30-03-2020
+16,9,Viana do Castelo,36,30-03-2020
+2,14,Vidigueira,,30-03-2020
+3,11,Vieira do Minho,3,30-03-2020
+4,10,Vila Flor,,30-03-2020
+11,14,Vila Franca de Xira,24,30-03-2020
+42,6,Vila Franca do Campo,,30-03-2020
+14,20,Vila Nova da Barquinha,,30-03-2020
+16,10,Vila Nova de Cerveira,,30-03-2020
+3,12,Vila Nova de Famalicão,71,30-03-2020
+9,14,Vila Nova de Foz Côa,19,30-03-2020
+13,17,Vila Nova de Gaia,344,30-03-2020
+18,22,Vila Nova de Paiva,,30-03-2020
+6,17,Vila Nova de Poiares,,30-03-2020
+17,13,Vila Pouca de Aguiar,3,30-03-2020
+17,14,Vila Real,115,30-03-2020
+8,16,Vila Real de Santo António,5,30-03-2020
+5,11,Vila Velha de Ródão,,30-03-2020
+3,13,Vila Verde,15,30-03-2020
+7,14,Vila Viçosa,,30-03-2020
+5,10,Vila de Rei,,30-03-2020
+8,15,Vila do Bispo,,30-03-2020
+13,16,Vila do Conde,39,30-03-2020
+41,1,Vila do Porto,,30-03-2020
+4,11,Vimioso,3,30-03-2020
+4,12,Vinhais,,30-03-2020
+18,23,Viseu,28,30-03-2020
+3,14,Vizela,5,30-03-2020
+18,24,Vouzela,,30-03-2020
+1,1,Águeda,,30-03-2020
+7,5,Évora,21,30-03-2020
+1,10,Ílhavo,,30-03-2020
+10,12,Óbidos,,30-03-2020
 14,1,Abrantes,,31-03-2020
 9,1,Aguiar da Beira,,31-03-2020
 7,1,Alandroal,,31-03-2020
@@ -10779,3 +11395,311 @@ cod_distrito,cod_concelho,nome_concelho,casos,dia
 7,5,Évora,19,30-04-2020
 1,10,Ílhavo,99,30-04-2020
 10,12,Óbidos,,30-04-2020
+14,1,Abrantes,8,01-05-2020
+9,1,Aguiar da Beira,,01-05-2020
+7,1,Alandroal,,01-05-2020
+1,2,Albergaria-a-Velha,82,01-05-2020
+8,1,Albufeira,68,01-05-2020
+14,2,Alcanena,7,01-05-2020
+10,1,Alcobaça,27,01-05-2020
+15,2,Alcochete,14,01-05-2020
+8,2,Alcoutim,,01-05-2020
+15,1,Alcácer do Sal,4,01-05-2020
+11,1,Alenquer,19,01-05-2020
+4,1,Alfândega da Fé,5,01-05-2020
+17,1,Alijó,4,01-05-2020
+8,3,Aljezur,,01-05-2020
+2,1,Aljustrel,,01-05-2020
+15,3,Almada,239,01-05-2020
+9,2,Almeida,6,01-05-2020
+14,3,Almeirim,14,01-05-2020
+2,2,Almodôvar,8,01-05-2020
+14,4,Alpiarça,8,01-05-2020
+12,1,Alter do Chão,,01-05-2020
+10,2,Alvaiázere,24,01-05-2020
+2,3,Alvito,,01-05-2020
+11,15,Amadora,301,01-05-2020
+13,1,Amarante,82,01-05-2020
+3,1,Amares,43,01-05-2020
+1,3,Anadia,37,01-05-2020
+43,1,Angra do Heroísmo,,01-05-2020
+10,3,Ansião,6,01-05-2020
+16,1,Arcos de Valdevez,66,01-05-2020
+6,1,Arganil,8,01-05-2020
+18,1,Armamar,,01-05-2020
+1,4,Arouca,34,01-05-2020
+7,2,Arraiolos,,01-05-2020
+12,2,Arronches,,01-05-2020
+11,2,Arruda dos Vinhos,5,01-05-2020
+1,5,Aveiro,275,01-05-2020
+12,3,Avis,,01-05-2020
+11,3,Azambuja,11,01-05-2020
+13,2,Baião,14,01-05-2020
+3,2,Barcelos,211,01-05-2020
+2,4,Barrancos,,01-05-2020
+15,4,Barreiro,93,01-05-2020
+10,4,Batalha,4,01-05-2020
+2,5,Beja,10,01-05-2020
+5,1,Belmonte,,01-05-2020
+14,5,Benavente,28,01-05-2020
+10,5,Bombarral,3,01-05-2020
+7,3,Borba,,01-05-2020
+17,2,Boticas,,01-05-2020
+3,3,Braga,1079,01-05-2020
+4,2,Bragança,109,01-05-2020
+3,4,Cabeceiras de Basto,17,01-05-2020
+11,4,Cadaval,5,01-05-2020
+10,6,Caldas da Rainha,19,01-05-2020
+31,1,Calheta (Madeira),,01-05-2020
+45,1,Calheta (São Jorge),5,01-05-2020
+16,2,Caminha,15,01-05-2020
+12,4,Campo Maior,,01-05-2020
+6,2,Cantanhede,51,01-05-2020
+4,3,Carrazeda de Ansiães,5,01-05-2020
+18,2,Carregal do Sal,12,01-05-2020
+14,6,Cartaxo,30,01-05-2020
+11,5,Cascais,338,01-05-2020
+10,7,Castanheira de Pêra,,01-05-2020
+5,2,Castelo Branco,5,01-05-2020
+1,6,Castelo de Paiva,14,01-05-2020
+12,5,Castelo de Vide,,01-05-2020
+18,3,Castro Daire,102,01-05-2020
+8,4,Castro Marim,3,01-05-2020
+2,6,Castro Verde,,01-05-2020
+9,3,Celorico da Beira,9,01-05-2020
+3,5,Celorico de Basto,18,01-05-2020
+14,7,Chamusca,9,01-05-2020
+17,3,Chaves,25,01-05-2020
+18,4,Cinfães,13,01-05-2020
+6,3,Coimbra,416,01-05-2020
+6,4,Condeixa-a-Nova,64,01-05-2020
+14,8,Constância,,01-05-2020
+14,9,Coruche,36,01-05-2020
+49,1,Corvo,,01-05-2020
+5,3,Covilhã,7,01-05-2020
+12,6,Crato,,01-05-2020
+2,7,Cuba,3,01-05-2020
+31,2,Câmara de Lobos,34,01-05-2020
+12,7,Elvas,5,01-05-2020
+14,10,Entroncamento,6,01-05-2020
+1,7,Espinho,76,01-05-2020
+3,6,Esposende,37,01-05-2020
+1,8,Estarreja,64,01-05-2020
+7,4,Estremoz,,01-05-2020
+3,7,Fafe,96,01-05-2020
+8,5,Faro,66,01-05-2020
+13,3,Felgueiras,341,01-05-2020
+2,8,Ferreira do Alentejo,,01-05-2020
+14,11,Ferreira do Zêzere,,01-05-2020
+6,5,Figueira da Foz,27,01-05-2020
+9,4,Figueira de Castelo Rodrigo,3,01-05-2020
+10,8,Figueiró dos Vinhos,4,01-05-2020
+9,5,Fornos de Algodres,,01-05-2020
+4,4,Freixo de Espada à Cinta,,01-05-2020
+12,8,Fronteira,,01-05-2020
+31,3,Funchal,30,01-05-2020
+5,4,Fundão,3,01-05-2020
+12,9,Gavião,,01-05-2020
+14,12,Golegã,,01-05-2020
+13,4,Gondomar,1010,01-05-2020
+9,6,Gouveia,18,01-05-2020
+15,5,Grândola,8,01-05-2020
+9,7,Guarda,20,01-05-2020
+3,8,Guimarães,609,01-05-2020
+6,6,Góis,10,01-05-2020
+47,1,Horta,6,01-05-2020
+5,5,Idanha-a-Nova,,01-05-2020
+8,6,Lagoa (Algarve),10,01-05-2020
+42,1,Lagoa (São Miguel),,01-05-2020
+8,7,Lagos,3,01-05-2020
+48,1,Lajes das Flores,,01-05-2020
+46,1,Lajes do Pico,,01-05-2020
+18,5,Lamego,33,01-05-2020
+10,9,Leiria,72,01-05-2020
+11,6,Lisboa,1496,01-05-2020
+8,8,Loulé,61,01-05-2020
+11,7,Loures,393,01-05-2020
+11,8,Lourinhã,5,01-05-2020
+13,5,Lousada,210,01-05-2020
+6,7,Lousã,13,01-05-2020
+4,5,Macedo de Cavaleiros,21,01-05-2020
+31,4,Machico,,01-05-2020
+46,2,Madalena,5,01-05-2020
+11,9,Mafra,71,01-05-2020
+13,6,Maia,870,01-05-2020
+18,6,Mangualde,71,01-05-2020
+9,8,Manteigas,3,01-05-2020
+13,7,Marco de Canaveses,65,01-05-2020
+10,10,Marinha Grande,16,01-05-2020
+12,10,Marvão,,01-05-2020
+13,8,Matosinhos,1142,01-05-2020
+14,13,Mação,,01-05-2020
+1,11,Mealhada,17,01-05-2020
+9,9,Meda,,01-05-2020
+16,3,Melgaço,53,01-05-2020
+17,4,Mesão Frio,,01-05-2020
+6,8,Mira,4,01-05-2020
+6,9,Miranda do Corvo,15,01-05-2020
+4,6,Miranda do Douro,7,01-05-2020
+4,7,Mirandela,17,01-05-2020
+4,8,Mogadouro,3,01-05-2020
+18,7,Moimenta da Beira,12,01-05-2020
+15,6,Moita,69,01-05-2020
+8,9,Monchique,,01-05-2020
+17,5,Mondim de Basto,,01-05-2020
+12,11,Monforte,,01-05-2020
+17,6,Montalegre,,01-05-2020
+7,6,Montemor-o-Novo,7,01-05-2020
+6,10,Montemor-o-Velho,15,01-05-2020
+15,7,Montijo,47,01-05-2020
+16,4,Monção,98,01-05-2020
+7,7,Mora,,01-05-2020
+18,8,Mortágua,7,01-05-2020
+2,10,Moura,54,01-05-2020
+7,8,Mourão,,01-05-2020
+1,12,Murtosa,9,01-05-2020
+17,7,Murça,18,01-05-2020
+2,9,Mértola,,01-05-2020
+10,11,Nazaré,,01-05-2020
+18,9,Nelas,,01-05-2020
+12,12,Nisa,,01-05-2020
+42,2,Nordeste,,01-05-2020
+2,11,Odemira,4,01-05-2020
+11,16,Odivelas,232,01-05-2020
+11,10,Oeiras,215,01-05-2020
+5,6,Oleiros,,01-05-2020
+8,10,Olhão,13,01-05-2020
+1,13,Oliveira de Azeméis,172,01-05-2020
+18,10,Oliveira de Frades,9,01-05-2020
+1,14,Oliveira do Bairro,24,01-05-2020
+6,11,Oliveira do Hospital,10,01-05-2020
+2,12,Ourique,,01-05-2020
+14,21,Ourém,28,01-05-2020
+1,15,Ovar,565,01-05-2020
+15,8,Palmela,18,01-05-2020
+6,12,Pampilhosa da Serra,,01-05-2020
+13,10,Paredes,294,01-05-2020
+16,5,Paredes de Coura,7,01-05-2020
+13,9,Paços de Ferreira,265,01-05-2020
+10,13,Pedrógão Grande,3,01-05-2020
+6,13,Penacova,16,01-05-2020
+13,11,Penafiel,142,01-05-2020
+18,11,Penalva do Castelo,,01-05-2020
+5,7,Penamacor,,01-05-2020
+18,12,Penedono,,01-05-2020
+6,14,Penela,3,01-05-2020
+10,14,Peniche,10,01-05-2020
+17,8,Peso da Régua,51,01-05-2020
+9,10,Pinhel,22,01-05-2020
+10,15,Pombal,52,01-05-2020
+42,3,Ponta Delgada,8,01-05-2020
+31,5,Ponta do Sol,6,01-05-2020
+16,6,Ponte da Barca,6,01-05-2020
+16,7,Ponte de Lima,23,01-05-2020
+12,13,Ponte de Sor,3,01-05-2020
+12,14,Portalegre,5,01-05-2020
+7,9,Portel,6,01-05-2020
+8,11,Portimão,35,01-05-2020
+13,12,Porto,1236,01-05-2020
+31,6,Porto Moniz,,01-05-2020
+32,1,Porto Santo,5,01-05-2020
+10,16,Porto de Mós,8,01-05-2020
+42,4,Povoação,,01-05-2020
+43,2,Praia da Vitória,7,01-05-2020
+5,8,Proença-a-Nova,,01-05-2020
+3,9,Póvoa de Lanhoso,51,01-05-2020
+13,13,Póvoa de Varzim,131,01-05-2020
+7,10,Redondo,,01-05-2020
+7,11,Reguengos de Monsaraz,5,01-05-2020
+18,13,Resende,62,01-05-2020
+31,7,Ribeira Brava,,01-05-2020
+42,5,Ribeira Grande,,01-05-2020
+17,9,Ribeira de Pena,3,01-05-2020
+14,14,Rio Maior,15,01-05-2020
+17,10,Sabrosa,7,01-05-2020
+9,11,Sabugal,,01-05-2020
+14,15,Salvaterra de Magos,8,01-05-2020
+18,14,Santa Comba Dão,9,01-05-2020
+31,8,Santa Cruz,5,01-05-2020
+44,1,Santa Cruz da Graciosa,,01-05-2020
+48,2,Santa Cruz das Flores,,01-05-2020
+1,9,Santa Maria da Feira,399,01-05-2020
+17,11,Santa Marta de Penaguião,,01-05-2020
+31,9,Santana,,01-05-2020
+14,16,Santarém,74,01-05-2020
+15,9,Santiago do Cacém,15,01-05-2020
+13,14,Santo Tirso,349,01-05-2020
+14,17,Sardoal,,01-05-2020
+9,12,Seia,13,01-05-2020
+15,10,Seixal,165,01-05-2020
+18,18,Sernancelhe,4,01-05-2020
+2,13,Serpa,18,01-05-2020
+5,9,Sertã,4,01-05-2020
+15,11,Sesimbra,19,01-05-2020
+15,12,Setúbal,60,01-05-2020
+1,17,Sever do Vouga,32,01-05-2020
+8,13,Silves,22,01-05-2020
+15,13,Sines,,01-05-2020
+11,11,Sintra,595,01-05-2020
+11,12,Sobral de Monte Agraço,,01-05-2020
+6,15,Soure,21,01-05-2020
+12,15,Sousel,,01-05-2020
+18,17,Sátão,7,01-05-2020
+8,12,São Brás de Alportel,,01-05-2020
+1,16,São João da Madeira,62,01-05-2020
+18,15,São João da Pesqueira,,01-05-2020
+18,16,São Pedro do Sul,6,01-05-2020
+46,3,São Roque do Pico,3,01-05-2020
+31,10,São Vicente,,01-05-2020
+18,19,Tabuaço,,01-05-2020
+18,20,Tarouca,,01-05-2020
+8,14,Tavira,30,01-05-2020
+3,10,Terras de Bouro,8,01-05-2020
+14,18,Tomar,11,01-05-2020
+18,21,Tondela,12,01-05-2020
+4,9,Torre de Moncorvo,23,01-05-2020
+14,19,Torres Novas,12,01-05-2020
+11,13,Torres Vedras,29,01-05-2020
+9,13,Trancoso,15,01-05-2020
+13,18,Trofa,139,01-05-2020
+6,16,Tábua,30,01-05-2020
+1,18,Vagos,19,01-05-2020
+1,19,Vale de Cambra,136,01-05-2020
+16,8,Valença,7,01-05-2020
+13,15,Valongo,729,01-05-2020
+17,12,Valpaços,6,01-05-2020
+45,2,Velas,5,01-05-2020
+7,12,Vendas Novas,6,01-05-2020
+7,13,Viana do Alentejo,,01-05-2020
+16,9,Viana do Castelo,160,01-05-2020
+2,14,Vidigueira,,01-05-2020
+3,11,Vieira do Minho,28,01-05-2020
+4,10,Vila Flor,5,01-05-2020
+11,14,Vila Franca de Xira,179,01-05-2020
+42,6,Vila Franca do Campo,,01-05-2020
+14,20,Vila Nova da Barquinha,3,01-05-2020
+16,10,Vila Nova de Cerveira,7,01-05-2020
+3,12,Vila Nova de Famalicão,356,01-05-2020
+9,14,Vila Nova de Foz Côa,72,01-05-2020
+13,17,Vila Nova de Gaia,1404,01-05-2020
+18,22,Vila Nova de Paiva,,01-05-2020
+6,17,Vila Nova de Poiares,4,01-05-2020
+17,13,Vila Pouca de Aguiar,3,01-05-2020
+17,14,Vila Real,148,01-05-2020
+8,16,Vila Real de Santo António,12,01-05-2020
+5,11,Vila Velha de Ródão,,01-05-2020
+3,13,Vila Verde,158,01-05-2020
+7,14,Vila Viçosa,,01-05-2020
+5,10,Vila de Rei,,01-05-2020
+8,15,Vila do Bispo,,01-05-2020
+13,16,Vila do Conde,251,01-05-2020
+41,1,Vila do Porto,,01-05-2020
+4,11,Vimioso,8,01-05-2020
+4,12,Vinhais,27,01-05-2020
+18,23,Viseu,80,01-05-2020
+3,14,Vizela,97,01-05-2020
+18,24,Vouzela,8,01-05-2020
+1,1,Águeda,46,01-05-2020
+7,5,Évora,19,01-05-2020
+1,10,Ílhavo,99,01-05-2020
+10,12,Óbidos,,01-05-2020

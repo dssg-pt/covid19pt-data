@@ -21,7 +21,8 @@ Se algum relatório futuro referir o nome de um concelhos que nao esteja na list
 
 - Os nomes dos concelhos são normalizados usando os sinónimos em `fix_names.yml` (com estrutura nome oficial: variantes encontradas nos relatórios)
 - A fonte dos nomes oficiais, códigos de concelho e distrito (DICO) foram recolhidos de https://github.com/centraldedados/codigos_postais
-- Alguns relatórios 29/03, 30/03 e 10/04 e 01/05) têm um formato pdf diferente e não são lidos.
+- Alguns concelhos (p.ex. nos relatórios de 29/03, 30/03, 01/05) foram ignorados devidos a erros na formatação.
+- Alguns relatórios (10/04) não foram lidos por problemas na formatação do pdf
 - Os Relatórios de Situação da DGS fornecem algumas notas metodológicas potencialmente relevantes:
     - Em cada dia a informação corresponde a cerca de 80% do total de casos confirmados
     - Quando os casos confirmados são inferiores a 3, os dados nao sao apresentados por motivos de confidencialidade
