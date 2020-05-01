@@ -10,7 +10,7 @@ def get_amostras(url):
     
     for entry in data['features']:
         unix_date = entry['attributes']['Data_do_Relatório']/1000
-        frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m-%Y")
+        frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
         amostras_total = entry['attributes']['Amostras']
         amostras_novas = entry['attributes']['Amostras_Novas']
         amostras.append([frmt_date, amostras_total, amostras_novas])
@@ -28,6 +28,7 @@ if __name__ == '__main__':
 
     # Get latest data
     latest = pd.read_csv(PATH_TO_CSV)
+    latest['data'] = pd.to_datetime(latest['data'], format='%d-%m-%Y')
 
     # Find rows with differences
     merged = available.merge(latest, how='outer', on=['data'], suffixes=('_available', '_latest'))
@@ -56,4 +57,9 @@ if __name__ == '__main__':
                                 columns=updated.columns)
             updated = pd.concat([updated, tmp_df], ignore_index=True)
 
+    # sort by date      
+    updated = updated.sort_values('data')
+    updated['data'] = updated['data'].dt.strftime('%d-%m-%Y')
+    
+    # save to .csv
     updated.to_csv(PATH_TO_CSV, index=False, line_terminator='\n')
