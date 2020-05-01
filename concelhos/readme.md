@@ -15,13 +15,13 @@ conda activate covid_concelhos
 python extract_concelhos.py
 ```
 
-Se algum relatorio futuro referir o nome de um concelhos que nao esteja na lista DICO ou nos sinónimos, o relatório nao será salvo. Uma correspondência com o nome correcto terá de ser adicionada ao ficheiro _fix_names.yml_
+Se algum relatório futuro referir o nome de um concelhos que nao esteja na lista DICO ou nos sinónimos, o relatório nao será salvo. Uma correspondência com o nome correcto terá de ser adicionada ao ficheiro _fix_names.yml_
 
 ## Notas
 
 - Os nomes dos concelhos são normalizados usando os sinónimos em `fix_names.yml` (com estrutura nome oficial: variantes encontradas nos relatórios)
 - A fonte dos nomes oficiais, códigos de concelho e distrito (DICO) foram recolhidos de https://github.com/centraldedados/codigos_postais
-- Alguns relatórios do fim de Março têm um formato estranho e não são lidos.
+- Alguns relatórios 29/03, 30/03 e 10/04 e 01/05) têm um formato pdf diferente e não são lidos.
 - Os Relatórios de Situação da DGS fornecem algumas notas metodológicas potencialmente relevantes:
     - Em cada dia a informação corresponde a cerca de 80% do total de casos confirmados
     - Quando os casos confirmados são inferiores a 3, os dados nao sao apresentados por motivos de confidencialidade
