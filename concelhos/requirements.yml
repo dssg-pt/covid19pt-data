@@ -1,0 +1,9 @@
+name: covid_concelhos
+channels:
+  - conda-forge
+dependencies:
+  - pandas
+  - tabula-py
+  - pyyaml
+
+
