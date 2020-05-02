@@ -3,3 +3,4 @@ pandas
 numpy
 pytest-mock
 textract
+requests

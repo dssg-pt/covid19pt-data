@@ -47,7 +47,8 @@ _Porque tudo começa com bons dados._
 # 🧱 Estrutura
 
 O repositório está organizado da seguinte forma:
-+ `data.csv`: o Pastel de Nata. 
++ `data.csv`: o Pastel de Nata. Dados extraídos do boletim diário da DGS.
++ `amostras.csv`: contém dados diários relativos às amostras, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
 + `notebooks/`: contém um _notebook_ Python com um exemplo simples de como carregar e visualizar os dados.
 + `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
@@ -152,13 +153,22 @@ Uma explicação do conteúdo em `data.csv`.
 | `obitos_80_plus_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_80_plus_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_f` | Número total de óbitos de pacientes do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
-| `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
+| `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador  
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 > A 26/03/2020, a soma do número de pacientes recuperados por ARS/Região Autónoma nem sempre é igual ao número total de recuperados. A DGS reportou os dados desta forma, indicando que o diferencial correspondia a "_21 casos recuperados laboratorialmente_" e a "_aguardar mais informação._"
 
 Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída. 
 
+Relativamente ao conteúdo em `amostras.csv`:  
+
+| Nome da coluna        | Significado           | Possíveis valores  |
+| ------------- |:-------------:| -----:|
+| `data` | Data a que se referem os dados. | DD-MM-YYYY |
+| `amostras` | Número total de amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
+| `amostras_novas` | Número diário de novas amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
+
+> Relativamente a estes dados, o [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) dá conta de que _"correspondem ao número de amostras processadas para diagnóstico de SARS-CoV-2 em laboratórios públicos e privados desde o dia 1 de março."_ Dizem ainda que _"Os dados diários após 2 de abril de 2020 ainda estão a ser recolhidos, pelo que os valores no gráfico poderão sofrer alterações."_ De facto, há a possibilidade de, a cada dia, dados referentes a dias anteriores serem alterados, provavelmente pelo facto de a informação relativa ao processamento de amostras ser recebida pela DGS com alguns dias de desfasamento.
 
 # 💡 Problemas, inconsistências e melhorias
 
