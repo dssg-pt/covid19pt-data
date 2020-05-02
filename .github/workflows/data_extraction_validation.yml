@@ -40,8 +40,10 @@ jobs:
         with:
           commit_message: Update data for today 
           branch: ${{ github.head_ref }}
+        if: always()
       - name: Validate data with pytest
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
+        if: always()
       - name: Validate data about test samples with pytest
         run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
         if: always()
