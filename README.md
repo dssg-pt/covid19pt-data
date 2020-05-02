@@ -36,12 +36,12 @@ _Porque tudo começa com bons dados._
 + [Estatisticas COVID-19](https://jrab.herokuapp.com/), por [@jrabasilio](https://github.com/jrabasilio)
 + [COVID-19 em Portugal](https://dnunessandro.github.io/covid19/), por [@dnunessandro](https://github.com/dnunessandro)
 + [Measuring Icebergs: Using Different Methods to Estimate the Number of COVID-19 Cases in Portugal and Spain](https://github.com/GCGImdea/coronasurveys/blob/master/reports/2020-03-29-CaseEstimation.pdf), por [CoronaSurveys Research Team](https://coronasurveys.com/)
-+ [Covid-19](https://covid-19pt.herokuapp.com/), por [@mornaistar](https://github.com/mornaistar)
-+ [Análise sobre o COVID-19](https://www.analise.pt/covid-19), por [@jfabiano](https://github.com/jfabiano)
-+ [COVID 19 - Portugal e um olhar sobre o mundo](https://covid19.crossroads.pt/), por [@zemanels](https://github.com/zemanels)
-+ [COVID-19 Portugal](https://covid-19-proj.vascosilva.site/), por [@vascocsilva](https://github.com/vascocsilva)
-+ [Pandemia COVID-19 em Portugal](https://paulojmoreira.outsystemscloud.com/Covid19PT/), por [@moreirapjb](https://paulojmoreira.outsystemscloud.com/Covid19PT/)
-+ [COVID-19 Time varying reproduction numbers estimation for Portugal](https://perone.github.io/covid19analysis/portugal_r0.html), por [@perone](https://github.com/perone)
++ [Covid-19](https://covid-19pt.herokuapp.com/), por [Artur Mendes](https://github.com/mornaistar)
++ [Análise sobre o COVID-19](https://www.analise.pt/covid-19), por [Fabiano Rodrigues](https://github.com/jfabiano)
++ [COVID 19 - Portugal e um olhar sobre o mundo](https://covid19.crossroads.pt/), por [José Correia da Silva](https://github.com/zemanels)
++ [COVID-19 Portugal](https://covid-19-proj.vascosilva.site/), por [Vasco Silva](https://github.com/vascocsilva)
++ [Pandemia COVID-19 em Portugal](https://paulojmoreira.outsystemscloud.com/Covid19PT/), por [Paulo Moreira](https://github.com/moreirapjb)
++ [COVID-19 Time varying reproduction numbers estimation for Portugal](https://perone.github.io/covid19analysis/portugal_r0.html), por [Christian S. Perone](https://github.com/perone)
 + [COVID19 Portugal data](https://covid19.anteropires.com/), por [Antero Pires](https://anteropires.com/)
 
 # 🧱 Estrutura
