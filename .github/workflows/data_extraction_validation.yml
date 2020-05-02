@@ -31,6 +31,7 @@ jobs:
       - name: Update data about test samples
         run: | 
           python .github/workflows/update_amostras.py
+        if: always()
       - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
         run: |
           git add -A dgs-reports-archive/
@@ -41,13 +42,15 @@ jobs:
           branch: ${{ github.head_ref }}
       - name: Validate data with pytest
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
-      - name: Validate samples with pytest
+      - name: Validate data about test samples with pytest
         run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
+        if: always()
       - name: Upload pytest test results
         uses: actions/upload-artifact@master
         with:
           name: pytest-results
           path: tests/junit/test-results.xml
+        if: always()
       - name: Upload pytest samples test results 
         uses: actions/upload-artifact@master
         with:
