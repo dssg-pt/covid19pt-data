@@ -9,11 +9,12 @@ def get_amostras(url):
     amostras = []
     
     for entry in data['features']:
-        unix_date = entry['attributes']['Data_do_Relatório']/1000
-        frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
-        amostras_total = entry['attributes']['Amostras']
-        amostras_novas = entry['attributes']['Amostras_Novas']
-        amostras.append([frmt_date, amostras_total, amostras_novas])
+        if entry['attributes']['Data_do_Relatório']:
+            unix_date = entry['attributes']['Data_do_Relatório']/1000
+            frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
+            amostras_total = entry['attributes']['Amostras']
+            amostras_novas = entry['attributes']['Amostras_Novas']
+            amostras.append([frmt_date, amostras_total, amostras_novas])
     
     amostras_df = pd.DataFrame(data=amostras, columns=['data', 'amostras', 'amostras_novas'])
     return amostras_df
