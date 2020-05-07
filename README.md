@@ -43,6 +43,8 @@ _Porque tudo começa com bons dados._
 + [Pandemia COVID-19 em Portugal](https://paulojmoreira.outsystemscloud.com/Covid19PT/), por [Paulo Moreira](https://github.com/moreirapjb)
 + [COVID-19 Time varying reproduction numbers estimation for Portugal](https://perone.github.io/covid19analysis/portugal_r0.html), por [Christian S. Perone](https://github.com/perone)
 + [COVID19 Portugal data](https://covid19.anteropires.com/), por [Antero Pires](https://anteropires.com/)
++ [COVID-19 Portugal Dashboard](https://covid19dashboardpt.herokuapp.com/), por [@dvpinho](https://github.com/dvpinho)
++ [Como está a evoluir a pandemia covid-19 onde vivo?](https://www.publico.pt/interactivo/como-esta-evoluir-pandemia-covid19-onde-vivo#/), por Rui Barros, Dinis Correia e Hélio Carvalho (Público)
 
 # 🧱 Estrutura
 
