@@ -9,8 +9,8 @@ def get_list_municipalities():
     resultOffset = 0
     resultRecordCount = 200
 
-    URL_CONCELHOS = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_Concelhos_V/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&cacheHint=true&resultOffset={}&resultRecordCount={}'.format(resultOffset, resultRecordCount)
-    data = requests.get(URL_CONCELHOS)
+    url_concelhos = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_Concelhos_V/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&cacheHint=true&resultOffset={}&resultRecordCount={}'.format(resultOffset, resultRecordCount)
+    data = requests.get(url_concelhos)
     data = data.json()
 
     concelhos = []
@@ -22,8 +22,8 @@ def get_list_municipalities():
 
         resultOffset+=200
         resultRecordCount+=200
-        URL_CONCELHOS = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_Concelhos_V/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&cacheHint=true&resultOffset={}&resultRecordCount={}'.format(resultOffset, resultRecordCount)
-        data = requests.get(URL_CONCELHOS)
+        url_concelhos = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_Concelhos_V/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&cacheHint=true&resultOffset={}&resultRecordCount={}'.format(resultOffset, resultRecordCount)
+        data = requests.get(url_concelhos)
         data = data.json()
     
     concelhos_df = pd.DataFrame(data=concelhos, columns=['concelho'])
