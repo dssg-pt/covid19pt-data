@@ -81,5 +81,7 @@ if __name__ == '__main__':
     casos_wide.data = pd.to_datetime(casos_wide.data, format='%d-%m-%Y')
     casos_wide = casos_wide.sort_values(by='data').reset_index(drop=True)
     casos_wide = casos_wide.replace(-1, np.nan)
+    
+    casos_wide.data = casos_wide['data'].dt.strftime('%d-%m-%Y')
 
-    casos_wide.to_csv(PATH_TO_CSV, index=False, line_terminator='\n') 
+    casos_wide.to_csv(PATH_TO_CSV, index=False, line_terminator='\n', sep = ',') 
