@@ -172,6 +172,17 @@ Relativamente ao conteúdo em `amostras.csv`:
 
 > Relativamente a estes dados, o [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) dá conta de que _"correspondem ao número de amostras processadas para diagnóstico de SARS-CoV-2 em laboratórios públicos e privados desde o dia 1 de março."_ Dizem ainda que _"Os dados diários após 2 de abril de 2020 ainda estão a ser recolhidos, pelo que os valores no gráfico poderão sofrer alterações."_ De facto, há a possibilidade de, a cada dia, dados referentes a dias anteriores serem alterados, provavelmente pelo facto de a informação relativa ao processamento de amostras ser recebida pela DGS com alguns dias de desfasamento.
 
+Relativamente ao ficheiro `data_concelhos.csv`: 
+
+| Nome da coluna        | Significado           | Possíveis valores  |
+| ------------- |:-------------:| -----:|
+| `data` | Data a que se referem os dados. | DD-MM-YYYY |
+| `[nome_concelho]` | Número total de casos acumulados | Inteiro >= 0 ou _vazio_ para os dias em que este indicador não é reportado  neste concelho.
+
+> Estes dados são extraídos do serviço da [ESRI de ArcGIS](https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/) e podem ter algumas diferenças em relação ao boletim oficial (isto é, concelhos que deixam de aparecer no boletim continuam a aparecer no serviço).
+A partir de 31/03, estes casos passaram a ser reportados pelas Administrações Regionais de Saúde e Regiões Autónomas, sendo que qualquer conclusão com base nos dias anteriores deve ser tomada com cuidado. 
+
+
 # 💡 Problemas, inconsistências e melhorias
 
 Quaisquer sugestões de dados complementares (provenientes de fontes oficiais), inconsistências nos dados ou melhorias genéricas, à vontade ➡️ _Issues_ ou _Pull Requests_.
