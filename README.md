@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 11 de Maio de 2020, 14h15
+📅️ **Última actualização**: 12 de Maio de 2020, 14h15
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
@@ -50,7 +50,8 @@ _Porque tudo começa com bons dados._
 
 O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. Dados extraídos do boletim diário da DGS.
-+ `amostras.csv`: contém dados diários relativos às amostras, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)
++ `amostras.csv`: contém dados diários relativos às amostras, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/).
++ `data_concelhos.csv`: contém dados diários acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados). Esta série de dados tem início a 24-03-2020.
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
 + `notebooks/`: contém um _notebook_ Python com um exemplo simples de como carregar e visualizar os dados.
 + `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
@@ -59,10 +60,10 @@ O repositório está organizado da seguinte forma:
 
 Em conjunto com a [VOST Portugal](https://www.vost.pt), desenvolvemos uma API disponível a todos com os dados disponibilizados deste repositório, numa tentativa de dar uma ferramenta mais acessível a todos os que querem analisar os dados. Podem aceder e consultar a documentação aqui: https://covid19-api.vost.pt
 
-(Versão anterior, desatualizada)
-Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
+> (Versão anterior, desatualizada)
+> Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
 
-Dados em versão API com resposta JSON, atualização diária conforme esta base de dados e dados da OMS para o endpoint dos dados mundiais por país. [Acesso via RapidApi](https://rapidapi.com/gitgrupoift/api/covid-19-dados-abertos), com exemplos de requisição e resposta, exemplos de clients e SDK.
+> Dados em versão API com resposta JSON, atualização diária conforme esta base de dados e dados da OMS para o endpoint dos dados mundiais por país. [Acesso via RapidApi](https://rapidapi.com/gitgrupoift/api/covid-19-dados-abertos), com exemplos de requisição e resposta, exemplos de clients e SDK.
 
 # 📔 Dicionário dos dados
 
