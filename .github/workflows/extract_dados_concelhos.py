@@ -60,6 +60,15 @@ def get_list_cases_long():
     
     return casos_df
 
+
+def patch_concelhos(concelhos):
+    
+    fix1 = concelhos.data=='16-05-2020'
+    concelhos.loc[fix1, 'SANTO TIRSO'] = 378
+    concelhos.loc[fix1, 'SÃO BRÁS DE ALPORTEL'] = np.nan
+
+    return concelhos    
+
 if __name__ == '__main__':
 
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'data_concelhos.csv')
@@ -83,5 +92,7 @@ if __name__ == '__main__':
     casos_wide = casos_wide.replace(-1, np.nan)
     
     casos_wide.data = casos_wide['data'].dt.strftime('%d-%m-%Y')
+    
+    casos_wide = patch_concelhos(casos_wide)
 
-    casos_wide.to_csv(PATH_TO_CSV, index=False, line_terminator='\n', sep = ',') 
+    casos_wide.to_csv(PATH_TO_CSV, index=False, sep = ',') 
