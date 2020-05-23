@@ -2,7 +2,7 @@
 name: Mini-projecto
 about: Um pequeno projecto paralelo com dados da pandemia
 title: "[Mini-projecto]"
-labels: mini-project
+labels: ''
 assignees: ''
 
 ---
