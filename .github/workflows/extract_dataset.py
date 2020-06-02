@@ -590,8 +590,8 @@ if __name__ == '__main__':
     new_dataframe = extract_data([report], pd.read_csv(PATH_TO_DATA_CSV))
 
     if new_dataframe.vigilancia.dtype == object:
-        new_dataframe.vigilancia = new_dataframe.vigilancia.str.replace("[", "").replace('nan', '')
-        new_dataframe.vigilancia = new_dataframe.vigilancia.str.replace("]", "").replace('nan', '')
+        new_dataframe.vigilancia = new_dataframe.vigilancia.astype(str).str.replace("[", "").astype(float)
+        new_dataframe.vigilancia = new_dataframe.vigilancia.astype(str).str.replace("]", "").astype(float)
 
     # Save new line into data.csv file
     save_new_data(new_dataframe.iloc[-1], PATH_TO_DATA_CSV)
