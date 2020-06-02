@@ -92,6 +92,8 @@ def extract_data(reports, original_dataframe):
     confirmados_70_79_m = []
     confirmados_80_plus_f = []
     confirmados_80_plus_m = []
+    confirmados_desconhecidos_m = []
+    confirmados_desconhecidos_f = []
 
     # Obitos Faixa Etaria
     obitos_f = []
@@ -224,20 +226,22 @@ def extract_data(reports, original_dataframe):
 
         [confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
          confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
-         confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value,
+         confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value, desconhecidos_m_value,
          confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
          confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
-         confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, total, total2,
+         confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, desconhecidos_f_value, total, total2,
         ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS")
 
 
         confirmados_m_value = sum([confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
                                      confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
-                                     confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value])
+                                     confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value,
+                                     desconhecidos_m_value])
 
         confirmados_f_value = sum([confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
                                    confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
                                    confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value,
+                                   desconhecidos_f_value
                                    ])
 
         # Append Confirmados Values
@@ -261,6 +265,8 @@ def extract_data(reports, original_dataframe):
         confirmados_70_79_m.append(confirmados_70_79_m_value)
         confirmados_80_plus_f.append(confirmados_80_plus_f_value)
         confirmados_80_plus_m.append(confirmados_80_plus_m_value)
+        confirmados_desconhecidos_m.append(desconhecidos_m_value)
+        confirmados_desconhecidos_f.append(desconhecidos_f_value)
 
 
         """ OBITOS POR FAIXA ETARIA """
@@ -407,7 +413,9 @@ def extract_data(reports, original_dataframe):
         "sintomas_dores_musculares": sintomas_dores_musculares,
         "sintomas_fraqueza_generalizada": sintomas_fraqueza_generalizada,
         "transmissao_importada": transmissao_importada,
-        "confirmados_novos": confirmados_novos
+        "confirmados_novos": confirmados_novos,
+        "confirmados_desconhecidos_m": confirmados_desconhecidos_m,
+        "confirmados_desconhecidos_f": confirmados_desconhecidos_f,
     }
 
     df = pd.DataFrame(data)
@@ -553,7 +561,9 @@ def save_new_data(r, path_to_csv):
         r["obitos_80_plus_f"],
         r["obitos_80_plus_m"],
         r["obitos_f"],
-        r["obitos_m"]
+        r["obitos_m"],
+        r["confirmados_desconhecidos_m"],
+        r["confirmados_desconhecidos_f"]
     ]]
 
     df = pd.DataFrame(row)
