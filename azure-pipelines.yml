@@ -1,4 +1,13 @@
 # Starter pipeline
+- task: SqlDacpacDeploymentOnMachineGroup@0
+  inputs:
+    TaskType: 'sqlInline'
+    InlineSql: |
+      SELECT TOP 10 *
+      FROM dbo.vw_Country_Commodity
+    ServerName: 'USEASQLUATFARM03.ci.corp'
+    DatabaseName: 'Lion'
+    AuthScheme: 'windowsAuthentication'
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
