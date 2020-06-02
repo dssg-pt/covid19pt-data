@@ -589,8 +589,8 @@ if __name__ == '__main__':
     report = get_report(reports_list[-1])
     new_dataframe = extract_data([report], pd.read_csv(PATH_TO_DATA_CSV))
 
-    new_dataframe = new_dataframe.str.replace("[", "")
-    new_dataframe = new_dataframe.str.replace("]", "")
+    new_dataframe.vigilancia = new_dataframe.vigilancia.str.replace("[", "")
+    new_dataframe.vigilancia = new_dataframe.vigilancia.str.replace("]", "")
 
     # Save new line into data.csv file
     save_new_data(new_dataframe.iloc[-1], PATH_TO_DATA_CSV)
