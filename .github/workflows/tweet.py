@@ -8,18 +8,10 @@ import tweepy
   
 # Login
 
-consumer_key ="mfSrAmZfZ481JXLQL2VlWLPFB"
-
-consumer_secret ="GUNBMljUWNgQvJLHQrTJ4vbpldzRuMWVyNSFpsuKm3F3FErT2k"
-
-access_token ="1267747147472089088-lawkJn3xrI5trNyRWcFZDKvZE9lVQX"
-
-access_token_secret ="dwJrTwzIaq76duxp2j7ghp1gvp0TmTse6s3uNxtgAJ1mS"
-
-#consumer_key = os.environ['TWITTER_CONSUMER_KEY']
-#consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
-#access_token = os.environ['TWITTER_ACCESS_TOKEN']
-#access_token_secret = os.environ['TWITTER_ACCESS_SECRET']
+consumer_key = os.environ['TWITTER_CONSUMER_KEY']
+consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
+access_token = os.environ['TWITTER_ACCESS_TOKEN']
+access_token_secret = os.environ['TWITTER_ACCESS_SECRET']
   
 # authentication of consumer key and secret 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
@@ -33,13 +25,10 @@ path = Path(__file__).resolve().parents[2]
 file=path / 'data.csv'
 
 df = pd.read_csv(file,parse_dates=[0],index_col=[0],infer_datetime_format=True,skip_blank_lines=False,dayfirst=True)
-
-#url = 'https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/data.csv'
-#df = pd.read_csv(url, parse_dates=[0], index_col=[0], infer_datetime_format=True, dayfirst=True)
 df.fillna(value=0)
 
 
-#data
+# Get date and format
 hoje=df.data_dados[-1]
 hoje_datetime = datetime.strptime(hoje, '%d-%m-%Y %H:%M').strftime("%d %b %Y")
 
@@ -84,10 +73,10 @@ novos_alentejo=int(df.confirmados_arsalentejo.diff()[-1])
 novos_acores=int(df.confirmados_acores.diff()[-1])
 novos_madeira=int(df.confirmados_madeira.diff()[-1])
 
-##Mensagem do tweet
+## Compose messages
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
 
-# Tweet Principal
+# Main tweet
 tweet_message = ((emoji.emojize(":NEW_button:"))+" Dados #COVID19PT atualizados [" + hoje_datetime + "]:  \
 \n "+(emoji.emojize(":round_pushpin:"))+"Novos casos: " + str(novos_casos) + "(↑" + str(aumento_casos) +"%)"+ " | Total: "+ str(total_casos)+\
 "\n "+(emoji.emojize(":round_pushpin:"))+"Novos óbitos: " + str(novos_obitos) + "(↑" + str(aumento_obitos) +"%)"+ " | Total: "+ str(total_obitos)+ \
@@ -111,15 +100,12 @@ second_tweet = ((emoji.emojize(":magnifying_glass_tilted_right:"))+"  Novos caso
 third_tweet = ("Dados nacionais, por concelho e de amostras actualizados no nosso GitHub \n [3/3]" + link_repo)
 
 
-# update the status 
+# Update status and create thread
 
 tweet1 = api.update_status(status = tweet_message)
 tweet1Id = tweet1.id_str
 
 tweet2=api.update_status(second_tweet, tweet1Id)
 tweet2Id = tweet2.id_str
-
-print(tweet1Id)
-print(tweet2Id)
 
 api.update_status(third_tweet, tweet2Id)
