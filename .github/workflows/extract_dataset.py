@@ -92,6 +92,8 @@ def extract_data(reports, original_dataframe):
     confirmados_70_79_m = []
     confirmados_80_plus_f = []
     confirmados_80_plus_m = []
+    confirmados_desconhecidos_m = []
+    confirmados_desconhecidos_f = []
 
     # Obitos Faixa Etaria
     obitos_f = []
@@ -136,14 +138,33 @@ def extract_data(reports, original_dataframe):
 
         print(lines)
 
-        [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
-         obitos_value, vigilancia_value,
-         confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
-         confirmados_arsnorte_value, obitos_arsnorte_value,  # recuperados_arsnorte_value,
-         confirmados_arscentro_value, obitos_arscentro_value,  # recuperados_arscentro_value,
-         confirmados_arslvt_value, obitos_arslvt_value,  #recuperados_arslvt_value,
-         confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
-        ] = get_all_numbers_from_list(lines, "Total de casos", "Região de residência")
+        try:
+            print("Running first script")
+
+            [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
+            obitos_value, vigilancia_value,
+            confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
+            confirmados_arsnorte_value, obitos_arsnorte_value,  # recuperados_arsnorte_value,
+            confirmados_arscentro_value, obitos_arscentro_value,  # recuperados_arscentro_value,
+            confirmados_arslvt_value, obitos_arslvt_value,  #recuperados_arslvt_value,
+            confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
+            ] = get_all_numbers_from_list(lines, "Total de casos", "Região de residência")
+            
+        except ValueError:
+
+            print("Running second script")
+
+            [confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
+            confirmados_arsnorte_value, obitos_arsnorte_value,  # recuperados_arsnorte_value,
+            confirmados_arscentro_value, obitos_arscentro_value,  # recuperados_arscentro_value,
+            ] = get_all_numbers_from_list(lines, "Açores", "Total de casos")
+
+            [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
+            obitos_value, confirmados_arslvt_value, obitos_arslvt_value,  #recuperados_arslvt_value,
+            confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
+            ] = get_all_numbers_from_list(lines, "Total de casos", "Região de residência")
+
+            vigilancia_value = get_all_numbers_from_list(lines, "pelas Autoridades de Saúde", "Legenda")
 
 
         """ INITIAL VALUES ON LEFT """
@@ -205,20 +226,24 @@ def extract_data(reports, original_dataframe):
 
         [confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
          confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
-         confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value, total,
+         confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value, 
          confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
          confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
-         confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, total2,
+         confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, total, total2,
         ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS")
 
+        desconhecidos_m_value = 0
+        desconhecidos_f_value = 0
 
         confirmados_m_value = sum([confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
                                      confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
-                                     confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value])
+                                     confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value,
+                                     desconhecidos_m_value])
 
         confirmados_f_value = sum([confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
                                    confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
                                    confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value,
+                                   desconhecidos_f_value
                                    ])
 
         # Append Confirmados Values
@@ -242,6 +267,8 @@ def extract_data(reports, original_dataframe):
         confirmados_70_79_m.append(confirmados_70_79_m_value)
         confirmados_80_plus_f.append(confirmados_80_plus_f_value)
         confirmados_80_plus_m.append(confirmados_80_plus_m_value)
+        confirmados_desconhecidos_m.append(desconhecidos_m_value)
+        confirmados_desconhecidos_f.append(desconhecidos_f_value)
 
 
         """ OBITOS POR FAIXA ETARIA """
@@ -388,7 +415,9 @@ def extract_data(reports, original_dataframe):
         "sintomas_dores_musculares": sintomas_dores_musculares,
         "sintomas_fraqueza_generalizada": sintomas_fraqueza_generalizada,
         "transmissao_importada": transmissao_importada,
-        "confirmados_novos": confirmados_novos
+        "confirmados_novos": confirmados_novos,
+        "confirmados_desconhecidos_m": confirmados_desconhecidos_m,
+        "confirmados_desconhecidos_f": confirmados_desconhecidos_f,
     }
 
     df = pd.DataFrame(data)
@@ -534,16 +563,14 @@ def save_new_data(r, path_to_csv):
         r["obitos_80_plus_f"],
         r["obitos_80_plus_m"],
         r["obitos_f"],
-        r["obitos_m"]
+        r["obitos_m"],
+        r["confirmados_desconhecidos_m"],
+        r["confirmados_desconhecidos_f"]
     ]]
 
     df = pd.DataFrame(row)
 
-    # So data gets written into a new line 
-    with open(path_to_csv, 'a') as f:
-        f.write('\n')
-    
-    df.to_csv(path_to_csv, mode='a', header=False, index=False)
+    df.to_csv(path_to_csv, header=False, index=False, mode='a', line_terminator='\n')
 
 def _extract_report_id(r):
     r_file = r[r.rfind('/'):]
@@ -563,7 +590,12 @@ if __name__ == '__main__':
     # Run data extraction on the report
     report = get_report(reports_list[-1])
     new_dataframe = extract_data([report], pd.read_csv(PATH_TO_DATA_CSV))
-    
+
+    if new_dataframe.vigilancia.dtype == object:
+        new_dataframe.vigilancia = new_dataframe.vigilancia.astype(str).str.replace("[", "")
+        new_dataframe.vigilancia = new_dataframe.vigilancia.astype(str).str.replace("]", "")
+        new_dataframe.vigilancia = new_dataframe.vigilancia.astype(float)
+
     # Save new line into data.csv file
     save_new_data(new_dataframe.iloc[-1], PATH_TO_DATA_CSV)
 

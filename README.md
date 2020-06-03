@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 15 de Abril de 2020, 12h30
+📅️ **Última actualização**: 3 de Junho de 2020, 13h57
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
@@ -36,19 +36,34 @@ _Porque tudo começa com bons dados._
 + [Estatisticas COVID-19](https://jrab.herokuapp.com/), por [@jrabasilio](https://github.com/jrabasilio)
 + [COVID-19 em Portugal](https://dnunessandro.github.io/covid19/), por [@dnunessandro](https://github.com/dnunessandro)
 + [Measuring Icebergs: Using Different Methods to Estimate the Number of COVID-19 Cases in Portugal and Spain](https://github.com/GCGImdea/coronasurveys/blob/master/reports/2020-03-29-CaseEstimation.pdf), por [CoronaSurveys Research Team](https://coronasurveys.com/)
++ [Covid-19](https://covid-19pt.herokuapp.com/), por [Artur Mendes](https://github.com/mornaistar)
++ [Análise sobre o COVID-19](https://www.analise.pt/covid-19), por [Fabiano Rodrigues](https://github.com/jfabiano)
++ [COVID 19 - Portugal e um olhar sobre o mundo](https://covid19.crossroads.pt/), por [José Correia da Silva](https://github.com/zemanels)
++ [COVID-19 Portugal](https://covid-19-proj.vascosilva.site/), por [Vasco Silva](https://github.com/vascocsilva)
++ [Pandemia COVID-19 em Portugal](https://paulojmoreira.outsystemscloud.com/Covid19PT/), por [Paulo Moreira](https://github.com/moreirapjb)
++ [COVID-19 Time varying reproduction numbers estimation for Portugal](https://perone.github.io/covid19analysis/portugal_r0.html), por [Christian S. Perone](https://github.com/perone)
++ [COVID19 Portugal data](https://covid19.anteropires.com/), por [Antero Pires](https://anteropires.com/)
++ [COVID-19 Portugal Dashboard](https://covid19dashboardpt.herokuapp.com/), por [@dvpinho](https://github.com/dvpinho)
++ [Como está a evoluir a pandemia covid-19 onde vivo?](https://www.publico.pt/interactivo/como-esta-evoluir-pandemia-covid19-onde-vivo#/), por Rui Barros, Dinis Correia e Hélio Carvalho (Público)
 
 # 🧱 Estrutura
 
 O repositório está organizado da seguinte forma:
-+ `data.csv`: o Pastel de Nata. 
++ `data.csv`: o Pastel de Nata. Dados extraídos do boletim diário da DGS.
++ `amostras.csv`: contém dados diários relativos às amostras, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/).
++ `data_concelhos.csv`: contém dados diários acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados). Esta série de dados tem início a 24-03-2020.
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
 + `notebooks/`: contém um _notebook_ Python com um exemplo simples de como carregar e visualizar os dados.
 + `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
 
 # 📡 API Rest para os dados portugueses e mundiais
-Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
 
-Dados em versão API com resposta JSON, atualização diária conforme esta base de dados e dados da OMS para o endpoint dos dados mundiais por país. [Acesso via RapidApi](https://rapidapi.com/gitgrupoift/api/covid-19-dados-abertos), com exemplos de requisição e resposta, exemplos de clients e SDK.
+Em conjunto com a [VOST Portugal](https://www.vost.pt), desenvolvemos uma API disponível a todos com os dados disponibilizados deste repositório, numa tentativa de dar uma ferramenta mais acessível a todos os que querem analisar os dados. Podem aceder e consultar a documentação aqui: https://covid19-api.vost.pt
+
+> (Versão anterior, desatualizada)
+> Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
+
+> Dados em versão API com resposta JSON, atualização diária conforme esta base de dados e dados da OMS para o endpoint dos dados mundiais por país. [Acesso via RapidApi](https://rapidapi.com/gitgrupoift/api/covid-19-dados-abertos), com exemplos de requisição e resposta, exemplos de clients e SDK.
 
 # 📔 Dicionário dos dados
 
@@ -141,12 +156,34 @@ Uma explicação do conteúdo em `data.csv`.
 | `obitos_80_plus_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_80_plus_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_f` | Número total de óbitos de pacientes do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
-| `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
+| `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
+| `confirmados_desconhecidos_m` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador 
+| `confirmados_desconhecidos_f` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 > A 26/03/2020, a soma do número de pacientes recuperados por ARS/Região Autónoma nem sempre é igual ao número total de recuperados. A DGS reportou os dados desta forma, indicando que o diferencial correspondia a "_21 casos recuperados laboratorialmente_" e a "_aguardar mais informação._"
 
 Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída. 
+
+Relativamente ao conteúdo em `amostras.csv`:  
+
+| Nome da coluna        | Significado           | Possíveis valores  |
+| ------------- |:-------------:| -----:|
+| `data` | Data a que se referem os dados. | DD-MM-YYYY |
+| `amostras` | Número total de amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
+| `amostras_novas` | Número diário de novas amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
+
+> Relativamente a estes dados, o [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) dá conta de que _"correspondem ao número de amostras processadas para diagnóstico de SARS-CoV-2 em laboratórios públicos e privados desde o dia 1 de março."_ Dizem ainda que _"Os dados diários após 2 de abril de 2020 ainda estão a ser recolhidos, pelo que os valores no gráfico poderão sofrer alterações."_ De facto, há a possibilidade de, a cada dia, dados referentes a dias anteriores serem alterados, provavelmente pelo facto de a informação relativa ao processamento de amostras ser recebida pela DGS com alguns dias de desfasamento.
+
+Relativamente ao ficheiro `data_concelhos.csv`: 
+
+| Nome da coluna        | Significado           | Possíveis valores  |
+| ------------- |:-------------:| -----:|
+| `data` | Data a que se referem os dados. | DD-MM-YYYY |
+| `[nome_concelho]` | Número total de casos acumulados | Inteiro >= 0 ou _vazio_ para os dias em que este indicador não é reportado  neste concelho.
+
+> Estes dados são extraídos do serviço da [ESRI de ArcGIS](https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/) e podem ter algumas diferenças em relação ao boletim oficial (isto é, concelhos que deixam de aparecer no boletim continuam a aparecer no serviço).
+A partir de 31/03, estes casos passaram a ser reportados pelas Administrações Regionais de Saúde e Regiões Autónomas, sendo que qualquer conclusão com base nos dias anteriores deve ser tomada com cuidado. 
 
 
 # 💡 Problemas, inconsistências e melhorias
