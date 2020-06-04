@@ -269,6 +269,8 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
                 "confirmados_70_79_m",
                 "confirmados_80_plus_f",
                 "confirmados_80_plus_m",
+                "confirmados_desconhecidos_m",
+                "confirmados_desconhecidos_f"
             ],
             ["confirmados"],
         ),
