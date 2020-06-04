@@ -11,7 +11,7 @@ from datetime import datetime
 from pathlib import Path
 import fileinput
 import locale
-locale.setlocale(locale.LC_TIME, "pt_PT")
+locale.setlocale(locale.LC_TIME, "pt_PT.UTF-8")
 import sys
 
 # Get the link of TODAY
