@@ -4,3 +4,4 @@ numpy
 pytest-mock
 textract
 requests
+beautifulsoup4
