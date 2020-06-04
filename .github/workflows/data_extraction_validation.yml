@@ -15,6 +15,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
+      - name: Configure pt_PT locale
+        run: |
+          apt-get update -y && apt-get install -y locales && echo "pt_PT.UTF-8 UTF-8" | tee -a /etc/locale.gen && locale-gen pt_PT.UTF-8
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
