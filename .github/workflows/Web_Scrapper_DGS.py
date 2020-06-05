@@ -37,7 +37,7 @@ def get_latest_day():
 
 #Save on .txt file
 def save_link_txt(text_to_save):
-    path = Path(__file__).resolve().parents[0]
+    path = Path(__file__).resolve().parents[1]
     file=path / 'report_link.txt'
     with open(file,'w') as f:
         f.write(text_to_save)
