@@ -18,6 +18,9 @@ jobs:
       - name: Configure pt_PT locale
         run: |
           apt-get update -y && apt-get install -y locales && echo "pt_PT.UTF-8 UTF-8" | tee -a /etc/locale.gen && locale-gen pt_PT.UTF-8
+      - name: Configure pt_PT (Europe/Lisbon) timezone
+        run: |
+          ln -fs /usr/share/zoneinfo/Europe/Lisbon /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
