@@ -27,7 +27,7 @@ jobs:
           python .github/workflows/Web_Scrapper_DGS.py
       - name: Download PDF
         run: | 
-          wget -c -P .github/workflows/ $(cat .github/workflows/report_link.txt)
+          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
       - name: Process PDF
         run: | 
           python .github/workflows/process_report.py
