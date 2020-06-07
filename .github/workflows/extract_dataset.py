@@ -224,17 +224,30 @@ def extract_data(reports, original_dataframe):
 
         print("Numbers:", get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS"))
 
-        [confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
-         confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
-         confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value, 
-         confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
-         confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
-         confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, total, total2,
-        ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS")
+        try:
+            
+            [confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
+             confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
+             confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value, 
+             confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
+             confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
+             confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, total, total2,
+            ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS")
+    
+            desconhecidos_m_value = 0
+            desconhecidos_f_value = 0
+        
+        except ValueError:
 
-        desconhecidos_m_value = 0
-        desconhecidos_f_value = 0
-
+            [confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
+             confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
+             confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value, desconhecidos_m_value,
+             confirmados_0_9_f_value, confirmados_10_19_f_value, confirmados_20_29_f_value,
+             confirmados_30_39_f_value, confirmados_40_49_f_value, confirmados_50_59_f_value,
+             confirmados_60_69_f_value, confirmados_70_79_f_value, confirmados_80_plus_f_value, desconhecidos_f_value, total, total2,
+            ] = get_all_numbers_from_list(lines, "80+", "CARACTERIZAÇÃO DEMOGRÁFICA DOS CASOS CONFIRMADOS")
+    
+    
         confirmados_m_value = sum([confirmados_0_9_m_value, confirmados_10_19_m_value, confirmados_20_29_m_value,
                                      confirmados_30_39_m_value, confirmados_40_49_m_value, confirmados_50_59_m_value,
                                      confirmados_60_69_m_value, confirmados_70_79_m_value, confirmados_80_plus_m_value,
