@@ -79,7 +79,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_arsnorte` | Casos confirmados na ARS Norte      | Inteiro >= 0 |
 | `confirmados_arscentro` | Casos confirmados na ARS Centro      | Inteiro >= 0 |
 | `confirmados_arslvt` | Casos confirmados na ARS Lisboa e Vale do Tejo      | Inteiro >= 0 |
-| `confirmados_alentejo` | Casos confirmados na ARS Alentejo     | Inteiro >= 0 |
+| `confirmados_arsalentejo` | Casos confirmados na ARS Alentejo     | Inteiro >= 0 |
 | `confirmados_arsalgarve` | Casos confirmados na ARS Algarve    | Inteiro >= 0 |
 | `confirmados_acores` | Casos confirmados na Região Autónoma dos Açores | Inteiro >= 0 |
 | `confirmados_madeira` | Casos confirmados na Região Autónoma da Madeira  |  Inteiro >= 0 |
@@ -124,7 +124,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `obitos_arsnorte` | Total de óbitos na ARS Norte      | Inteiro >= 0 |
 | `obitos_arscentro` | Total de óbitos na ARS Centro      | Inteiro >= 0 |
 | `obitos_arslvt` | Total de óbitos na ARS Lisboa e Vale do Tejo      | Inteiro >= 0 |
-| `obitos_alentejo` | Total de óbitos na ARS Alentejo     | Inteiro >= 0 |
+| `obitos_arsalentejo` | Total de óbitos na ARS Alentejo     | Inteiro >= 0 |
 | `obitos_arsalgarve` | Total de óbitos na ARS Algarve    | Inteiro >= 0 |
 | `obitos_acores` | Total de óbitos na Região Autónoma dos Açores | Inteiro >= 0 |
 | `obitos_madeira` | Total de óbitos na Região Autónoma da Madeira  |  Inteiro >= 0 |
@@ -132,7 +132,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `recuperados_arsnorte` | Total de pacientes recuperados na ARS Norte      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_arscentro` | Total de pacientes recuperados na ARS Centro      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_arslvt` | Total de pacientes recuperados na ARS Lisboa e Vale do Tejo      | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `recuperados_alentejo` | Total de pacientes recuperados na ARS Alentejo | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `recuperados_arsalentejo` | Total de pacientes recuperados na ARS Alentejo | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_arsalgarve` | Total de pacientes recuperados na ARS Algarve | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_acores` | Total de pacientes recuperados na Região Autónoma dos Açores | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `recuperados_madeira` | Total de pacientes recuperados na Região Autónoma da Madeira  |  Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
