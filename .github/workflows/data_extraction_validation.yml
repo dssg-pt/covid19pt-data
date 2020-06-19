@@ -64,7 +64,7 @@ jobs:
         run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
         if: always()
       - name: Auto publish to Twitter
-        run: python tweet.py
+        run: python .github/workflows/tweet.py
         env:
             TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
             TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
