@@ -120,6 +120,11 @@ def compor_tweets(dados_para_tweets):
 
 if __name__ == '__main__':
     api = autenticar_twitter()
+    try:
+      api.me()  
+    except Exception as ex:
+        print("Erro na autenticação. Programa vai fechar")
+        exit(0)
     dados_extraidos = extrair_dados_ultimo_relatorio()    
     texto_tweet_1, texto_tweet_2, texto_tweet_3 = compor_tweets(dados_extraidos)
 
