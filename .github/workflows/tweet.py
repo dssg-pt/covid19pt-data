@@ -43,9 +43,6 @@ total_obitos=df.obitos[-1]
 novos_obitos=int(df.obitos.diff()[-1])
 aumento_obitos=round(novos_obitos/total_casos*100,2)
 
-##Internados
-novos_obitos=int(df.obitos.diff()[-1])
-aumento_obitos=round(novos_obitos/total_casos*100,2)
 
 ##Internados
 internados = int(df.internados[-1])
