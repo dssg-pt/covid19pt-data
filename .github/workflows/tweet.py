@@ -8,10 +8,10 @@ import tweepy
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
   
 # Login
-consumer_key ="TYdpqvSiysnkMLCym5rCw4wEC"
-consumer_secret ="iyRGaQfAeOmjlCe3a2Gucv8BO8iUcLda762oDG9Em2rMSksKwK"
-access_token ="1267747147472089088-R6ywIf1pqwaGO320082EXRg9iPx7KQ"
-access_token_secret ="jP4c6c3YZNuZwJWiyA9MBN0gOTcsYXo5BTecWd3j1UQ3g"
+consumer_key = os.environ['TWITTER_CONSUMER_KEY']
+consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
+access_token = os.environ['TWITTER_ACCESS_TOKEN']
+access_token_secret = os.environ['TWITTER_ACCESS_SECRET']
 
 def autenticar_twitter():
     # authentication of consumer key and secret 
