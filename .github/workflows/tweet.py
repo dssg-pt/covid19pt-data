@@ -7,10 +7,10 @@ from pathlib import Path
 import tweepy 
   
 # Login
-consumer_key = os.environ['TWITTER_CONSUMER_KEY']
-consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
-access_token = os.environ['TWITTER_ACCESS_TOKEN']
-access_token_secret = os.environ['TWITTER_ACCESS_SECRET']
+consumer_key ="mfSrAmZfZ481JXLQL2VlWLPFB"
+consumer_secret ="GUNBMljUWNgQvJLHQrTJ4vbpldzRuMWVyNSFpsuKm3F3FErT2k"
+access_token ="1267747147472089088-lawkJn3xrI5trNyRWcFZDKvZE9lVQX"
+access_token_secret ="dwJrTwzIaq76duxp2j7ghp1gvp0TmTse6s3uNxtgAJ1mS"
   
 # authentication of consumer key and secret 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
