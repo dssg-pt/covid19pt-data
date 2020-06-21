@@ -6,6 +6,3 @@ textract
 requests
 datetime
 tweepy
-pathlib
-os
-emoji
