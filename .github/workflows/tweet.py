@@ -79,7 +79,7 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 tweet_message = ((emoji.emojize(":NEW_button:"))+" Dados #COVID19PT atualizados [" + hoje_datetime + "]:  \
 \n "+(emoji.emojize(":round_pushpin:"))+"Novos casos: " + str(novos_casos) + "(↑" + str(aumento_casos) +"%)"+ " | Total: "+ str(total_casos)+\
 "\n "+(emoji.emojize(":round_pushpin:"))+"Novos óbitos: " + str(novos_obitos) + "(↑" + str(aumento_obitos) +"%)"+ " | Total: "+ str(total_obitos)+ \
-"\n "+(emoji.emojize(":round_pushpin:"))+"Novos recuperados: " + str(novos_recuperados) + "(↑" + str(aumento_recuperados) +"%)"+ " | Total: "+ str(total_obitos)+\
+"\n "+(emoji.emojize(":round_pushpin:"))+"Novos recuperados: " + str(novos_recuperados) + "(↑" + str(aumento_recuperados) +"%)"+ " | Total: "+ str(total_recuperados)+\
 "\n "+(emoji.emojize(":round_pushpin:"))+"Em Internamento: " + str(internados) + "(" + str(variacao_internados) +")"+ \
 "\n "+(emoji.emojize(":round_pushpin:"))+"Em UCI: " + str(uci) + "(" + str(variacao_uci) +")"+ \
 "\n \n"+(emoji.emojize(":thumbs_up:"))+" Recuperados " + str(perc_recuperados)+"% dos casos  \n[1/3]" \
