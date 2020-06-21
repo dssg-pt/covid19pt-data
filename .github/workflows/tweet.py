@@ -19,8 +19,13 @@ def autenticar_twitter():
   
     # authentication of access token and secret 
     auth.set_access_token(access_token, access_token_secret) 
-    api = tweepy.API(auth)
-    return api
+    try:
+        api = tweepy.API(auth)
+        return api
+    except Exception as e:
+        print("Erro a autenticar")
+        print(e)
+        pass
 
 def extrair_dados_ultimo_relatorio():
 
@@ -118,13 +123,17 @@ if __name__ == '__main__':
     texto_tweet_1, texto_tweet_2, texto_tweet_3 = compor_tweets(dados_extraidos)
 
     # Update status and create thread
-    tweet1 = api.update_status(status = texto_tweet_1)
-    tweet1Id = tweet1.id_str
-
-    tweet2=api.update_status(texto_tweet_2, tweet1Id)
-    tweet2Id = tweet2.id_str
-
-    api.update_status(texto_tweet_3, tweet2Id)
+    try:
+        tweet1 = api.update_status(status = texto_tweet_1)
+        tweet1Id = tweet1.id_str
+        tweet2=api.update_status(texto_tweet_2, tweet1Id)
+        tweet2Id = tweet2.id_str
+        api.update_status(texto_tweet_3, tweet2Id)
+    except Exception as e:
+        print("Erro a enviar o tweet")
+        print(e)
+        pass
+    
 
 
 
