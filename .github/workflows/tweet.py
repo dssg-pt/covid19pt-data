@@ -108,7 +108,7 @@ def compor_tweets(dados_para_tweets):
 📍 Madeira: {novos_madeira} \n \
 [2/3]"
 
-    third_tweet = "Dados nacionais, por concelho e de amostras actualizados no nosso GitHub \n [3/3] {}" )
+    third_tweet = "Dados nacionais, por concelho e de amostras actualizados no nosso GitHub \n [3/3] {}"
 
     texto_tweet_1 = tweet_message.format(**dados_para_tweets)
     texto_tweet_2 = second_tweet.format(**dados_para_tweets)
