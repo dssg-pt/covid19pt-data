@@ -4,4 +4,5 @@ numpy
 pytest-mock
 textract
 requests
-beautifulsoup4
+datetime
+tweepy
