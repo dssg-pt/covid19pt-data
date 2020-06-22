@@ -49,7 +49,7 @@ def rename_report(report_filepath, latest_date, latest_id):
 
     # TODO: Should check out whether m_date > latest_date (but latest_date should be extracted from the PDF metadata)
 
-    new_name = "Relatório-de-Situação-{:02d}_{:02d}_{:02d}_{:04d}.pdf".format(latest_id+1, m_date.day, m_date.month, m_date.year)
+    new_name = "Relatório-de-Situação-{:02d}_{:02d}_{:02d}_{:04d}.pdf".format(latest_id+1, m_date.day, m_date.month, m_date.year)
     os.rename(report_filepath, new_name)
     
     return new_name
