@@ -53,7 +53,7 @@ def extrair_dados_ultimo_relatorio():
     ##Óbitos
     dados_extraidos["total_obitos"]=df.obitos[-1]
     dados_extraidos["novos_obitos"]=int(df.obitos.diff()[-1])
-    dados_extraidos["aumento_obitos"]=round(dados_extraidos["novos_obitos"]/dados_extraidos["total_casos"]*100,2)
+    dados_extraidos["aumento_obitos"]=round(dados_extraidos["novos_obitos"]/dados_extraidos["total_obitos"]*100,2)
 
 
     ##Internados
@@ -68,7 +68,7 @@ def extrair_dados_ultimo_relatorio():
     #novos recuperados
     dados_extraidos["total_recuperados"]=int(df.recuperados[-1])
     dados_extraidos["novos_recuperados"]=int(df.recuperados.diff()[-1])
-    dados_extraidos["aumento_recuperados"]=round(dados_extraidos["novos_recuperados"]/dados_extraidos["total_casos"]*100,1)
+    dados_extraidos["aumento_recuperados"]=round(dados_extraidos["novos_recuperados"]/dados_extraidos["total_recuperados"]*100,1)
     #Percentagem total
     dados_extraidos["perc_recuperados"] = round(df.recuperados.tail(1).values[0]/df.confirmados.tail(1).values[0]*100,1)
 
