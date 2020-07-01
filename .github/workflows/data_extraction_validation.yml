@@ -15,13 +15,22 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
+      - name: Configure pt_PT locale
+        run: |
+          apt-get update -y && apt-get install -y locales && echo "pt_PT.UTF-8 UTF-8" | tee -a /etc/locale.gen && locale-gen pt_PT.UTF-8
+      - name: Configure pt_PT (Europe/Lisbon) timezone
+        run: |
+          ln -fs /usr/share/zoneinfo/Europe/Lisbon /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r .github/workflows/requirements.txt
+      - name: Scrap the report link from the DGS website
+        run: | 
+          python .github/workflows/Web_Scrapper_DGS.py
       - name: Download PDF
         run: | 
-          wget -c -P .github/workflows/ $(cat .github/workflows/report_link.txt)
+          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
       - name: Process PDF
         run: | 
           python .github/workflows/process_report.py
@@ -54,6 +63,13 @@ jobs:
       - name: Validate data about municipalities with pytest
         run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
         if: always()
+      - name: Auto publish to Twitter
+        run: python .github/workflows/tweet.py
+        env:
+            TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+            TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+            TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+            TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
       - name: Upload pytest test results
         uses: actions/upload-artifact@master
         with:
