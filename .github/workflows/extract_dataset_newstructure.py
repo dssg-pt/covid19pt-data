@@ -491,7 +491,7 @@ def get_all_percentages_from_list(lines):
 
 def get_transmissao_importada_value(lines):
     index_bottom = lines.index("CASOS IMPORTADOS")
-    index_upper = lines.index("00-09 anos")
+    index_upper = lines.index("Caso não exista informação disponível sobre data de início de sintomas, ")
     counter = 0
 
     for i in range(index_bottom, index_upper):
