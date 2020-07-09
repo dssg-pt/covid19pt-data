@@ -22,7 +22,7 @@ def get_amostras(url):
 if __name__ == '__main__':
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'amostras.csv')
-    URL = "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/An%C3%A1lises_Extra_Covid19/FeatureServer/0/query?f=json&Amostras_Novas&where=Confirmados%3E0&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Data_do_Relat%C3%B3rio%20desc&resultOffset=0&resultRecordCount=318&cacheHint=true"
+    URL = "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/An%C3%A1lises_Covid19/FeatureServer/0/query?f=json&Amostras_Novas&where=Confirmados%3E0&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Data_do_Relat%C3%B3rio%20desc&resultOffset=0&resultRecordCount=318&cacheHint=true"
 
     # Get the data available in the dashboard
     available = get_amostras(URL)
