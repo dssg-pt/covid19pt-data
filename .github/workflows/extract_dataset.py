@@ -141,14 +141,21 @@ def extract_data(reports, original_dataframe):
         try:
             print("Running first script")
 
-            [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
-            obitos_value, vigilancia_value,
-            confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
-            confirmados_arsnorte_value, obitos_arsnorte_value,  # recuperados_arsnorte_value,
-            confirmados_arscentro_value, obitos_arscentro_value,  # recuperados_arscentro_value,
-            confirmados_arslvt_value, obitos_arslvt_value,  #recuperados_arslvt_value,
+            [confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
+            confirmados_arsnorte_value, obitos_arsnorte_value, confirmados_arscentro_value,
+            obitos_arscentro_value, suspeitos_value, confirmados_value, n_confirmados_value, lab_value,
+            recuperados_value, obitos_value, vigilancia_value, confirmados_arslvt_value, obitos_arslvt_value,  
             confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
             ] = get_all_numbers_from_list(lines, "Total de casos", "Região de residência")
+            
+           # [suspeitos_value, confirmados_value, n_confirmados_value, lab_value, recuperados_value,
+           # obitos_value, vigilancia_value,
+           # confirmados_acores_value, obitos_acores_value, confirmados_madeira_value, obitos_madeira_value,
+           # confirmados_arsnorte_value, obitos_arsnorte_value,  # recuperados_arsnorte_value,
+           # confirmados_arscentro_value, obitos_arscentro_value,  # recuperados_arscentro_value,
+           # confirmados_arslvt_value, obitos_arslvt_value,  #recuperados_arslvt_value,
+           # confirmados_arsalentejo_value, obitos_arsalentejo_value, confirmados_arsalgarve_value, obitos_arsalgarve_value
+           # ] = get_all_numbers_from_list(lines, "Total de casos", "Região de residência")
             
         except ValueError:
 
