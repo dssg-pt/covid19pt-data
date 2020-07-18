@@ -40,7 +40,7 @@ jobs:
       - name: Update data about test samples
         run: | 
           python .github/workflows/update_amostras.py
-        if: always()
+        if: false # Skipping because data source is undergoing changes
       - name: Extract municipality data from arcgis
         run: | 
           python .github/workflows/extract_dados_concelhos.py
@@ -59,7 +59,7 @@ jobs:
         if: always()
       - name: Validate data about test samples with pytest
         run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
-        if: always()
+        if: false # disabled because number of samples extraction is undergoing changes
       - name: Validate data about municipalities with pytest
         run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
         if: always()
