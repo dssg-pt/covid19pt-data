@@ -12,7 +12,7 @@ def get_amostras(url):
         if entry['attributes']['Data_do_Relatório']:
             unix_date = entry['attributes']['Data_do_Relatório']/1000
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
-            amostras_total = entry['attributes']['Amostras']
+            amostras_total = entry['attributes']['Amostras__Ac']
             amostras_novas = entry['attributes']['Amostras_Novas']
             amostras.append([frmt_date, amostras_total, amostras_novas])
     
@@ -22,7 +22,7 @@ def get_amostras(url):
 if __name__ == '__main__':
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'amostras.csv')
-    URL = "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/An%C3%A1lises_Covid19/FeatureServer/0/query?f=json&Amostras_Novas&where=Confirmados%3E0&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Data_do_Relat%C3%B3rio%20desc&resultOffset=0&resultRecordCount=318&cacheHint=true"
+    URL = "https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/Covid19_Amostras/FeatureServer/0/query?where=Amostras_Novas+%3E+0&objectIds=&time=&resultType=none&outFields=*&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=Data_do_Relat%C3%B3rio+desc&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token="
 
     # Get the data available in the dashboard
     available = get_amostras(URL)
