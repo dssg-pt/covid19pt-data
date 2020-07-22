@@ -4,11 +4,7 @@
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)  e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
 
-❗ **Dados de casos confirmados por concelho**: Apesar da DGS estar actualmente a fornecer dados de casos confirmados por concelho, optamos por não os incluir (assim como recursos geográficos complementares) em virtude da incerteza metodológica e do grau de incompletude que actualmente os caracteriza. Iremos rever esta decisão à medida que a situação se desenvolve. 
-
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
-
-⚔️ **TAIKAI Fight COVID-19 Open Challenge:** Juntámos esforços com a TAIKAI para estimular o uso de dados abertos para estudar esta pandemia. Vejam [como podem ajudar](https://taikai.network/taikai/challenges/covid-19/categories/data-science-for-social-good-portugal). No website damos algumas sugestões de projetos, mas obviamente que a vossa criatividade é o limite!
 
 ✉️ **Carta Aberta à Direcção Geral de Saúde:** Escrevemos um relatório em formato de [Carta Aberta](https://docs.google.com/document/d/1Ce_CTcIZhDB2tzBV4jK8SkZYYpNF6wg3JtqaJlOZ43Q/edit) que contém tudo o que aprendemos acerca da estratégia de dados da DGS a respeito do COVID-19. Nesta carta fazemos várias sugestões no sentido de criar uma verdadeira cultura de dados abertos no seio desta organização. Se fazes parte de uma organização que partilha estes valores, a carta pode ser assinada [aqui](https://docs.google.com/forms/d/e/1FAIpQLScgHvFFrtjZG2sYK2NqmzxZDfyo_LabUSaCZdX-hkKdpOb8ZQ/viewform)
 
