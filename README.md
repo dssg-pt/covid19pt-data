@@ -41,6 +41,12 @@ _Porque tudo começa com bons dados._
 + [COVID19 Portugal data](https://covid19.anteropires.com/), por [Antero Pires](https://anteropires.com/)
 + [COVID-19 Portugal Dashboard](https://covid19dashboardpt.herokuapp.com/), por [@dvpinho](https://github.com/dvpinho)
 + [Como está a evoluir a pandemia covid-19 onde vivo?](https://www.publico.pt/interactivo/como-esta-evoluir-pandemia-covid19-onde-vivo#/), por Rui Barros, Dinis Correia e Hélio Carvalho (Público)
++ [COVID-19 Insights](https://insights.cotec.pt/), por [COTEC e Nova IMS](https://insights.cotec.pt/index.php/equipa)
++ [EyeData|COVID-19](https://analytics.socialdatalab.pt/EyeData/EyeData-COVID19.html), por [Agência Lusa](https://www.lusa.pt/) e [Social Data Lab](https://socialdatalab.pt/index.php/pt/)
++ [COVID-19](https://filipeataide.shinyapps.io/COVID19/), por [@filipeataide](https://github.com/filipeataide)
++ [Daily Portuguese COVID-19 Data](https://github.com/CEAUL/Dados_COVID-19_PT), por [@saghirb](https://github.com/saghirb)
++ [Epidemiologia Covid Interativa](https://barometro-covid-19.ensp.unl.pt/epidemiologia-da-covid-19/epidemiologia-covid-interativa/), por [Escola Nacional de Saúde Pública](https://www.ensp.unl.pt/home/)
++ [COVID-19 Rt estimator](https://alfredob.shinyapps.io/estR0/), por [@AlfredoBB](https://github.com/AlfredoBB)
 
 # 🧱 Estrutura
 
