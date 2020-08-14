@@ -40,6 +40,7 @@ jobs:
       - name: Update data about test samples
         run: | 
           python .github/workflows/update_amostras.py
+        if: always()
       - name: Extract municipality data from arcgis
         run: | 
           python .github/workflows/extract_dados_concelhos.py
