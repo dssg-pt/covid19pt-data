@@ -1,8 +1,8 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 16 de Agosto de 2020, 19:50
+📅️ **Última actualização**: 23 de Agosto de 2020, 23:54
 
-ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) desde 03/03/2020.
+ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)), dos [relatórios de situação publicados diariamente](https://covid19.min-saude.pt/relatorio-de-situacao/) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
 
@@ -161,6 +161,20 @@ Uma explicação do conteúdo em `data.csv`.
 | `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
 | `confirmados_desconhecidos_m` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador 
 | `confirmados_desconhecidos_f` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_0_9` | Número de casos confirmados na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_10_19` | Número de casos confirmados na faixa etária 10-19 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_20_29` | Número de casos confirmados na faixa etária 20-29 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_30_39` | Número de casos confirmados na faixa etária 30-39 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_40_49` | Número de casos confirmados na faixa etária 40-49 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_50_59` | Número de casos confirmados na faixa etária 50-59 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_60_69` | Número de casos confirmados na faixa etária 60-69 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_70_79` | Número de casos confirmados na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_80_89` | Número de casos confirmados na faixa etária 80-89 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `confirmados_90_99` | Número de casos confirmados na faixa etária 0-9 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `ativos` | Número de casos ativos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `obitos_novos` | Número de novos óbitos comparativamente ao dia anterior | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+| `recuperados_novos` | Número de novos recuperados comparativamente ao dia anterior | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
+
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 > A 26/03/2020, a soma do número de pacientes recuperados por ARS/Região Autónoma nem sempre é igual ao número total de recuperados. A DGS reportou os dados desta forma, indicando que o diferencial correspondia a "_21 casos recuperados laboratorialmente_" e a "_aguardar mais informação._"
