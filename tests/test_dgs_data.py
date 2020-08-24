@@ -32,7 +32,7 @@ def dgs_data():
 
 
 def _check_column_with_empty(val):
-    """ Guarantees columns with empty values are as expeceted. """
+    """ Guarantees columns with empty values are as expected. """
 
     # Let's check if it's a float
     if isinstance(val, float):
@@ -123,7 +123,7 @@ def test_dates():
         ("internados", (float, str), _check_column_with_empty),
         ("internados_uci", (float, str), _check_column_with_empty),
         # Casos suspeitos
-        ("suspeitos", (int), lambda x: x >= 0),
+        ("suspeitos", (float, str), _check_column_with_empty),
         # Casos sob vigilância
         ("vigilancia", (float, str), _check_column_with_empty),
         # Casos não confirmados
@@ -156,18 +156,10 @@ def test_dates():
         # Sintomas
         ("sintomas_tosse", (float, str), _check_column_with_empty_sintomas),
         ("sintomas_febre", (float, str), _check_column_with_empty_sintomas),
-        (
-            "sintomas_dificuldade_respiratoria",
-            (float, str),
-            _check_column_with_empty_sintomas,
-        ),
+        ("sintomas_dificuldade_respiratoria",(float, str),_check_column_with_empty_sintomas),
         ("sintomas_cefaleia", (float, str), _check_column_with_empty_sintomas),
         ("sintomas_dores_musculares", (float, str), _check_column_with_empty_sintomas),
-        (
-            "sintomas_fraqueza_generalizada",
-            (float, str),
-            _check_column_with_empty_sintomas,
-        ),
+        ("sintomas_fraqueza_generalizada",(float, str),_check_column_with_empty_sintomas),
         ("sintomas_tosse", (float, str), _check_column_with_empty_sintomas),
         # Óbitos
         ("obitos", (int), lambda x: x >= 0),
@@ -209,6 +201,7 @@ def test_dates():
         ("recuperados_acores", (float, str), _check_column_with_empty),
         ("recuperados_madeira", (float, str), _check_column_with_empty),
         ("recuperados_estrangeiro", (float, str), _check_column_with_empty),
+        ("ativos", (float, str), _check_column_with_empty),
     ],
 )
 def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
