@@ -228,8 +228,8 @@ if __name__ == '__main__':
                 
     # ORDENAR DADOS
     new_row = pd.DataFrame([[
-        DATE,
-        "{} 00:00".format(DATE),
+        today,
+        "{} 00:00".format(today),
         confirmados,
         confirmados_arsnorte,
         confirmados_arscentro,
