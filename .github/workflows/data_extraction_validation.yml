@@ -36,7 +36,7 @@ jobs:
           python .github/workflows/process_report.py
       - name: Run data extraction
         run: | 
-          python .github/workflows/extract_dataset.py
+          python .github/workflows/extract_data_arcgis.py
       - name: Update data about test samples
         run: | 
           python .github/workflows/update_amostras.py
