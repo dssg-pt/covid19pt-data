@@ -90,8 +90,7 @@ def get_ars_data():
 if __name__ == '__main__':
 
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'data.csv')
-    #today = str(datetime.date.today().strftime("%d-%m-%Y"))
-    today = '29-08-2020'
+    today = str(datetime.date.today().strftime("%d-%m-%Y"))
     
     url = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query?where=ConfirmadosNovos>=0&outFields=*&orderByFields=Data+desc&groupByFieldsForStatistics=&f=pjson&token='
     data = requests.get(url)
