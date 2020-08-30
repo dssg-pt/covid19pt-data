@@ -106,7 +106,7 @@ if __name__ == '__main__':
             unix_date = entry['attributes']['Data']/1000
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m-%Y")
             
-            if frmt_date == today: # today: #change to another day to experiment
+            if frmt_date == '29-08-2020': # today: #change to another day to experiment
     
               #  print("In with", frmt_date)
                 
