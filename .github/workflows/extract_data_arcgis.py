@@ -209,6 +209,15 @@ if __name__ == '__main__':
                     confirmados_madeira = entry['attributes']['ConfirmadosAcumulado']
                     obitos_madeira = entry['attributes']['Obitos']
                 
+                elif entry['attributes']['ARSNome'] == 'Açores':
+                    confirmados_acores = entry['attributes']['ConfirmadosAcumulado']
+                    obitos_acores = entry['attributes']['Obitos']
+                
+                elif entry['attributes']['ARSNome'] == 'Madeira':
+                    confirmados_madeira = entry['attributes']['ConfirmadosAcumulado']
+                    obitos_madeira = entry['attributes']['Obitos']
+                
+
                 elif entry['attributes']['ARSNome'] == 'ARS Algarve':
                     confirmados_arsalgarve = entry['attributes']['ConfirmadosAcumulado']
                     obitos_arsalgarve = entry['attributes']['Obitos']
