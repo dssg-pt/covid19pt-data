@@ -93,7 +93,7 @@ if __name__ == '__main__':
     DAYS_OFFSET = 0
     today = str((datetime.date.today()-datetime.timedelta(days=DAYS_OFFSET)).strftime("%d-%m-%Y"))
     
-    url = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query?where=ConfirmadosNovos>=0&outFields=*&orderByFields=Data+desc&groupByFieldsForStatistics=&f=pjson&token='
+    url = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query?where=ConfirmadosAcumulado>=0&outFields=*&orderByFields=Data+desc&groupByFieldsForStatistics=&f=pjson&token='
     data = requests.get(url)
     data = data.json()
     
