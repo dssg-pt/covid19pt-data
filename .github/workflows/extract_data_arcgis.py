@@ -101,13 +101,16 @@ if __name__ == '__main__':
     obitos_ars = {}
     
     # DADOS NACIONAIS
+    (found_date, latest_date) = (False, 0)
     for entry in data['features']:
         if entry['attributes']['Data']:
             
             unix_date = entry['attributes']['Data']/1000
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m-%Y")
+            latest_date = max(latest_date, unix_date)
             
             if frmt_date == today: # today: #change to another day to experiment
+                found_date = True
     
               #  print("In with", frmt_date)
                 
@@ -235,6 +238,9 @@ if __name__ == '__main__':
                 recuperados_arsnorte, recuperados_arscentro, recuperados_arslvt, recuperados_arsalentejo, recuperados_arsalgarve = "", "", "", "", ""
                 recuperados_acores, recuperados_madeira = "", ""
 
+    if not found_date:
+        frmt_date = datetime.datetime.utcfromtimestamp(latest_date).strftime("%d-%m-%Y")
+        raise Exception(f"Missing date {today}, latest date {frmt_date}")
                 
     # ORDENAR DADOS
     new_row = pd.DataFrame([[
