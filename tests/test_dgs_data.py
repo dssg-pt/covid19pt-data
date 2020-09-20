@@ -290,7 +290,7 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
             ["obitos_f", "obitos_m"],
         ),
         (["obitos_f", "obitos_m"], ["obitos"]),
-            pytest.param(["confirmados_f", "confirmados_m"], ["confirmados"], marks=pytest.mark.xfail),
+            pytest.param(["confirmados_f", "confirmados_m"], ["confirmados"]),
         (
             [
                 "obitos_arsnorte",
