@@ -30,6 +30,23 @@ def get_list_municipalities():
     
     return concelhos_df
 
+skip_dates = [
+    # On Sunday 05-07-2020 data was frozen:
+    # "ESTE RELATÓRIO DE SITUAÇÃO NÃO INCLUI A ATUALIZAÇÃO DA IMPUTAÇÃO DE CASOS
+    # AOS CONCELHOS. A DGS ESTÁ A REALIZAR A VERIFICAÇÃO DE TODOS OS DADOS COM
+    # AS AUTORIDADES LOCAIS E REGIONAIS DE SAÚDE QUE FICARÁ CONCLUÍDA DURANTE OS
+    # PRÓXIMOS DIAS.
+    # Data unfroze on Tuesday 14-07-2020, and then it's updated only on Mondays.
+    # This keeps Monday 06-07 and 13-07 for consistency, and ignore the duplicate
+    # data until Sunday 16-08
+    '07-07-2020', '08-07-2020', '09-07-2020', '10-07-2020', '11-07-2020', '12-07-2020',
+    '15-07-2020', '16-07-2020', '17-07-2020', '18-07-2020', '19-07-2020',
+    '21-07-2020', '22-07-2020', '23-07-2020', '24-07-2020', '25-07-2020', '26-07-2020',
+    '28-07-2020', '29-07-2020', '30-07-2020', '31-07-2020', '01-08-2020', '02-08-2020',
+    '04-08-2020', '05-08-2020', '06-08-2020', '07-08-2020', '08-08-2020', '09-08-2020',
+    '11-08-2020', '12-08-2020', '13-08-2020', '14-08-2020', '15-08-2020', '16-08-2020',
+]
+
 def get_list_cases_long():
     
     resultOffset = 0
@@ -45,6 +62,7 @@ def get_list_cases_long():
         for entry in data['features']:
             unix_date = entry['attributes']['Data']/1000
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m-%Y")
+            if frmt_date in skip_dates: continue
             confirmados_acumulado = entry['attributes']['ConfirmadosAcumulado']
             confirmados_concelho = entry['attributes']['Concelho']
             casos.append([frmt_date, confirmados_concelho, confirmados_acumulado])
@@ -66,6 +84,10 @@ def patch_concelhos(concelhos):
     fix1 = concelhos.data=='16-05-2020'
     concelhos.loc[fix1, 'SANTO TIRSO'] = 378
     concelhos.loc[fix1, 'SÃO BRÁS DE ALPORTEL'] = 3
+
+    # is 157 on 09 and 11
+    fix2 = concelhos.data=='10-08-2020'
+    concelhos.loc[fix2, 'REGUENGOS DE MONSARAZ'] = 157
 
     return concelhos    
 
