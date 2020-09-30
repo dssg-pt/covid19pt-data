@@ -92,16 +92,30 @@ def test_blank_lines(data_amostras):
     assert val["data"] != np.nan, "Empty row"
 
     
-@pytest.mark.xfail(reason="Dados concelhos com dia em falta")
 def test_sequentiality_dates(data_amostras):
     """
     Tests if the sequentiality of dates is correct
     """
 
+    skip = 1
     for i, row in data_amostras.iterrows(): 
         if i >= 1:
             today_date = data_amostras.iloc[i]["data"]
             yesterday_date = data_amostras.iloc[i-1]["data"]
             diff_date = (today_date - yesterday_date).days
-            assert diff_date == 1
+            # data was frozen between 4 and 14 inclusive
+            # data for monday 4 and 13 were kept for weekly consistency
+            if '2020-07-13' in str(today_date):
+                skip = 7
+            # data was unfrozen tuesday 14 so this needs to 
+            # skip 1 (13-14) and then 6, for a whole week
+            if '2020-07-14' in str(today_date):
+                skip = 1
+            if '2020-07-20' in str(today_date):
+                skip = 6
+            # from this point, it's weekly
+            if '2020-07-27' in str(today_date):
+                skip = 7
+
+            assert diff_date == skip
 
