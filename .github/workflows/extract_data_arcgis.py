@@ -122,29 +122,30 @@ if __name__ == '__main__':
                     recuperados = entry['attributes']['Recuperados']
                     confirmados_novos = entry['attributes']['ConfirmadosNovos']
                     internados = entry['attributes']['Internados']
+                    internados_enfermaria = entry['attributes']['InternadosEnfermaria']
                     internados_uci = entry['attributes']['InternadosUCI']
                     confirmados_m = entry['attributes']['conftotalm']
                     confirmados_f = entry['attributes']['conftotalf']
     
                     # Deixaram de existir
-                    suspeitos = "" #entry['attributes']['Suspeitos']
-                    lab = "" #entry['attributes']['AguardarResultadosLab']
-                    vigilancia = entry['attributes']['EmVigil']
-                    transmissao_importada = "" #entry['attributes']['casosimportados'] 
-                    confirmados_estrangeiro = "" #entry['attributes']['Estrangeiro']
-    
-                    sintomas_febre = "" #entry['attributes']['sintomafebre']
-                    sintomas_tosse = "" #entry['attributes']['sintomatosse']
-                    sintomas_dores_musculares = "" #entry['attributes']['sintomadores']
-                    sintomas_cefaleia = "" #entry['attributes']['sintomador']
-                    sintomas_fraqueza_generalizada = "" #entry['attributes']['sintomafraqueza']
-                    sintomas_dificuldade_respiratoria = "" #entry['attributes']['sintomadifrespiratoria']
-    
+                    suspeitos = entry['attributes'].get('Suspeitos', '')
+                    lab = entry['attributes'].get('AguardarResultadosLab', '')
+                    vigilancia = entry['attributes'].get('EmVigil', '')
+                    transmissao_importada = entry['attributes'].get('casosimportados', '')
+                    confirmados_estrangeiro = entry['attributes'].get('Estrangeiro', '')
+
+                    sintomas_febre = entry['attributes'].get('sintomafebre', '')
+                    sintomas_tosse = entry['attributes'].get('sintomatosse', '')
+                    sintomas_dores_musculares = entry['attributes'].get('sintomadores', '')
+                    sintomas_cefaleia = entry['attributes'].get('sintomador', '')
+                    sintomas_fraqueza_generalizada = entry['attributes'].get('sintomafraqueza', '')
+                    sintomas_dificuldade_respiratoria = entry['attributes'].get('sintomadifrespiratoria', '')
+
                     # Novos mas não preenchidos (não acrescentar, deixar caso futuramente atualizem os valores)
-                    transmissao_contacto = "" # entry['attributes']['casoscontacto']
-                    cadeias_transmissao = "" # entry['attributes']['CadeiasTransm']
-    
-                    # Novos                                        
+                    transmissao_contacto = entry['attributes'].get('casoscontacto', '')
+                    cadeias_transmissao = entry['attributes'].get('CadeiasTransm', '')
+
+                    # Novos
                     confirmados_0_9_f = entry['attributes']['conf0009f']
                     confirmados_0_9_m = entry['attributes']['conf0009m']
                     confirmados_10_19_f = entry['attributes']['conf1019f']
@@ -330,7 +331,8 @@ if __name__ == '__main__':
         obitos_m,
         confirmados_desconhecidos_m,
         confirmados_desconhecidos_f,
-        ativos
+        ativos,
+        internados_enfermaria,
     ]])
         
     # write to csv
