@@ -197,4 +197,4 @@ Quaisquer sugestões de dados complementares (provenientes de fontes oficiais), 
 
 A [Data Science for Social Good Portugal](https://www.dssg.pt) é uma comunidade aberta de cientistas de dados, amantes de dados e entusiastas de dados que querem atacar problemas que importam verdadeiramente. Acreditamos no poder dos dados para transformar a nossa sociedade para o melhor e para todos.
 
-[@dssgPT](https://twitter.com/dssgpt) | [fb.com/DSSGPortugal](https://www.facebook.com/DSSGPortugal/) | [Instagram @dssg_pt](www.instagram.com/dssg_pt/) | [LinkedIn](https://www.linkedin.com/company/dssg-portugal)
+[@dssgPT](https://twitter.com/dssgpt) | [fb.com/DSSGPortugal](https://facebook.com/DSSGPortugal/) | [Instagram @dssg_pt](https://instagram.com/dssg_pt/) | [LinkedIn](https://linkedin.com/company/dssg-portugal)
