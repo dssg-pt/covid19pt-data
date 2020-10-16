@@ -78,6 +78,14 @@ def get_list_cases_long():
     
     return casos_df
 
+def convert(x):
+    if np.isnan(x):
+        return ''
+    try:
+        return int(x)
+    except:
+        return x
+
 
 def patch_concelhos(concelhos):
     
@@ -88,6 +96,11 @@ def patch_concelhos(concelhos):
     # is 157 on 09 and 11
     fix2 = concelhos.data=='10-08-2020'
     concelhos.loc[fix2, 'REGUENGOS DE MONSARAZ'] = 157
+
+    # 02-04-2020 has two entries for PENACOVA, 5 and 6, which becomes 5.5
+    # 01 is 5, 03 is 7, assuming 02 is 6
+    fix2 = concelhos.data=='02-04-2020'
+    concelhos.loc[fix2, 'PENACOVA'] = 6
 
     return concelhos    
 
@@ -116,5 +129,7 @@ if __name__ == '__main__':
     casos_wide.data = casos_wide['data'].dt.strftime('%d-%m-%Y')
     
     casos_wide = patch_concelhos(casos_wide)
+    cols = [x for x in casos_wide.columns if not x.startswith('data')]
+    casos_wide[cols] = casos_wide[cols].applymap(convert)
 
     casos_wide.to_csv(PATH_TO_CSV, index=False, sep = ',') 
