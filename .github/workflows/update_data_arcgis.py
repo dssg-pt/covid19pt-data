@@ -44,7 +44,7 @@ def convert(x):
     try:
         return int(x)
     except:
-        return 'x'
+        return x
 
 
 if __name__ == '__main__':
