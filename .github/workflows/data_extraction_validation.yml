@@ -9,7 +9,7 @@ jobs:
   build:
     if: startsWith(github.head_ref, 'dados')
     runs-on: ubuntu-latest
-    container: python:3
+    container: python:3.7
 
     steps:
       - uses: actions/checkout@v2
