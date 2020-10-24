@@ -91,8 +91,9 @@ if __name__ == '__main__':
 
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'data.csv')
     DAYS_OFFSET = 0
-    today = str((datetime.date.today()-datetime.timedelta(days=DAYS_OFFSET)).strftime("%d-%m-%Y"))
-    
+    #today = str((datetime.date.today()-datetime.timedelta(days=DAYS_OFFSET)).strftime("%d-%m-%Y"))
+    today = 23-10-2020
+
     url = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query?where=ConfirmadosAcumulado>=0&outFields=*&orderByFields=Data+desc&groupByFieldsForStatistics=&f=pjson&token='
     data = requests.get(url)
     data = data.json()
