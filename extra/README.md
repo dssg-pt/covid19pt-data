@@ -20,12 +20,13 @@ com o coronavírus. (Um obrigado ao Rui Barros pela ajuda!)
 
 ## 🧑 Populacional
 
-Contém dois datasets descritivos da população portuguesa, do PORDATA:
+Contém três datasets descritivos da população portuguesa, do PORDATA:
 
-- [Densidade Populacional](https://www.pordata.pt/Municipios/Densidade+populacional-452)
+- [Densidade populacional](https://www.pordata.pt/Municipios/Densidade+populacional-452)
+- [População residente](https://www.pordata.pt/Municipios/População+residente++estimativas+a+31+de+Dezembro-120)
 - [Índice de dependência de idosos](https://www.pordata.pt/Municipios/%C3%8Dndice+de+depend%C3%AAncia+de+idosos-461)
 
-É fornecido o ficheiro acima, para 2018, e uma versão simplificada em CSV, contendo as contagens para as regiões NUTS II (Usadas pela DGS para reportar os casos)
+São fornecidos os ficheiros acima, para 2019, e versão simplificadas em CSV, contendo as contagens para as regiões NUTS II e para Concelhos, usadas pela DGS para reportar os casos.
 
 ## 🏥 Saúde
 
