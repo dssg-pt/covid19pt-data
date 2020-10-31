@@ -3,89 +3,6 @@ import datetime
 import pandas as pd
 from pathlib import Path
 
-def get_national_data():
-
-    url_nacional = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19Portugal_view/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&orderByFields=datarelatorio+desc'
-    data = requests.get(url_nacional)
-    data = data.json()
-
-    dados_nacionais = {}
-
-    for entry in data['features']:
-
-        if entry['attributes']['datarelatorio']:
-
-            unix_date = entry['attributes']['datarelatorio']/1000
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m-%Y")
-
-            if frmt_date == today:
-
-                dados_nacionais['data'] = frmt_date
-
-                # These seem to be updated everyday
-                dados_nacionais['confirmados'] = entry['attributes']['casosconfirmados']
-                dados_nacionais['obitos'] = entry['attributes']['nrobitos']
-                dados_nacionais['recuperados'] = entry['attributes']['recuperados']
-                dados_nacionais['confirmados_novos'] = entry['attributes']['casosnovos']
-                dados_nacionais['internados'] = entry['attributes']['CasosInternados']
-                dados_nacionais['internados_uci'] = entry['attributes']['CasosInternadosUCI']
-                dados_nacionais['confirmados_m'] = entry['attributes']['casosmasculino']
-                dados_nacionais['confirmados_f'] = entry['attributes']['casosfeminino']
-
-                dados_nacionais['confirmados_0_9'] = entry['attributes']['gr_etario_0_9']
-                dados_nacionais['confirmados_10_19'] = entry['attributes']['gr_etario_10_19']
-                dados_nacionais['confirmados_20_29'] = entry['attributes']['gr_etario_20_29']
-                dados_nacionais['confirmados_30_39'] = entry['attributes']['gr_etario_30_39']
-                dados_nacionais['confirmados_40_49'] = entry['attributes']['gr_etario_40_49']
-                dados_nacionais['confirmados_50_59'] = entry['attributes']['gr_etario_50_59']
-                dados_nacionais['confirmados_60_69'] = entry['attributes']['gr_etario_60_69']
-                dados_nacionais['confirmados_70_79'] = entry['attributes']['gr_etario_70_79']
-                dados_nacionais['confirmados_80_89'] = entry['attributes']['gr_etario_80_89']
-                dados_nacionais['confirmados_90_99'] = entry['attributes']['gr_etario_90_99']
-
-                dados_nacionais['ativos'] = entry['attributes']['CasosActivos']
-                dados_nacionais['obitos_novos'] = entry['attributes']['obitosnovos']
-                dados_nacionais['recuperados_novos'] = entry['attributes']['recuperadosnovos']
-
-                # These usually present 'None' values
-                dados_nacionais['suspeitos'] = entry['attributes']['casossuspeitos']
-                dados_nacionais['lab'] = entry['attributes']['AguardaReslab']
-                dados_nacionais['vigilancia'] = entry['attributes']['ContactosVigil']
-                dados_nacionais['transmissao_importada'] = entry['attributes']['casosimportados']
-                dados_nacionais['cadeias_transmissao'] = entry['attributes']['CadeiasTransm']
-                dados_nacionais['confirmados_estrangeiro'] = entry['attributes']['Estrangeiro']
-
-                dados_nacionais['sintomas_febre'] = entry['attributes']['sintomafebre']
-                dados_nacionais['sintomas_tosse'] = entry['attributes']['sintomatosse']
-                dados_nacionais['sintomas_dores_musculares'] = entry['attributes']['sintomadores']
-                dados_nacionais['sintomas_cefaleia'] = entry['attributes']['sintomador']
-                dados_nacionais['sintomas_fraqueza_generalizada'] = entry['attributes']['sintomafraqueza']
-                dados_nacionais['sintomas_dificuldade_respiratoria'] = entry['attributes']['sintomadifrespiratoria']
-
-    return dados_nacionais
-
-def get_ars_data():
-    url_ars = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_ARS_View2/FeatureServer/0/query?where=ConfirmadosAcumulado_ARS+%3E+0&outFields=*&returnGeometry=false&f=pjson&token='
-
-    data_ars = requests.get(url_ars)
-    data_ars = data_ars.json()
-
-    confirmados_ars = {}
-    obitos_ars = {}
-
-    for entry in data_ars['features']:
-
-        unix_date_ars = entry['attributes']['Data_ARS']/1000
-        frmt_date_ars = datetime.datetime.utcfromtimestamp(unix_date_ars).strftime("%d-%m-%Y")
-
-        if frmt_date_ars == today:
-
-            ars_name = entry['attributes']['ARSNome'].lower()
-            confirmados_ars[ars_name] = entry['attributes']['ConfirmadosAcumulado_ARS']
-            obitos_ars[ars_name] = entry['attributes']['Obitos_ARS']
-
-    return confirmados_ars, obitos_ars
-
 
 if __name__ == '__main__':
 
@@ -210,11 +127,10 @@ if __name__ == '__main__':
                     obitos_80_plus_m = "" if missing_obitos and not obitos_80_plus_m else obitos_80_plus_m
 
                     ativos = entry['attributes']['Activos']
+                    # note: RecuperadosNovos and ObitosNovos have strange values
+                    #       maybe replaced with VarRecuperados and VarObitos
 
                 elif entry['attributes']['ARSNome'] == 'ARS Norte':
-                   # ars_name = entry['attributes']['ARSNome'].lower()
-                   # confirmados_ars[ars_name] = entry['attributes']['ConfirmadosAcumulado_ARS']
-                   # obitos_ars[ars_name] = entry['attributes']['Obitos_ARS']
                     confirmados_arsnorte = entry['attributes']['ConfirmadosAcumulado']
                     obitos_arsnorte = entry['attributes']['Obitos']
 
