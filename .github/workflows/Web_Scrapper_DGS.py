@@ -7,7 +7,7 @@ Created on Thu May 28 18:17:11 2020
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 import fileinput
 import locale
@@ -56,7 +56,8 @@ def update_readme(date_now):
 if __name__ == '__main__':
     
     # Today
-    date=(datetime.today())
+    DAYS_OFFSET = 0
+    date=(datetime.today() - timedelta(days=DAYS_OFFSET))
 
     # The link
     link=links_of_day('https://covid19.min-saude.pt/relatorio-de-situacao/', "Relatório de Situação", date)
