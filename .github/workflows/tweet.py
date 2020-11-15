@@ -106,17 +106,15 @@ def compor_tweets(dados_para_tweets):
     # Main tweet
     tweet_message = (
         "🆕Dados #COVID19PT atualizados [{dia}]:\n"
-        "📍Novos casos: {novos_casos}({aumento_casos}%) | Total: {total_casos}\n"
-        "📍Novos óbitos: {novos_obitos}({aumento_obitos}%) | Total: {total_obitos}\n"
-        "📍Novos recuperados: {novos_recuperados}({aumento_recuperados}%) | Total: {total_recuperados}\n"
-        "📍Em Internamento: {internados}({variacao_internados})\n"
-        "📍Em UCI: {uci}({variacao_uci})\n"
+        "📍Novos casos: {novos_casos} ({aumento_casos}%) | Total: {total_casos}\n"
+        "📍Novos óbitos: {novos_obitos} ({aumento_obitos}%) | Total: {total_obitos}\n"
+        "\n"
+        "📍Ativos: {total_ativos} ({novos_ativos})\n"
+        "📍Internados: {internados} ({variacao_internados})\n"
+        "📍Em UCI: {uci} ({variacao_uci})\n"
         "\n"
         "👍Recuperados {perc_recuperados}% dos casos\n"
         "[1/3]")
-
-    #    "📍Novos ativos: {novos_ativos}({aumento_ativos}%) | Total: {total_ativos}\n"
-    #    "👎Ativos {perc_ativos}% dos casos\n"
 
     # Thread
     second_tweet = (
@@ -131,7 +129,7 @@ def compor_tweets(dados_para_tweets):
         "[2/3]")
 
     third_tweet = (
-        "Dados nacionais actualizados no nosso GitHub.\n"
+        "Todos os dados no nosso GitHub.\n"
         "[3/3] {}")
 
     texto_tweet_1 = tweet_message.format(**dados_para_tweets)
