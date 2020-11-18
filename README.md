@@ -163,6 +163,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_desconhecidos_f` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
 | `ativos` | Número de casos ativos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
 | `internados_enfermaria` | Número de pacientes COVID-19 internados em Enfermaria (não Unidades de Cuidados Intensivos) | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_desconhecidos` | Número de casos confirmados com sexo desconhecido | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
 
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 > A 26/03/2020, a soma do número de pacientes recuperados por ARS/Região Autónoma nem sempre é igual ao número total de recuperados. A DGS reportou os dados desta forma, indicando que o diferencial correspondia a "_21 casos recuperados laboratorialmente_" e a "_aguardar mais informação._"

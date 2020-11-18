@@ -44,6 +44,9 @@ if __name__ == '__main__':
                     confirmados_m = entry['attributes']['conftotalm']
                     confirmados_f = entry['attributes']['conftotalf']
 
+                    # apareceu no boletim 16-11-2020 mas não está na API - calculado para agora
+                    confirmados_desconhecidos = confirmados - confirmados_m - confirmados_f
+
                     # Deixaram de existir
                     suspeitos = entry['attributes'].get('Suspeitos', '')
                     lab = entry['attributes'].get('AguardarResultadosLab', '')
@@ -269,6 +272,7 @@ if __name__ == '__main__':
         confirmados_desconhecidos_f,
         ativos,
         internados_enfermaria,
+        confirmados_desconhecidos,
     ]])
 
     # write to csv
