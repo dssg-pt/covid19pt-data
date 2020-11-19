@@ -57,8 +57,68 @@ def get_amostras(url):
     return amostras_df
 
 
+NOVAS = ("amostras_novas", "amostras_pcr_novas")
+FIXES = (
+    # data, columns, fix_value, wrong_value
+    ("16-03-2020", NOVAS, 1683, 1677),
+    ("18-03-2020", NOVAS, 2465, 2458),
+    ("19-03-2020", NOVAS, 2498, 2490),
+    ("24-03-2020", NOVAS, 5027, 5015),
+    ("25-03-2020", NOVAS, 5319, 5309),
+    ("26-03-2020", NOVAS, 6694, 6689),
+    ("27-03-2020", NOVAS, 7913, 7877),
+    ("30-03-2020", NOVAS, 7986, 7953),
+    ("31-03-2020", NOVAS, 7962, 7942),
+    ("01-04-2020", NOVAS, 8650, 8630),
+    ("02-04-2020", NOVAS, 9299, 9257),
+    ("03-04-2020", NOVAS, 9479, 9438),
+    ("04-04-2020", NOVAS, 9158, 9055),
+    ("06-04-2020", NOVAS, 9369, 9186),
+    ("07-04-2020", NOVAS, 10623, 10557),
+    ("08-04-2020", NOVAS, 11691, 11402),
+    ("10-04-2020", NOVAS, 10216, 10187),
+    ("11-04-2020", NOVAS, 9121, 9101),
+    ("13-04-2020", NOVAS, 8944, 8887),
+    ("15-04-2020", NOVAS, 13649, 13628),
+    ("16-04-2020", NOVAS, 13474, 13400),
+    ("17-04-2020", NOVAS, 14720, 14717),
+    ("18-04-2020", NOVAS, 12795, 12779),
+    ("20-04-2020", NOVAS, 11089, 11003),
+    ("21-04-2020", NOVAS, 14930, 14829),
+    ("22-04-2020", NOVAS, 15531, 15438),
+    ("23-04-2020", NOVAS, 15183, 15113),
+    ("24-04-2020", NOVAS, 14817, 14733),
+    ("27-04-2020", NOVAS, 12207, 12160),
+    ("30-04-2020", NOVAS, 16438, 16390),
+    ("07-11-2020", "amostras_novas", 33480, 33482),
+    ("07-11-2020", "amostras_antigenio_novas", 774, 776),
+    ("09-11-2020", "amostras_novas", 33316, 33314),
+    ("09-11-2020", "amostras_antigenio_novas", 1128, 1126),
+)
+
+
+def fix_amostras(data):
+    for i in ("26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"):
+        data.loc[
+            data.data == i,
+            [
+                "amostras_pcr",
+                "amostras_pcr_novas",
+                "amostras_antigenio",
+                "amostras_antigenio_novas",
+            ],
+        ] = ""
+
+    for fix in FIXES:
+        data.loc[data.data == fix[0], fix[1]] = fix[2]
+    return data
+
+
 def convert(x):
-    if np.isnan(x):
+    try:
+        if np.isnan(x):
+            return ""
+    except:
         return ""
     try:
         return int(x)
@@ -71,7 +131,9 @@ if __name__ == "__main__":
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "amostras.csv")
     URL = (
         "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Amostras/FeatureServer/0/query"
-        "?where=1%3D1&outFields=*&cacheHint=true&orderByFields=Data_do_Relatorio%20desc&f=pjson"
+        "?where=Total_Amostras__Ac+%3E+0"
+        "&orderByFields=Data_do_Relatorio+desc"
+        "&f=pjson&outFields=*&cacheHint=true"
     )
     # Get the data available in the dashboard
     available = get_amostras(URL)
@@ -89,7 +151,7 @@ if __name__ == "__main__":
         "amostras_antigenio_novas",
     ]:
         if col not in latest.columns:
-            latest.loc[:, col] = 0  # NaN!
+            latest.loc[:, col] = np.nan
 
     # Find rows with differences
     merged = available.merge(
@@ -100,6 +162,13 @@ if __name__ == "__main__":
     different_rows = merged[
         (merged.amostras_available != merged.amostras_latest)
         | (merged.amostras_novas_available != merged.amostras_novas_latest)
+        | (merged.amostras_pcr_available != merged.amostras_pcr_latest)
+        | (merged.amostras_pcr_novas_available != merged.amostras_pcr_novas_latest)
+        | (merged.amostras_antigenio_available != merged.amostras_antigenio_latest)
+        | (
+            merged.amostras_antigenio_novas_available
+            != merged.amostras_antigenio_novas_latest
+        )
     ]
 
     # Order by date
@@ -147,7 +216,10 @@ if __name__ == "__main__":
     # sort by date
     updated = updated.sort_values("data")
     updated["data"] = updated["data"].dt.strftime("%d-%m-%Y")
+    # convert values to integer
     cols = [x for x in updated.columns if not x.startswith("data")]
     updated[cols] = updated[cols].applymap(convert)
+    # fix values
+    updated = fix_amostras(updated)
     # save to .csv
     updated.to_csv(PATH_TO_CSV, index=False, line_terminator="\n")
