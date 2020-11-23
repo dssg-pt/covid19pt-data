@@ -129,6 +129,13 @@ def convert(x):
 if __name__ == "__main__":
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "amostras.csv")
+
+    # Dashboard shows sum(amostras_novas), which is less than the latest amostras :|
+    #    https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Amostras/FeatureServer/0/query
+    #    ?where=1%3D1
+    #    &outStatistics=%5B%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22Total_Amostras_Novas%22%2C%22outStatisticFieldName%22%3A%22value%22%7D%5D
+    #    &f=pjson&outFields=*&cacheHint=true
+
     URL = (
         "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Amostras/FeatureServer/0/query"
         "?where=Total_Amostras__Ac+%3E+0"

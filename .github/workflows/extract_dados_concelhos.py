@@ -3,34 +3,10 @@ import pandas as pd
 import datetime
 import numpy as np
 from pathlib import Path
+from util_concelhos import get_list_municipalities, convert, convert_to_int
 
 
-def get_list_municipalities():
-    resultOffset = 0
-    resultRecordCount = 200
-
-    url_concelhos = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_Concelhos_V/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&cacheHint=true&resultOffset={}&resultRecordCount={}'.format(resultOffset, resultRecordCount)
-    data = requests.get(url_concelhos)
-    data = data.json()
-
-    concelhos = []
-
-    while len(data['features']) != 0:
-        for entry in data['features']:
-            concelho = entry['attributes']['Concelho']
-            concelhos.append(concelho)
-
-        resultOffset+=200
-        resultRecordCount+=200
-        url_concelhos = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_Concelhos_V/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&cacheHint=true&resultOffset={}&resultRecordCount={}'.format(resultOffset, resultRecordCount)
-        data = requests.get(url_concelhos)
-        data = data.json()
-    
-    concelhos_df = pd.DataFrame(data=concelhos, columns=['concelho'])
-    
-    return concelhos_df
-
-skip_dates = [
+SKIP_DATES = (
     # On Sunday 05-07-2020 data was frozen:
     # "ESTE RELATÓRIO DE SITUAÇÃO NÃO INCLUI A ATUALIZAÇÃO DA IMPUTAÇÃO DE CASOS
     # AOS CONCELHOS. A DGS ESTÁ A REALIZAR A VERIFICAÇÃO DE TODOS OS DADOS COM
@@ -39,74 +15,127 @@ skip_dates = [
     # Data unfroze on Tuesday 14-07-2020, and then it's updated only on Mondays.
     # This keeps Monday 06-07 and 13-07 for consistency, and ignore the duplicate
     # data until Sunday 16-08
-    '07-07-2020', '08-07-2020', '09-07-2020', '10-07-2020', '11-07-2020', '12-07-2020',
-    '15-07-2020', '16-07-2020', '17-07-2020', '18-07-2020', '19-07-2020',
-    '21-07-2020', '22-07-2020', '23-07-2020', '24-07-2020', '25-07-2020', '26-07-2020',
-    '28-07-2020', '29-07-2020', '30-07-2020', '31-07-2020', '01-08-2020', '02-08-2020',
-    '04-08-2020', '05-08-2020', '06-08-2020', '07-08-2020', '08-08-2020', '09-08-2020',
-    '11-08-2020', '12-08-2020', '13-08-2020', '14-08-2020', '15-08-2020', '16-08-2020',
-]
+    "07-07-2020",
+    "08-07-2020",
+    "09-07-2020",
+    "10-07-2020",
+    "11-07-2020",
+    "12-07-2020",
+    "15-07-2020",
+    "16-07-2020",
+    "17-07-2020",
+    "18-07-2020",
+    "19-07-2020",
+    "21-07-2020",
+    "22-07-2020",
+    "23-07-2020",
+    "24-07-2020",
+    "25-07-2020",
+    "26-07-2020",
+    "28-07-2020",
+    "29-07-2020",
+    "30-07-2020",
+    "31-07-2020",
+    "01-08-2020",
+    "02-08-2020",
+    "04-08-2020",
+    "05-08-2020",
+    "06-08-2020",
+    "07-08-2020",
+    "08-08-2020",
+    "09-08-2020",
+    "11-08-2020",
+    "12-08-2020",
+    "13-08-2020",
+    "14-08-2020",
+    "15-08-2020",
+    "16-08-2020",
+)
+
 
 def get_list_cases_long():
-    
+    recordsPerPage = 1000
+    URL = (
+        "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/query"
+        "?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Data%20DESC&cacheHint=true"
+        "&resultOffset={}&resultRecordCount={}"
+    )
+
     resultOffset = 0
-    resultRecordCount = 1000
+    url_cases = URL.format(resultOffset, resultOffset + recordsPerPage)
+    data = requests.get(url_cases).json()
 
-    URL = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Data%20DESC&cacheHint=true&resultOffset=' + str(resultOffset) + '&resultRecordCount=' + str(resultRecordCount)
-    data = requests.get(URL)
-    data = data.json()
+    casos = []
+    while len(data["features"]) != 0:
 
-    casos=[]
-    while len(data['features']) != 0:
-
-        for entry in data['features']:
-            unix_date = entry['attributes']['Data']/1000
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m-%Y")
-            if frmt_date in skip_dates: continue
-            confirmados_acumulado = entry['attributes']['ConfirmadosAcumulado']
-            confirmados_concelho = entry['attributes']['Concelho']
+        for entry in data["features"]:
+            unix_date = entry["attributes"]["Data"] / 1000
+            frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime(
+                "%d-%m-%Y"
+            )
+            if frmt_date in SKIP_DATES:
+                continue
+            confirmados_acumulado = entry["attributes"]["ConfirmadosAcumulado"]
+            confirmados_concelho = entry["attributes"]["Concelho"]
             casos.append([frmt_date, confirmados_concelho, confirmados_acumulado])
 
-        resultOffset+=1000
-        resultRecordCount+=1000
+        resultOffset += 1000
+        url_cases = URL.format(resultOffset, resultOffset + recordsPerPage)
+        data = requests.get(url_cases).json()
 
-        URL = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Data%20DESC&cacheHint=true&resultOffset=' + str(resultOffset) + '&resultRecordCount=' + str(resultRecordCount)
-        data = requests.get(URL)
-        data = data.json()
+    casos_df = pd.DataFrame(data=casos, columns=["data", "concelho", "confirmados"])
 
-    casos_df = pd.DataFrame(data=casos, columns=['data', 'concelho', 'confirmados'])
-    
     return casos_df
 
-def convert(x):
-    if np.isnan(x):
-        return ''
-    try:
-        return int(x)
-    except:
-        return x
+
+def patch_concelhos1(concelhos):
+
+    # LAGOA FARO, as LAGOA AÇORES has cases only since 2020-10-05
+    for k, v in concelhos.loc[
+        concelhos["data"] < "2020-10-05", "LAGOA (FARO)"
+    ].iteritems():
+        if np.isnan(v):
+            concelhos.loc[[k], "LAGOA (FARO)"] = concelhos.loc[[k], "LAGOA"]
+            concelhos.loc[[k], "LAGOA"] = np.nan
+
+    # CALHETA AÇORES, as CALHETA MADEIRA has cases only since 2020-07-20
+    for k, v in concelhos.loc[
+        concelhos["data"] < "2020-07-20", "CALHETA (AÇORES)"
+    ].iteritems():
+        if np.isnan(v):
+            concelhos.loc[[k], "CALHETA (AÇORES)"] = concelhos.loc[[k], "CALHETA"]
+            concelhos.loc[[k], "CALHETA"] = np.nan
+
+    return concelhos
 
 
-def patch_concelhos(concelhos):
-    
-    fix1 = concelhos.data=='16-05-2020'
-    concelhos.loc[fix1, 'SANTO TIRSO'] = 378
-    concelhos.loc[fix1, 'SÃO BRÁS DE ALPORTEL'] = 3
+def patch_concelhos2(concelhos):
+
+    date = concelhos.data == "16-05-2020"
+    concelhos.loc[date, "SANTO TIRSO"] = 378
+    concelhos.loc[date, "SÃO BRÁS DE ALPORTEL"] = 3
 
     # is 157 on 09 and 11
-    fix2 = concelhos.data=='10-08-2020'
-    concelhos.loc[fix2, 'REGUENGOS DE MONSARAZ'] = 157
+    date = concelhos.data == "10-08-2020"
+    concelhos.loc[date, "REGUENGOS DE MONSARAZ"] = 157
 
-    # 02-04-2020 has two entries for PENACOVA, 5 and 6, which becomes 5.5
-    # 01 is 5, 03 is 7, assuming 02 is 6
-    fix2 = concelhos.data=='02-04-2020'
-    concelhos.loc[fix2, 'PENACOVA'] = 6
+    # Missing
+    date = concelhos.data == "31-08-2020"
+    concelhos.loc[date, "LOUSADA"] = 378
+    concelhos.loc[date, "LOUSÃ"] = 26
 
-    return concelhos    
+    # Missing accent
+    date = concelhos.data == "05-10-2020"
+    concelhos.loc[date, "MÊDA"] = 8
+    date = concelhos.data == "26-10-2020"
+    concelhos.loc[date, "MÊDA"] = 9
 
-if __name__ == '__main__':
+    return concelhos
 
-    PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'data_concelhos.csv')
+
+if __name__ == "__main__":
+
+    PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "data_concelhos.csv")
 
     # Get list of municipalities
     concelhos_df = get_list_municipalities()
@@ -115,21 +144,26 @@ if __name__ == '__main__':
     casos_df = get_list_cases_long()
 
     # Merge list of cases with list of municipalities
-    casos_df = concelhos_df.merge(casos_df, how='left', on='concelho')
-    casos_df.confirmados[casos_df.data.isna()] = -1 # Helper for pivot table
-    casos_df.data[casos_df.data.isna()] = '24-03-2020' # Helper for pivot table
-    casos_df = casos_df.sort_values(by=['concelho'])
+    casos_df = concelhos_df.merge(casos_df, how="left", on="concelho")
+    casos_df.loc[casos_df.data.isna(), ["confirmados"]] = -1  # Helper for pivot table
+    casos_df.loc[
+        casos_df.data.isna(), ["data"]
+    ] = "24-03-2020"  # Helper for pivot table
+    casos_df = casos_df.sort_values(by=["concelho"])
 
     # Convert long table to wide table
-    casos_wide = pd.pivot_table(casos_df, values='confirmados', index='data', columns = 'concelho').reset_index()
-    casos_wide.data = pd.to_datetime(casos_wide.data, format='%d-%m-%Y')
-    casos_wide = casos_wide.sort_values(by='data').reset_index(drop=True)
+    casos_wide = pd.pivot_table(
+        casos_df, values="confirmados", index="data", columns="concelho"
+    ).reset_index()
+    casos_wide.data = pd.to_datetime(casos_wide.data, format="%d-%m-%Y")
+    casos_wide = casos_wide.sort_values(by="data").reset_index(drop=True)
     casos_wide = casos_wide.replace(-1, np.nan)
-    
-    casos_wide.data = casos_wide['data'].dt.strftime('%d-%m-%Y')
-    
-    casos_wide = patch_concelhos(casos_wide)
-    cols = [x for x in casos_wide.columns if not x.startswith('data')]
-    casos_wide[cols] = casos_wide[cols].applymap(convert)
 
-    casos_wide.to_csv(PATH_TO_CSV, index=False, sep = ',') 
+    casos_wide = patch_concelhos1(casos_wide)
+    casos_wide.data = casos_wide["data"].dt.strftime("%d-%m-%Y")
+    casos_wide = patch_concelhos2(casos_wide)
+
+    cols = [x for x in casos_wide.columns if not x.startswith("data")]
+    casos_wide = convert(casos_wide, cols, convert_to_int)
+
+    casos_wide.to_csv(PATH_TO_CSV, index=False, sep=",")
