@@ -116,8 +116,8 @@ if __name__ == '__main__':
 
     # Merge list of cases with list of municipalities
     casos_df = concelhos_df.merge(casos_df, how='left', on='concelho')
-    casos_df.confirmados[casos_df.data.isna()] = -1 # Helper for pivot table
-    casos_df.data[casos_df.data.isna()] = '24-03-2020' # Helper for pivot table
+    casos_df.loc[casos_df.data.isna(), ["confirmados"]] = -1  # Helper for pivot table
+    casos_df.loc[casos_df.data.isna(), ["data"]] = "24-03-2020"  # Helper for pivot table
     casos_df = casos_df.sort_values(by=['concelho'])
 
     # Convert long table to wide table
