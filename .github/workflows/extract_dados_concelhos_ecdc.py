@@ -52,11 +52,6 @@ def get_list_cases_long():
         url_cases = URL.format(resultOffset, resultOffset + recordsPerPage)
         data = requests.get(url_cases).json()
 
-    if today == "11-11-2020":
-        # CALHETA S. JORGE is Açores but the API switched them
-        FIX_CONCELHOS["CALHETA DE SÃO JORGE"] = "CALHETA"
-        FIX_CONCELHOS["CALHETA"] = "CALHETA (AÇORES)"
-
     casos = []
     while len(data["features"]) != 0:
 
@@ -71,9 +66,21 @@ def get_list_cases_long():
             ]  # "Acima de xxx"
             incidencia_risco = entry["attributes"]["Incidência_"]  # "Acima de xxx"
 
+            # CALHETA S. JORGE is Açores but the API switched them
+            if today == "11-11-2020":
+                if concelho == "CALHETA":
+                    incidencia = 74
+                    incidencia_categoria = "Entre 60,0 e 119,9"
+                    incidencia_risco = "Moderada"
+                if concelho == "CALHETA (AÇORES)":
+                    incidencia = 0
+                    incidencia_categoria = "Abaixo de 20,0"
+                    incidencia_risco = "Muito baixa"
+
             distrito = entry["attributes"]["Distrito"]
             dicofre = entry["attributes"]["Dicofre"]
-            area = entry["attributes"]["AREA_2019_"]  # AREA_20191 is 0.1
+            area = entry["attributes"]["AREA_2019_"]
+            # AREA_20191 is AREA_20219_ div 10 ?
 
             population = entry["attributes"]["Total"]
             population_65_69 = entry["attributes"]["F65_69"]
