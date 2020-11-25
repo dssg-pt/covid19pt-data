@@ -179,7 +179,9 @@ if __name__ == "__main__":
     PATH_TO_CSV_INCIDENCIA = str(
         Path(__file__).resolve().parents[2] / "data_concelhos_incidencia.csv"
     )
-    PATH_TO_CSV_14DIAS = str(Path(__file__).resolve().parents[2] / "data_concelhos_14dias.csv")
+    PATH_TO_CSV_14DIAS = str(
+        Path(__file__).resolve().parents[2] / "data_concelhos_14dias.csv"
+    )
 
     # Get list of municipalities
     concelhos_df = get_list_municipalities()
@@ -218,7 +220,9 @@ if __name__ == "__main__":
     incidencia_df = incidencia_df[cols]
 
     if os.path.exists(PATH_TO_CSV_NEW):
-        incidencia_df.to_csv(PATH_TO_CSV_NEW, mode="a", header=False, index=False, sep=",")
+        incidencia_df.to_csv(
+            PATH_TO_CSV_NEW, mode="a", header=False, index=False, sep=","
+        )
     else:
         incidencia_df.to_csv(PATH_TO_CSV_NEW, index=False, sep=",")
 
