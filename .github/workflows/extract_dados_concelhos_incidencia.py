@@ -176,10 +176,10 @@ if __name__ == "__main__":
         Path(__file__).resolve().parents[2] / "data_concelhos_new.csv"
     )
 
-    PATH_TO_CSV_ECDC = str(
-        Path(__file__).resolve().parents[2] / "data_concelhos_ecdc.csv"
+    PATH_TO_CSV_INCIDENCIA = str(
+        Path(__file__).resolve().parents[2] / "data_concelhos_incidencia.csv"
     )
-    PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "data_concelhos_14.csv")
+    PATH_TO_CSV_14DIAS = str(Path(__file__).resolve().parents[2] / "data_concelhos_14dias.csv")
 
     # Get list of municipalities
     concelhos_df = get_list_municipalities()
@@ -211,16 +211,16 @@ if __name__ == "__main__":
 
     # ---
 
-    ecdc_df = concelhos_df.copy().merge(casos_df, how="left", on="concelho")
-    cols = list(ecdc_df.columns)
+    incidencia_df = concelhos_df.copy().merge(casos_df, how="left", on="concelho")
+    cols = list(incidencia_df.columns)
     cols.remove("data")
     cols.insert(0, "data")
-    ecdc_df = ecdc_df[cols]
+    incidencia_df = incidencia_df[cols]
 
     if os.path.exists(PATH_TO_CSV_NEW):
-        ecdc_df.to_csv(PATH_TO_CSV_NEW, mode="a", header=False, index=False, sep=",")
+        incidencia_df.to_csv(PATH_TO_CSV_NEW, mode="a", header=False, index=False, sep=",")
     else:
-        ecdc_df.to_csv(PATH_TO_CSV_NEW, index=False, sep=",")
+        incidencia_df.to_csv(PATH_TO_CSV_NEW, index=False, sep=",")
 
     # ---
 
@@ -246,10 +246,10 @@ if __name__ == "__main__":
         # casos_wide = patch_concelhos2(casos_wide)
 
         if key == "incidencia":
-            file = PATH_TO_CSV_ECDC
+            file = PATH_TO_CSV_INCIDENCIA
             func = convert_to_float
         else:
-            file = PATH_TO_CSV
+            file = PATH_TO_CSV_14DIAS
             func = convert_to_int
 
         cols = [x for x in casos_wide.columns if not x.startswith("data")]

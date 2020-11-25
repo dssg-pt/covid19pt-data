@@ -15,8 +15,8 @@ if __name__ == "__main__":
         CWD / "extra" / "populacional" / "PORDATA_Estimativas-a-31-12_concelhos.csv"
     )
 
-    DATA_CONCELHOS_14_CSV = str(CWD / "data_concelhos_14.csv")
-    DATA_CONCELHOS_ECDC_CSV = str(CWD / "data_concelhos_ecdc.csv")
+    DATA_CONCELHOS_14DIAS_CSV = str(CWD / "data_concelhos_14dias.csv")
+    DATA_CONCELHOS_INCIDENCIA_CSV = str(CWD / "data_concelhos_incidencia.csv")
 
     population = pd.read_csv(POPULATION_CSV)
     # rename to Concelho and upper case values
@@ -29,10 +29,10 @@ if __name__ == "__main__":
     # Only data since it's weekly
     data = data[data["data"] >= "2020-07-14"]
 
-    for i in [DATA_CONCELHOS_14_CSV, DATA_CONCELHOS_ECDC_CSV]:
+    for i in [DATA_CONCELHOS_14DIAS_CSV, DATA_CONCELHOS_INCIDENCIA_CSV]:
         updated = data.copy()
 
-        if i == DATA_CONCELHOS_ECDC_CSV:
+        if i == DATA_CONCELHOS_INCIDENCIA_CSV:
 
             updated = updated.melt(
                 id_vars=["data"], var_name="Concelho", value_name="Casos"
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         cols = [x for x in updated.columns if x != "data"]
         updated[cols] = updated[cols].diff(2)  # 14 days
         updated = updated[2:]
-        func = convert_to_int if i == DATA_CONCELHOS_14_CSV else convert_to_float
+        func = convert_to_int if i == DATA_CONCELHOS_14DIAS_CSV else convert_to_float
         updated = convert(updated, cols, func)
 
         # sort by date
