@@ -51,9 +51,10 @@ _Porque tudo começa com bons dados._
 # 🧱 Estrutura
 
 O repositório está organizado da seguinte forma:
-+ `data.csv`: o Pastel de Nata. Dados extraídos do boletim diário da DGS.
-+ `amostras.csv`: contém dados diários relativos às amostras, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/).
-+ `data_concelhos.csv`: contém dados diários acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados). Esta série de dados tem início a 24-03-2020.
++ `data.csv`: o Pastel de Nata. Dados extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) e do [relatório diário](https://covid19.min-saude.pt/relatorio-de-situacao/) da DGS.
++ `amostras.csv`: contém dados diários relativos às amostras, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
++ `data_concelhos.csv`: contém dados acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados, nomeadamente concelhos com menos de 3 confirmados não são reportados). Esta série de dados tem início a 24-03-2020 e tem cadência diária até 04-07-2020, passando a cadência semanal a 14-07-2020, e terminando a 26-10-2020. Vide os próximos dados para o novo formato.
++ `data_concelhos_14dias.csv` e `data_concelhos_incidencia.csv` contém dados de confirmados do acumulado dos 14 dias anteriores à data do reporte, no primeiro ficheiro, e proporcional a 100k habitantes no segundo ficheiro. Inclui os dados calculados do `data_concelhos.csv` desde que os daddos são semanais, nomeadamente entre 27-07-2020 (correspondendo ao periodo de 13-07-2020 a 26-07-2020) até 26-10-2020, e será actualizado conforme seja disponibilizado pela DGS (semanalmente à segunda-feira).  
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
 + `notebooks/`: contém um _notebook_ Python com um exemplo simples de como carregar e visualizar os dados.
 + `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
