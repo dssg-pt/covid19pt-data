@@ -95,6 +95,8 @@ FIXES = (
     # ("07-11-2020", "amostras_antigenio_novas", 774, 776),
     # ("09-11-2020", "amostras_novas", 33316, 33314),
     # ("09-11-2020", "amostras_antigenio_novas", 1128, 1126),
+    ("27-11-2020", "amostras_novas", 44876, 44674),
+    ("27-11-2020", "amostras_pcr_novas", 42132, 41930)
 )
 
 

@@ -65,7 +65,10 @@ if __name__ == '__main__':
     # The latest report in the file data.csv
     latest=get_latest_day()
 
-    # Check if latest day on data.csv is today and if the link exists
-    if ( datetime.strptime(latest, '%d-%m-%Y') != date.strftime("%d-%m-%Y")) & (link != ''):
+    # Check if latest day on data.csv is not today and if the link exists
+    if (latest != date.strftime("%d-%m-%Y")) and (link != ''):
         save_link_txt(link)
         update_readme(datetime.now())
+        print(f"UPDATED latest={latest} today={date.strftime('%d-%m-%Y')} link={link}")
+    else:
+        print(f"NO CHANGES latest={latest} today={date.strftime('%d-%m-%Y')} link={link}")
