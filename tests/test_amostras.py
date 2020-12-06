@@ -154,29 +154,32 @@ def test_sequentiality_new_cases(data_amostras):
 
         assert (
             today["amostras"] == yesterday["amostras"] + today["amostras_novas"]
-        ), "Amostras do dia {} não coerentes com dia anterior today={} yesterday={} novas={}".format(
+        ), "Amostras do dia {} não coerentes com dia anterior today={} yesterday={} novas={} expected={}".format(
             row["data"],
             today["amostras"],
             yesterday["amostras"],
             today["amostras_novas"],
+            today["amostras"] - yesterday["amostras"],
         )
         assert (
             today["amostras_pcr"]
             == yesterday["amostras_pcr"] + today["amostras_pcr_novas"]
-        ), "Amostras do dia {} não coerentes com dia anterior today={} yesterday={} novas={}".format(
+        ), "Amostras do dia {} não coerentes com dia anterior today={} yesterday={} novas={} expected={}".format(
             row["data"],
             today["amostras_pcr"],
             yesterday["amostras_pcr"],
             today["amostras_pcr_novas"],
+            today["amostras_pcr"] - yesterday["amostras_pcr"],
         )
         assert (
             today["amostras_antigenio"]
             == yesterday["amostras_antigenio"] + today["amostras_antigenio_novas"]
-        ), "Amostras do dia {} não coerentes com dia anterior today={} yesterday={} novas={}".format(
+        ), "Amostras do dia {} não coerentes com dia anterior today={} yesterday={} novas={} expected={}".format(
             row["data"],
             today["amostras_antigenio"],
             yesterday["amostras_antigenio"],
             today["amostras_antigenio_novas"],
+            today["amostras_antigenio"] - yesterday["amostras_antigenio"],
         )
 
 
