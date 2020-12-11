@@ -4,7 +4,7 @@
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
 
-👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/issues/20).
+👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/discussions), na categoria 🙌 _Montra de Projectos_.
 
 ✉️ **Carta Aberta à Direcção Geral de Saúde:** Escrevemos um relatório em formato de [Carta Aberta](https://docs.google.com/document/d/1Ce_CTcIZhDB2tzBV4jK8SkZYYpNF6wg3JtqaJlOZ43Q/edit) que contém tudo o que aprendemos acerca da estratégia de dados da DGS a respeito do COVID-19. Nesta carta fazemos várias sugestões no sentido de criar uma verdadeira cultura de dados abertos no seio desta organização. Se fazes parte de uma organização que partilha estes valores, a carta pode ser assinada [aqui](https://docs.google.com/forms/d/e/1FAIpQLScgHvFFrtjZG2sYK2NqmzxZDfyo_LabUSaCZdX-hkKdpOb8ZQ/viewform)
 
