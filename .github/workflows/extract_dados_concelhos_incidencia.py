@@ -56,15 +56,16 @@ def get_list_cases_long():
     while len(data["features"]) != 0:
 
         for entry in data["features"]:
-
-            concelho = entry["attributes"]["Concelho"]
+            attributes = entry["attributes"]
+            concelho = attributes["Concelho"]
             concelho = FIX_CONCELHOS.get(concelho, concelho)
 
-            incidencia = entry["attributes"]["Incidência"]  # nnn
-            incidencia_categoria = entry["attributes"][
-                "Incidência_categoria"
-            ]  # "Acima de xxx"
-            incidencia_risco = entry["attributes"]["Incidência_"]  # "Acima de xxx"
+            # nnn
+            incidencia = attributes["Incidência"]
+            # "Acima de xxx"
+            incidencia_categoria = attributes["Incidência_categoria"]
+            # "Acima de xxx"
+            incidencia_risco = attributes["Incidência_"]
 
             # CALHETA S. JORGE is Açores but the API switched them
             if today == "11-11-2020":
@@ -77,33 +78,48 @@ def get_list_cases_long():
                     incidencia_categoria = "Abaixo de 20,0"
                     incidencia_risco = "Muito baixa"
 
-            distrito = entry["attributes"]["Distrito"]
-            dicofre = entry["attributes"]["Dicofre"]
-            area = entry["attributes"]["AREA_2019_"]
+            distrito = attributes["Distrito"]
+            dicofre = attributes["Dicofre"]
+            area = attributes["AREA_2019_"]
             # AREA_20191 is AREA_20219_ div 10 ?
 
-            population = entry["attributes"]["Total"]
-            population_65_69 = entry["attributes"]["F65_69"]
-            population_70_74 = entry["attributes"]["F70_74"]
-            population_75_79 = entry["attributes"]["F75_79"]
-            population_80_84 = entry["attributes"]["F80_84"]
-            population_85_mais = entry["attributes"]["F85oumais"]
+            population = attributes["Total"]
+            population_65_69 = attributes["F65_69"]
+            population_70_74 = attributes["F70_74"]
+            population_75_79 = attributes["F75_79"]
+            population_80_84 = attributes["F80_84"]
+            population_85_mais = attributes["F85oumais"]
             population_80_mais = population_85_mais + population_80_84
-            population_75_mais = entry["attributes"]["PopSup75"]
+            population_75_mais = attributes["PopSup75"]
             if population_75_mais != population_80_mais + population_75_79:
                 raise Exception(concelho)
-            population_70_mais = entry["attributes"]["PopSup70"]
+            population_70_mais = attributes["PopSup70"]
             if population_70_mais != population_75_mais + population_70_74:
                 raise Exception(concelho)
-            population_65_mais = entry["attributes"]["PopSup65"]
+            population_65_mais = attributes["PopSup65"]
             if population_65_mais != population_70_mais + population_65_69:
                 raise Exception(concelho)
 
-            densidade_populacional = entry["attributes"]["DensidadeP"]
+            densidade_populacional = attributes["DensidadeP"]
             # ???
-            densidade_1 = entry["attributes"]["Densidad_1"]
-            densidade_2 = entry["attributes"]["Densidad_2"]
-            densidade_3 = entry["attributes"]["Densidad_3"]
+            densidade_1 = attributes["Densidad_1"]
+            densidade_2 = attributes["Densidad_2"]
+            densidade_3 = attributes["Densidad_3"]
+
+            # Desde 2020.12.03
+            # "Lisboa e Vale do Tejo"
+            ars = attributes.get("ARS", None)
+            # nn
+            casos_14dias = attributes.get("Cumulativo_casos_14_dias", None)
+            # -nnn
+            tendencia_incidencia = attributes.get("Tendencia", None)
+            # "[Min,-30]"
+            tendencia_categoria = attributes.get("Tendencia_categoria", None)
+            # "[Min ,-30]" -> "[Min,-30]"
+            if tendencia_categoria:
+                tendencia_categoria = tendencia_categoria.replace(" ", "")
+            # "Fortemente decrescente",
+            tendencia_desc = attributes.get("Tendencia_", None)
 
             casos.append(
                 [
@@ -112,6 +128,11 @@ def get_list_cases_long():
                     incidencia,
                     incidencia_categoria,
                     incidencia_risco,
+                    tendencia_incidencia,
+                    tendencia_categoria,
+                    tendencia_desc,
+                    casos_14dias,
+                    ars,
                     distrito,
                     dicofre,
                     area,
@@ -147,6 +168,11 @@ def get_list_cases_long():
             "incidencia",
             "incidencia_categoria",
             "incidencia_risco",
+            "tendencia_incidencia",
+            "tendencia_categoria",
+            "tendencia_desc",
+            "casos_14dias",
+            "ars",
             "distrito",
             "dicofre",
             "area",
