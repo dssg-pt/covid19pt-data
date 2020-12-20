@@ -47,7 +47,10 @@ def rename_report(report_filepath, latest_date, latest_id):
     fname = Path(report_filepath)
     m_date = datetime.datetime.fromtimestamp(fname.stat().st_mtime)
 
-    # TODO: Should check out whether m_date > latest_date (but latest_date should be extracted from the PDF metadata)
+    d1 = m_date.strftime("%d-%m-%Y")
+    d2 = latest_date.strftime("%d-%m-%Y")
+    if d1 == d2:
+        return None
 
     new_name = "Relatório-de-Situação-{:02d}_{:02d}_{:02d}_{:04d}.pdf".format(latest_id+1, m_date.day, m_date.month, m_date.year)
     os.rename(report_filepath, new_name)
@@ -76,6 +79,10 @@ if __name__ == '__main__':
 
     # Renaming the report
     new_name = rename_report(report, latest_date, latest_id)
+
+    # If no PDF file (same date)
+    if new_name is None:
+        sys.exit(-1)
 
     # Moving the report
     shutil.move(new_name, str(reports_folder / new_name))
