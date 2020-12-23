@@ -11,7 +11,7 @@ def convert(df, cols, func):
 
 def convert_to_int(x):
     """ Convert NaN to empty string, numbers to integers, or fallback to self. """
-    if np.isnan(x):
+    if x is None or np.isnan(x):
         return ""
     try:
         return int(round(x))
@@ -21,7 +21,7 @@ def convert_to_int(x):
 
 def convert_to_float(x):
     """ Convert NaN to empty string, numbers to 2 digits. """
-    if np.isnan(x):
+    if x is None or np.isnan(x):
         return ""
     else:
         return round(float(x), 2)

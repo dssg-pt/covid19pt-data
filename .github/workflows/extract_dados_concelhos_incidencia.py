@@ -24,6 +24,8 @@ today = (datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)).strftime(
 
 FIX_CONCELHOS = {
     "CALHETA DE SÃO JORGE": "CALHETA (AÇORES)",
+    "CALHETA [R.A. AÇORES]": "CALHETA (AÇORES)",
+    "CALHETA [R.A. MADEIRA]": "CALHETA",
     "VILA DO CORVO": "CORVO",
     "LAGOA [R.A. AÇORES]": "LAGOA",
     "LAGOA": "LAGOA (FARO)",
@@ -80,31 +82,44 @@ def get_list_cases_long():
 
             distrito = attributes["Distrito"]
             dicofre = attributes["Dicofre"]
-            area = attributes["AREA_2019_"]
+            area = attributes.get("AREA_2019_", None)
             # AREA_20191 is AREA_20219_ div 10 ?
 
             population = attributes["Total"]
-            population_65_69 = attributes["F65_69"]
-            population_70_74 = attributes["F70_74"]
-            population_75_79 = attributes["F75_79"]
-            population_80_84 = attributes["F80_84"]
-            population_85_mais = attributes["F85oumais"]
-            population_80_mais = population_85_mais + population_80_84
-            population_75_mais = attributes["PopSup75"]
-            if population_75_mais != population_80_mais + population_75_79:
+            population_65_69 = attributes.get("F65_69", None)
+            population_70_74 = attributes.get("F70_74", None)
+            population_75_79 = attributes.get("F75_79", None)
+            population_80_84 = attributes.get("F80_84", None)
+            population_85_mais = attributes.get("F85oumais", None)
+            population_80_mais = (
+                population_85_mais + population_80_84
+                if population_85_mais and population_80_84
+                else None
+            )
+            population_75_mais = attributes.get("PopSup75", None)
+            if (
+                population_75_mais
+                and population_75_mais != population_80_mais + population_75_79
+            ):
                 raise Exception(concelho)
-            population_70_mais = attributes["PopSup70"]
-            if population_70_mais != population_75_mais + population_70_74:
+            population_70_mais = attributes.get("PopSup70", None)
+            if (
+                population_70_mais
+                and population_70_mais != population_75_mais + population_70_74
+            ):
                 raise Exception(concelho)
-            population_65_mais = attributes["PopSup65"]
-            if population_65_mais != population_70_mais + population_65_69:
+            population_65_mais = attributes.get("PopSup65", None)
+            if (
+                population_65_mais
+                and population_65_mais != population_70_mais + population_65_69
+            ):
                 raise Exception(concelho)
 
             densidade_populacional = attributes["DensidadeP"]
             # ???
-            densidade_1 = attributes["Densidad_1"]
-            densidade_2 = attributes["Densidad_2"]
-            densidade_3 = attributes["Densidad_3"]
+            densidade_1 = attributes.get("Densidad_1", None)
+            densidade_2 = attributes.get("Densidad_2", None)
+            densidade_3 = attributes.get("Densidad_3", None)
 
             # Desde 2020.12.03
             # "Lisboa e Vale do Tejo"
