@@ -99,7 +99,10 @@ FIXES = (
     # ("27-11-2020", "amostras_novas", 44876, 44674),
     # fixed 2020-12-15
     # ("27-11-2020", "amostras_novas", 44990, 44788),
-    # ("27-11-2020", "amostras_pcr_novas", 42132, 41930)
+    # ("27-11-2020", "amostras_pcr_novas", 42132, 41930),
+    # broken 2020-12-29
+    ("26-12-2020", "amostras_novas", 19131, 19216),
+    ("26-12-2020", "amostras_antigenio_novas", 1636, 1721),
 )
 
 
