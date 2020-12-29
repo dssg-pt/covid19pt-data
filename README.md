@@ -47,7 +47,7 @@ _Porque tudo começa com bons dados._
 + [Daily Portuguese COVID-19 Data](https://github.com/CEAUL/Dados_COVID-19_PT), por [@saghirb](https://github.com/saghirb)
 + [Epidemiologia Covid Interativa](https://barometro-covid-19.ensp.unl.pt/epidemiologia-da-covid-19/epidemiologia-covid-interativa/), por [Escola Nacional de Saúde Pública](https://www.ensp.unl.pt/home/)
 + [COVID-19 Rt estimator](https://alfredob.shinyapps.io/estR0/), por [@AlfredoBB](https://github.com/AlfredoBB)
-+ E muitas mais [aqui](https://github.com/dssg-pt/covid19pt-data/discussions/20), no fórum do repositório
++ E muitas mais [aqui](https://github.com/dssg-pt/covid19pt-data/discussions/categories/montra-de-projectos), no fórum do repositório
 
 # 🧱 Estrutura
 
