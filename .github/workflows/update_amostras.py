@@ -90,19 +90,10 @@ FIXES = (
     ("24-04-2020", NOVAS, 14817, 14733),
     ("27-04-2020", NOVAS, 12207, 12160),
     ("30-04-2020", NOVAS, 16438, 16390),
-    # fixed 2020-11-25
-    # ("07-11-2020", "amostras_novas", 33480, 33482),
-    # ("07-11-2020", "amostras_antigenio_novas", 774, 776),
-    # ("09-11-2020", "amostras_novas", 33316, 33314),
-    # ("09-11-2020", "amostras_antigenio_novas", 1128, 1126),
-    # changed 2020-12-05
-    # ("27-11-2020", "amostras_novas", 44876, 44674),
-    # fixed 2020-12-15
-    # ("27-11-2020", "amostras_novas", 44990, 44788),
-    # ("27-11-2020", "amostras_pcr_novas", 42132, 41930),
-    # broken 2020-12-29
-    ("26-12-2020", "amostras_novas", 19131, 19216),
-    ("26-12-2020", "amostras_antigenio_novas", 1636, 1721),
+    ("26-12-2020", "amostras_novas", 19227, 19216),
+    ("26-12-2020", "amostras_antigenio_novas", 1732, 1721),
+    ("28-12-2020", "amostras_novas", 30755, 30775),
+    ("28-12-2020", "amostras_antigenio_novas", 4564, 4584),
 )
 
 
