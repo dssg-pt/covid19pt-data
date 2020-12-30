@@ -70,6 +70,13 @@ jobs:
             TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
             TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
             TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+      - name: Change the latest commit's status to success
+        uses: Sibz/github-status-action@v1
+        with: 
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          description: 'All is good'
+          state: 'success'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
       - name: Upload pytest test results
         uses: actions/upload-artifact@master
         with:
