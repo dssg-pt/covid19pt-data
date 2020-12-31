@@ -90,10 +90,12 @@ FIXES = (
     ("24-04-2020", NOVAS, 14817, 14733),
     ("27-04-2020", NOVAS, 12207, 12160),
     ("30-04-2020", NOVAS, 16438, 16390),
-    ("26-12-2020", "amostras_novas", 19227, 19216),
-    ("26-12-2020", "amostras_antigenio_novas", 1732, 1721),
-    ("28-12-2020", "amostras_novas", 30755, 30775),
-    ("28-12-2020", "amostras_antigenio_novas", 4564, 4584),
+    ("26-12-2020", "amostras_novas", 19230, 19315),
+    ("26-12-2020", "amostras_antigenio_novas", 1735, 1732),
+    ("28-12-2020", "amostras_novas", 31175, 30755),
+    ("28-12-2020", "amostras_antigenio_novas", 4937, 4564),
+    ("29-12-2020", "amostras_novas", 38639, 38722),
+    ("29-12-2020", "amostras_antigenio_novas", 2924, 3007),
 )
 
 
