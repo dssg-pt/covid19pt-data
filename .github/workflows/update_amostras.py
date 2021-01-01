@@ -5,6 +5,9 @@ import numpy as np
 from pathlib import Path
 
 
+DEBUG = False
+
+
 def get_amostras(url):
     r = requests.get(url=url)
     data = r.json()
@@ -59,43 +62,45 @@ def get_amostras(url):
 
 NOVAS = ("amostras_novas", "amostras_pcr_novas")
 FIXES = (
-    # data, columns, fix_value, wrong_value
-    ("16-03-2020", NOVAS, 1683, 1677),
-    ("18-03-2020", NOVAS, 2465, 2458),
-    ("19-03-2020", NOVAS, 2498, 2490),
-    ("24-03-2020", NOVAS, 5027, 5015),
-    ("25-03-2020", NOVAS, 5319, 5309),
-    ("26-03-2020", NOVAS, 6694, 6689),
-    ("27-03-2020", NOVAS, 7913, 7877),
-    ("30-03-2020", NOVAS, 7986, 7953),
-    ("31-03-2020", NOVAS, 7962, 7942),
-    ("01-04-2020", NOVAS, 8650, 8630),
-    ("02-04-2020", NOVAS, 9299, 9257),
-    ("03-04-2020", NOVAS, 9479, 9438),
-    ("04-04-2020", NOVAS, 9158, 9055),
-    ("06-04-2020", NOVAS, 9369, 9186),
-    ("07-04-2020", NOVAS, 10623, 10557),
-    ("08-04-2020", NOVAS, 11691, 11402),
-    ("10-04-2020", NOVAS, 10216, 10187),
-    ("11-04-2020", NOVAS, 9121, 9101),
-    ("13-04-2020", NOVAS, 8944, 8887),
-    ("15-04-2020", NOVAS, 13649, 13628),
-    ("16-04-2020", NOVAS, 13474, 13400),
-    ("17-04-2020", NOVAS, 14720, 14717),
-    ("18-04-2020", NOVAS, 12795, 12779),
-    ("20-04-2020", NOVAS, 11089, 11003),
-    ("21-04-2020", NOVAS, 14930, 14829),
-    ("22-04-2020", NOVAS, 15531, 15438),
-    ("23-04-2020", NOVAS, 15183, 15113),
-    ("24-04-2020", NOVAS, 14817, 14733),
-    ("27-04-2020", NOVAS, 12207, 12160),
-    ("30-04-2020", NOVAS, 16438, 16390),
-    ("26-12-2020", "amostras_novas", 19230, 19315),
-    ("26-12-2020", "amostras_antigenio_novas", 1735, 1732),
-    ("28-12-2020", "amostras_novas", 31175, 30755),
-    ("28-12-2020", "amostras_antigenio_novas", 4937, 4564),
-    ("29-12-2020", "amostras_novas", 38639, 38722),
-    ("29-12-2020", "amostras_antigenio_novas", 2924, 3007),
+    # data, columns, fix_value
+    ("16-03-2020", NOVAS, 1683),
+    ("18-03-2020", NOVAS, 2465),
+    ("19-03-2020", NOVAS, 2498),
+    ("24-03-2020", NOVAS, 5027),
+    ("25-03-2020", NOVAS, 5319),
+    ("26-03-2020", NOVAS, 6694),
+    ("27-03-2020", NOVAS, 7913),
+    ("30-03-2020", NOVAS, 7986),
+    ("31-03-2020", NOVAS, 7962),
+    ("01-04-2020", NOVAS, 8650),
+    ("02-04-2020", NOVAS, 9299),
+    ("03-04-2020", NOVAS, 9479),
+    ("04-04-2020", NOVAS, 9158),
+    ("06-04-2020", NOVAS, 9369),
+    ("07-04-2020", NOVAS, 10623),
+    ("08-04-2020", NOVAS, 11691),
+    ("10-04-2020", NOVAS, 10216),
+    ("11-04-2020", NOVAS, 9121),
+    ("13-04-2020", NOVAS, 8944),
+    ("15-04-2020", NOVAS, 13649),
+    ("16-04-2020", NOVAS, 13474),
+    ("17-04-2020", NOVAS, 14720),
+    ("18-04-2020", NOVAS, 12795),
+    ("20-04-2020", NOVAS, 11089),
+    ("21-04-2020", NOVAS, 14930),
+    ("22-04-2020", NOVAS, 15531),
+    ("23-04-2020", NOVAS, 15183),
+    ("24-04-2020", NOVAS, 14817),
+    ("27-04-2020", NOVAS, 12207),
+    ("30-04-2020", NOVAS, 16438),
+    ("26-12-2020", "amostras_novas", 19834),
+    ("26-12-2020", "amostras_antigenio_novas", 1747),
+    ("28-12-2020", "amostras_novas", 33699),
+    ("28-12-2020", "amostras_antigenio_novas", 5077),
+    ("29-12-2020", "amostras_novas", 44603),
+    ("29-12-2020", "amostras_antigenio_novas", 4658),
+    ("30-12-2020", "amostras_novas", 41199),
+    ("30-12-2020", "amostras_antigenio_novas", 5902),
 )
 
 
@@ -112,6 +117,13 @@ def fix_amostras(data):
         ] = ""
 
     for fix in FIXES:
+        if DEBUG:
+            old = data.loc[data.data == fix[0], fix[1]].to_numpy()[0]
+            try:
+                old = old.tolist()
+            except AttributeError:
+                pass
+            print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]}")
         data.loc[data.data == fix[0], fix[1]] = fix[2]
     return data
 
