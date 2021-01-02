@@ -76,7 +76,7 @@ jobs:
           authToken: ${{secrets.GITHUB_TOKEN}}
           description: 'All is good'
           state: 'success'
-          sha: ${{github.event.pull_request.head.sha || github.sha}}
+          sha: ${{github.event.pull_request.head.sha}}
       - name: Upload pytest test results
         uses: actions/upload-artifact@master
         with:
