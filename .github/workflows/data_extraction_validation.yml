@@ -97,3 +97,9 @@ jobs:
           path: tests/junit/test-concelhos-results.xml
         # Use always() to always run this step to publish test results when there are test failures
         if: always()
+      - name: Dump PR data
+        run: |
+          echo "PR_DEBUG: ${PR_DEBUG}"
+        env: 
+          PR_DEBUG: ${{ toJson(github.event.pull_request) }}
+
