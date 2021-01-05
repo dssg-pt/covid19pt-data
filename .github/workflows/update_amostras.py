@@ -5,7 +5,7 @@ import numpy as np
 from pathlib import Path
 
 
-DEBUG = False
+DEBUG = True
 
 
 def get_amostras(url):
@@ -62,45 +62,9 @@ def get_amostras(url):
 
 NOVAS = ("amostras_novas", "amostras_pcr_novas")
 FIXES = (
-    # data, columns, fix_value
-    ("16-03-2020", NOVAS, 1683),
-    ("18-03-2020", NOVAS, 2465),
-    ("19-03-2020", NOVAS, 2498),
-    ("24-03-2020", NOVAS, 5027),
-    ("25-03-2020", NOVAS, 5319),
-    ("26-03-2020", NOVAS, 6694),
-    ("27-03-2020", NOVAS, 7913),
-    ("30-03-2020", NOVAS, 7986),
-    ("31-03-2020", NOVAS, 7962),
-    ("01-04-2020", NOVAS, 8650),
-    ("02-04-2020", NOVAS, 9299),
-    ("03-04-2020", NOVAS, 9479),
-    ("04-04-2020", NOVAS, 9158),
-    ("06-04-2020", NOVAS, 9369),
-    ("07-04-2020", NOVAS, 10623),
-    ("08-04-2020", NOVAS, 11691),
-    ("10-04-2020", NOVAS, 10216),
-    ("11-04-2020", NOVAS, 9121),
-    ("13-04-2020", NOVAS, 8944),
-    ("15-04-2020", NOVAS, 13649),
-    ("16-04-2020", NOVAS, 13474),
-    ("17-04-2020", NOVAS, 14720),
-    ("18-04-2020", NOVAS, 12795),
-    ("20-04-2020", NOVAS, 11089),
-    ("21-04-2020", NOVAS, 14930),
-    ("22-04-2020", NOVAS, 15531),
-    ("23-04-2020", NOVAS, 15183),
-    ("24-04-2020", NOVAS, 14817),
-    ("27-04-2020", NOVAS, 12207),
-    ("30-04-2020", NOVAS, 16438),
-    ("26-12-2020", "amostras_novas", 19834),
-    ("26-12-2020", "amostras_antigenio_novas", 1747),
-    ("28-12-2020", "amostras_novas", 33699),
-    ("28-12-2020", "amostras_antigenio_novas", 5077),
-    ("29-12-2020", "amostras_novas", 44603),
-    ("29-12-2020", "amostras_antigenio_novas", 4658),
-    ("30-12-2020", "amostras_novas", 41199),
-    ("30-12-2020", "amostras_antigenio_novas", 5902),
+    # data DD-MM-YYYY, columns, fix_value
+    # eg ("30-04-2020", NOVAS, 16438),
+    # eg ("26-12-2020", "amostras_novas", 19834),
 )
 
 
