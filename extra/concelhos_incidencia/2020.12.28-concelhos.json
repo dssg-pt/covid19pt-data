@@ -1,0 +1,6002 @@
+{
+  "objectIdFieldName" : "OBJECTID", 
+  "uniqueIdField" : 
+  {
+    "name" : "OBJECTID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdFieldName" : "", 
+  "geometryProperties" : 
+  {
+    "shapeAreaFieldName" : "Shape__Area", 
+    "shapeLengthFieldName" : "Shape__Length", 
+    "units" : "esriMeters"
+  }, 
+  "geometryType" : "esriGeometryPolygon", 
+  "spatialReference" : {
+    "wkid" : 102100, 
+    "latestWkid" : 3857
+  }, 
+  "fields" : [
+    {
+      "name" : "Total", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "População Total", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Concelho", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Concelho", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 254, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "OBJECTID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "OBJECTID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Shape_Leng", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Shape_Leng", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Dicofre", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Dico", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 6, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Distrito", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Distrito", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 150, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "DensidadeP", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Densidade Populacional", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Incidência", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Incidência", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Incidência_categoria", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Incidência categoria", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Incidência_", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Incidência classe", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ARS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ARS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Cumulativo_casos_14_dias", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Cumulativo casos 14 dias", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Valorincid", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Valorincid", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Shape__Area", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Shape__Area", 
+      "sqlType" : "sqlTypeDouble", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Shape__Length", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Shape__Length", 
+      "sqlType" : "sqlTypeDouble", 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "features" : [
+    {
+      "attributes" : {
+        "Total" : 35130, 
+        "Concelho" : "ABRANTES", 
+        "OBJECTID" : 1, 
+        "Shape_Leng" : 237582.909917, 
+        "Dicofre" : "1401", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 49.1541787348, 
+        "Incidência" : 211, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 211, 
+        "Shape__Area" : 1199392547.00024, 
+        "Shape__Length" : 214207.84191311
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 46075, 
+        "Concelho" : "ÁGUEDA", 
+        "OBJECTID" : 2, 
+        "Shape_Leng" : 137893.861535, 
+        "Dicofre" : "0101", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 137.426551734, 
+        "Incidência" : 451, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 451, 
+        "Shape__Area" : 581366641.017578, 
+        "Shape__Length" : 127721.613902839
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4652, 
+        "Concelho" : "AGUIAR DA BEIRA", 
+        "OBJECTID" : 3, 
+        "Shape_Leng" : 89066.8351137, 
+        "Dicofre" : "0901", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 22.4984282053, 
+        "Incidência" : 408, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 408, 
+        "Shape__Area" : 360575263.532959, 
+        "Shape__Length" : 85611.04438798
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4992, 
+        "Concelho" : "ALANDROAL", 
+        "OBJECTID" : 4, 
+        "Shape_Leng" : 213818.673396, 
+        "Dicofre" : "0701", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 9.19879118449, 
+        "Incidência" : 721, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 721, 
+        "Shape__Area" : 891411553.399414, 
+        "Shape__Length" : 186073.073581545
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 24144, 
+        "Concelho" : "ALBERGARIA-A-VELHA", 
+        "OBJECTID" : 5, 
+        "Shape_Leng" : 108190.776363, 
+        "Dicofre" : "0102", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 152.021156026, 
+        "Incidência" : 352, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 352, 
+        "Shape__Area" : 276892350.062012, 
+        "Shape__Length" : 97449.9569298326
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 41528, 
+        "Concelho" : "ALBUFEIRA", 
+        "OBJECTID" : 6, 
+        "Shape_Leng" : 102584.005064, 
+        "Dicofre" : "0801", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 295.236741078, 
+        "Incidência" : 284, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 284, 
+        "Shape__Area" : 221385020.749756, 
+        "Shape__Length" : 87191.0870822791
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11659, 
+        "Concelho" : "ALCÁCER DO SAL", 
+        "OBJECTID" : 7, 
+        "Shape_Leng" : 271371.68672, 
+        "Dicofre" : "1501", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 7.77334035616, 
+        "Incidência" : 292, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 292, 
+        "Shape__Area" : 2443823868.83691, 
+        "Shape__Length" : 259489.232306464
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12809, 
+        "Concelho" : "ALCANENA", 
+        "OBJECTID" : 8, 
+        "Shape_Leng" : 109694.356007, 
+        "Dicofre" : "1402", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 100.596874264, 
+        "Incidência" : 281, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 281, 
+        "Shape__Area" : 213840288.662109, 
+        "Shape__Length" : 87905.8064721788
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 53555, 
+        "Concelho" : "ALCOBAÇA", 
+        "OBJECTID" : 9, 
+        "Shape_Leng" : 218099.611335, 
+        "Dicofre" : "1001", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 131.217229382, 
+        "Incidência" : 263, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 263, 
+        "Shape__Area" : 687279111.810059, 
+        "Shape__Length" : 190298.011049868
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 19787, 
+        "Concelho" : "ALCOCHETE", 
+        "OBJECTID" : 10, 
+        "Shape_Leng" : 135834.652694, 
+        "Dicofre" : "1502", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 154.15238392, 
+        "Incidência" : 687, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 687, 
+        "Shape__Area" : 211569015.143555, 
+        "Shape__Length" : 125206.488222336
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2159, 
+        "Concelho" : "ALCOUTIM", 
+        "OBJECTID" : 11, 
+        "Shape_Leng" : 214106.303383, 
+        "Dicofre" : "0802", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 3.75243325918, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 912688781.200439, 
+        "Shape__Length" : 171604.779573676
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 44052, 
+        "Concelho" : "ALENQUER", 
+        "OBJECTID" : 12, 
+        "Shape_Leng" : 130708.878353, 
+        "Dicofre" : "1101", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 144.803103018, 
+        "Incidência" : 504, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 504, 
+        "Shape__Area" : 505367585.703125, 
+        "Shape__Length" : 113751.087488666
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4550, 
+        "Concelho" : "ALFÂNDEGA DA FÉ", 
+        "OBJECTID" : 13, 
+        "Shape_Leng" : 124336.052689, 
+        "Dicofre" : "0401", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 14.1326292903, 
+        "Incidência" : 1231, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1231, 
+        "Shape__Area" : 572043065.153076, 
+        "Shape__Length" : 111534.625698068
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10625, 
+        "Concelho" : "ALIJÓ", 
+        "OBJECTID" : 14, 
+        "Shape_Leng" : 129137.818681, 
+        "Dicofre" : "1701", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 35.7022849462, 
+        "Incidência" : 320, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 320, 
+        "Shape__Area" : 527400525.054688, 
+        "Shape__Length" : 111019.834174594
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5594, 
+        "Concelho" : "ALJEZUR", 
+        "OBJECTID" : 15, 
+        "Shape_Leng" : 185000.887641, 
+        "Dicofre" : "0803", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 17.2921174652, 
+        "Incidência" : 143, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 143, 
+        "Shape__Area" : 511106415.726074, 
+        "Shape__Length" : 134863.899609697
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8247, 
+        "Concelho" : "ALJUSTREL", 
+        "OBJECTID" : 16, 
+        "Shape_Leng" : 141602.528599, 
+        "Dicofre" : "0201", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 17.9880908238, 
+        "Incidência" : 36, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 36, 
+        "Shape__Area" : 737503272.260986, 
+        "Shape__Length" : 131749.193804831
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 169039, 
+        "Concelho" : "ALMADA", 
+        "OBJECTID" : 17, 
+        "Shape_Leng" : 83980.1196804, 
+        "Dicofre" : "1503", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 2414.49792887, 
+        "Incidência" : 428, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 428, 
+        "Shape__Area" : 113703883.825684, 
+        "Shape__Length" : 59180.0036641228
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5830, 
+        "Concelho" : "ALMEIDA", 
+        "OBJECTID" : 18, 
+        "Shape_Leng" : 156376.262888, 
+        "Dicofre" : "0902", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 11.2552608209, 
+        "Incidência" : 120, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 120, 
+        "Shape__Area" : 899790181.55957, 
+        "Shape__Length" : 143185.415502607
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 22546, 
+        "Concelho" : "ALMEIRIM", 
+        "OBJECTID" : 19, 
+        "Shape_Leng" : 108189.535527, 
+        "Dicofre" : "1403", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 101.503691698, 
+        "Incidência" : 195, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 195, 
+        "Shape__Area" : 369861968.394043, 
+        "Shape__Length" : 98530.2597507084
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6725, 
+        "Concelho" : "ALMODÔVAR", 
+        "OBJECTID" : 20, 
+        "Shape_Leng" : 251195.099611, 
+        "Dicofre" : "0202", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 8.64529233301, 
+        "Incidência" : 59, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 59, 
+        "Shape__Area" : 1237495524.8479, 
+        "Shape__Length" : 201439.903690927
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7059, 
+        "Concelho" : "ALPIARÇA", 
+        "OBJECTID" : 21, 
+        "Shape_Leng" : 59797.1027423, 
+        "Dicofre" : "1404", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 74.0247483221, 
+        "Incidência" : 184, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 184, 
+        "Shape__Area" : 158800686.918945, 
+        "Shape__Length" : 54110.8072837221
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3165, 
+        "Concelho" : "ALTER DO CHÃO", 
+        "OBJECTID" : 22, 
+        "Shape_Leng" : 139920.727082, 
+        "Dicofre" : "1201", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 8.74140359599, 
+        "Incidência" : 474, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 474, 
+        "Shape__Area" : 602656637.679688, 
+        "Shape__Length" : 126963.531215761
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6597, 
+        "Concelho" : "ALVAIÁZERE", 
+        "OBJECTID" : 23, 
+        "Shape_Leng" : 96895.8500187, 
+        "Dicofre" : "1002", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 41.1079262213, 
+        "Incidência" : 303, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 303, 
+        "Shape__Area" : 273068460.36377, 
+        "Shape__Length" : 87519.8723644088
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2477, 
+        "Concelho" : "ALVITO", 
+        "OBJECTID" : 24, 
+        "Shape_Leng" : 103315.397854, 
+        "Dicofre" : "0203", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 9.35246365867, 
+        "Incidência" : 121, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 121, 
+        "Shape__Area" : 429480100.983887, 
+        "Shape__Length" : 97493.0513768258
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 184106, 
+        "Concelho" : "AMADORA", 
+        "OBJECTID" : 25, 
+        "Shape_Leng" : 37998.712034, 
+        "Dicofre" : "1115", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 7742.05214466, 
+        "Incidência" : 384, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 384, 
+        "Shape__Area" : 38947011.9047852, 
+        "Shape__Length" : 32232.9124772303
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 53193, 
+        "Concelho" : "AMARANTE", 
+        "OBJECTID" : 26, 
+        "Shape_Leng" : 157005.877459, 
+        "Dicofre" : "1301", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 176.527395215, 
+        "Incidência" : 620, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 620, 
+        "Shape__Area" : 534349962.258301, 
+        "Shape__Length" : 137583.690247073
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 18129, 
+        "Concelho" : "AMARES", 
+        "OBJECTID" : 27, 
+        "Shape_Leng" : 71389.5411708, 
+        "Dicofre" : "0301", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 221.220256254, 
+        "Incidência" : 485, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 485, 
+        "Shape__Area" : 146930948.418945, 
+        "Shape__Length" : 66668.3051538409
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 27258, 
+        "Concelho" : "ANADIA", 
+        "OBJECTID" : 28, 
+        "Shape_Leng" : 97962.1465251, 
+        "Dicofre" : "0103", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 125.827447722, 
+        "Incidência" : 690, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 690, 
+        "Shape__Area" : 374004952.955566, 
+        "Shape__Length" : 92503.0115720283
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 33807, 
+        "Concelho" : "ANGRA DO HEROÍSMO", 
+        "OBJECTID" : 29, 
+        "Shape_Leng" : 134476.253892, 
+        "Dicofre" : "4301", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 141.451882845, 
+        "Incidência" : 142, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 142, 
+        "Shape__Area" : 393767459.693359, 
+        "Shape__Length" : 107075.251812467
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12039, 
+        "Concelho" : "ANSIÃO", 
+        "OBJECTID" : 30, 
+        "Shape_Leng" : 108764.268981, 
+        "Dicofre" : "1003", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 68.3684479528, 
+        "Incidência" : 673, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 673, 
+        "Shape__Area" : 300302106.08252, 
+        "Shape__Length" : 99350.9088081703
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 20926, 
+        "Concelho" : "ARCOS DE VALDEVEZ", 
+        "OBJECTID" : 31, 
+        "Shape_Leng" : 146331.665598, 
+        "Dicofre" : "1601", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 46.7515638963, 
+        "Incidência" : 358, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 358, 
+        "Shape__Area" : 809202679.686035, 
+        "Shape__Length" : 134913.23436349
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11014, 
+        "Concelho" : "ARGANIL", 
+        "OBJECTID" : 32, 
+        "Shape_Leng" : 193679.104184, 
+        "Dicofre" : "0601", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 33.0909746425, 
+        "Incidência" : 336, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 336, 
+        "Shape__Area" : 571099361.136963, 
+        "Shape__Length" : 165230.036270208
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5769, 
+        "Concelho" : "ARMAMAR", 
+        "OBJECTID" : 33, 
+        "Shape_Leng" : 80595.090545, 
+        "Dicofre" : "1801", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 49.2067553736, 
+        "Incidência" : 1317, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1317, 
+        "Shape__Area" : 206693890.116699, 
+        "Shape__Length" : 72095.2917706671
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 20720, 
+        "Concelho" : "AROUCA", 
+        "OBJECTID" : 34, 
+        "Shape_Leng" : 156664.038947, 
+        "Dicofre" : "0104", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 62.9576737261, 
+        "Incidência" : 536, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 536, 
+        "Shape__Area" : 577081691.743652, 
+        "Shape__Length" : 138670.467344988
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6928, 
+        "Concelho" : "ARRAIOLOS", 
+        "OBJECTID" : 35, 
+        "Shape_Leng" : 226680.251625, 
+        "Dicofre" : "0702", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 10.1323583181, 
+        "Incidência" : 462, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 462, 
+        "Shape__Area" : 1128155747.11987, 
+        "Shape__Length" : 196493.551111632
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2820, 
+        "Concelho" : "ARRONCHES", 
+        "OBJECTID" : 36, 
+        "Shape_Leng" : 125706.785785, 
+        "Dicofre" : "1202", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 8.96233910694, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 522901973.912109, 
+        "Shape__Length" : 112594.698551884
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15412, 
+        "Concelho" : "ARRUDA DOS VINHOS", 
+        "OBJECTID" : 37, 
+        "Shape_Leng" : 93666.3613867, 
+        "Dicofre" : "1102", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 197.691123653, 
+        "Incidência" : 526, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 526, 
+        "Shape__Area" : 129042417.680176, 
+        "Shape__Length" : 73891.9563403843
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 78734, 
+        "Concelho" : "AVEIRO", 
+        "OBJECTID" : 38, 
+        "Shape_Leng" : 101374.619183, 
+        "Dicofre" : "0105", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 398.491750177, 
+        "Incidência" : 297, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 297, 
+        "Shape__Area" : 343134721.935059, 
+        "Shape__Length" : 93433.9537820335
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4247, 
+        "Concelho" : "AVIS", 
+        "OBJECTID" : 39, 
+        "Shape_Leng" : 228908.769944, 
+        "Dicofre" : "1203", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 7.00859778537, 
+        "Incidência" : 589, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 589, 
+        "Shape__Area" : 1006808940, 
+        "Shape__Length" : 202670.99414269
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 22716, 
+        "Concelho" : "AZAMBUJA", 
+        "OBJECTID" : 40, 
+        "Shape_Leng" : 156077.517547, 
+        "Dicofre" : "1103", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 86.4844285388, 
+        "Incidência" : 396, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 396, 
+        "Shape__Area" : 437068339.82666, 
+        "Shape__Length" : 138906.281530362
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 18748, 
+        "Concelho" : "BAIÃO", 
+        "OBJECTID" : 41, 
+        "Shape_Leng" : 98328.2995125, 
+        "Dicofre" : "1302", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 107.419927806, 
+        "Incidência" : 341, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 341, 
+        "Shape__Area" : 307423497.34082, 
+        "Shape__Length" : 88414.340206416
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 116187, 
+        "Concelho" : "BARCELOS", 
+        "OBJECTID" : 42, 
+        "Shape_Leng" : 145112.68476, 
+        "Dicofre" : "0302", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 306.642913698, 
+        "Incidência" : 989, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 989, 
+        "Shape__Area" : 677061432.42041, 
+        "Shape__Length" : 134515.48598559
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 1634, 
+        "Concelho" : "BARRANCOS", 
+        "OBJECTID" : 43, 
+        "Shape_Leng" : 134813.519088, 
+        "Dicofre" : "0204", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 9.7019356371, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 272233180.104736, 
+        "Shape__Length" : 97270.3860815888
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 75147, 
+        "Concelho" : "BARREIRO", 
+        "OBJECTID" : 44, 
+        "Shape_Leng" : 59532.2248729, 
+        "Dicofre" : "1504", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 2065.04534213, 
+        "Incidência" : 555, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 555, 
+        "Shape__Area" : 59512085.2724609, 
+        "Shape__Length" : 48682.2832446362
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15963, 
+        "Concelho" : "BATALHA", 
+        "OBJECTID" : 45, 
+        "Shape_Leng" : 83701.6758655, 
+        "Dicofre" : "1004", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 154.351189325, 
+        "Incidência" : 326, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 326, 
+        "Shape__Area" : 174091063.56543, 
+        "Shape__Length" : 70700.4883323019
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 33579, 
+        "Concelho" : "BEJA", 
+        "OBJECTID" : 46, 
+        "Shape_Leng" : 263807.063574, 
+        "Dicofre" : "0205", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 29.2887795688, 
+        "Incidência" : 426, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 426, 
+        "Shape__Area" : 1847652857.28882, 
+        "Shape__Length" : 244448.23928637
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6398, 
+        "Concelho" : "BELMONTE", 
+        "OBJECTID" : 47, 
+        "Shape_Leng" : 77624.9708021, 
+        "Dicofre" : "0501", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 53.873358033, 
+        "Incidência" : 141, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 141, 
+        "Shape__Area" : 205079132.033691, 
+        "Shape__Length" : 72276.9551751573
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 30602, 
+        "Concelho" : "BENAVENTE", 
+        "OBJECTID" : 48, 
+        "Shape_Leng" : 159262.096548, 
+        "Dicofre" : "1405", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 58.6942345314, 
+        "Incidência" : 320, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 320, 
+        "Shape__Area" : 861663666.563477, 
+        "Shape__Length" : 152028.001903809
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12558, 
+        "Concelho" : "BOMBARRAL", 
+        "OBJECTID" : 49, 
+        "Shape_Leng" : 78740.4915559, 
+        "Dicofre" : "1005", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 137.561616826, 
+        "Incidência" : 207, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 207, 
+        "Shape__Area" : 152995847.634277, 
+        "Shape__Length" : 64088.5780865222
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6736, 
+        "Concelho" : "BORBA", 
+        "OBJECTID" : 50, 
+        "Shape_Leng" : 110909.168217, 
+        "Dicofre" : "0703", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 46.3943797782, 
+        "Incidência" : 238, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 238, 
+        "Shape__Area" : 239069220.210449, 
+        "Shape__Length" : 93595.7132147744
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4998, 
+        "Concelho" : "BOTICAS", 
+        "OBJECTID" : 51, 
+        "Shape_Leng" : 163226.318998, 
+        "Dicofre" : "1702", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 15.5236675363, 
+        "Incidência" : 500, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 500, 
+        "Shape__Area" : 577081974.5625, 
+        "Shape__Length" : 150099.039718661
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 182679, 
+        "Concelho" : "BRAGA", 
+        "OBJECTID" : 52, 
+        "Shape_Leng" : 90200.5980964, 
+        "Dicofre" : "0303", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 996.06870229, 
+        "Incidência" : 632, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 632, 
+        "Shape__Area" : 327449141.75293, 
+        "Shape__Length" : 87042.6235640303
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 33607, 
+        "Concelho" : "BRAGANÇA", 
+        "OBJECTID" : 53, 
+        "Shape_Leng" : 267011.976909, 
+        "Dicofre" : "0402", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 28.6365534225, 
+        "Incidência" : 768, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 768, 
+        "Shape__Area" : 2111212809.12573, 
+        "Shape__Length" : 242264.742354893
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15628, 
+        "Concelho" : "CABECEIRAS DE BASTO", 
+        "OBJECTID" : 54, 
+        "Shape_Leng" : 110135.803764, 
+        "Dicofre" : "0304", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 64.626581755, 
+        "Incidência" : 275, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 275, 
+        "Shape__Area" : 432139688.404297, 
+        "Shape__Length" : 102494.579118383
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 13673, 
+        "Concelho" : "CADAVAL", 
+        "OBJECTID" : 55, 
+        "Shape_Leng" : 82855.8373402, 
+        "Dicofre" : "1104", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 78.1805706444, 
+        "Incidência" : 183, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 183, 
+        "Shape__Area" : 292375665.641113, 
+        "Shape__Length" : 73996.180820268
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 51912, 
+        "Concelho" : "CALDAS DA RAINHA", 
+        "OBJECTID" : 56, 
+        "Shape_Leng" : 137103.283022, 
+        "Dicofre" : "1006", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 203.027103133, 
+        "Incidência" : 453, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 453, 
+        "Shape__Area" : 428396153.461914, 
+        "Shape__Length" : 117225.061341628
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10867, 
+        "Concelho" : "CALHETA [R.A. MADEIRA]", 
+        "OBJECTID" : 57, 
+        "Shape_Leng" : 75096.0239968, 
+        "Dicofre" : "3101", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 97.4618834081, 
+        "Incidência" : 37, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 37, 
+        "Shape__Area" : 158167565.359375, 
+        "Shape__Length" : 64081.1665290597
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3184, 
+        "Concelho" : "CALHETA [R.A. AÇORES]", 
+        "OBJECTID" : 58, 
+        "Shape_Leng" : 95034.673605, 
+        "Dicofre" : "4501", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 25.2178045303, 
+        "Incidência" : 94, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 94, 
+        "Shape__Area" : 207144244.928711, 
+        "Shape__Length" : 82551.099457521
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 33675, 
+        "Concelho" : "CÂMARA DE LOBOS", 
+        "OBJECTID" : 59, 
+        "Shape_Leng" : 55149.968844, 
+        "Dicofre" : "3102", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 645.485911443, 
+        "Incidência" : 273, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 273, 
+        "Shape__Area" : 73767500.5117188, 
+        "Shape__Length" : 45087.7916662843
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15877, 
+        "Concelho" : "CAMINHA", 
+        "OBJECTID" : 60, 
+        "Shape_Leng" : 90275.9214229, 
+        "Dicofre" : "1602", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 116.297978318, 
+        "Incidência" : 548, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 548, 
+        "Shape__Area" : 246131473.006836, 
+        "Shape__Length" : 80764.7387768269
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7874, 
+        "Concelho" : "CAMPO MAIOR", 
+        "OBJECTID" : 61, 
+        "Shape_Leng" : 98386.8163293, 
+        "Dicofre" : "1204", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 31.8527508091, 
+        "Incidência" : 64, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 64, 
+        "Shape__Area" : 410012386.839844, 
+        "Shape__Length" : 91732.2553353553
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 35011, 
+        "Concelho" : "CANTANHEDE", 
+        "OBJECTID" : 62, 
+        "Shape_Leng" : 173540.630678, 
+        "Dicofre" : "0602", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 89.5696889071, 
+        "Incidência" : 477, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 477, 
+        "Shape__Area" : 673782955.975586, 
+        "Shape__Length" : 163625.373206101
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5666, 
+        "Concelho" : "CARRAZEDA DE ANSIÃES", 
+        "OBJECTID" : 63, 
+        "Shape_Leng" : 117255.006021, 
+        "Dicofre" : "0403", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 20.2907892852, 
+        "Incidência" : 88, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 88, 
+        "Shape__Area" : 493960731.784912, 
+        "Shape__Length" : 111455.471900125
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 9271, 
+        "Concelho" : "CARREGAL DO SAL", 
+        "OBJECTID" : 64, 
+        "Shape_Leng" : 73044.3204857, 
+        "Dicofre" : "1802", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 79.313884849, 
+        "Incidência" : 291, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 291, 
+        "Shape__Area" : 202045340.922119, 
+        "Shape__Length" : 67401.351399181
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 23843, 
+        "Concelho" : "CARTAXO", 
+        "OBJECTID" : 65, 
+        "Shape_Leng" : 93551.0820652, 
+        "Dicofre" : "1406", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 150.742871594, 
+        "Incidência" : 231, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 231, 
+        "Shape__Area" : 263295888.717773, 
+        "Shape__Length" : 87116.6082216053
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 213608, 
+        "Concelho" : "CASCAIS", 
+        "OBJECTID" : 66, 
+        "Shape_Leng" : 91926.3923209, 
+        "Dicofre" : "1105", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 2193.10061602, 
+        "Incidência" : 316, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 316, 
+        "Shape__Area" : 160269501.868164, 
+        "Shape__Length" : 67705.4757593048
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2614, 
+        "Concelho" : "CASTANHEIRA DE PÊRA", 
+        "OBJECTID" : 67, 
+        "Shape_Leng" : 58311.0226901, 
+        "Dicofre" : "1007", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 39.1493185562, 
+        "Incidência" : 574, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 574, 
+        "Shape__Area" : 114758932.999512, 
+        "Shape__Length" : 54276.0396191928
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 51987, 
+        "Concelho" : "CASTELO BRANCO", 
+        "OBJECTID" : 68, 
+        "Shape_Leng" : 333151.989212, 
+        "Dicofre" : "0502", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 36.1475187562, 
+        "Incidência" : 560, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 560, 
+        "Shape__Area" : 2442399552.69067, 
+        "Shape__Length" : 287590.468452092
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15454, 
+        "Concelho" : "CASTELO DE PAIVA", 
+        "OBJECTID" : 69, 
+        "Shape_Leng" : 81040.0076451, 
+        "Dicofre" : "0106", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 134.370924267, 
+        "Incidência" : 349, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 349, 
+        "Shape__Area" : 202415375.047363, 
+        "Shape__Length" : 69203.7988644216
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2919, 
+        "Concelho" : "CASTELO DE VIDE", 
+        "OBJECTID" : 70, 
+        "Shape_Leng" : 132586.998408, 
+        "Dicofre" : "1205", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 11.018836586, 
+        "Incidência" : 514, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 514, 
+        "Shape__Area" : 444728507.334229, 
+        "Shape__Length" : 110881.620780669
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 13823, 
+        "Concelho" : "CASTRO DAIRE", 
+        "OBJECTID" : 71, 
+        "Shape_Leng" : 194808.20385, 
+        "Dicofre" : "1803", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 36.4684466019, 
+        "Incidência" : 514, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 514, 
+        "Shape__Area" : 664354207.033447, 
+        "Shape__Length" : 169077.083703045
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6237, 
+        "Concelho" : "CASTRO MARIM", 
+        "OBJECTID" : 72, 
+        "Shape_Leng" : 128584.985652, 
+        "Dicofre" : "0804", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 20.7319505385, 
+        "Incidência" : 64, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 64, 
+        "Shape__Area" : 475876491.129883, 
+        "Shape__Length" : 105781.913373684
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6949, 
+        "Concelho" : "CASTRO VERDE", 
+        "OBJECTID" : 73, 
+        "Shape_Leng" : 206203.139287, 
+        "Dicofre" : "0206", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 12.2032171958, 
+        "Incidência" : 144, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 144, 
+        "Shape__Area" : 911186237.276367, 
+        "Shape__Length" : 185381.507621408
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6928, 
+        "Concelho" : "CELORICO DA BEIRA", 
+        "OBJECTID" : 74, 
+        "Shape_Leng" : 106942.034445, 
+        "Dicofre" : "0903", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 28.0236226842, 
+        "Incidência" : 635, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 635, 
+        "Shape__Area" : 429547324.899414, 
+        "Shape__Length" : 101340.972835679
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 19040, 
+        "Concelho" : "CELORICO DE BASTO", 
+        "OBJECTID" : 75, 
+        "Shape_Leng" : 95019.8125752, 
+        "Dicofre" : "0305", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 105.152703374, 
+        "Incidência" : 352, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 352, 
+        "Shape__Area" : 321966947.763672, 
+        "Shape__Length" : 86075.6849548717
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 9197, 
+        "Concelho" : "CHAMUSCA", 
+        "OBJECTID" : 76, 
+        "Shape_Leng" : 187362.045973, 
+        "Dicofre" : "1407", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 12.3282529725, 
+        "Incidência" : 120, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 120, 
+        "Shape__Area" : 1247207729.13184, 
+        "Shape__Length" : 174549.733065061
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 39343, 
+        "Concelho" : "CHAVES", 
+        "OBJECTID" : 77, 
+        "Shape_Leng" : 223134.590704, 
+        "Dicofre" : "1703", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 66.5443228524, 
+        "Incidência" : 885, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 885, 
+        "Shape__Area" : 1063055970.15503, 
+        "Shape__Length" : 207488.69805092
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 18244, 
+        "Concelho" : "CINFÃES", 
+        "OBJECTID" : 78, 
+        "Shape_Leng" : 123323.567856, 
+        "Dicofre" : "1804", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 76.2422165573, 
+        "Incidência" : 312, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 312, 
+        "Shape__Area" : 420165285.785645, 
+        "Shape__Length" : 109664.185247298
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 134166, 
+        "Concelho" : "COIMBRA", 
+        "OBJECTID" : 79, 
+        "Shape_Leng" : 179012.018611, 
+        "Dicofre" : "0603", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 420.056355667, 
+        "Incidência" : 443, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 443, 
+        "Shape__Area" : 549221328.691895, 
+        "Shape__Length" : 159955.783421697
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 17733, 
+        "Concelho" : "CONDEIXA-A-NOVA", 
+        "OBJECTID" : 80, 
+        "Shape_Leng" : 95589.9897888, 
+        "Dicofre" : "0604", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 127.879137521, 
+        "Incidência" : 603, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 603, 
+        "Shape__Area" : 236904536.054199, 
+        "Shape__Length" : 86274.9245905219
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4030, 
+        "Concelho" : "CONSTÂNCIA", 
+        "OBJECTID" : 81, 
+        "Shape_Leng" : 66172.1999529, 
+        "Dicofre" : "1408", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 50.143088217, 
+        "Incidência" : 273, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 273, 
+        "Shape__Area" : 134966788.271484, 
+        "Shape__Length" : 62749.8249541982
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 17471, 
+        "Concelho" : "CORUCHE", 
+        "OBJECTID" : 82, 
+        "Shape_Leng" : 296878.161413, 
+        "Dicofre" : "1409", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 15.6589466891, 
+        "Incidência" : 218, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 218, 
+        "Shape__Area" : 1846016031.64551, 
+        "Shape__Length" : 273197.235722223
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 464, 
+        "Concelho" : "CORVO", 
+        "OBJECTID" : 83, 
+        "Shape_Leng" : 27770.7043233, 
+        "Dicofre" : "4901", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 27.1186440678, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 29658506.3398438, 
+        "Shape__Length" : 21658.8117268785
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 46787, 
+        "Concelho" : "COVILHÃ", 
+        "OBJECTID" : 84, 
+        "Shape_Leng" : 182795.702197, 
+        "Dicofre" : "0503", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 84.2098632109, 
+        "Incidência" : 327, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 327, 
+        "Shape__Area" : 955293639.806396, 
+        "Shape__Length" : 172923.070799129
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3129, 
+        "Concelho" : "CRATO", 
+        "OBJECTID" : 85, 
+        "Shape_Leng" : 164948.491714, 
+        "Dicofre" : "1206", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 7.86042655814, 
+        "Incidência" : 1023, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1023, 
+        "Shape__Area" : 665979834.685303, 
+        "Shape__Length" : 147582.13618802
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4595, 
+        "Concelho" : "CUBA", 
+        "OBJECTID" : 86, 
+        "Shape_Leng" : 102177.884628, 
+        "Dicofre" : "0207", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 26.7011447498, 
+        "Incidência" : 348, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 348, 
+        "Shape__Area" : 279253388.91333, 
+        "Shape__Length" : 95284.9518932069
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 20528, 
+        "Concelho" : "ELVAS", 
+        "OBJECTID" : 87, 
+        "Shape_Leng" : 190423.295239, 
+        "Dicofre" : "1207", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 32.5175434428, 
+        "Incidência" : 867, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 867, 
+        "Shape__Area" : 1043492199.45483, 
+        "Shape__Length" : 168378.414330775
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 21558, 
+        "Concelho" : "ENTRONCAMENTO", 
+        "OBJECTID" : 88, 
+        "Shape_Leng" : 22628.9411123, 
+        "Dicofre" : "1410", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 1570.1383831, 
+        "Incidência" : 260, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 260, 
+        "Shape__Area" : 23609781.4741211, 
+        "Shape__Length" : 20128.7614780194
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 29516, 
+        "Concelho" : "ESPINHO", 
+        "OBJECTID" : 89, 
+        "Shape_Leng" : 31814.7840768, 
+        "Dicofre" : "0107", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 1401.51946819, 
+        "Incidência" : 444, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 444, 
+        "Shape__Area" : 37098102.5249023, 
+        "Shape__Length" : 27045.0217612493
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 34177, 
+        "Concelho" : "ESPOSENDE", 
+        "OBJECTID" : 90, 
+        "Shape_Leng" : 74687.3143518, 
+        "Dicofre" : "0306", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 358.211927471, 
+        "Incidência" : 1036, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1036, 
+        "Shape__Area" : 170632464.12793, 
+        "Shape__Length" : 68759.8230278197
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 26006, 
+        "Concelho" : "ESTARREJA", 
+        "OBJECTID" : 91, 
+        "Shape_Leng" : 89603.3093052, 
+        "Dicofre" : "0108", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 240.417860775, 
+        "Incidência" : 377, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 377, 
+        "Shape__Area" : 188583376.337891, 
+        "Shape__Length" : 79081.9805772347
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12728, 
+        "Concelho" : "ESTREMOZ", 
+        "OBJECTID" : 92, 
+        "Shape_Leng" : 239906.626697, 
+        "Dicofre" : "0704", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 24.7722849358, 
+        "Incidência" : 629, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 629, 
+        "Shape__Area" : 849587016.781982, 
+        "Shape__Length" : 204237.778087293
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 52428, 
+        "Concelho" : "ÉVORA", 
+        "OBJECTID" : 93, 
+        "Shape_Leng" : 383935.277934, 
+        "Dicofre" : "0705", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 40.1107812835, 
+        "Incidência" : 875, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 875, 
+        "Shape__Area" : 2137425647.17993, 
+        "Shape__Length" : 336968.554388083
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 48060, 
+        "Concelho" : "FAFE", 
+        "OBJECTID" : 94, 
+        "Shape_Leng" : 102516.144211, 
+        "Dicofre" : "0307", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 219.371918934, 
+        "Incidência" : 412, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 412, 
+        "Shape__Area" : 390826532.215332, 
+        "Shape__Length" : 94376.1849299039
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 61015, 
+        "Concelho" : "FARO", 
+        "OBJECTID" : 95, 
+        "Shape_Leng" : 123066.447462, 
+        "Dicofre" : "0805", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 301.204521894, 
+        "Incidência" : 313, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 313, 
+        "Shape__Area" : 318777281.596924, 
+        "Shape__Length" : 100371.993941252
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 56422, 
+        "Concelho" : "FELGUEIRAS", 
+        "OBJECTID" : 96, 
+        "Shape_Leng" : 77484.7528282, 
+        "Dicofre" : "1303", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 487.489199931, 
+        "Incidência" : 496, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 496, 
+        "Shape__Area" : 205914425.032715, 
+        "Shape__Length" : 66815.8153321222
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7845, 
+        "Concelho" : "FERREIRA DO ALENTEJO", 
+        "OBJECTID" : 97, 
+        "Shape_Leng" : 173651.88449, 
+        "Dicofre" : "0208", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 12.1025593558, 
+        "Incidência" : 89, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 89, 
+        "Shape__Area" : 1047498287.60864, 
+        "Shape__Length" : 163442.188945938
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7959, 
+        "Concelho" : "FERREIRA DO ZÊZERE", 
+        "OBJECTID" : 98, 
+        "Shape_Leng" : 122628.362913, 
+        "Dicofre" : "1411", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 41.8058619603, 
+        "Incidência" : 176, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 176, 
+        "Shape__Area" : 321801864.674316, 
+        "Shape__Length" : 104488.66160484
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 58747, 
+        "Concelho" : "FIGUEIRA DA FOZ", 
+        "OBJECTID" : 99, 
+        "Shape_Leng" : 140542.574592, 
+        "Dicofre" : "0605", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 154.984830497, 
+        "Incidência" : 363, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 363, 
+        "Shape__Area" : 650496966.345703, 
+        "Shape__Length" : 127975.825634288
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5584, 
+        "Concelho" : "FIGUEIRA DE CASTELO RODRIGO", 
+        "OBJECTID" : 100, 
+        "Shape_Leng" : 147949.562337, 
+        "Dicofre" : "0904", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 10.9798061231, 
+        "Incidência" : 179, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 179, 
+        "Shape__Area" : 889878572.091553, 
+        "Shape__Length" : 134736.208856792
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5568, 
+        "Concelho" : "FIGUEIRÓ DOS VINHOS", 
+        "OBJECTID" : 101, 
+        "Shape_Leng" : 138927.011582, 
+        "Dicofre" : "1008", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 32.1033210332, 
+        "Incidência" : 1347, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1347, 
+        "Shape__Area" : 294721116.647949, 
+        "Shape__Length" : 124181.884769104
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4528, 
+        "Concelho" : "FORNOS DE ALGODRES", 
+        "OBJECTID" : 102, 
+        "Shape_Leng" : 104546.88904, 
+        "Dicofre" : "0905", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 34.4465576265, 
+        "Incidência" : 199, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 199, 
+        "Shape__Area" : 229142566.698486, 
+        "Shape__Length" : 98655.317862958
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3298, 
+        "Concelho" : "FREIXO DE ESPADA À CINTA", 
+        "OBJECTID" : 103, 
+        "Shape_Leng" : 134121.662051, 
+        "Dicofre" : "0404", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 13.5086425821, 
+        "Incidência" : 212, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 212, 
+        "Shape__Area" : 431310600.131836, 
+        "Shape__Length" : 122169.759711759
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2974, 
+        "Concelho" : "FRONTEIRA", 
+        "OBJECTID" : 104, 
+        "Shape_Leng" : 133028.326892, 
+        "Dicofre" : "1208", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 11.9629927595, 
+        "Incidência" : 471, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 471, 
+        "Shape__Area" : 414197004.743164, 
+        "Shape__Length" : 111670.076441242
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 104024, 
+        "Concelho" : "FUNCHAL", 
+        "OBJECTID" : 105, 
+        "Shape_Leng" : 98013.8764448, 
+        "Dicofre" : "3103", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 1365.86134454, 
+        "Incidência" : 162, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 162, 
+        "Shape__Area" : 107071866.783203, 
+        "Shape__Length" : 74051.942141215
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 26495, 
+        "Concelho" : "FUNDÃO", 
+        "OBJECTID" : 106, 
+        "Shape_Leng" : 252399.173889, 
+        "Dicofre" : "0504", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 37.8391888032, 
+        "Incidência" : 260, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 260, 
+        "Shape__Area" : 1199411413.93311, 
+        "Shape__Length" : 224515.680927064
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3263, 
+        "Concelho" : "GAVIÃO", 
+        "OBJECTID" : 107, 
+        "Shape_Leng" : 129695.023271, 
+        "Dicofre" : "1209", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 11.0764112835, 
+        "Incidência" : 1257, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1257, 
+        "Shape__Area" : 495266496.632813, 
+        "Shape__Length" : 108958.381848863
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3805, 
+        "Concelho" : "GÓIS", 
+        "OBJECTID" : 108, 
+        "Shape_Leng" : 145765.616151, 
+        "Dicofre" : "0606", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 14.451196354, 
+        "Incidência" : 131, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 131, 
+        "Shape__Area" : 450351474.440186, 
+        "Shape__Length" : 124093.371910347
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5339, 
+        "Concelho" : "GOLEGÃ", 
+        "OBJECTID" : 109, 
+        "Shape_Leng" : 63612.0891027, 
+        "Dicofre" : "1412", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 63.3183111954, 
+        "Incidência" : 375, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 375, 
+        "Shape__Area" : 141083591.940918, 
+        "Shape__Length" : 59797.9524217324
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 165985, 
+        "Concelho" : "GONDOMAR", 
+        "OBJECTID" : 110, 
+        "Shape_Leng" : 106142.346208, 
+        "Dicofre" : "1304", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 1258.22468163, 
+        "Incidência" : 525, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 525, 
+        "Shape__Area" : 232615040.28418, 
+        "Shape__Length" : 98354.7997917839
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12387, 
+        "Concelho" : "GOUVEIA", 
+        "OBJECTID" : 111, 
+        "Shape_Leng" : 128539.067315, 
+        "Dicofre" : "0906", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 41.2062140315, 
+        "Incidência" : 323, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 323, 
+        "Shape__Area" : 520021912.841797, 
+        "Shape__Length" : 115017.124362611
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14639, 
+        "Concelho" : "GRÂNDOLA", 
+        "OBJECTID" : 112, 
+        "Shape_Leng" : 289444.506213, 
+        "Dicofre" : "1505", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 17.7240477517, 
+        "Incidência" : 328, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 328, 
+        "Shape__Area" : 1339114149.98145, 
+        "Shape__Length" : 271808.429346396
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 38969, 
+        "Concelho" : "GUARDA", 
+        "OBJECTID" : 113, 
+        "Shape_Leng" : 212767.374049, 
+        "Dicofre" : "0907", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 54.7240556102, 
+        "Incidência" : 883, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 883, 
+        "Shape__Area" : 1231904730.32324, 
+        "Shape__Length" : 197529.121605485
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 152309, 
+        "Concelho" : "GUIMARÃES", 
+        "OBJECTID" : 114, 
+        "Shape_Leng" : 153736.430776, 
+        "Dicofre" : "0308", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 631.987551867, 
+        "Incidência" : 598, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 598, 
+        "Shape__Area" : 430868987.239258, 
+        "Shape__Length" : 133646.323085046
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14521, 
+        "Concelho" : "HORTA", 
+        "OBJECTID" : 115, 
+        "Shape_Leng" : 102235.238848, 
+        "Dicofre" : "4701", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 83.9073153819, 
+        "Incidência" : 21, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 21, 
+        "Shape__Area" : 284198852.638672, 
+        "Shape__Length" : 78280.0842719702
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8043, 
+        "Concelho" : "IDANHA-A-NOVA", 
+        "OBJECTID" : 116, 
+        "Shape_Leng" : 276347.83544, 
+        "Dicofre" : "0505", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 5.67872121101, 
+        "Incidência" : 982, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 982, 
+        "Shape__Area" : 2410034106.7998, 
+        "Shape__Length" : 244288.542047791
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 38699, 
+        "Concelho" : "ÍLHAVO", 
+        "OBJECTID" : 117, 
+        "Shape_Leng" : 54437.0923819, 
+        "Dicofre" : "0110", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 526.660315732, 
+        "Incidência" : 481, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 481, 
+        "Shape__Area" : 127288168.15625, 
+        "Shape__Length" : 49654.1997768916
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 30374, 
+        "Concelho" : "LAGOS", 
+        "OBJECTID" : 118, 
+        "Shape_Leng" : 110053.200613, 
+        "Dicofre" : "0807", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 142.607634161, 
+        "Incidência" : 178, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 178, 
+        "Shape__Area" : 335518550.742188, 
+        "Shape__Length" : 85170.0969279314
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 1463, 
+        "Concelho" : "LAJES DAS FLORES", 
+        "OBJECTID" : 119, 
+        "Shape_Leng" : 66664.1325844, 
+        "Dicofre" : "4801", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 20.8850820842, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 118698952.830078, 
+        "Shape__Length" : 54001.7364877437
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4490, 
+        "Concelho" : "LAJES DO PICO", 
+        "OBJECTID" : 120, 
+        "Shape_Leng" : 122697.180887, 
+        "Dicofre" : "4601", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 28.9099220913, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 253905755.412109, 
+        "Shape__Length" : 98086.8817845492
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 24895, 
+        "Concelho" : "LAMEGO", 
+        "OBJECTID" : 121, 
+        "Shape_Leng" : 108943.305114, 
+        "Dicofre" : "1805", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 150.495707895, 
+        "Incidência" : 635, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 635, 
+        "Shape__Area" : 291452253.941406, 
+        "Shape__Length" : 93281.4031478609
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 125267, 
+        "Concelho" : "LEIRIA", 
+        "OBJECTID" : 122, 
+        "Shape_Leng" : 205777.918897, 
+        "Dicofre" : "1009", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 221.676193173, 
+        "Incidência" : 533, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 533, 
+        "Shape__Area" : 957580176.676758, 
+        "Shape__Length" : 184868.304324949
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 509515, 
+        "Concelho" : "LISBOA", 
+        "OBJECTID" : 123, 
+        "Shape_Leng" : 63648.6250278, 
+        "Dicofre" : "1106", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 5092.60369815, 
+        "Incidência" : 442, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 442, 
+        "Shape__Area" : 164613002.990234, 
+        "Shape__Length" : 60564.5537456749
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 68697, 
+        "Concelho" : "LOULÉ", 
+        "OBJECTID" : 124, 
+        "Shape_Leng" : 262149.378824, 
+        "Dicofre" : "0808", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 89.9563947778, 
+        "Incidência" : 247, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 247, 
+        "Shape__Area" : 1206661820.51245, 
+        "Shape__Length" : 207347.855491642
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 213687, 
+        "Concelho" : "LOURES", 
+        "OBJECTID" : 125, 
+        "Shape_Leng" : 115804.298633, 
+        "Dicofre" : "1107", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 1277.72662043, 
+        "Incidência" : 454, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 454, 
+        "Shape__Area" : 275962515.248047, 
+        "Shape__Length" : 96946.1041535283
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 25855, 
+        "Concelho" : "LOURINHÃ", 
+        "OBJECTID" : 126, 
+        "Shape_Leng" : 89581.2777505, 
+        "Dicofre" : "1108", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 175.681185024, 
+        "Incidência" : 329, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 329, 
+        "Shape__Area" : 245352847.942383, 
+        "Shape__Length" : 77028.7861360848
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 17158, 
+        "Concelho" : "LOUSÃ", 
+        "OBJECTID" : 127, 
+        "Shape_Leng" : 73427.502866, 
+        "Dicofre" : "0607", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 123.973988439, 
+        "Incidência" : 321, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 321, 
+        "Shape__Area" : 236820997.068848, 
+        "Shape__Length" : 69259.9258795084
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 46755, 
+        "Concelho" : "LOUSADA", 
+        "OBJECTID" : 128, 
+        "Shape_Leng" : 75143.2373573, 
+        "Dicofre" : "1305", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 486.62572856, 
+        "Incidência" : 319, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 319, 
+        "Shape__Area" : 170395183.271973, 
+        "Shape__Length" : 67574.4116397548
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6267, 
+        "Concelho" : "MAÇÃO", 
+        "OBJECTID" : 129, 
+        "Shape_Leng" : 190757.309691, 
+        "Dicofre" : "1413", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 15.6682834142, 
+        "Incidência" : 973, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 973, 
+        "Shape__Area" : 674124347.275635, 
+        "Shape__Length" : 150032.279755561
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14516, 
+        "Concelho" : "MACEDO DE CAVALEIROS", 
+        "OBJECTID" : 130, 
+        "Shape_Leng" : 234205.622562, 
+        "Dicofre" : "0405", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 20.7626512573, 
+        "Incidência" : 1454, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1454, 
+        "Shape__Area" : 1247841817.26343, 
+        "Shape__Length" : 217750.660850801
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 19981, 
+        "Concelho" : "MACHICO", 
+        "OBJECTID" : 131, 
+        "Shape_Leng" : 127722.530128, 
+        "Dicofre" : "3104", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 292.761904762, 
+        "Incidência" : 315, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 315, 
+        "Shape__Area" : 95937627.5258789, 
+        "Shape__Length" : 86249.530942943
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5895, 
+        "Concelho" : "MADALENA", 
+        "OBJECTID" : 132, 
+        "Shape_Leng" : 82756.71546, 
+        "Dicofre" : "4602", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 40.0693311582, 
+        "Incidência" : 51, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 51, 
+        "Shape__Area" : 241187665.99707, 
+        "Shape__Length" : 66827.9578391953
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 84816, 
+        "Concelho" : "MAFRA", 
+        "OBJECTID" : 133, 
+        "Shape_Leng" : 161927.814755, 
+        "Dicofre" : "1109", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 290.814332248, 
+        "Incidência" : 291, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 291, 
+        "Shape__Area" : 483847105.984375, 
+        "Shape__Length" : 128155.267748722
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 138971, 
+        "Concelho" : "MAIA", 
+        "OBJECTID" : 134, 
+        "Shape_Leng" : 90096.0387482, 
+        "Dicofre" : "1306", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 1675.56064625, 
+        "Incidência" : 423, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 423, 
+        "Shape__Area" : 147190855.415039, 
+        "Shape__Length" : 76146.4483720097
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 18510, 
+        "Concelho" : "MANGUALDE", 
+        "OBJECTID" : 135, 
+        "Shape_Leng" : 111875.306388, 
+        "Dicofre" : "1806", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 84.4203229043, 
+        "Incidência" : 1135, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1135, 
+        "Shape__Area" : 380665118.588135, 
+        "Shape__Length" : 101627.585498664
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3007, 
+        "Concelho" : "MANTEIGAS", 
+        "OBJECTID" : 136, 
+        "Shape_Leng" : 85511.6210918, 
+        "Dicofre" : "0908", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 24.6515822266, 
+        "Incidência" : 931, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 931, 
+        "Shape__Area" : 210141116.244141, 
+        "Shape__Length" : 78688.7625492009
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 51496, 
+        "Concelho" : "MARCO DE CANAVESES", 
+        "OBJECTID" : 137, 
+        "Shape_Leng" : 125709.778912, 
+        "Dicofre" : "1307", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 255.069592352, 
+        "Incidência" : 507, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 507, 
+        "Shape__Area" : 356213472.862305, 
+        "Shape__Length" : 115663.18828623
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 38508, 
+        "Concelho" : "MARINHA GRANDE", 
+        "OBJECTID" : 138, 
+        "Shape_Leng" : 96838.8048883, 
+        "Dicofre" : "1010", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 205.650200267, 
+        "Incidência" : 330, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 330, 
+        "Shape__Area" : 317928312.012695, 
+        "Shape__Length" : 87405.8854704159
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3005, 
+        "Concelho" : "MARVÃO", 
+        "OBJECTID" : 139, 
+        "Shape_Leng" : 88285.9551194, 
+        "Dicofre" : "1210", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 19.3996126533, 
+        "Incidência" : 1265, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1265, 
+        "Shape__Area" : 259278273.782715, 
+        "Shape__Length" : 77938.6341285678
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 175357, 
+        "Concelho" : "MATOSINHOS", 
+        "OBJECTID" : 140, 
+        "Shape_Leng" : 78359.4777478, 
+        "Dicofre" : "1308", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 2809.30791413, 
+        "Incidência" : 463, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 463, 
+        "Shape__Area" : 109662738.328613, 
+        "Shape__Length" : 60203.2446897215
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 19914, 
+        "Concelho" : "MEALHADA", 
+        "OBJECTID" : 141, 
+        "Shape_Leng" : 85236.4942506, 
+        "Dicofre" : "0111", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 179.956623893, 
+        "Incidência" : 668, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 668, 
+        "Shape__Area" : 191236476.704102, 
+        "Shape__Length" : 79858.3355799896
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4587, 
+        "Concelho" : "MÊDA", 
+        "OBJECTID" : 142, 
+        "Shape_Leng" : 131791.27331, 
+        "Dicofre" : "0909", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 16.0356581017, 
+        "Incidência" : 283, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 283, 
+        "Shape__Area" : 502016083.23291, 
+        "Shape__Length" : 120375.587235138
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8093, 
+        "Concelho" : "MELGAÇO", 
+        "OBJECTID" : 143, 
+        "Shape_Leng" : 137313.255166, 
+        "Dicofre" : "1603", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 33.9685204617, 
+        "Incidência" : 198, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 198, 
+        "Shape__Area" : 432361009.227539, 
+        "Shape__Length" : 128173.345464184
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6142, 
+        "Concelho" : "MÉRTOLA", 
+        "OBJECTID" : 144, 
+        "Shape_Leng" : 336503.419301, 
+        "Dicofre" : "0209", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 4.7506709878, 
+        "Incidência" : 782, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 782, 
+        "Shape__Area" : 2066559555.28955, 
+        "Shape__Length" : 282902.575926418
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3964, 
+        "Concelho" : "MESÃO FRIO", 
+        "OBJECTID" : 145, 
+        "Shape_Leng" : 46621.6031003, 
+        "Dicofre" : "1704", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 148.742964353, 
+        "Incidência" : 555, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 555, 
+        "Shape__Area" : 47497533.0166016, 
+        "Shape__Length" : 39775.2632968155
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11832, 
+        "Concelho" : "MIRA", 
+        "OBJECTID" : 146, 
+        "Shape_Leng" : 64356.6535416, 
+        "Dicofre" : "0608", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 95.3962750947, 
+        "Incidência" : 347, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 347, 
+        "Shape__Area" : 214308042.728516, 
+        "Shape__Length" : 62099.0759081084
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12708, 
+        "Concelho" : "MIRANDA DO CORVO", 
+        "OBJECTID" : 147, 
+        "Shape_Leng" : 94866.3069236, 
+        "Dicofre" : "0609", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 100.553885108, 
+        "Incidência" : 543, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 543, 
+        "Shape__Area" : 216073581.805664, 
+        "Shape__Length" : 81475.0819655748
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6830, 
+        "Concelho" : "MIRANDA DO DOURO", 
+        "OBJECTID" : 148, 
+        "Shape_Leng" : 194714.829895, 
+        "Dicofre" : "0406", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 14.0194589269, 
+        "Incidência" : 864, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 864, 
+        "Shape__Area" : 869089921.517334, 
+        "Shape__Length" : 179429.727276996
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 21754, 
+        "Concelho" : "MIRANDELA", 
+        "OBJECTID" : 149, 
+        "Shape_Leng" : 198985.178884, 
+        "Dicofre" : "0407", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 33.0126259561, 
+        "Incidência" : 363, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 363, 
+        "Shape__Area" : 1176653825.70508, 
+        "Shape__Length" : 185145.417993875
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8392, 
+        "Concelho" : "MOGADOURO", 
+        "OBJECTID" : 150, 
+        "Shape_Leng" : 232079.690019, 
+        "Dicofre" : "0408", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 11.0326694275, 
+        "Incidência" : 477, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 477, 
+        "Shape__Area" : 1351084996.43945, 
+        "Shape__Length" : 197172.433161848
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 9736, 
+        "Concelho" : "MOIMENTA DA BEIRA", 
+        "OBJECTID" : 151, 
+        "Shape_Leng" : 117041.58199, 
+        "Dicofre" : "1807", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 44.2605809883, 
+        "Incidência" : 380, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 380, 
+        "Shape__Area" : 385002247.334717, 
+        "Shape__Length" : 109651.072226545
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 64407, 
+        "Concelho" : "MOITA", 
+        "OBJECTID" : 152, 
+        "Shape_Leng" : 53300.2947704, 
+        "Dicofre" : "1506", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 1165.52660152, 
+        "Incidência" : 500, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 500, 
+        "Shape__Area" : 90455404.5566406, 
+        "Shape__Length" : 47747.8621684853
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 17869, 
+        "Concelho" : "MONÇÃO", 
+        "OBJECTID" : 153, 
+        "Shape_Leng" : 96095.0570288, 
+        "Dicofre" : "1604", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 84.5629643652, 
+        "Incidência" : 448, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 448, 
+        "Shape__Area" : 382544682.42627, 
+        "Shape__Length" : 87792.6841330039
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5077, 
+        "Concelho" : "MONCHIQUE", 
+        "OBJECTID" : 154, 
+        "Shape_Leng" : 179187.156094, 
+        "Dicofre" : "0809", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 12.8434100683, 
+        "Incidência" : 118, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 118, 
+        "Shape__Area" : 626217010.2771, 
+        "Shape__Length" : 143323.853422236
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6946, 
+        "Concelho" : "MONDIM DE BASTO", 
+        "OBJECTID" : 155, 
+        "Shape_Leng" : 92713.3331106, 
+        "Dicofre" : "1705", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 40.3649465365, 
+        "Incidência" : 302, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 302, 
+        "Shape__Area" : 306714140.972656, 
+        "Shape__Length" : 86782.6808384436
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2975, 
+        "Concelho" : "MONFORTE", 
+        "OBJECTID" : 156, 
+        "Shape_Leng" : 154167.476592, 
+        "Dicofre" : "1211", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 7.07911957168, 
+        "Incidência" : 437, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 437, 
+        "Shape__Area" : 697398051.166748, 
+        "Shape__Length" : 140033.353848001
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8997, 
+        "Concelho" : "MONTALEGRE", 
+        "OBJECTID" : 157, 
+        "Shape_Leng" : 262137.242831, 
+        "Dicofre" : "1706", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 11.17001465, 
+        "Incidência" : 1234, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1234, 
+        "Shape__Area" : 1449656242.57471, 
+        "Shape__Length" : 240538.736242656
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15647, 
+        "Concelho" : "MONTEMOR-O-NOVO", 
+        "OBJECTID" : 158, 
+        "Shape_Leng" : 356714.009856, 
+        "Dicofre" : "0706", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 12.6904953081, 
+        "Incidência" : 326, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 326, 
+        "Shape__Area" : 2024919326.5166, 
+        "Shape__Length" : 327461.139310192
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 25224, 
+        "Concelho" : "MONTEMOR-O-VELHO", 
+        "OBJECTID" : 159, 
+        "Shape_Leng" : 129676.909182, 
+        "Dicofre" : "0610", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 110.167714885, 
+        "Incidência" : 511, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 511, 
+        "Shape__Area" : 392172096.061035, 
+        "Shape__Length" : 120412.919118157
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 57614, 
+        "Concelho" : "MONTIJO", 
+        "OBJECTID" : 160, 
+        "Shape_Leng" : 190981.18057, 
+        "Dicofre" : "1507", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 165.263037118, 
+        "Incidência" : 422, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 422, 
+        "Shape__Area" : 573674863.394043, 
+        "Shape__Length" : 180183.437376368
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4138, 
+        "Concelho" : "MORA", 
+        "OBJECTID" : 161, 
+        "Shape_Leng" : 183760.870241, 
+        "Dicofre" : "0707", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 9.32086946728, 
+        "Incidência" : 2682, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 2682, 
+        "Shape__Area" : 734515358.89502, 
+        "Shape__Length" : 163940.495609287
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8803, 
+        "Concelho" : "MORTÁGUA", 
+        "OBJECTID" : 162, 
+        "Shape_Leng" : 107845.002317, 
+        "Dicofre" : "1808", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 35.0465801417, 
+        "Incidência" : 909, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 909, 
+        "Shape__Area" : 434730562.001953, 
+        "Shape__Length" : 93385.0206336971
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 13718, 
+        "Concelho" : "MOURA", 
+        "OBJECTID" : 163, 
+        "Shape_Leng" : 280020.790815, 
+        "Dicofre" : "0210", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 14.3125430378, 
+        "Incidência" : 102, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 102, 
+        "Shape__Area" : 1551625953.96631, 
+        "Shape__Length" : 229981.360493063
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2450, 
+        "Concelho" : "MOURÃO", 
+        "OBJECTID" : 164, 
+        "Shape_Leng" : 157159.047724, 
+        "Dicofre" : "0708", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 8.79302300542, 
+        "Incidência" : 3388, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 3388, 
+        "Shape__Area" : 454649620.810303, 
+        "Shape__Length" : 141807.116725325
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5463, 
+        "Concelho" : "MURÇA", 
+        "OBJECTID" : 165, 
+        "Shape_Leng" : 123931.944936, 
+        "Dicofre" : "1707", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 28.8482864234, 
+        "Incidência" : 311, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 311, 
+        "Shape__Area" : 337667049.66626, 
+        "Shape__Length" : 112126.125978407
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10279, 
+        "Concelho" : "MURTOSA", 
+        "OBJECTID" : 166, 
+        "Shape_Leng" : 61771.9305463, 
+        "Dicofre" : "0112", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 140.634833767, 
+        "Incidência" : 506, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 506, 
+        "Shape__Area" : 127545438.20166, 
+        "Shape__Length" : 58570.7880977203
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14165, 
+        "Concelho" : "NAZARÉ", 
+        "OBJECTID" : 167, 
+        "Shape_Leng" : 76884.7066288, 
+        "Dicofre" : "1011", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 171.842775688, 
+        "Incidência" : 113, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 113, 
+        "Shape__Area" : 138687767.966309, 
+        "Shape__Length" : 69638.280293786
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12974, 
+        "Concelho" : "NELAS", 
+        "OBJECTID" : 168, 
+        "Shape_Leng" : 72171.6291099, 
+        "Dicofre" : "1809", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 103.205791107, 
+        "Incidência" : 432, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 432, 
+        "Shape__Area" : 218047483.380615, 
+        "Shape__Length" : 67580.8495074453
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6061, 
+        "Concelho" : "NISA", 
+        "OBJECTID" : 169, 
+        "Shape_Leng" : 199998.948664, 
+        "Dicofre" : "1212", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 10.5284185659, 
+        "Incidência" : 1815, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1815, 
+        "Shape__Area" : 969829315.419678, 
+        "Shape__Length" : 174816.3287196
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4862, 
+        "Concelho" : "NORDESTE", 
+        "OBJECTID" : 170, 
+        "Shape_Leng" : 67662.1989306, 
+        "Dicofre" : "4202", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 47.9156400907, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 162491355.905273, 
+        "Shape__Length" : 59310.9546018797
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11850, 
+        "Concelho" : "ÓBIDOS", 
+        "OBJECTID" : 171, 
+        "Shape_Leng" : 94108.4779123, 
+        "Dicofre" : "1012", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 83.7160014129, 
+        "Incidência" : 363, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 363, 
+        "Shape__Area" : 237091473.546387, 
+        "Shape__Length" : 76855.2694815318
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 24717, 
+        "Concelho" : "ODEMIRA", 
+        "OBJECTID" : 172, 
+        "Shape_Leng" : 367776.30815, 
+        "Dicofre" : "0211", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 14.3653376729, 
+        "Incidência" : 376, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 376, 
+        "Shape__Area" : 2745153526.99341, 
+        "Shape__Length" : 285126.791325152
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 161774, 
+        "Concelho" : "ODIVELAS", 
+        "OBJECTID" : 173, 
+        "Shape_Leng" : 40932.2151806, 
+        "Dicofre" : "1116", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 6095.47852298, 
+        "Incidência" : 341, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 341, 
+        "Shape__Area" : 44332954.1396484, 
+        "Shape__Length" : 33260.883031682
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 177408, 
+        "Concelho" : "OEIRAS", 
+        "OBJECTID" : 174, 
+        "Shape_Leng" : 55615.3352134, 
+        "Dicofre" : "1110", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 3866.78291194, 
+        "Incidência" : 368, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 368, 
+        "Shape__Area" : 75190005.6860352, 
+        "Shape__Length" : 42518.4523629075
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5003, 
+        "Concelho" : "OLEIROS", 
+        "OBJECTID" : 175, 
+        "Shape_Leng" : 193231.790398, 
+        "Dicofre" : "0506", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 10.6200513702, 
+        "Incidência" : 320, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 320, 
+        "Shape__Area" : 803846273.58252, 
+        "Shape__Length" : 168490.370553402
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 44405, 
+        "Concelho" : "OLHÃO", 
+        "OBJECTID" : 176, 
+        "Shape_Leng" : 75175.0576936, 
+        "Dicofre" : "0810", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 339.332110653, 
+        "Incidência" : 173, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 173, 
+        "Shape__Area" : 205781280.34082, 
+        "Shape__Length" : 64591.0767353713
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 66011, 
+        "Concelho" : "OLIVEIRA DE AZEMÉIS", 
+        "OBJECTID" : 177, 
+        "Shape_Leng" : 114195.518049, 
+        "Dicofre" : "0113", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 409.751707014, 
+        "Incidência" : 535, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 535, 
+        "Shape__Area" : 281649501.152344, 
+        "Shape__Length" : 95768.4154840673
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 9936, 
+        "Concelho" : "OLIVEIRA DE FRADES", 
+        "OBJECTID" : 178, 
+        "Shape_Leng" : 135617.580648, 
+        "Dicofre" : "1810", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 68.3591331269, 
+        "Incidência" : 252, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 252, 
+        "Shape__Area" : 252417825.82666, 
+        "Shape__Length" : 122242.007330924
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 24277, 
+        "Concelho" : "OLIVEIRA DO BAIRRO", 
+        "OBJECTID" : 179, 
+        "Shape_Leng" : 68159.5267202, 
+        "Dicofre" : "0114", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 278.023362345, 
+        "Incidência" : 362, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 362, 
+        "Shape__Area" : 151542224.948242, 
+        "Shape__Length" : 62390.4552823465
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 19253, 
+        "Concelho" : "OLIVEIRA DO HOSPITAL", 
+        "OBJECTID" : 180, 
+        "Shape_Leng" : 134246.857073, 
+        "Dicofre" : "0611", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 82.0953436807, 
+        "Incidência" : 966, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 966, 
+        "Shape__Area" : 404857269.521484, 
+        "Shape__Length" : 123431.624056473
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 44044, 
+        "Concelho" : "OURÉM", 
+        "OBJECTID" : 181, 
+        "Shape_Leng" : 166832.515892, 
+        "Dicofre" : "1421", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 105.702217529, 
+        "Incidência" : 284, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 284, 
+        "Shape__Area" : 704648566.762695, 
+        "Shape__Length" : 147450.322447614
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4607, 
+        "Concelho" : "OURIQUE", 
+        "OBJECTID" : 182, 
+        "Shape_Leng" : 284011.099308, 
+        "Dicofre" : "0212", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 6.94547044368, 
+        "Incidência" : 152, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 152, 
+        "Shape__Area" : 1060209255.80835, 
+        "Shape__Length" : 239929.048375934
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 54260, 
+        "Concelho" : "OVAR", 
+        "OBJECTID" : 183, 
+        "Shape_Leng" : 93759.6080626, 
+        "Dicofre" : "0115", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 367.366283006, 
+        "Incidência" : 520, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 520, 
+        "Shape__Area" : 258609099.998047, 
+        "Shape__Length" : 86359.2349515243
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 56728, 
+        "Concelho" : "PAÇOS DE FERREIRA", 
+        "OBJECTID" : 184, 
+        "Shape_Leng" : 60606.9443673, 
+        "Dicofre" : "1309", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 799.098464572, 
+        "Incidência" : 353, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 353, 
+        "Shape__Area" : 125531146.022949, 
+        "Shape__Length" : 54992.1384628422
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 64269, 
+        "Concelho" : "PALMELA", 
+        "OBJECTID" : 185, 
+        "Shape_Leng" : 201277.396236, 
+        "Dicofre" : "1508", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 138.177244582, 
+        "Incidência" : 338, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 338, 
+        "Shape__Area" : 762668763.991211, 
+        "Shape__Length" : 184939.870706157
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4037, 
+        "Concelho" : "PAMPILHOSA DA SERRA", 
+        "OBJECTID" : 186, 
+        "Shape_Leng" : 221208.608143, 
+        "Dicofre" : "0612", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 10.182616153, 
+        "Incidência" : 198, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 198, 
+        "Shape__Area" : 677770794.425781, 
+        "Shape__Length" : 193767.255346757
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 86067, 
+        "Concelho" : "PAREDES", 
+        "OBJECTID" : 187, 
+        "Shape_Leng" : 105324.25149, 
+        "Dicofre" : "1310", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 549.036744067, 
+        "Incidência" : 452, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 452, 
+        "Shape__Area" : 276361023.640625, 
+        "Shape__Length" : 93298.3170418152
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8535, 
+        "Concelho" : "PAREDES DE COURA", 
+        "OBJECTID" : 188, 
+        "Shape_Leng" : 76007.9669837, 
+        "Dicofre" : "1605", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 61.7627903611, 
+        "Incidência" : 152, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 152, 
+        "Shape__Area" : 249982039.944824, 
+        "Shape__Length" : 71945.9949272338
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3410, 
+        "Concelho" : "PEDRÓGÃO GRANDE", 
+        "OBJECTID" : 189, 
+        "Shape_Leng" : 90172.0104983, 
+        "Dicofre" : "1013", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 26.4854368932, 
+        "Incidência" : 528, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 528, 
+        "Shape__Area" : 218631359.18457, 
+        "Shape__Length" : 78234.7249698698
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 13694, 
+        "Concelho" : "PENACOVA", 
+        "OBJECTID" : 190, 
+        "Shape_Leng" : 114365.753224, 
+        "Dicofre" : "0613", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 63.1846075762, 
+        "Incidência" : 307, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 307, 
+        "Shape__Area" : 371884761.913574, 
+        "Shape__Length" : 101258.069720828
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 69772, 
+        "Concelho" : "PENAFIEL", 
+        "OBJECTID" : 191, 
+        "Shape_Leng" : 113461.423076, 
+        "Dicofre" : "1311", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 328.74104787, 
+        "Incidência" : 431, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 431, 
+        "Shape__Area" : 374558537.324707, 
+        "Shape__Length" : 103655.708090013
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7115, 
+        "Concelho" : "PENALVA DO CASTELO", 
+        "OBJECTID" : 192, 
+        "Shape_Leng" : 81673.3582622, 
+        "Dicofre" : "1811", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 52.9626321274, 
+        "Incidência" : 253, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 253, 
+        "Shape__Area" : 233363388.166016, 
+        "Shape__Length" : 75198.9620484003
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4755, 
+        "Concelho" : "PENAMACOR", 
+        "OBJECTID" : 193, 
+        "Shape_Leng" : 214894.182619, 
+        "Dicofre" : "0507", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 8.43518830604, 
+        "Incidência" : 1009, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1009, 
+        "Shape__Area" : 966809184.643799, 
+        "Shape__Length" : 184701.56409412
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2591, 
+        "Concelho" : "PENEDONO", 
+        "OBJECTID" : 194, 
+        "Shape_Leng" : 85155.3626299, 
+        "Dicofre" : "1812", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 19.3777578341, 
+        "Incidência" : 540, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 540, 
+        "Shape__Area" : 235231428.618408, 
+        "Shape__Length" : 77533.5753041411
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5397, 
+        "Concelho" : "PENELA", 
+        "OBJECTID" : 195, 
+        "Shape_Leng" : 120049.97604, 
+        "Dicofre" : "0614", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 40.0370919881, 
+        "Incidência" : 315, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 315, 
+        "Shape__Area" : 229939988.443359, 
+        "Shape__Length" : 101463.461530139
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 26501, 
+        "Concelho" : "PENICHE", 
+        "OBJECTID" : 196, 
+        "Shape_Leng" : 78810.0501237, 
+        "Dicofre" : "1014", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 341.727917473, 
+        "Incidência" : 377, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 377, 
+        "Shape__Area" : 128999869.739746, 
+        "Shape__Length" : 60288.733921866
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15773, 
+        "Concelho" : "PESO DA RÉGUA", 
+        "OBJECTID" : 197, 
+        "Shape_Leng" : 107718.635914, 
+        "Dicofre" : "1708", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 166.276618174, 
+        "Incidência" : 976, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 976, 
+        "Shape__Area" : 167841791.825195, 
+        "Shape__Length" : 87902.917069879
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8511, 
+        "Concelho" : "PINHEL", 
+        "OBJECTID" : 198, 
+        "Shape_Leng" : 206453.366922, 
+        "Dicofre" : "0910", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 17.5658383555, 
+        "Incidência" : 822, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 822, 
+        "Shape__Area" : 845709782.425537, 
+        "Shape__Length" : 186254.567491914
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 51461, 
+        "Concelho" : "POMBAL", 
+        "OBJECTID" : 199, 
+        "Shape_Leng" : 175667.663941, 
+        "Dicofre" : "1015", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 82.2060702875, 
+        "Incidência" : 323, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 323, 
+        "Shape__Area" : 1065580680.64893, 
+        "Shape__Length" : 165103.099929187
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 67935, 
+        "Concelho" : "PONTA DELGADA", 
+        "OBJECTID" : 200, 
+        "Shape_Leng" : 129186.905204, 
+        "Dicofre" : "4203", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 291.579037727, 
+        "Incidência" : 94, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 94, 
+        "Shape__Area" : 374960993.488281, 
+        "Shape__Length" : 91810.6899153585
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8593, 
+        "Concelho" : "PONTA DO SOL", 
+        "OBJECTID" : 201, 
+        "Shape_Leng" : 40398.520741, 
+        "Dicofre" : "3105", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 185.91518823, 
+        "Incidência" : 81, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 81, 
+        "Shape__Area" : 65149869.3105469, 
+        "Shape__Length" : 35363.118044579
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11180, 
+        "Concelho" : "PONTE DA BARCA", 
+        "OBJECTID" : 202, 
+        "Shape_Leng" : 110824.309641, 
+        "Dicofre" : "1606", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 61.391466696, 
+        "Incidência" : 1163, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1163, 
+        "Shape__Area" : 327842017.165527, 
+        "Shape__Length" : 102621.800865842
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 41315, 
+        "Concelho" : "PONTE DE LIMA", 
+        "OBJECTID" : 203, 
+        "Shape_Leng" : 131464.947924, 
+        "Dicofre" : "1607", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 129.008587041, 
+        "Incidência" : 373, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 373, 
+        "Shape__Area" : 574846711.958008, 
+        "Shape__Length" : 121718.272263375
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14994, 
+        "Concelho" : "PONTE DE SOR", 
+        "OBJECTID" : 204, 
+        "Shape_Leng" : 230262.236671, 
+        "Dicofre" : "1213", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 17.8561646283, 
+        "Incidência" : 147, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 147, 
+        "Shape__Area" : 1399991070.94702, 
+        "Shape__Length" : 211315.557432642
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 22172, 
+        "Concelho" : "PORTALEGRE", 
+        "OBJECTID" : 205, 
+        "Shape_Leng" : 158085.605573, 
+        "Dicofre" : "1214", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 49.5862593371, 
+        "Incidência" : 501, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 501, 
+        "Shape__Area" : 746699721.36499, 
+        "Shape__Length" : 140125.440160788
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5828, 
+        "Concelho" : "PORTEL", 
+        "OBJECTID" : 206, 
+        "Shape_Leng" : 180237.914442, 
+        "Dicofre" : "0709", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 9.69701003311, 
+        "Incidência" : 309, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 309, 
+        "Shape__Area" : 978858150.483154, 
+        "Shape__Length" : 161861.568079404
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 55483, 
+        "Concelho" : "PORTIMÃO", 
+        "OBJECTID" : 207, 
+        "Shape_Leng" : 104437.829441, 
+        "Dicofre" : "0811", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 304.751180929, 
+        "Incidência" : 160, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 160, 
+        "Shape__Area" : 287655316.533691, 
+        "Shape__Length" : 86210.6238431448
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 216606, 
+        "Concelho" : "PORTO", 
+        "OBJECTID" : 208, 
+        "Shape_Leng" : 48436.2430093, 
+        "Dicofre" : "1312", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 5229.50265572, 
+        "Incidência" : 470, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 470, 
+        "Shape__Area" : 73285476.1499023, 
+        "Shape__Length" : 40197.8157851711
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 23275, 
+        "Concelho" : "PORTO DE MÓS", 
+        "OBJECTID" : 209, 
+        "Shape_Leng" : 125332.418663, 
+        "Dicofre" : "1016", 
+        "Distrito" : "LEIRIA", 
+        "DensidadeP" : 88.8935568881, 
+        "Incidência" : 670, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 670, 
+        "Shape__Area" : 441475157.776855, 
+        "Shape__Length" : 104322.678853393
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2342, 
+        "Concelho" : "PORTO MONIZ", 
+        "OBJECTID" : 210, 
+        "Shape_Leng" : 67574.2610672, 
+        "Dicofre" : "3106", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 28.240684915, 
+        "Incidência" : 85, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 85, 
+        "Shape__Area" : 117807047.968262, 
+        "Shape__Length" : 54668.0751509842
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5202, 
+        "Concelho" : "PORTO SANTO", 
+        "OBJECTID" : 211, 
+        "Shape_Leng" : 127578.786978, 
+        "Dicofre" : "3201", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 120.948616601, 
+        "Incidência" : 19, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 19, 
+        "Shape__Area" : 61434692.0576172, 
+        "Shape__Length" : 62793.6303524394
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 21499, 
+        "Concelho" : "PÓVOA DE LANHOSO", 
+        "OBJECTID" : 212, 
+        "Shape_Leng" : 100607.256957, 
+        "Dicofre" : "0309", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 159.665800223, 
+        "Incidência" : 763, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 763, 
+        "Shape__Area" : 240105117.903809, 
+        "Shape__Length" : 88888.9931629958
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 62784, 
+        "Concelho" : "PÓVOA DE VARZIM", 
+        "OBJECTID" : 213, 
+        "Shape_Leng" : 83717.8540459, 
+        "Dicofre" : "1313", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 763.702712565, 
+        "Incidência" : 892, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 892, 
+        "Shape__Area" : 144854549.39502, 
+        "Shape__Length" : 75455.55910047
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5927, 
+        "Concelho" : "POVOAÇÃO", 
+        "OBJECTID" : 214, 
+        "Shape_Leng" : 80834.3844068, 
+        "Dicofre" : "4204", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 55.6996522883, 
+        "Incidência" : 17, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 17, 
+        "Shape__Area" : 171567408.154297, 
+        "Shape__Length" : 66744.5207977473
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 21317, 
+        "Concelho" : "VILA DA PRAIA DA VITÓRIA", 
+        "OBJECTID" : 215, 
+        "Shape_Leng" : 116091.467268, 
+        "Dicofre" : "4302", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 132.182054939, 
+        "Incidência" : 52, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 52, 
+        "Shape__Area" : 265545109.250977, 
+        "Shape__Length" : 83868.4539518395
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7298, 
+        "Concelho" : "PROENÇA-A-NOVA", 
+        "OBJECTID" : 216, 
+        "Shape_Leng" : 189877.643094, 
+        "Dicofre" : "0508", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 18.4572584724, 
+        "Incidência" : 69, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 69, 
+        "Shape__Area" : 668118772.934814, 
+        "Shape__Length" : 144185.008108058
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6353, 
+        "Concelho" : "REDONDO", 
+        "OBJECTID" : 217, 
+        "Shape_Leng" : 163189.755542, 
+        "Dicofre" : "0710", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 17.1930394306, 
+        "Incidência" : 173, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 173, 
+        "Shape__Area" : 606928259.421143, 
+        "Shape__Length" : 147579.220933688
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10015, 
+        "Concelho" : "REGUENGOS DE MONSARAZ", 
+        "OBJECTID" : 218, 
+        "Shape_Leng" : 146129.167055, 
+        "Dicofre" : "0711", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 21.5840517241, 
+        "Incidência" : 130, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 130, 
+        "Shape__Area" : 755690103.04248, 
+        "Shape__Length" : 132176.08830446
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10137, 
+        "Concelho" : "RESENDE", 
+        "OBJECTID" : 219, 
+        "Shape_Leng" : 77585.1688308, 
+        "Dicofre" : "1813", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 82.1807863802, 
+        "Incidência" : 187, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 187, 
+        "Shape__Area" : 217302281.705811, 
+        "Shape__Length" : 70278.7978469476
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 12435, 
+        "Concelho" : "RIBEIRA BRAVA", 
+        "OBJECTID" : 220, 
+        "Shape_Leng" : 49551.2267296, 
+        "Dicofre" : "3107", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 189.992360581, 
+        "Incidência" : 113, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 113, 
+        "Shape__Area" : 93558796.5849609, 
+        "Shape__Length" : 41459.4117907082
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6016, 
+        "Concelho" : "RIBEIRA DE PENA", 
+        "OBJECTID" : 221, 
+        "Shape_Leng" : 130573.526465, 
+        "Dicofre" : "1709", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 27.6648579049, 
+        "Incidência" : 748, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 748, 
+        "Shape__Area" : 387927194.016846, 
+        "Shape__Length" : 121246.140612603
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 32811, 
+        "Concelho" : "RIBEIRA GRANDE", 
+        "OBJECTID" : 222, 
+        "Shape_Leng" : 151776.277117, 
+        "Dicofre" : "4205", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 182.131557036, 
+        "Incidência" : 283, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 283, 
+        "Shape__Area" : 288199675.183594, 
+        "Shape__Length" : 110946.409364367
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 20379, 
+        "Concelho" : "RIO MAIOR", 
+        "OBJECTID" : 223, 
+        "Shape_Leng" : 128064.169914, 
+        "Dicofre" : "1414", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 74.7140343159, 
+        "Incidência" : 780, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 780, 
+        "Shape__Area" : 457570213.465332, 
+        "Shape__Length" : 110769.322303413
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5918, 
+        "Concelho" : "SABROSA", 
+        "OBJECTID" : 224, 
+        "Shape_Leng" : 120969.146539, 
+        "Dicofre" : "1710", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 37.7134845781, 
+        "Incidência" : 355, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 355, 
+        "Shape__Area" : 278779216.528076, 
+        "Shape__Length" : 100968.145305142
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10585, 
+        "Concelho" : "SABUGAL", 
+        "OBJECTID" : 225, 
+        "Shape_Leng" : 239252.531432, 
+        "Dicofre" : "0911", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 12.8661723593, 
+        "Incidência" : 501, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 501, 
+        "Shape__Area" : 1419322918.26074, 
+        "Shape__Length" : 219575.050311226
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 21295, 
+        "Concelho" : "SALVATERRA DE MAGOS", 
+        "OBJECTID" : 226, 
+        "Shape_Leng" : 94139.8804106, 
+        "Dicofre" : "1415", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 87.2996351412, 
+        "Incidência" : 329, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 329, 
+        "Shape__Area" : 404316352.424316, 
+        "Shape__Length" : 88091.7873014192
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10452, 
+        "Concelho" : "SANTA COMBA DÃO", 
+        "OBJECTID" : 227, 
+        "Shape_Leng" : 78540.0863221, 
+        "Dicofre" : "1814", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 93.3631085306, 
+        "Incidência" : 354, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 354, 
+        "Shape__Area" : 193504316.390137, 
+        "Shape__Length" : 69869.8925165044
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 45281, 
+        "Concelho" : "SANTA CRUZ", 
+        "OBJECTID" : 228, 
+        "Shape_Leng" : 115622.393343, 
+        "Dicofre" : "3108", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 555.595092025, 
+        "Incidência" : 126, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 126, 
+        "Shape__Area" : 114838145.436523, 
+        "Shape__Length" : 99255.9943094766
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4208, 
+        "Concelho" : "SANTA CRUZ DA GRACIOSA", 
+        "OBJECTID" : 229, 
+        "Shape_Leng" : 56603.0789438, 
+        "Dicofre" : "4401", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 69.3702604682, 
+        "Incidência" : 24, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 24, 
+        "Shape__Area" : 101698125.267578, 
+        "Shape__Length" : 41613.2964389595
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 2165, 
+        "Concelho" : "SANTA CRUZ DAS FLORES", 
+        "OBJECTID" : 230, 
+        "Shape_Leng" : 67575.786288, 
+        "Dicofre" : "4802", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 30.5316598505, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 118083396.479492, 
+        "Shape__Length" : 50455.069387023
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 138636, 
+        "Concelho" : "SANTA MARIA DA FEIRA", 
+        "OBJECTID" : 231, 
+        "Shape_Leng" : 116680.907289, 
+        "Dicofre" : "0109", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 642.190105614, 
+        "Incidência" : 571, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 571, 
+        "Shape__Area" : 379578797.254883, 
+        "Shape__Length" : 102000.868563706
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6599, 
+        "Concelho" : "SANTA MARTA DE PENAGUIÃO", 
+        "OBJECTID" : 232, 
+        "Shape_Leng" : 89338.9413208, 
+        "Dicofre" : "1711", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 95.2511547344, 
+        "Incidência" : 727, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 727, 
+        "Shape__Area" : 122147978.600342, 
+        "Shape__Length" : 63291.9795439553
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6711, 
+        "Concelho" : "SANTANA", 
+        "OBJECTID" : 233, 
+        "Shape_Leng" : 66824.8309699, 
+        "Dicofre" : "3109", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 70.2943332984, 
+        "Incidência" : 179, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 179, 
+        "Shape__Area" : 135205710.77832, 
+        "Shape__Length" : 53364.3928708952
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 57421, 
+        "Concelho" : "SANTARÉM", 
+        "OBJECTID" : 234, 
+        "Shape_Leng" : 232690.439756, 
+        "Dicofre" : "1416", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 103.921888008, 
+        "Incidência" : 430, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 430, 
+        "Shape__Area" : 925002934.834961, 
+        "Shape__Length" : 201231.882557857
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 28791, 
+        "Concelho" : "SANTIAGO DO CACÉM", 
+        "OBJECTID" : 235, 
+        "Shape_Leng" : 271928.246472, 
+        "Dicofre" : "1509", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 27.1692664836, 
+        "Incidência" : 135, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 135, 
+        "Shape__Area" : 1706991337.44824, 
+        "Shape__Length" : 236260.959344543
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 68055, 
+        "Concelho" : "SANTO TIRSO", 
+        "OBJECTID" : 236, 
+        "Shape_Leng" : 92103.5598589, 
+        "Dicofre" : "1314", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 498.352372583, 
+        "Incidência" : 519, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 519, 
+        "Shape__Area" : 241839016.445801, 
+        "Shape__Length" : 85052.5963673528
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10416, 
+        "Concelho" : "SÃO BRÁS DE ALPORTEL", 
+        "OBJECTID" : 237, 
+        "Shape_Leng" : 109646.797035, 
+        "Dicofre" : "0812", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 67.9141944318, 
+        "Incidência" : 442, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 442, 
+        "Shape__Area" : 241991782.431152, 
+        "Shape__Length" : 82046.6855261079
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 21958, 
+        "Concelho" : "SÃO JOÃO DA MADEIRA", 
+        "OBJECTID" : 238, 
+        "Shape_Leng" : 17651.0264119, 
+        "Dicofre" : "0116", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 2765.49118388, 
+        "Incidência" : 551, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 551, 
+        "Shape__Area" : 13916845.987793, 
+        "Shape__Length" : 14926.5725524692
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7125, 
+        "Concelho" : "SÃO JOÃO DA PESQUEIRA", 
+        "OBJECTID" : 239, 
+        "Shape_Leng" : 133188.077625, 
+        "Dicofre" : "1815", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 26.7746420653, 
+        "Incidência" : 239, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 239, 
+        "Shape__Area" : 468341713.110596, 
+        "Shape__Length" : 120174.022764662
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 15403, 
+        "Concelho" : "SÃO PEDRO DO SUL", 
+        "OBJECTID" : 240, 
+        "Shape_Leng" : 162406.753069, 
+        "Dicofre" : "1816", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 44.1409944118, 
+        "Incidência" : 500, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 500, 
+        "Shape__Area" : 610013318.647217, 
+        "Shape__Length" : 143662.612762803
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3266, 
+        "Concelho" : "SÃO ROQUE DO PICO", 
+        "OBJECTID" : 241, 
+        "Shape_Leng" : 104578.536979, 
+        "Dicofre" : "4603", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 22.9418375948, 
+        "Incidência" : 0, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 0, 
+        "Shape__Area" : 232758607.581055, 
+        "Shape__Length" : 89180.3324104599
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5143, 
+        "Concelho" : "SÃO VICENTE", 
+        "OBJECTID" : 242, 
+        "Shape_Leng" : 48254.7932019, 
+        "Dicofre" : "3110", 
+        "Distrito" : "MADEIRA", 
+        "DensidadeP" : 65.233384069, 
+        "Incidência" : 78, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Madeira", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 78, 
+        "Shape__Area" : 111914218.5625, 
+        "Shape__Length" : 43603.7787218248
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3741, 
+        "Concelho" : "SARDOAL", 
+        "OBJECTID" : 243, 
+        "Shape_Leng" : 67208.6675868, 
+        "Dicofre" : "1417", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 40.5968529571, 
+        "Incidência" : 134, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 134, 
+        "Shape__Area" : 155214178.165039, 
+        "Shape__Length" : 54758.3760063853
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11580, 
+        "Concelho" : "SÁTÃO", 
+        "OBJECTID" : 244, 
+        "Shape_Leng" : 103611.034053, 
+        "Dicofre" : "1817", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 57.3437654749, 
+        "Incidência" : 302, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 302, 
+        "Shape__Area" : 352828291.781738, 
+        "Shape__Length" : 96524.0783686154
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 22234, 
+        "Concelho" : "SEIA", 
+        "OBJECTID" : 245, 
+        "Shape_Leng" : 154515.845875, 
+        "Dicofre" : "0912", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 51.0316968487, 
+        "Incidência" : 427, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 427, 
+        "Shape__Area" : 752451886.29834, 
+        "Shape__Length" : 147334.843961137
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 167752, 
+        "Concelho" : "SEIXAL", 
+        "OBJECTID" : 246, 
+        "Shape_Leng" : 63622.5557205, 
+        "Dicofre" : "1510", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 1757.48559455, 
+        "Incidência" : 410, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 410, 
+        "Shape__Area" : 157057758.210449, 
+        "Shape__Length" : 55328.2015090151
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5396, 
+        "Concelho" : "SERNANCELHE", 
+        "OBJECTID" : 247, 
+        "Shape_Leng" : 131679.680007, 
+        "Dicofre" : "1818", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 23.6035169065, 
+        "Incidência" : 371, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 371, 
+        "Shape__Area" : 401458101.817139, 
+        "Shape__Length" : 125711.980995215
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14304, 
+        "Concelho" : "SERPA", 
+        "OBJECTID" : 248, 
+        "Shape_Leng" : 227474.741593, 
+        "Dicofre" : "0213", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 12.9374202943, 
+        "Incidência" : 168, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 168, 
+        "Shape__Area" : 1779430098.28662, 
+        "Shape__Length" : 205854.500773724
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14577, 
+        "Concelho" : "SERTÃ", 
+        "OBJECTID" : 249, 
+        "Shape_Leng" : 163998.275373, 
+        "Dicofre" : "0509", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 32.6304479216, 
+        "Incidência" : 446, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 446, 
+        "Shape__Area" : 760349571.223877, 
+        "Shape__Length" : 136189.218196952
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 51858, 
+        "Concelho" : "SESIMBRA", 
+        "OBJECTID" : 250, 
+        "Shape_Leng" : 110743.255769, 
+        "Dicofre" : "1511", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 264.960147149, 
+        "Incidência" : 417, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 417, 
+        "Shape__Area" : 319633397.558105, 
+        "Shape__Length" : 98892.5302114558
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 115126, 
+        "Concelho" : "SETÚBAL", 
+        "OBJECTID" : 251, 
+        "Shape_Leng" : 129690.955413, 
+        "Dicofre" : "1512", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 499.830677723, 
+        "Incidência" : 407, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 407, 
+        "Shape__Area" : 376687674.608398, 
+        "Shape__Length" : 116952.60305632
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11331, 
+        "Concelho" : "SEVER DO VOUGA", 
+        "OBJECTID" : 252, 
+        "Shape_Leng" : 90364.5662397, 
+        "Dicofre" : "0117", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 87.2420696027, 
+        "Incidência" : 362, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 362, 
+        "Shape__Area" : 226587572.407715, 
+        "Shape__Length" : 82389.9063371063
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 36226, 
+        "Concelho" : "SILVES", 
+        "OBJECTID" : 253, 
+        "Shape_Leng" : 209509.524575, 
+        "Dicofre" : "0813", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 53.268829221, 
+        "Incidência" : 265, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 265, 
+        "Shape__Area" : 1075811791.01392, 
+        "Shape__Length" : 170921.690418992
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 13715, 
+        "Concelho" : "SINES", 
+        "OBJECTID" : 254, 
+        "Shape_Leng" : 142585.812489, 
+        "Dicofre" : "1513", 
+        "Distrito" : "SETÚBAL", 
+        "DensidadeP" : 67.4618789966, 
+        "Incidência" : 44, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 44, 
+        "Shape__Area" : 326881397.451172, 
+        "Shape__Length" : 114489.178442931
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 391402, 
+        "Concelho" : "SINTRA", 
+        "OBJECTID" : 255, 
+        "Shape_Leng" : 147655.925035, 
+        "Dicofre" : "1111", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 1226.08150863, 
+        "Incidência" : 317, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 317, 
+        "Shape__Area" : 526542214.246582, 
+        "Shape__Length" : 111845.89882129
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 10651, 
+        "Concelho" : "SOBRAL DE MONTE AGRAÇO", 
+        "OBJECTID" : 256, 
+        "Shape_Leng" : 87292.8472738, 
+        "Dicofre" : "1112", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 204.43378119, 
+        "Incidência" : 413, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 413, 
+        "Shape__Area" : 86102322.8476563, 
+        "Shape__Length" : 63637.5981229286
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 17120, 
+        "Concelho" : "SOURE", 
+        "OBJECTID" : 257, 
+        "Shape_Leng" : 152103.930356, 
+        "Dicofre" : "0615", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 64.5891496265, 
+        "Incidência" : 450, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 450, 
+        "Shape__Area" : 452838959.72168, 
+        "Shape__Length" : 141385.296204116
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4412, 
+        "Concelho" : "SOUSEL", 
+        "OBJECTID" : 258, 
+        "Shape_Leng" : 153764.837128, 
+        "Dicofre" : "1215", 
+        "Distrito" : "PORTALEGRE", 
+        "DensidadeP" : 15.7955033653, 
+        "Incidência" : 725, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 725, 
+        "Shape__Area" : 461061153.534912, 
+        "Shape__Length" : 127002.370208277
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11368, 
+        "Concelho" : "TÁBUA", 
+        "OBJECTID" : 259, 
+        "Shape_Leng" : 109044.370049, 
+        "Dicofre" : "0616", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 56.899744732, 
+        "Incidência" : 844, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 844, 
+        "Shape__Area" : 344048249.123047, 
+        "Shape__Length" : 97543.2129595499
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6033, 
+        "Concelho" : "TABUAÇO", 
+        "OBJECTID" : 260, 
+        "Shape_Leng" : 92764.5515397, 
+        "Dicofre" : "1819", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 45.0694755715, 
+        "Incidência" : 1459, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1459, 
+        "Shape__Area" : 235851752.700195, 
+        "Shape__Length" : 81459.161003386
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7804, 
+        "Concelho" : "TAROUCA", 
+        "OBJECTID" : 261, 
+        "Shape_Leng" : 96611.2607485, 
+        "Dicofre" : "1820", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 77.9776179057, 
+        "Incidência" : 397, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 397, 
+        "Shape__Area" : 176428124.678467, 
+        "Shape__Length" : 86835.9424673404
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 24530, 
+        "Concelho" : "TAVIRA", 
+        "OBJECTID" : 262, 
+        "Shape_Leng" : 202951.150212, 
+        "Dicofre" : "0814", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 40.4138590046, 
+        "Incidência" : 318, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 318, 
+        "Shape__Area" : 959503222.515625, 
+        "Shape__Length" : 166998.05061169
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6361, 
+        "Concelho" : "TERRAS DE BOURO", 
+        "OBJECTID" : 263, 
+        "Shape_Leng" : 123287.436625, 
+        "Dicofre" : "0310", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 22.9258271463, 
+        "Incidência" : 582, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 582, 
+        "Shape__Area" : 498525488.134766, 
+        "Shape__Length" : 113439.327819875
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 36748, 
+        "Concelho" : "TOMAR", 
+        "OBJECTID" : 264, 
+        "Shape_Leng" : 151136.451223, 
+        "Dicofre" : "1418", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 104.635535308, 
+        "Incidência" : 231, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 231, 
+        "Shape__Area" : 592602828.169434, 
+        "Shape__Length" : 128569.896595102
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 26357, 
+        "Concelho" : "TONDELA", 
+        "OBJECTID" : 265, 
+        "Shape_Leng" : 142457.741961, 
+        "Dicofre" : "1821", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 71.0010236517, 
+        "Incidência" : 235, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 235, 
+        "Shape__Area" : 643075143.618896, 
+        "Shape__Length" : 129864.06804292
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7695, 
+        "Concelho" : "TORRE DE MONCORVO", 
+        "OBJECTID" : 266, 
+        "Shape_Leng" : 197227.989462, 
+        "Dicofre" : "0409", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 14.4762585597, 
+        "Incidência" : 130, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 130, 
+        "Shape__Area" : 938323348.490967, 
+        "Shape__Length" : 180254.548223702
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 34933, 
+        "Concelho" : "TORRES NOVAS", 
+        "OBJECTID" : 267, 
+        "Shape_Leng" : 111919.390044, 
+        "Dicofre" : "1419", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 129.381481481, 
+        "Incidência" : 507, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 507, 
+        "Shape__Area" : 452856300.493652, 
+        "Shape__Length" : 99640.5573004413
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 78530, 
+        "Concelho" : "TORRES VEDRAS", 
+        "OBJECTID" : 268, 
+        "Shape_Leng" : 150697.768017, 
+        "Dicofre" : "1113", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 192.877317942, 
+        "Incidência" : 334, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 334, 
+        "Shape__Area" : 676483060.273438, 
+        "Shape__Length" : 125844.834042828
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8875, 
+        "Concelho" : "TRANCOSO", 
+        "OBJECTID" : 269, 
+        "Shape_Leng" : 159238.526477, 
+        "Dicofre" : "0913", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 24.5491259128, 
+        "Incidência" : 192, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 192, 
+        "Shape__Area" : 630565903.711914, 
+        "Shape__Length" : 147377.829960918
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 38418, 
+        "Concelho" : "TROFA", 
+        "OBJECTID" : 270, 
+        "Shape_Leng" : 53684.4277808, 
+        "Dicofre" : "1318", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 533.435156901, 
+        "Incidência" : 716, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 716, 
+        "Shape__Area" : 128078245.256348, 
+        "Shape__Length" : 47849.2943668379
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 22740, 
+        "Concelho" : "VAGOS", 
+        "OBJECTID" : 271, 
+        "Shape_Leng" : 79428.2413263, 
+        "Dicofre" : "0118", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 137.885035169, 
+        "Incidência" : 479, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 479, 
+        "Shape__Area" : 285747668.918945, 
+        "Shape__Length" : 75198.3701148893
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 21327, 
+        "Concelho" : "VALE DE CAMBRA", 
+        "OBJECTID" : 272, 
+        "Shape_Leng" : 91468.7613944, 
+        "Dicofre" : "0119", 
+        "Distrito" : "AVEIRO", 
+        "DensidadeP" : 144.756668703, 
+        "Incidência" : 206, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 206, 
+        "Shape__Area" : 257988944.581055, 
+        "Shape__Length" : 82795.0879830215
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 13290, 
+        "Concelho" : "VALENÇA", 
+        "OBJECTID" : 273, 
+        "Shape_Leng" : 63117.5961366, 
+        "Dicofre" : "1608", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 113.463672842, 
+        "Incidência" : 248, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 248, 
+        "Shape__Area" : 212495304.419922, 
+        "Shape__Length" : 62010.6275443305
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 97444, 
+        "Concelho" : "VALONGO", 
+        "OBJECTID" : 274, 
+        "Shape_Leng" : 69947.1725434, 
+        "Dicofre" : "1315", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 1297.17784878, 
+        "Incidência" : 472, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 472, 
+        "Shape__Area" : 133312959.602051, 
+        "Shape__Length" : 63431.0870416218
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14818, 
+        "Concelho" : "VALPAÇOS", 
+        "OBJECTID" : 275, 
+        "Shape_Leng" : 197816.045974, 
+        "Dicofre" : "1712", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 27.0036811605, 
+        "Incidência" : 1039, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1039, 
+        "Shape__Area" : 981869424.726807, 
+        "Shape__Length" : 186971.207854049
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5093, 
+        "Concelho" : "VELAS", 
+        "OBJECTID" : 276, 
+        "Shape_Leng" : 101838.241376, 
+        "Dicofre" : "4502", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 43.3889930141, 
+        "Incidência" : 39, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 39, 
+        "Shape__Area" : 193071472.816406, 
+        "Shape__Length" : 82071.8385500035
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11255, 
+        "Concelho" : "VENDAS NOVAS", 
+        "OBJECTID" : 277, 
+        "Shape_Leng" : 114397.2413, 
+        "Dicofre" : "0712", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 50.6092899861, 
+        "Incidência" : 817, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 817, 
+        "Shape__Area" : 365636779.243896, 
+        "Shape__Length" : 110240.669337051
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5145, 
+        "Concelho" : "VIANA DO ALENTEJO", 
+        "OBJECTID" : 278, 
+        "Shape_Leng" : 166499.209734, 
+        "Dicofre" : "0713", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 13.069322021, 
+        "Incidência" : 1613, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1613, 
+        "Shape__Area" : 641962313.29248, 
+        "Shape__Length" : 154391.811049738
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 84417, 
+        "Concelho" : "VIANA DO CASTELO", 
+        "OBJECTID" : 279, 
+        "Shape_Leng" : 131137.364788, 
+        "Dicofre" : "1609", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 264.613503856, 
+        "Incidência" : 404, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 404, 
+        "Shape__Area" : 573648797.527344, 
+        "Shape__Length" : 116782.093442663
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5510, 
+        "Concelho" : "VIDIGUEIRA", 
+        "OBJECTID" : 280, 
+        "Shape_Leng" : 158600.866884, 
+        "Dicofre" : "0214", 
+        "Distrito" : "BEJA", 
+        "DensidadeP" : 17.4031142415, 
+        "Incidência" : 1942, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1942, 
+        "Shape__Area" : 512502521.977539, 
+        "Shape__Length" : 146610.197749103
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11842, 
+        "Concelho" : "VIEIRA DO MINHO", 
+        "OBJECTID" : 281, 
+        "Shape_Leng" : 110571.475074, 
+        "Dicofre" : "0311", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 54.7126224358, 
+        "Incidência" : 524, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 524, 
+        "Shape__Area" : 387822453.70459, 
+        "Shape__Length" : 99864.3297263926
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3323, 
+        "Concelho" : "VILA DE REI", 
+        "OBJECTID" : 282, 
+        "Shape_Leng" : 95987.5667063, 
+        "Dicofre" : "0510", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 17.3479509267, 
+        "Incidência" : 301, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 301, 
+        "Shape__Area" : 322957183.852295, 
+        "Shape__Length" : 80680.3676175751
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5154, 
+        "Concelho" : "VILA DO BISPO", 
+        "OBJECTID" : 283, 
+        "Shape_Leng" : 122238.153382, 
+        "Dicofre" : "0815", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 28.7836479392, 
+        "Incidência" : 58, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 58, 
+        "Shape__Area" : 280570058.67334, 
+        "Shape__Length" : 89985.5091037367
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 79899, 
+        "Concelho" : "VILA DO CONDE", 
+        "OBJECTID" : 284, 
+        "Shape_Leng" : 91237.38023, 
+        "Dicofre" : "1316", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 536.126954305, 
+        "Incidência" : 916, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 916, 
+        "Shape__Area" : 264414698.263672, 
+        "Shape__Length" : 79484.0134175765
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 5616, 
+        "Concelho" : "VILA DO PORTO", 
+        "OBJECTID" : 285, 
+        "Shape_Leng" : 97291.1646748, 
+        "Dicofre" : "4101", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 57.9626380431, 
+        "Incidência" : 18, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 18, 
+        "Shape__Area" : 152232486.746094, 
+        "Shape__Length" : 58582.135841363
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6044, 
+        "Concelho" : "VILA FLOR", 
+        "OBJECTID" : 286, 
+        "Shape_Leng" : 123166.700709, 
+        "Dicofre" : "0410", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 22.7380459727, 
+        "Incidência" : 463, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 463, 
+        "Shape__Area" : 471813794.43335, 
+        "Shape__Length" : 112238.755867316
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 141957, 
+        "Concelho" : "VILA FRANCA DE XIRA", 
+        "OBJECTID" : 287, 
+        "Shape_Leng" : 175963.887429, 
+        "Dicofre" : "1114", 
+        "Distrito" : "LISBOA", 
+        "DensidadeP" : 446.13909928, 
+        "Incidência" : 339, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 339, 
+        "Shape__Area" : 526284523.938477, 
+        "Shape__Length" : 163670.848227801
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11051, 
+        "Concelho" : "VILA FRANCA DO CAMPO", 
+        "OBJECTID" : 288, 
+        "Shape_Leng" : 73163.1548584, 
+        "Dicofre" : "4206", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 141.734000257, 
+        "Incidência" : 733, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 733, 
+        "Shape__Area" : 124611968.5, 
+        "Shape__Length" : 54661.0713801043
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7461, 
+        "Concelho" : "VILA NOVA DA BARQUINHA", 
+        "OBJECTID" : 289, 
+        "Shape_Leng" : 59851.1346917, 
+        "Dicofre" : "1420", 
+        "Distrito" : "SANTARÉM", 
+        "DensidadeP" : 150.635978195, 
+        "Incidência" : 161, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Lisboa e Vale do Tejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 161, 
+        "Shape__Area" : 83744807.9492188, 
+        "Shape__Length" : 54061.4509266097
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 8910, 
+        "Concelho" : "VILA NOVA DE CERVEIRA", 
+        "OBJECTID" : 290, 
+        "Shape_Leng" : 70711.8116125, 
+        "Dicofre" : "1610", 
+        "Distrito" : "VIANA DO CASTELO", 
+        "DensidadeP" : 82.1425278879, 
+        "Incidência" : 269, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 269, 
+        "Shape__Area" : 195279627.038574, 
+        "Shape__Length" : 65462.5816906575
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 131676, 
+        "Concelho" : "VILA NOVA DE FAMALICÃO", 
+        "OBJECTID" : 291, 
+        "Shape_Leng" : 108156.559278, 
+        "Dicofre" : "0312", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 653.187162062, 
+        "Incidência" : 649, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 649, 
+        "Shape__Area" : 358106567.23877, 
+        "Shape__Length" : 97051.1980992285
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6503, 
+        "Concelho" : "VILA NOVA DE FOZ CÔA", 
+        "OBJECTID" : 292, 
+        "Shape_Leng" : 166434.520903, 
+        "Dicofre" : "0914", 
+        "Distrito" : "GUARDA", 
+        "DensidadeP" : 16.3330403114, 
+        "Incidência" : 92, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 92, 
+        "Shape__Area" : 700656363.507813, 
+        "Shape__Length" : 157622.457121438
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 300472, 
+        "Concelho" : "VILA NOVA DE GAIA", 
+        "OBJECTID" : 293, 
+        "Shape_Leng" : 102294.31019, 
+        "Dicofre" : "1317", 
+        "Distrito" : "PORTO", 
+        "DensidadeP" : 1783.64003324, 
+        "Incidência" : 449, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 449, 
+        "Shape__Area" : 297304107.300293, 
+        "Shape__Length" : 91170.1695421045
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4687, 
+        "Concelho" : "VILA NOVA DE PAIVA", 
+        "OBJECTID" : 294, 
+        "Shape_Leng" : 91057.8735683, 
+        "Dicofre" : "1822", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 26.7019882641, 
+        "Incidência" : 384, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 384, 
+        "Shape__Area" : 307231757.182129, 
+        "Shape__Length" : 83777.2930414783
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 6939, 
+        "Concelho" : "VILA NOVA DE POIARES", 
+        "OBJECTID" : 295, 
+        "Shape_Leng" : 68456.9568115, 
+        "Dicofre" : "0617", 
+        "Distrito" : "COIMBRA", 
+        "DensidadeP" : 82.1669626998, 
+        "Incidência" : 735, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 735, 
+        "Shape__Area" : 144765010.656738, 
+        "Shape__Length" : 56719.2071333216
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 11961, 
+        "Concelho" : "VILA POUCA DE AGUIAR", 
+        "OBJECTID" : 296, 
+        "Shape_Leng" : 147536.62822, 
+        "Dicofre" : "1713", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 27.3663257602, 
+        "Incidência" : 828, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 828, 
+        "Shape__Area" : 779948784.053955, 
+        "Shape__Length" : 138850.076720859
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 49962, 
+        "Concelho" : "VILA REAL", 
+        "OBJECTID" : 297, 
+        "Shape_Leng" : 159439.941745, 
+        "Dicofre" : "1714", 
+        "Distrito" : "VILA REAL", 
+        "DensidadeP" : 131.895459345, 
+        "Incidência" : 773, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 773, 
+        "Shape__Area" : 671651915.009033, 
+        "Shape__Length" : 137143.16904835
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 18749, 
+        "Concelho" : "VILA REAL DE SANTO ANTÓNIO", 
+        "OBJECTID" : 298, 
+        "Shape_Leng" : 77173.764824, 
+        "Dicofre" : "0816", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 306.106122449, 
+        "Incidência" : 288, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 288, 
+        "Shape__Area" : 96582895.802002, 
+        "Shape__Length" : 70137.6375992686
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 3144, 
+        "Concelho" : "VILA VELHA DE RÓDÃO", 
+        "OBJECTID" : 299, 
+        "Shape_Leng" : 149914.934879, 
+        "Dicofre" : "0511", 
+        "Distrito" : "CASTELO BRANCO", 
+        "DensidadeP" : 9.52987178321, 
+        "Incidência" : 350, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 350, 
+        "Shape__Area" : 556755581.855225, 
+        "Shape__Length" : 132743.074368153
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 46911, 
+        "Concelho" : "VILA VERDE", 
+        "OBJECTID" : 300, 
+        "Shape_Leng" : 108905.214999, 
+        "Dicofre" : "0313", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 205.147155289, 
+        "Incidência" : 663, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 663, 
+        "Shape__Area" : 410283009.843262, 
+        "Shape__Length" : 99697.2563611119
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7656, 
+        "Concelho" : "VILA VIÇOSA", 
+        "OBJECTID" : 301, 
+        "Shape_Leng" : 146077.835299, 
+        "Dicofre" : "0714", 
+        "Distrito" : "ÉVORA", 
+        "DensidadeP" : 39.2897464847, 
+        "Incidência" : 170, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Alentejo", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 170, 
+        "Shape__Area" : 321352543.487793, 
+        "Shape__Length" : 120456.448843141
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 4023, 
+        "Concelho" : "VIMIOSO", 
+        "OBJECTID" : 302, 
+        "Shape_Leng" : 173457.640714, 
+        "Dicofre" : "0411", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 8.35357877032, 
+        "Incidência" : 1019, 
+        "Incidência_categoria" : "[960, Max]", 
+        "Incidência_" : "Extremamente Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 1019, 
+        "Shape__Area" : 860195242.105713, 
+        "Shape__Length" : 161427.139918661
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 7746, 
+        "Concelho" : "VINHAIS", 
+        "OBJECTID" : 303, 
+        "Shape_Leng" : 212607.437014, 
+        "Dicofre" : "0412", 
+        "Distrito" : "BRAGANÇA", 
+        "DensidadeP" : 11.1493342929, 
+        "Incidência" : 232, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 232, 
+        "Shape__Area" : 1252795703.95142, 
+        "Shape__Length" : 188639.910856334
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 97249, 
+        "Concelho" : "VISEU", 
+        "OBJECTID" : 304, 
+        "Shape_Leng" : 162421.040249, 
+        "Dicofre" : "1823", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 191.77479787, 
+        "Incidência" : 483, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 483, 
+        "Shape__Area" : 882728469.107178, 
+        "Shape__Length" : 150354.678302946
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 23897, 
+        "Concelho" : "VIZELA", 
+        "OBJECTID" : 305, 
+        "Shape_Leng" : 45051.2008021, 
+        "Dicofre" : "0314", 
+        "Distrito" : "BRAGA", 
+        "DensidadeP" : 967.489878543, 
+        "Incidência" : 318, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Norte", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 318, 
+        "Shape__Area" : 43867717.6269531, 
+        "Shape__Length" : 36973.9255634926
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 9619, 
+        "Concelho" : "VOUZELA", 
+        "OBJECTID" : 306, 
+        "Shape_Leng" : 100802.846324, 
+        "Dicofre" : "1824", 
+        "Distrito" : "VISEU", 
+        "DensidadeP" : 49.6618307605, 
+        "Incidência" : 333, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "ARS" : "Centro", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 333, 
+        "Shape__Area" : 337866412.283203, 
+        "Shape__Length" : 92659.3497554259
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 22762, 
+        "Concelho" : "LAGOA", 
+        "OBJECTID" : 307, 
+        "Shape_Leng" : 72399.6549707, 
+        "Dicofre" : "0806", 
+        "Distrito" : "FARO", 
+        "DensidadeP" : 257.926345609, 
+        "Incidência" : 70, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Algarve", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 70, 
+        "Shape__Area" : 138365848.016357, 
+        "Shape__Length" : 56387.8698456364
+      }
+    }, 
+    {
+      "attributes" : {
+        "Total" : 14721, 
+        "Concelho" : "LAGOA [R.A. AÇORES]", 
+        "OBJECTID" : 308, 
+        "Shape_Leng" : 57369.3045346, 
+        "Dicofre" : "4201", 
+        "Distrito" : "AÇORES", 
+        "DensidadeP" : 322.899758719, 
+        "Incidência" : 204, 
+        "Incidência_categoria" : "[0,240]", 
+        "Incidência_" : "Moderado", 
+        "ARS" : "Açores", 
+        "Cumulativo_casos_14_dias" : null, 
+        "Valorincid" : 204, 
+        "Shape__Area" : 73172163.6669922, 
+        "Shape__Length" : 39126.7580547939
+      }
+    }
+  ]
+}
