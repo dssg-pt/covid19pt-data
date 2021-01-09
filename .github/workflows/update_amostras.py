@@ -60,25 +60,24 @@ def get_amostras(url):
     return amostras_df
 
 
-NOVAS = ("amostras_novas", "amostras_pcr_novas")
-FIXES = (
-    # data DD-MM-YYYY, columns, fix_value
-    # eg ("30-04-2020", NOVAS, 16438),
-    # eg ("26-12-2020", "amostras_novas", 19834),
-)
-
-
 def fix_amostras(data):
-    for i in ("26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"):
-        data.loc[
-            data.data == i,
-            [
-                "amostras_pcr",
-                "amostras_pcr_novas",
-                "amostras_antigenio",
-                "amostras_antigenio_novas",
-            ],
-        ] = ""
+
+    for i in ["26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"]:
+        data.loc[data.data == i, data.columns[1:]] = 0
+
+    # data is constantly changing about two weeks into the past, and totals
+    # are constantly incorrect, so we just give up and only use the totals
+    # and recalculate the diff out of them
+    data.loc[1:, "amostras_novas"] = data.loc[1:, "amostras"].diff(1)
+    data.loc[1:, "amostras_pcr_novas"] = data.loc[1:, "amostras_pcr"].diff(1)
+    data.loc[1:, "amostras_antigenio_novas"] = data.loc[1:, "amostras_antigenio"].diff(1)
+
+    for i in ["26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"]:
+        data.loc[data.data == i, data.columns[1:]] = ""
+
+    FIXES = (
+        # data DD-MM-YYYY, columns, fix_value
+    )
 
     for fix in FIXES:
         if DEBUG:
