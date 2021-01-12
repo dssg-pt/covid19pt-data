@@ -157,10 +157,10 @@
         "DensidadeP" : 49.1541787348, 
         "Incidência" : 285, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 211, 
+        "Valorincid" : 285, 
         "Shape__Area" : 1199392547.00024, 
         "Shape__Length" : 214207.84191311
       }
@@ -176,10 +176,10 @@
         "DensidadeP" : 137.426551734, 
         "Incidência" : 710, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 451, 
+        "Valorincid" : 710, 
         "Shape__Area" : 581366641.017578, 
         "Shape__Length" : 127721.613902839
       }
@@ -195,10 +195,10 @@
         "DensidadeP" : 22.4984282053, 
         "Incidência" : 1354, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 408, 
+        "Valorincid" : 1354, 
         "Shape__Area" : 360575263.532959, 
         "Shape__Length" : 85611.04438798
       }
@@ -217,7 +217,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 721, 
+        "Valorincid" : 561, 
         "Shape__Area" : 891411553.399414, 
         "Shape__Length" : 186073.073581545
       }
@@ -233,10 +233,10 @@
         "DensidadeP" : 152.021156026, 
         "Incidência" : 551, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 352, 
+        "Valorincid" : 551, 
         "Shape__Area" : 276892350.062012, 
         "Shape__Length" : 97449.9569298326
       }
@@ -252,10 +252,10 @@
         "DensidadeP" : 295.236741078, 
         "Incidência" : 506, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 284, 
+        "Valorincid" : 506, 
         "Shape__Area" : 221385020.749756, 
         "Shape__Length" : 87191.0870822791
       }
@@ -271,10 +271,10 @@
         "DensidadeP" : 7.77334035616, 
         "Incidência" : 969, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 292, 
+        "Valorincid" : 969, 
         "Shape__Area" : 2443823868.83691, 
         "Shape__Length" : 259489.232306464
       }
@@ -290,10 +290,10 @@
         "DensidadeP" : 100.596874264, 
         "Incidência" : 484, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 281, 
+        "Valorincid" : 484, 
         "Shape__Area" : 213840288.662109, 
         "Shape__Length" : 87905.8064721788
       }
@@ -309,10 +309,10 @@
         "DensidadeP" : 131.217229382, 
         "Incidência" : 584, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 263, 
+        "Valorincid" : 584, 
         "Shape__Area" : 687279111.810059, 
         "Shape__Length" : 190298.011049868
       }
@@ -328,10 +328,10 @@
         "DensidadeP" : 154.15238392, 
         "Incidência" : 1021, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 687, 
+        "Valorincid" : 1021, 
         "Shape__Area" : 211569015.143555, 
         "Shape__Length" : 125206.488222336
       }
@@ -350,7 +350,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 0, 
+        "Valorincid" : 232, 
         "Shape__Area" : 912688781.200439, 
         "Shape__Length" : 171604.779573676
       }
@@ -366,10 +366,10 @@
         "DensidadeP" : 144.803103018, 
         "Incidência" : 379, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 504, 
+        "Valorincid" : 379, 
         "Shape__Area" : 505367585.703125, 
         "Shape__Length" : 113751.087488666
       }
@@ -385,10 +385,10 @@
         "DensidadeP" : 14.1326292903, 
         "Incidência" : 681, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Extremamente Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1231, 
+        "Valorincid" : 681, 
         "Shape__Area" : 572043065.153076, 
         "Shape__Length" : 111534.625698068
       }
@@ -404,10 +404,10 @@
         "DensidadeP" : 35.7022849462, 
         "Incidência" : 527, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 320, 
+        "Valorincid" : 527, 
         "Shape__Area" : 527400525.054688, 
         "Shape__Length" : 111019.834174594
       }
@@ -426,7 +426,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 143, 
+        "Valorincid" : 179, 
         "Shape__Area" : 511106415.726074, 
         "Shape__Length" : 134863.899609697
       }
@@ -442,10 +442,10 @@
         "DensidadeP" : 17.9880908238, 
         "Incidência" : 291, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 36, 
+        "Valorincid" : 291, 
         "Shape__Area" : 737503272.260986, 
         "Shape__Length" : 131749.193804831
       }
@@ -461,10 +461,10 @@
         "DensidadeP" : 2414.49792887, 
         "Incidência" : 589, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 428, 
+        "Valorincid" : 589, 
         "Shape__Area" : 113703883.825684, 
         "Shape__Length" : 59180.0036641228
       }
@@ -483,7 +483,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 120, 
+        "Valorincid" : 172, 
         "Shape__Area" : 899790181.55957, 
         "Shape__Length" : 143185.415502607
       }
@@ -499,10 +499,10 @@
         "DensidadeP" : 101.503691698, 
         "Incidência" : 324, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 195, 
+        "Valorincid" : 324, 
         "Shape__Area" : 369861968.394043, 
         "Shape__Length" : 98530.2597507084
       }
@@ -518,10 +518,10 @@
         "DensidadeP" : 8.64529233301, 
         "Incidência" : 625, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 59, 
+        "Valorincid" : 625, 
         "Shape__Area" : 1237495524.8479, 
         "Shape__Length" : 201439.903690927
       }
@@ -537,10 +537,10 @@
         "DensidadeP" : 74.0247483221, 
         "Incidência" : 779, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 184, 
+        "Valorincid" : 779, 
         "Shape__Area" : 158800686.918945, 
         "Shape__Length" : 54110.8072837221
       }
@@ -556,10 +556,10 @@
         "DensidadeP" : 8.74140359599, 
         "Incidência" : 948, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 474, 
+        "Valorincid" : 948, 
         "Shape__Area" : 602656637.679688, 
         "Shape__Length" : 126963.531215761
       }
@@ -575,10 +575,10 @@
         "DensidadeP" : 41.1079262213, 
         "Incidência" : 849, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 303, 
+        "Valorincid" : 849, 
         "Shape__Area" : 273068460.36377, 
         "Shape__Length" : 87519.8723644088
       }
@@ -594,10 +594,10 @@
         "DensidadeP" : 9.35246365867, 
         "Incidência" : 565, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 121, 
+        "Valorincid" : 565, 
         "Shape__Area" : 429480100.983887, 
         "Shape__Length" : 97493.0513768258
       }
@@ -613,10 +613,10 @@
         "DensidadeP" : 7742.05214466, 
         "Incidência" : 536, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 384, 
+        "Valorincid" : 536, 
         "Shape__Area" : 38947011.9047852, 
         "Shape__Length" : 32232.9124772303
       }
@@ -635,7 +635,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 620, 
+        "Valorincid" : 707, 
         "Shape__Area" : 534349962.258301, 
         "Shape__Length" : 137583.690247073
       }
@@ -654,7 +654,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 485, 
+        "Valorincid" : 673, 
         "Shape__Area" : 146930948.418945, 
         "Shape__Length" : 66668.3051538409
       }
@@ -670,10 +670,10 @@
         "DensidadeP" : 125.827447722, 
         "Incidência" : 1068, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 690, 
+        "Valorincid" : 1068, 
         "Shape__Area" : 374004952.955566, 
         "Shape__Length" : 92503.0115720283
       }
@@ -692,7 +692,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 142, 
+        "Valorincid" : 74, 
         "Shape__Area" : 393767459.693359, 
         "Shape__Length" : 107075.251812467
       }
@@ -708,10 +708,10 @@
         "DensidadeP" : 68.3684479528, 
         "Incidência" : 1038, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 673, 
+        "Valorincid" : 1038, 
         "Shape__Area" : 300302106.08252, 
         "Shape__Length" : 99350.9088081703
       }
@@ -727,10 +727,10 @@
         "DensidadeP" : 46.7515638963, 
         "Incidência" : 679, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 358, 
+        "Valorincid" : 679, 
         "Shape__Area" : 809202679.686035, 
         "Shape__Length" : 134913.23436349
       }
@@ -746,10 +746,10 @@
         "DensidadeP" : 33.0909746425, 
         "Incidência" : 926, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 336, 
+        "Valorincid" : 926, 
         "Shape__Area" : 571099361.136963, 
         "Shape__Length" : 165230.036270208
       }
@@ -768,7 +768,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1317, 
+        "Valorincid" : 1179, 
         "Shape__Area" : 206693890.116699, 
         "Shape__Length" : 72095.2917706671
       }
@@ -787,7 +787,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 536, 
+        "Valorincid" : 656, 
         "Shape__Area" : 577081691.743652, 
         "Shape__Length" : 138670.467344988
       }
@@ -803,10 +803,10 @@
         "DensidadeP" : 10.1323583181, 
         "Incidência" : 765, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 462, 
+        "Valorincid" : 765, 
         "Shape__Area" : 1128155747.11987, 
         "Shape__Length" : 196493.551111632
       }
@@ -825,7 +825,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 0, 
+        "Valorincid" : 106, 
         "Shape__Area" : 522901973.912109, 
         "Shape__Length" : 112594.698551884
       }
@@ -844,7 +844,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 526, 
+        "Valorincid" : 805, 
         "Shape__Area" : 129042417.680176, 
         "Shape__Length" : 73891.9563403843
       }
@@ -863,7 +863,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 297, 
+        "Valorincid" : 475, 
         "Shape__Area" : 343134721.935059, 
         "Shape__Length" : 93433.9537820335
       }
@@ -882,7 +882,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 589, 
+        "Valorincid" : 542, 
         "Shape__Area" : 1006808940, 
         "Shape__Length" : 202670.99414269
       }
@@ -901,7 +901,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 396, 
+        "Valorincid" : 335, 
         "Shape__Area" : 437068339.82666, 
         "Shape__Length" : 138906.281530362
       }
@@ -920,7 +920,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 341, 
+        "Valorincid" : 432, 
         "Shape__Area" : 307423497.34082, 
         "Shape__Length" : 88414.340206416
       }
@@ -939,7 +939,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 989, 
+        "Valorincid" : 1082, 
         "Shape__Area" : 677061432.42041, 
         "Shape__Length" : 134515.48598559
       }
@@ -958,7 +958,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 0, 
+        "Valorincid" : 61, 
         "Shape__Area" : 272233180.104736, 
         "Shape__Length" : 97270.3860815888
       }
@@ -977,7 +977,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 555, 
+        "Valorincid" : 531, 
         "Shape__Area" : 59512085.2724609, 
         "Shape__Length" : 48682.2832446362
       }
@@ -993,10 +993,10 @@
         "DensidadeP" : 154.351189325, 
         "Incidência" : 601, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 326, 
+        "Valorincid" : 601, 
         "Shape__Area" : 174091063.56543, 
         "Shape__Length" : 70700.4883323019
       }
@@ -1012,10 +1012,10 @@
         "DensidadeP" : 29.2887795688, 
         "Incidência" : 733, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 426, 
+        "Valorincid" : 733, 
         "Shape__Area" : 1847652857.28882, 
         "Shape__Length" : 244448.23928637
       }
@@ -1031,10 +1031,10 @@
         "DensidadeP" : 53.873358033, 
         "Incidência" : 406, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 141, 
+        "Valorincid" : 406, 
         "Shape__Area" : 205079132.033691, 
         "Shape__Length" : 72276.9551751573
       }
@@ -1050,10 +1050,10 @@
         "DensidadeP" : 58.6942345314, 
         "Incidência" : 598, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 320, 
+        "Valorincid" : 598, 
         "Shape__Area" : 861663666.563477, 
         "Shape__Length" : 152028.001903809
       }
@@ -1069,10 +1069,10 @@
         "DensidadeP" : 137.561616826, 
         "Incidência" : 342, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 207, 
+        "Valorincid" : 342, 
         "Shape__Area" : 152995847.634277, 
         "Shape__Length" : 64088.5780865222
       }
@@ -1088,10 +1088,10 @@
         "DensidadeP" : 46.3943797782, 
         "Incidência" : 1247, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 238, 
+        "Valorincid" : 1247, 
         "Shape__Area" : 239069220.210449, 
         "Shape__Length" : 93595.7132147744
       }
@@ -1107,10 +1107,10 @@
         "DensidadeP" : 15.5236675363, 
         "Incidência" : 1160, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 500, 
+        "Valorincid" : 1160, 
         "Shape__Area" : 577081974.5625, 
         "Shape__Length" : 150099.039718661
       }
@@ -1129,7 +1129,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 632, 
+        "Valorincid" : 750, 
         "Shape__Area" : 327449141.75293, 
         "Shape__Length" : 87042.6235640303
       }
@@ -1148,7 +1148,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 768, 
+        "Valorincid" : 684, 
         "Shape__Area" : 2111212809.12573, 
         "Shape__Length" : 242264.742354893
       }
@@ -1164,10 +1164,10 @@
         "DensidadeP" : 64.626581755, 
         "Incidência" : 518, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 275, 
+        "Valorincid" : 518, 
         "Shape__Area" : 432139688.404297, 
         "Shape__Length" : 102494.579118383
       }
@@ -1183,10 +1183,10 @@
         "DensidadeP" : 78.1805706444, 
         "Incidência" : 271, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 183, 
+        "Valorincid" : 271, 
         "Shape__Area" : 292375665.641113, 
         "Shape__Length" : 73996.180820268
       }
@@ -1202,10 +1202,10 @@
         "DensidadeP" : 203.027103133, 
         "Incidência" : 545, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 453, 
+        "Valorincid" : 545, 
         "Shape__Area" : 428396153.461914, 
         "Shape__Length" : 117225.061341628
       }
@@ -1224,7 +1224,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 37, 
+        "Valorincid" : 202, 
         "Shape__Area" : 158167565.359375, 
         "Shape__Length" : 64081.1665290597
       }
@@ -1243,7 +1243,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 94, 
+        "Valorincid" : 126, 
         "Shape__Area" : 207144244.928711, 
         "Shape__Length" : 82551.099457521
       }
@@ -1262,7 +1262,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 273, 
+        "Valorincid" : 425, 
         "Shape__Area" : 73767500.5117188, 
         "Shape__Length" : 45087.7916662843
       }
@@ -1281,7 +1281,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 548, 
+        "Valorincid" : 750, 
         "Shape__Area" : 246131473.006836, 
         "Shape__Length" : 80764.7387768269
       }
@@ -1297,10 +1297,10 @@
         "DensidadeP" : 31.8527508091, 
         "Incidência" : 445, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 64, 
+        "Valorincid" : 445, 
         "Shape__Area" : 410012386.839844, 
         "Shape__Length" : 91732.2553353553
       }
@@ -1316,10 +1316,10 @@
         "DensidadeP" : 89.5696889071, 
         "Incidência" : 817, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 477, 
+        "Valorincid" : 817, 
         "Shape__Area" : 673782955.975586, 
         "Shape__Length" : 163625.373206101
       }
@@ -1354,10 +1354,10 @@
         "DensidadeP" : 79.313884849, 
         "Incidência" : 895, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 291, 
+        "Valorincid" : 895, 
         "Shape__Area" : 202045340.922119, 
         "Shape__Length" : 67401.351399181
       }
@@ -1373,10 +1373,10 @@
         "DensidadeP" : 150.742871594, 
         "Incidência" : 331, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 231, 
+        "Valorincid" : 331, 
         "Shape__Area" : 263295888.717773, 
         "Shape__Length" : 87116.6082216053
       }
@@ -1392,10 +1392,10 @@
         "DensidadeP" : 2193.10061602, 
         "Incidência" : 501, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 316, 
+        "Valorincid" : 501, 
         "Shape__Area" : 160269501.868164, 
         "Shape__Length" : 67705.4757593048
       }
@@ -1411,10 +1411,10 @@
         "DensidadeP" : 39.1493185562, 
         "Incidência" : 153, 
         "Incidência_categoria" : "[0,240]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Moderado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 574, 
+        "Valorincid" : 153, 
         "Shape__Area" : 114758932.999512, 
         "Shape__Length" : 54276.0396191928
       }
@@ -1433,7 +1433,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 560, 
+        "Valorincid" : 571, 
         "Shape__Area" : 2442399552.69067, 
         "Shape__Length" : 287590.468452092
       }
@@ -1452,7 +1452,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 349, 
+        "Valorincid" : 375, 
         "Shape__Area" : 202415375.047363, 
         "Shape__Length" : 69203.7988644216
       }
@@ -1468,10 +1468,10 @@
         "DensidadeP" : 11.018836586, 
         "Incidência" : 34, 
         "Incidência_categoria" : "[0,240]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Moderado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 514, 
+        "Valorincid" : 34, 
         "Shape__Area" : 444728507.334229, 
         "Shape__Length" : 110881.620780669
       }
@@ -1490,7 +1490,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 514, 
+        "Valorincid" : 694, 
         "Shape__Area" : 664354207.033447, 
         "Shape__Length" : 169077.083703045
       }
@@ -1506,10 +1506,10 @@
         "DensidadeP" : 20.7319505385, 
         "Incidência" : 241, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 64, 
+        "Valorincid" : 241, 
         "Shape__Area" : 475876491.129883, 
         "Shape__Length" : 105781.913373684
       }
@@ -1525,10 +1525,10 @@
         "DensidadeP" : 12.2032171958, 
         "Incidência" : 302, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 144, 
+        "Valorincid" : 302, 
         "Shape__Area" : 911186237.276367, 
         "Shape__Length" : 185381.507621408
       }
@@ -1544,10 +1544,10 @@
         "DensidadeP" : 28.0236226842, 
         "Incidência" : 996, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 635, 
+        "Valorincid" : 996, 
         "Shape__Area" : 429547324.899414, 
         "Shape__Length" : 101340.972835679
       }
@@ -1563,10 +1563,10 @@
         "DensidadeP" : 105.152703374, 
         "Incidência" : 593, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 352, 
+        "Valorincid" : 593, 
         "Shape__Area" : 321966947.763672, 
         "Shape__Length" : 86075.6849548717
       }
@@ -1582,10 +1582,10 @@
         "DensidadeP" : 12.3282529725, 
         "Incidência" : 359, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 120, 
+        "Valorincid" : 359, 
         "Shape__Area" : 1247207729.13184, 
         "Shape__Length" : 174549.733065061
       }
@@ -1604,7 +1604,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 885, 
+        "Valorincid" : 854, 
         "Shape__Area" : 1063055970.15503, 
         "Shape__Length" : 207488.69805092
       }
@@ -1623,7 +1623,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 312, 
+        "Valorincid" : 471, 
         "Shape__Area" : 420165285.785645, 
         "Shape__Length" : 109664.185247298
       }
@@ -1639,10 +1639,10 @@
         "DensidadeP" : 420.056355667, 
         "Incidência" : 563, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 443, 
+        "Valorincid" : 563, 
         "Shape__Area" : 549221328.691895, 
         "Shape__Length" : 159955.783421697
       }
@@ -1661,7 +1661,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 603, 
+        "Valorincid" : 581, 
         "Shape__Area" : 236904536.054199, 
         "Shape__Length" : 86274.9245905219
       }
@@ -1677,10 +1677,10 @@
         "DensidadeP" : 50.143088217, 
         "Incidência" : 521, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 273, 
+        "Valorincid" : 521, 
         "Shape__Area" : 134966788.271484, 
         "Shape__Length" : 62749.8249541982
       }
@@ -1699,7 +1699,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 218, 
+        "Valorincid" : 212, 
         "Shape__Area" : 1846016031.64551, 
         "Shape__Length" : 273197.235722223
       }
@@ -1737,7 +1737,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 327, 
+        "Valorincid" : 447, 
         "Shape__Area" : 955293639.806396, 
         "Shape__Length" : 172923.070799129
       }
@@ -1756,7 +1756,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1023, 
+        "Valorincid" : 1310, 
         "Shape__Area" : 665979834.685303, 
         "Shape__Length" : 147582.13618802
       }
@@ -1772,10 +1772,10 @@
         "DensidadeP" : 26.7011447498, 
         "Incidência" : 1197, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 348, 
+        "Valorincid" : 1197, 
         "Shape__Area" : 279253388.91333, 
         "Shape__Length" : 95284.9518932069
       }
@@ -1791,10 +1791,10 @@
         "DensidadeP" : 32.5175434428, 
         "Incidência" : 1247, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 867, 
+        "Valorincid" : 1247, 
         "Shape__Area" : 1043492199.45483, 
         "Shape__Length" : 168378.414330775
       }
@@ -1810,10 +1810,10 @@
         "DensidadeP" : 1570.1383831, 
         "Incidência" : 561, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 260, 
+        "Valorincid" : 561, 
         "Shape__Area" : 23609781.4741211, 
         "Shape__Length" : 20128.7614780194
       }
@@ -1832,7 +1832,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 444, 
+        "Valorincid" : 420, 
         "Shape__Area" : 37098102.5249023, 
         "Shape__Length" : 27045.0217612493
       }
@@ -1851,7 +1851,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1036, 
+        "Valorincid" : 1270, 
         "Shape__Area" : 170632464.12793, 
         "Shape__Length" : 68759.8230278197
       }
@@ -1867,10 +1867,10 @@
         "DensidadeP" : 240.417860775, 
         "Incidência" : 631, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 377, 
+        "Valorincid" : 631, 
         "Shape__Area" : 188583376.337891, 
         "Shape__Length" : 79081.9805772347
       }
@@ -1889,7 +1889,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 629, 
+        "Valorincid" : 668, 
         "Shape__Area" : 849587016.781982, 
         "Shape__Length" : 204237.778087293
       }
@@ -1908,7 +1908,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 875, 
+        "Valorincid" : 828, 
         "Shape__Area" : 2137425647.17993, 
         "Shape__Length" : 336968.554388083
       }
@@ -1924,10 +1924,10 @@
         "DensidadeP" : 219.371918934, 
         "Incidência" : 605, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 412, 
+        "Valorincid" : 605, 
         "Shape__Area" : 390826532.215332, 
         "Shape__Length" : 94376.1849299039
       }
@@ -1943,10 +1943,10 @@
         "DensidadeP" : 301.204521894, 
         "Incidência" : 490, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 313, 
+        "Valorincid" : 490, 
         "Shape__Area" : 318777281.596924, 
         "Shape__Length" : 100371.993941252
       }
@@ -1965,7 +1965,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 496, 
+        "Valorincid" : 615, 
         "Shape__Area" : 205914425.032715, 
         "Shape__Length" : 66815.8153321222
       }
@@ -1984,7 +1984,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 89, 
+        "Valorincid" : 217, 
         "Shape__Area" : 1047498287.60864, 
         "Shape__Length" : 163442.188945938
       }
@@ -2000,10 +2000,10 @@
         "DensidadeP" : 41.8058619603, 
         "Incidência" : 1131, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 176, 
+        "Valorincid" : 1131, 
         "Shape__Area" : 321801864.674316, 
         "Shape__Length" : 104488.66160484
       }
@@ -2022,7 +2022,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 363, 
+        "Valorincid" : 267, 
         "Shape__Area" : 650496966.345703, 
         "Shape__Length" : 127975.825634288
       }
@@ -2038,10 +2038,10 @@
         "DensidadeP" : 10.9798061231, 
         "Incidência" : 609, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 179, 
+        "Valorincid" : 609, 
         "Shape__Area" : 889878572.091553, 
         "Shape__Length" : 134736.208856792
       }
@@ -2060,7 +2060,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1347, 
+        "Valorincid" : 1562, 
         "Shape__Area" : 294721116.647949, 
         "Shape__Length" : 124181.884769104
       }
@@ -2076,10 +2076,10 @@
         "DensidadeP" : 34.4465576265, 
         "Incidência" : 2496, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 199, 
+        "Valorincid" : 2496, 
         "Shape__Area" : 229142566.698486, 
         "Shape__Length" : 98655.317862958
       }
@@ -2098,7 +2098,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 212, 
+        "Valorincid" : 121, 
         "Shape__Area" : 431310600.131836, 
         "Shape__Length" : 122169.759711759
       }
@@ -2114,10 +2114,10 @@
         "DensidadeP" : 11.9629927595, 
         "Incidência" : 504, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 471, 
+        "Valorincid" : 504, 
         "Shape__Area" : 414197004.743164, 
         "Shape__Length" : 111670.076441242
       }
@@ -2136,7 +2136,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 162, 
+        "Valorincid" : 175, 
         "Shape__Area" : 107071866.783203, 
         "Shape__Length" : 74051.942141215
       }
@@ -2152,10 +2152,10 @@
         "DensidadeP" : 37.8391888032, 
         "Incidência" : 740, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 260, 
+        "Valorincid" : 740, 
         "Shape__Area" : 1199411413.93311, 
         "Shape__Length" : 224515.680927064
       }
@@ -2174,7 +2174,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1257, 
+        "Valorincid" : 1226, 
         "Shape__Area" : 495266496.632813, 
         "Shape__Length" : 108958.381848863
       }
@@ -2190,10 +2190,10 @@
         "DensidadeP" : 14.451196354, 
         "Incidência" : 499, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 131, 
+        "Valorincid" : 499, 
         "Shape__Area" : 450351474.440186, 
         "Shape__Length" : 124093.371910347
       }
@@ -2231,7 +2231,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 525, 
+        "Valorincid" : 691, 
         "Shape__Area" : 232615040.28418, 
         "Shape__Length" : 98354.7997917839
       }
@@ -2250,7 +2250,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 323, 
+        "Valorincid" : 371, 
         "Shape__Area" : 520021912.841797, 
         "Shape__Length" : 115017.124362611
       }
@@ -2269,7 +2269,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 328, 
+        "Valorincid" : 383, 
         "Shape__Area" : 1339114149.98145, 
         "Shape__Length" : 271808.429346396
       }
@@ -2285,10 +2285,10 @@
         "DensidadeP" : 54.7240556102, 
         "Incidência" : 1024, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 883, 
+        "Valorincid" : 1024, 
         "Shape__Area" : 1231904730.32324, 
         "Shape__Length" : 197529.121605485
       }
@@ -2307,7 +2307,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 598, 
+        "Valorincid" : 863, 
         "Shape__Area" : 430868987.239258, 
         "Shape__Length" : 133646.323085046
       }
@@ -2326,7 +2326,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 21, 
+        "Valorincid" : 41, 
         "Shape__Area" : 284198852.638672, 
         "Shape__Length" : 78280.0842719702
       }
@@ -2345,7 +2345,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 982, 
+        "Valorincid" : 1206, 
         "Shape__Area" : 2410034106.7998, 
         "Shape__Length" : 244288.542047791
       }
@@ -2364,7 +2364,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 481, 
+        "Valorincid" : 646, 
         "Shape__Area" : 127288168.15625, 
         "Shape__Length" : 49654.1997768916
       }
@@ -2380,10 +2380,10 @@
         "DensidadeP" : 142.607634161, 
         "Incidência" : 461, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 178, 
+        "Valorincid" : 461, 
         "Shape__Area" : 335518550.742188, 
         "Shape__Length" : 85170.0969279314
       }
@@ -2398,7 +2398,7 @@
         "Distrito" : "AÇORES", 
         "DensidadeP" : 20.8850820842, 
         "Incidência" : 0, 
-        "Incidência_categoria" : "[0,20]", 
+        "Incidência_categoria" : "[0,204]", 
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
@@ -2437,10 +2437,10 @@
         "DensidadeP" : 150.495707895, 
         "Incidência" : 1036, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 635, 
+        "Valorincid" : 1036, 
         "Shape__Area" : 291452253.941406, 
         "Shape__Length" : 93281.4031478609
       }
@@ -2459,7 +2459,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 533, 
+        "Valorincid" : 615, 
         "Shape__Area" : 957580176.676758, 
         "Shape__Length" : 184868.304324949
       }
@@ -2475,10 +2475,10 @@
         "DensidadeP" : 5092.60369815, 
         "Incidência" : 653, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 442, 
+        "Valorincid" : 653, 
         "Shape__Area" : 164613002.990234, 
         "Shape__Length" : 60564.5537456749
       }
@@ -2497,7 +2497,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 247, 
+        "Valorincid" : 432, 
         "Shape__Area" : 1206661820.51245, 
         "Shape__Length" : 207347.855491642
       }
@@ -2513,10 +2513,10 @@
         "DensidadeP" : 1277.72662043, 
         "Incidência" : 674, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 454, 
+        "Valorincid" : 674, 
         "Shape__Area" : 275962515.248047, 
         "Shape__Length" : 96946.1041535283
       }
@@ -2535,7 +2535,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 329, 
+        "Valorincid" : 336, 
         "Shape__Area" : 245352847.942383, 
         "Shape__Length" : 77028.7861360848
       }
@@ -2554,7 +2554,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 321, 
+        "Valorincid" : 315, 
         "Shape__Area" : 236820997.068848, 
         "Shape__Length" : 69259.9258795084
       }
@@ -2573,7 +2573,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 319, 
+        "Valorincid" : 445, 
         "Shape__Area" : 170395183.271973, 
         "Shape__Length" : 67574.4116397548
       }
@@ -2592,7 +2592,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 973, 
+        "Valorincid" : 1931, 
         "Shape__Area" : 674124347.275635, 
         "Shape__Length" : 150032.279755561
       }
@@ -2611,7 +2611,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1454, 
+        "Valorincid" : 1502, 
         "Shape__Area" : 1247841817.26343, 
         "Shape__Length" : 217750.660850801
       }
@@ -2627,10 +2627,10 @@
         "DensidadeP" : 292.761904762, 
         "Incidência" : 160, 
         "Incidência_categoria" : "[0,240]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 315, 
+        "Valorincid" : 160, 
         "Shape__Area" : 95937627.5258789, 
         "Shape__Length" : 86249.530942943
       }
@@ -2649,7 +2649,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 51, 
+        "Valorincid" : 34, 
         "Shape__Area" : 241187665.99707, 
         "Shape__Length" : 66827.9578391953
       }
@@ -2665,10 +2665,10 @@
         "DensidadeP" : 290.814332248, 
         "Incidência" : 556, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 291, 
+        "Valorincid" : 556, 
         "Shape__Area" : 483847105.984375, 
         "Shape__Length" : 128155.267748722
       }
@@ -2687,7 +2687,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 423, 
+        "Valorincid" : 476, 
         "Shape__Area" : 147190855.415039, 
         "Shape__Length" : 76146.4483720097
       }
@@ -2706,7 +2706,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1135, 
+        "Valorincid" : 1669, 
         "Shape__Area" : 380665118.588135, 
         "Shape__Length" : 101627.585498664
       }
@@ -2722,10 +2722,10 @@
         "DensidadeP" : 24.6515822266, 
         "Incidência" : 233, 
         "Incidência_categoria" : "[0,240]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Moderado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 931, 
+        "Valorincid" : 233, 
         "Shape__Area" : 210141116.244141, 
         "Shape__Length" : 78688.7625492009
       }
@@ -2744,7 +2744,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 507, 
+        "Valorincid" : 616, 
         "Shape__Area" : 356213472.862305, 
         "Shape__Length" : 115663.18828623
       }
@@ -2760,10 +2760,10 @@
         "DensidadeP" : 205.650200267, 
         "Incidência" : 535, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 330, 
+        "Valorincid" : 535, 
         "Shape__Area" : 317928312.012695, 
         "Shape__Length" : 87405.8854704159
       }
@@ -2779,10 +2779,10 @@
         "DensidadeP" : 19.3996126533, 
         "Incidência" : 765, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Extremamente Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1265, 
+        "Valorincid" : 765, 
         "Shape__Area" : 259278273.782715, 
         "Shape__Length" : 77938.6341285678
       }
@@ -2798,10 +2798,10 @@
         "DensidadeP" : 2809.30791413, 
         "Incidência" : 550, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 463, 
+        "Valorincid" : 550, 
         "Shape__Area" : 109662738.328613, 
         "Shape__Length" : 60203.2446897215
       }
@@ -2820,7 +2820,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 668, 
+        "Valorincid" : 693, 
         "Shape__Area" : 191236476.704102, 
         "Shape__Length" : 79858.3355799896
       }
@@ -2836,10 +2836,10 @@
         "DensidadeP" : 16.0356581017, 
         "Incidência" : 3074, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 283, 
+        "Valorincid" : 3074, 
         "Shape__Area" : 502016083.23291, 
         "Shape__Length" : 120375.587235138
       }
@@ -2855,10 +2855,10 @@
         "DensidadeP" : 33.9685204617, 
         "Incidência" : 618, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 198, 
+        "Valorincid" : 618, 
         "Shape__Area" : 432361009.227539, 
         "Shape__Length" : 128173.345464184
       }
@@ -2874,10 +2874,10 @@
         "DensidadeP" : 4.7506709878, 
         "Incidência" : 1530, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 782, 
+        "Valorincid" : 1530, 
         "Shape__Area" : 2066559555.28955, 
         "Shape__Length" : 282902.575926418
       }
@@ -2893,10 +2893,10 @@
         "DensidadeP" : 148.742964353, 
         "Incidência" : 252, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 555, 
+        "Valorincid" : 252, 
         "Shape__Area" : 47497533.0166016, 
         "Shape__Length" : 39775.2632968155
       }
@@ -2912,10 +2912,10 @@
         "DensidadeP" : 95.3962750947, 
         "Incidência" : 499, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 347, 
+        "Valorincid" : 499, 
         "Shape__Area" : 214308042.728516, 
         "Shape__Length" : 62099.0759081084
       }
@@ -2934,7 +2934,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 543, 
+        "Valorincid" : 873, 
         "Shape__Area" : 216073581.805664, 
         "Shape__Length" : 81475.0819655748
       }
@@ -2950,10 +2950,10 @@
         "DensidadeP" : 14.0194589269, 
         "Incidência" : 2489, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 864, 
+        "Valorincid" : 2489, 
         "Shape__Area" : 869089921.517334, 
         "Shape__Length" : 179429.727276996
       }
@@ -2972,7 +2972,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 363, 
+        "Valorincid" : 368, 
         "Shape__Area" : 1176653825.70508, 
         "Shape__Length" : 185145.417993875
       }
@@ -2988,10 +2988,10 @@
         "DensidadeP" : 11.0326694275, 
         "Incidência" : 1025, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 477, 
+        "Valorincid" : 1025, 
         "Shape__Area" : 1351084996.43945, 
         "Shape__Length" : 197172.433161848
       }
@@ -3007,10 +3007,10 @@
         "DensidadeP" : 44.2605809883, 
         "Incidência" : 1315, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 380, 
+        "Valorincid" : 1315, 
         "Shape__Area" : 385002247.334717, 
         "Shape__Length" : 109651.072226545
       }
@@ -3029,7 +3029,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 500, 
+        "Valorincid" : 615, 
         "Shape__Area" : 90455404.5566406, 
         "Shape__Length" : 47747.8621684853
       }
@@ -3048,7 +3048,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 448, 
+        "Valorincid" : 302, 
         "Shape__Area" : 382544682.42627, 
         "Shape__Length" : 87792.6841330039
       }
@@ -3067,7 +3067,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 118, 
+        "Valorincid" : 98, 
         "Shape__Area" : 626217010.2771, 
         "Shape__Length" : 143323.853422236
       }
@@ -3083,10 +3083,10 @@
         "DensidadeP" : 40.3649465365, 
         "Incidência" : 648, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 302, 
+        "Valorincid" : 648, 
         "Shape__Area" : 306714140.972656, 
         "Shape__Length" : 86782.6808384436
       }
@@ -3105,7 +3105,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 437, 
+        "Valorincid" : 336, 
         "Shape__Area" : 697398051.166748, 
         "Shape__Length" : 140033.353848001
       }
@@ -3124,7 +3124,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1234, 
+        "Valorincid" : 1645, 
         "Shape__Area" : 1449656242.57471, 
         "Shape__Length" : 240538.736242656
       }
@@ -3140,10 +3140,10 @@
         "DensidadeP" : 12.6904953081, 
         "Incidência" : 767, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 326, 
+        "Valorincid" : 767, 
         "Shape__Area" : 2024919326.5166, 
         "Shape__Length" : 327461.139310192
       }
@@ -3159,10 +3159,10 @@
         "DensidadeP" : 110.167714885, 
         "Incidência" : 377, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 511, 
+        "Valorincid" : 377, 
         "Shape__Area" : 392172096.061035, 
         "Shape__Length" : 120412.919118157
       }
@@ -3178,10 +3178,10 @@
         "DensidadeP" : 165.263037118, 
         "Incidência" : 493, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 422, 
+        "Valorincid" : 493, 
         "Shape__Area" : 573674863.394043, 
         "Shape__Length" : 180183.437376368
       }
@@ -3200,7 +3200,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 2682, 
+        "Valorincid" : 2368, 
         "Shape__Area" : 734515358.89502, 
         "Shape__Length" : 163940.495609287
       }
@@ -3219,7 +3219,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 909, 
+        "Valorincid" : 557, 
         "Shape__Area" : 434730562.001953, 
         "Shape__Length" : 93385.0206336971
       }
@@ -3235,10 +3235,10 @@
         "DensidadeP" : 14.3125430378, 
         "Incidência" : 292, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 102, 
+        "Valorincid" : 292, 
         "Shape__Area" : 1551625953.96631, 
         "Shape__Length" : 229981.360493063
       }
@@ -3257,7 +3257,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 3388, 
+        "Valorincid" : 3347, 
         "Shape__Area" : 454649620.810303, 
         "Shape__Length" : 141807.116725325
       }
@@ -3273,10 +3273,10 @@
         "DensidadeP" : 28.8482864234, 
         "Incidência" : 567, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 311, 
+        "Valorincid" : 567, 
         "Shape__Area" : 337667049.66626, 
         "Shape__Length" : 112126.125978407
       }
@@ -3292,10 +3292,10 @@
         "DensidadeP" : 140.634833767, 
         "Incidência" : 1498, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 506, 
+        "Valorincid" : 1498, 
         "Shape__Area" : 127545438.20166, 
         "Shape__Length" : 58570.7880977203
       }
@@ -3311,10 +3311,10 @@
         "DensidadeP" : 171.842775688, 
         "Incidência" : 318, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 113, 
+        "Valorincid" : 318, 
         "Shape__Area" : 138687767.966309, 
         "Shape__Length" : 69638.280293786
       }
@@ -3330,10 +3330,10 @@
         "DensidadeP" : 103.205791107, 
         "Incidência" : 778, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 432, 
+        "Valorincid" : 778, 
         "Shape__Area" : 218047483.380615, 
         "Shape__Length" : 67580.8495074453
       }
@@ -3352,7 +3352,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1815, 
+        "Valorincid" : 1188, 
         "Shape__Area" : 969829315.419678, 
         "Shape__Length" : 174816.3287196
       }
@@ -3371,7 +3371,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 0, 
+        "Valorincid" : 62, 
         "Shape__Area" : 162491355.905273, 
         "Shape__Length" : 59310.9546018797
       }
@@ -3387,10 +3387,10 @@
         "DensidadeP" : 83.7160014129, 
         "Incidência" : 667, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 363, 
+        "Valorincid" : 667, 
         "Shape__Area" : 237091473.546387, 
         "Shape__Length" : 76855.2694815318
       }
@@ -3406,10 +3406,10 @@
         "DensidadeP" : 14.3653376729, 
         "Incidência" : 231, 
         "Incidência_categoria" : "[0,240]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Moderado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 376, 
+        "Valorincid" : 231, 
         "Shape__Area" : 2745153526.99341, 
         "Shape__Length" : 285126.791325152
       }
@@ -3425,10 +3425,10 @@
         "DensidadeP" : 6095.47852298, 
         "Incidência" : 585, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 341, 
+        "Valorincid" : 585, 
         "Shape__Area" : 44332954.1396484, 
         "Shape__Length" : 33260.883031682
       }
@@ -3444,10 +3444,10 @@
         "DensidadeP" : 3866.78291194, 
         "Incidência" : 571, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 368, 
+        "Valorincid" : 571, 
         "Shape__Area" : 75190005.6860352, 
         "Shape__Length" : 42518.4523629075
       }
@@ -3466,7 +3466,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 320, 
+        "Valorincid" : 260, 
         "Shape__Area" : 803846273.58252, 
         "Shape__Length" : 168490.370553402
       }
@@ -3482,10 +3482,10 @@
         "DensidadeP" : 339.332110653, 
         "Incidência" : 423, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 173, 
+        "Valorincid" : 423, 
         "Shape__Area" : 205781280.34082, 
         "Shape__Length" : 64591.0767353713
       }
@@ -3504,7 +3504,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 535, 
+        "Valorincid" : 721, 
         "Shape__Area" : 281649501.152344, 
         "Shape__Length" : 95768.4154840673
       }
@@ -3520,10 +3520,10 @@
         "DensidadeP" : 68.3591331269, 
         "Incidência" : 684, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 252, 
+        "Valorincid" : 684, 
         "Shape__Area" : 252417825.82666, 
         "Shape__Length" : 122242.007330924
       }
@@ -3539,10 +3539,10 @@
         "DensidadeP" : 278.023362345, 
         "Incidência" : 552, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 362, 
+        "Valorincid" : 552, 
         "Shape__Area" : 151542224.948242, 
         "Shape__Length" : 62390.4552823465
       }
@@ -3561,7 +3561,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 966, 
+        "Valorincid" : 1101, 
         "Shape__Area" : 404857269.521484, 
         "Shape__Length" : 123431.624056473
       }
@@ -3577,10 +3577,10 @@
         "DensidadeP" : 105.702217529, 
         "Incidência" : 692, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 284, 
+        "Valorincid" : 692, 
         "Shape__Area" : 704648566.762695, 
         "Shape__Length" : 147450.322447614
       }
@@ -3596,10 +3596,10 @@
         "DensidadeP" : 6.94547044368, 
         "Incidência" : 629, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 152, 
+        "Valorincid" : 629, 
         "Shape__Area" : 1060209255.80835, 
         "Shape__Length" : 239929.048375934
       }
@@ -3618,7 +3618,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 520, 
+        "Valorincid" : 839, 
         "Shape__Area" : 258609099.998047, 
         "Shape__Length" : 86359.2349515243
       }
@@ -3637,7 +3637,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 353, 
+        "Valorincid" : 391, 
         "Shape__Area" : 125531146.022949, 
         "Shape__Length" : 54992.1384628422
       }
@@ -3653,10 +3653,10 @@
         "DensidadeP" : 138.177244582, 
         "Incidência" : 629, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 338, 
+        "Valorincid" : 629, 
         "Shape__Area" : 762668763.991211, 
         "Shape__Length" : 184939.870706157
       }
@@ -3675,7 +3675,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 198, 
+        "Valorincid" : 99, 
         "Shape__Area" : 677770794.425781, 
         "Shape__Length" : 193767.255346757
       }
@@ -3694,7 +3694,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 452, 
+        "Valorincid" : 467, 
         "Shape__Area" : 276361023.640625, 
         "Shape__Length" : 93298.3170418152
       }
@@ -3710,10 +3710,10 @@
         "DensidadeP" : 61.7627903611, 
         "Incidência" : 375, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 152, 
+        "Valorincid" : 375, 
         "Shape__Area" : 249982039.944824, 
         "Shape__Length" : 71945.9949272338
       }
@@ -3732,7 +3732,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 528, 
+        "Valorincid" : 938, 
         "Shape__Area" : 218631359.18457, 
         "Shape__Length" : 78234.7249698698
       }
@@ -3748,10 +3748,10 @@
         "DensidadeP" : 63.1846075762, 
         "Incidência" : 482, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 307, 
+        "Valorincid" : 482, 
         "Shape__Area" : 371884761.913574, 
         "Shape__Length" : 101258.069720828
       }
@@ -3770,7 +3770,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 431, 
+        "Valorincid" : 436, 
         "Shape__Area" : 374558537.324707, 
         "Shape__Length" : 103655.708090013
       }
@@ -3786,10 +3786,10 @@
         "DensidadeP" : 52.9626321274, 
         "Incidência" : 815, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 253, 
+        "Valorincid" : 815, 
         "Shape__Area" : 233363388.166016, 
         "Shape__Length" : 75198.9620484003
       }
@@ -3808,7 +3808,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1009, 
+        "Valorincid" : 1346, 
         "Shape__Area" : 966809184.643799, 
         "Shape__Length" : 184701.56409412
       }
@@ -3824,10 +3824,10 @@
         "DensidadeP" : 19.3777578341, 
         "Incidência" : 386, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 540, 
+        "Valorincid" : 386, 
         "Shape__Area" : 235231428.618408, 
         "Shape__Length" : 77533.5753041411
       }
@@ -3843,10 +3843,10 @@
         "DensidadeP" : 40.0370919881, 
         "Incidência" : 611, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 315, 
+        "Valorincid" : 611, 
         "Shape__Area" : 229939988.443359, 
         "Shape__Length" : 101463.461530139
       }
@@ -3862,10 +3862,10 @@
         "DensidadeP" : 341.727917473, 
         "Incidência" : 683, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 377, 
+        "Valorincid" : 683, 
         "Shape__Area" : 128999869.739746, 
         "Shape__Length" : 60288.733921866
       }
@@ -3884,7 +3884,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 976, 
+        "Valorincid" : 1236, 
         "Shape__Area" : 167841791.825195, 
         "Shape__Length" : 87902.917069879
       }
@@ -3900,10 +3900,10 @@
         "DensidadeP" : 17.5658383555, 
         "Incidência" : 1939, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 822, 
+        "Valorincid" : 1939, 
         "Shape__Area" : 845709782.425537, 
         "Shape__Length" : 186254.567491914
       }
@@ -3919,10 +3919,10 @@
         "DensidadeP" : 82.2060702875, 
         "Incidência" : 523, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 323, 
+        "Valorincid" : 523, 
         "Shape__Area" : 1065580680.64893, 
         "Shape__Length" : 165103.099929187
       }
@@ -3941,7 +3941,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 94, 
+        "Valorincid" : 172, 
         "Shape__Area" : 374960993.488281, 
         "Shape__Length" : 91810.6899153585
       }
@@ -3960,7 +3960,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 81, 
+        "Valorincid" : 163, 
         "Shape__Area" : 65149869.3105469, 
         "Shape__Length" : 35363.118044579
       }
@@ -3979,7 +3979,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1163, 
+        "Valorincid" : 1029, 
         "Shape__Area" : 327842017.165527, 
         "Shape__Length" : 102621.800865842
       }
@@ -3998,7 +3998,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 373, 
+        "Valorincid" : 363, 
         "Shape__Area" : 574846711.958008, 
         "Shape__Length" : 121718.272263375
       }
@@ -4014,10 +4014,10 @@
         "DensidadeP" : 17.8561646283, 
         "Incidência" : 293, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 147, 
+        "Valorincid" : 293, 
         "Shape__Area" : 1399991070.94702, 
         "Shape__Length" : 211315.557432642
       }
@@ -4033,10 +4033,10 @@
         "DensidadeP" : 49.5862593371, 
         "Incidência" : 379, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 501, 
+        "Valorincid" : 379, 
         "Shape__Area" : 746699721.36499, 
         "Shape__Length" : 140125.440160788
       }
@@ -4052,10 +4052,10 @@
         "DensidadeP" : 9.69701003311, 
         "Incidência" : 1064, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 309, 
+        "Valorincid" : 1064, 
         "Shape__Area" : 978858150.483154, 
         "Shape__Length" : 161861.568079404
       }
@@ -4071,10 +4071,10 @@
         "DensidadeP" : 304.751180929, 
         "Incidência" : 251, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 160, 
+        "Valorincid" : 251, 
         "Shape__Area" : 287655316.533691, 
         "Shape__Length" : 86210.6238431448
       }
@@ -4090,10 +4090,10 @@
         "DensidadeP" : 5229.50265572, 
         "Incidência" : 577, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 470, 
+        "Valorincid" : 577, 
         "Shape__Area" : 73285476.1499023, 
         "Shape__Length" : 40197.8157851711
       }
@@ -4112,7 +4112,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 670, 
+        "Valorincid" : 765, 
         "Shape__Area" : 441475157.776855, 
         "Shape__Length" : 104322.678853393
       }
@@ -4131,7 +4131,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 85, 
+        "Valorincid" : 171, 
         "Shape__Area" : 117807047.968262, 
         "Shape__Length" : 54668.0751509842
       }
@@ -4150,7 +4150,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 19, 
+        "Valorincid" : 0, 
         "Shape__Area" : 61434692.0576172, 
         "Shape__Length" : 62793.6303524394
       }
@@ -4166,10 +4166,10 @@
         "DensidadeP" : 159.665800223, 
         "Incidência" : 1000, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 763, 
+        "Valorincid" : 1000, 
         "Shape__Area" : 240105117.903809, 
         "Shape__Length" : 88888.9931629958
       }
@@ -4185,10 +4185,10 @@
         "DensidadeP" : 763.702712565, 
         "Incidência" : 1043, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 892, 
+        "Valorincid" : 1043, 
         "Shape__Area" : 144854549.39502, 
         "Shape__Length" : 75455.55910047
       }
@@ -4207,7 +4207,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 17, 
+        "Valorincid" : 34, 
         "Shape__Area" : 171567408.154297, 
         "Shape__Length" : 66744.5207977473
       }
@@ -4226,7 +4226,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 52, 
+        "Valorincid" : 66, 
         "Shape__Area" : 265545109.250977, 
         "Shape__Length" : 83868.4539518395
       }
@@ -4245,7 +4245,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 69, 
+        "Valorincid" : 82, 
         "Shape__Area" : 668118772.934814, 
         "Shape__Length" : 144185.008108058
       }
@@ -4261,10 +4261,10 @@
         "DensidadeP" : 17.1930394306, 
         "Incidência" : 551, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 173, 
+        "Valorincid" : 551, 
         "Shape__Area" : 606928259.421143, 
         "Shape__Length" : 147579.220933688
       }
@@ -4280,10 +4280,10 @@
         "DensidadeP" : 21.5840517241, 
         "Incidência" : 669, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 130, 
+        "Valorincid" : 669, 
         "Shape__Area" : 755690103.04248, 
         "Shape__Length" : 132176.08830446
       }
@@ -4302,7 +4302,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 187, 
+        "Valorincid" : 197, 
         "Shape__Area" : 217302281.705811, 
         "Shape__Length" : 70278.7978469476
       }
@@ -4318,10 +4318,10 @@
         "DensidadeP" : 189.992360581, 
         "Incidência" : 466, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 113, 
+        "Valorincid" : 466, 
         "Shape__Area" : 93558796.5849609, 
         "Shape__Length" : 41459.4117907082
       }
@@ -4340,7 +4340,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 748, 
+        "Valorincid" : 947, 
         "Shape__Area" : 387927194.016846, 
         "Shape__Length" : 121246.140612603
       }
@@ -4359,7 +4359,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 283, 
+        "Valorincid" : 411, 
         "Shape__Area" : 288199675.183594, 
         "Shape__Length" : 110946.409364367
       }
@@ -4378,7 +4378,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 780, 
+        "Valorincid" : 873, 
         "Shape__Area" : 457570213.465332, 
         "Shape__Length" : 110769.322303413
       }
@@ -4397,7 +4397,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 355, 
+        "Valorincid" : 473, 
         "Shape__Area" : 278779216.528076, 
         "Shape__Length" : 100968.145305142
       }
@@ -4413,10 +4413,10 @@
         "DensidadeP" : 12.8661723593, 
         "Incidência" : 453, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 501, 
+        "Valorincid" : 453, 
         "Shape__Area" : 1419322918.26074, 
         "Shape__Length" : 219575.050311226
       }
@@ -4435,7 +4435,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 329, 
+        "Valorincid" : 380, 
         "Shape__Area" : 404316352.424316, 
         "Shape__Length" : 88091.7873014192
       }
@@ -4451,10 +4451,10 @@
         "DensidadeP" : 93.3631085306, 
         "Incidência" : 488, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 354, 
+        "Valorincid" : 488, 
         "Shape__Area" : 193504316.390137, 
         "Shape__Length" : 69869.8925165044
       }
@@ -4473,7 +4473,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 126, 
+        "Valorincid" : 181, 
         "Shape__Area" : 114838145.436523, 
         "Shape__Length" : 99255.9943094766
       }
@@ -4492,7 +4492,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 24, 
+        "Valorincid" : 0, 
         "Shape__Area" : 101698125.267578, 
         "Shape__Length" : 41613.2964389595
       }
@@ -4530,7 +4530,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 571, 
+        "Valorincid" : 790, 
         "Shape__Area" : 379578797.254883, 
         "Shape__Length" : 102000.868563706
       }
@@ -4549,7 +4549,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 727, 
+        "Valorincid" : 697, 
         "Shape__Area" : 122147978.600342, 
         "Shape__Length" : 63291.9795439553
       }
@@ -4568,7 +4568,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 179, 
+        "Valorincid" : 209, 
         "Shape__Area" : 135205710.77832, 
         "Shape__Length" : 53364.3928708952
       }
@@ -4584,10 +4584,10 @@
         "DensidadeP" : 103.921888008, 
         "Incidência" : 576, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 430, 
+        "Valorincid" : 576, 
         "Shape__Area" : 925002934.834961, 
         "Shape__Length" : 201231.882557857
       }
@@ -4606,7 +4606,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 135, 
+        "Valorincid" : 181, 
         "Shape__Area" : 1706991337.44824, 
         "Shape__Length" : 236260.959344543
       }
@@ -4625,7 +4625,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 519, 
+        "Valorincid" : 829, 
         "Shape__Area" : 241839016.445801, 
         "Shape__Length" : 85052.5963673528
       }
@@ -4644,7 +4644,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 442, 
+        "Valorincid" : 422, 
         "Shape__Area" : 241991782.431152, 
         "Shape__Length" : 82046.6855261079
       }
@@ -4663,7 +4663,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 551, 
+        "Valorincid" : 606, 
         "Shape__Area" : 13916845.987793, 
         "Shape__Length" : 14926.5725524692
       }
@@ -4679,10 +4679,10 @@
         "DensidadeP" : 26.7746420653, 
         "Incidência" : 1095, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 239, 
+        "Valorincid" : 1095, 
         "Shape__Area" : 468341713.110596, 
         "Shape__Length" : 120174.022764662
       }
@@ -4698,10 +4698,10 @@
         "DensidadeP" : 44.1409944118, 
         "Incidência" : 428, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 500, 
+        "Valorincid" : 428, 
         "Shape__Area" : 610013318.647217, 
         "Shape__Length" : 143662.612762803
       }
@@ -4739,7 +4739,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Madeira", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 78, 
+        "Valorincid" : 156, 
         "Shape__Area" : 111914218.5625, 
         "Shape__Length" : 43603.7787218248
       }
@@ -4758,7 +4758,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 134, 
+        "Valorincid" : 160, 
         "Shape__Area" : 155214178.165039, 
         "Shape__Length" : 54758.3760063853
       }
@@ -4774,10 +4774,10 @@
         "DensidadeP" : 57.3437654749, 
         "Incidência" : 535, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 302, 
+        "Valorincid" : 535, 
         "Shape__Area" : 352828291.781738, 
         "Shape__Length" : 96524.0783686154
       }
@@ -4796,7 +4796,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 427, 
+        "Valorincid" : 382, 
         "Shape__Area" : 752451886.29834, 
         "Shape__Length" : 147334.843961137
       }
@@ -4812,10 +4812,10 @@
         "DensidadeP" : 1757.48559455, 
         "Incidência" : 584, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 410, 
+        "Valorincid" : 584, 
         "Shape__Area" : 157057758.210449, 
         "Shape__Length" : 55328.2015090151
       }
@@ -4831,10 +4831,10 @@
         "DensidadeP" : 23.6035169065, 
         "Incidência" : 222, 
         "Incidência_categoria" : "[0,240]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Moderado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 371, 
+        "Valorincid" : 222, 
         "Shape__Area" : 401458101.817139, 
         "Shape__Length" : 125711.980995215
       }
@@ -4850,10 +4850,10 @@
         "DensidadeP" : 12.9374202943, 
         "Incidência" : 294, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 168, 
+        "Valorincid" : 294, 
         "Shape__Area" : 1779430098.28662, 
         "Shape__Length" : 205854.500773724
       }
@@ -4869,10 +4869,10 @@
         "DensidadeP" : 32.6304479216, 
         "Incidência" : 816, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 446, 
+        "Valorincid" : 816, 
         "Shape__Area" : 760349571.223877, 
         "Shape__Length" : 136189.218196952
       }
@@ -4888,10 +4888,10 @@
         "DensidadeP" : 264.960147149, 
         "Incidência" : 511, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 417, 
+        "Valorincid" : 511, 
         "Shape__Area" : 319633397.558105, 
         "Shape__Length" : 98892.5302114558
       }
@@ -4907,10 +4907,10 @@
         "DensidadeP" : 499.830677723, 
         "Incidência" : 775, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 407, 
+        "Valorincid" : 775, 
         "Shape__Area" : 376687674.608398, 
         "Shape__Length" : 116952.60305632
       }
@@ -4926,10 +4926,10 @@
         "DensidadeP" : 87.2420696027, 
         "Incidência" : 803, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 362, 
+        "Valorincid" : 803, 
         "Shape__Area" : 226587572.407715, 
         "Shape__Length" : 82389.9063371063
       }
@@ -4948,7 +4948,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 265, 
+        "Valorincid" : 422, 
         "Shape__Area" : 1075811791.01392, 
         "Shape__Length" : 170921.690418992
       }
@@ -4967,7 +4967,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 44, 
+        "Valorincid" : 160, 
         "Shape__Area" : 326881397.451172, 
         "Shape__Length" : 114489.178442931
       }
@@ -4986,7 +4986,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 317, 
+        "Valorincid" : 473, 
         "Shape__Area" : 526542214.246582, 
         "Shape__Length" : 111845.89882129
       }
@@ -5002,10 +5002,10 @@
         "DensidadeP" : 204.43378119, 
         "Incidência" : 939, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 413, 
+        "Valorincid" : 939, 
         "Shape__Area" : 86102322.8476563, 
         "Shape__Length" : 63637.5981229286
       }
@@ -5021,10 +5021,10 @@
         "DensidadeP" : 64.5891496265, 
         "Incidência" : 625, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 450, 
+        "Valorincid" : 625, 
         "Shape__Area" : 452838959.72168, 
         "Shape__Length" : 141385.296204116
       }
@@ -5043,7 +5043,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 725, 
+        "Valorincid" : 793, 
         "Shape__Area" : 461061153.534912, 
         "Shape__Length" : 127002.370208277
       }
@@ -5059,10 +5059,10 @@
         "DensidadeP" : 56.899744732, 
         "Incidência" : 1188, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 844, 
+        "Valorincid" : 1188, 
         "Shape__Area" : 344048249.123047, 
         "Shape__Length" : 97543.2129595499
       }
@@ -5081,7 +5081,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1459, 
+        "Valorincid" : 1442, 
         "Shape__Area" : 235851752.700195, 
         "Shape__Length" : 81459.161003386
       }
@@ -5097,10 +5097,10 @@
         "DensidadeP" : 77.9776179057, 
         "Incidência" : 692, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 397, 
+        "Valorincid" : 692, 
         "Shape__Area" : 176428124.678467, 
         "Shape__Length" : 86835.9424673404
       }
@@ -5116,10 +5116,10 @@
         "DensidadeP" : 40.4138590046, 
         "Incidência" : 1598, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 318, 
+        "Valorincid" : 1598, 
         "Shape__Area" : 959503222.515625, 
         "Shape__Length" : 166998.05061169
       }
@@ -5138,7 +5138,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 582, 
+        "Valorincid" : 849, 
         "Shape__Area" : 498525488.134766, 
         "Shape__Length" : 113439.327819875
       }
@@ -5154,10 +5154,10 @@
         "DensidadeP" : 104.635535308, 
         "Incidência" : 648, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 231, 
+        "Valorincid" : 648, 
         "Shape__Area" : 592602828.169434, 
         "Shape__Length" : 128569.896595102
       }
@@ -5173,10 +5173,10 @@
         "DensidadeP" : 71.0010236517, 
         "Incidência" : 516, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 235, 
+        "Valorincid" : 516, 
         "Shape__Area" : 643075143.618896, 
         "Shape__Length" : 129864.06804292
       }
@@ -5195,7 +5195,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 130, 
+        "Valorincid" : 156, 
         "Shape__Area" : 938323348.490967, 
         "Shape__Length" : 180254.548223702
       }
@@ -5211,10 +5211,10 @@
         "DensidadeP" : 129.381481481, 
         "Incidência" : 968, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 507, 
+        "Valorincid" : 968, 
         "Shape__Area" : 452856300.493652, 
         "Shape__Length" : 99640.5573004413
       }
@@ -5230,10 +5230,10 @@
         "DensidadeP" : 192.877317942, 
         "Incidência" : 546, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 334, 
+        "Valorincid" : 546, 
         "Shape__Area" : 676483060.273438, 
         "Shape__Length" : 125844.834042828
       }
@@ -5249,10 +5249,10 @@
         "DensidadeP" : 24.5491259128, 
         "Incidência" : 1025, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 192, 
+        "Valorincid" : 1025, 
         "Shape__Area" : 630565903.711914, 
         "Shape__Length" : 147377.829960918
       }
@@ -5271,7 +5271,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 716, 
+        "Valorincid" : 612, 
         "Shape__Area" : 128078245.256348, 
         "Shape__Length" : 47849.2943668379
       }
@@ -5290,7 +5290,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 479, 
+        "Valorincid" : 413, 
         "Shape__Area" : 285747668.918945, 
         "Shape__Length" : 75198.3701148893
       }
@@ -5306,10 +5306,10 @@
         "DensidadeP" : 144.756668703, 
         "Incidência" : 445, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 206, 
+        "Valorincid" : 445, 
         "Shape__Area" : 257988944.581055, 
         "Shape__Length" : 82795.0879830215
       }
@@ -5328,7 +5328,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 248, 
+        "Valorincid" : 376, 
         "Shape__Area" : 212495304.419922, 
         "Shape__Length" : 62010.6275443305
       }
@@ -5344,10 +5344,10 @@
         "DensidadeP" : 1297.17784878, 
         "Incidência" : 604, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 472, 
+        "Valorincid" : 604, 
         "Shape__Area" : 133312959.602051, 
         "Shape__Length" : 63431.0870416218
       }
@@ -5363,10 +5363,10 @@
         "DensidadeP" : 27.0036811605, 
         "Incidência" : 459, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Extremamente Elevado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1039, 
+        "Valorincid" : 459, 
         "Shape__Area" : 981869424.726807, 
         "Shape__Length" : 186971.207854049
       }
@@ -5385,7 +5385,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 39, 
+        "Valorincid" : 79, 
         "Shape__Area" : 193071472.816406, 
         "Shape__Length" : 82071.8385500035
       }
@@ -5401,10 +5401,10 @@
         "DensidadeP" : 50.6092899861, 
         "Incidência" : 1208, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 817, 
+        "Valorincid" : 1208, 
         "Shape__Area" : 365636779.243896, 
         "Shape__Length" : 110240.669337051
       }
@@ -5423,7 +5423,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1613, 
+        "Valorincid" : 1399, 
         "Shape__Area" : 641962313.29248, 
         "Shape__Length" : 154391.811049738
       }
@@ -5439,10 +5439,10 @@
         "DensidadeP" : 264.613503856, 
         "Incidência" : 496, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 404, 
+        "Valorincid" : 496, 
         "Shape__Area" : 573648797.527344, 
         "Shape__Length" : 116782.093442663
       }
@@ -5461,7 +5461,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1942, 
+        "Valorincid" : 1270, 
         "Shape__Area" : 512502521.977539, 
         "Shape__Length" : 146610.197749103
       }
@@ -5480,7 +5480,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 524, 
+        "Valorincid" : 828, 
         "Shape__Area" : 387822453.70459, 
         "Shape__Length" : 99864.3297263926
       }
@@ -5496,10 +5496,10 @@
         "DensidadeP" : 17.3479509267, 
         "Incidência" : 211, 
         "Incidência_categoria" : "[0,240]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Moderado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 301, 
+        "Valorincid" : 211, 
         "Shape__Area" : 322957183.852295, 
         "Shape__Length" : 80680.3676175751
       }
@@ -5518,7 +5518,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 58, 
+        "Valorincid" : 194, 
         "Shape__Area" : 280570058.67334, 
         "Shape__Length" : 89985.5091037367
       }
@@ -5534,10 +5534,10 @@
         "DensidadeP" : 536.126954305, 
         "Incidência" : 1068, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 916, 
+        "Valorincid" : 1068, 
         "Shape__Area" : 264414698.263672, 
         "Shape__Length" : 79484.0134175765
       }
@@ -5556,7 +5556,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 18, 
+        "Valorincid" : 71, 
         "Shape__Area" : 152232486.746094, 
         "Shape__Length" : 58582.135841363
       }
@@ -5572,10 +5572,10 @@
         "DensidadeP" : 22.7380459727, 
         "Incidência" : 695, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 463, 
+        "Valorincid" : 695, 
         "Shape__Area" : 471813794.43335, 
         "Shape__Length" : 112238.755867316
       }
@@ -5591,10 +5591,10 @@
         "DensidadeP" : 446.13909928, 
         "Incidência" : 546, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 339, 
+        "Valorincid" : 546, 
         "Shape__Area" : 526284523.938477, 
         "Shape__Length" : 163670.848227801
       }
@@ -5610,10 +5610,10 @@
         "DensidadeP" : 141.734000257, 
         "Incidência" : 1276, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 733, 
+        "Valorincid" : 1276, 
         "Shape__Area" : 124611968.5, 
         "Shape__Length" : 54661.0713801043
       }
@@ -5629,10 +5629,10 @@
         "DensidadeP" : 150.635978195, 
         "Incidência" : 523, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Lisboa e Vale do Tejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 161, 
+        "Valorincid" : 523, 
         "Shape__Area" : 83744807.9492188, 
         "Shape__Length" : 54061.4509266097
       }
@@ -5651,7 +5651,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 269, 
+        "Valorincid" : 404, 
         "Shape__Area" : 195279627.038574, 
         "Shape__Length" : 65462.5816906575
       }
@@ -5670,7 +5670,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 649, 
+        "Valorincid" : 809, 
         "Shape__Area" : 358106567.23877, 
         "Shape__Length" : 97051.1980992285
       }
@@ -5686,10 +5686,10 @@
         "DensidadeP" : 16.3330403114, 
         "Incidência" : 277, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 92, 
+        "Valorincid" : 277, 
         "Shape__Area" : 700656363.507813, 
         "Shape__Length" : 157622.457121438
       }
@@ -5705,10 +5705,10 @@
         "DensidadeP" : 1783.64003324, 
         "Incidência" : 523, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 449, 
+        "Valorincid" : 523, 
         "Shape__Area" : 297304107.300293, 
         "Shape__Length" : 91170.1695421045
       }
@@ -5724,10 +5724,10 @@
         "DensidadeP" : 26.7019882641, 
         "Incidência" : 1707, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 384, 
+        "Valorincid" : 1707, 
         "Shape__Area" : 307231757.182129, 
         "Shape__Length" : 83777.2930414783
       }
@@ -5743,10 +5743,10 @@
         "DensidadeP" : 82.1669626998, 
         "Incidência" : 1787, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 735, 
+        "Valorincid" : 1787, 
         "Shape__Area" : 144765010.656738, 
         "Shape__Length" : 56719.2071333216
       }
@@ -5765,7 +5765,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 828, 
+        "Valorincid" : 552, 
         "Shape__Area" : 779948784.053955, 
         "Shape__Length" : 138850.076720859
       }
@@ -5784,7 +5784,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 773, 
+        "Valorincid" : 759, 
         "Shape__Area" : 671651915.009033, 
         "Shape__Length" : 137143.16904835
       }
@@ -5800,10 +5800,10 @@
         "DensidadeP" : 306.106122449, 
         "Incidência" : 533, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 288, 
+        "Valorincid" : 533, 
         "Shape__Area" : 96582895.802002, 
         "Shape__Length" : 70137.6375992686
       }
@@ -5822,7 +5822,7 @@
         "Incidência_" : "Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 350, 
+        "Valorincid" : 382, 
         "Shape__Area" : 556755581.855225, 
         "Shape__Length" : 132743.074368153
       }
@@ -5838,10 +5838,10 @@
         "DensidadeP" : 205.147155289, 
         "Incidência" : 998, 
         "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Muito Elevado", 
+        "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 663, 
+        "Valorincid" : 998, 
         "Shape__Area" : 410283009.843262, 
         "Shape__Length" : 99697.2563611119
       }
@@ -5857,10 +5857,10 @@
         "DensidadeP" : 39.2897464847, 
         "Incidência" : 313, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Alentejo", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 170, 
+        "Valorincid" : 313, 
         "Shape__Area" : 321352543.487793, 
         "Shape__Length" : 120456.448843141
       }
@@ -5879,7 +5879,7 @@
         "Incidência_" : "Extremamente Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 1019, 
+        "Valorincid" : 1243, 
         "Shape__Area" : 860195242.105713, 
         "Shape__Length" : 161427.139918661
       }
@@ -5895,10 +5895,10 @@
         "DensidadeP" : 11.1493342929, 
         "Incidência" : 413, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 232, 
+        "Valorincid" : 413, 
         "Shape__Area" : 1252795703.95142, 
         "Shape__Length" : 188639.910856334
       }
@@ -5917,7 +5917,7 @@
         "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 483, 
+        "Valorincid" : 767, 
         "Shape__Area" : 882728469.107178, 
         "Shape__Length" : 150354.678302946
       }
@@ -5933,10 +5933,10 @@
         "DensidadeP" : 967.489878543, 
         "Incidência" : 506, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Norte", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 318, 
+        "Valorincid" : 506, 
         "Shape__Area" : 43867717.6269531, 
         "Shape__Length" : 36973.9255634926
       }
@@ -5952,10 +5952,10 @@
         "DensidadeP" : 49.6618307605, 
         "Incidência" : 738, 
         "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Elevado", 
+        "Incidência_" : "Muito Elevado", 
         "ARS" : "Centro", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 333, 
+        "Valorincid" : 738, 
         "Shape__Area" : 337866412.283203, 
         "Shape__Length" : 92659.3497554259
       }
@@ -5974,7 +5974,7 @@
         "Incidência_" : "Moderado", 
         "ARS" : "Algarve", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 70, 
+        "Valorincid" : 198, 
         "Shape__Area" : 138365848.016357, 
         "Shape__Length" : 56387.8698456364
       }
@@ -5990,10 +5990,10 @@
         "DensidadeP" : 322.899758719, 
         "Incidência" : 448, 
         "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Moderado", 
+        "Incidência_" : "Elevado", 
         "ARS" : "Açores", 
         "Cumulativo_casos_14_dias" : null, 
-        "Valorincid" : 204, 
+        "Valorincid" : 448, 
         "Shape__Area" : 73172163.6669922, 
         "Shape__Length" : 39126.7580547939
       }
