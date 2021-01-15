@@ -1,5 +1,6 @@
 import requests
 import datetime
+import sys
 import pandas as pd
 from pathlib import Path
 
@@ -11,6 +12,14 @@ if __name__ == "__main__":
 
     DAYS_OFFSET = 0
     today = (datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)).strftime(DMY)
+
+    if DAYS_OFFSET == 0:
+        csv_path = str(Path(__file__).resolve().parents[2] / "data.csv")
+        latest = pd.read_csv(csv_path)
+        latest_date = latest[-1:]["data"].item()
+        if today == latest_date:
+            print(f"Already got {today}")
+            sys.exit(0)
 
     URL = (
         "https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query"

@@ -86,23 +86,24 @@ def _check_datetime_format_publication(date):
         datetime.datetime.strptime(str(date), "%d-%m-%Y %H:%M")  # Will fail if not
     else:
         return False
-    
+
+
 def test_dates():
-    
-    #TODO: Optimize this. 
+
+    # TODO: Optimize this.
     # Loading the CSV
     current_dir = Path(__file__).parent.absolute()
     csv_filepath = current_dir / ".." / "data.csv"
     data = pd.read_csv(csv_filepath)
-    
+
     # Data de publicação
-    data_update = data['data']
+    data_update = data["data"]
     # Data a que se referem os dados
 
-    data_dados = data['data_dados']
-    
-    data_update.apply(lambda x: datetime.datetime.strptime(x, '%d-%m-%Y'))        
-    data_dados.apply(lambda x: datetime.datetime.strptime(x, '%d-%m-%Y %H:%M')) 
+    data_dados = data["data_dados"]
+
+    data_update.apply(lambda x: datetime.datetime.strptime(x, "%d-%m-%Y"))
+    data_dados.apply(lambda x: datetime.datetime.strptime(x, "%d-%m-%Y %H:%M"))
 
 
 @pytest.mark.parametrize(
@@ -156,10 +157,18 @@ def test_dates():
         # Sintomas
         ("sintomas_tosse", (float, str), _check_column_with_empty_sintomas),
         ("sintomas_febre", (float, str), _check_column_with_empty_sintomas),
-        ("sintomas_dificuldade_respiratoria",(float, str),_check_column_with_empty_sintomas),
+        (
+            "sintomas_dificuldade_respiratoria",
+            (float, str),
+            _check_column_with_empty_sintomas,
+        ),
         ("sintomas_cefaleia", (float, str), _check_column_with_empty_sintomas),
         ("sintomas_dores_musculares", (float, str), _check_column_with_empty_sintomas),
-        ("sintomas_fraqueza_generalizada",(float, str),_check_column_with_empty_sintomas),
+        (
+            "sintomas_fraqueza_generalizada",
+            (float, str),
+            _check_column_with_empty_sintomas,
+        ),
         ("sintomas_tosse", (float, str), _check_column_with_empty_sintomas),
         # Óbitos
         ("obitos", (int), lambda x: x >= 0),
@@ -205,7 +214,7 @@ def test_dates():
     ],
 )
 def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
-    """ 
+    """
     Tests whether a certain column has the expected data types (and other column specific rules).
     """
 
@@ -238,7 +247,7 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
                 "confirmados_arsalentejo",
                 "confirmados_arsalgarve",
                 "confirmados_acores",
-                "confirmados_madeira"
+                "confirmados_madeira",
             ],
             ["confirmados"],
         ),
@@ -263,9 +272,39 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
                 "confirmados_80_plus_f",
                 "confirmados_80_plus_m",
                 "confirmados_desconhecidos_m",
-                "confirmados_desconhecidos_f"
+                "confirmados_desconhecidos_f",
             ],
-            ["confirmados"], marks=pytest.mark.xfail),
+            ["confirmados"],
+            marks=pytest.mark.xfail,
+        ),
+        (
+            [
+                "obitos_0_9_f",
+                "obitos_10_19_f",
+                "obitos_20_29_f",
+                "obitos_30_39_f",
+                "obitos_40_49_f",
+                "obitos_50_59_f",
+                "obitos_60_69_f",
+                "obitos_70_79_f",
+                "obitos_80_plus_f",
+            ],
+            ["obitos_f"],
+        ),
+        (
+            [
+                "obitos_0_9_m",
+                "obitos_10_19_m",
+                "obitos_20_29_m",
+                "obitos_30_39_m",
+                "obitos_40_49_m",
+                "obitos_50_59_m",
+                "obitos_60_69_m",
+                "obitos_70_79_m",
+                "obitos_80_plus_m",
+            ],
+            ["obitos_m"],
+        ),
         (
             [
                 "obitos_0_9_f",
@@ -290,7 +329,10 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
             ["obitos_f", "obitos_m"],
         ),
         (["obitos_f", "obitos_m"], ["obitos"]),
-            pytest.param(["confirmados_f", "confirmados_m", "confirmados_desconhecidos"], ["confirmados"]),
+        pytest.param(
+            ["confirmados_f", "confirmados_m", "confirmados_desconhecidos"],
+            ["confirmados"],
+        ),
         (
             [
                 "obitos_arsnorte",
@@ -303,7 +345,7 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
             ],
             ["obitos"],
         ),
-            pytest.param(
+        pytest.param(
             [
                 "recuperados_arsnorte",
                 "recuperados_arscentro",
@@ -313,19 +355,19 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
                 "recuperados_acores",
                 "recuperados_madeira",
             ],
-            ["recuperados"], marks=pytest.mark.xfail)
+            ["recuperados"],
+            marks=pytest.mark.xfail,
+        ),
     ],
 )
-        
-        
 def test_sums(dgs_data, group, total_col):
 
     df_latest_line = dgs_data.tail(1)  # Only run for the latest line
     for row in df_latest_line.iterrows():
         val = row[1]
-        
-    assert val[group].sum() == val[total_col].sum(), "Soma difere"
-    
+
+    assert val[group].sum() == val[total_col].sum(), f"Soma difere {group} {total_col}"
+
 
 def test_delimiter_comma():
     """
@@ -344,7 +386,7 @@ def test_blank_lines(dgs_data):
     df_latest_line = dgs_data.tail(1)  # Only run for the latest line
     for row in df_latest_line.iterrows():
         val = row[1]
-    
+
     assert val["data"] != np.nan, "Empty row"
 
 
@@ -352,7 +394,7 @@ def test_sequentiality_new_cases(dgs_data):
     """
     Tests if the number of new cases is correct
     """
-    
+
     today = dgs_data.iloc[-1]
     yesterday = dgs_data.iloc[-2]
 
@@ -376,4 +418,3 @@ def test_sequentiality_dates(dgs_data):
     diff_date_updates = (today_date_updates - yesterday_date_updates).days
 
     assert diff_date_updates == 1
-
