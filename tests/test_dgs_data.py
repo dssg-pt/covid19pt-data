@@ -58,7 +58,7 @@ def _check_column_with_empty_sintomas(val):
         # Is it <= 1.0?
         return val <= 1.0
 
-    # If it's a string, it must be equal to the expeceted string
+    # If it's a string, it must be equal to the expected string
     elif isinstance(val, str):
         return val == NULL_PLACEHOLDER_VALUE
 
@@ -254,6 +254,36 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
         pytest.param(
             [
                 "confirmados_0_9_f",
+                "confirmados_10_19_f",
+                "confirmados_20_29_f",
+                "confirmados_30_39_f",
+                "confirmados_40_49_f",
+                "confirmados_50_59_f",
+                "confirmados_60_69_f",
+                "confirmados_70_79_f",
+                "confirmados_80_plus_f",
+                # "confirmados_desconhecidos_f",
+            ],
+            ["confirmados_f"],
+        ),
+        pytest.param(
+            [
+                "confirmados_0_9_m",
+                "confirmados_10_19_m",
+                "confirmados_20_29_m",
+                "confirmados_30_39_m",
+                "confirmados_40_49_m",
+                "confirmados_50_59_m",
+                "confirmados_60_69_m",
+                "confirmados_70_79_m",
+                "confirmados_80_plus_m",
+                # "confirmados_desconhecidos_m",
+            ],
+            ["confirmados_m"],
+        ),
+        pytest.param(
+            [
+                "confirmados_0_9_f",
                 "confirmados_0_9_m",
                 "confirmados_10_19_f",
                 "confirmados_10_19_m",
@@ -271,11 +301,11 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
                 "confirmados_70_79_m",
                 "confirmados_80_plus_f",
                 "confirmados_80_plus_m",
-                "confirmados_desconhecidos_m",
-                "confirmados_desconhecidos_f",
+                # "confirmados_desconhecidos_f",
+                # "confirmados_desconhecidos_m",
+                "confirmados_desconhecidos",
             ],
             ["confirmados"],
-            marks=pytest.mark.xfail,
         ),
         (
             [
@@ -345,19 +375,20 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
             ],
             ["obitos"],
         ),
-        pytest.param(
-            [
-                "recuperados_arsnorte",
-                "recuperados_arscentro",
-                "recuperados_arslvt",
-                "recuperados_arsalentejo",
-                "recuperados_arsalgarve",
-                "recuperados_acores",
-                "recuperados_madeira",
-            ],
-            ["recuperados"],
-            marks=pytest.mark.xfail,
-        ),
+        # Só houve recuperados por região de 23-03-2020 a 01-04-2020
+        # pytest.param(
+        #     [
+        #         "recuperados_arsnorte",
+        #         "recuperados_arscentro",
+        #         "recuperados_arslvt",
+        #         "recuperados_arsalentejo",
+        #         "recuperados_arsalgarve",
+        #         "recuperados_acores",
+        #         "recuperados_madeira",
+        #     ],
+        #     ["recuperados"],
+        #     marks=pytest.mark.xfail,
+        # ),
     ],
 )
 def test_sums(dgs_data, group, total_col):
@@ -366,7 +397,9 @@ def test_sums(dgs_data, group, total_col):
     for row in df_latest_line.iterrows():
         val = row[1]
 
-    assert val[group].sum() == val[total_col].sum(), f"Soma difere {group} {total_col}"
+    assert (
+        val[group].sum() == val[total_col].sum()
+    ), f"Soma difere {group} vs. {total_col}"
 
 
 def test_delimiter_comma():
