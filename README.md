@@ -54,6 +54,7 @@ _Porque tudo começa com bons dados._
 O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. Dados extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) e do [relatório diário](https://covid19.min-saude.pt/relatorio-de-situacao/) da DGS.
 + `amostras.csv`: contém dados diários relativos às amostras, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
++ `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
 + `data_concelhos.csv`: contém dados acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados, nomeadamente concelhos com menos de 3 confirmados não são reportados). Esta série de dados tem início a 24-03-2020 e tem cadência diária até 04-07-2020, passando a cadência semanal a 14-07-2020, e terminando a 26-10-2020. Vide os próximos dados para o novo formato.
 + `data_concelhos_14dias.csv` e `data_concelhos_incidencia.csv` contém dados de confirmados do acumulado dos 14 dias anteriores à data do reporte, no primeiro ficheiro, e proporcional a 100k habitantes no segundo ficheiro. Inclui os dados calculados do `data_concelhos.csv` desde que os daddos são semanais, nomeadamente entre 27-07-2020 (correspondendo ao periodo de 13-07-2020 a 26-07-2020) até 26-10-2020, e será actualizado conforme seja disponibilizado pela DGS (semanalmente à segunda-feira).  
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
@@ -185,6 +186,18 @@ Relativamente ao conteúdo em `amostras.csv`:
 | `amostras_antigenio_novas` | Número diário de novas amostras Antigénio processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
 
 > Relativamente a estes dados, o [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) dá conta de que _"correspondem ao número de amostras processadas para diagnóstico de SARS-CoV-2 em laboratórios públicos e privados desde o dia 1 de março."_ Dizem ainda que _"Os dados diários após 2 de abril de 2020 ainda estão a ser recolhidos, pelo que os valores no gráfico poderão sofrer alterações."_ De facto, há a possibilidade de, a cada dia, dados referentes a dias anteriores serem alterados, provavelmente pelo facto de a informação relativa ao processamento de amostras ser recebida pela DGS com alguns dias de desfasamento.
+
+Relativamente ao conteúdo em `vacinas.csv`:  
+
+| Nome da coluna        | Significado           | Possíveis valores  |
+| ------------- |:-------------:| -----:|
+| `data` | Data a que se referem os dados. | DD-MM-YYYY |
+| `doses` | Número total de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
+| `doses_novas` | Número diário de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
+| `doses1` | Número total de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
+| `doses1_novas` | Número diário de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
+| `doses2` | Número total de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
+| `doses2_novas` | Número diário de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
 
 Relativamente ao ficheiro `data_concelhos.csv`: 
 
