@@ -64,6 +64,22 @@ def get_vacinas(url):
 
 
 def fix_vacinas(data):
+
+    # recalculate *_novas when missing or incorrect
+    last = {}
+    for i, row in data.iterrows():
+        for k in ["", "1", "2"]:
+            cur = row[f"doses{k}_novas"] or 0
+            val = row[f"doses{k}"] or 0
+            last_val = last.get(f"doses{k}", 0)
+            diff = val - last_val if val else 0
+            if last_val and cur != diff:
+                print(
+                    f"FIX {row.data} doses{k} from {cur} to {diff} v={val} lv={last_val}"
+                )
+                data.at[i, f"doses{k}_novas"] = diff
+            last[f"doses{k}"] = val
+
     # \o/
     return data
 
