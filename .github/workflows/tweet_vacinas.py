@@ -153,3 +153,4 @@ if __name__ == '__main__':
     else:
         print("No today data to tweet about")
         sys.exit()
+        
