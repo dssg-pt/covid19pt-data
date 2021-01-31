@@ -36,6 +36,10 @@ def get_vacinas(url):
         if doses_novas == doses_total and doses1_total is None:
             doses_novas = None
 
+        # hack data errada dia 31-01 dizia 01-02
+        if unix_date == 1612137600 and doses_total == 336771:
+            frmt_date = datetime.datetime.utcfromtimestamp(unix_date - 86400)
+
         vacinas.append(
             [
                 frmt_date,
