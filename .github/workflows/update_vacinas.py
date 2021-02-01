@@ -69,6 +69,33 @@ def get_vacinas(url):
 
 def fix_vacinas(data):
 
+    FIXES = [
+        # data DD-MM-YYYY, columns, fix_value
+        # https://twitter.com/govpt/status/1355528712813473794
+        # https://twitter.com/SNS_Portugal/status/1355606908833566728
+        ["30-01-2021", "doses1", 264772],
+        ["30-01-2021", "doses2", 65461],
+        # https://twitter.com/govpt/status/1355871948350386180
+        # https://twitter.com/SNS_Portugal/status/1355922638816817156
+        ["31-01-2021", "doses1", 268386],
+        ["31-01-2021", "doses2", 68385],
+        # https://twitter.com/govpt/status/1356233893029048324
+        # ...
+        ["01-02-2021", "doses1", 269814],
+        ["01-02-2021", "doses2", 68752],
+    ]
+
+    for fix in FIXES:
+        if DEBUG:
+            old = data.loc[data.data == fix[0], fix[1]].to_numpy()[0]
+            try:
+                old = old.tolist()
+            except AttributeError:
+                pass
+            if old != fix[2]:
+                print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]}")
+        data.loc[data.data == fix[0], fix[1]] = fix[2]
+
     # recalculate *_novas when missing or incorrect
     last = {}
     for i, row in data.iterrows():
@@ -84,7 +111,6 @@ def fix_vacinas(data):
                 data.at[i, f"doses{k}_novas"] = diff
             last[f"doses{k}"] = val
 
-    # \o/
     return data
 
 
