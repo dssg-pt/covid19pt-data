@@ -2,6 +2,7 @@ import datetime
 import requests
 import pandas as pd
 import numpy as np
+import sys
 from pathlib import Path
 
 
@@ -9,41 +10,73 @@ DEBUG = True
 
 
 def get_amostras(url):
+    print(f"Loading from '{url}'")
     r = requests.get(url=url)
     data = r.json()
     amostras = []
 
-    for entry in data["features"]:
-        if "Data_do_Relatório" in entry["attributes"]:
-            unix_date = entry["attributes"]["Data_do_Relatório"] / 1000
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
-            amostras_total = entry["attributes"]["Amostras__Ac"]
-            amostras_novas = entry["attributes"]["Amostras_Novas"]
-            amostras.append([frmt_date, amostras_total, amostras_novas, 0, 0, 0, 0])
-        elif "Data_do_Relatorio" in entry["attributes"]:
-            unix_date = entry["attributes"]["Data_do_Relatorio"] / 1000
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
-            amostras_total = entry["attributes"]["Total_Amostras__Ac"]
-            amostras_novas = entry["attributes"]["Total_Amostras_Novas"]
-            amostras_pcr_total = entry["attributes"]["Testes_PCR_Amostras__Ac"]
-            amostras_pcr_novas = entry["attributes"]["Testes_PCR_Amostras_Novas"]
-            amostras_antigenio_total = entry["attributes"][
-                "Testes_Antigenio_Amostras__Ac"
-            ]
-            amostras_antigenio_novas = entry["attributes"][
-                "Testes_Antigenio_Amostras_Novas"
-            ]
-            amostras.append(
-                [
-                    frmt_date,
-                    amostras_total,
-                    amostras_novas,
-                    amostras_pcr_total,
-                    amostras_pcr_novas,
-                    amostras_antigenio_total,
-                    amostras_antigenio_novas,
-                ]
+    # Sort by total amostras, which should allow us to guess the date if missing
+    features = sorted(
+        data["features"],
+        key=lambda entry: entry["attributes"].get(
+            "Total_Amostras__Ac", entry["attributes"].get("Amostras__Ac", None)
+        ),
+        reverse=False,
+    )
+
+    last_fid, last_date, last_data = None, None, None
+    for entry in features:
+        attr = entry["attributes"]
+
+        amostras_total = attr.get("Total_Amostras__Ac", attr.get("Amostras__Ac", None))
+        amostras_novas = attr.get(
+            "Total_Amostras_Novas", attr.get("Amostras_Novas", None)
+        )
+        amostras_pcr_total = attr.get("Testes_PCR_Amostras__Ac", None)
+        amostras_pcr_novas = attr.get("Testes_PCR_Amostras_Novas", None)
+        amostras_antigenio_total = attr.get("Testes_Antigenio_Amostras__Ac", None)
+        amostras_antigenio_novas = attr.get("Testes_Antigenio_Amostras_Novas", None)
+        data = [
+            None,  # will be filled below
+            amostras_total,
+            amostras_novas,
+            amostras_pcr_total,
+            amostras_pcr_novas,
+            amostras_antigenio_total,
+            amostras_antigenio_novas,
+        ]
+
+        fid = attr.get("FID", None)
+
+        unix_date = attr.get("Data_do_Relatorio", attr.get("Data_do_Relatório", None))
+        frmt_date = (
+            datetime.datetime.utcfromtimestamp(unix_date / 1000) if unix_date else None
+        )
+
+        if not unix_date:
+            # ensure each of the three totals are larger or equal than previous day
+            ok = True
+            for i in [1, 3, 5]:
+                if last_data[i] > data[i]:
+                    ok = False
+
+            last_frmt_date = datetime.datetime.utcfromtimestamp(last_date / 1000)
+            unix_date = last_date + 86400000  # assume it's the following day
+            frmt_date = datetime.datetime.utcfromtimestamp(unix_date / 1000)
+            print(
+                ("" if ok else "NOT ") + f"Fixing entry for"
+                f" fid={fid} last={last_fid}"
+                f" date={frmt_date} / {unix_date}"
+                f" last_date={last_frmt_date} / {last_date}"
             )
+            if not ok:
+                print(f"  last={last_data}")
+                print(f"  cur={data}")
+                sys.exit(1)
+
+        data[0] = frmt_date
+        amostras.append(data)
+        last_fid, last_date, last_data = fid, unix_date, data
 
     amostras_df = pd.DataFrame(
         data=amostras,
@@ -70,7 +103,9 @@ def fix_amostras(data):
     # and recalculate the diff out of them
     data.loc[1:, "amostras_novas"] = data.loc[1:, "amostras"].diff(1)
     data.loc[1:, "amostras_pcr_novas"] = data.loc[1:, "amostras_pcr"].diff(1)
-    data.loc[1:, "amostras_antigenio_novas"] = data.loc[1:, "amostras_antigenio"].diff(1)
+    data.loc[1:, "amostras_antigenio_novas"] = data.loc[1:, "amostras_antigenio"].diff(
+        1
+    )
 
     for i in ["26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"]:
         data.loc[data.data == i, data.columns[1:]] = ""

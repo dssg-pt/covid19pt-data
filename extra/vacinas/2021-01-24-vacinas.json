@@ -1,0 +1,425 @@
+{
+  "objectIdFieldName": "FID",
+  "uniqueIdField": {
+    "name": "FID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "fields": [
+    {
+      "name": "Data",
+      "type": "esriFieldTypeDate",
+      "alias": "Data",
+      "sqlType": "sqlTypeTimestamp2",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Inoculacao1",
+      "type": "esriFieldTypeInteger",
+      "alias": "Inoculacao1",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Inoculacao1_Ac",
+      "type": "esriFieldTypeInteger",
+      "alias": "Inoculacao1_Ac",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Inoculacao2",
+      "type": "esriFieldTypeInteger",
+      "alias": "Inoculacao2",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Inoculacao2_Ac",
+      "type": "esriFieldTypeInteger",
+      "alias": "Inoculacao2_Ac",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Vacinados",
+      "type": "esriFieldTypeInteger",
+      "alias": "Vacinados",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Vacinados_Ac",
+      "type": "esriFieldTypeInteger",
+      "alias": "Vacinados_Ac",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FID",
+      "type": "esriFieldTypeOID",
+      "alias": "FID",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "Data": 1609027200000,
+        "Inoculacao1": 4963,
+        "Inoculacao1_Ac": 4963,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 4963,
+        "Vacinados_Ac": 4963,
+        "FID": 1
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609113600000,
+        "Inoculacao1": 2791,
+        "Inoculacao1_Ac": 7754,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 2791,
+        "Vacinados_Ac": 7754,
+        "FID": 2
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609200000000,
+        "Inoculacao1": 12614,
+        "Inoculacao1_Ac": 20368,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 12614,
+        "Vacinados_Ac": 20368,
+        "FID": 3
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609286400000,
+        "Inoculacao1": 10175,
+        "Inoculacao1_Ac": 30543,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 10175,
+        "Vacinados_Ac": 30543,
+        "FID": 4
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609372800000,
+        "Inoculacao1": 2206,
+        "Inoculacao1_Ac": 32749,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 2206,
+        "Vacinados_Ac": 32749,
+        "FID": 5
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609459200000,
+        "Inoculacao1": 0,
+        "Inoculacao1_Ac": 32749,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 0,
+        "Vacinados_Ac": 32749,
+        "FID": 6
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609545600000,
+        "Inoculacao1": 1,
+        "Inoculacao1_Ac": 32750,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 1,
+        "Vacinados_Ac": 32750,
+        "FID": 7
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609632000000,
+        "Inoculacao1": 0,
+        "Inoculacao1_Ac": 32750,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 0,
+        "Vacinados_Ac": 32750,
+        "FID": 8
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609718400000,
+        "Inoculacao1": 920,
+        "Inoculacao1_Ac": 33670,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 920,
+        "Vacinados_Ac": 33670,
+        "FID": 9
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609804800000,
+        "Inoculacao1": 12763,
+        "Inoculacao1_Ac": 46433,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 12763,
+        "Vacinados_Ac": 46433,
+        "FID": 10
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609891200000,
+        "Inoculacao1": 15021,
+        "Inoculacao1_Ac": 61454,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 15021,
+        "Vacinados_Ac": 61454,
+        "FID": 11
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1609977600000,
+        "Inoculacao1": 10297,
+        "Inoculacao1_Ac": 71751,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 10297,
+        "Vacinados_Ac": 71751,
+        "FID": 12
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610064000000,
+        "Inoculacao1": 2503,
+        "Inoculacao1_Ac": 74254,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 2503,
+        "Vacinados_Ac": 74254,
+        "FID": 13
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610150400000,
+        "Inoculacao1": 98,
+        "Inoculacao1_Ac": 74352,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 98,
+        "Vacinados_Ac": 74352,
+        "FID": 14
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610236800000,
+        "Inoculacao1": 40,
+        "Inoculacao1_Ac": 74392,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 40,
+        "Vacinados_Ac": 74392,
+        "FID": 15
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610323200000,
+        "Inoculacao1": 888,
+        "Inoculacao1_Ac": 75280,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 888,
+        "Vacinados_Ac": 75280,
+        "FID": 16
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610409600000,
+        "Inoculacao1": 10882,
+        "Inoculacao1_Ac": 86162,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 10882,
+        "Vacinados_Ac": 86162,
+        "FID": 17
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610496000000,
+        "Inoculacao1": 13799,
+        "Inoculacao1_Ac": 99961,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 13799,
+        "Vacinados_Ac": 99961,
+        "FID": 18
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610582400000,
+        "Inoculacao1": 11150,
+        "Inoculacao1_Ac": 111111,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 11150,
+        "Vacinados_Ac": 111111,
+        "FID": 19
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610668800000,
+        "Inoculacao1": 7486,
+        "Inoculacao1_Ac": 118597,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 7486,
+        "Vacinados_Ac": 118597,
+        "FID": 20
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610755200000,
+        "Inoculacao1": 1535,
+        "Inoculacao1_Ac": 120132,
+        "Inoculacao2": 0,
+        "Inoculacao2_Ac": 0,
+        "Vacinados": 1535,
+        "Vacinados_Ac": 120132,
+        "FID": 21
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610841600000,
+        "Inoculacao1": 7,
+        "Inoculacao1_Ac": 120139,
+        "Inoculacao2": 1161,
+        "Inoculacao2_Ac": 1161,
+        "Vacinados": 1168,
+        "Vacinados_Ac": 121300,
+        "FID": 22
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1610928000000,
+        "Inoculacao1": 2740,
+        "Inoculacao1_Ac": 122879,
+        "Inoculacao2": 664,
+        "Inoculacao2_Ac": 1825,
+        "Vacinados": 3404,
+        "Vacinados_Ac": 124704,
+        "FID": 23
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1611014400000,
+        "Inoculacao1": 16112,
+        "Inoculacao1_Ac": 138991,
+        "Inoculacao2": 7618,
+        "Inoculacao2_Ac": 9443,
+        "Vacinados": 23730,
+        "Vacinados_Ac": 148434,
+        "FID": 24
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1611100800000,
+        "Inoculacao1": 19758,
+        "Inoculacao1_Ac": 158749,
+        "Inoculacao2": 9175,
+        "Inoculacao2_Ac": 18618,
+        "Vacinados": 28933,
+        "Vacinados_Ac": 177367,
+        "FID": 25
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1611187200000,
+        "Inoculacao1": 28130,
+        "Inoculacao1_Ac": 186879,
+        "Inoculacao2": 4974,
+        "Inoculacao2_Ac": 23592,
+        "Vacinados": 33104,
+        "Vacinados_Ac": 210471,
+        "FID": 26
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1611273600000,
+        "Inoculacao1": 23855,
+        "Inoculacao1_Ac": 210734,
+        "Inoculacao2": 2404,
+        "Inoculacao2_Ac": 25996,
+        "Vacinados": 26259,
+        "Vacinados_Ac": 236730,
+        "FID": 27
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1611360000000,
+        "Inoculacao1": 10754,
+        "Inoculacao1_Ac": 221488,
+        "Inoculacao2": 4040,
+        "Inoculacao2_Ac": 30036,
+        "Vacinados": 14794,
+        "Vacinados_Ac": 251524,
+        "FID": 28
+      }
+    },
+    {
+      "attributes": {
+        "Data": 1611446400000,
+        "Inoculacao1": 3658,
+        "Inoculacao1_Ac": 225146,
+        "Inoculacao2": 517,
+        "Inoculacao2_Ac": 30553,
+        "Vacinados": 4175,
+        "Vacinados_Ac": 255699,
+        "FID": 29
+      }
+    }
+  ]
+}
