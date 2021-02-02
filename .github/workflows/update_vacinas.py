@@ -83,6 +83,8 @@ def fix_vacinas(data):
         # ...
         ["01-02-2021", "doses1", 269814],
         ["01-02-2021", "doses2", 68752],
+        # https://twitter.com/govpt/status/1356596233264132102
+        # json includes doses1 and doses2 - see extra/vacinas/*.json
     ]
 
     for fix in FIXES:
