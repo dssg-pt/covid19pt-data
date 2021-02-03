@@ -397,9 +397,18 @@ def test_sums(dgs_data, group, total_col):
     for row in df_latest_line.iterrows():
         val = row[1]
 
-    assert (
-        val[group].sum() == val[total_col].sum()
-    ), f"Soma difere {group} vs. {total_col}"
+        try:
+            sum = val[group].sum()
+            # pass for all unknown values
+            if type(sum) == str and str(sum) == NULL_PLACEHOLDER_VALUE * len(group):
+                continue
+        except TypeError:
+            # pass for mostly unknown values
+            continue
+
+        assert (
+            val[group].sum() == val[total_col].sum()
+        ), f"Soma difere {group} vs. {total_col}"
 
 
 def test_delimiter_comma():
@@ -420,7 +429,7 @@ def test_blank_lines(dgs_data):
     for row in df_latest_line.iterrows():
         val = row[1]
 
-    assert val["data"] != np.nan, "Empty row"
+        assert val["data"] != np.nan, "Empty row"
 
 
 def test_sequentiality_new_cases(dgs_data):

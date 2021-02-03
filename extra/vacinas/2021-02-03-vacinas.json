@@ -1,0 +1,90 @@
+{
+  "objectIdFieldName" : "FID", 
+  "uniqueIdField" : 
+  {
+    "name" : "FID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdFieldName" : "", 
+  "fields" : [
+    {
+      "name" : "Data", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "Data", 
+      "sqlType" : "sqlTypeTimestamp2", 
+      "length" : 8, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao1", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao1", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao1_Ac", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao1_Ac", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao2", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao2", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao2_Ac", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao2_Ac", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Vacinados", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Vacinados", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Vacinados_Ac", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Vacinados_Ac", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "FID", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "features" : [
+    {
+      "attributes" : {
+        "Data" : 1612310400000, 
+        "Inoculacao1" : 275093, 
+        "Inoculacao1_Ac" : 275093, 
+        "Inoculacao2" : 75852, 
+        "Inoculacao2_Ac" : 75852, 
+        "Vacinados" : 350945, 
+        "Vacinados_Ac" : 350945, 
+        "FID" : 1
+      }
+    }
+  ]
+}
