@@ -26,6 +26,7 @@ if __name__ == "__main__":
         "?f=json&outFields=*&cacheHint=true"
         "&where=ConfirmadosAcumulado>=0&orderByFields=Data+desc"
     )
+    print(f"Loading from '{URL}'")
     data = requests.get(URL).json()
 
     (found_date, latest_date) = (False, 0)
