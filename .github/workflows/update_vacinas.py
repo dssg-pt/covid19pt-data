@@ -184,7 +184,8 @@ if __name__ == "__main__":
         if (updated.data == row["data"]).any():
             index = updated.index[updated["data"] == row["data"]]
             for k in ["", "1", "2"]:
-                for j in ["", "_novas"]:
+                # don't update *_novas, as they're recalculated anyway on the "fix"
+                for j in [""]: # ["", "_novas"]:
                     l = f"doses{k}{j}"
                     latest = row[f"{l}_latest"]
                     available = row[f"{l}_available"]
