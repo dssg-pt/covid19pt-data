@@ -1,14 +1,16 @@
-
+# Imports
 import pandas as pd
 from datetime import datetime
 import os
 from pathlib import Path
 import tweepy
+import locale
+locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
 
+# Constants
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
 
 # Login
-
 # to verify the tweet content without publishing, use
 # export TWITTER_CONSUMER_KEY=DEBUG
 consumer_key = os.environ['TWITTER_CONSUMER_KEY']

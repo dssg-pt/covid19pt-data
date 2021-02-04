@@ -11,12 +11,12 @@ NULL_PLACEHOLDER_VALUE = "NOO"
 
 # Tests fixture (.csv with DGS data)
 @pytest.fixture(scope="module")
-def data_amostras():
+def data_vacinas():
     """ Loads the CSV with the DGS data and applies some processing to it. """
 
     # Loading the CSV
     current_dir = Path(__file__).parent.absolute()
-    csv_filepath = current_dir / ".." / "amostras.csv"
+    csv_filepath = current_dir / ".." / "vacinas.csv"
     data = pd.read_csv(
         csv_filepath,
         parse_dates=[0],
@@ -65,7 +65,7 @@ def test_date():
     # TODO: Optimize this.
     # Loading the CSV
     current_dir = Path(__file__).parent.absolute()
-    csv_filepath = current_dir / ".." / "amostras.csv"
+    csv_filepath = current_dir / ".." / "vacinas.csv"
     data = pd.read_csv(csv_filepath)
 
     # Data de publicação
@@ -78,24 +78,25 @@ def test_date():
 @pytest.mark.parametrize(
     "col_name, expected_dtype, int_check, extra_check",
     [
-        ("amostras", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
-        ("amostras_novas", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
-        ("amostras_pcr", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
-        ("amostras_pcr_novas", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
-        ("amostras_antigenio", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
-        ("amostras_antigenio_novas", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
+        ("doses", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
+        ("doses_novas", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
+        ("doses1", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
+        ("doses1_novas", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
+        ("doses2", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
+        ("doses2_novas", (float), lambda x: x % 1 == 0, lambda x: x >= 0),
     ],
 )
-def test_dtype(data_amostras, col_name, expected_dtype, int_check, extra_check):
+def test_dtype(data_vacinas, col_name, expected_dtype, int_check, extra_check):
     """
     Tests whether a certain column has the expected data types (and other column specific rules).
     """
 
-    for i, row in data_amostras.iterrows():
-        # skip NaN for 26-02..29-02
-        if i < 4:
-            continue
+    for i, row in data_vacinas.iterrows():
         val = row[col_name]
+
+        if val == "NOO":
+            # unknown value _heh_
+            continue
 
         # Basic type assertion (panda always load as float)
         assert isinstance(
@@ -124,59 +125,61 @@ def test_delimiter_comma():
     Tests that the delimiter is a comma
     """
     current_dir = Path(__file__).parent.absolute()
-    csv_filepath = current_dir / ".." / "amostras.csv"
+    csv_filepath = current_dir / ".." / "vacinas.csv"
     with open(csv_filepath, newline="") as csvfile:
         csv.Sniffer().sniff(csvfile.read(1024), delimiters=",")
 
 
-def test_blank_lines(data_amostras):
+def test_blank_lines(data_vacinas):
     """
     Tests if the last row is blank
     """
-    df_latest_line = data_amostras.tail(1)  # Only run for the latest line
+    df_latest_line = data_vacinas.tail(1)  # Only run for the latest line
     for row in df_latest_line.iterrows():
         val = row[1]
 
     assert val["data"] != np.nan, "Empty row"
 
 
-def test_sequentiality_new_cases(data_amostras):
+def test_sequentiality_new_cases(data_vacinas):
     """
     Tests if the number of new cases is correct
     """
 
-    for i, row in data_amostras.iterrows():
+    for i, row in data_vacinas.iterrows():
         # skip NaN for 26-02..29-02, plus the first real value
-        if i < 5:
+        if i < 1:
             continue
-        today = data_amostras.iloc[i]
-        yesterday = data_amostras.iloc[i - 1]
+        today = data_vacinas.iloc[i]
+        yesterday = data_vacinas.iloc[i - 1]
 
-        for k in ["", "_pcr", "_antigenio"]:
+        for k in ["", "1", "2"]:
+            if yesterday[f"doses{k}"] == "NOO" or today[f"doses{k}_novas"] == "NOO":
+                # unknown value _heh_
+                continue
             assert (
-                today[f"amostras{k}"]
-                == yesterday[f"amostras{k}"] + today[f"amostras{k}_novas"]
-            ), "Amostras{} do dia {} não coerentes com dia anterior today={} yesterday={} novas={} expected={}".format(
+                today[f"doses{k}"] == yesterday[f"doses{k}"] + today[f"doses{k}_novas"]
+            ), "Doses{} do dia {} não coerentes com dia anterior today={} yesterday={} novas={} expected={}".format(
                 k,
                 row["data"],
-                today[f"amostras{k}"],
-                yesterday[f"amostras{k}"],
-                today[f"amostras{k}_novas"],
-                today[f"amostras{k}"] - yesterday[f"amostras{k}"],
+                today[f"doses{k}"],
+                yesterday[f"doses{k}"],
+                today[f"doses{k}_novas"],
+                today[f"doses{k}"] - yesterday[f"doses{k}"],
             )
 
 
-def test_sequentiality_dates(data_amostras):
+def test_sequentiality_dates(data_vacinas):
     """
     Tests if the sequentiality of dates is correct
     """
 
-    for i, row in data_amostras.iterrows():
-        # skip NaN for 26-02..29-02, plus the first real value
-        if i < 5:
+    for i, row in data_vacinas.iterrows():
+        # skip the first real value
+        if i < 1:
             continue
-        today_date = data_amostras.iloc[i]["data"]
-        yesterday_date = data_amostras.iloc[i - 1]["data"]
+        today_date = data_vacinas.iloc[i]["data"]
+        yesterday_date = data_vacinas.iloc[i - 1]["data"]
         diff_date = (today_date - yesterday_date).days
 
         assert diff_date == 1

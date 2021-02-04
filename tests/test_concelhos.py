@@ -48,6 +48,7 @@ def _check_column_with_empty(val):
     else:
         return False
 
+
 def _check_datetime_format(date):
 
     # Let's guarantee it makes sense (data starts on 26th February 2020)
@@ -58,19 +59,21 @@ def _check_datetime_format(date):
     else:
         return False
 
+
 def test_date():
-    
-    #TODO: Optimize this. 
+
+    # TODO: Optimize this.
     # Loading the CSV
     current_dir = Path(__file__).parent.absolute()
     csv_filepath = current_dir / ".." / "data_concelhos.csv"
     data = pd.read_csv(csv_filepath)
-    
+
     # Data de publicação
-    data_dados = data['data']
+    data_dados = data["data"]
     # Data a que se referem os dados
-    
-    data_dados.apply(lambda x: datetime.datetime.strptime(x, '%d-%m-%Y'))
+
+    data_dados.apply(lambda x: datetime.datetime.strptime(x, "%d-%m-%Y"))
+
 
 def test_delimiter_comma():
     """
@@ -78,8 +81,9 @@ def test_delimiter_comma():
     """
     current_dir = Path(__file__).parent.absolute()
     csv_filepath = current_dir / ".." / "data_concelhos.csv"
-    with open(csv_filepath, newline="", encoding='utf8') as csvfile:
+    with open(csv_filepath, newline="", encoding="utf8") as csvfile:
         csv.Sniffer().sniff(csvfile.read(1024), delimiters=",")
+
 
 def test_blank_lines(data_amostras):
     """
@@ -88,34 +92,33 @@ def test_blank_lines(data_amostras):
     df_latest_line = data_amostras.tail(1)  # Only run for the latest line
     for row in df_latest_line.iterrows():
         val = row[1]
-    
+
     assert val["data"] != np.nan, "Empty row"
 
-    
+
 def test_sequentiality_dates(data_amostras):
     """
     Tests if the sequentiality of dates is correct
     """
 
     skip = 1
-    for i, row in data_amostras.iterrows(): 
+    for i, row in data_amostras.iterrows():
         if i >= 1:
             today_date = data_amostras.iloc[i]["data"]
-            yesterday_date = data_amostras.iloc[i-1]["data"]
+            yesterday_date = data_amostras.iloc[i - 1]["data"]
             diff_date = (today_date - yesterday_date).days
             # data was frozen between 4 and 14 inclusive
             # data for monday 4 and 13 were kept for weekly consistency
-            if '2020-07-13' in str(today_date):
+            if "2020-07-13" in str(today_date):
                 skip = 7
-            # data was unfrozen tuesday 14 so this needs to 
+            # data was unfrozen tuesday 14 so this needs to
             # skip 1 (13-14) and then 6, for a whole week
-            if '2020-07-14' in str(today_date):
+            if "2020-07-14" in str(today_date):
                 skip = 1
-            if '2020-07-20' in str(today_date):
+            if "2020-07-20" in str(today_date):
                 skip = 6
             # from this point, it's weekly
-            if '2020-07-27' in str(today_date):
+            if "2020-07-27" in str(today_date):
                 skip = 7
 
             assert diff_date == skip
-

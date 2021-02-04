@@ -1,0 +1,94 @@
+{
+  "objectIdFieldName" : "FID", 
+  "uniqueIdField" : 
+  {
+    "name" : "FID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdFieldName" : "", 
+  "fields" : [
+    {
+      "name" : "Data", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "Data", 
+      "sqlType" : "sqlTypeTimestamp2", 
+      "length" : 8, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao1", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Inoculacao1", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 4, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao1_Ac", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Inoculacao1_Ac", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 4, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao2", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Inoculacao2", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 4, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao2_Ac", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Inoculacao2_Ac", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 4, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Vacinados", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Vacinados", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Vacinados_Ac", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Vacinados_Ac", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "FID", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "features" : [
+    {
+      "attributes" : {
+        "Data" : 1612137600000, 
+        "Inoculacao1" : null, 
+        "Inoculacao1_Ac" : null, 
+        "Inoculacao2" : null, 
+        "Inoculacao2_Ac" : null, 
+        "Vacinados" : 338566, 
+        "Vacinados_Ac" : 338566, 
+        "FID" : 1
+      }
+    }
+  ]
+}

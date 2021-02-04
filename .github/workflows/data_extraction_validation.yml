@@ -41,6 +41,10 @@ jobs:
         run: | 
           python .github/workflows/update_amostras.py
         if: always()
+      - name: Update data about vaccination
+        run: | 
+          python .github/workflows/update_vacinas.py
+        if: always()
       - name: Extract municipality data from arcgis
         run: | 
           python .github/workflows/extract_dados_concelhos.py
@@ -50,6 +54,9 @@ jobs:
         if: always()
       - name: Validate data about test samples with pytest
         run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
+        if: always()
+      - name: Validate data about vaccination with pytest
+        run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
         if: always()
       - name: Validate data about municipalities with pytest
         run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
@@ -65,6 +72,13 @@ jobs:
         with:
           name: pytest-amostras-results
           path: tests/junit/test-amostras-results.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: always()
+      - name: Upload pytest vaccinations results 
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-vacinas-results
+          path: tests/junit/test-vacinas-results.xml
         # Use always() to always run this step to publish test results when there are test failures
         if: always()
       - name: Upload pytest municipalities test results 
@@ -104,4 +118,12 @@ jobs:
           TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
           TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
           TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+      - name: Auto publish vaccine data to Twitter
+        run: |
+          python .github/workflows/tweet_vacinas.py
+        env:
+          TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
+          TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
+          TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
+          TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
 
