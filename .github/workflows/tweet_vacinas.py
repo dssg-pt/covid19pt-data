@@ -6,6 +6,8 @@ from datetime import date
 from pathlib import Path
 import pandas as pd
 import tweepy
+import locale
+locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
 
 # ---
 # Constants
@@ -38,7 +40,7 @@ def extrair_dados_vacinas():
 
     # Começar a compôr o dicionário de dadis relevantes
     today = date.today()
-    dados_vacinas={'data': today.strftime("%d de %B de %Y")}
+    dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
 
     # Aceder ao .csv das vacinas
     path = Path(__file__).resolve().parents[2]
@@ -51,12 +53,15 @@ def extrair_dados_vacinas():
         dados_vacinas.update(
             {
                 'percentagem': (df.loc[today_f].doses2/POP_PT)*100, 
-                'n_vacinados': int(df.loc[today_f].doses2),
+                'n_vacinados': f(df.loc[today_f].doses2),
             }
         )
         return dados_vacinas
     else: 
         return {}
+
+def f(valor):
+    return format(int(valor), ",").replace(",", " ")
 
 def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     """
@@ -98,7 +103,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     i = int(round(base*math.floor(float(y)/base),prec)/base)
     bar = "█"*x + blocks[i]
     n = length-len(bar)
-    bar = lsep + bar + " "*n + rsep
+    bar = lsep + bar + "·"*n + rsep
 
     return ("\r" + title + bar + " %.2f%%" % (value*100))
 
@@ -110,7 +115,7 @@ def compor_tweet(dados_vacinas):
     tweet_message = (
         "💉🇵🇹  Percentagem da população vacinada a {data}: \n\n"
         "{progresso} \n\n"
-        "{n_vacinados} vacinados"
+        "{n_vacinados} vacinados com a 2ª dose"
         )
 
     texto_tweet = tweet_message.format(**dados_vacinas)
