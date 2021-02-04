@@ -80,8 +80,10 @@ def get_list_cases_long():
                     incidencia_categoria = "Abaixo de 20,0"
                     incidencia_risco = "Muito baixa"
 
-            distrito = attributes["Distrito"]
-            dicofre = attributes["Dicofre"]
+            # 2021.02.04 desapareceu Distrito
+            distrito = attributes.get("Distrito", None)
+            # 2021.02.04 desapareceu Dicofre
+            dicofre = attributes.get("Dicofre", None)
             area = attributes.get("AREA_2019_", None)
             # AREA_20191 is AREA_20219_ div 10 ?
 
@@ -115,7 +117,8 @@ def get_list_cases_long():
             ):
                 raise Exception(concelho)
 
-            densidade_populacional = attributes["DensidadeP"]
+            # 2021.02.04 sai Distrito e Dicofre
+            densidade_populacional = attributes.get("DensidadeP", None)
             # ???
             densidade_1 = attributes.get("Densidad_1", None)
             densidade_2 = attributes.get("Densidad_2", None)
@@ -123,8 +126,10 @@ def get_list_cases_long():
 
             # Desde 2020.12.03
             # "Lisboa e Vale do Tejo"
+            # 2021.02.04 desapareceu ARS
             ars = attributes.get("ARS", None)
             # nn
+            # 2021.02.04 desapareceu Cumulativo_casos_14_dias
             casos_14dias = attributes.get("Cumulativo_casos_14_dias", None)
             # -nnn
             tendencia_incidencia = attributes.get("Tendencia", None)
