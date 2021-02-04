@@ -53,12 +53,15 @@ def extrair_dados_vacinas():
         dados_vacinas.update(
             {
                 'percentagem': (df.loc[today_f].doses2/POP_PT)*100, 
-                'n_vacinados': int(df.loc[today_f].doses2),
+                'n_vacinados': f(df.loc[today_f].doses2),
             }
         )
         return dados_vacinas
     else: 
         return {}
+
+def f(valor):
+    return format(int(valor), ",").replace(",", " ")
 
 def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     """
