@@ -7,7 +7,10 @@ from pathlib import Path
 import pandas as pd
 import tweepy
 import locale
-locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
+try:
+    locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
+except locale.Error:
+    locale.setlocale(locale.LC_TIME, "pt_PT")
 
 # ---
 # Constants
