@@ -5,10 +5,14 @@ import os
 from pathlib import Path
 import tweepy
 import locale
-locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
+try:
+    locale.setlocale(locale.LC_ALL, "pt_PT.utf8")
+except locale.Error:
+    locale.setlocale(locale.LC_ALL, "pt_PT")
 
 # Constants
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
+POP_PT = 10295909 # População residente em PT, via https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
 
 # Login
 # to verify the tweet content without publishing, use
@@ -18,6 +22,9 @@ if consumer_key != 'DEBUG':
     consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
     access_token = os.environ['TWITTER_ACCESS_TOKEN']
     access_token_secret = os.environ['TWITTER_ACCESS_SECRET']
+
+def f(valor):
+    return format(valor, ",").replace(".","!").replace(",",".").replace("!",",")
 
 def autenticar_twitter():
     # authentication of consumer key and secret
@@ -40,7 +47,6 @@ def extrair_dados_ultimo_relatorio():
     #Aceder ao csv
     path = Path(__file__).resolve().parents[2]
     file=path / 'data.csv'
-
     df = pd.read_csv(file,parse_dates=[0],index_col=[0],infer_datetime_format=True,skip_blank_lines=False,dayfirst=True)
     df.fillna(value=0)
 
@@ -70,14 +76,14 @@ def extrair_dados_ultimo_relatorio():
     dados_extraidos["novos_ativos"]=int(df.ativos.diff()[-1])
     dados_extraidos["aumento_ativos"]=round(dados_extraidos["novos_ativos"]/dados_extraidos["total_ativos"]*100,1)
     #Percentagem total
-    dados_extraidos["perc_ativos"] = round(df.ativos.tail(1).values[0]/df.confirmados.tail(1).values[0]*100,1)
+    dados_extraidos["perc_ativos"] = round(float(df.ativos.tail(1).values[0]/df.confirmados.tail(1).values[0]*100),1)
 
     ##Recuperados
     dados_extraidos["total_recuperados"]=int(df.recuperados[-1])
     dados_extraidos["novos_recuperados"]=int(df.recuperados.diff()[-1])
     dados_extraidos["aumento_recuperados"]=round(dados_extraidos["novos_recuperados"]/dados_extraidos["total_recuperados"]*100,1)
     #Percentagem total
-    dados_extraidos["perc_recuperados"] = round(df.recuperados.tail(1).values[0]/df.confirmados.tail(1).values[0]*100,1)
+    dados_extraidos["perc_recuperados"] = round(float(df.recuperados.tail(1).values[0]/df.confirmados.tail(1).values[0]*100),1)
 
     ## Regiões
     dados_extraidos["novos_lvt"]=int(df.confirmados_arslvt.diff()[-1])
@@ -87,15 +93,55 @@ def extrair_dados_ultimo_relatorio():
     dados_extraidos["novos_alentejo"]=int(df.confirmados_arsalentejo.diff()[-1])
     dados_extraidos["novos_acores"]=int(df.confirmados_acores.diff()[-1])
     dados_extraidos["novos_madeira"]=int(df.confirmados_madeira.diff()[-1])
+    dados_extraidos["novos_obitos_lvt"]=int(df.obitos_arslvt.diff()[-1])
+    dados_extraidos["novos_obitos_norte"]=int(df.obitos_arsnorte.diff()[-1])
+    dados_extraidos["novos_obitos_algarve"]=int(df.obitos_arsalgarve.diff()[-1])
+    dados_extraidos["novos_obitos_centro"]=int(df.obitos_arscentro.diff()[-1])
+    dados_extraidos["novos_obitos_alentejo"]=int(df.obitos_arsalentejo.diff()[-1])
+    dados_extraidos["novos_obitos_acores"]=int(df.obitos_acores.diff()[-1])
+    dados_extraidos["novos_obitos_madeira"]=int(df.obitos_madeira.diff()[-1])
 
+    #Aceder ao csv amostras
+    path = Path(__file__).resolve().parents[2]
+    file=path / 'amostras.csv'
+    df_amostras = pd.read_csv(file,parse_dates=[0],index_col=[0],infer_datetime_format=True,skip_blank_lines=False,dayfirst=True)
+    df_amostras.fillna(value=0)
+
+    # amostras
+    df["confirmados7"] = df.confirmados.diff(7)
+    df_amostras["amostras7"] = df_amostras.amostras.diff(7)
+
+    dados_extraidos["dia_amostras"] = df_amostras.index[-1].strftime("%d %b %Y")
+    data_amostras = df[df.index == df_amostras.index[-1].strftime("%Y-%m-%d")]
+
+    dados_extraidos["novas_amostras_pcr"] = int(df_amostras.amostras_pcr_novas[-1])
+    dados_extraidos["novas_amostras_ag"] = int(df_amostras.amostras_antigenio_novas[-1])
+    positividade = 100 * float(data_amostras.confirmados7[-1]) / float(df_amostras.amostras7[-1])
+    dados_extraidos["perc_positividade"] = round(positividade, 1)
+    dados_extraidos["icon_positividade"] = (
+        "🟤" if positividade >= 20 else
+        "🔴" if positividade >= 10 else
+        "🟠" if positividade >= 5 else
+        "🟡"
+    )
+
+    df["confirmados14"] = df.confirmados.diff(14)
+    incidencia = int(df.confirmados14[-1] * 100 * 1000 / POP_PT)
+    dados_extraidos["incidencia"] = incidencia 
+    dados_extraidos["icon_incidencia"] = (
+        "🟤" if incidencia >= 960 else
+        "🔴" if incidencia >= 480 else
+        "🟠" if incidencia >= 240 else
+        "🟡"
+    )
 
     for key in dados_extraidos.keys():
         valor = dados_extraidos[key]
         if type(valor) not in [int, float]: continue
-        dados_extraidos[key] = format(valor, ',').replace(',', ' ')
-        if key.startswith('novos_') or key.startswith('variacao_'):
-            dados_extraidos[key] = f"+{dados_extraidos[key]}" if valor > 0 else valor
-        if key.startswith('aumento_'):
+        dados_extraidos[key] = f(valor)
+        if key.startswith('variacao_') or key.startswith('novos_'):
+            dados_extraidos[key] = f"+{dados_extraidos[key]}" if valor > 0 else f"{dados_extraidos[key]}"
+        elif key.startswith('aumento_'):
             if valor > 0:
                 dados_extraidos[key] = f"↑{dados_extraidos[key]}"
             elif valor < 0:
@@ -108,35 +154,41 @@ def compor_tweets(dados_para_tweets):
     # Main tweet
     tweet_message = (
         "🆕Dados #COVID19PT atualizados [{dia}]:\n"
-        "📍Novos casos: {novos_casos} ({aumento_casos}%) | Total: {total_casos}\n"
-        "📍Novos óbitos: {novos_obitos} ({aumento_obitos}%) | Total: {total_obitos}\n"
+        "🫂Novos casos: {novos_casos} ({aumento_casos}%) | Total: {total_casos}\n"
+        "🪦Novos óbitos: {novos_obitos} ({aumento_obitos}%) | Total: {total_obitos}\n"
         "\n"
-        "📍Ativos: {total_ativos} ({novos_ativos})\n"
-        "📍Internados: {internados} ({variacao_internados})\n"
-        "📍Em UCI: {uci} ({variacao_uci})\n"
+        "🦠Ativos: {total_ativos} ({novos_ativos})\n"
+        "🚑Internados: {internados} ({variacao_internados})\n"
+        "🏥Em UCI: {uci} ({variacao_uci})\n"
         "\n"
         "👍Recuperados {perc_recuperados}% dos casos\n"
         "[1/3]")
 
     # Thread
     second_tweet = (
-        "🔎Novos casos por região:\n"
-        "📍Norte: {novos_norte}\n"
-        "📍Centro: {novos_centro}\n"
-        "📍LVT: {novos_lvt}\n"
-        "📍Alentejo: {novos_alentejo}\n"
-        "📍Algarve: {novos_algarve}\n"
-        "📍Açores: {novos_acores}\n"
-        "📍Madeira: {novos_madeira}\n"
+        "🔎Novos casos e novos óbitos por região:\n"
+        "📍Norte: {novos_norte} | {novos_obitos_norte}\n"
+        "📍Centro: {novos_centro} | {novos_obitos_centro}\n"
+        "📍LVT: {novos_lvt} | {novos_obitos_lvt}\n"
+        "📍Alentejo: {novos_alentejo} | {novos_obitos_alentejo}\n"
+        "📍Algarve: {novos_algarve} | {novos_obitos_algarve}\n"
+        "📍Açores: {novos_acores} | {novos_obitos_acores}\n"
+        "📍Madeira: {novos_madeira} | {novos_obitos_madeira}\n"
         "[2/3]")
 
     third_tweet = (
-        "Todos os dados no nosso GitHub.\n"
-        "[3/3] {}")
+        "📅 Últimas amostras [{dia_amostras}]\n"
+        "🧪 PCR: {novas_amostras_pcr} | Antigénio: {novas_amostras_ag}\n"
+        "{icon_positividade} Positividade 7 dias: {perc_positividade}%\n"
+        "{icon_incidencia} Incidência nacional, 14 dias por 100k: {incidencia}\n"
+        "\n"
+        "Todos os dados e muito mais no nosso repositório:\n"
+        "[3/3] {link_repo}")
 
+    dados_para_tweets["link_repo"] = link_repo
     texto_tweet_1 = tweet_message.format(**dados_para_tweets)
     texto_tweet_2 = second_tweet.format(**dados_para_tweets)
-    texto_tweet_3 = third_tweet.format(link_repo)
+    texto_tweet_3 = third_tweet.format(**dados_para_tweets)
 
     return texto_tweet_1, texto_tweet_2, texto_tweet_3
 
