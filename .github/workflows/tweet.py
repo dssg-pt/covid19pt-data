@@ -6,9 +6,9 @@ from pathlib import Path
 import tweepy
 import locale
 try:
-    locale.setlocale(locale.LC_ALL, "pt_PT.utf8")
+    locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
 except locale.Error:
-    locale.setlocale(locale.LC_ALL, "pt_PT")
+    locale.setlocale(locale.LC_TIME, "pt_PT")
 
 # Constants
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
@@ -212,7 +212,7 @@ if __name__ == '__main__':
     try:
       api.me()
     except Exception as ex:
-        print("Erro na autenticação. Programa vai fechar")
+        print(f"Erro na autenticação. Programa vai fechar: {ex}")
         exit(0)
 
     # Update status and create thread

@@ -147,7 +147,7 @@ if __name__ == '__main__':
         try:
             api.me()
         except Exception as ex:
-            print("Erro na autenticação. Programa vai fechar")
+            print(f"Erro na autenticação. Programa vai fechar: {ex}")
             exit(0)
 
         # Update status and create thread
