@@ -39,6 +39,9 @@ def get_vacinas(url):
         # hack data errada dia 31-01 dizia 01-02
         if unix_date == 1612137600 and doses_total == 336771:
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date - 86400)
+        # hack data errada dia 06-02 dizia 05-02
+        if unix_date == 1612483200 and doses_total == 394088:
+            frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
 
         vacinas.append(
             [
@@ -185,7 +188,7 @@ if __name__ == "__main__":
             index = updated.index[updated["data"] == row["data"]]
             for k in ["", "1", "2"]:
                 # don't update *_novas, as they're recalculated anyway on the "fix"
-                for j in [""]: # ["", "_novas"]:
+                for j in [""]:  # ["", "_novas"]:
                     l = f"doses{k}{j}"
                     latest = row[f"{l}_latest"]
                     available = row[f"{l}_available"]
