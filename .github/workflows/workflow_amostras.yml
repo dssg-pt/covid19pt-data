@@ -1,0 +1,63 @@
+name: Extract and validate DGS data - amostras
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    if: startsWith(github.head_ref, 'amostras')
+    runs-on: ubuntu-latest
+    container: python:3.7
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Configure pt_PT locale
+        run: |
+          apt-get update -y && apt-get install -y locales && echo "pt_PT.UTF-8 UTF-8" | tee -a /etc/locale.gen && locale-gen pt_PT.UTF-8
+      - name: Configure pt_PT (Europe/Lisbon) timezone
+        run: |
+          ln -fs /usr/share/zoneinfo/Europe/Lisbon /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r .github/workflows/requirements.txt
+
+      - name: Update data about test samples
+        run: | 
+          python .github/workflows/update_amostras.py
+        if: always()
+
+      - name: Validate data about test samples with pytest
+        run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
+        if: always()
+      - name: Upload pytest samples test results 
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-amostras-results
+          path: tests/junit/test-amostras-results.xml
+        if: always()
+
+      - name: Commit all changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update data for today 
+          branch: ${{ github.head_ref }}
+        if: always()
+      - name: Get latest commit id
+        run: |
+          echo "LAST_COMMIT=$(git rev-parse HEAD)"
+          echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+        if: always()
+      - name: Change the latest commit's status to success
+        uses: Sibz/github-status-action@v1
+        with: 
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          description: 'Success'
+          context: 'build'
+          state: 'success'
+          sha: ${{env.LAST_COMMIT}}
+
