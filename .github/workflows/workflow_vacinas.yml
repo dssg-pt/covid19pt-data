@@ -1,4 +1,4 @@
-name: Extract and validate DGS data - vacinas
+name: DGS data - vacinas
 
 on:
   pull_request:
@@ -27,14 +27,14 @@ jobs:
           python -m pip install -r .github/workflows/requirements.txt
 
       - name: Update data about vaccination
-        run: | 
+        run: |
           python .github/workflows/update_vacinas.py
         if: always()
 
       - name: Validate data about vaccination with pytest
         run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
         if: always()
-      - name: Upload pytest vaccinations results 
+      - name: Upload pytest vaccinations results
         uses: actions/upload-artifact@master
         with:
           name: pytest-vacinas-results
@@ -44,7 +44,7 @@ jobs:
       - name: Commit all changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
-          commit_message: Update data for today 
+          commit_message: Update data for today
           branch: ${{ github.head_ref }}
         if: always()
       - name: Get latest commit id
@@ -54,7 +54,7 @@ jobs:
         if: always()
       - name: Change the latest commit's status to success
         uses: Sibz/github-status-action@v1
-        with: 
+        with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           description: 'Success'
           context: 'build'
