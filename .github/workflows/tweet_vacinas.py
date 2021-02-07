@@ -2,7 +2,7 @@
 import os
 import sys
 import math
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 import pandas as pd
 import tweepy
@@ -40,27 +40,27 @@ def autenticar_twitter():
         pass
 
 def extrair_dados_vacinas():
-
-    # Começar a compôr o dicionário de dadis relevantes
-    today = date.today()
+    DAYS_OFFSET = 0
+    # Começar a compôr o dicionário de dados relevantes
+    today = date.today() - timedelta(days=DAYS_OFFSET)
     dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
 
     # Aceder ao .csv das vacinas
     path = Path(__file__).resolve().parents[2]
     file=path / 'vacinas.csv'
     df = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
-    
+
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
     if df.index[-1] == today and not math.isnan(df.loc[today_f].doses2):
         dados_vacinas.update(
             {
-                'percentagem': (df.loc[today_f].doses2/POP_PT)*100, 
+                'percentagem': (df.loc[today_f].doses2/POP_PT)*100,
                 'n_vacinados': f(df.loc[today_f].doses2),
             }
         )
         return dados_vacinas
-    else: 
+    else:
         return {}
 
 def f(valor):
@@ -97,7 +97,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     # Normalize value
     value = min(max(value, vmin), vmax)
     value = (value-vmin)/float(vmax-vmin)
-    
+
     v = value*length
     x = math.floor(v) # integer part
     y = v - x         # fractional part
@@ -131,12 +131,12 @@ def tweet_len(s):
     return sum( (2 if ord(c)>0x2100 else 1) for c in s)
 
 # ---
-# Main 
+# Main
 if __name__ == '__main__':
     dados_vac = extrair_dados_vacinas()
 
     # If there's new data, tweet
-    if dados_vac: 
+    if dados_vac:
         texto_tweet = compor_tweet(dados_vac)
 
         if consumer_key == 'DEBUG':
@@ -161,4 +161,3 @@ if __name__ == '__main__':
     else:
         print("No today data to tweet about")
         sys.exit()
-        
