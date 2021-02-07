@@ -27,27 +27,28 @@ jobs:
           python -m pip install -r .github/workflows/requirements.txt
 
       - name: Scrap the report link from the DGS website
-        run: | 
-          python .github/workflows/Web_Scrapper_DGS.py
+        run: |
+          echo NOT python .github/workflows/Web_Scrapper_DGS.py
       - name: Download PDF
-        run: | 
-          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
+        run: |
+          echo NOT wget -c -P .github/workflows/ $(cat .github/report_link.txt)
       - name: Process PDF
-        run: | 
-          python .github/workflows/process_report.py
+        run: |
+          echo NOT python .github/workflows/process_report.py
+
       - name: Run data extraction
-        run: | 
+        run: |
           python .github/workflows/extract_data_arcgis.py
       - name: Update data about test samples
-        run: | 
+        run: |
           python .github/workflows/update_amostras.py
         if: always()
       - name: Update data about vaccination
-        run: | 
+        run: |
           python .github/workflows/update_vacinas.py
         if: always()
       - name: Extract municipality data from arcgis
-        run: | 
+        run: |
           python .github/workflows/extract_dados_concelhos.py
         if: always()
 
@@ -70,19 +71,19 @@ jobs:
           name: pytest-results
           path: tests/junit/test-results.xml
         if: always()
-      - name: Upload pytest samples test results 
+      - name: Upload pytest samples test results
         uses: actions/upload-artifact@master
         with:
           name: pytest-amostras-results
           path: tests/junit/test-amostras-results.xml
         if: always()
-      - name: Upload pytest vaccinations results 
+      - name: Upload pytest vaccinations results
         uses: actions/upload-artifact@master
         with:
           name: pytest-vacinas-results
           path: tests/junit/test-vacinas-results.xml
         if: always()
-      - name: Upload pytest municipalities test results 
+      - name: Upload pytest municipalities test results
         uses: actions/upload-artifact@master
         with:
           name: pytest-municipalities-results
@@ -95,7 +96,7 @@ jobs:
       - name: Commit all changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
-          commit_message: Update data for today 
+          commit_message: Update data for today
           branch: ${{ github.head_ref }}
         if: always()
       - name: Get latest commit id
@@ -105,7 +106,7 @@ jobs:
         if: always()
       - name: Change the latest commit's status to success
         uses: Sibz/github-status-action@v1
-        with: 
+        with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           description: 'Success'
           context: 'build'
