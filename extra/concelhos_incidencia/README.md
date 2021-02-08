@@ -36,5 +36,9 @@
 2021.01.27-concelhos.json
 13-01-2021 a 26-01-2021, publicado a 01-02-2021
 
-2021.02.04-concelhos.json
-Actualização campos - desaparece "Dicofre", "Distrito", "DensidadeP", "ARS", "Cumulativo_casos_14_dias"
+Nota: a 2021.02.04 houve remoção campos:
+- Dicofre, Distrito, DensidadeP, ARS, Cumulativo_casos_14_dias
+
+2021.02.03-concelhos.json
+20-01-2021 a 02-02-2021, publicado a 08-02-2021
+
