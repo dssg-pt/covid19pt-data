@@ -2,12 +2,15 @@
 import os
 import sys
 import math
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 import pandas as pd
 import tweepy
 import locale
-locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
+try:
+    locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
+except locale.Error:
+    locale.setlocale(locale.LC_TIME, "pt_PT")
 
 # ---
 # Constants
@@ -25,7 +28,6 @@ if consumer_key != 'DEBUG':
 def autenticar_twitter():
     # authentication of consumer key and secret
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-
     # authentication of access token and secret
     auth.set_access_token(access_token, access_token_secret)
     try:
@@ -36,32 +38,53 @@ def autenticar_twitter():
         print(e)
         pass
 
-def extrair_dados_vacinas():
-
-    # Começar a compôr o dicionário de dadis relevantes
-    today = date.today()
+def extrair_dados_vacinas(DAYS_OFFSET=0):
+    # Começar a compôr o dicionário de dados relevantes
+    today = date.today() - timedelta(days=DAYS_OFFSET)
     dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
 
     # Aceder ao .csv das vacinas
     path = Path(__file__).resolve().parents[2]
     file=path / 'vacinas.csv'
     df = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
-    
+
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
     if df.index[-1] == today and not math.isnan(df.loc[today_f].doses2):
+        df["doses_7"] = df.doses.diff(7)
+        df["doses1_7"] = df.doses1.diff(7)
+        df["doses2_7"] = df.doses2.diff(7)
+        df_today = df.loc[today_f]
+        yesterday = date.today() - timedelta(days=DAYS_OFFSET+1)
+        yesterday_f = yesterday.strftime('%Y-%m-%d')
+        df_yesterday = df.loc[yesterday_f]
+
         dados_vacinas.update(
             {
-                'percentagem': (df.loc[today_f].doses2/POP_PT)*100, 
-                'n_vacinados': f(df.loc[today_f].doses2),
+                'percentagem': round(float(100*df_today.doses2/POP_PT), 2),
+                'n_vacinados': f(int(df_today.doses2)),
+                'n_dose1': f(int(df_today.doses1)),
+                'n_doses': f(int(df_today.doses)),
+                'novos_vacinados': f(int(df_today.doses2_novas), plus=True),
+                'novas_dose1': f(int(df_today.doses1_novas), plus=True),
+                'novas_doses': f(int(df_today.doses_novas), plus=True),
+                'tendencia_vacinados': t(int(df_today.doses2_7 - df_yesterday.doses2_7)),
+                'tendencia_dose1': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
+                'tendencia_doses': t(int(df_today.doses_7 - df_yesterday.doses_7)),
             }
         )
         return dados_vacinas
-    else: 
+    elif consumer_key == 'DEBUG':
+        return extrair_dados_vacinas(DAYS_OFFSET+1)
+    else:
         return {}
 
-def f(valor):
-    return format(int(valor), ",").replace(",", " ")
+def f(valor, plus=False):
+    r = format(valor, ",").replace(".","!").replace(",",".").replace("!",",")
+    return f"+{r}" if plus and valor > 0 else r
+
+def t(valor):
+    return "↑" if valor > 0 else "↓" if valor < 0 else ""
 
 def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     """
@@ -94,7 +117,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     # Normalize value
     value = min(max(value, vmin), vmax)
     value = (value-vmin)/float(vmax-vmin)
-    
+
     v = value*length
     x = math.floor(v) # integer part
     y = v - x         # fractional part
@@ -116,6 +139,7 @@ def compor_tweet(dados_vacinas):
         "💉🇵🇹  Percentagem da população vacinada a {data}: \n\n"
         "{progresso} \n\n"
         "{n_vacinados} vacinados com a 2ª dose"
+        " ({novos_vacinados}{tendencia_vacinados})"
         )
 
     texto_tweet = tweet_message.format(**dados_vacinas)
@@ -128,12 +152,12 @@ def tweet_len(s):
     return sum( (2 if ord(c)>0x2100 else 1) for c in s)
 
 # ---
-# Main 
+# Main
 if __name__ == '__main__':
     dados_vac = extrair_dados_vacinas()
 
     # If there's new data, tweet
-    if dados_vac: 
+    if dados_vac:
         texto_tweet = compor_tweet(dados_vac)
 
         if consumer_key == 'DEBUG':
@@ -144,7 +168,7 @@ if __name__ == '__main__':
         try:
             api.me()
         except Exception as ex:
-            print("Erro na autenticação. Programa vai fechar")
+            print(f"Erro na autenticação. Programa vai fechar: {ex}")
             exit(0)
 
         # Update status and create thread
@@ -158,4 +182,3 @@ if __name__ == '__main__':
     else:
         print("No today data to tweet about")
         sys.exit()
-        
