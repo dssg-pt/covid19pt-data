@@ -36,12 +36,12 @@ def get_list_cases_long():
     global today
 
     if len(sys.argv) > 1:
+        recordsPerPage, resultOffset, URL = 0, 0, None
         local_file = sys.argv[1]
         today = local_file.split("/")[-1]
         today = f"{today[8:10]}-{today[5:7]}-{today[0:4]}"
         with open(local_file, "r") as f:
             data = json.loads(f.read())
-        recordsPerPage = 0
     else:
         recordsPerPage = 1000
         URL = (
