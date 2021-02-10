@@ -63,14 +63,17 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
             {
                 'percentagem': round(float(100*df_today.doses2/POP_PT), 2),
                 'n_vacinados': f(int(df_today.doses2)),
-                'n_dose1': f(int(df_today.doses1)),
-                'n_doses': f(int(df_today.doses)),
+                'n_vacinados_1': f(int(df_today.doses1) - int(df_today.doses2)),
+                # 'n_dose1': f(int(df_today.doses1)),
+                # 'n_doses': f(int(df_today.doses)),
                 'novos_vacinados': f(int(df_today.doses2_novas), plus=True),
-                'novas_dose1': f(int(df_today.doses1_novas), plus=True),
-                'novas_doses': f(int(df_today.doses_novas), plus=True),
+                'novos_vacinados_1': f(int(df_today.doses1_novas), plus=True),
+                # 'novas_dose1': f(int(df_today.doses1_novas), plus=True),
+                # 'novas_doses': f(int(df_today.doses_novas), plus=True),
                 'tendencia_vacinados': t(int(df_today.doses2_7 - df_yesterday.doses2_7)),
-                'tendencia_dose1': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
-                'tendencia_doses': t(int(df_today.doses_7 - df_yesterday.doses_7)),
+                'tendencia_vacinados_1': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
+                # 'tendencia_dose1': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
+                # 'tendencia_doses': t(int(df_today.doses_7 - df_yesterday.doses_7)),
             }
         )
         return dados_vacinas
@@ -140,6 +143,9 @@ def compor_tweet(dados_vacinas):
         "{progresso} \n\n"
         "{n_vacinados} vacinados com a 2ª dose"
         " ({novos_vacinados}{tendencia_vacinados})"
+        "\n"
+        "{n_vacinados_1} vacinados com a 1ª dose"
+        " ({novos_vacinados_1}{tendencia_vacinados_1})"
         )
 
     texto_tweet = tweet_message.format(**dados_vacinas)
