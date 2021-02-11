@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     URL = (
         "https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query"
-        "?f=json&outFields=*&cacheHint=true"
+        "?f=json&outFields=*&cacheHint=false"
         "&where=ConfirmadosAcumulado>=0&orderByFields=Data+desc"
     )
     print(f"Loading from '{URL}'")

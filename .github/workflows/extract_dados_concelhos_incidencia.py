@@ -46,7 +46,7 @@ def get_list_cases_long():
         recordsPerPage = 1000
         URL = (
             "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/IncidenciaCOVIDporConc100k_view/FeatureServer/0/query"
-            "?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=true"
+            "?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=false"
             "&resultOffset={}&resultRecordCount={}"
         )
 
