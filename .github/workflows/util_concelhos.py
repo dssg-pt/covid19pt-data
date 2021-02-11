@@ -32,7 +32,7 @@ def get_list_municipalities():
     recordsPerPage = 200
     URL = (
         "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_Concelhos_V/FeatureServer/0/query"
-        "?f=json&outFields=*&cacheHint=true"
+        "?f=json&outFields=*&cacheHint=false"
         "&where=1%3D1"
         "&returnGeometry=false&spatialRel=esriSpatialRelIntersects"
         "&resultOffset={}&resultRecordCount={}"

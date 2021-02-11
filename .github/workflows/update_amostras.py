@@ -145,7 +145,7 @@ if __name__ == "__main__":
         "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Amostras/FeatureServer/0/query"
         "?where=Total_Amostras__Ac+%3E+0"
         "&orderByFields=Data_do_Relatorio+desc"
-        "&f=pjson&outFields=*&cacheHint=true"
+        "&f=pjson&outFields=*&cacheHint=false"
     )
     # Get the data available in the dashboard
     available = get_amostras(URL)

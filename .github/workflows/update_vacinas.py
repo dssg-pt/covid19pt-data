@@ -138,7 +138,7 @@ if __name__ == "__main__":
         "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query"
         "?where=1%3D1&"
         "&orderByFields=Data+desc"
-        "&f=pjson&outFields=*&cacheHint=true"
+        "&f=pjson&outFields=*&cacheHint=false"
         "&resultType=standard"
         # "&resultOffset=0&resultRecordCount=1000"
     )
