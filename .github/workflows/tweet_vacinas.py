@@ -61,19 +61,13 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
 
         dados_vacinas.update(
             {
-                'percentagem': round(float(100*df_today.doses2/POP_PT), 2),
+                'percentagem': float(100*df_today.doses2/POP_PT),
                 'n_vacinados': f(int(df_today.doses2)),
-                'n_vacinados_1': f(int(df_today.doses1) - int(df_today.doses2)),
-                # 'n_dose1': f(int(df_today.doses1)),
-                # 'n_doses': f(int(df_today.doses)),
                 'novos_vacinados': f(int(df_today.doses2_novas), plus=True),
-                'novos_vacinados_1': f(int(df_today.doses1_novas), plus=True),
-                # 'novas_dose1': f(int(df_today.doses1_novas), plus=True),
-                # 'novas_doses': f(int(df_today.doses_novas), plus=True),
                 'tendencia_vacinados': t(int(df_today.doses2_7 - df_yesterday.doses2_7)),
-                'tendencia_vacinados_1': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
-                # 'tendencia_dose1': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
-                # 'tendencia_doses': t(int(df_today.doses_7 - df_yesterday.doses_7)),
+                'n_inoculados': f(int(df_today.doses1) - int(df_today.doses2)),
+                'novos_inoculados': f(int(df_today.doses1_novas), plus=True),
+                'tendencia_inoculados': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
             }
         )
         return dados_vacinas
@@ -131,7 +125,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     n = length-len(bar)
     bar = lsep + bar + "·"*n + rsep
 
-    return ("\r" + title + bar + " %.2f%%" % (value*100))
+    return ("\r" + title + bar + " %.3f%%" % (value*100))
 
 def compor_tweet(dados_vacinas):
 
@@ -140,12 +134,16 @@ def compor_tweet(dados_vacinas):
 
     tweet_message = (
         "💉🇵🇹  Percentagem da população vacinada a {data}: \n\n"
-        "{progresso} \n\n"
-        "{n_vacinados} vacinados com a 2ª dose"
+        "{progresso}"
+        "\n\n"
+        # "victory hand" is an original emoji \u270c and needs an extra space
+        # on the console, but doesn't on twitter
+        # "cross fingers" is a new emoji U+1F91E and does not need space
+        "✌️{n_vacinados} vacinados com a 2ª dose"
         " ({novos_vacinados}{tendencia_vacinados})"
-        "\n"
-        "{n_vacinados_1} vacinados com a 1ª dose"
-        " ({novos_vacinados_1}{tendencia_vacinados_1})"
+        "\n\n"
+        "🤞{n_inoculados} inoculados com a 1ª dose"
+        " ({novos_inoculados}{tendencia_inoculados})"
         )
 
     texto_tweet = tweet_message.format(**dados_vacinas)
