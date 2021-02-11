@@ -30,7 +30,9 @@ ICONS = {
     # OMS recomenda 5 ; Portugal tem média 10 ; picos da onda passam 15
     "positividade": [15, 10, 5],
     # incidencia 14 dias por 100k
-    "incidencia": [960, 480, 240],
+    "incidencia14": [960, 480, 240],
+    # incidencia 7 dias por 100k
+    "incidencia7": [480, 240, 120],
     # confirmados_novos = (incidencia / 14 dias) / 100k * população
     "confirmados": [7060, 3530, 1765],
 }
@@ -163,14 +165,15 @@ def extrair_dados_ultimo_relatorio():
 
     incidencia14 = int(df.confirmados14[-1] * 100 * 1000 / POP_PT)
     dados_extraidos["incidencia14"] = incidencia14
-    dados_extraidos["icon_incidencia14"] = icon(incidencia14, "incidencia")
+    dados_extraidos["icon_incidencia14"] = icon(incidencia14, "incidencia14")
     incidencia14_anterior = int(df.confirmados14[-1-1] * 100 * 1000 / POP_PT) # previous day
     dados_extraidos["incidencia14_anterior"] = incidencia14_anterior
 
-    incidencia7 = int(df.confirmados7[-1] * 2 * 100 * 1000 / POP_PT)
+    incidencia7_ajuste = 1 # ou 2 se quisermos comparavel com 14
+    incidencia7 = int(df.confirmados7[-1] * incidencia7_ajuste * 100 * 1000 / POP_PT)
     dados_extraidos["incidencia7"] = incidencia7
-    dados_extraidos["icon_incidencia7"] = icon(incidencia7, "incidencia")
-    incidencia7_anterior = int(df.confirmados7[-1-1] * 2 * 100 * 1000 / POP_PT) # previous day
+    dados_extraidos["icon_incidencia7"] = icon(incidencia7, "incidencia7")
+    incidencia7_anterior = int(df.confirmados7[-1-1] * incidencia7_ajuste * 100 * 1000 / POP_PT) # previous day
     dados_extraidos["incidencia7_anterior"] = incidencia7_anterior
 
     for key in dados_extraidos.keys():
