@@ -125,7 +125,10 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     n = length-len(bar)
     bar = lsep + bar + "·"*n + rsep
 
-    return ("\r" + title + bar + " %.3f%%" % (value*100))
+    return (
+        title + bar + 
+        (" %.3f%%" % (value*100)).replace(".", ",")
+    )
 
 def compor_tweet(dados_vacinas):
 
