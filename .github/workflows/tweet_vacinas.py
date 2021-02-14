@@ -14,7 +14,16 @@ except locale.Error:
 
 # ---
 # Constants
-POP_PT = 10295909 # População residente em PT, via https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
+
+# População residente em PT final 2019, via
+# https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
+# POP_PT = 10295909
+
+# Internacional, estimativa
+# https://www.worldometers.info/world-population/portugal-population/
+# 2021.02.14=10.178.145 2020=10.196.709 2019=10.226.187
+# Público usa "projeção UN / OWID para 2020" = 10196707
+POP_PT = 10196709
 
 # To verify the tweet content without publishing, use export TWITTER_CONSUMER_KEY_VAC=DEBUG
 consumer_key = os.environ['TWITTER_CONSUMER_KEY_VAC']
@@ -38,7 +47,7 @@ def autenticar_twitter():
         print(e)
         pass
 
-def extrair_dados_vacinas(DAYS_OFFSET=0):
+def extrair_dados_vacinas(DAYS_OFFSET=0, pop=POP_PT):
     # Começar a compôr o dicionário de dados relevantes
     today = date.today() - timedelta(days=DAYS_OFFSET)
     dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
@@ -51,7 +60,6 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
     if df.index[-1] == today and not math.isnan(df.loc[today_f].doses2):
-        df["doses_7"] = df.doses.diff(7)
         df["doses1_7"] = df.doses1.diff(7)
         df["doses2_7"] = df.doses2.diff(7)
         df_today = df.loc[today_f]
@@ -61,13 +69,15 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
 
         dados_vacinas.update(
             {
-                'percentagem': float(100*df_today.doses2/POP_PT),
+                'percentagem': float(100 * df_today.doses2 / pop),
                 'n_vacinados': f(int(df_today.doses2)),
                 'novos_vacinados': f(int(df_today.doses2_novas), plus=True),
                 'tendencia_vacinados': t(int(df_today.doses2_7 - df_yesterday.doses2_7)),
+                'media_7dias': f(int(df_today.doses2_7 / 7)),
                 'n_inoculados': f(int(df_today.doses1) - int(df_today.doses2)),
                 'novos_inoculados': f(int(df_today.doses1_novas), plus=True),
                 'tendencia_inoculados': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
+                'media_7dias_inoculados': f(int(df_today.doses1_7 / 7)),
             }
         )
         return dados_vacinas
@@ -77,10 +87,13 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
         return {}
 
 def f(valor, plus=False):
+    if valor is None: return None
+    valor = valor if type(valor) == int else float(valor)
     r = format(valor, ",").replace(".","!").replace(",",".").replace("!",",")
     return f"+{r}" if plus and valor > 0 else r
 
 def t(valor):
+    valor = valor if type(valor) == int else float(valor)
     return "↑" if valor > 0 else "↓" if valor < 0 else ""
 
 def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
@@ -91,63 +104,72 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     ----------
     value : float
         Current value to be displayed as progress
-
     vmin : float
         Minimum value
-
     vmax : float
         Maximum value
-
     length: int
         Bar length (in character)
-
     title: string
         Text to be prepend to the bar
     """
 
-    # Block progression is 1/8
-    blocks = ["", "▏","▎","▍","▌","▋","▊","▉","█"]
-    vmin = vmin or 0.0
-    vmax = vmax or 1.0
+    # blocks = ["", "▏", "▎", "▍", "▌", "▋", "▊", "▉"]
+    # vertical blocks are more clear on showing progress - x+y axis!
+    blocks = ["▁", "▂", "▃", "▄", "▅", "▆", "▇"]
     lsep, rsep = "▏", "▕"
 
     # Normalize value
+    vmin, vmax = vmin or 0.0, vmax or 1.0
     value = min(max(value, vmin), vmax)
     value = (value-vmin)/float(vmax-vmin)
 
-    v = value*length
+    v = value * length
     x = math.floor(v) # integer part
     y = v - x         # fractional part
-    base = 0.125      # 0.125 = 1/8
+    base = 1 / len(blocks)
     prec = 3
     i = int(round(base*math.floor(float(y)/base),prec)/base)
-    bar = "█"*x + blocks[i]
-    n = length-len(bar)
-    bar = lsep + bar + "·"*n + rsep
+    # 100% would make this len*block + 1 so we substr
+    bar = ("█" * x + blocks[i])[:length]
+    n = length - len(bar)
+
+    remaining = ""
+    if n > 0:
+        remaining = "▁" * n
+
+    bar = lsep + bar + remaining + rsep
 
     return (
-        title + bar + 
-        (" %.3f%%" % (value*100)).replace(".", ",")
+        title + bar +
+        (" %.2f%%" % (value*100)).replace(".", ",")
     )
 
 def compor_tweet(dados_vacinas):
 
     # Composing the tweet
-    dados_vacinas.update({'progresso': progress(dados_vacinas['percentagem'])})
+    progresso = progress(dados_vacinas['percentagem'], length=20)
+    dados_vacinas.update({'progresso': progresso})
+
+    # note: "victory hand" is an first generation emoji \u270c and may
+    # look tiny and seem to have no spacing, with some fonts, whilst
+    # "cross fingers" is a new emoji U+1F91E and looks better.
+    # On twitter both will be ok.
 
     tweet_message = (
-        "💉🇵🇹  Percentagem da população vacinada a {data}: \n\n"
+        "💉Percentagem de população 🇵🇹 vacinada a {data}: \n\n"
         "{progresso}"
-        "\n\n"
-        # "victory hand" is an original emoji \u270c and needs an extra space
-        # on the console, but doesn't on twitter
-        # "cross fingers" is a new emoji U+1F91E and does not need space
-        "✌️{n_vacinados} vacinados com a 2ª dose"
-        " ({novos_vacinados}{tendencia_vacinados})"
-        "\n\n"
+        "\n"
+        "\n"
+        "✌️{n_vacinados} vacinados"
+        " ({novos_vacinados}{tendencia_vacinados},"
+        " média 7 dias {media_7dias})"
+        "\n"
+        "\n"
         "🤞{n_inoculados} inoculados com a 1ª dose"
-        " ({novos_inoculados}{tendencia_inoculados})"
-        )
+        " ({novos_inoculados}{tendencia_inoculados},"
+        " média 7 dias {media_7dias_inoculados})"
+    )
 
     texto_tweet = tweet_message.format(**dados_vacinas)
 
@@ -161,6 +183,17 @@ def tweet_len(s):
 # ---
 # Main
 if __name__ == '__main__':
+
+    # debug progress bar
+    if False and consumer_key == 'DEBUG':
+        step = 0.5
+        for i in range(0, 1 + math.ceil(100 / step)):
+            j = min(100, i * step)
+            p = progress(j, length=20)
+            #p = progress(j, length=20, vmin=0.00, vmax=100.00, goal=PERC_IMUNE)
+            print(p)
+        sys.exit(0)
+
     dados_vac = extrair_dados_vacinas()
 
     # If there's new data, tweet
