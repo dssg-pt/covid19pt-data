@@ -23,6 +23,7 @@ except locale.Error:
 # https://www.worldometers.info/world-population/portugal-population/
 # 2021.02.14=10.178.145 2020=10.196.709 2019=10.226.187
 # Público usa "projeção UN / OWID para 2020" = 10196707
+# https://population.un.org/wpp/
 POP_PT = 10196709
 
 # To verify the tweet content without publishing, use export TWITTER_CONSUMER_KEY_VAC=DEBUG
@@ -169,6 +170,9 @@ def compor_tweet(dados_vacinas):
         "🤞{n_inoculados} inoculados com a 1ª dose"
         " ({novos_inoculados}{tendencia_inoculados},"
         " média 7 dias {media_7dias_inoculados})"
+        "\n"
+        "\n"
+        "Fonte: https://github.com/dssg-pt/covid19pt-data/blob/master/vacinas.csv"
     )
 
     texto_tweet = tweet_message.format(**dados_vacinas)
