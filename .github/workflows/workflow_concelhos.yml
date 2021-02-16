@@ -1,0 +1,76 @@
+name: DGS data - concelhos
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    if: startsWith(github.head_ref, 'concelhos')
+    runs-on: ubuntu-latest
+    container: python:3.7
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Configure pt_PT locale
+        run: |
+          apt-get update -y && apt-get install -y locales && echo "pt_PT.UTF-8 UTF-8" | tee -a /etc/locale.gen && locale-gen pt_PT.UTF-8
+      - name: Configure pt_PT (Europe/Lisbon) timezone
+        run: |
+          ln -fs /usr/share/zoneinfo/Europe/Lisbon /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r .github/workflows/requirements.txt
+
+      # TEMP
+      # Assumes, for now, extras/concelhos/README is updated and data is downloadedd via
+      # curl -gsN 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/IncidenciaCOVIDporConc100k_view/FeatureServer/0/query?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=false' \
+      # > extras/concelhos/YYYY.mm.dd-concelhos_incidencia.json 
+      - name: Show last concelhos file
+        run: |
+          ls -1 extra/concelhos_incidencia/*.json | sort -n | tail -1
+        if: always()
+
+      - name: Update data about concelhos
+        run: |
+          python .github/workflows/extract_dados_concelhos_incidencia.py $(ls -1 extra/concelhos_incidencia/*.json | sort -n | tail -1) 
+
+      - name: Fix data about concelhos
+        run: |
+          python .github/workflows/clean_concelhos_new.py
+
+      - name: Validate data about test concelhos with pytest
+        run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
+        if: always()
+      - name: Upload pytest samples test results
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-concelhos-results
+          path: tests/junit/test-concelhos-results.xml
+        if: always()
+
+      - name: Commit all changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update concelhos for today
+          branch: ${{ github.head_ref }}
+        if: always()
+      - name: Get latest commit id
+        run: |
+          echo "LAST_COMMIT=$(git rev-parse HEAD)"
+          echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+        if: always()
+      - name: Change the latest commit's status to success
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          description: 'Success'
+          context: 'build'
+          state: 'success'
+          sha: ${{env.LAST_COMMIT}}
+

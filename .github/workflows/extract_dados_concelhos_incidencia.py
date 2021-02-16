@@ -36,12 +36,15 @@ def get_list_cases_long():
     global today
 
     if len(sys.argv) > 1:
+        # File must be YYYY<sep>MM<sep>DDsomething
+        # with sep being any character
         recordsPerPage, resultOffset, URL = 0, 0, None
         local_file = sys.argv[1]
         today = local_file.split("/")[-1]
         today = f"{today[8:10]}-{today[5:7]}-{today[0:4]}"
         with open(local_file, "r") as f:
             data = json.loads(f.read())
+        print(f"Using file '{local_file}' for day '{today}'")
     else:
         recordsPerPage = 1000
         URL = (
@@ -49,6 +52,7 @@ def get_list_cases_long():
             "?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=false"
             "&resultOffset={}&resultRecordCount={}"
         )
+        print(URL)
 
         resultOffset = 0
         url_cases = URL.format(resultOffset, resultOffset + recordsPerPage)
