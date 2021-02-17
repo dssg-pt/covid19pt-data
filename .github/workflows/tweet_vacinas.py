@@ -12,11 +12,14 @@ try:
 except locale.Error:
     locale.setlocale(locale.LC_TIME, "pt_PT")
 
+
 # ---
 # Constants
+link_repo = "https://github.com/dssg-pt/covid19pt-data"
 
 # População residente em PT final 2019, via
 # https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
+# Coerente com a soma da população dos concelhos, vide POP_ARS abaixo
 # POP_PT = 10295909
 
 # Internacional, estimativa
@@ -24,9 +27,14 @@ except locale.Error:
 # 2021.02.14=10.178.145 2020=10.196.709 2019=10.226.187
 # Público usa "projeção UN / OWID para 2020" = 10196707
 # https://population.un.org/wpp/
-POP_PT = 10196709
+# POP_PT = 10196709
 
-# To verify the tweet content without publishing, use export TWITTER_CONSUMER_KEY_VAC=DEBUG
+# https://covid19.min-saude.pt/relatorio-de-vacinacao/
+POP_PT = 9798859
+
+
+# Note: to debug the tweet content without publishing, use
+# export TWITTER_CONSUMER_KEY_VAC=DEBUG
 consumer_key = os.environ['TWITTER_CONSUMER_KEY_VAC']
 if consumer_key != 'DEBUG':
     consumer_secret = os.environ['TWITTER_CONSUMER_SECRET_VAC']
@@ -149,7 +157,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
 def compor_tweet(dados_vacinas):
 
     # Composing the tweet
-    progresso = progress(dados_vacinas['percentagem'], length=20)
+    progresso = progress(dados_vacinas['percentagem'], length=15)
     dados_vacinas.update({'progresso': progresso})
 
     # note: "victory hand" is an first generation emoji \u270c and may
@@ -167,14 +175,14 @@ def compor_tweet(dados_vacinas):
         " média 7 dias {media_7dias})"
         "\n"
         "\n"
-        "🤞{n_inoculados} inoculados com a 1ª dose"
+        "🤞{n_inoculados} inoculados com 1ª dose"
         " ({novos_inoculados}{tendencia_inoculados},"
         " média 7 dias {media_7dias_inoculados})"
         "\n"
-        "\n"
-        "Fonte: https://github.com/dssg-pt/covid19pt-data/blob/master/vacinas.csv"
+        "\n👉Todos os dados em: {link_repo}"
     )
 
+    dados_vacinas["link_repo"] = link_repo
     texto_tweet = tweet_message.format(**dados_vacinas)
 
     return texto_tweet
