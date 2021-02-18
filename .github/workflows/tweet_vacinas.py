@@ -179,7 +179,7 @@ def compor_tweet(dados_vacinas):
         " ({novos_inoculados}{tendencia_inoculados},"
         " média 7 dias {media_7dias_inoculados})"
         "\n"
-        "\n👉Todos os dados em: {link_repo}"
+        "\n➕Todos os dados em: {link_repo}"
     )
 
     dados_vacinas["link_repo"] = link_repo

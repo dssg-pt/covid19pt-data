@@ -277,7 +277,7 @@ def compor_tweets(dados_para_tweets):
         "\n"
         "[3/3]"
         "\n"
-        "\n👉Todos os dados em: {link_repo}"
+        "\n➕Todos os dados em: {link_repo}"
     )
 
     fourth_tweet = ""
