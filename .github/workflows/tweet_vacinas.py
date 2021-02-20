@@ -32,6 +32,9 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 # https://covid19.min-saude.pt/relatorio-de-vacinacao/
 POP_PT = 9798859
 
+# TENDENCIA = ["↑", "↓"]
+TENDENCIA = ["⬈", "⬊"]
+
 
 # Note: to debug the tweet content without publishing, use
 # export TWITTER_CONSUMER_KEY_VAC=DEBUG
@@ -103,7 +106,7 @@ def f(valor, plus=False):
 
 def t(valor):
     valor = valor if type(valor) == int else float(valor)
-    return "↑" if valor > 0 else "↓" if valor < 0 else ""
+    return TENDENCIA[0] if valor > 0 else TENDENCIA[1] if valor < 0 else ""
 
 def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     """
