@@ -45,6 +45,9 @@ def get_vacinas(url):
         # hack data errada dia 19-02 dizia 18-02
         if unix_date == 1613606400 and doses_total == 618636:
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
+        # hack data errada dia 19-02 dizia 18-02
+        if unix_date == 1613692800 and doses_total == 656411:
+            frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
 
         vacinas.append(
             [
