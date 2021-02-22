@@ -31,6 +31,17 @@ POP_ARS = {
     'acores':   242796,  # 0.24M
     'madeira':  254254,  # 0.25M
 }
+POP_IDADE = {
+    '0_9':     433332 + 461299,  #  0-04 + 05-09
+    '10_19':   507646 + 549033,  # 10-14 + 15-19
+    '20_29':   544575 + 547505,  # 20-24 + 25-29
+    '30_39':   571355 + 679093,  # 30-34 + 35-39
+    '40_49':   792670 + 782555,  # 40-44 + 45-49
+    '50_59':   747581 + 734540,  # 50-54 + 55-59
+    '60_69':   672758 + 620543,  # 60-64 + 65-69
+    '70_79':   544016 + 429107,  # 70-74 + 75-79
+    '80_plus': 352218 + 316442,  # 80-84 + 85 ou mais
+}
 
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊"]
@@ -56,9 +67,9 @@ def f(valor):
 # ICONS[key] = [5 values]
 ICONS = {}
 # OMS recomenda 5 ; Portugal tem média 10 ; picos da onda passam 15
-ICONS["positividade"] = [15, 10, 5, 2.5, 1]
+ICONS["positividade"] = [15, 10, 5, 1]
 # incidencia 14 dias por 100k
-ICONS["incidencia14"] = [960, 480, 240, 120, 60]
+ICONS["incidencia14"] = [960, 240, 60, 20]
 # incidencia 7 dias por 100k (metade de incidencia14)
 ICONS["incidencia7"] = [int(x/2) for x in ICONS["incidencia14"]]
 # confirmados = incidencia / 14 dias / 100k * população
@@ -66,12 +77,11 @@ ICONS["confirmados"] = [int(float(x) / 14 / 100000 * POP_PT ) for x in ICONS["in
 
 def icon(valor, tipo):
     return (
-        "🟤" if valor >= ICONS[tipo][0] else
-        "🔴" if valor >= ICONS[tipo][1] else
-        "🟠" if valor >= ICONS[tipo][2] else
-        "🟡" if valor >= ICONS[tipo][3] else
-        "🔵" if valor >= ICONS[tipo][4] else
-        "🟢"
+        "🟤" if valor >= ICONS[tipo][0] else  # >= 15 | 960
+        "🔴" if valor >= ICONS[tipo][1] else  # >= 10 | 240 / 480
+        "🟠" if valor >= ICONS[tipo][2] else  # >=  5 |  60 / 120
+        "🟡" if valor >= ICONS[tipo][3] else  # >=  1 |  20
+        "🟢"  # < 1 | < 20
     )
 
 def calc_tendencia(df, diff=7):
@@ -150,6 +160,19 @@ def extrair_dados_ultimo_relatorio():
         dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14)
         dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
 
+    ## Idades
+    for k in idades:
+        df[f"confirmados_{k}"] = df[f"confirmados_{k}_f"] + df[f"confirmados_{k}_m"]
+        df[f"obitos_{k}"] = df[f"obitos_{k}_f"] + df[f"obitos_{k}_m"]
+        k2 = k
+        dados_extraidos[f"novos_casos_{k}"]=int(df[f"confirmados_{k2}"].diff()[-1])
+        dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"])
+        dados_extraidos[f"novos_obitos_{k}"]=int(df[f"obitos_{k2}"].diff()[-1])
+        dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"])
+        incidencia14 = int(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_IDADE[k]
+        dados_extraidos[f"incidencia_{k}"] = int(incidencia14)
+        dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14)
+        dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
 
     # diff e médias 7 e 14 dias
     for k in [1, 7, 14]:
@@ -250,37 +273,48 @@ def compor_tweets(dados_para_tweets):
         "👍Recuperados: {perc_recuperados} dos casos\n"
         "⚱️Óbitos ≤49 anos: {novos_obitos_lt50} | 7d: {novos_obitos_lt50_7d}\n"
         "\n"
-        "[1/3]"
+        "[1/4]"
     )
 
     second_tweet = (
         "🔎Região: incidência, novos casos e óbitos:\n"
-        "{icon_norte}Norte: {incidencia_norte} · {novos_casos_norte} · {novos_obitos_norte}\n"
-        "{icon_centro}Centro: {incidencia_centro} · {novos_casos_centro} · {novos_obitos_centro}\n"
-        "{icon_lvt}LVT: {incidencia_lvt} · {novos_casos_lvt} · {novos_obitos_lvt}\n"
-        "{icon_alentejo}Alentejo: {incidencia_alentejo} · {novos_casos_alentejo} · {novos_obitos_alentejo}\n"
-        "{icon_algarve}Algarve: {incidencia_algarve} · {novos_casos_algarve} · {novos_obitos_algarve}\n"
-        "{icon_acores}Açores: {incidencia_acores} · {novos_casos_acores} · {novos_obitos_acores}\n"
-        "{icon_madeira}Madeira: {incidencia_madeira} · {novos_casos_madeira} · {novos_obitos_madeira}\n"
+        "{icon_norte}Norte: {incidencia_norte} {novos_casos_norte} {novos_obitos_norte}\n"
+        "{icon_centro}Centro: {incidencia_centro} {novos_casos_centro} {novos_obitos_centro}\n"
+        "{icon_lvt}LVT: {incidencia_lvt} {novos_casos_lvt} {novos_obitos_lvt}\n"
+        "{icon_alentejo}Alentejo: {incidencia_alentejo} {novos_casos_alentejo} {novos_obitos_alentejo}\n"
+        "{icon_algarve}Algarve: {incidencia_algarve} {novos_casos_algarve} {novos_obitos_algarve}\n"
+        "{icon_acores}Açores: {incidencia_acores} {novos_casos_acores} {novos_obitos_acores}\n"
+        "{icon_madeira}Madeira: {incidencia_madeira} {novos_casos_madeira} {novos_obitos_madeira}\n"
         "\n"
-        "[2/3]"
+        "[2/4]"
     )
 
-    third_tweet = (
+    third_tweet = "🔎Idade: incidência, média diária novos casos e óbitos:\n"
+    for k in idades:
+        k2 = "00" if k == "0_9" else "80" if k == "80_plus" else k[0:2]
+        icon = f"icon_{k}"
+        incidencia = f"incidencia_{k}"
+        novos_casos = f"novos_casos_{k}"
+        novos_obitos = f"novos_obitos_{k}"
+        third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"} {"+novos_obitos+"}\n"
+    third_tweet += (
+        "\n"
+        "[3/4]"
+    )
+
+    fourth_tweet = (
         "🔎Nacional: incidência, média diária novos casos e óbitos:\n"
-        "{icon_incidencia14}14 dias: {incidencia14} · {novos_confirmados14} · {novos_obitos14}\n"
-        "{icon_incidencia7}7 dias: {incidencia7} · {novos_confirmados7} · {novos_obitos7}\n"
+        "{icon_incidencia14}14 dias: {incidencia14} {novos_confirmados14} {novos_obitos14}\n"
+        "{icon_incidencia7}7 dias: {incidencia7} {novos_confirmados7} {novos_obitos7}\n"
         "\n"
         "📅Amostras [{dia_amostras}]:\n"
         "🧪PCR: {novas_amostras_pcr} | Antigénio: {novas_amostras_ag}\n"
         "{icon_positividade7}Positividade (7d): {perc_positividade7}\n"
         "\n"
-        "[3/3]"
+        "[4/4]"
         "\n"
         "\n➕Todos os dados em: {link_repo}"
     )
-
-    fourth_tweet = ""
 
     dados_para_tweets["link_repo"] = link_repo
     texto_tweet_1 = tweet_message.format(**dados_para_tweets)
