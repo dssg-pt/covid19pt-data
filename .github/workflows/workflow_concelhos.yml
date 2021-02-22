@@ -45,7 +45,8 @@ jobs:
           python .github/workflows/clean_concelhos_new.py
 
       - name: Validate data about test concelhos with pytest
-        run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
+        run: |
+          pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
         if: always()
       - name: Upload pytest samples test results
         uses: actions/upload-artifact@master
