@@ -45,3 +45,6 @@ Nota: a 2021.02.04 houve remoção campos:
 2021.02.10-concelhos.json
 27-01-2021 a 09-02-2021, publicado a 15-02-2021
 
+2021.02.17-concelhos.json
+03-02-2021 a 16-02-2021, publicado a 15-02-2021
+
