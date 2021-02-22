@@ -5,7 +5,6 @@ import math
 from datetime import date, timedelta
 from pathlib import Path
 import pandas as pd
-import tweepy
 import locale
 try:
     locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
@@ -33,7 +32,7 @@ POP_PT_2019 = 10295909
 POP_PT_VACINAR = 9798859
 
 # TENDENCIA = ["↑", "↓"]
-TENDENCIA = ["⬈", "⬊"]
+TENDENCIA = ["⬈", "⬊", "⬌"]
 
 
 # TEMP PREVISÃO 70
@@ -71,6 +70,7 @@ def quando_imunidade(df, pop):
 # export TWITTER_CONSUMER_KEY_VAC=DEBUG
 consumer_key = os.environ['TWITTER_CONSUMER_KEY_VAC']
 if consumer_key != 'DEBUG':
+    import tweepy
     consumer_secret = os.environ['TWITTER_CONSUMER_SECRET_VAC']
     access_token = os.environ['TWITTER_ACCESS_TOKEN_VAC']
     access_token_secret = os.environ['TWITTER_ACCESS_SECRET_VAC']
@@ -190,7 +190,12 @@ def f(valor, plus=False):
 
 def t(valor):
     valor = valor if type(valor) == int else float(valor)
-    return TENDENCIA[0] if valor > 0 else TENDENCIA[1] if valor < 0 else ""
+    return (
+        TENDENCIA[0] if valor > 0
+        else TENDENCIA[1] if valor < 0
+        else TENDENCIA[2] if valor == 0 and len(TENDENCIA) > 2
+        else ""
+    )
 
 def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
     """
