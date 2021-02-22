@@ -20,7 +20,7 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 # População residente em PT final 2019, via
 # https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
 # Coerente com a soma da população dos concelhos, vide POP_ARS abaixo
-# POP_PT = 10295909
+POP_PT_2019 = 10295909
 
 # Internacional, estimativa
 # https://www.worldometers.info/world-population/portugal-population/
@@ -30,10 +30,41 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 # POP_PT = 10196709
 
 # https://covid19.min-saude.pt/relatorio-de-vacinacao/
-POP_PT = 9798859
+POP_PT_VACINAR = 9798859
 
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊"]
+
+
+# TEMP PREVISÃO 70
+POP_ADULTA = (
+    # 1628440 + # 0-17 (16!)
+     731177 + # 18-24
+    3178928 + # 25-49
+    2059302 + # 50-64
+    1545230 + # 65-79
+     655739 # 80+
+)
+# Excluir confirmados (assume que já estão imunes)
+EXCLUIR_CONFIRMADOS = True
+PERC_IMUNIDADE = 70
+
+def quando_imunidade(df, pop):
+    vacinados_dia_media = math.floor(df.doses2_7 / 7)
+    falta_vacinar = int(pop - df.doses2)
+    dias = math.ceil(falta_vacinar / vacinados_dia_media)
+    quando = date.today() + timedelta(days=dias)
+    quando_f = quando.strftime("%-d de %B de %Y") # ('%Y-%m-%d')
+    if True or consumer_key == 'DEBUG':
+        print(
+            f"quando_imunidade: dados_dia={str(df.name)[:10]}"
+            f" vacinados_dia_media={f(vacinados_dia_media)}"
+            f" para_vacinar={f(pop)}"
+            f" falta_vacinar={f(falta_vacinar)}"
+            f" dias={dias}"
+            f" quando={quando_f}"
+        )
+    return quando
 
 
 # Note: to debug the tweet content without publishing, use
@@ -59,7 +90,7 @@ def autenticar_twitter():
         print(e)
         pass
 
-def extrair_dados_vacinas(DAYS_OFFSET=0, pop=POP_PT):
+def extrair_dados_vacinas(DAYS_OFFSET=0):
     # Começar a compôr o dicionário de dados relevantes
     today = date.today() - timedelta(days=DAYS_OFFSET)
     dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
@@ -79,9 +110,62 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, pop=POP_PT):
         yesterday_f = yesterday.strftime('%Y-%m-%d')
         df_yesterday = df.loc[yesterday_f]
 
+
+        if EXCLUIR_CONFIRMADOS:
+            # Aceder ao .csv dos dados
+            file=path / 'data.csv'
+            df_dados = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
+
+        pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
+
+        if EXCLUIR_CONFIRMADOS:
+            pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
+            dados_ontem = df_dados.iloc[[-2]]
+            pop_para_vacinar = int(pop_para_vacinar) - int(dados_ontem.confirmados)
+        quando_ontem = quando_imunidade(df_yesterday, pop_para_vacinar)
+
+        if EXCLUIR_CONFIRMADOS:
+            pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
+            dados_hoje = df_dados.iloc[[-1]]
+            pop_para_vacinar = int(pop_para_vacinar) - int(dados_hoje.confirmados)
+        quando = quando_imunidade(df_today, pop_para_vacinar)
+
+        falta_vacinar = int(pop_para_vacinar - df_today.doses2)
+
+        # TEMP PREVISÃO 70
+        if True or consumer_key == 'DEBUG':
+            debug = (
+                f"pop={f(POP_PT_2019)}"
+                f" pop_vacinar={f(POP_PT_VACINAR)}"
+                f" ({f(round(100 * POP_PT_VACINAR / POP_PT_2019, 2))}%)"
+                f" pop_adulta={f(POP_ADULTA)}"
+                f" ({f(round(100 * POP_ADULTA / POP_PT_2019, 2))}%)"
+            )
+            if EXCLUIR_CONFIRMADOS:
+                debug += (
+                    f" confirmados={f(int(dados_hoje.confirmados))}"
+                    f" ({f(round(100 * dados_hoje.confirmados / POP_PT_2019, 2))}%)"
+                    f" ativos={f(int(dados_hoje.ativos))}"
+                    f" ({f(round(100 * dados_hoje.ativos / POP_PT_2019, 2))}%)"
+                    f" recuperados={f(int(dados_hoje.recuperados))}"
+                    f" ({f(round(100 * dados_hoje.recuperados / POP_PT_2019, 2))}%)"
+                    f" obitos={f(int(dados_hoje.obitos))}"
+                    f" ({f(round(100*dados_hoje.obitos/POP_PT_2019, 2))}%)"
+                )
+            debug += (
+                f" para_vacinar={f(pop_para_vacinar)}"
+                f" ({f(round(100 * pop_para_vacinar / POP_PT_2019, 2))}%)"
+                f" falta_vacinar={f(falta_vacinar)}"
+                f" ({f(round(100 * falta_vacinar / POP_PT_2019, 2))}%)"
+                f" quando_ontem={quando_ontem.strftime('%-d de %B de %Y')}"
+                f" quando={quando.strftime('%-d de %B de %Y')}"
+            )
+            print(debug)
+
+
         dados_vacinas.update(
             {
-                'percentagem': float(100 * df_today.doses2 / pop),
+                'percentagem': float(100 * df_today.doses2 / POP_PT_VACINAR),
                 'n_vacinados': f(int(df_today.doses2)),
                 'novos_vacinados': f(int(df_today.doses2_novas), plus=True),
                 'tendencia_vacinados': t(int(df_today.doses2_7 - df_yesterday.doses2_7)),
