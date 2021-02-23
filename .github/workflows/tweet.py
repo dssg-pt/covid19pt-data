@@ -49,6 +49,7 @@ TENDENCIA = ["⬈", "⬊", "⬌"]
 flatten = lambda t: [item for sublist in t for item in sublist]
 idades = ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus']
 
+idades_diff = 2 # se faltar um dia de dados
 
 # Note: to debug the tweet content without publishing, use
 # export TWITTER_CONSUMER_KEY=DEBUG
@@ -84,10 +85,10 @@ def icon(valor, tipo):
         "🟢"  # < 1 | < 20
     )
 
-def calc_tendencia(df, diff=7):
+def calc_tendencia(df, diff=7, skip=1):
     """ Retorna a diferença da média 7 dias do ultimo dia para o dia anterior """
     df = df.diff(diff) if diff else df
-    return float(df[-1] - df[-2])
+    return float(df[-1] - df[-1 - skip])
 
 def autenticar_twitter():
     # authentication of consumer key and secret
@@ -166,13 +167,13 @@ def extrair_dados_ultimo_relatorio():
             df[f"confirmados_{k}"] = df[f"confirmados_{k}_f"] + df[f"confirmados_{k}_m"]
             df[f"obitos_{k}"] = df[f"obitos_{k}_f"] + df[f"obitos_{k}_m"]
             k2 = k
-            dados_extraidos[f"novos_casos_{k}"]=int(df[f"confirmados_{k2}"].diff()[-1])
-            dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"])
-            dados_extraidos[f"novos_obitos_{k}"]=int(df[f"obitos_{k2}"].diff()[-1])
-            dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"])
+            dados_extraidos[f"novos_casos_{k}"]=int(df[f"confirmados_{k2}"].diff(idades_diff)[-1])
+            dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff)
+            dados_extraidos[f"novos_obitos_{k}"]=int(df[f"obitos_{k2}"].diff(idades_diff)[-1])
+            dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], skip=idades_diff)
             incidencia14 = int(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_IDADE[k]
             dados_extraidos[f"incidencia_{k}"] = int(incidencia14)
-            dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14)
+            dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff)
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
     except ValueError as e:
         print(f"ERROR on idades {e}")
@@ -222,19 +223,19 @@ def extrair_dados_ultimo_relatorio():
     #----
 
     cols_obitos_lt50 = flatten([ [f"obitos_{x}_f", f"obitos_{x}_m"] for x in idades[0:5]])
-    obitos_lt50 = int(df.loc[:, cols_obitos_lt50].diff(1).sum(axis=1).tail(1))
+    obitos_lt50 = int(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1).tail(1))
     obitos_lt50_7d = int(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1).tail(1))
     dados_extraidos["novos_obitos_lt50"] = obitos_lt50
-    dados_extraidos["novos_obitos_lt50_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(1).sum(axis=1), diff=None)
+    dados_extraidos["novos_obitos_lt50_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1), diff=None, skip=idades_diff)
     dados_extraidos["novos_obitos_lt50_7d"] = obitos_lt50_7d
-    dados_extraidos["novos_obitos_lt50_7d_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1), diff=None)
+    dados_extraidos["novos_obitos_lt50_7d_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1), diff=None, skip=idades_diff)
 
     # -----
     # cols_confirmados_lt60 = flatten([ [f"confirmados_{x}_f", f"confirmados_{x}_m"] for x in idades[0:7]])
     # cols_confirmados_ge60 = flatten([ [f"confirmados_{x}_f", f"confirmados_{x}_m"] for x in idades[6:]])
 
-    # confge60 = int(df.loc[:, cols_confirmados_lt60].diff(1).sum(axis=1).tail(1))
-    # conflt60 = int(df.loc[:, cols_confirmados_ge60].diff(1).sum(axis=1).tail(1))
+    # confge60 = int(df.loc[:, cols_confirmados_lt60].diff(idades_diff).sum(axis=1).tail(1))
+    # conflt60 = int(df.loc[:, cols_confirmados_ge60].diff(idades_diffc).sum(axis=1).tail(1))
 
     # -----
 
