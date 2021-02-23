@@ -241,7 +241,7 @@ def extrair_dados_ultimo_relatorio():
     for key in dados_extraidos.keys():
         valor = dados_extraidos[key]
         if type(valor) not in [int, float]:
-            if not type(valor) in [str]:
+            if not type(valor) in [str, bool]:
                 print(f"skip {key} {valor} {type(valor)}")
             continue
         dados_extraidos[key] = f(valor)
