@@ -5,38 +5,38 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    today = "22-02-2021"
+    today = "23-02-2021"
 
     # boletim
-    ativos = 80642
-    recuperados = 701409
-    obitos = 16023
-    vigilancia = 79699
-    confirmados = 798074
-    confirmados_novos = 549
+    ativos = 77_044
+    recuperados = 705_976
+    obitos = 16_086
+    vigilancia = 70_767
+    confirmados = 799_106
+    confirmados_novos = 1_032
 
-    internados = 3322
-    internados_uci = 627
+    internados = 3_012
+    internados_uci = 597
 
-    confirmados_m = 360800
-    confirmados_f = 437003
-    confirmados_desconhecido = 271
+    confirmados_m = 361_311
+    confirmados_f = 437_523
+    confirmados_desconhecido = 272
 
-    obitos_m = 8370
-    obitos_f = 7653
+    obitos_m = 8_405
+    obitos_f = 7_681
 
-    confirmados_arsnorte = 324719
-    confirmados_arscentro = 114099
-    confirmados_arslvt = 301520
-    confirmados_arsalentejo = 28174
-    confirmados_arsalgarve = 19832
-    confirmados_acores = 3722
-    confirmados_madeira = 6008
-    obitos_arsnorte = 5159
-    obitos_arscentro = 2859
-    obitos_arslvt = 6663
-    obitos_arsalentejo = 924
-    obitos_arsalgarve = 330
+    confirmados_arsnorte = 324_905
+    confirmados_arscentro = 114_245
+    confirmados_arslvt = 302_013
+    confirmados_arsalentejo = 28_224
+    confirmados_arsalgarve = 19_893
+    confirmados_acores = 3_725
+    confirmados_madeira = 6_101
+    obitos_arsnorte = 5_168
+    obitos_arscentro = 2_870
+    obitos_arslvt = 6_699
+    obitos_arsalentejo = 929
+    obitos_arsalgarve = 332
     obitos_acores = 28
     obitos_madeira = 60
 
