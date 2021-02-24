@@ -49,7 +49,7 @@ TENDENCIA = ["⬈", "⬊", "⬌"]
 flatten = lambda t: [item for sublist in t for item in sublist]
 idades = ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus']
 
-idades_diff = 2 # se faltar um dia de dados
+idades_diff = 1 # 2 se faltar um dia de dados
 
 # Note: to debug the tweet content without publishing, use
 # export TWITTER_CONSUMER_KEY=DEBUG
