@@ -306,7 +306,7 @@ def compor_tweets(dados_para_tweets):
     if sem_idades:
         third_tweet = ""
     else:
-        third_tweet = "🔎Idade: incidência, média diária novos casos e óbitos:\n"
+        third_tweet = "🔎Idade: incidência, novos casos e óbitos:\n"
         for k in idades:
             k2 = "00" if k == "0_9" else "80" if k == "80_plus" else k[0:2]
             icon = f"icon_{k}"
