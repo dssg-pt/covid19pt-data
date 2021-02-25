@@ -255,7 +255,7 @@ def extrair_dados_ultimo_relatorio():
             tendencia = dados_extraidos[f"{key}_tendencia"]
             if tendencia > 0: dados_extraidos[key] += TENDENCIA[0]
             elif tendencia < 0: dados_extraidos[key] += TENDENCIA[1]
-            elif tendencia == 0 and len(TENDENCIA) > 2: dados_extraidos[key] += TENDENCIA[2]
+            elif valor > 0 and tendencia == 0 and len(TENDENCIA) > 2: dados_extraidos[key] += TENDENCIA[2]
         elif f"{key}_anterior" in dados_extraidos:
             valor_anterior = dados_extraidos[f"{key}_anterior"]
             if valor > valor_anterior: dados_extraidos[key] += TENDENCIA[0]
