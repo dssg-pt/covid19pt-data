@@ -48,9 +48,23 @@ POP_ADULTA = (
 EXCLUIR_CONFIRMADOS = True
 PERC_IMUNIDADE = 70
 
-def quando_imunidade(df, pop):
+def quando_imunidade(df, pop, dados=None):
     vacinados_dia_media = math.floor(df.doses2_7 / 7)
-    falta_vacinar = int(pop - df.doses2)
+    inoculados_dia_media = math.floor(df.doses1_7 / 7)
+    # coeficientes desactivados para ser mais melhor bom
+    falta_vacinar = int(
+        pop
+        # assume vacinado com eficiencia 94%
+        - (df.doses2) # * 0.94
+        # assume 1ª dose com eficiencia 60%
+        - (df.doses1 - df.doses2) # * 0.6
+    )
+    if dados is not None:
+        falta_vacinar -= int(
+            # assume "infetado só precisa de 1 dose"
+            # inclui obitos de proposito
+            dados.confirmados # * 0.5
+        )
     dias = math.ceil(falta_vacinar / vacinados_dia_media)
     quando = date.today() + timedelta(days=dias)
     quando_f = quando.strftime("%-d de %B de %Y") # ('%Y-%m-%d')
@@ -58,12 +72,13 @@ def quando_imunidade(df, pop):
         print(
             f"quando_imunidade: dados_dia={str(df.name)[:10]}"
             f" vacinados_dia_media={f(vacinados_dia_media)}"
+            f" inoculados_dia_media={f(inoculados_dia_media)}"
             f" para_vacinar={f(pop)}"
             f" falta_vacinar={f(falta_vacinar)}"
             f" dias={dias}"
             f" quando={quando_f}"
         )
-    return quando
+    return quando, falta_vacinar
 
 
 # Note: to debug the tweet content without publishing, use
@@ -117,20 +132,15 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
             df_dados = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
 
         pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
+        dados = None
 
         if EXCLUIR_CONFIRMADOS:
-            pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
-            dados_ontem = df_dados.iloc[[-2]]
-            pop_para_vacinar = int(pop_para_vacinar) - int(dados_ontem.confirmados)
-        quando_ontem = quando_imunidade(df_yesterday, pop_para_vacinar)
+            dados = df_dados.iloc[[-2]]
+        quando_ontem, falta_vacinar = quando_imunidade(df_yesterday, pop_para_vacinar, dados)
 
         if EXCLUIR_CONFIRMADOS:
-            pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
-            dados_hoje = df_dados.iloc[[-1]]
-            pop_para_vacinar = int(pop_para_vacinar) - int(dados_hoje.confirmados)
-        quando = quando_imunidade(df_today, pop_para_vacinar)
-
-        falta_vacinar = int(pop_para_vacinar - df_today.doses2)
+            dados = df_dados.iloc[[-1]]
+        quando, falta_vacinar = quando_imunidade(df_today, pop_para_vacinar, dados)
 
         # TEMP PREVISÃO 70
         if True or consumer_key == 'DEBUG':
@@ -143,14 +153,14 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
             )
             if EXCLUIR_CONFIRMADOS:
                 debug += (
-                    f" confirmados={f(int(dados_hoje.confirmados))}"
-                    f" ({f(round(100 * dados_hoje.confirmados / POP_PT_2019, 2))}%)"
-                    f" ativos={f(int(dados_hoje.ativos))}"
-                    f" ({f(round(100 * dados_hoje.ativos / POP_PT_2019, 2))}%)"
-                    f" recuperados={f(int(dados_hoje.recuperados))}"
-                    f" ({f(round(100 * dados_hoje.recuperados / POP_PT_2019, 2))}%)"
-                    f" obitos={f(int(dados_hoje.obitos))}"
-                    f" ({f(round(100*dados_hoje.obitos/POP_PT_2019, 2))}%)"
+                    f" confirmados={f(int(dados.confirmados))}"
+                    f" ({f(round(100 * dados.confirmados / POP_PT_2019, 2))}%)"
+                    f" ativos={f(int(dados.ativos))}"
+                    f" ({f(round(100 * dados.ativos / POP_PT_2019, 2))}%)"
+                    f" recuperados={f(int(dados.recuperados))}"
+                    f" ({f(round(100 * dados.recuperados / POP_PT_2019, 2))}%)"
+                    f" obitos={f(int(dados.obitos))}"
+                    f" ({f(round(100*dados.obitos/POP_PT_2019, 2))}%)"
                 )
             debug += (
                 f" para_vacinar={f(pop_para_vacinar)}"
