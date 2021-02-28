@@ -55,17 +55,26 @@ def quando_imunidade(df, pop, dados=None):
     falta_vacinar = int(
         pop
         # assume vacinado com eficiencia 94%
-        - (df.doses2) # * 0.94
+        - (df.doses2) * 0.94
         # assume 1ª dose com eficiencia 60%
-        - (df.doses1 - df.doses2) # * 0.6
+        - (df.doses1 - df.doses2) * 0.6
     )
     if dados is not None:
         falta_vacinar -= int(
             # assume "infetado só precisa de 1 dose"
             # inclui obitos de proposito
-            dados.confirmados # * 0.5
+            dados.confirmados * 0.5
         )
-    dias = math.ceil(falta_vacinar / vacinados_dia_media)
+    media_dia = (
+        0
+        + vacinados_dia_media * 0.94
+        + inoculados_dia_media * 0.6
+    )
+    if dados is not None:
+        media_dia += int(
+           dados.confirmados_novos * 0.5
+        )
+    dias = math.ceil(falta_vacinar / media_dia)
     quando = date.today() + timedelta(days=dias)
     quando_f = quando.strftime("%-d de %B de %Y") # ('%Y-%m-%d')
     if True or consumer_key == 'DEBUG':
