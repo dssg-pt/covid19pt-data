@@ -51,3 +51,5 @@ Nota: a 2021.02.04 houve remoção campos:
 Nota: a 2021.02.24 houve remoção campos:
 - Shape_Leng
 
+2021.02.14-concelhos.json
+10-02-2021 a 23-02-2021, publicado a 01-03-2021
