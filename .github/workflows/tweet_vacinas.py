@@ -87,6 +87,15 @@ def quando_imunidade(df, pop, dados=None):
             f" dias={dias}"
             f" quando={quando_f}"
         )
+        imunizados = int(dados.confirmados) + int(df.doses1)
+        print(
+            f"imunizados: {imunizados}"
+            f" ({f(round(100 * int(imunizados) / POP_PT_2019, 2))}%)"
+            f" confirmados: {f(int(dados.confirmados))}"
+            f" ({f(round(100 * int(dados.confirmados) / POP_PT_2019, 2))}%)"
+            f" dose1: {f(int(df.doses1))}"
+            f" ({f(round(100 * int(df.doses1) / POP_PT_2019, 2))}%)"
+        )
     return quando, falta_vacinar
 
 
@@ -277,7 +286,7 @@ def compor_tweet(dados_vacinas):
     # On twitter both will be ok.
 
     tweet_message = (
-        "💉Percentagem de população 🇵🇹 vacinada a {data}: \n\n"
+        "💉População 🇵🇹 (continente) vacinada a {data}: \n\n"
         "{progresso}"
         "\n"
         "\n"
