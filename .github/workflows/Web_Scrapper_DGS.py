@@ -17,6 +17,10 @@ import sys
 # Get the link of TODAY
 def links_of_day(path,text_to_find,day):
     date=day.strftime("%d/%m/%Y")
+
+    # diaper: html broken into 3 links: "Rela… 0", "3", and "/03/2021"
+    if date == '03/03/2021': date='366'
+
     l=''
     with requests.get(path) as r:
         soup=BeautifulSoup(r.text,"lxml")
