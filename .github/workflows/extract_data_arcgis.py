@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "data.csv")
 
-    DAYS_OFFSET = 0
+    DAYS_OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     today = (datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)).strftime(DMY)
 
     if DAYS_OFFSET == 0:
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     URL = (
         "https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query"
-        "?f=json&outFields=*&cacheHint=true"
+        "?f=json&outFields=*&cacheHint=false"
         "&where=ConfirmadosAcumulado>=0&orderByFields=Data+desc"
     )
     print(f"Loading from '{URL}'")

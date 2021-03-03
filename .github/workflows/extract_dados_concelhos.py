@@ -63,7 +63,7 @@ def get_list_cases_long():
     recordsPerPage = 1000
     URL = (
         "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/query"
-        "?f=json&outFields=*&cacheHint=true"
+        "?f=json&outFields=*&cacheHint=false"
         "&where=1%3D1&orderByFields=Data+desc"
         "&returnGeometry=false&spatialRel=esriSpatialRelIntersects"
         "&resultOffset={}&resultRecordCount={}"

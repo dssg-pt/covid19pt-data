@@ -123,7 +123,7 @@ jobs:
           TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
       - name: Auto publish vaccine data to Twitter
         run: |
-          python .github/workflows/tweet_vacinas.py
+          echo DISABLED python .github/workflows/tweet_vacinas.py
         env:
           TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
           TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}

@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
 
-📅️ **Última actualização**: 8 de Fevereiro de 2021, 15:42
+📅️ **Última actualização**: 2 de Março de 2021, 15:22
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
 
@@ -54,7 +54,7 @@ _Porque tudo começa com bons dados._
 O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. Dados extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) e do [relatório diário](https://covid19.min-saude.pt/relatorio-de-situacao/) da DGS.
 + `amostras.csv`: contém dados diários relativos às amostras, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
-+ `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
++ `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS. Nota: estes valores, assim como a dashboard, as imagens publicadas nas redes sociais, e os [relatórios de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) publicados periodicamente, correspondem apenas à população residente no continente, excluindo as ilhas.
 + `data_concelhos.csv`: contém dados acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados, nomeadamente concelhos com menos de 3 confirmados não são reportados). Esta série de dados tem início a 24-03-2020 e tem cadência diária até 04-07-2020, passando a cadência semanal a 14-07-2020, e terminando a 26-10-2020. Vide os próximos dados para o novo formato.
 + `data_concelhos_14dias.csv` e `data_concelhos_incidencia.csv` contém dados de confirmados do acumulado dos 14 dias anteriores à data do reporte, no primeiro ficheiro, e proporcional a 100k habitantes no segundo ficheiro. Inclui os dados calculados do `data_concelhos.csv` desde que os daddos são semanais, nomeadamente entre 27-07-2020 (correspondendo ao periodo de 13-07-2020 a 26-07-2020) até 26-10-2020, e será actualizado conforme seja disponibilizado pela DGS (semanalmente à segunda-feira).  
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.

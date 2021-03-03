@@ -389,6 +389,21 @@ def test_dtype(dgs_data, col_name, expected_dtype, extra_check):
         #     ["recuperados"],
         #     marks=pytest.mark.xfail,
         # ),
+        (
+            [
+                "obitos",
+                "recuperados",
+                "ativos",
+            ],
+            ["confirmados"],
+        ),
+        (
+            [
+                "internados_uci",
+                "internados_enfermaria",
+            ],
+            ["internados"],
+        ),
     ],
 )
 def test_sums(dgs_data, group, total_col):

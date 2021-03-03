@@ -30,7 +30,6 @@ jobs:
         run: |
           python .github/workflows/update_vacinas.py
         if: always()
-
       - name: Validate data about vaccination with pytest
         run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
         if: always()
@@ -41,10 +40,25 @@ jobs:
           path: tests/junit/test-vacinas-results.xml
         if: always()
 
+      # Until there's some tweet about amostras, just update them anytime something else updates
+      - name: Update data about test samples
+        run: |
+          python .github/workflows/update_amostras.py
+        if: always()
+      - name: Validate data about test samples with pytest
+        run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
+        if: always()
+      - name: Upload pytest samples test results
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-amostras-results
+          path: tests/junit/test-amostras-results.xml
+        if: always()
+
       - name: Commit all changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
-          commit_message: Update data for today
+          commit_message: Update vacinas for today
           branch: ${{ github.head_ref }}
         if: always()
       - name: Get latest commit id
