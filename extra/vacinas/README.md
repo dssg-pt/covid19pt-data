@@ -19,3 +19,12 @@ CSV publicado a 2021.02.24 com data 2021.02.15 e dados aparentemente entre 22 e 
 Relatório de Vacinação nº 2 (27/01/2020 a 21/02/2021)
 PDF publicado a 2021.02.24 com data 2021.02.21 e dados aparentemente entre 22 e 23
 
+
+- 2021.03.03-Dataset_Vacinação.csv
+Dataset vacinação (3)
+CSV publicado a 2021.03.03 com data 2021.02.22 e dados aparentemente entre 01 e 02
+
+- 2021.03.03-Relatório_Vacinação.pdf
+Relatório de Vacinação nº 2 (27/01/2020 a 28/02/2021)
+PDF publicado a 2021.03.03 com data 2021.02.28 e dados aparentemente entre 01 e 02
+
