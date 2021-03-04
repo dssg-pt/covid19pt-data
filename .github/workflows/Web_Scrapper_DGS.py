@@ -16,20 +16,16 @@ import sys
 
 # Get the link of TODAY
 def links_of_day(path,text_to_find,day):
-    date=day.strftime("%d/%m/%Y")
-
-    # diaper: html broken into 3 links: "Rela… 0", "3", and "/03/2021"
-    if date == '03/03/2021': date='366'
-
-    l=''
+    date=day.strftime("%Y%m%d")
     with requests.get(path) as r:
         soup=BeautifulSoup(r.text,"lxml")
         
         for link in soup.find_all('a'):
-            if ( text_to_find in link.get_text()) & (date in link.get_text()):
-                l=link.get('href')
+            l=link.get('href')
+            if l and text_to_find in l and date in l and l.endswith(".pdf"):
+                return l
                 
-        return l
+    return None
 
 # Get the latest day on the data.csv file
 def get_latest_day():
@@ -64,13 +60,13 @@ if __name__ == '__main__':
     date=(datetime.today() - timedelta(days=DAYS_OFFSET))
 
     # The link
-    link=links_of_day('https://covid19.min-saude.pt/relatorio-de-situacao/', "Relatório de Situação", date)
+    link=links_of_day('https://covid19.min-saude.pt/relatorio-de-situacao/', "DGS_boletim", date)
 
     # The latest report in the file data.csv
     latest=get_latest_day()
 
     # Check if latest day on data.csv is not today and if the link exists
-    if (latest != date.strftime("%d-%m-%Y")) and (link != ''):
+    if link and (latest != date.strftime("%d-%m-%Y")):
         save_link_txt(link)
         update_readme(datetime.now())
         print(f"UPDATED latest={latest} today={date.strftime('%d-%m-%Y')} link={link}")
