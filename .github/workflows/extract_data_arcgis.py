@@ -13,7 +13,7 @@ if __name__ == "__main__":
     DAYS_OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     today = (datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)).strftime(DMY)
 
-    if DAYS_OFFSET == 0:
+    if DAYS_OFFSET == 0 and not len(sys.argv) > 1:
         csv_path = str(Path(__file__).resolve().parents[2] / "data.csv")
         latest = pd.read_csv(csv_path)
         latest_date = latest[-1:]["data"].item()
