@@ -5,41 +5,40 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    today = "06-03-2021"
+    today = "07-03-2021"
 
     # boletim
-    ativos = 62_299
-    recuperados = 730_601
-    obitos = 16_512
-    vigilancia = 26_704
-    confirmados = 809_412
-    confirmados_novos = 1007
+    ativos = 61_987
+    recuperados = 731_567
+    obitos = 16_540
+    vigilancia = 25_513
+    confirmados = 810_094
+    confirmados_novos = 682
 
-    internados = 1_416
-    internados_uci = 363
-
-    confirmados_arsnorte = 327_370
-    obitos_arsnorte = 5_248
-    confirmados_arscentro = 115_529
-    obitos_arscentro = 2_941
-    confirmados_arslvt = 306_596
-    obitos_arslvt = 6_933
-    confirmados_arsalentejo = 28_599
-    obitos_arsalentejo = 957
-    confirmados_arsalgarve = 20_207
+    confirmados_arsnorte = 327_577
+    obitos_arsnorte = 5_254
+    confirmados_arscentro = 115_629
+    obitos_arscentro = 2_947
+    confirmados_arslvt = 306_776
+    obitos_arslvt = 6_946
+    confirmados_arsalentejo = 28_628
+    obitos_arsalentejo = 958
+    confirmados_arsalgarve = 20_239
     obitos_arsalgarve = 344
-    confirmados_acores = 3_800
+    confirmados_acores = 3_801
     obitos_acores = 28
-    confirmados_madeira = 7_311
-    obitos_madeira = 61
+    confirmados_madeira = 7_444
+    obitos_madeira = 63
 
-    confirmados_m = 366_254
-    confirmados_f = 442_888
-    confirmados_desconhecido = 270
+    internados = 1_414
+    internados_uci = 354
 
-    obitos_m = 8_645
-    obitos_f = 7_867
+    confirmados_m = 366_583
+    confirmados_f = 443_242
+    confirmados_desconhecido = 269
 
+    obitos_m = 8_665
+    obitos_f = 7_875
 
     # derivaveis
     internados_enfermaria = internados - internados_uci
