@@ -176,7 +176,7 @@ def extrair_dados_ultimo_relatorio():
             dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff)
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
     except ValueError as e:
-        print(f"ERROR on idades {e}")
+        print(f"WARN: sem idades {e}")
         dados_extraidos["sem_idades"] = True
 
     # diff e médias 7 e 14 dias
