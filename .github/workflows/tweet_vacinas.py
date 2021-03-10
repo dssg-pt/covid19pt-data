@@ -295,7 +295,7 @@ def compor_tweet(dados_vacinas):
         " média 7 dias {media_7dias})"
         "\n"
         "\n"
-        "🤞{n_inoculados} inoculados com 1ª dose"
+        "🤞Mais {n_inoculados} inoculados com 1ª dose"
         " ({novos_inoculados}{tendencia_inoculados},"
         " média 7 dias {media_7dias_inoculados})"
         "\n"
