@@ -60,7 +60,10 @@ if __name__ == '__main__':
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'data.csv')
 
-    URL = 'https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query?where=ConfirmadosAcumulado>=0&outFields=*&orderByFields=Data+desc&groupByFieldsForStatistics=&f=pjson&token='
+    URL = (
+        'https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query'
+        '?where=ConfirmadosAcumulado>=0&outFields=*&orderByFields=Data+desc&groupByFieldsForStatistics=&f=pjson'
+    )
     # Get the data available in the dashboard
     new_data = get_new_data(URL)
 
