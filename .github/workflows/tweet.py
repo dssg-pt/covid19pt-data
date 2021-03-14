@@ -67,28 +67,22 @@ def f(valor):
 
 # ICONS[key] = [5 values]
 ICONS = {}
-# OMS recomenda 5 ; Portugal tem média 10 ; picos da onda passam 15
-ICONS["positividade"] = [15, 10, 5, 1]
+# OMS recomenda 5 ; Portugal tem média 10 ; picos da onda passaram 15
+ICONS["positividade"] = [10, 5, 4, 1]
 # incidencia 14 dias por 100k
-ICONS["incidencia14"] = [960, 240, 60, 20]
+ICONS["incidencia14"] = [480, 240, 120, 60]
 # incidencia 7 dias por 100k (metade de incidencia14)
 ICONS["incidencia7"] = [int(x/2) for x in ICONS["incidencia14"]]
 # confirmados = incidencia / 14 dias / 100k * população
 ICONS["confirmados"] = [int(float(x) / 14 / 100000 * POP_PT ) for x in ICONS["incidencia14"]]
 
-# 'positividade': [15, 10, 5, 1]
-# 'incidencia14': [960, 240, 60, 20]
-# 'incidencia7': [480, 120, 30, 10]
-# 'confirmados': [7060, 1765, 441, 147]}
-# print(ICONS)
-
 def icon(valor, tipo):
     return (
-        "🟤" if valor >= ICONS[tipo][0] else  # >= 15 | 960
-        "🔴" if valor >= ICONS[tipo][1] else  # >= 10 | 240 / 480
-        "🟠" if valor >= ICONS[tipo][2] else  # >=  5 |  60 / 120
-        "🟡" if valor >= ICONS[tipo][3] else  # >=  1 |  20
-        "🟢"  # < 1 | < 20
+        "🟤" if valor >= ICONS[tipo][0] else  # ≥ 10 | ≥ 480
+        "🔴" if valor >= ICONS[tipo][1] else  # ≥  5 | ≥ 240
+        "🟠" if valor >= ICONS[tipo][2] else  # ≥  4 | ≥ 120
+        "🟡" if valor >= ICONS[tipo][3] else  # ≥  1 | ≥  60
+        "🟢"                                  # <  1 | <  60
     )
 
 def calc_tendencia(df, diff=7, skip=1, name=""):
