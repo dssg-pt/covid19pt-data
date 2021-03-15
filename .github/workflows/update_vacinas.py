@@ -36,16 +36,16 @@ def get_vacinas(url):
         if doses_novas == doses_total and doses1_total is None:
             doses_novas = None
 
-        # hack data errada dia 31-01 dizia 01-02
+        # hack data incorreta dia 31-01 dizia 01-02
         if unix_date == 1612137600 and doses_total == 336771:
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date - 86400)
-        # hack data errada dia 06-02 dizia 05-02
+        # hack data incorreta dia 06-02 dizia 05-02
         if unix_date == 1612483200 and doses_total == 394088:
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
-        # hack data errada dia 19-02 dizia 18-02
+        # hack data incorreta dia 19-02 dizia 18-02
         if unix_date == 1613606400 and doses_total == 618636:
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
-        # hack data errada dia 19-02 dizia 18-02
+        # hack data incorreta dia 19-02 dizia 18-02
         if unix_date == 1613692800 and doses_total == 656411:
             frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
 
@@ -141,7 +141,8 @@ if __name__ == "__main__":
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "vacinas.csv")
     URL = (
-        "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query"
+        #"https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query"
+        "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/Covid19_Total_Vacinados_Temporario/FeatureServer/0/query"        
         "?where=1%3D1&"
         "&orderByFields=Data+desc"
         "&f=pjson&outFields=*&cacheHint=false"
