@@ -28,29 +28,29 @@ jobs:
 
       - name: Scrap the report link from the DGS website
         run: |
-          python .github/workflows/Web_Scrapper_DGS.py
+          echo DISABLED python .github/workflows/Web_Scrapper_DGS.py
       - name: Download PDF
         run: |
-          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
+          echo DISABLED wget -c -P .github/workflows/ $(cat .github/report_link.txt)
       - name: Process PDF
         run: |
-          python .github/workflows/process_report.py
+          echo DISABLED python .github/workflows/process_report.py
 
       - name: Run data extraction
         run: |
-          python .github/workflows/extract_data_arcgis.py
+          echo DISABLED python .github/workflows/extract_data_arcgis.py
       - name: Update data about test samples
         run: |
           python .github/workflows/update_amostras.py
         if: always()
-      - name: Update data about vaccination
-        run: |
-          python .github/workflows/update_vacinas.py
-        if: always()
-      - name: Extract municipality data from arcgis
-        run: |
-          python .github/workflows/extract_dados_concelhos.py
-        if: always()
+      # - name: Update data about vaccination
+      #   run: |
+      #     python .github/workflows/update_vacinas.py
+      #   if: always()
+      # - name: Extract municipality data from arcgis
+      #   run: |
+      #     python .github/workflows/extract_dados_concelhos.py
+      #   if: always()
 
       - name: Validate data with pytest
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
@@ -58,12 +58,12 @@ jobs:
       - name: Validate data about test samples with pytest
         run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
         if: always()
-      - name: Validate data about vaccination with pytest
-        run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
-        if: always()
-      - name: Validate data about municipalities with pytest
-        run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
-        if: always()
+      # - name: Validate data about vaccination with pytest
+      #   run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
+      #   if: always()
+      # - name: Validate data about municipalities with pytest
+      #   run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
+      #   if: always()
 
       - name: Upload pytest test results
         uses: actions/upload-artifact@master
@@ -77,18 +77,18 @@ jobs:
           name: pytest-amostras-results
           path: tests/junit/test-amostras-results.xml
         if: always()
-      - name: Upload pytest vaccinations results
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-vacinas-results
-          path: tests/junit/test-vacinas-results.xml
-        if: always()
-      - name: Upload pytest municipalities test results
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-municipalities-results
-          path: tests/junit/test-concelhos-results.xml
-        if: always()
+      # - name: Upload pytest vaccinations results
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: pytest-vacinas-results
+      #     path: tests/junit/test-vacinas-results.xml
+      #   if: always()
+      # - name: Upload pytest municipalities test results
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: pytest-municipalities-results
+      #     path: tests/junit/test-concelhos-results.xml
+      #   if: always()
 
       - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
         run: |
@@ -121,12 +121,12 @@ jobs:
           TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
           TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
           TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
-      - name: Auto publish vaccine data to Twitter
-        run: |
-          echo DISABLED python .github/workflows/tweet_vacinas.py
-        env:
-          TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
-          TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
-          TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
-          TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
+      # - name: Auto publish vaccine data to Twitter
+      #   run: |
+      #     echo DISABLED python .github/workflows/tweet_vacinas.py
+      #   env:
+      #     TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
+      #     TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
+      #     TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
+      #     TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
 
