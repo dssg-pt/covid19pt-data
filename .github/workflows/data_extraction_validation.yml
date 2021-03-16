@@ -28,17 +28,17 @@ jobs:
 
       - name: Scrap the report link from the DGS website
         run: |
-          echo DISABLED python .github/workflows/Web_Scrapper_DGS.py
+          python .github/workflows/Web_Scrapper_DGS.py
       - name: Download PDF
         run: |
-          echo DISABLED wget -c -P .github/workflows/ $(cat .github/report_link.txt)
+          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
       - name: Process PDF
         run: |
-          echo DISABLED python .github/workflows/process_report.py
+          python .github/workflows/process_report.py
 
       - name: Run data extraction
         run: |
-          echo DISABLED python .github/workflows/extract_data_arcgis.py
+          python .github/workflows/extract_data_arcgis.py
       - name: Update data about test samples
         run: |
           python .github/workflows/update_amostras.py
