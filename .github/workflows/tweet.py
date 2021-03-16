@@ -189,7 +189,7 @@ def extrair_dados_ultimo_relatorio():
         dados_extraidos["sem_idades"] = True
 
     # diff e médias 7 e 14 dias
-    for k in [1, 7, 14]:
+    for k in [7, 14]:
         df[f"confirmados{k}"] = df.confirmados.diff(k)
         df[f"obitos{k}"] = df.obitos.diff(k)
 
@@ -200,8 +200,8 @@ def extrair_dados_ultimo_relatorio():
     df_amostras.fillna(value=0)
 
     # diff e médias 7 dias
-    for d in [1, 7]:
-        df_amostras[f"amostras{d}"] = df_amostras.amostras.diff(d)
+    for k in [7]:
+        df_amostras[f"amostras{k}"] = df_amostras.amostras.diff(k)
 
     # amostras
     dados_extraidos["dia_amostras"] = df_amostras.index[-1].strftime("%d %b")
