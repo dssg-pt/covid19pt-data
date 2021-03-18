@@ -142,8 +142,8 @@ if __name__ == "__main__":
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "amostras.csv")
     URL = (
-        #"https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Amostras/FeatureServer/0/query"
-        "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/Covid19_Amostras_Temporario/FeatureServer/0/query"
+        "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Amostras/FeatureServer/0/query"
+        #"https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/Covid19_Amostras_Temporario/FeatureServer/0/query"
         "?where=Total_Amostras__Ac+%3E+0"
         "&orderByFields=Data_do_Relatorio+desc"
         "&f=pjson&outFields=*&cacheHint=false"
