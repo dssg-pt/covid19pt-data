@@ -141,8 +141,8 @@ if __name__ == "__main__":
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "vacinas.csv")
     URL = (
-        #"https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query"
-        "https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/Covid19_Total_Vacinados_Temporario/FeatureServer/0/query"        
+        "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query"
+        #"https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/Covid19_Total_Vacinados_Temporario/FeatureServer/0/query"        
         "?where=1%3D1&"
         "&orderByFields=Data+desc"
         "&f=pjson&outFields=*&cacheHint=false"
