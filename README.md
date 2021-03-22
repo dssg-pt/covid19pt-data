@@ -1,4 +1,4 @@
-# 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal 
+# 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
 📅️ **Última actualização**: 23 de Março de 2021, 16:23
 
@@ -14,7 +14,7 @@ Embora a comunicação e partilha de dados por parte do Ministério de Saúde Po
 
 A informação disponibilizada pela Direcção Geral de Saúde (DGS), para além de não ter o nível de granularidade da das autoridades italianas, também não é disponibilizada em formatos abertos e facilmente inspeccionáveis/manipuláveis. Ficam assim dificultadas tarefas de análise, modelação e visualização por parte da comunidade (quer mais informal, quer mais académica/industrial) disposta a colaborar no combate à pandemia com as ferramentas que conhece: as de análise de dados.
 
-❗ O compromisso deste repositório é justamente esse: **todos os dias enquanto esta pandemia durar, o ficheiro `data.csv` será actualizado com a informação mais recente disponibilizada pela Direcção Geral de Saúde**. Esta informação será extraída das fontes de dados da [dashboard](https://github.com/dssg-pt/covid19pt-data/pull/330) assim que disponbilizada (por vezes algumas horas depois do lançamento do relatório). 
+❗ O compromisso deste repositório é justamente esse: **todos os dias enquanto esta pandemia durar, o ficheiro `data.csv` será actualizado com a informação mais recente disponibilizada pela Direcção Geral de Saúde**. Esta informação será extraída das fontes de dados da [dashboard](https://github.com/dssg-pt/covid19pt-data/pull/330) assim que disponbilizada (por vezes algumas horas depois do lançamento do relatório).
 
 A estrutura base deste ficheiro, desenhada para fácil manipulação em Excel/Python/R não mudará, podendo a comunidade analítica considerá-lo um alvo imutável (em termos de localização e estrutura) para, por exemplo, alimentar plataformas de visualização/modelação. De notar que, mediante a evolução do formato dos relatórios de situação, poderão ser adicionadas novas colunas, mantendo-se claro a retrocompatibilidade. Fontes adicionais de dados poderão também ser adicionadas.
 
@@ -55,11 +55,12 @@ O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. Dados extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) e do [relatório diário](https://covid19.min-saude.pt/relatorio-de-situacao/) da DGS.
 + `amostras.csv`: contém dados diários relativos às amostras, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
 + `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS. Nota: estes valores, assim como a dashboard, as imagens publicadas nas redes sociais, e os [relatórios de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) publicados periodicamente, correspondem apenas à população residente no continente, excluindo as ilhas.
++ `vacinas_dataset.csv`: contém dados semanais relativos à vacinação, extraídos do [dataset do relatório de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) da DGS. Nota: mesma que `vacinas.csv`.
 + `data_concelhos.csv`: contém dados acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados, nomeadamente concelhos com menos de 3 confirmados não são reportados). Esta série de dados tem início a 24-03-2020 e tem cadência diária até 04-07-2020, passando a cadência semanal a 14-07-2020, e terminando a 26-10-2020. Vide os próximos dados para o novo formato.
-+ `data_concelhos_14dias.csv` e `data_concelhos_incidencia.csv` contém dados de confirmados do acumulado dos 14 dias anteriores à data do reporte, no primeiro ficheiro, e proporcional a 100k habitantes no segundo ficheiro. Inclui os dados calculados do `data_concelhos.csv` desde que os daddos são semanais, nomeadamente entre 27-07-2020 (correspondendo ao periodo de 13-07-2020 a 26-07-2020) até 26-10-2020, e será actualizado conforme seja disponibilizado pela DGS (semanalmente à segunda-feira).  
++ `data_concelhos_14dias.csv` e `data_concelhos_incidencia.csv` contém dados de confirmados do acumulado dos 14 dias anteriores à data do reporte, no primeiro ficheiro, e proporcional a 100k habitantes no segundo ficheiro. Inclui os dados calculados do `data_concelhos.csv` desde que os daddos são semanais, nomeadamente entre 27-07-2020 (correspondendo ao periodo de 13-07-2020 a 26-07-2020) até 26-10-2020, e será actualizado conforme seja disponibilizado pela DGS (semanalmente à segunda-feira).
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
 + `notebooks/`: contém um _notebook_ Python com um exemplo simples de como carregar e visualizar os dados.
-+ `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta. 
++ `extra/`: contém fontes de dados extras que podem ser usadas para complementar as análises dos restantes dados. As descrições dessas fontes de dados encontram-se dentro de um README nessa pasta.
 
 # 📡 API Rest para os dados portugueses e mundiais
 
@@ -72,13 +73,13 @@ Em conjunto com a [VOST Portugal](https://www.vost.pt), desenvolvemos uma API di
 
 # 📔 Dicionário dos dados
 
-Uma explicação do conteúdo em `data.csv`. 
+Uma explicação do conteúdo em `data.csv`.
 
-📝 _ARS_: Administração Regional de Saúde 
+📝 _ARS_: Administração Regional de Saúde
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
-| `data` | Data da publicação dos dados. | DD-MM-YYYY |
+| `data` | Data da publicação dos dados | DD-MM-YYYY |
 | `data_dados` | Data e hora da recolha dos dados apresentados (quando omitida nos relatórios, assume-se como sendo a data da publicação dos dados). **Geralmente, os dados são reportados até às 24h do dia anterior à `data` (equivalentes às 00h do dia de `data`, sendo este último o formato utilizado).** | DD-MM-YYYY HH:MM|
 | `confirmados` | Casos confirmados      | Inteiro >= 0 |
 | `confirmados_arsnorte` | Casos confirmados na ARS Norte      | Inteiro >= 0 |
@@ -89,7 +90,7 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_acores` | Casos confirmados na Região Autónoma dos Açores | Inteiro >= 0 |
 | `confirmados_madeira` | Casos confirmados na Região Autónoma da Madeira  |  Inteiro >= 0 |
 | `confirmados_estrangeiro` | Casos confirmados no estrangeiro | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador. **A partir de 28-03-2020, este indicador deixou de ser reportados e os respectivos casos imputados às ARS/Regiões de origem.** |
-| `confirmados_novos` | Número de novos casos confirmados comparativamente ao dia anterior. É uma coluna calculada a partir da diferença nos casos `confirmados` entre dias consecutivos. | Inteiro >= 0 |
+| `confirmados_novos` | Número de novos casos confirmados comparativamente ao dia anterior. É uma coluna calculada a partir da diferença nos casos `confirmados` entre dias consecutivos | Inteiro >= 0 |
 | `recuperados` | Total de casos recuperados | Inteiro >= 0 |
 | `obitos` | Total de óbitos | Inteiro >= 0 |
 | `internados` | Número de pacientes COVID-19 internados | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
@@ -118,14 +119,14 @@ Uma explicação do conteúdo em `data.csv`.
 | `confirmados_70_79_m` | Número de casos confirmados do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_f` | Número de casos confirmados do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `confirmados_80_plus_m` | Número de casos confirmados do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldades respiratórias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados. | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `confirmados_f` | Número total de confirmados do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
-| `confirmados_m` | Número total de confirmados do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
+| `sintomas_tosse` | Percentagem de casos infetados que reportaram o sintoma de tosse. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_febre` | Percentagem de casos infetados que reportaram o sintoma de febre. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dificuldade_respiratoria` | Percentagem de casos infetados que reportaram o sintoma de dificuldades respiratórias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_cefaleia` | Percentagem de casos infetados que reportaram o sintoma de cefaleias. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_dores_musculares` | Percentagem de casos infetados que reportaram o sintoma de dores musculares. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `sintomas_fraqueza_generalizada` | Percentagem de casos infetados que reportaram o sintoma de fraqueza generalizada. Conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados | fracção entre [0, 1] ou _vazio_ para os dias em que a DGS não reportava este indicador |
+| `confirmados_f` | Número total de confirmados do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em falta |
+| `confirmados_m` | Número total de confirmados do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em falta |
 | `obitos_arsnorte` | Total de óbitos na ARS Norte      | Inteiro >= 0 |
 | `obitos_arscentro` | Total de óbitos na ARS Centro      | Inteiro >= 0 |
 | `obitos_arslvt` | Total de óbitos na ARS Lisboa e Vale do Tejo      | Inteiro >= 0 |
@@ -160,9 +161,9 @@ Uma explicação do conteúdo em `data.csv`.
 | `obitos_70_79_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 70-79 anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_80_plus_f` | Número total de óbitos de pacientes do sexo feminino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
 | `obitos_80_plus_m` | Número total de óbitos de pacientes do sexo masculino na faixa etária 80+ anos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
-| `obitos_f` | Número total de óbitos de pacientes do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador |
-| `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
-| `confirmados_desconhecidos_m` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador 
+| `obitos_f` | Número total de óbitos de pacientes do sexo feminino | Inteiro >= 0 ou _vazio_ para os dias em falta |
+| `obitos_m` | Número total de óbitos de pacientes do sexo masculino | Inteiro >= 0 ou _vazio_ para os dias em falta
+| `confirmados_desconhecidos_m` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
 | `confirmados_desconhecidos_f` | Número de casos confirmados do sexo masculino com idade desconhecida | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
 | `ativos` | Número de casos ativos | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador
 | `internados_enfermaria` | Número de pacientes COVID-19 internados em Enfermaria (não Unidades de Cuidados Intensivos) | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava este indicador |
@@ -171,43 +172,64 @@ Uma explicação do conteúdo em `data.csv`.
 > Definições exactas de alguns destes termos constam do glossário do [Plano Nacional de Preparação e Resposta à Doença por novo coronavírus (COVID-19)](https://covid19.min-saude.pt/wp-content/uploads/2020/03/Plano-de-Conting%C3%AAncia-Novo-Coronavirus_Covid-19.pdf) (página 65 em diante).
 > A 26/03/2020, a soma do número de pacientes recuperados por ARS/Região Autónoma nem sempre é igual ao número total de recuperados. A DGS reportou os dados desta forma, indicando que o diferencial correspondia a "_21 casos recuperados laboratorialmente_" e a "_aguardar mais informação._"
 
-Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída. 
+Uma outra métrica com potencial interesse científico, o número de casos com base na data de início de sintomas, é também reportada pela DGS. No entanto, é apenas disponibilizado um gráfico de eixos esparsos, o que pode introduzir erros de aproximação na transcrição e comprometer a factualidade dos dados. Por essa razão, esta informação é propositadamente excluída.
 
-Relativamente ao conteúdo em `amostras.csv`:  
+Relativamente ao conteúdo em `amostras.csv`:
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
-| `data` | Data a que se referem os dados. | DD-MM-YYYY |
-| `amostras` | Número total de amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
-| `amostras_novas` | Número diário de novas amostras processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
-| `amostras_pcr` | Número total de amostras PCR processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
-| `amostras_pcr_novas` | Número diário de novas amostras PCR processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
-| `amostras_antigenio` | Número total de amostras Antigénio processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
-| `amostras_antigenio_novas` | Número diário de novas amostras Antigénio processadas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
+| `data` | Data a que se referem os dados | DD-MM-YYYY |
+| `amostras` | Número total de amostras processadas | Inteiro >= 0 ou _vazio_ |
+| `amostras_novas` | Número diário de novas amostras processadas | Inteiro >= 0 ou _vazio_ |
+| `amostras_pcr` | Número total de amostras PCR processadas | Inteiro >= 0 ou _vazio_ |
+| `amostras_pcr_novas` | Número diário de novas amostras PCR processadas | Inteiro >= 0 ou _vazio_ |
+| `amostras_antigenio` | Número total de amostras Antigénio processadas | Inteiro >= 0 ou _vazio_ |
+| `amostras_antigenio_novas` | Número diário de novas amostras Antigénio processadas | Inteiro >= 0 ou _vazio_ |
 
 > Relativamente a estes dados, o [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) dá conta de que _"correspondem ao número de amostras processadas para diagnóstico de SARS-CoV-2 em laboratórios públicos e privados desde o dia 1 de março."_ Dizem ainda que _"Os dados diários após 2 de abril de 2020 ainda estão a ser recolhidos, pelo que os valores no gráfico poderão sofrer alterações."_ De facto, há a possibilidade de, a cada dia, dados referentes a dias anteriores serem alterados, provavelmente pelo facto de a informação relativa ao processamento de amostras ser recebida pela DGS com alguns dias de desfasamento.
 
-Relativamente ao conteúdo em `vacinas.csv`:  
+Relativamente ao conteúdo em `vacinas.csv`:
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
-| `data` | Data a que se referem os dados. | DD-MM-YYYY |
-| `doses` | Número total de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
-| `doses_novas` | Número diário de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
-| `doses1` | Número total de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
-| `doses1_novas` | Número diário de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
-| `doses2` | Número total de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador 
-| `doses2_novas` | Número diário de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ para os dias em que a DGS não reportava directamente este indicador
+| `data` | Data a que se referem os dados | DD-MM-YYYY |
+| `doses` | Número total de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses_novas` | Número diário de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses1` | Número total de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses1_novas` | Número diário de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses2` | Número total de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses2_novas` | Número diário de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
 
-Relativamente ao ficheiro `data_concelhos.csv`: 
+Relativamente ao conteúdo em `vacinas_dataset.csv`:
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
-| `data` | Data a que se referem os dados. | DD-MM-YYYY |
-| `[nome_concelho]` | Número total de casos acumulados | Inteiro >= 0 ou _vazio_ para os dias em que este indicador não é reportado  neste concelho.
+| `data` | Data a que se referem os dados | DD-MM-YYYY |
+| `recebidas` | Número total de doses de vacinas recebidas | Inteiro >= 0 ou _vazio_ |
+| `distribuidas` | Número total de doses de vacinas distribuidas | Inteiro >= 0 ou _vazio_ |
+| `[*]` | As colunas seguintes referem-se aos valores para Portugal continental, sem sufixo, e repetindo depois com cada sufixo por idade [0_17, 18_24, 25_49, 50_64, 65_79, 80+], e por ARS [arsnorte, arscentro, arslvt, arsalentejo, arsalgarve, outro] |
+| `doses` | Número total de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses_novas` | Número diário de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses1` | Número total de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses1_novas` | Número diário de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses2` | Número total de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses2_novas` | Número diário de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `dosesunk` | Número total de doses desconhecidas de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `dosesunk_novas` | Número diário de doses desconhecidas de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses1_perc` | Percentagem de população vacinada com a primeira dose | fracção entre [0, 1] ou _vazio_ |
+| `doses2_perc` | Percentagem de população vacinada com a segunda dose | fracção entre [0, 1] ou _vazio_ |
+| `populacao1` | População a que se referem os dados (doses1 ÷ doses1_perc), a que deverá corresponder ao respectivo valor de população de acordo com INE/PORDATA 2019 | Inteiro >= 0 ou _vazio_ |
+| `populacao2` | População a que se referem os dados (doses2 ÷ doses2_perc), a que deverá corresponder ao respectivo valor de população de acordo com INE/PORDATA 2019 | Inteiro >= 0 ou _vazio_ |
+
+Relativamente ao ficheiro `data_concelhos.csv`:
+
+| Nome da coluna        | Significado           | Possíveis valores  |
+| ------------- |:-------------:| -----:|
+| `data` | Data a que se referem os dados | DD-MM-YYYY |
+| `[nome_concelho]` | Número total de casos acumulados | Inteiro >= 0 ou _vazio_ para os dias em que este indicador não é reportado neste concelho caso seja inferior a 3. |
 
 > Estes dados são extraídos do serviço da [ESRI de ArcGIS](https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/) e podem ter algumas diferenças em relação ao boletim oficial (isto é, concelhos que deixam de aparecer no boletim continuam a aparecer no serviço).
-A partir de 31/03, estes casos passaram a ser reportados pelas Administrações Regionais de Saúde e Regiões Autónomas, sendo que qualquer conclusão com base nos dias anteriores deve ser tomada com cuidado. 
+A partir de 31/03, estes casos passaram a ser reportados pelas Administrações Regionais de Saúde e Regiões Autónomas, sendo que qualquer conclusão com base nos dias anteriores deve ser tomada com cuidado.
 
 
 # 💡 Problemas, inconsistências e melhorias

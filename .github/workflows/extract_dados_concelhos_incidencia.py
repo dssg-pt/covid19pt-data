@@ -6,12 +6,9 @@ import json
 from pathlib import Path
 import sys
 import os
-from util_concelhos import (
-    get_list_municipalities,
-    convert,
-    convert_to_float,
-    convert_to_int,
-)
+from util_concelhos import get_list_municipalities
+from util import convert, convert_to_float, convert_to_int
+
 
 DMY = "%d-%m-%Y"
 
