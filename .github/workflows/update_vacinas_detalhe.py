@@ -109,4 +109,4 @@ if __name__ == "__main__":
   cols = [x for x in data_wide.columns if 'perc' in x]
   data_wide[cols] = data_wide[cols].apply(lambda x: round(x, 10))
   
-  data_wide.to_csv(PATH_TO_ROOT / 'vacinas_dataset.csv', index=False)
+  data_wide.to_csv(PATH_TO_ROOT / 'vacinas_detalhe.csv', index=False)

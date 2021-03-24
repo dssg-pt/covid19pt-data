@@ -40,9 +40,9 @@ jobs:
           path: tests/junit/test-vacinas-results.xml
         if: always()
 
-      - name: Update data about vaccination dataset weekly
+      - name: Update data about vaccination details weekly
         run: |
-          python .github/workflows/update_vacinas_dataset.py
+          python .github/workflows/update_vacinas_detalhe.py
         if: always()
 
       # Until there's some tweet about amostras, just update them anytime something else updates
