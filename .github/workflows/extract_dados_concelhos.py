@@ -3,7 +3,8 @@ import pandas as pd
 import datetime
 import numpy as np
 from pathlib import Path
-from util_concelhos import get_list_municipalities, convert, convert_to_int
+from util_concelhos import get_list_municipalities
+from util import convert, convert_to_int
 
 
 SKIP_DATES = [

@@ -40,6 +40,11 @@ jobs:
           path: tests/junit/test-vacinas-results.xml
         if: always()
 
+      - name: Update data about vaccination details weekly
+        run: |
+          python .github/workflows/update_vacinas_detalhe.py
+        if: always()
+
       # Until there's some tweet about amostras, just update them anytime something else updates
       - name: Update data about test samples
         run: |
@@ -77,7 +82,7 @@ jobs:
 
       - name: Auto publish vaccine data to Twitter
         run: |
-          python .github/workflows/tweet_vacinas.py
+          echo NOT python .github/workflows/tweet_vacinas.py
         env:
           TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
           TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
