@@ -41,3 +41,16 @@ CSV publicado a 2021.03.17 com data 2021.03.08 e dados aparentemente entre 15 e 
 - 2021.03.17-Relatório_Vacinação_5.pdf
 Relatório de Vacinação nº 5 (27/01/2020 a 14/03/2021)
 PDF publicado a 2021.03.17 com data 2021.03.14 e dados aparentemente entre 15 e 16
+
+== 2021.03.24
+- Inclusão das Ilhas
+- 2021.03.24-Dataset_Vacinação_6.csv
+Dataset vacinação (6)
+CSV publicado a 2021.03.24 com data 2021.03.15 e dados desconhecidos
+(1.4M é mais que 1.3M a 23, provavelmente por agora incluir as ilhas)
+RA Açores em mac-roman - iconv -f macroman  -t utf8 
+- 2021.03.24-Relatório_Vacinação_6.pdf
+Relatório de Vacinação nº 6 (27/01/2020 a 21/03/2021)
+PDF publicado a 2021.03.24 com data 2021.03.21 e dados desconhecidos
+
+

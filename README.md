@@ -54,8 +54,8 @@ _Porque tudo começa com bons dados._
 O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. Dados extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) e do [relatório diário](https://covid19.min-saude.pt/relatorio-de-situacao/) da DGS.
 + `amostras.csv`: contém dados diários relativos às amostras, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
-+ `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS. Nota: estes valores, assim como a dashboard, as imagens publicadas nas redes sociais, e os [relatórios de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) publicados periodicamente, correspondem apenas à população residente no continente, excluindo as ilhas.
-+ `vacinas_detalhe.csv`: contém dados detalhados semanais relativos à vacinação, extraídos do [dataset do relatório de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) da DGS. Nota: apenas população residente no continente, vide nota de `vacinas.csv`.
++ `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS. Nota: estes valores, tal como a dashboard e as imagens publicadas nas redes sociais, correspondem apenas à população residente no continente, excluindo as ilhas. O mesmo se aplica nos [relatórios de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) até 17-03-2021, com o relatório #6 de 24-03-2021 passando a incluir as ilhas.
++ `vacinas_detalhe.csv`: contém dados detalhados semanais relativos à vacinação, extraídos do [dataset do relatório de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) da DGS. Nota: até 17-03-2021 incluia apenas população residente no continente, vide nota de `vacinas.csv`.
 + `data_concelhos.csv`: contém dados acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados, nomeadamente concelhos com menos de 3 confirmados não são reportados). Esta série de dados tem início a 24-03-2020 e tem cadência diária até 04-07-2020, passando a cadência semanal a 14-07-2020, e terminando a 26-10-2020. Vide os próximos dados para o novo formato.
 + `data_concelhos_14dias.csv` e `data_concelhos_incidencia.csv` contém dados de confirmados do acumulado dos 14 dias anteriores à data do reporte, no primeiro ficheiro, e proporcional a 100k habitantes no segundo ficheiro. Inclui os dados calculados do `data_concelhos.csv` desde que os daddos são semanais, nomeadamente entre 27-07-2020 (correspondendo ao periodo de 13-07-2020 a 26-07-2020) até 26-10-2020, e será actualizado conforme seja disponibilizado pela DGS (semanalmente à segunda-feira).
 + `archive/`: arquivo de todos os relatórios de situação disponibilizados pela DGS, em formato `.pdf`. Os relatórios são disponibilizados diariamente, desde o dia 03-03-2020.
@@ -200,14 +200,14 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `doses2` | Número total de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
 | `doses2_novas` | Número diário de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
 
-Relativamente ao conteúdo em `vacinas_dataset.csv`:
+Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
 | `data` | Data a que se referem os dados | DD-MM-YYYY |
 | `recebidas` | Número total de doses de vacinas recebidas | Inteiro >= 0 ou _vazio_ |
 | `distribuidas` | Número total de doses de vacinas distribuidas | Inteiro >= 0 ou _vazio_ |
-| `[*]` | As colunas seguintes referem-se aos valores para Portugal continental, sem sufixo, e repetindo depois com cada sufixo por idade [0_17, 18_24, 25_49, 50_64, 65_79, 80+], e por ARS [arsnorte, arscentro, arslvt, arsalentejo, arsalgarve, outro] |
+| `[*]` | As colunas seguintes referem-se aos valores para Portugal continental, sem sufixo, e repetindo depois com cada sufixo por idade [0_17, 18_24, 25_49, 50_64, 65_79, 80+, desconhecido], e por ARS [arsnorte, arscentro, arslvt, arsalentejo, arsalgarve, madeira, açores, outro] |
 | `doses` | Número total de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
 | `doses_novas` | Número diário de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
 | `doses1` | Número total de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
