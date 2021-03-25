@@ -1,0 +1,130 @@
+{
+  "objectIdFieldName" : "FID", 
+  "uniqueIdField" : 
+  {
+    "name" : "FID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdFieldName" : "", 
+  "fields" : [
+    {
+      "name" : "Data", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "Data", 
+      "sqlType" : "sqlTypeTimestamp2", 
+      "length" : 8, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao1", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao1", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao1_Ac", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao1_Ac", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao2", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao2", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Inoculacao2_Ac", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Inoculacao2_Ac", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Vacinados", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Vacinados", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Vacinados_Ac", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "Vacinados_Ac", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Column7", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Column7", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 256, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Column8", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Column8", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 256, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Column9", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Column9", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 256, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Column10", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "Column10", 
+      "sqlType" : "sqlTypeNVarchar", 
+      "length" : 256, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "FID", 
+      "sqlType" : "sqlTypeInteger", 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "features" : [
+    {
+      "attributes" : {
+        "Data" : 1616630400000, 
+        "Inoculacao1" : 973181, 
+        "Inoculacao1_Ac" : 973181, 
+        "Inoculacao2" : 460863, 
+        "Inoculacao2_Ac" : 460863, 
+        "Vacinados" : 1434044, 
+        "Vacinados_Ac" : 1434044, 
+        "Column7" : null, 
+        "Column8" : null, 
+        "Column9" : null, 
+        "Column10" : null, 
+        "FID" : 1
+      }
+    }
+  ]
+}
