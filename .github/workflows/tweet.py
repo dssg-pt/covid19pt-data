@@ -60,6 +60,9 @@ if consumer_key != 'DEBUG':
     access_token = os.environ['TWITTER_ACCESS_TOKEN']
     access_token_secret = os.environ['TWITTER_ACCESS_SECRET']
 
+def r(valor, decimals=0):
+    return round(float(valor), decimals) if decimals else round(float(valor))
+
 def f(valor):
     """ format number in portuguese locale """
     valor = valor if type(valor) == int else float(valor)
@@ -72,9 +75,9 @@ ICONS["positividade"] = [10, 5, 4, 1]
 # incidencia 14 dias por 100k
 ICONS["incidencia14"] = [480, 240, 120, 60]
 # incidencia 7 dias por 100k (metade de incidencia14)
-ICONS["incidencia7"] = [int(x/2) for x in ICONS["incidencia14"]]
+ICONS["incidencia7"] = [r(x/2) for x in ICONS["incidencia14"]]
 # confirmados = incidencia / 14 dias / 100k * população
-ICONS["confirmados"] = [int(float(x) / 14 / 100000 * POP_PT ) for x in ICONS["incidencia14"]]
+ICONS["confirmados"] = [r(float(x) / 14 / 100000 * POP_PT ) for x in ICONS["incidencia14"]]
 
 def icon(valor, tipo):
     return (
@@ -126,47 +129,47 @@ def extrair_dados_ultimo_relatorio():
     dados_extraidos["dia"] = datetime.strptime(hoje, '%d-%m-%Y %H:%M').strftime("%d %b %Y")
 
     ##Casos
-    dados_extraidos["total_casos"]=int(df.confirmados[-1])
-    dados_extraidos["novos_casos"]=int(df.confirmados.diff()[-1])
+    dados_extraidos["total_casos"]=r(df.confirmados[-1])
+    dados_extraidos["novos_casos"]=r(df.confirmados.diff()[-1])
     dados_extraidos["novos_casos_tendencia"]=calc_tendencia(df.confirmados, name='novos_casos')
 
     ##Óbitos
-    dados_extraidos["total_obitos"]=int(df.obitos[-1])
-    dados_extraidos["novos_obitos"]=int(df.obitos.diff()[-1])
+    dados_extraidos["total_obitos"]=r(df.obitos[-1])
+    dados_extraidos["novos_obitos"]=r(df.obitos.diff()[-1])
     dados_extraidos["novos_obitos_tendencia"]=calc_tendencia(df.obitos, name='obitos')
 
     ##Internados
-    dados_extraidos["internados"] = int(df.internados[-1])
+    dados_extraidos["internados"] = r(df.internados[-1])
     dados_extraidos["internados_tendencia"] = calc_tendencia(df.internados, name='internados')
-    dados_extraidos["variacao_internados"]=int(df.internados.diff()[-1])
+    dados_extraidos["variacao_internados"]=r(df.internados.diff()[-1])
 
-    dados_extraidos["uci"] = int(df.internados_uci[-1])
+    dados_extraidos["uci"] = r(df.internados_uci[-1])
     dados_extraidos["uci_tendencia"] = calc_tendencia(df.internados_uci, name='uci')
-    dados_extraidos["variacao_uci"]=int(df.internados_uci.diff()[-1])
+    dados_extraidos["variacao_uci"]=r(df.internados_uci.diff()[-1])
 
     ##Ativos
-    dados_extraidos["total_ativos"]=int(df.ativos[-1])
+    dados_extraidos["total_ativos"]=r(df.ativos[-1])
     dados_extraidos["total_ativos_tendencia"]=calc_tendencia(df.ativos, name='ativos')
-    dados_extraidos["novos_ativos"]=int(df.ativos.diff()[-1])
+    dados_extraidos["novos_ativos"]=r(df.ativos.diff()[-1])
     #Percentagem total
-    dados_extraidos["perc_ativos"] = round(float(100*df.ativos[-1]/df.confirmados[-1]),1)
+    dados_extraidos["perc_ativos"] = r(float(100*df.ativos[-1]/df.confirmados[-1]),1)
 
     ##Recuperados
-    dados_extraidos["total_recuperados"]=int(df.recuperados[-1])
+    dados_extraidos["total_recuperados"]=r(df.recuperados[-1])
     dados_extraidos["total_recuperados_tendencia"]=calc_tendencia(df.recuperados, name='recuperados')
-    dados_extraidos["novos_recuperados"]=int(df.recuperados.diff()[-1])
+    dados_extraidos["novos_recuperados"]=r(df.recuperados.diff()[-1])
     #Percentagem total
-    dados_extraidos["perc_recuperados"] = round(float(100*df.recuperados[-1]/df.confirmados[-1]),1)
+    dados_extraidos["perc_recuperados"] = r(float(100*df.recuperados[-1]/df.confirmados[-1]),1)
 
     ## Regiões
     for k in ['lvt', 'norte', 'algarve', 'centro', 'alentejo', 'acores', 'madeira']:
         k2 = k if k in ['acores', 'madeira'] else f"ars{k}"
-        dados_extraidos[f"novos_casos_{k}"]=int(df[f"confirmados_{k2}"].diff()[-1])
+        dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff()[-1])
         dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], name=f'novos_casos_{k}')
-        dados_extraidos[f"novos_obitos_{k}"]=int(df[f"obitos_{k2}"].diff()[-1])
+        dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff()[-1])
         dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], name=f'novos_obitos_{k}')
-        incidencia14 = int(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_ARS[k]
-        dados_extraidos[f"incidencia_{k}"] = int(incidencia14)
+        incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_ARS[k]
+        dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
         dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, name=f'incidencia_{k}')
         dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
 
@@ -176,12 +179,12 @@ def extrair_dados_ultimo_relatorio():
             df[f"confirmados_{k}"] = df[f"confirmados_{k}_f"] + df[f"confirmados_{k}_m"]
             df[f"obitos_{k}"] = df[f"obitos_{k}_f"] + df[f"obitos_{k}_m"]
             k2 = k
-            dados_extraidos[f"novos_casos_{k}"]=int(df[f"confirmados_{k2}"].diff(idades_diff)[-1])
+            dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff(idades_diff)[-1])
             dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff, name=f'novos_casos_{k}')
-            dados_extraidos[f"novos_obitos_{k}"]=int(df[f"obitos_{k2}"].diff(idades_diff)[-1])
+            dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff(idades_diff)[-1])
             dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], skip=idades_diff, name=f'novos_obitos_{k}')
-            incidencia14 = int(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_IDADE[k]
-            dados_extraidos[f"incidencia_{k}"] = int(incidencia14)
+            incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_IDADE[k]
+            dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
             dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}')
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
     except ValueError as e:
@@ -205,35 +208,35 @@ def extrair_dados_ultimo_relatorio():
 
     # amostras
     dados_extraidos["dia_amostras"] = df_amostras.index[-1].strftime("%d %b")
-    dados_extraidos["novas_amostras_pcr"] = int(df_amostras.amostras_pcr_novas[-1])
+    dados_extraidos["novas_amostras_pcr"] = r(df_amostras.amostras_pcr_novas[-1])
     dados_extraidos["novas_amostras_pcr_tendencia"] = calc_tendencia(df_amostras.amostras_pcr_novas, name='novas_amostras_pcr')
-    dados_extraidos["novas_amostras_ag"] = int(df_amostras.amostras_antigenio_novas[-1])
+    dados_extraidos["novas_amostras_ag"] = r(df_amostras.amostras_antigenio_novas[-1])
     dados_extraidos["novas_amostras_ag_tendencia"] = calc_tendencia(df_amostras.amostras_antigenio_novas, name='novas_amostras_ag')
 
     positividade7 = 100 * float(df[df.index == df_amostras.index[-1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1])
-    dados_extraidos["perc_positividade7"] = round(positividade7, 1)
+    dados_extraidos["perc_positividade7"] = r(positividade7, 1)
     dados_extraidos["icon_positividade7"] = icon(positividade7, "positividade")
     positividade7_anterior = 100 * float(df[df.index == df_amostras.index[-1-1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1-1])
-    dados_extraidos["perc_positividade7_anterior"] = round(positividade7_anterior, 1)
+    dados_extraidos["perc_positividade7_anterior"] = r(positividade7_anterior, 1)
 
     for d in [14, 7]:
         for k in ["confirmados", "obitos"]:
-            # val = int(df[f"{k}{d}"][-1])  # total 14/7 dias, não médias
-            val = int(df[f"{k}{d}"][-1] / d)  # média diária 14/7 dias
-            dados_extraidos[f"novos_{k}{d}"] = val
+            # val = float(df[f"{k}{d}"][-1])  # total 14/7 dias, não médias
+            val = float(df[f"{k}{d}"][-1] / d)  # média diária 14/7 dias
+            dados_extraidos[f"novos_{k}{d}"] = r(val)
             if k == 'confirmados': dados_extraidos[f"icon_{k}{d}"] = icon(val, "confirmados")
             dados_extraidos[f"novos_{k}{d}_tendencia"] = calc_tendencia(df[f"{k}{d}"], diff=None, name=f'novos_{k}{d}')
 
-        val = int(df[f"confirmados{d}"][-1] * 100 * 1000 / POP_PT)
-        dados_extraidos[f"incidencia{d}"] = val
+        val = float(df[f"confirmados{d}"][-1] * 100 * 1000 / POP_PT)
+        dados_extraidos[f"incidencia{d}"] = r(val, 1)
         dados_extraidos[f"icon_incidencia{d}"] = icon(val, f"incidencia{d}")
         dados_extraidos[f"incidencia{d}_tendencia"] = calc_tendencia(df[f"confirmados{d}"], diff=None, name=f'incidencia_{d}')
 
     #----
 
     cols_obitos_lt50 = flatten([ [f"obitos_{x}_f", f"obitos_{x}_m"] for x in idades[0:5]])
-    obitos_lt50 = int(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1).tail(1))
-    obitos_lt50_7d = int(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1).tail(1))
+    obitos_lt50 = r(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1).tail(1))
+    obitos_lt50_7d = r(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1).tail(1))
     dados_extraidos["novos_obitos_lt50"] = obitos_lt50
     dados_extraidos["novos_obitos_lt50_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1), diff=None, skip=idades_diff, name='novos_obitos_lt50')
     dados_extraidos["novos_obitos_lt50_7d"] = obitos_lt50_7d
@@ -243,8 +246,8 @@ def extrair_dados_ultimo_relatorio():
     # cols_confirmados_lt60 = flatten([ [f"confirmados_{x}_f", f"confirmados_{x}_m"] for x in idades[0:7]])
     # cols_confirmados_ge60 = flatten([ [f"confirmados_{x}_f", f"confirmados_{x}_m"] for x in idades[6:]])
 
-    # confge60 = int(df.loc[:, cols_confirmados_lt60].diff(idades_diff).sum(axis=1).tail(1))
-    # conflt60 = int(df.loc[:, cols_confirmados_ge60].diff(idades_diffc).sum(axis=1).tail(1))
+    # confge60 = r(df.loc[:, cols_confirmados_lt60].diff(idades_diff).sum(axis=1).tail(1))
+    # conflt60 = r(df.loc[:, cols_confirmados_ge60].diff(idades_diffc).sum(axis=1).tail(1))
 
     # -----
 

@@ -5,40 +5,41 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    today = "21-03-2021"
+    today = "01-04-2021"
 
     # boletim
-    ativos = 33443
-    recuperados = 767319
-    obitos = 16768
-    vigilancia = 14986
-    confirmados = 817530
-    confirmados_novos = 450
+    ativos = 26543
+    recuperados = 778912
+    obitos = 16859
+    vigilancia = 15950
+    confirmados = 822314
+    confirmados_novos = 592
 
-    confirmados_arsnorte = 329484
-    obitos_arsnorte = 5289
-    confirmados_arscentro = 116661
-    obitos_arscentro = 2986
-    confirmados_arslvt = 309757
-    obitos_arslvt = 7083
-    confirmados_arsalentejo = 28897
-    obitos_arsalentejo = 966
-    confirmados_arsalgarve = 20425
-    obitos_arsalgarve = 351
-    confirmados_acores = 3954
-    obitos_acores = 28
-    confirmados_madeira = 8352
-    obitos_madeira = 65
+    confirmados_arsnorte = 330823
+    obitos_arsnorte = 5305
+    confirmados_arscentro = 117204
+    obitos_arscentro = 2999
+    confirmados_arslvt = 311729
+    obitos_arslvt = 7135
+    confirmados_arsalentejo = 29115
+    obitos_arsalentejo = 970
+    confirmados_arsalgarve = 20739
+    obitos_arsalgarve = 353
+    confirmados_acores = 4072
+    obitos_acores = 29
+    confirmados_madeira = 8632
+    obitos_madeira = 68
 
-    internados = 765
-    internados_uci = 170
+    internados, internados_uci = 538, 129
 
-    confirmados_m = 370138
-    confirmados_f = 447102
-    confirmados_desconhecido = 290
+    confirmados_m, confirmados_f = 372558, 449470
+    confirmados_desconhecido = 286
 
-    obitos_m = 8803
-    obitos_f = 7965
+    obitos_m, obitos_f = 8849, 8010
+
+    incidencia_nacional, incidencia_continente = 65.3, 62.4
+    rt_nacional, rt_continente = 0.94, 0.94
+
 
     # derivaveis
     internados_enfermaria = internados - internados_uci
@@ -199,6 +200,10 @@ if __name__ == "__main__":
                 ativos,
                 internados_enfermaria,
                 confirmados_desconhecido,
+                incidencia_nacional,
+                incidencia_continente,
+                rt_nacional,
+                rt_continente,
             ]
         ]
     )
