@@ -196,6 +196,9 @@ if __name__ == "__main__":
         recuperados_arsalgarve = ""
         recuperados_acores, recuperados_madeira = "", ""
 
+        incidencia_nacional, incidencia_continente = "", ""
+        rt_nacional, rt_continente = "", ""
+
     if not found_date:
         frmt_date = datetime.datetime.utcfromtimestamp(latest_date).strftime("%d-%m-%Y")
         raise Exception(f"Missing date {today}, latest date {frmt_date}")
@@ -290,6 +293,10 @@ if __name__ == "__main__":
         ativos,
         internados_enfermaria,
         confirmados_desconhecidos,
+        incidencia_nacional,
+        incidencia_continente,
+        rt_nacional,
+        rt_continente,
     ]
     new_row = pd.DataFrame([data])
 
