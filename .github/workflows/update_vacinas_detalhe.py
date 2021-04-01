@@ -5,6 +5,7 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import re
+import sys
 from util import convert, convert_to_float, convert_to_int
 
 if __name__ == "__main__":
@@ -106,8 +107,8 @@ if __name__ == "__main__":
   ars = dict([ (k,
       re.sub(' ', '',
       re.sub('lisboa e vale do tejo', 'lvt',
-      re.sub('ra madeira', 'madeira',
-      re.sub('ra açores', 'açores',
+      re.sub('ra.madeira', 'madeira',
+      re.sub('ra.a[cç]ores', 'açores',
       k.lower()
     )))) ) for k in data['região'].unique() ])
 
@@ -137,6 +138,18 @@ if __name__ == "__main__":
 
   # concatena tudo numa wiiiiiide table
   data_wide = pd.concat([data_general, data_ages, data_regional], axis=1)
+
+  # limpa colunas vazias
+  for col in [
+      "doses1_perc_outro", "doses2_perc_outro",
+      "populacao1_outro", "populacao2_outro",
+      "doses1_perc_desconhecido", "doses2_perc_desconhecido",
+      "populacao1_desconhecido", "populacao2_desconhecido",
+    ]:
+    if data_wide[col].sum() != 0:
+      print(f"ERRO: Dados inesperados na coluna {col}")
+      sys.exit(1)
+    data_wide.drop(col, axis=1, inplace=True)
 
   # limpa dados - inteiros,
   #  e floats com 10 casas para prevenir inconsistencias entre plataformas 0.3(3)
