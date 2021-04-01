@@ -53,4 +53,13 @@ RA Açores em mac-roman - iconv -f macroman  -t utf8
 Relatório de Vacinação nº 6 (27/01/2020 a 21/03/2021)
 PDF publicado a 2021.03.24 com data 2021.03.21 e dados desconhecidos
 
+== 2021.03.31
+- 2021.03.31-Dataset_Vacinação_7.csv
+Dataset vacinação (7)
+CSV publicado a 2021.03.31 com data 2021.03.22 e dados desconhecidos
+"RA Açores" em mac-roman passou a "RA_Acores"
+- 2021.03.31-Relatório_Vacinação_7.pdf
+Relatório de Vacinação nº 6 (27/01/2020 a 28/03/2021)
+PDF publicado a 2021.03.31 com data 2021.03.28 e dados desconhecidos
+
 
