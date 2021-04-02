@@ -9,6 +9,13 @@ from pathlib import Path
 
 DEBUG = True
 
+def save_vacinas(data):
+    # Save a copy
+    today = datetime.datetime.today().strftime("%Y.%m.%d")
+    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / f"{today}-vacinas.json")
+    print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
+    with open(PATH_TO_JSON, "w") as f:
+        f.write(data)
 
 def get_vacinas(url):
     if len(sys.argv) > 1:
@@ -20,6 +27,7 @@ def get_vacinas(url):
         r = requests.get(url=url)
         data = r.json()
         print(f"Loading from '{url}'")
+        save_vacinas(r.text)
 
     vacinas = []
     for entry in data["features"]:
