@@ -30,6 +30,9 @@ jobs:
         run: |
           python .github/workflows/update_vacinas.py
         if: always()
+      - name: Add vaccination data backup
+        run: |
+          git add -A extra/vacinas/2*-vacinas.json
       - name: Validate data about vaccination with pytest
         run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
         if: always()
