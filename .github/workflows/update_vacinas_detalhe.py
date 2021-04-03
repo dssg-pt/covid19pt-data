@@ -23,7 +23,7 @@ if __name__ == "__main__":
   # read the "Semi-colon Separated Values"
   data = pd.read_csv(PATH_TO_CSV / last_dataset, sep=";", decimal=',')
 
-  # Until 2021.03.17 the first column was an unnamed numeric index
+  # Until 2021-03-17 the first column was an unnamed numeric index
   if len(data.columns) == 19 and data.columns[0] != 'TYPE':
     data.drop(data.columns[0], axis=1, inplace=True)
 
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     'doses1_perc', 'doses2_perc',
   ]]
 
-  # 2021.03.24 Dataset 6 contém ilhas mas tem datas inconsistentes, com continente
+  # 2021-03-24 Dataset 6 contém ilhas mas tem datas inconsistentes, com continente
   # a dia 15, tal como a Madeira, mas Açores a 17 e região "outro" a 16
   # Isto corrige as 3 datas para 15, para ficar uma linha com dados consistentes
   FIX_DATA = {

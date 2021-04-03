@@ -9,13 +9,19 @@ from pathlib import Path
 
 DEBUG = True
 
-def save_vacinas(data):
+def save_vacinas(text, data):
     # Save a copy
-    today = datetime.datetime.today().strftime("%Y.%m.%d")
-    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / f"{today}-vacinas.json")
+    unix_date = data["features"][0]["attributes"]["Data"] / 1000
+    last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
+    today = datetime.datetime.today().strftime("%Y-%m-%d")
+    if today != last_date:
+        print(f"Vaccines with no new data, today={today} last_date={last_date}")
+        sys.exit(1)
+
+    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / f"{today}_vacinas.json")
     print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
     with open(PATH_TO_JSON, "w") as f:
-        f.write(data)
+        f.write(text)
 
 def get_vacinas(url):
     if len(sys.argv) > 1:
@@ -24,10 +30,10 @@ def get_vacinas(url):
             data = json.loads(f.read())
         print(f"Loading from '{local_file}'")
     else:
+        print(f"Loading from '{url}'")
         r = requests.get(url=url)
         data = r.json()
-        print(f"Loading from '{url}'")
-        save_vacinas(r.text)
+        save_vacinas(r.text, data)
 
     vacinas = []
     for entry in data["features"]:

@@ -23,7 +23,7 @@ POP_PT_2019 = 10295909
 
 # Internacional, estimativa
 # https://www.worldometers.info/world-population/portugal-population/
-# 2021.02.14=10.178.145 2020=10.196.709 2019=10.226.187
+# 2021-02-14=10.178.145 2020=10.196.709 2019=10.226.187
 # Público usa "projeção UN / OWID para 2020" = 10196707
 # https://population.un.org/wpp/
 # POP_PT = 10196709
