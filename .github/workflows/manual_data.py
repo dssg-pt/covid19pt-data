@@ -5,40 +5,40 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    today = "01-04-2021"
+    today = "02-04-2021"
 
     # boletim
-    ativos = 26543
-    recuperados = 778912
-    obitos = 16859
-    vigilancia = 15950
-    confirmados = 822314
-    confirmados_novos = 592
+    ativos = 26339
+    recuperados = 779655
+    obitos = 16868
+    vigilancia = 16121
+    confirmados = 822862
+    confirmados_novos = 548
 
-    confirmados_arsnorte = 330823
+    confirmados_arsnorte = 331002
     obitos_arsnorte = 5305
-    confirmados_arscentro = 117204
-    obitos_arscentro = 2999
-    confirmados_arslvt = 311729
-    obitos_arslvt = 7135
-    confirmados_arsalentejo = 29115
+    confirmados_arscentro = 117277
+    obitos_arscentro = 3000
+    confirmados_arslvt = 311949
+    obitos_arslvt = 7142
+    confirmados_arsalentejo = 29141
     obitos_arsalentejo = 970
-    confirmados_arsalgarve = 20739
-    obitos_arsalgarve = 353
-    confirmados_acores = 4072
+    confirmados_arsalgarve = 20774
+    obitos_arsalgarve = 354
+    confirmados_acores = 4076
     obitos_acores = 29
-    confirmados_madeira = 8632
+    confirmados_madeira = 8643
     obitos_madeira = 68
 
-    internados, internados_uci = 538, 129
+    internados, internados_uci = 513, 131
 
-    confirmados_m, confirmados_f = 372558, 449470
-    confirmados_desconhecido = 286
+    confirmados_m, confirmados_f = 372823, 449754
+    confirmados_desconhecido = 285
 
-    obitos_m, obitos_f = 8849, 8010
+    obitos_m, obitos_f = 8854, 8014
 
-    incidencia_nacional, incidencia_continente = 65.3, 62.4
-    rt_nacional, rt_continente = 0.94, 0.94
+    incidencia_nacional, incidencia_continente = 65.6, 62.9
+    rt_nacional, rt_continente = 0.97, 0.97
 
 
     # derivaveis
