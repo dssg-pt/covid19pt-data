@@ -190,16 +190,27 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
             )
             print(debug)
 
+        doses2, doses1 = df_today.doses2, df_today.doses1
+        doses2_novas, doses1_novas = df_today.doses2_novas, df_today.doses1_novas
+        pop = POP_PT_VACINAR
+
+        # inclusão valor semanal ilhas
+        if False:
+            pop = POP_PT_2019
+            # TODO ler do vacinas_detalhe.csv
+            doses2 += 15614 + 9316
+            doses1 += 30429 + 17367
+            # novas? 7dias?
 
         dados_vacinas.update(
             {
-                'percentagem': float(100 * df_today.doses2 / POP_PT_VACINAR),
-                'n_vacinados': f(int(df_today.doses2)),
-                'novos_vacinados': f(int(df_today.doses2_novas), plus=True),
+                'percentagem': float(100 * doses2 / pop),
+                'n_vacinados': f(int(doses2)),
+                'novos_vacinados': f(int(doses2_novas), plus=True),
                 'tendencia_vacinados': t(int(df_today.doses2_7 - df_yesterday.doses2_7)),
                 'media_7dias': f(int(df_today.doses2_7 / 7)),
-                'n_inoculados': f(int(df_today.doses1) - int(df_today.doses2)),
-                'novos_inoculados': f(int(df_today.doses1_novas), plus=True),
+                'n_inoculados': f(int(doses1) - int(doses2)),
+                'novos_inoculados': f(int(doses1_novas), plus=True),
                 'tendencia_inoculados': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
                 'media_7dias_inoculados': f(int(df_today.doses1_7 / 7)),
             }
