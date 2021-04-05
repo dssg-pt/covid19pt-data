@@ -113,16 +113,29 @@ if __name__ == "__main__":
     )))) ) for k in data['região'].unique() ])
 
   # wide table de colunas por região
-  data_regional = data[ data['tipo'] == 'REGIONAL'].pivot(index='day', columns='região', values=[
-      # 'data',
-      'doses', 'doses_novas', 'doses1', 'doses1_novas', 'doses2', 'doses2_novas',
-      'dosesunk', 'dosesunk_novas',
-      'doses1_perc', 'doses2_perc', 'populacao1', 'populacao2'
-    ])
+  cols_ars = [
+    'doses', 'doses_novas', 'doses1', 'doses1_novas', 'doses2', 'doses2_novas',
+    'dosesunk', 'dosesunk_novas',
+    'doses1_perc', 'doses2_perc', 'populacao1', 'populacao2'
+  ]
+  data_regional = data[ data['tipo'] == 'REGIONAL'].pivot(index='day', columns='região', values=cols_ars)
   cols = list(map(lambda x: f"{x[0]}_{ars.get(x[1], x[1])}", data_regional.columns))
   data_regional.columns = cols
+
+  # data_continente
+  for col in cols_ars:
+    data_regional[f'{col}_continente'] = (
+      data_regional[f'{col}_arsnorte'] + 
+      data_regional[f'{col}_arscentro'] + 
+      data_regional[f'{col}_arslvt'] +
+      data_regional[f'{col}_arsalentejo'] +
+      data_regional[f'{col}_arsalgarve'] +
+      0)
+  cols = data_regional.columns
+
   # reordena por ARS (norte->sul)
   ARS_ORDER = {
+    'continente': 0,
     'arsnorte': 1,
     'arscentro': 2,
     'arslvt': 3,
@@ -137,7 +150,7 @@ if __name__ == "__main__":
   data_regional = data_regional[cols]
 
   # concatena tudo numa wiiiiiide table
-  data_wide = pd.concat([data_general, data_ages, data_regional], axis=1)
+  data_wide = pd.concat([data_general, data_regional, data_ages], axis=1)
 
   # limpa colunas vazias
   for col in [
