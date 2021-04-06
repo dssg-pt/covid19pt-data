@@ -2,6 +2,15 @@
 - YYYY-mm-dd_vacinas.json
 Resultado da API no dia correspondente
 
+
+- YYYY-mm-dd_Dataset_Vacinação_X.csv
+- YYYY-mm-dd_Relatório_Vacinação_X.pdf
+Relatório número X publicado na data YYYY-mm-dd, geralmente quarta-feira
+PDF refere-se ao domingo anterior como último dia de dados.
+CSV refere-se à segunda-feira da semana anterior, o que corresponde ao primeiro dia de dados dessa semana.
+Dados reais correspondem tipicamente a meio do dia seguinte à data do relatório.
+
+
 == 2021-02-16
 - 2021-02-16_Dataset_Vacinação_1_16022021_08022021.csv
 Dataset vacinação (16/02/2021)

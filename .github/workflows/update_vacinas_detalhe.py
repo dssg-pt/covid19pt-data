@@ -1,7 +1,7 @@
 from os import listdir
 from os.path import isfile, join
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
 import re
@@ -66,6 +66,11 @@ if __name__ == "__main__":
   # "day" como timestamp, para ser usado como indice e para merge
   data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%Y'))
   data['data'] = data['data'].apply(lambda x: x.replace("/", "-"))
+
+  # CSV tem data do inicio da semana enquanto o PDF tem data do final da semana
+  data['day'] = data['day'].apply(lambda x: x + timedelta(days=7))
+  data['data'] = data['day'].apply(lambda x: x.strftime('%d-%m-%Y'))
+
   data.sort_values(['day', 'tipo', 'idades', 'região'], inplace=True)
 
   # Calculate population from doses e percentagem
