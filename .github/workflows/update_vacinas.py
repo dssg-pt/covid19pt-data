@@ -16,7 +16,7 @@ def save_vacinas(text, data):
     today = datetime.datetime.today().strftime("%Y-%m-%d")
     if today != last_date:
         print(f"Vaccines with no new data, today={today} last_date={last_date}")
-        sys.exit(1)
+        sys.exit(0)
 
     PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / "diário" / f"{today}_vacinas.json")
     print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
