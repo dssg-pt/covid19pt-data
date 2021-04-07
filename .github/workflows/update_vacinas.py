@@ -16,9 +16,9 @@ def save_vacinas(text, data):
     today = datetime.datetime.today().strftime("%Y-%m-%d")
     if today != last_date:
         print(f"Vaccines with no new data, today={today} last_date={last_date}")
-        sys.exit(1)
+        sys.exit(0)
 
-    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / f"{today}_vacinas.json")
+    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / "diário" / f"{today}_vacinas.json")
     print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
     with open(PATH_TO_JSON, "w") as f:
         f.write(text)
@@ -107,7 +107,7 @@ def fix_vacinas(data):
         ["01-02-2021", "doses1", 269814],
         ["01-02-2021", "doses2", 68752],
         # https://twitter.com/govpt/status/1356596233264132102
-        # json includes doses1 and doses2 - see extra/vacinas/*.json
+        # json includes doses1 and doses2 - see extra/vacinas/diário/*.json
     ]
 
     for fix in FIXES:

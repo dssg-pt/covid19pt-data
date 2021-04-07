@@ -167,6 +167,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
 
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
+    print(f"today={today_f} last_index={df.index[-1]}")
     if df.index[-1] == today and not math.isnan(df.loc[today_f].doses2):
         df["doses1_7"] = df.doses1.diff(7)
         df["doses2_7"] = df.doses2.diff(7)
@@ -237,6 +238,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
         )
         return dados_vacinas
     elif consumer_key == 'DEBUG':
+        # if running locally, also show tweet from yesterday for debugging
         return extrair_dados_vacinas(DAYS_OFFSET+1)
     else:
         return {}

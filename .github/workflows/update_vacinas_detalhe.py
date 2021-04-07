@@ -11,7 +11,7 @@ from util import convert, convert_to_float, convert_to_int
 if __name__ == "__main__":
 
   PATH_TO_ROOT = Path(__file__).resolve().parents[2]
-  PATH_TO_CSV = PATH_TO_ROOT / "extra" / "vacinas"
+  PATH_TO_CSV = PATH_TO_ROOT / "extra" / "vacinas" / "relatório"
 
   OFFSET = 0
 
