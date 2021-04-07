@@ -18,7 +18,7 @@ def save_vacinas(text, data):
         print(f"Vaccines with no new data, today={today} last_date={last_date}")
         sys.exit(1)
 
-    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / f"{today}_vacinas.json")
+    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / "diário" / f"{today}_vacinas.json")
     print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
     with open(PATH_TO_JSON, "w") as f:
         f.write(text)
