@@ -49,9 +49,6 @@ INCLUIR_PREVISAO = False
 EXCLUIR_CONFIRMADOS = True
 PERC_IMUNIDADE = 70
 
-# Inactivo senão "média 7 dias" é baixissimo
-INCLUIR_ILHAS=False
-
 
 def quando_imunidade(df, pop, dados=None):
     vacinados_dia_media = math.floor(df.doses2_7 / 7)
@@ -128,7 +125,7 @@ def autenticar_twitter():
         print(e)
         pass
 
-def extrair_dados_vacinas(DAYS_OFFSET=0):
+def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
     # Começar a compôr o dicionário de dados relevantes
     today = date.today() - timedelta(days=DAYS_OFFSET)
     dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
@@ -140,7 +137,8 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
 
     pop = POP_PT_VACINAR
     suffix = ''
-    if INCLUIR_ILHAS:
+    dados_vacinas.update({'scope': 'nacional' if incluir_ilhas else 'continente'})
+    if incluir_ilhas:
         pop = POP_PT_2019
         suffix = '_nacional'
         # https://github.com/owid/covid-19-data/blob/b796c2144748d2b70fad2a0c8d5d581d2adeab7b/scripts/scripts/vaccinations/automations/batch/portugal.py
@@ -313,8 +311,6 @@ def compor_tweet(dados_vacinas):
     progresso = progress(dados_vacinas['percentagem'], length=15)
     dados_vacinas.update({'progresso': progresso})
 
-    dados_vacinas.update({'scope': 'nacional' if INCLUIR_ILHAS else 'continente'})
-
     # note: "victory hand" is an first generation emoji \u270c and may
     # look tiny and seem to have no spacing, with some fonts, whilst
     # "cross fingers" is a new emoji U+1F91E and looks better.
@@ -336,6 +332,18 @@ def compor_tweet(dados_vacinas):
         "\n"
         "\n➕Todos os dados em: {link_repo}"
     )
+
+    if dados_vacinas['scope'] != 'continente':
+        tweet_message = (
+            "💉População 🇵🇹 ({scope}) vacinada a {data}: \n\n"
+            "{progresso}"
+            "\n"
+            "\n"
+            "✌️{n_vacinados} vacinados"
+            "\n"
+            "\n"
+            "🤞Mais {n_inoculados} inoculados com 1ª dose"
+        )
 
     dados_vacinas["link_repo"] = link_repo
     texto_tweet = tweet_message.format(**dados_vacinas)
@@ -370,8 +378,7 @@ if __name__ == '__main__':
         if consumer_key == 'DEBUG':
             print(f"Tweet 1 {tweet_len(texto_tweet)} '''\n{texto_tweet}\n'''")
 
-            INCLUIR_ILHAS = True
-            dados_vac2 = extrair_dados_vacinas()
+            dados_vac2 = extrair_dados_vacinas(incluir_ilhas=True)
             texto_tweet2 = compor_tweet(dados_vac2)
             print(f"Tweet 2 {tweet_len(texto_tweet2)} '''\n{texto_tweet2}\n'''")
             exit(0)
