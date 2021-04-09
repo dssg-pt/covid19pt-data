@@ -51,19 +51,22 @@ Nota: a 2021-02-24 houve remoção campos:
 Shape_Leng
 
 ### 2021-02-14_concelhos.json
-10-02-2021 a 23-02-2021, publicado a 01-03-2021
+10-02-2021 a 23-02-2021, publicado a 01-03-2021 (segunda-feira)
 
 ### 2021-03-03_concelhos.json
-17-02-2021 a 02-03-2021, publicado a 08-03-2021
+17-02-2021 a 02-03-2021, publicado a 08-03-2021 (segunda-feira)
 
 ### 2021-03-10_concelhos.json
-24-02-2021 a 09-03-2021, publicado a 15-03-2021
+24-02-2021 a 09-03-2021, publicado a 15-03-2021 (segunda-feira)
 
 ### 2021-03-17_concelhos.json
-03-03-2021 a 16-03-2021, publicado a 22-03-2021
+03-03-2021 a 16-03-2021, publicado a 22-03-2021 (segunda-feira)
 
 ### 2021-03-24_concelhos.json
-10-03-2021 a 23-03-2021, publicado a 29-03-2021
+10-03-2021 a 23-03-2021, publicado a 29-03-2021 (segunda-feira)
 
 ### 2021-03-31_concelhos.json
-17-03-2021 a 30-03-2021, publicado a 05-04-2021
+17-03-2021 a 30-03-2021, publicado a 05-04-2021 (segunda-feira)
+
+### 2021-04-07_concelhos.json
+24-03-2021 a 06-04-2021, publicado a 09-04-2021 (sexta-feira)
