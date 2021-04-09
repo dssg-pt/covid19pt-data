@@ -305,7 +305,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
         (" %.2f%%" % (value*100)).replace(".", ",")
     )
 
-def compor_tweet(dados_vacinas):
+def compor_tweet(dados_vacinas, tweet=1):
 
     # Composing the tweet
     progresso = progress(dados_vacinas['percentagem'], length=15)
@@ -330,12 +330,13 @@ def compor_tweet(dados_vacinas):
         " ({novos_inoculados}{tendencia_inoculados},"
         " média 7d {media_7dias_inoculados})"
         "\n"
-        "\n➕Todos os dados em: {link_repo}"
+        "\n[1/2]"
+        #"\n➕Todos os dados em: {link_repo}"
     )
 
     if dados_vacinas['scope'] != 'continente':
         tweet_message = (
-            "💉População 🇵🇹 ({scope}) vacinada a {data}: \n\n"
+            "💉População 🇵🇹 {scope} incluindo ilhas: \n\n"
             "{progresso}"
             "\n"
             "\n"
@@ -343,6 +344,10 @@ def compor_tweet(dados_vacinas):
             "\n"
             "\n"
             "🤞Mais {n_inoculados} inoculados com 1ª dose"
+            "\n"
+            "\n[2/2]"
+            "\n"
+            "\n➕Todos os dados em: {link_repo}"
         )
 
     dados_vacinas["link_repo"] = link_repo
@@ -373,14 +378,13 @@ if __name__ == '__main__':
 
     # If there's new data, tweet
     if dados_vac:
-        texto_tweet = compor_tweet(dados_vac)
+        texto_tweet = compor_tweet(dados_vac, tweet=1)
+        dados_vac_2 = extrair_dados_vacinas(incluir_ilhas=True)
+        texto_tweet_2 = compor_tweet(dados_vac_2, tweet=2)
 
         if consumer_key == 'DEBUG':
             print(f"Tweet 1 {tweet_len(texto_tweet)} '''\n{texto_tweet}\n'''")
-
-            dados_vac2 = extrair_dados_vacinas(incluir_ilhas=True)
-            texto_tweet2 = compor_tweet(dados_vac2)
-            print(f"Tweet 2 {tweet_len(texto_tweet2)} '''\n{texto_tweet2}\n'''")
+            print(f"Tweet 2 {tweet_len(texto_tweet_2)} '''\n{texto_tweet_2}\n'''")
             exit(0)
 
         api = autenticar_twitter()
@@ -393,6 +397,10 @@ if __name__ == '__main__':
         # Update status and create thread
         try:
             tweet1 = api.update_status(status = texto_tweet)
+            tweet1Id = tweet1.id_str
+            if texto_tweet_2:
+                tweet2 = api.update_status(texto_tweet_2, tweet1Id)
+
         except Exception as e:
             print("Erro a enviar o tweet")
             print(e)
