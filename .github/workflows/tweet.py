@@ -286,6 +286,12 @@ def compor_tweets(dados_para_tweets):
         "\n"
         "🫂Novos casos: {novos_casos} | Total: {total_casos}\n"
         "🪦Novos óbitos: {novos_obitos} | Total: {total_obitos}\n"
+    )
+    if not sem_idades:
+        tweet_message += (
+            "⚱️Óbitos ≤49 anos: {novos_obitos_lt50} | 7d: {novos_obitos_lt50_7d}\n"
+        )
+    tweet_message += (
         "\n"
         "🦠Ativos: {total_ativos} ({novos_ativos})\n"
         "🚑Internados: {internados} ({variacao_internados})\n"
@@ -293,10 +299,6 @@ def compor_tweets(dados_para_tweets):
         "\n"
         "👍Recuperados: {perc_recuperados} dos casos\n"
     )
-    if not sem_idades:
-        tweet_message += (
-            "⚱️Óbitos ≤49 anos: {novos_obitos_lt50} | 7d: {novos_obitos_lt50_7d}\n"
-        )
     tweet_message += (
         "\n"
         "[1/{num_tweets}]"
