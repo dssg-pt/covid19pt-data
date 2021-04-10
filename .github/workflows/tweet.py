@@ -258,7 +258,7 @@ def extrair_dados_ultimo_relatorio():
                 print(f"skip {key} {valor} {type(valor)}")
             continue
         dados_extraidos[key] = f(valor)
-        if (key.startswith('variacao_') or key.startswith('novos_')) and valor > 0:
+        if (key.startswith('variacao_') or key.startswith('novos_') or key.startswith('novas_')) and valor > 0:
             dados_extraidos[key] = "+" + dados_extraidos[key]
 
         if key.startswith('perc_'):
