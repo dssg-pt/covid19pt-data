@@ -235,6 +235,16 @@ Relativamente ao ficheiro `data_concelhos.csv`:
 > Estes dados são extraídos do serviço da [ESRI de ArcGIS](https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID19_ConcelhosDiarios/FeatureServer/0/) e podem ter algumas diferenças em relação ao boletim oficial (isto é, concelhos que deixam de aparecer no boletim continuam a aparecer no serviço).
 A partir de 31/03, estes casos passaram a ser reportados pelas Administrações Regionais de Saúde e Regiões Autónomas, sendo que qualquer conclusão com base nos dias anteriores deve ser tomada com cuidado.
 
+Relativamente ao ficheiro `rt.csv`:
+
+| Nome da coluna        | Significado           | Possíveis valores  |
+| ------------- |:-------------:| -----:|
+| `data` | Data a que se referem os dados | DD-MM-YYYY |
+| `rt_[região]` | Rt para a respectiva região | Fração >= 0 ou _vazio_ |
+| `rt_95_inferior_[região]` | Limite inferior Índice Confiança 95% do Rt para a respectiva região | Fração >= 0 ou _vazio_ |
+| `rt_95_superior_[região]` | Limite superior Índice Confiança 95% do Rt para a respectiva região | Fração >= 0 ou _vazio_ |
+
+> Estes dados são extraídos do [Instituto Nacional de Saúde Doutor Ricardo Jorge (INSA)](http://www.insa.min-saude.pt/category/areas-de-atuacao/epidemiologia/covid-19-curva-epidemica-e-parametros-de-transmissibilidade/)
 
 # 💡 Problemas, inconsistências e melhorias
 
