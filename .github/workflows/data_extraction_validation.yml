@@ -43,14 +43,20 @@ jobs:
         run: |
           python .github/workflows/update_amostras.py
         if: always()
+      # Note: on workflow_vacinas + tweet
       # - name: Update data about vaccination
       #   run: |
       #     python .github/workflows/update_vacinas.py
       #   if: always()
+      # Note: there is no more data for daily/weekly municipalities
       # - name: Extract municipality data from arcgis
       #   run: |
       #     python .github/workflows/extract_dados_concelhos.py
       #   if: always()
+      - name: Update data about Rt
+        run: |
+          python .github/workflows/update_rt.py
+        if: always()
 
       - name: Validate data with pytest
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
@@ -58,11 +64,17 @@ jobs:
       - name: Validate data about test samples with pytest
         run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
         if: always()
+      # Note: on workflow_vacinas + tweet
       # - name: Validate data about vaccination with pytest
       #   run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
       #   if: always()
+      # Note: there is no more data for daily/weekly municipalities
       # - name: Validate data about municipalities with pytest
       #   run: pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
+      #   if: always()
+      # TODO
+      # - name: Validate data about Rt with pytest
+      #   run: pytest tests/test_rt.py -s -vv --junitxml=tests/junit/test-rt-results.xml
       #   if: always()
 
       - name: Upload pytest test results
@@ -77,17 +89,26 @@ jobs:
           name: pytest-amostras-results
           path: tests/junit/test-amostras-results.xml
         if: always()
+      # Note: on workflow_vacinas + tweet
       # - name: Upload pytest vaccinations results
       #   uses: actions/upload-artifact@master
       #   with:
       #     name: pytest-vacinas-results
       #     path: tests/junit/test-vacinas-results.xml
       #   if: always()
+      # Note: there is no more data for daily/weekly municipalities
       # - name: Upload pytest municipalities test results
       #   uses: actions/upload-artifact@master
       #   with:
       #     name: pytest-municipalities-results
       #     path: tests/junit/test-concelhos-results.xml
+      #   if: always()
+      # TODO
+      # - name: Upload pytest Rt results
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: pytest-rt-results
+      #     path: tests/junit/test-rt-results.xml
       #   if: always()
 
       - name: Add new PDF file to Git repo (it's the only addition to the reports folder)

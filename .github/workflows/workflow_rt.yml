@@ -26,21 +26,21 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r .github/workflows/requirements.txt
 
-      - name: Update data about test samples
+      - name: Update data about Rt
         run: |
           python .github/workflows/update_rt.py
         if: always()
 
       # TODO
-      #- name: Validate data about test samples with pytest
-      #  run: pytest tests/test_rt.py -s -vv --junitxml=tests/junit/test-rt-results.xml
-      #  if: always()
-      #- name: Upload pytest samples test results
-      #  uses: actions/upload-artifact@master
-      #  with:
-      #    name: pytest-rt-results
-      #    path: tests/junit/test-rt-results.xml
-      #  if: always()
+      # - name: Validate data about Rt with pytest
+      #   run: pytest tests/test_rt.py -s -vv --junitxml=tests/junit/test-rt-results.xml
+      #   if: always()
+      # - name: Upload pytest Rt results
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: pytest-rt-results
+      #     path: tests/junit/test-rt-results.xml
+      #   if: always()
 
       - name: Commit all changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
