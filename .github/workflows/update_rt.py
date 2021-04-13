@@ -36,7 +36,10 @@ if __name__ == "__main__":
           df = data
         else:
           df = pd.merge(df, data, how="outer", on=['Data'])
-
+    
+    # Rename index column 'Data' to 'data'
+    df.index.names = ['data']
+        
     # save to .csv
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "rt.csv")
     df.to_csv(PATH_TO_CSV, index=True, line_terminator="\n")
