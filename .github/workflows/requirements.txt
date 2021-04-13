@@ -6,3 +6,4 @@ textract
 requests
 datetime
 tweepy
+openpyxl

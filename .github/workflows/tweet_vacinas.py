@@ -23,7 +23,7 @@ POP_PT_2019 = 10295909
 
 # Internacional, estimativa
 # https://www.worldometers.info/world-population/portugal-population/
-# 2021.02.14=10.178.145 2020=10.196.709 2019=10.226.187
+# 2021-02-14=10.178.145 2020=10.196.709 2019=10.226.187
 # Público usa "projeção UN / OWID para 2020" = 10196707
 # https://population.un.org/wpp/
 # POP_PT = 10196709
@@ -45,8 +45,10 @@ POP_ADULTA = (
      655739 # 80+
 )
 # Excluir confirmados (assume que já estão imunes)
+INCLUIR_PREVISAO = False
 EXCLUIR_CONFIRMADOS = True
 PERC_IMUNIDADE = 70
+
 
 def quando_imunidade(df, pop, dados=None):
     vacinados_dia_media = math.floor(df.doses2_7 / 7)
@@ -77,7 +79,7 @@ def quando_imunidade(df, pop, dados=None):
     dias = math.ceil(falta_vacinar / media_dia)
     quando = date.today() + timedelta(days=dias)
     quando_f = quando.strftime("%-d de %B de %Y") # ('%Y-%m-%d')
-    if True or consumer_key == 'DEBUG':
+    if consumer_key == 'DEBUG':
         print(
             f"quando_imunidade: dados_dia={str(df.name)[:10]}"
             f" vacinados_dia_media={f(vacinados_dia_media)}"
@@ -123,7 +125,7 @@ def autenticar_twitter():
         print(e)
         pass
 
-def extrair_dados_vacinas(DAYS_OFFSET=0):
+def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
     # Começar a compôr o dicionário de dados relevantes
     today = date.today() - timedelta(days=DAYS_OFFSET)
     dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
@@ -133,8 +135,37 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
     file=path / 'vacinas.csv'
     df = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
 
+    pop = POP_PT_VACINAR
+    suffix = ''
+    dados_vacinas.update({'scope': 'nacional' if incluir_ilhas else 'continente'})
+    if incluir_ilhas:
+        pop = POP_PT_2019
+        suffix = '_nacional'
+        # https://github.com/owid/covid-19-data/blob/b796c2144748d2b70fad2a0c8d5d581d2adeab7b/scripts/scripts/vaccinations/automations/batch/portugal.py
+        source_islands=path / 'vacinas_detalhe.csv'
+        df_islands = pd.read_csv(source_islands, 
+            parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True,
+            usecols=[
+                "data", "doses_açores", "doses1_açores", "doses2_açores",
+                "doses_madeira", "doses1_madeira", "doses2_madeira"
+            ])
+
+        df = pd.merge(df, df_islands, how="outer", on="data")
+        df = df.ffill()
+        df = df.assign(
+            doses_nacional=df.doses + df.doses_madeira + df.doses_açores,
+            doses1_nacional=df.doses1 + df.doses1_madeira + df.doses1_açores,
+            doses2_nacional=df.doses2 + df.doses2_madeira + df.doses2_açores,
+        )
+
+        df['doses1_nacional_novas'] = df['doses1_nacional'].diff(1)
+        df['doses2_nacional_novas'] = df['doses2_nacional'].diff(1)
+        df['doses1_nacional_7'] = df['doses1_nacional'].diff(7).div(7)
+        df['doses2_nacional_7'] = df['doses2_nacional'].diff(7).div(7)
+
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
+    print(f"today={today_f} last_index={df.index[-1]}")
     if df.index[-1] == today and not math.isnan(df.loc[today_f].doses2):
         df["doses1_7"] = df.doses1.diff(7)
         df["doses2_7"] = df.doses2.diff(7)
@@ -143,69 +174,69 @@ def extrair_dados_vacinas(DAYS_OFFSET=0):
         yesterday_f = yesterday.strftime('%Y-%m-%d')
         df_yesterday = df.loc[yesterday_f]
 
+        if INCLUIR_PREVISAO:
 
-        if EXCLUIR_CONFIRMADOS:
-            # Aceder ao .csv dos dados
-            file=path / 'data.csv'
-            df_dados = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
-
-        pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
-        dados = None
-
-        if EXCLUIR_CONFIRMADOS:
-            dados = df_dados.iloc[[-2]]
-        quando_ontem, falta_vacinar = quando_imunidade(df_yesterday, pop_para_vacinar, dados)
-
-        if EXCLUIR_CONFIRMADOS:
-            dados = df_dados.iloc[[-1]]
-        quando, falta_vacinar = quando_imunidade(df_today, pop_para_vacinar, dados)
-
-        # TEMP PREVISÃO 70
-        if True or consumer_key == 'DEBUG':
-            debug = (
-                f"pop={f(POP_PT_2019)}"
-                f" pop_vacinar={f(POP_PT_VACINAR)}"
-                f" ({f(round(100 * POP_PT_VACINAR / POP_PT_2019, 2))}%)"
-                f" pop_adulta={f(POP_ADULTA)}"
-                f" ({f(round(100 * POP_ADULTA / POP_PT_2019, 2))}%)"
-            )
             if EXCLUIR_CONFIRMADOS:
-                debug += (
-                    f" confirmados={f(int(dados.confirmados))}"
-                    f" ({f(round(100 * dados.confirmados / POP_PT_2019, 2))}%)"
-                    f" ativos={f(int(dados.ativos))}"
-                    f" ({f(round(100 * dados.ativos / POP_PT_2019, 2))}%)"
-                    f" recuperados={f(int(dados.recuperados))}"
-                    f" ({f(round(100 * dados.recuperados / POP_PT_2019, 2))}%)"
-                    f" obitos={f(int(dados.obitos))}"
-                    f" ({f(round(100*dados.obitos/POP_PT_2019, 2))}%)"
+                # Aceder ao .csv dos dados
+                file=path / 'data.csv'
+                df_dados = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
+
+            pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
+            dados = None
+
+            if EXCLUIR_CONFIRMADOS:
+                dados = df_dados.iloc[[-2]]
+            quando_ontem, falta_vacinar = quando_imunidade(df_yesterday, pop_para_vacinar, dados)
+
+            if EXCLUIR_CONFIRMADOS:
+                dados = df_dados.iloc[[-1]]
+            quando, falta_vacinar = quando_imunidade(df_today, pop_para_vacinar, dados)
+            if consumer_key == 'DEBUG':
+                debug = (
+                    f"pop={f(POP_PT_2019)}"
+                    f" pop_vacinar={f(POP_PT_VACINAR)}"
+                    f" ({f(round(100 * POP_PT_VACINAR / POP_PT_2019, 2))}%)"
+                    f" pop_adulta={f(POP_ADULTA)}"
+                    f" ({f(round(100 * POP_ADULTA / POP_PT_2019, 2))}%)"
                 )
-            debug += (
-                f" para_vacinar={f(pop_para_vacinar)}"
-                f" ({f(round(100 * pop_para_vacinar / POP_PT_2019, 2))}%)"
-                f" falta_vacinar={f(falta_vacinar)}"
-                f" ({f(round(100 * falta_vacinar / POP_PT_2019, 2))}%)"
-                f" quando_ontem={quando_ontem.strftime('%-d de %B de %Y')}"
-                f" quando={quando.strftime('%-d de %B de %Y')}"
-            )
-            print(debug)
+                if EXCLUIR_CONFIRMADOS:
+                    debug += (
+                        f" confirmados={f(int(dados.confirmados))}"
+                        f" ({f(round(100 * dados.confirmados / POP_PT_2019, 2))}%)"
+                        f" ativos={f(int(dados.ativos))}"
+                        f" ({f(round(100 * dados.ativos / POP_PT_2019, 2))}%)"
+                        f" recuperados={f(int(dados.recuperados))}"
+                        f" ({f(round(100 * dados.recuperados / POP_PT_2019, 2))}%)"
+                        f" obitos={f(int(dados.obitos))}"
+                        f" ({f(round(100*dados.obitos/POP_PT_2019, 2))}%)"
+                    )
+                debug += (
+                    f" para_vacinar={f(pop_para_vacinar)}"
+                    f" ({f(round(100 * pop_para_vacinar / POP_PT_2019, 2))}%)"
+                    f" falta_vacinar={f(falta_vacinar)}"
+                    f" ({f(round(100 * falta_vacinar / POP_PT_2019, 2))}%)"
+                    f" quando_ontem={quando_ontem.strftime('%-d de %B de %Y')}"
+                    f" quando={quando.strftime('%-d de %B de %Y')}"
+                )
+                print(debug)
 
 
         dados_vacinas.update(
             {
-                'percentagem': float(100 * df_today.doses2 / POP_PT_VACINAR),
-                'n_vacinados': f(int(df_today.doses2)),
-                'novos_vacinados': f(int(df_today.doses2_novas), plus=True),
-                'tendencia_vacinados': t(int(df_today.doses2_7 - df_yesterday.doses2_7)),
-                'media_7dias': f(int(df_today.doses2_7 / 7)),
-                'n_inoculados': f(int(df_today.doses1) - int(df_today.doses2)),
-                'novos_inoculados': f(int(df_today.doses1_novas), plus=True),
-                'tendencia_inoculados': t(int(df_today.doses1_7 - df_yesterday.doses1_7)),
-                'media_7dias_inoculados': f(int(df_today.doses1_7 / 7)),
+                'percentagem': float(100 * df_today[f'doses2{suffix}'] / pop),
+                'n_vacinados': f(int(df_today[f'doses2{suffix}'])),
+                'novos_vacinados': f(int(df_today[f'doses2{suffix}_novas']), plus=True),
+                'tendencia_vacinados': t(int(df_today[f'doses2{suffix}_7'] - df_yesterday[f'doses2{suffix}_7'])),
+                'media_7dias': f(int(df_today[f'doses2{suffix}_7'] / 7)),
+                'n_inoculados': f(int(df_today[f'doses1{suffix}']) - int(df_today[f'doses2{suffix}'])),
+                'novos_inoculados': f(int(df_today[f'doses1{suffix}_novas']), plus=True),
+                'tendencia_inoculados': t(int(df_today[f'doses1{suffix}_7'] - df_yesterday[f'doses1{suffix}_7'])),
+                'media_7dias_inoculados': f(int(df_today[f'doses1{suffix}_7'] / 7)),
             }
         )
         return dados_vacinas
     elif consumer_key == 'DEBUG':
+        # if running locally, also show tweet from yesterday for debugging
         return extrair_dados_vacinas(DAYS_OFFSET+1)
     else:
         return {}
@@ -274,7 +305,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
         (" %.2f%%" % (value*100)).replace(".", ",")
     )
 
-def compor_tweet(dados_vacinas):
+def compor_tweet(dados_vacinas, tweet=1):
 
     # Composing the tweet
     progresso = progress(dados_vacinas['percentagem'], length=15)
@@ -286,7 +317,7 @@ def compor_tweet(dados_vacinas):
     # On twitter both will be ok.
 
     tweet_message = (
-        "💉População 🇵🇹 (continente) vacinada a {data}: \n\n"
+        "💉População 🇵🇹 ({scope}) vacinada a {data}: \n\n"
         "{progresso}"
         "\n"
         "\n"
@@ -299,8 +330,26 @@ def compor_tweet(dados_vacinas):
         " ({novos_inoculados}{tendencia_inoculados},"
         " média 7 dias {media_7dias_inoculados})"
         "\n"
-        "\n➕Todos os dados em: {link_repo}"
+        "\n#vacinaçãoCovid19 #COVID19PT\n"
+        "\n[1/2]"
+        #"\n➕Todos os dados em: {link_repo}"
     )
+
+    if dados_vacinas['scope'] != 'continente':
+        tweet_message = (
+            "💉População 🇵🇹 {scope} incluindo ilhas: \n\n"
+            "{progresso}"
+            "\n"
+            "\n"
+            "✌️{n_vacinados} vacinados"
+            "\n"
+            "\n"
+            "🤞Mais {n_inoculados} inoculados com 1ª dose"
+            "\n"
+            "\n[2/2]"
+            "\n"
+            "\n➕Todos os dados em: {link_repo}"
+        )
 
     dados_vacinas["link_repo"] = link_repo
     texto_tweet = tweet_message.format(**dados_vacinas)
@@ -330,10 +379,13 @@ if __name__ == '__main__':
 
     # If there's new data, tweet
     if dados_vac:
-        texto_tweet = compor_tweet(dados_vac)
+        texto_tweet = compor_tweet(dados_vac, tweet=1)
+        dados_vac_2 = extrair_dados_vacinas(incluir_ilhas=True)
+        texto_tweet_2 = compor_tweet(dados_vac_2, tweet=2)
 
         if consumer_key == 'DEBUG':
             print(f"Tweet 1 {tweet_len(texto_tweet)} '''\n{texto_tweet}\n'''")
+            print(f"Tweet 2 {tweet_len(texto_tweet_2)} '''\n{texto_tweet_2}\n'''")
             exit(0)
 
         api = autenticar_twitter()
@@ -346,6 +398,10 @@ if __name__ == '__main__':
         # Update status and create thread
         try:
             tweet1 = api.update_status(status = texto_tweet)
+            tweet1Id = tweet1.id_str
+            if texto_tweet_2:
+                tweet2 = api.update_status(texto_tweet_2, tweet1Id)
+
         except Exception as e:
             print("Erro a enviar o tweet")
             print(e)

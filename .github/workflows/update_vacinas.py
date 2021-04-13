@@ -9,6 +9,39 @@ from pathlib import Path
 
 DEBUG = True
 
+def fix_date(unix_date, doses_total):
+    # hack data incorreta dia 31-01 dizia 01-02
+    if unix_date == 1612137600 and doses_total == 336771:
+        return unix_date - 86400
+    # hack data incorreta dia 06-02 dizia 05-02
+    if unix_date == 1612483200 and doses_total == 394088:
+        return unix_date + 86400
+    # hack data incorreta dia 19-02 dizia 18-02
+    if unix_date == 1613606400 and doses_total == 618636:
+        return unix_date + 86400
+    # hack data incorreta dia 19-02 dizia 18-02
+    if unix_date == 1613692800 and doses_total == 656411:
+        return unix_date + 86400
+    # hack data incorreta dia 11-04 dizia 10-04
+    if unix_date == 1618012800 and doses_total == 2121998:
+        return unix_date + 86400
+    return unix_date
+
+def save_vacinas(text, data):
+    # Save a copy
+    attributes = data["features"][0]["attributes"]
+    doses_total = attributes["Vacinados_Ac"]
+    unix_date = fix_date(attributes["Data"] / 1000, doses_total)
+    last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
+    today = datetime.datetime.today().strftime("%Y-%m-%d")
+    if today != last_date:
+        print(f"Vaccines with no new data, today={today} last_date={last_date}")
+        sys.exit(0)
+
+    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / "diário" / f"{today}_vacinas.json")
+    print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
+    with open(PATH_TO_JSON, "w") as f:
+        f.write(text)
 
 def get_vacinas(url):
     if len(sys.argv) > 1:
@@ -17,37 +50,26 @@ def get_vacinas(url):
             data = json.loads(f.read())
         print(f"Loading from '{local_file}'")
     else:
+        print(f"Loading from '{url}'")
         r = requests.get(url=url)
         data = r.json()
-        print(f"Loading from '{url}'")
+        save_vacinas(r.text, data)
 
     vacinas = []
     for entry in data["features"]:
-        unix_date = entry["attributes"]["Data"] / 1000
+        attributes = entry["attributes"]
+        doses_total = attributes.get("Vacinados_Ac", None)
+        doses_novas = attributes.get("Vacinados", None)
+        doses1_total = attributes.get("Inoculacao1_Ac", None)
+        doses1_novas = attributes.get("Inoculacao1", None)
+        doses2_total = attributes.get("Inoculacao2_Ac", None)
+        doses2_novas = attributes.get("Inoculacao2", None)
+        unix_date = fix_date(attributes["Data"] / 1000, doses_total)
         frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
-        doses_total = entry["attributes"].get("Vacinados_Ac", None)
-        doses_novas = entry["attributes"].get("Vacinados", None)
-        doses1_total = entry["attributes"].get("Inoculacao1_Ac", None)
-        doses1_novas = entry["attributes"].get("Inoculacao1", None)
-        doses2_total = entry["attributes"].get("Inoculacao2_Ac", None)
-        doses2_novas = entry["attributes"].get("Inoculacao2", None)
 
         # 26-01-2021 to ? only have Vacinados without novas nor history
         if doses_novas == doses_total and doses1_total is None:
             doses_novas = None
-
-        # hack data incorreta dia 31-01 dizia 01-02
-        if unix_date == 1612137600 and doses_total == 336771:
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date - 86400)
-        # hack data incorreta dia 06-02 dizia 05-02
-        if unix_date == 1612483200 and doses_total == 394088:
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
-        # hack data incorreta dia 19-02 dizia 18-02
-        if unix_date == 1613606400 and doses_total == 618636:
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
-        # hack data incorreta dia 19-02 dizia 18-02
-        if unix_date == 1613692800 and doses_total == 656411:
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date + 86400)
 
         vacinas.append(
             [
@@ -93,7 +115,7 @@ def fix_vacinas(data):
         ["01-02-2021", "doses1", 269814],
         ["01-02-2021", "doses2", 68752],
         # https://twitter.com/govpt/status/1356596233264132102
-        # json includes doses1 and doses2 - see extra/vacinas/*.json
+        # json includes doses1 and doses2 - see extra/vacinas/diário/*.json
     ]
 
     for fix in FIXES:
