@@ -29,7 +29,7 @@
 ### Relatório 2021-02-16
 - `2021-02-16_Dataset_Vacinação_1_16022021_08022021.csv`
 - `Dataset vacinação (16/02/2021)`
-- CSV publicado a `2021-02-16` com data `2021-02-08` e dados aparentemente entre 15 e 16 
+- CSV publicado a `2021-02-16` com data `2021-02-08` e dados aparentemente entre 15 e 16
 - `2021-02-16_Relatório_Vacinação_1_27122020_14022021.pdf`
 - `Relatório de Vacinação nº 1 (27/12/2020 a 14/02/2021)`
 - PDF publicado a `2021-02-16` com data `2021-02-14` e dados aparentemente entre 15 e 16
@@ -75,7 +75,7 @@
 - `Dataset vacinação (6)`
 - CSV publicado a `2021-03-24` com data `2021-03-15` e dados desconhecidos
 - (1,4M é mais que 1,3M a 23, provavelmente por agora incluir as ilhas)
-- RA Açores em `mac-roman` - `iconv -f macroman -t utf8` ! 
+- RA Açores em `mac-roman` - `iconv -f macroman -t utf8` !
 - `2021-03-24_Relatório_Vacinação_6.pdf`
 - `Relatório de Vacinação nº 6 (27/01/2020 a 21/03/2021)`
 - PDF publicado a `2021-03-24` com data `2021-03-21` e dados desconhecidos
@@ -105,3 +105,11 @@
 - `Relatório de Vacinação nº 8 (27/01/2020 a 04/04/2021)`
 - PDF publicado a `2021-04-07` com data `2021-04-04` e dados desconhecidos
 - `Relatório dia 04 dose1 = 1 334 338 dose2 = 579 069`
+
+### Relatório 2021-04-14
+- `2021-04-14_Dataset_Vacinação_9.csv`
+- `Dataset vacinação (9)`
+- CSV publicado a `2021-04-14` com data `2021-04-11` e dados desconhecidos
+- `2021-04-14_Relatório_Vacinação_9.pdf`
+- `Relatório de Vacinação nº 9 (27/01/2020 a 11/04/2021)`
+- PDF publicado a `2021-04-14` com data `2021-04-11` e dados desconhecidos
