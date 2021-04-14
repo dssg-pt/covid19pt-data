@@ -143,7 +143,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
         suffix = '_nacional'
         # https://github.com/owid/covid-19-data/blob/b796c2144748d2b70fad2a0c8d5d581d2adeab7b/scripts/scripts/vaccinations/automations/batch/portugal.py
         source_islands=path / 'vacinas_detalhe.csv'
-        df_islands = pd.read_csv(source_islands, 
+        df_islands = pd.read_csv(source_islands,
             parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True,
             usecols=[
                 "data", "doses_açores", "doses1_açores", "doses2_açores",
@@ -224,6 +224,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
         dados_vacinas.update(
             {
                 'percentagem': float(100 * df_today[f'doses2{suffix}'] / pop),
+                'n_total': f(int(df_today[f'doses1{suffix}'])),
                 'n_vacinados': f(int(df_today[f'doses2{suffix}'])),
                 'novos_vacinados': f(int(df_today[f'doses2{suffix}_novas']), plus=True),
                 'tendencia_vacinados': t(int(df_today[f'doses2{suffix}_7'] - df_yesterday[f'doses2{suffix}_7'])),
@@ -316,40 +317,40 @@ def compor_tweet(dados_vacinas, tweet=1):
     # "cross fingers" is a new emoji U+1F91E and looks better.
     # On twitter both will be ok.
 
-    tweet_message = (
-        "💉População 🇵🇹 ({scope}) vacinada a {data}: \n\n"
-        "{progresso}"
-        "\n"
-        "\n"
-        "✌️{n_vacinados} vacinados"
-        " ({novos_vacinados}{tendencia_vacinados},"
-        " média 7 dias {media_7dias})"
-        "\n"
-        "\n"
-        "🤞Mais {n_inoculados} inoculados com 1ª dose"
-        " ({novos_inoculados}{tendencia_inoculados},"
-        " média 7 dias {media_7dias_inoculados})"
-        "\n"
-        "\n#vacinaçãoCovid19 #COVID19PT\n"
-        "\n[1/2]"
-        #"\n➕Todos os dados em: {link_repo}"
-    )
+    nacional = dados_vacinas['scope'] != 'continente'
 
-    if dados_vacinas['scope'] != 'continente':
-        tweet_message = (
-            "💉População 🇵🇹 {scope} incluindo ilhas: \n\n"
-            "{progresso}"
-            "\n"
-            "\n"
-            "✌️{n_vacinados} vacinados"
-            "\n"
-            "\n"
-            "🤞Mais {n_inoculados} inoculados com 1ª dose"
-            "\n"
-            "\n[2/2]"
-            "\n"
-            "\n➕Todos os dados em: {link_repo}"
-        )
+    tweet_message = ""
+
+    tweet_message += (
+        "💉População 🇵🇹 {scope} incluindo ilhas:"
+    ) if nacional else (
+        "💉População 🇵🇹 ({scope}) vacinada a {data}:"
+    )
+    tweet_message += (
+        "\n\n{progresso}"
+        "\n\n✌️{n_vacinados} vacinados"
+    )
+    tweet_message += "" if nacional else (
+        " ({novos_vacinados}{tendencia_vacinados},"
+        " média 7d {media_7dias})"
+    )
+    tweet_message += (
+        "\n\n🤞Mais {n_inoculados} com 1ª dose"
+    )
+    tweet_message += "" if nacional else (
+        " ({novos_inoculados}{tendencia_inoculados},"
+        " média 7d {media_7dias_inoculados})"
+    )
+    tweet_message += (
+        "\n\n👍Total {n_total} inoculados"
+    )
+    tweet_message += (
+        "\n\n[2/2]"
+        "\n\n➕Todos os dados em: {link_repo}"
+    ) if nacional else (
+        "\n\n#vacinaçãoCovid19 #COVID19PT"
+        "\n\n[1/2]"
+    )
 
     dados_vacinas["link_repo"] = link_repo
     texto_tweet = tweet_message.format(**dados_vacinas)
