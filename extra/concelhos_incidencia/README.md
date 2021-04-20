@@ -70,3 +70,6 @@ Shape_Leng
 
 ### 2021-04-07_concelhos.json
 24-03-2021 a 06-04-2021, publicado a 09-04-2021 (sexta-feira)
+
+### 2021-04-14_concelhos.json
+31-03-2021 a 13-04-2021, publicado a 16-04-2021 (sexta-feira)
