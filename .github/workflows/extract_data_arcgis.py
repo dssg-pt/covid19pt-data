@@ -203,6 +203,19 @@ if __name__ == "__main__":
         frmt_date = datetime.datetime.utcfromtimestamp(latest_date).strftime("%d-%m-%Y")
         raise Exception(f"Missing date {today}, latest date {frmt_date}")
 
+    try:
+        TEMP_CSV = str(Path(__file__).resolve().parents[2] / ".github" / "temp.csv")
+        temp = pd.read_csv(TEMP_CSV)
+        temp_today = temp.loc[temp.data == today]
+        if len(temp_today):
+            incidencia_nacional = float(temp_today['incidencia_nacional'])
+            incidencia_continente = float(temp_today['incidencia_continente'])
+            rt_nacional = float(temp_today['rt_nacional'])
+            rt_continente = float(temp_today['rt_continente'])
+            print(f"Updating temp data for {today}: {temp_today}")
+    except FileNotFoundError:
+        pass
+
     data = [
         today,
         "{} 00:00".format(today),

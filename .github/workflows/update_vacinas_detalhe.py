@@ -64,7 +64,11 @@ if __name__ == "__main__":
   data['data'] = data['data'].apply(lambda x: FIX_DATA.get(x, x))
 
   # "day" como timestamp, para ser usado como indice e para merge
-  data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%Y'))
+  try:
+    data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%Y'))
+  except ValueError:
+    # 2021-04-29 tem ano com 2 digitos "21"
+    data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%y'))
   data['data'] = data['data'].apply(lambda x: x.replace("/", "-"))
 
   # CSV tem data do inicio da semana enquanto o PDF tem data do final da semana
