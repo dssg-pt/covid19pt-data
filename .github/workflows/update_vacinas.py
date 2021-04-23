@@ -25,8 +25,11 @@ def fix_date(unix_date, doses_total):
     # hack data incorreta dia 11-04 dizia 10-04
     if unix_date == 1618012800 and doses_total == 2121998:
         return unix_date + 86400
-    # hack data incorreta dia 22-04 dizia 10-04
+    # hack data incorreta dia 22-04 dizia 21-04
     if unix_date == 1618963200 and doses_total == 2711174:
+        return unix_date + 86400
+    # hack data incorreta dia 23-04 dizia 22-04
+    if unix_date == 1619049600 and doses_total == 2778982:
         return unix_date + 86400
     return unix_date
 
