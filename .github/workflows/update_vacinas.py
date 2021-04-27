@@ -9,7 +9,7 @@ from pathlib import Path
 
 DEBUG = True
 
-def fix_date(unix_date, doses_total):
+def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
     # hack data incorreta dia 31-01 dizia 01-02
     if unix_date == 1612137600 and doses_total == 336771:
         return unix_date - 86400
@@ -25,16 +25,30 @@ def fix_date(unix_date, doses_total):
     # hack data incorreta dia 11-04 dizia 10-04
     if unix_date == 1618012800 and doses_total == 2121998:
         return unix_date + 86400
-    # hack data incorreta dia 22-04 dizia 10-04
+    # hack data incorreta dia 22-04 dizia 21-04
     if unix_date == 1618963200 and doses_total == 2711174:
         return unix_date + 86400
+    # hack data incorreta dia 23-04 dizia 22-04
+    if unix_date == 1619049600 and doses_total == 2778982:
+        return unix_date + 86400
+
+    # Desde dia 22-04-2021 que a API tem o dia anterior (!?)
+    # print(f"last_date={last_date} latest_date={latest_date} doses_total={doses_total} latest_total={latest_total}")
+    last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
+    latest_date = pd.to_datetime(latest_data, format="%Y-%m-%d").strftime("%Y-%m-%d")
+    if last_date == latest_date and doses_total > latest_total:
+        unix_date += 86400
+        today = datetime.datetime.today().strftime("%Y-%m-%d")
+        print("FIXING DATE today={today} API date={latest_date} last date={last_date}")
+    
+
     return unix_date
 
-def save_vacinas(text, data):
+def save_vacinas(text, data, latest_data=None, latest_total=None):
     # Save a copy
     attributes = data["features"][0]["attributes"]
     doses_total = attributes["Vacinados_Ac"]
-    unix_date = fix_date(attributes["Data"] / 1000, doses_total)
+    unix_date = fix_date(attributes["Data"] / 1000, doses_total, latest_data, latest_total)
     last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
     today = datetime.datetime.today().strftime("%Y-%m-%d")
     if today != last_date:
@@ -46,7 +60,7 @@ def save_vacinas(text, data):
     with open(PATH_TO_JSON, "w") as f:
         f.write(text)
 
-def get_vacinas(url):
+def get_vacinas(url, latest_data=None, latest_total=None):
     if len(sys.argv) > 1:
         local_file = sys.argv[1]
         with open(local_file, "r") as f:
@@ -56,7 +70,7 @@ def get_vacinas(url):
         print(f"Loading from '{url}'")
         r = requests.get(url=url)
         data = r.json()
-        save_vacinas(r.text, data)
+        save_vacinas(r.text, data, latest_data, latest_total)
 
     vacinas = []
     for entry in data["features"]:
@@ -67,7 +81,7 @@ def get_vacinas(url):
         doses1_novas = attributes.get("Inoculacao1", None)
         doses2_total = attributes.get("Inoculacao2_Ac", None)
         doses2_novas = attributes.get("Inoculacao2", None)
-        unix_date = fix_date(attributes["Data"] / 1000, doses_total)
+        unix_date = fix_date(attributes["Data"] / 1000, doses_total, latest_data, latest_total)
         frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
 
         # 26-01-2021 to ? only have Vacinados without novas nor history
@@ -174,12 +188,14 @@ if __name__ == "__main__":
         "&resultType=standard"
         # "&resultOffset=0&resultRecordCount=1000"
     )
-    # Get the data available in the dashboard
-    available = get_vacinas(URL)
 
     # Get latest data
     latest = pd.read_csv(PATH_TO_CSV)
     latest["data"] = pd.to_datetime(latest["data"], format="%d-%m-%Y")
+
+    latest_data, latest_total = latest.data.tail(1).values[0], int(latest.doses.tail(1))    
+    # Get the data available in the dashboard
+    available = get_vacinas(URL, latest_data, latest_total)
 
     for col in [
         "doses",
