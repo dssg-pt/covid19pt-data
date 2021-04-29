@@ -5,37 +5,37 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    today = "28-04-2021"
+    today = "29-04-2021"
 
     # boletim
-    ativos = 23809
-    recuperados = 794781
-    obitos = 16973
-    vigilancia = 24712
-    confirmados = 835563
-    confirmados_novos = 572
+    ativos = 23733
+    recuperados = 795326
+    obitos = 16974
+    vigilancia = 24315
+    confirmados = 836033
+    confirmados_novos = 470
 
-    confirmados_arsnorte = 335648
+    confirmados_arsnorte = 335861
     obitos_arsnorte = 5340
-    confirmados_arscentro = 118582
+    confirmados_arscentro = 118631
     obitos_arscentro = 3014
-    confirmados_arslvt = 316065
+    confirmados_arslvt = 316208
     obitos_arslvt = 7193
-    confirmados_arsalentejo = 29756
-    obitos_arsalentejo = 970
-    confirmados_arsalgarve = 21619
+    confirmados_arsalentejo = 29765
+    obitos_arsalentejo = 971
+    confirmados_arsalgarve = 21632
     obitos_arsalgarve = 357
-    confirmados_acores = 4723
+    confirmados_acores = 4743
     obitos_acores = 31
-    confirmados_madeira = 9170
+    confirmados_madeira = 9193
     obitos_madeira = 68
 
-    internados, internados_uci = 332, 88
+    internados, internados_uci = 324, 89
 
-    confirmados_m, confirmados_f = 379066, 456187
-    confirmados_desconhecido = 310
+    confirmados_m, confirmados_f = 379295, 456426
+    confirmados_desconhecido = 312
 
-    obitos_m, obitos_f = 8914, 8059
+    obitos_m, obitos_f = 8914, 8060
 
     incidencia_nacional, incidencia_continente = 69.3, 66.5
     rt_nacional, rt_continente = 1.00, 1.00
