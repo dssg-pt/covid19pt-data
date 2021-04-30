@@ -1881,10 +1881,10 @@
         "Total" : 38508, 
         "Concelho" : "MARINHA GRANDE", 
         "OBJECTID" : 138, 
-        "Incidência" : 140, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 140, 
+        "Incidência" : 83, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 83, 
         "Shape__Area" : 317928312.015137, 
         "Shape__Length" : 87405.8854704339
       }
@@ -1894,10 +1894,10 @@
         "Total" : 3005, 
         "Concelho" : "MARVÃO", 
         "OBJECTID" : 139, 
-        "Incidência" : 0, 
+        "Incidência" : 33, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 33, 
         "Shape__Area" : 259278273.783447, 
         "Shape__Length" : 77938.6341285777
       }
@@ -1907,10 +1907,10 @@
         "Total" : 175357, 
         "Concelho" : "MATOSINHOS", 
         "OBJECTID" : 140, 
-        "Incidência" : 46, 
+        "Incidência" : 42, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 46, 
+        "Valorincid" : 42, 
         "Shape__Area" : 109662738.32666, 
         "Shape__Length" : 60203.2446897276
       }
@@ -1920,10 +1920,10 @@
         "Total" : 19914, 
         "Concelho" : "MEALHADA", 
         "OBJECTID" : 141, 
-        "Incidência" : 20, 
+        "Incidência" : 15, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 20, 
+        "Valorincid" : 15, 
         "Shape__Area" : 191236476.69873, 
         "Shape__Length" : 79858.3355799934
       }
@@ -1933,10 +1933,10 @@
         "Total" : 4587, 
         "Concelho" : "MÊDA", 
         "OBJECTID" : 142, 
-        "Incidência" : 153, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 153, 
+        "Incidência" : 109, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 109, 
         "Shape__Area" : 502016083.234375, 
         "Shape__Length" : 120375.58723514
       }
@@ -1946,10 +1946,10 @@
         "Total" : 8093, 
         "Concelho" : "MELGAÇO", 
         "OBJECTID" : 143, 
-        "Incidência" : 124, 
+        "Incidência" : 136, 
         "Incidência_categoria" : "[120,240]", 
         "Incidência_" : "Moderado", 
-        "Valorincid" : 124, 
+        "Valorincid" : 136, 
         "Shape__Area" : 432361009.233887, 
         "Shape__Length" : 128173.345464199
       }
@@ -1959,10 +1959,10 @@
         "Total" : 6142, 
         "Concelho" : "MÉRTOLA", 
         "OBJECTID" : 144, 
-        "Incidência" : 49, 
+        "Incidência" : 16, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 49, 
+        "Valorincid" : 16, 
         "Shape__Area" : 2066559555.28662, 
         "Shape__Length" : 282902.575926429
       }
@@ -1985,10 +1985,10 @@
         "Total" : 11832, 
         "Concelho" : "MIRA", 
         "OBJECTID" : 146, 
-        "Incidência" : 59, 
+        "Incidência" : 101, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 59, 
+        "Valorincid" : 101, 
         "Shape__Area" : 214308042.72998, 
         "Shape__Length" : 62099.0759081185
       }
@@ -1998,10 +1998,10 @@
         "Total" : 12708, 
         "Concelho" : "MIRANDA DO CORVO", 
         "OBJECTID" : 147, 
-        "Incidência" : 63, 
+        "Incidência" : 31, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 63, 
+        "Valorincid" : 31, 
         "Shape__Area" : 216073581.807617, 
         "Shape__Length" : 81475.0819655743
       }
@@ -2011,10 +2011,10 @@
         "Total" : 6830, 
         "Concelho" : "MIRANDA DO DOURO", 
         "OBJECTID" : 148, 
-        "Incidência" : 234, 
+        "Incidência" : 205, 
         "Incidência_categoria" : "[120,240]", 
         "Incidência_" : "Moderado", 
-        "Valorincid" : 234, 
+        "Valorincid" : 205, 
         "Shape__Area" : 869089921.513672, 
         "Shape__Length" : 179429.727276997
       }
@@ -2024,10 +2024,10 @@
         "Total" : 21754, 
         "Concelho" : "MIRANDELA", 
         "OBJECTID" : 149, 
-        "Incidência" : 83, 
+        "Incidência" : 32, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 83, 
+        "Valorincid" : 32, 
         "Shape__Area" : 1176653825.70752, 
         "Shape__Length" : 185145.417993863
       }
@@ -2050,10 +2050,10 @@
         "Total" : 9736, 
         "Concelho" : "MOIMENTA DA BEIRA", 
         "OBJECTID" : 151, 
-        "Incidência" : 41, 
+        "Incidência" : 82, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 41, 
+        "Valorincid" : 82, 
         "Shape__Area" : 385002247.333252, 
         "Shape__Length" : 109651.072226546
       }
@@ -2063,10 +2063,10 @@
         "Total" : 64407, 
         "Concelho" : "MOITA", 
         "OBJECTID" : 152, 
-        "Incidência" : 39, 
+        "Incidência" : 25, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 39, 
+        "Valorincid" : 25, 
         "Shape__Area" : 90455404.5541992, 
         "Shape__Length" : 47747.8621684841
       }
@@ -2076,10 +2076,10 @@
         "Total" : 17869, 
         "Concelho" : "MONÇÃO", 
         "OBJECTID" : 153, 
-        "Incidência" : 45, 
+        "Incidência" : 62, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 45, 
+        "Valorincid" : 62, 
         "Shape__Area" : 382544682.424805, 
         "Shape__Length" : 87792.6841330134
       }
@@ -2128,10 +2128,10 @@
         "Total" : 8997, 
         "Concelho" : "MONTALEGRE", 
         "OBJECTID" : 157, 
-        "Incidência" : 44, 
+        "Incidência" : 56, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 44, 
+        "Valorincid" : 56, 
         "Shape__Area" : 1449656242.58276, 
         "Shape__Length" : 240538.736242662
       }
@@ -2141,10 +2141,10 @@
         "Total" : 15647, 
         "Concelho" : "MONTEMOR-O-NOVO", 
         "OBJECTID" : 158, 
-        "Incidência" : 0, 
+        "Incidência" : 38, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 38, 
         "Shape__Area" : 2024919326.51221, 
         "Shape__Length" : 327461.139310205
       }
@@ -2154,10 +2154,10 @@
         "Total" : 25224, 
         "Concelho" : "MONTEMOR-O-VELHO", 
         "OBJECTID" : 159, 
-        "Incidência" : 44, 
+        "Incidência" : 28, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 44, 
+        "Valorincid" : 28, 
         "Shape__Area" : 392172096.067383, 
         "Shape__Length" : 120412.919118155
       }
@@ -2167,10 +2167,10 @@
         "Total" : 57614, 
         "Concelho" : "MONTIJO", 
         "OBJECTID" : 160, 
-        "Incidência" : 78, 
+        "Incidência" : 92, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 78, 
+        "Valorincid" : 92, 
         "Shape__Area" : 573674863.393066, 
         "Shape__Length" : 180183.43737639
       }
@@ -2193,10 +2193,10 @@
         "Total" : 8803, 
         "Concelho" : "MORTÁGUA", 
         "OBJECTID" : 162, 
-        "Incidência" : 0, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 23, 
         "Shape__Area" : 434730562.001465, 
         "Shape__Length" : 93385.0206336866
       }
@@ -2206,10 +2206,10 @@
         "Total" : 13718, 
         "Concelho" : "MOURA", 
         "OBJECTID" : 163, 
-        "Incidência" : 153, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 153, 
+        "Incidência" : 51, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 51, 
         "Shape__Area" : 1551625953.96997, 
         "Shape__Length" : 229981.360493058
       }
@@ -2245,10 +2245,10 @@
         "Total" : 10279, 
         "Concelho" : "MURTOSA", 
         "OBJECTID" : 166, 
-        "Incidência" : 0, 
+        "Incidência" : 10, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 10, 
         "Shape__Area" : 127545438.204102, 
         "Shape__Length" : 58570.7880977146
       }
@@ -2258,10 +2258,10 @@
         "Total" : 14165, 
         "Concelho" : "NAZARÉ", 
         "OBJECTID" : 167, 
-        "Incidência" : 78, 
+        "Incidência" : 56, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 78, 
+        "Valorincid" : 56, 
         "Shape__Area" : 138687767.967773, 
         "Shape__Length" : 69638.2802937994
       }
@@ -2271,10 +2271,10 @@
         "Total" : 12974, 
         "Concelho" : "NELAS", 
         "OBJECTID" : 168, 
-        "Incidência" : 15, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 15, 
+        "Valorincid" : 23, 
         "Shape__Area" : 218047483.37915, 
         "Shape__Length" : 67580.8495074496
       }
@@ -2297,10 +2297,10 @@
         "Total" : 4862, 
         "Concelho" : "NORDESTE", 
         "OBJECTID" : 170, 
-        "Incidência" : 576, 
-        "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Muito Elevado", 
-        "Valorincid" : 576, 
+        "Incidência" : 103, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 103, 
         "Shape__Area" : 162491355.90332, 
         "Shape__Length" : 59310.9546018818
       }
@@ -2310,10 +2310,10 @@
         "Total" : 11850, 
         "Concelho" : "ÓBIDOS", 
         "OBJECTID" : 171, 
-        "Incidência" : 0, 
+        "Incidência" : 17, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 17, 
         "Shape__Area" : 237091473.545898, 
         "Shape__Length" : 76855.2694815348
       }
@@ -2323,10 +2323,10 @@
         "Total" : 24717, 
         "Concelho" : "ODEMIRA", 
         "OBJECTID" : 172, 
-        "Incidência" : 991, 
-        "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Extremamente Elevado", 
-        "Valorincid" : 991, 
+        "Incidência" : 562, 
+        "Incidência_categoria" : "[480,960]", 
+        "Incidência_" : "Muito Elevado", 
+        "Valorincid" : 562, 
         "Shape__Area" : 2745153526.9978, 
         "Shape__Length" : 285126.791325115
       }
@@ -2336,10 +2336,10 @@
         "Total" : 161774, 
         "Concelho" : "ODIVELAS", 
         "OBJECTID" : 173, 
-        "Incidência" : 49, 
+        "Incidência" : 44, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 49, 
+        "Valorincid" : 44, 
         "Shape__Area" : 44332954.1347656, 
         "Shape__Length" : 33260.8830316901
       }
@@ -2349,10 +2349,10 @@
         "Total" : 177408, 
         "Concelho" : "OEIRAS", 
         "OBJECTID" : 174, 
-        "Incidência" : 58, 
+        "Incidência" : 62, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 58, 
+        "Valorincid" : 62, 
         "Shape__Area" : 75190005.6879883, 
         "Shape__Length" : 42518.452362901
       }
@@ -2375,10 +2375,10 @@
         "Total" : 44405, 
         "Concelho" : "OLHÃO", 
         "OBJECTID" : 176, 
-        "Incidência" : 110, 
+        "Incidência" : 56, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 110, 
+        "Valorincid" : 56, 
         "Shape__Area" : 205781280.343994, 
         "Shape__Length" : 64591.0767353526
       }
@@ -2388,10 +2388,10 @@
         "Total" : 66011, 
         "Concelho" : "OLIVEIRA DE AZEMÉIS", 
         "OBJECTID" : 177, 
-        "Incidência" : 53, 
+        "Incidência" : 42, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 53, 
+        "Valorincid" : 42, 
         "Shape__Area" : 281649501.158203, 
         "Shape__Length" : 95768.4154840787
       }
@@ -2401,10 +2401,10 @@
         "Total" : 9936, 
         "Concelho" : "OLIVEIRA DE FRADES", 
         "OBJECTID" : 178, 
-        "Incidência" : 0, 
+        "Incidência" : 10, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 10, 
         "Shape__Area" : 252417825.831055, 
         "Shape__Length" : 122242.007330909
       }
@@ -2414,10 +2414,10 @@
         "Total" : 24277, 
         "Concelho" : "OLIVEIRA DO BAIRRO", 
         "OBJECTID" : 179, 
-        "Incidência" : 16, 
+        "Incidência" : 8, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 16, 
+        "Valorincid" : 8, 
         "Shape__Area" : 151542224.94873, 
         "Shape__Length" : 62390.4552823506
       }
@@ -2427,10 +2427,10 @@
         "Total" : 19253, 
         "Concelho" : "OLIVEIRA DO HOSPITAL", 
         "OBJECTID" : 180, 
-        "Incidência" : 88, 
-        "Incidência_categoria" : "[0,120]", 
-        "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 88, 
+        "Incidência" : 223, 
+        "Incidência_categoria" : "[120,240]", 
+        "Incidência_" : "Moderado", 
+        "Valorincid" : 223, 
         "Shape__Area" : 404857269.523193, 
         "Shape__Length" : 123431.624056488
       }
@@ -2440,10 +2440,10 @@
         "Total" : 44044, 
         "Concelho" : "OURÉM", 
         "OBJECTID" : 181, 
-        "Incidência" : 16, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 16, 
+        "Valorincid" : 23, 
         "Shape__Area" : 704648566.759766, 
         "Shape__Length" : 147450.322447599
       }
@@ -2466,10 +2466,10 @@
         "Total" : 54260, 
         "Concelho" : "OVAR", 
         "OBJECTID" : 183, 
-        "Incidência" : 55, 
+        "Incidência" : 20, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 55, 
+        "Valorincid" : 20, 
         "Shape__Area" : 258609099.998047, 
         "Shape__Length" : 86359.234951513
       }
@@ -2479,10 +2479,10 @@
         "Total" : 56728, 
         "Concelho" : "PAÇOS DE FERREIRA", 
         "OBJECTID" : 184, 
-        "Incidência" : 125, 
+        "Incidência" : 155, 
         "Incidência_categoria" : "[120,240]", 
         "Incidência_" : "Moderado", 
-        "Valorincid" : 125, 
+        "Valorincid" : 155, 
         "Shape__Area" : 125531146.029297, 
         "Shape__Length" : 54992.1384628537
       }
@@ -2492,10 +2492,10 @@
         "Total" : 64269, 
         "Concelho" : "PALMELA", 
         "OBJECTID" : 185, 
-        "Incidência" : 23, 
+        "Incidência" : 12, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 23, 
+        "Valorincid" : 12, 
         "Shape__Area" : 762668763.991699, 
         "Shape__Length" : 184939.870706148
       }
@@ -2518,10 +2518,10 @@
         "Total" : 86067, 
         "Concelho" : "PAREDES", 
         "OBJECTID" : 187, 
-        "Incidência" : 209, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 209, 
+        "Incidência" : 244, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "Valorincid" : 244, 
         "Shape__Area" : 276361023.637695, 
         "Shape__Length" : 93298.317041805
       }
@@ -2531,10 +2531,10 @@
         "Total" : 8535, 
         "Concelho" : "PAREDES DE COURA", 
         "OBJECTID" : 188, 
-        "Incidência" : 0, 
+        "Incidência" : 35, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 35, 
         "Shape__Area" : 249982039.944824, 
         "Shape__Length" : 71945.9949272308
       }
@@ -2557,10 +2557,10 @@
         "Total" : 13694, 
         "Concelho" : "PENACOVA", 
         "OBJECTID" : 190, 
-        "Incidência" : 29, 
+        "Incidência" : 7, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 29, 
+        "Valorincid" : 7, 
         "Shape__Area" : 371884761.922363, 
         "Shape__Length" : 101258.069720835
       }
@@ -2570,10 +2570,10 @@
         "Total" : 69772, 
         "Concelho" : "PENAFIEL", 
         "OBJECTID" : 191, 
-        "Incidência" : 130, 
+        "Incidência" : 155, 
         "Incidência_categoria" : "[120,240]", 
         "Incidência_" : "Moderado", 
-        "Valorincid" : 130, 
+        "Valorincid" : 155, 
         "Shape__Area" : 374558537.329102, 
         "Shape__Length" : 103655.70809
       }
@@ -2583,10 +2583,10 @@
         "Total" : 7115, 
         "Concelho" : "PENALVA DO CASTELO", 
         "OBJECTID" : 192, 
-        "Incidência" : 28, 
+        "Incidência" : 14, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 28, 
+        "Valorincid" : 14, 
         "Shape__Area" : 233363388.165771, 
         "Shape__Length" : 75198.9620483936
       }
@@ -2609,10 +2609,10 @@
         "Total" : 2591, 
         "Concelho" : "PENEDONO", 
         "OBJECTID" : 194, 
-        "Incidência" : 0, 
+        "Incidência" : 39, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 39, 
         "Shape__Area" : 235231428.617676, 
         "Shape__Length" : 77533.5753041273
       }
@@ -2622,10 +2622,10 @@
         "Total" : 5397, 
         "Concelho" : "PENELA", 
         "OBJECTID" : 195, 
-        "Incidência" : 278, 
-        "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Elevado", 
-        "Valorincid" : 278, 
+        "Incidência" : 19, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 19, 
         "Shape__Area" : 229939988.441406, 
         "Shape__Length" : 101463.461530127
       }
@@ -2635,10 +2635,10 @@
         "Total" : 26501, 
         "Concelho" : "PENICHE", 
         "OBJECTID" : 196, 
-        "Incidência" : 113, 
-        "Incidência_categoria" : "[0,120]", 
-        "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 113, 
+        "Incidência" : 223, 
+        "Incidência_categoria" : "[120,240]", 
+        "Incidência_" : "Moderado", 
+        "Valorincid" : 223, 
         "Shape__Area" : 128999869.743164, 
         "Shape__Length" : 60288.7339218626
       }
@@ -2648,10 +2648,10 @@
         "Total" : 15773, 
         "Concelho" : "PESO DA RÉGUA", 
         "OBJECTID" : 197, 
-        "Incidência" : 127, 
+        "Incidência" : 146, 
         "Incidência_categoria" : "[120,240]", 
         "Incidência_" : "Moderado", 
-        "Valorincid" : 127, 
+        "Valorincid" : 146, 
         "Shape__Area" : 167841791.830566, 
         "Shape__Length" : 87902.9170698894
       }
@@ -2661,10 +2661,10 @@
         "Total" : 8511, 
         "Concelho" : "PINHEL", 
         "OBJECTID" : 198, 
-        "Incidência" : 35, 
+        "Incidência" : 59, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 35, 
+        "Valorincid" : 59, 
         "Shape__Area" : 845709782.427979, 
         "Shape__Length" : 186254.567491928
       }
@@ -2674,10 +2674,10 @@
         "Total" : 51461, 
         "Concelho" : "POMBAL", 
         "OBJECTID" : 199, 
-        "Incidência" : 21, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 21, 
+        "Valorincid" : 23, 
         "Shape__Area" : 1065580680.64844, 
         "Shape__Length" : 165103.099929181
       }
@@ -2687,10 +2687,10 @@
         "Total" : 67935, 
         "Concelho" : "PONTA DELGADA", 
         "OBJECTID" : 200, 
-        "Incidência" : 91, 
+        "Incidência" : 100, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 91, 
+        "Valorincid" : 100, 
         "Shape__Area" : 374960993.496094, 
         "Shape__Length" : 91810.6899153665
       }
@@ -2713,10 +2713,10 @@
         "Total" : 11180, 
         "Concelho" : "PONTE DA BARCA", 
         "OBJECTID" : 202, 
-        "Incidência" : 72, 
-        "Incidência_categoria" : "[0,120]", 
-        "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 72, 
+        "Incidência" : 125, 
+        "Incidência_categoria" : "[120,240]", 
+        "Incidência_" : "Moderado", 
+        "Valorincid" : 125, 
         "Shape__Area" : 327842017.165039, 
         "Shape__Length" : 102621.800865849
       }
@@ -2726,10 +2726,10 @@
         "Total" : 41315, 
         "Concelho" : "PONTE DE LIMA", 
         "OBJECTID" : 203, 
-        "Incidência" : 27, 
+        "Incidência" : 116, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 27, 
+        "Valorincid" : 116, 
         "Shape__Area" : 574846711.955566, 
         "Shape__Length" : 121718.272263387
       }
@@ -2739,10 +2739,10 @@
         "Total" : 14994, 
         "Concelho" : "PONTE DE SOR", 
         "OBJECTID" : 204, 
-        "Incidência" : 20, 
+        "Incidência" : 13, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 20, 
+        "Valorincid" : 13, 
         "Shape__Area" : 1399991070.95264, 
         "Shape__Length" : 211315.557432643
       }
@@ -2778,10 +2778,10 @@
         "Total" : 55483, 
         "Concelho" : "PORTIMÃO", 
         "OBJECTID" : 207, 
-        "Incidência" : 306, 
-        "Incidência_categoria" : "[240,480]", 
-        "Incidência_" : "Elevado", 
-        "Valorincid" : 306, 
+        "Incidência" : 159, 
+        "Incidência_categoria" : "[120,240]", 
+        "Incidência_" : "Moderado", 
+        "Valorincid" : 159, 
         "Shape__Area" : 287655316.535645, 
         "Shape__Length" : 86210.6238431291
       }
@@ -2791,10 +2791,10 @@
         "Total" : 216606, 
         "Concelho" : "PORTO", 
         "OBJECTID" : 208, 
-        "Incidência" : 77, 
+        "Incidência" : 88, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 77, 
+        "Valorincid" : 88, 
         "Shape__Area" : 73285476.1552734, 
         "Shape__Length" : 40197.8157851634
       }
@@ -2804,10 +2804,10 @@
         "Total" : 23275, 
         "Concelho" : "PORTO DE MÓS", 
         "OBJECTID" : 209, 
-        "Incidência" : 21, 
+        "Incidência" : 26, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 21, 
+        "Valorincid" : 26, 
         "Shape__Area" : 441475157.770508, 
         "Shape__Length" : 104322.678853393
       }
@@ -2843,10 +2843,10 @@
         "Total" : 21499, 
         "Concelho" : "PÓVOA DE LANHOSO", 
         "OBJECTID" : 212, 
-        "Incidência" : 74, 
-        "Incidência_categoria" : "[0,120]", 
-        "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 74, 
+        "Incidência" : 144, 
+        "Incidência_categoria" : "[120,240]", 
+        "Incidência_" : "Moderado", 
+        "Valorincid" : 144, 
         "Shape__Area" : 240105117.905273, 
         "Shape__Length" : 88888.9931630003
       }
@@ -2856,10 +2856,10 @@
         "Total" : 62784, 
         "Concelho" : "PÓVOA DE VARZIM", 
         "OBJECTID" : 213, 
-        "Incidência" : 51, 
+        "Incidência" : 46, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 51, 
+        "Valorincid" : 46, 
         "Shape__Area" : 144854549.395996, 
         "Shape__Length" : 75455.559100457
       }
@@ -2869,10 +2869,10 @@
         "Total" : 5927, 
         "Concelho" : "POVOAÇÃO", 
         "OBJECTID" : 214, 
-        "Incidência" : 51, 
+        "Incidência" : 0, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 51, 
+        "Valorincid" : 0, 
         "Shape__Area" : 171567408.149414, 
         "Shape__Length" : 66744.5207977502
       }
@@ -2895,10 +2895,10 @@
         "Total" : 7298, 
         "Concelho" : "PROENÇA-A-NOVA", 
         "OBJECTID" : 216, 
-        "Incidência" : 41, 
+        "Incidência" : 0, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 41, 
+        "Valorincid" : 0, 
         "Shape__Area" : 668118772.935059, 
         "Shape__Length" : 144185.008108062
       }
@@ -2934,10 +2934,10 @@
         "Total" : 10137, 
         "Concelho" : "RESENDE", 
         "OBJECTID" : 219, 
-        "Incidência" : 572, 
-        "Incidência_categoria" : "[480,960]", 
-        "Incidência_" : "Muito Elevado", 
-        "Valorincid" : 572, 
+        "Incidência" : 404, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "Valorincid" : 404, 
         "Shape__Area" : 217302281.707764, 
         "Shape__Length" : 70278.7978469595
       }
@@ -2947,10 +2947,10 @@
         "Total" : 12435, 
         "Concelho" : "RIBEIRA BRAVA", 
         "OBJECTID" : 220, 
-        "Incidência" : 72, 
+        "Incidência" : 56, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 72, 
+        "Valorincid" : 56, 
         "Shape__Area" : 93558796.5844727, 
         "Shape__Length" : 41459.4117907
       }
@@ -2973,10 +2973,10 @@
         "Total" : 32811, 
         "Concelho" : "RIBEIRA GRANDE", 
         "OBJECTID" : 222, 
-        "Incidência" : 317, 
+        "Incidência" : 326, 
         "Incidência_categoria" : "[240,480]", 
         "Incidência_" : "Elevado", 
-        "Valorincid" : 317, 
+        "Valorincid" : 326, 
         "Shape__Area" : 288199675.175781, 
         "Shape__Length" : 110946.409364376
       }
@@ -2986,10 +2986,10 @@
         "Total" : 20379, 
         "Concelho" : "RIO MAIOR", 
         "OBJECTID" : 223, 
-        "Incidência" : 137, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 137, 
+        "Incidência" : 54, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 54, 
         "Shape__Area" : 457570213.473145, 
         "Shape__Length" : 110769.322303411
       }
@@ -2999,10 +2999,10 @@
         "Total" : 5918, 
         "Concelho" : "SABROSA", 
         "OBJECTID" : 224, 
-        "Incidência" : 34, 
+        "Incidência" : 51, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 34, 
+        "Valorincid" : 51, 
         "Shape__Area" : 278779216.526855, 
         "Shape__Length" : 100968.145305146
       }
@@ -3038,10 +3038,10 @@
         "Total" : 10452, 
         "Concelho" : "SANTA COMBA DÃO", 
         "OBJECTID" : 227, 
-        "Incidência" : 38, 
+        "Incidência" : 115, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 38, 
+        "Valorincid" : 115, 
         "Shape__Area" : 193504316.387695, 
         "Shape__Length" : 69869.8925165082
       }
@@ -3051,10 +3051,10 @@
         "Total" : 45281, 
         "Concelho" : "SANTA CRUZ", 
         "OBJECTID" : 228, 
-        "Incidência" : 62, 
+        "Incidência" : 99, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 62, 
+        "Valorincid" : 99, 
         "Shape__Area" : 114838145.424316, 
         "Shape__Length" : 99255.9943094292
       }
@@ -3090,10 +3090,10 @@
         "Total" : 138636, 
         "Concelho" : "SANTA MARIA DA FEIRA", 
         "OBJECTID" : 231, 
-        "Incidência" : 29, 
+        "Incidência" : 46, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 29, 
+        "Valorincid" : 46, 
         "Shape__Area" : 379578797.255371, 
         "Shape__Length" : 102000.8685637
       }
@@ -3116,10 +3116,10 @@
         "Total" : 6711, 
         "Concelho" : "SANTANA", 
         "OBJECTID" : 233, 
-        "Incidência" : 15, 
+        "Incidência" : 45, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 15, 
+        "Valorincid" : 45, 
         "Shape__Area" : 135205710.777344, 
         "Shape__Length" : 53364.3928708886
       }
@@ -3142,10 +3142,10 @@
         "Total" : 28791, 
         "Concelho" : "SANTIAGO DO CACÉM", 
         "OBJECTID" : 235, 
-        "Incidência" : 24, 
+        "Incidência" : 17, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 24, 
+        "Valorincid" : 17, 
         "Shape__Area" : 1706991337.4502, 
         "Shape__Length" : 236260.959344523
       }
@@ -3155,10 +3155,10 @@
         "Total" : 68055, 
         "Concelho" : "SANTO TIRSO", 
         "OBJECTID" : 236, 
-        "Incidência" : 72, 
+        "Incidência" : 43, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 72, 
+        "Valorincid" : 43, 
         "Shape__Area" : 241839016.446777, 
         "Shape__Length" : 85052.5963673628
       }
@@ -3181,10 +3181,10 @@
         "Total" : 21958, 
         "Concelho" : "SÃO JOÃO DA MADEIRA", 
         "OBJECTID" : 238, 
-        "Incidência" : 32, 
+        "Incidência" : 46, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 32, 
+        "Valorincid" : 46, 
         "Shape__Area" : 13916845.9853516, 
         "Shape__Length" : 14926.572552471
       }
@@ -3207,10 +3207,10 @@
         "Total" : 15403, 
         "Concelho" : "SÃO PEDRO DO SUL", 
         "OBJECTID" : 240, 
-        "Incidência" : 39, 
+        "Incidência" : 26, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 39, 
+        "Valorincid" : 26, 
         "Shape__Area" : 610013318.646973, 
         "Shape__Length" : 143662.612762796
       }
@@ -3233,10 +3233,10 @@
         "Total" : 5143, 
         "Concelho" : "SÃO VICENTE", 
         "OBJECTID" : 242, 
-        "Incidência" : 58, 
+        "Incidência" : 39, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 58, 
+        "Valorincid" : 39, 
         "Shape__Area" : 111914218.562012, 
         "Shape__Length" : 43603.7787217977
       }
@@ -3246,10 +3246,10 @@
         "Total" : 3741, 
         "Concelho" : "SARDOAL", 
         "OBJECTID" : 243, 
-        "Incidência" : 0, 
+        "Incidência" : 80, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 80, 
         "Shape__Area" : 155214178.167236, 
         "Shape__Length" : 54758.3760063823
       }
@@ -3259,10 +3259,10 @@
         "Total" : 11580, 
         "Concelho" : "SÁTÃO", 
         "OBJECTID" : 244, 
-        "Incidência" : 9, 
+        "Incidência" : 0, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 9, 
+        "Valorincid" : 0, 
         "Shape__Area" : 352828291.781494, 
         "Shape__Length" : 96524.0783686076
       }
@@ -3285,10 +3285,10 @@
         "Total" : 167752, 
         "Concelho" : "SEIXAL", 
         "OBJECTID" : 246, 
-        "Incidência" : 46, 
+        "Incidência" : 44, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 46, 
+        "Valorincid" : 44, 
         "Shape__Area" : 157057758.213867, 
         "Shape__Length" : 55328.2015090051
       }
@@ -3311,10 +3311,10 @@
         "Total" : 14304, 
         "Concelho" : "SERPA", 
         "OBJECTID" : 248, 
-        "Incidência" : 77, 
+        "Incidência" : 35, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 77, 
+        "Valorincid" : 35, 
         "Shape__Area" : 1779430098.2854, 
         "Shape__Length" : 205854.500773734
       }
@@ -3324,10 +3324,10 @@
         "Total" : 14577, 
         "Concelho" : "SERTÃ", 
         "OBJECTID" : 249, 
-        "Incidência" : 0, 
+        "Incidência" : 7, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 7, 
         "Shape__Area" : 760349571.231201, 
         "Shape__Length" : 136189.218196941
       }
@@ -3337,10 +3337,10 @@
         "Total" : 51858, 
         "Concelho" : "SESIMBRA", 
         "OBJECTID" : 250, 
-        "Incidência" : 31, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 31, 
+        "Valorincid" : 23, 
         "Shape__Area" : 319633397.555664, 
         "Shape__Length" : 98892.5302114515
       }
@@ -3350,10 +3350,10 @@
         "Total" : 115126, 
         "Concelho" : "SETÚBAL", 
         "OBJECTID" : 251, 
-        "Incidência" : 82, 
+        "Incidência" : 68, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 82, 
+        "Valorincid" : 68, 
         "Shape__Area" : 376687674.606445, 
         "Shape__Length" : 116952.603056326
       }
@@ -3363,10 +3363,10 @@
         "Total" : 11331, 
         "Concelho" : "SEVER DO VOUGA", 
         "OBJECTID" : 252, 
-        "Incidência" : 150, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 150, 
+        "Incidência" : 62, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 62, 
         "Shape__Area" : 226587572.401367, 
         "Shape__Length" : 82389.9063371054
       }
@@ -3376,10 +3376,10 @@
         "Total" : 36226, 
         "Concelho" : "SILVES", 
         "OBJECTID" : 253, 
-        "Incidência" : 50, 
+        "Incidência" : 33, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 50, 
+        "Valorincid" : 33, 
         "Shape__Area" : 1075811791.01538, 
         "Shape__Length" : 170921.690418969
       }
@@ -3402,10 +3402,10 @@
         "Total" : 391402, 
         "Concelho" : "SINTRA", 
         "OBJECTID" : 255, 
-        "Incidência" : 70, 
+        "Incidência" : 65, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 70, 
+        "Valorincid" : 65, 
         "Shape__Area" : 526542214.246094, 
         "Shape__Length" : 111845.898821317
       }
@@ -3415,10 +3415,10 @@
         "Total" : 10651, 
         "Concelho" : "SOBRAL DE MONTE AGRAÇO", 
         "OBJECTID" : 256, 
-        "Incidência" : 38, 
+        "Incidência" : 19, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 38, 
+        "Valorincid" : 19, 
         "Shape__Area" : 86102322.8500977, 
         "Shape__Length" : 63637.5981229421
       }
@@ -3428,10 +3428,10 @@
         "Total" : 17120, 
         "Concelho" : "SOURE", 
         "OBJECTID" : 257, 
-        "Incidência" : 47, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 47, 
+        "Valorincid" : 23, 
         "Shape__Area" : 452838959.717773, 
         "Shape__Length" : 141385.29620411
       }
@@ -3454,10 +3454,10 @@
         "Total" : 11368, 
         "Concelho" : "TÁBUA", 
         "OBJECTID" : 259, 
-        "Incidência" : 88, 
-        "Incidência_categoria" : "[0,120]", 
-        "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 88, 
+        "Incidência" : 281, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "Valorincid" : 281, 
         "Shape__Area" : 344048249.125, 
         "Shape__Length" : 97543.2129595612
       }
@@ -3467,10 +3467,10 @@
         "Total" : 6033, 
         "Concelho" : "TABUAÇO", 
         "OBJECTID" : 260, 
-        "Incidência" : 199, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 199, 
+        "Incidência" : 249, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "Valorincid" : 249, 
         "Shape__Area" : 235851752.70166, 
         "Shape__Length" : 81459.1610033927
       }
@@ -3480,10 +3480,10 @@
         "Total" : 7804, 
         "Concelho" : "TAROUCA", 
         "OBJECTID" : 261, 
-        "Incidência" : 13, 
+        "Incidência" : 0, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 13, 
+        "Valorincid" : 0, 
         "Shape__Area" : 176428124.676514, 
         "Shape__Length" : 86835.9424673517
       }
@@ -3493,10 +3493,10 @@
         "Total" : 24530, 
         "Concelho" : "TAVIRA", 
         "OBJECTID" : 262, 
-        "Incidência" : 90, 
+        "Incidência" : 41, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 90, 
+        "Valorincid" : 41, 
         "Shape__Area" : 959503222.512695, 
         "Shape__Length" : 166998.050611696
       }
@@ -3519,10 +3519,10 @@
         "Total" : 36748, 
         "Concelho" : "TOMAR", 
         "OBJECTID" : 264, 
-        "Incidência" : 24, 
+        "Incidência" : 14, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 24, 
+        "Valorincid" : 14, 
         "Shape__Area" : 592602828.164063, 
         "Shape__Length" : 128569.896595092
       }
@@ -3532,10 +3532,10 @@
         "Total" : 26357, 
         "Concelho" : "TONDELA", 
         "OBJECTID" : 265, 
-        "Incidência" : 34, 
+        "Incidência" : 30, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 34, 
+        "Valorincid" : 30, 
         "Shape__Area" : 643075143.616455, 
         "Shape__Length" : 129864.068042942
       }
@@ -3545,10 +3545,10 @@
         "Total" : 7695, 
         "Concelho" : "TORRE DE MONCORVO", 
         "OBJECTID" : 266, 
-        "Incidência" : 13, 
+        "Incidência" : 39, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 13, 
+        "Valorincid" : 39, 
         "Shape__Area" : 938323348.494141, 
         "Shape__Length" : 180254.548223685
       }
@@ -3558,10 +3558,10 @@
         "Total" : 34933, 
         "Concelho" : "TORRES NOVAS", 
         "OBJECTID" : 267, 
-        "Incidência" : 9, 
+        "Incidência" : 11, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 9, 
+        "Valorincid" : 11, 
         "Shape__Area" : 452856300.495117, 
         "Shape__Length" : 99640.5573004517
       }
@@ -3571,10 +3571,10 @@
         "Total" : 78530, 
         "Concelho" : "TORRES VEDRAS", 
         "OBJECTID" : 268, 
-        "Incidência" : 107, 
+        "Incidência" : 117, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 107, 
+        "Valorincid" : 117, 
         "Shape__Area" : 676483060.269531, 
         "Shape__Length" : 125844.834042828
       }
@@ -3584,10 +3584,10 @@
         "Total" : 8875, 
         "Concelho" : "TRANCOSO", 
         "OBJECTID" : 269, 
-        "Incidência" : 0, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 23, 
         "Shape__Area" : 630565903.708984, 
         "Shape__Length" : 147377.829960919
       }
@@ -3597,10 +3597,10 @@
         "Total" : 38418, 
         "Concelho" : "TROFA", 
         "OBJECTID" : 270, 
-        "Incidência" : 55, 
+        "Incidência" : 70, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 55, 
+        "Valorincid" : 70, 
         "Shape__Area" : 128078245.258301, 
         "Shape__Length" : 47849.2943668434
       }
@@ -3610,10 +3610,10 @@
         "Total" : 22740, 
         "Concelho" : "VAGOS", 
         "OBJECTID" : 271, 
-        "Incidência" : 53, 
+        "Incidência" : 44, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 53, 
+        "Valorincid" : 44, 
         "Shape__Area" : 285747668.920898, 
         "Shape__Length" : 75198.3701148893
       }
@@ -3623,10 +3623,10 @@
         "Total" : 21327, 
         "Concelho" : "VALE DE CAMBRA", 
         "OBJECTID" : 272, 
-        "Incidência" : 14, 
+        "Incidência" : 52, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 14, 
+        "Valorincid" : 52, 
         "Shape__Area" : 257988944.586426, 
         "Shape__Length" : 82795.0879830317
       }
@@ -3636,10 +3636,10 @@
         "Total" : 13290, 
         "Concelho" : "VALENÇA", 
         "OBJECTID" : 273, 
-        "Incidência" : 60, 
+        "Incidência" : 23, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 60, 
+        "Valorincid" : 23, 
         "Shape__Area" : 212495304.42334, 
         "Shape__Length" : 62010.6275443441
       }
@@ -3649,10 +3649,10 @@
         "Total" : 97444, 
         "Concelho" : "VALONGO", 
         "OBJECTID" : 274, 
-        "Incidência" : 185, 
+        "Incidência" : 154, 
         "Incidência_categoria" : "[120,240]", 
         "Incidência_" : "Moderado", 
-        "Valorincid" : 185, 
+        "Valorincid" : 154, 
         "Shape__Area" : 133312959.596191, 
         "Shape__Length" : 63431.0870416204
       }
@@ -3662,10 +3662,10 @@
         "Total" : 14818, 
         "Concelho" : "VALPAÇOS", 
         "OBJECTID" : 275, 
-        "Incidência" : 81, 
+        "Incidência" : 94, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 81, 
+        "Valorincid" : 94, 
         "Shape__Area" : 981869424.726074, 
         "Shape__Length" : 186971.207854049
       }
@@ -3701,10 +3701,10 @@
         "Total" : 5145, 
         "Concelho" : "VIANA DO ALENTEJO", 
         "OBJECTID" : 278, 
-        "Incidência" : 19, 
+        "Incidência" : 0, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 19, 
+        "Valorincid" : 0, 
         "Shape__Area" : 641962313.291504, 
         "Shape__Length" : 154391.811049752
       }
@@ -3714,10 +3714,10 @@
         "Total" : 84417, 
         "Concelho" : "VIANA DO CASTELO", 
         "OBJECTID" : 279, 
-        "Incidência" : 85, 
+        "Incidência" : 82, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 85, 
+        "Valorincid" : 82, 
         "Shape__Area" : 573648797.525391, 
         "Shape__Length" : 116782.093442691
       }
@@ -3727,10 +3727,10 @@
         "Total" : 5510, 
         "Concelho" : "VIDIGUEIRA", 
         "OBJECTID" : 280, 
-        "Incidência" : 0, 
-        "Incidência_categoria" : "[0,120]", 
-        "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Incidência" : 218, 
+        "Incidência_categoria" : "[120,240]", 
+        "Incidência_" : "Moderado", 
+        "Valorincid" : 218, 
         "Shape__Area" : 512502521.973145, 
         "Shape__Length" : 146610.197749119
       }
@@ -3766,10 +3766,10 @@
         "Total" : 5154, 
         "Concelho" : "VILA DO BISPO", 
         "OBJECTID" : 283, 
-        "Incidência" : 19, 
+        "Incidência" : 58, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 19, 
+        "Valorincid" : 58, 
         "Shape__Area" : 280570058.671875, 
         "Shape__Length" : 89985.5091036785
       }
@@ -3779,10 +3779,10 @@
         "Total" : 79899, 
         "Concelho" : "VILA DO CONDE", 
         "OBJECTID" : 284, 
-        "Incidência" : 43, 
+        "Incidência" : 41, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 43, 
+        "Valorincid" : 41, 
         "Shape__Area" : 264414698.262207, 
         "Shape__Length" : 79484.0134175721
       }
@@ -3818,10 +3818,10 @@
         "Total" : 141957, 
         "Concelho" : "VILA FRANCA DE XIRA", 
         "OBJECTID" : 287, 
-        "Incidência" : 111, 
+        "Incidência" : 86, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 111, 
+        "Valorincid" : 86, 
         "Shape__Area" : 526284523.933594, 
         "Shape__Length" : 163670.848227791
       }
@@ -3831,10 +3831,10 @@
         "Total" : 11051, 
         "Concelho" : "VILA FRANCA DO CAMPO", 
         "OBJECTID" : 288, 
-        "Incidência" : 1357, 
-        "Incidência_categoria" : "[960, Max]", 
-        "Incidência_" : "Extremamente Elevado", 
-        "Valorincid" : 1357, 
+        "Incidência" : 380, 
+        "Incidência_categoria" : "[240,480]", 
+        "Incidência_" : "Elevado", 
+        "Valorincid" : 380, 
         "Shape__Area" : 124611968.49707, 
         "Shape__Length" : 54661.0713800988
       }
@@ -3857,10 +3857,10 @@
         "Total" : 8910, 
         "Concelho" : "VILA NOVA DE CERVEIRA", 
         "OBJECTID" : 290, 
-        "Incidência" : 34, 
+        "Incidência" : 0, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 34, 
+        "Valorincid" : 0, 
         "Shape__Area" : 195279627.038574, 
         "Shape__Length" : 65462.5816906432
       }
@@ -3870,10 +3870,10 @@
         "Total" : 131676, 
         "Concelho" : "VILA NOVA DE FAMALICÃO", 
         "OBJECTID" : 291, 
-        "Incidência" : 146, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 146, 
+        "Incidência" : 110, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 110, 
         "Shape__Area" : 358106567.244629, 
         "Shape__Length" : 97051.1980992062
       }
@@ -3883,10 +3883,10 @@
         "Total" : 6503, 
         "Concelho" : "VILA NOVA DE FOZ CÔA", 
         "OBJECTID" : 292, 
-        "Incidência" : 62, 
+        "Incidência" : 15, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 62, 
+        "Valorincid" : 15, 
         "Shape__Area" : 700656363.505859, 
         "Shape__Length" : 157622.457121457
       }
@@ -3922,10 +3922,10 @@
         "Total" : 6939, 
         "Concelho" : "VILA NOVA DE POIARES", 
         "OBJECTID" : 295, 
-        "Incidência" : 0, 
+        "Incidência" : 14, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 14, 
         "Shape__Area" : 144765010.654297, 
         "Shape__Length" : 56719.2071333287
       }
@@ -3935,10 +3935,10 @@
         "Total" : 11961, 
         "Concelho" : "VILA POUCA DE AGUIAR", 
         "OBJECTID" : 296, 
-        "Incidência" : 125, 
-        "Incidência_categoria" : "[120,240]", 
-        "Incidência_" : "Moderado", 
-        "Valorincid" : 125, 
+        "Incidência" : 84, 
+        "Incidência_categoria" : "[0,120]", 
+        "Incidência_" : "Baixo a Moderado", 
+        "Valorincid" : 84, 
         "Shape__Area" : 779948784.052246, 
         "Shape__Length" : 138850.076720851
       }
@@ -3948,10 +3948,10 @@
         "Total" : 49962, 
         "Concelho" : "VILA REAL", 
         "OBJECTID" : 297, 
-        "Incidência" : 28, 
+        "Incidência" : 40, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 28, 
+        "Valorincid" : 40, 
         "Shape__Area" : 671651915.013672, 
         "Shape__Length" : 137143.169048343
       }
@@ -3961,10 +3961,10 @@
         "Total" : 18749, 
         "Concelho" : "VILA REAL DE SANTO ANTÓNIO", 
         "OBJECTID" : 298, 
-        "Incidência" : 139, 
+        "Incidência" : 181, 
         "Incidência_categoria" : "[120,240]", 
         "Incidência_" : "Moderado", 
-        "Valorincid" : 139, 
+        "Valorincid" : 181, 
         "Shape__Area" : 96582895.8049316, 
         "Shape__Length" : 70137.6375992668
       }
@@ -3987,10 +3987,10 @@
         "Total" : 46911, 
         "Concelho" : "VILA VERDE", 
         "OBJECTID" : 300, 
-        "Incidência" : 47, 
+        "Incidência" : 49, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 47, 
+        "Valorincid" : 49, 
         "Shape__Area" : 410283009.840332, 
         "Shape__Length" : 99697.256361128
       }
@@ -4013,10 +4013,10 @@
         "Total" : 4023, 
         "Concelho" : "VIMIOSO", 
         "OBJECTID" : 302, 
-        "Incidência" : 0, 
+        "Incidência" : 75, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 0, 
+        "Valorincid" : 75, 
         "Shape__Area" : 860195242.109131, 
         "Shape__Length" : 161427.13991867
       }
@@ -4026,10 +4026,10 @@
         "Total" : 7746, 
         "Concelho" : "VINHAIS", 
         "OBJECTID" : 303, 
-        "Incidência" : 77, 
+        "Incidência" : 26, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 77, 
+        "Valorincid" : 26, 
         "Shape__Area" : 1252795703.95361, 
         "Shape__Length" : 188639.910856346
       }
@@ -4039,10 +4039,10 @@
         "Total" : 97249, 
         "Concelho" : "VISEU", 
         "OBJECTID" : 304, 
-        "Incidência" : 8, 
+        "Incidência" : 15, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 8, 
+        "Valorincid" : 15, 
         "Shape__Area" : 882728469.105469, 
         "Shape__Length" : 150354.678302941
       }
@@ -4052,10 +4052,10 @@
         "Total" : 23897, 
         "Concelho" : "VIZELA", 
         "OBJECTID" : 305, 
-        "Incidência" : 21, 
+        "Incidência" : 25, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 21, 
+        "Valorincid" : 25, 
         "Shape__Area" : 43867717.6313477, 
         "Shape__Length" : 36973.9255635119
       }
@@ -4065,10 +4065,10 @@
         "Total" : 9619, 
         "Concelho" : "VOUZELA", 
         "OBJECTID" : 306, 
-        "Incidência" : 42, 
+        "Incidência" : 21, 
         "Incidência_categoria" : "[0,120]", 
         "Incidência_" : "Baixo a Moderado", 
-        "Valorincid" : 42, 
+        "Valorincid" : 21, 
         "Shape__Area" : 337866412.275879, 
         "Shape__Length" : 92659.3497554327
       }
@@ -4091,10 +4091,10 @@
         "Total" : 14721, 
         "Concelho" : "LAGOA [R.A. AÇORES]", 
         "OBJECTID" : 308, 
-        "Incidência" : 319, 
+        "Incidência" : 346, 
         "Incidência_categoria" : "[240,480]", 
         "Incidência_" : "Elevado", 
-        "Valorincid" : 319, 
+        "Valorincid" : 346, 
         "Shape__Area" : 73172163.6630859, 
         "Shape__Length" : 39126.7580547929
       }
