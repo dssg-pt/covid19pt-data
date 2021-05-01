@@ -224,6 +224,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
         dados_vacinas.update(
             {
                 'percentagem': float(100 * df_today[f'doses2{suffix}'] / pop),
+                'percentagem_inoculados': f(round(float(100 * df_today[f'doses1{suffix}'] / pop), 2)),
                 'n_total': f(int(df_today[f'doses1{suffix}'])),
                 'n_vacinados': f(int(df_today[f'doses2{suffix}'])),
                 'novos_vacinados': f(int(df_today[f'doses2{suffix}_novas']), plus=True),
@@ -343,12 +344,14 @@ def compor_tweet(dados_vacinas, tweet=1):
     )
     tweet_message += (
         "\n\n👍Total {n_total} inoculados"
+        " ({percentagem_inoculados}%)"
     )
     tweet_message += (
         "\n\n[2/2]"
         "\n\n➕Todos os dados em: {link_repo}"
     ) if nacional else (
-        "\n\n#vacinaçãoCovid19 #COVID19PT"
+        "\n\n#vacinaçãoCovid19"
+        #" #COVID19PT"
         "\n\n[1/2]"
     )
 
