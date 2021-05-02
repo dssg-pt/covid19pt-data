@@ -166,7 +166,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
     if df.index[-1] == today and not math.isnan(df.loc[today_f].doses2):
-        print(f"today={today_f} last_index={df.index[-1]} offset={DAYS_OFFSET}")
+        # print(f"today={today_f} last_index={df.index[-1]} offset={DAYS_OFFSET}")
         df["doses1_7"] = df.doses1.diff(7)
         df["doses2_7"] = df.doses2.diff(7)
         df_today = df.loc[today_f]
