@@ -56,7 +56,7 @@ def update_readme(date_now):
 if __name__ == '__main__':
     
     # Today
-    DAYS_OFFSET = 0
+    DAYS_OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     date=(datetime.today() - timedelta(days=DAYS_OFFSET))
 
     # The link
