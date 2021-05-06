@@ -50,18 +50,16 @@ REGIONS = (
 if __name__ == "__main__":
     today = datetime.datetime.today()
     year, month = int(today.strftime("%Y")), int(today.strftime("%m"))
-    # TODO se o url der erro, testar o mês anterior
+    diff = 0
     df = None
     for region in REGIONS:
         try:
             url = URL.format(year=year, month=month, region=region[1])
-            print(f"Retrieving this month {year}-{month} for {region}: {url}")
+            print(f"Retrieving {'last' if diff else 'next'} month {year}-{month} for {region}: {url}")
             data = pd.read_excel(url, index_col="Data")
         except:
-            if month == 1:
-                year, month = year - 1, 12
-            else:
-                month -= 1
+            (year, month) = (year - 1, 12) if month == 1 else (year, month-1)
+            diff += 1
             url = URL.format(year=year, month=month, region=region[1])
             print(f"Retrieving last month {year}-{month} for {region}: {url}")
             data = pd.read_excel(url, index_col="Data")
