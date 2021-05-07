@@ -24,58 +24,61 @@
 14-12-2020 a 27-12-2020, publicado a 04-01-2021
 
 ### 2021-01-06_concelhos.json
-23-12-2020 a 05-01-2021, publicado a 11-01-2021
+23-12-2020 a 05-01-2021 (terça-feira), publicado a 11-01-2021 (segunda-feira)
 
 ### 2021-01-13_concelhos.json
-30-12-2020 a 12-01-2021, publicado a 18-01-2021
+30-12-2020 a 12-01-2021 (terça-feira), publicado a 18-01-2021 (segunda-feira)
 
 ### 2021-01-19_concelhos.json
-05-01-2021 a 18-01-2021, publicado a 25-01-2021
+05-01-2021 a 18-01-2021 (segunda-feira), publicado a 25-01-2021 (segunda-feira)
 
 ### 2021-01-27_concelhos.json
-13-01-2021 a 26-01-2021, publicado a 01-02-2021
+13-01-2021 a 26-01-2021 (terça-feira), publicado a 01-02-2021 (segunda-feira)
 
 Nota: a 2021-02-04 houve remoção campos:
 Dicofre, Distrito, DensidadeP, ARS, Cumulativo_casos_14_dias
 
 ### 2021-02-03_concelhos.json
-20-01-2021 a 02-02-2021, publicado a 08-02-2021
+20-01-2021 a 02-02-2021 (terça-feira), publicado a 08-02-2021 (segunda-feira)
 
 ### 2021-02-10_concelhos.json
-27-01-2021 a 09-02-2021, publicado a 15-02-2021
+27-01-2021 a 09-02-2021 (terça-feira), publicado a 15-02-2021 (segunda-feira)
 
 ### 2021-02-17_concelhos.json
-03-02-2021 a 16-02-2021, publicado a 22-02-2021
+03-02-2021 a 16-02-2021 (terça-feira), publicado a 22-02-2021 (segunda-feira)
 
 Nota: a 2021-02-24 houve remoção campos:
 Shape_Leng
 
 ### 2021-02-14_concelhos.json
-10-02-2021 a 23-02-2021, publicado a 01-03-2021 (segunda-feira)
+10-02-2021 a 23-02-2021 (terça-feira), publicado a 01-03-2021 (segunda-feira)
 
 ### 2021-03-03_concelhos.json
-17-02-2021 a 02-03-2021, publicado a 08-03-2021 (segunda-feira)
+17-02-2021 a 02-03-2021 (terça-feira), publicado a 08-03-2021 (segunda-feira)
 
 ### 2021-03-10_concelhos.json
-24-02-2021 a 09-03-2021, publicado a 15-03-2021 (segunda-feira)
+24-02-2021 a 09-03-2021 (terça-feira), publicado a 15-03-2021 (segunda-feira)
 
 ### 2021-03-17_concelhos.json
-03-03-2021 a 16-03-2021, publicado a 22-03-2021 (segunda-feira)
+03-03-2021 a 16-03-2021 (terça-feira), publicado a 22-03-2021 (segunda-feira)
 
 ### 2021-03-24_concelhos.json
-10-03-2021 a 23-03-2021, publicado a 29-03-2021 (segunda-feira)
+10-03-2021 a 23-03-2021 (terça-feira), publicado a 29-03-2021 (segunda-feira)
 
 ### 2021-03-31_concelhos.json
-17-03-2021 a 30-03-2021, publicado a 05-04-2021 (segunda-feira)
+17-03-2021 a 30-03-2021 (terça-feira), publicado a 05-04-2021 (segunda-feira)
 
 ### 2021-04-07_concelhos.json
-24-03-2021 a 06-04-2021, publicado a 09-04-2021 (sexta-feira)
+24-03-2021 a 06-04-2021 (terça-feira), publicado a 09-04-2021 (sexta-feira)
 
 ### 2021-04-14_concelhos.json
-31-03-2021 a 13-04-2021, publicado a 16-04-2021 (sexta-feira)
+31-03-2021 a 13-04-2021 (terça-feira), publicado a 16-04-2021 (sexta-feira)
 
 ### 2021-04-21-concelhos.json
-07-04-2021 a 20-04-2021, publicado a 23-04-2021 (sexta-feira)
+07-04-2021 a 20-04-2021 (terça-feira), publicado a 23-04-2021 (sexta-feira)
 
 ### 2021-04-28-concelhos.json
-14-04-2021 a 27-04-2021, publicado a 30-04-2021 (sexta-feira)
+14-04-2021 a 27-04-2021 (terça-feira), publicado a 30-04-2021 (sexta-feira)
+
+### 2021-05-06-concelhos.json
+22-04-2021 a 05-05-2021 (quarta-feira), publicado a 07-05-2021 (sexta-feira)
