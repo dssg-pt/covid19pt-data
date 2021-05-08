@@ -55,7 +55,7 @@ if __name__ == "__main__":
     for region in REGIONS:
         try:
             url = URL.format(year=year, month=month, region=region[1])
-            print(f"Retrieving {'last' if diff else 'next'} month {year}-{month} for {region}: {url}")
+            print(f"Retrieving {'last' if diff else 'this'} month {year}-{month} for {region}: {url}")
             data = pd.read_excel(url, index_col="Data")
         except:
             (year, month) = (year - 1, 12) if month == 1 else (year, month-1)
