@@ -31,6 +31,9 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
     # hack data incorreta dia 23-04 dizia 22-04
     if unix_date == 1619049600 and doses_total == 2778982:
         return unix_date + 86400
+    # hack data incorreta dia 09-05 dizia 18-04
+    if unix_date == 1618704000 and doses_total == 3845140:
+        return 1620432000 + 86400
 
     # Desde dia 22-04-2021 que a API tem o dia anterior (!?)
     # print(f"last_date={last_date} latest_date={latest_date} doses_total={doses_total} latest_total={latest_total}")
