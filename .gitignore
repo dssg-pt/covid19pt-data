@@ -144,3 +144,10 @@ cython_debug/
 media
 static
 extra/saude/download_atividade_operacional.ipynb
+
+# editors
+.vscode
+
+# temp
+temp
+
