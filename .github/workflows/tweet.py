@@ -90,7 +90,7 @@ def icon(valor, tipo):
 
 def calc_tendencia(df, diff=7, skip=1, name=""):
     """ Retorna a diferença da média 7 dias do ultimo dia para o dia anterior """
-    IGNORE = 2.5
+    IGNORE = 1
     df = df.diff(diff) if diff else df
     val1, val2 = float(df[-1]), float(df[-1 - skip])
     diff = val1 - val2
