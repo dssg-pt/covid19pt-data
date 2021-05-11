@@ -23,6 +23,14 @@ if __name__ == "__main__":
   # read the "Semi-colon Separated Values"
   data = pd.read_csv(PATH_TO_CSV / last_dataset, sep=";", decimal=',')
 
+
+  # Dataset 12 (maybe 11) dropped RECEIVED + DISTRIBUTED
+  dataset12 = False
+  for k in ['RECEIVED', 'DISTRIBUTED']:
+    if k not in data.columns:
+      data[k] = np.nan
+      dataset12 = True
+
   # Until 2021-03-17 the first column was an unnamed numeric index
   if len(data.columns) == 19 and data.columns[0] != 'TYPE':
     data.drop(data.columns[0], axis=1, inplace=True)
@@ -68,7 +76,11 @@ if __name__ == "__main__":
     data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%Y'))
   except ValueError:
     # 2021-04-29 tem ano com 2 digitos "21"
-    data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%y'))
+    try:
+      data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%y'))
+    except ValueError:
+      # relatório 12 (talvez 11) tem Y-M-D
+      data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%Y-%m-%d'))
   data['data'] = data['data'].apply(lambda x: x.replace("/", "-"))
 
   # CSV tem data do inicio da semana enquanto o PDF tem data do final da semana
@@ -90,6 +102,16 @@ if __name__ == "__main__":
       'doses1_perc', 'doses2_perc', 'populacao1', 'populacao2'
     ]]
   data_general.set_index('day', inplace=True)
+
+  if dataset12:
+    data_general['recebidas'] = [
+      651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
+      3400260, 4218420
+    ]
+    data_general['distribuidas'] = [
+      571981, 718143, 933847, 1095103, 1264093, 1462079, 1753999, 1996561, 2360167, 2679813,
+      3039329, 3581288
+    ]
 
   # dicionario para alteração do nome de idades
   ages = dict([ ( k,
