@@ -104,6 +104,7 @@ if __name__ == "__main__":
   data_general.set_index('day', inplace=True)
 
   if dataset12:
+    print(f"WARNING: dados receibidas/distribuidas em falta")
     data_general['recebidas'] = [
       651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
       3400260, 4218420
@@ -118,7 +119,8 @@ if __name__ == "__main__":
       re.sub('-', '_',
       re.sub(' ou mais', '+',
       re.sub(' anos', '',
-      k.lower()
+      # 2021.05.10 tem age como "NA"/float.nan
+      k.lower() if type(k) == str else 'na'
     ))) ) for k in data.idades.unique() ])
 
   # wide table de colunas por idade
