@@ -31,9 +31,11 @@ jobs:
           python .github/workflows/Web_Scrapper_DGS.py
       - name: Download PDF
         run: |
+          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
           wget -c -P .github/workflows/ $(cat .github/report_link.txt)
       - name: Process PDF
         run: |
+          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
           python .github/workflows/process_report.py
 
       - name: Run data extraction
