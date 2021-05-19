@@ -137,3 +137,19 @@
 - `2021-05-03_Relatório_Vacinação_12.pdf`
 - `Relatório de Vacinação nº 12 (27/01/2020 a 02/05/2021)`
 - PDF publicado a `2021-05-04` com data `2021-05-02` e dados desconhecidos
+
+### Relatório 2021-05-10
+- `2021-05-10_Dataset_Vacinação_13.csv`
+- `Dataset vacinação (13)`
+- CSV publicado a `2021-05-11` com data `2021-05-09` e dados desconhecidos
+- `2021-05-10_Relatório_Vacinação_13.pdf`
+- `Relatório de Vacinação nº 13 (27/01/2020 a 09/05/2021)`
+- PDF publicado a `2021-05-11` com data `2021-05-09` e dados desconhecidos
+
+### Relatório 2021-05-17
+- `2021-05-17_Dataset_Vacinação_14.csv`
+- `Dataset vacinação (14)`
+- CSV publicado a `2021-05-18` com data `2021-05-16` e dados desconhecidos
+- `2021-05-17_Relatório_Vacinação_14.pdf`
+- `Relatório de Vacinação nº 14 (27/01/2020 a 16/05/2021)`
+- PDF publicado a `2021-05-18` com data `2021-05-16` e dados desconhecidos
