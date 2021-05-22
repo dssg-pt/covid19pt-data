@@ -36,14 +36,17 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
         return 1620432000 + 86400
 
     # Desde dia 22-04-2021 que a API tem o dia anterior (!?)
-    # print(f"last_date={last_date} latest_date={latest_date} doses_total={doses_total} latest_total={latest_total}")
+
+    # hack data incorreta dia 22-05 dizia 20-04 e devia 21
+    if unix_date == 1621468800 and doses_total == 4842021:
+        unix_date = unix_date + 86400
+
     last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
     latest_date = pd.to_datetime(latest_data, format="%Y-%m-%d").strftime("%Y-%m-%d")
     if last_date == latest_date and doses_total > latest_total:
         unix_date += 86400
         today = datetime.datetime.today().strftime("%Y-%m-%d")
         print("FIXING DATE today={today} API date={latest_date} last date={last_date}")
-    
 
     return unix_date
 
@@ -184,7 +187,7 @@ if __name__ == "__main__":
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "vacinas.csv")
     URL = (
         "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query"
-        #"https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/Covid19_Total_Vacinados_Temporario/FeatureServer/0/query"        
+        #"https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/Covid19_Total_Vacinados_Temporario/FeatureServer/0/query"
         "?where=1%3D1&"
         "&orderByFields=Data+desc"
         "&f=pjson&outFields=*&cacheHint=false"
@@ -196,7 +199,7 @@ if __name__ == "__main__":
     latest = pd.read_csv(PATH_TO_CSV)
     latest["data"] = pd.to_datetime(latest["data"], format="%d-%m-%Y")
 
-    latest_data, latest_total = latest.data.tail(1).values[0], int(latest.doses.tail(1))    
+    latest_data, latest_total = latest.data.tail(1).values[0], int(latest.doses.tail(1))
     # Get the data available in the dashboard
     available = get_vacinas(URL, latest_data, latest_total)
 
