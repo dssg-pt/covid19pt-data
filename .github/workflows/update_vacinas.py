@@ -40,6 +40,9 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
     # hack data incorreta dia 22-05 dizia 20-04 e devia 21
     if unix_date == 1621468800 and doses_total == 4842021:
         unix_date = unix_date + 86400
+    # hack data incorreta dia 23-05 ainda dizia 20-04
+    elif unix_date == 1621468800 and doses_total == 4913087:
+        unix_date = unix_date + 86400 * 2
 
     last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
     latest_date = pd.to_datetime(latest_data, format="%Y-%m-%d").strftime("%Y-%m-%d")
