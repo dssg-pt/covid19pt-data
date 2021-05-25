@@ -203,6 +203,10 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `doses1_novas` | Número diário de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
 | `doses2` | Número total de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
 | `doses2_novas` | Número diário de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_completamente` | Número total de pessoas com vacinação completa - com vacina unidose ou com a segunda dose. Tenderá para o total da população. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_completamente_novas` | Número diário de pessoas com vacinaçao completa | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_parcialmente` | Número total de pessoas com vacinaçao parcial - com apeas a primeira dose de vacinas com duas doses. Tenderá para zero conforme a população receba a segunda dose.  | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_parcialmente_novas` | Número diário de pessoas com vacinaçao parcial | Inteiro >= 0 ou _vazio_ |
 
 Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 
