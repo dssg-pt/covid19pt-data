@@ -31,8 +31,8 @@ jobs:
 
       - name: There is NO updated
         if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle: NO VACCINE DATA AVAILABLE :large_yellow_circle:"
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:. NO VACCINE DATA AVAILABLE :large_yellow_circle:"
 
       - name: There is a NEW updated
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle: NEW VACCINE DATA AVAILABLE :large_green_circle:"
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW VACCINE DATA AVAILABLE :large_green_circle:"
