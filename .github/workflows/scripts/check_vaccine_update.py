@@ -1,8 +1,6 @@
 import json
 import pathlib
-import subprocess
 import sys
-import os
 
 import requests
 
@@ -51,11 +49,9 @@ if __name__ == '__main__':
     new_data = get_vaccine_data_from_api()
 
     try:
-        assert current_data != new_data
+        assert current_data == new_data
     except AssertionError:
-        print('No new vaccine data found!')
+        print("TRUE")
         sys.exit()
 
-    os.environ['TWITTER_CONSUMER_KEY_VAC'] = "DEBUG"
-
-    subprocess.call(args=["python3", ".github/workflows/tweet_vacinas.py"])
+    print("FALSE")
