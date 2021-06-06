@@ -20,6 +20,9 @@ jobs:
       - name: Install Requests package
         run: pip install requests
 
+      - name: Update Python path
+        run: echo "PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE" >> $GITHUB_ENV
+
       - name: Check for update
         run: echo "UPDATE_VACCINE=$(python ./scripts/check_vaccine_update.py)" >> $GITHUB_ENV
 
