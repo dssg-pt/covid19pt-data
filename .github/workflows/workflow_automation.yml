@@ -24,11 +24,11 @@ jobs:
         run: echo "PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
       - name: Check for update
-        run: echo "UPDATE_VACCINE=$(python ./scripts/check_vaccine_update.py)" >> $GITHUB_ENV
+        run: echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
 
       - name: Test
         run: echo $UPDATE_VACCINE
 
       - name: There is NO updated
         if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
-        run: python ./scripts/send_slack_message.py --message ":large_yellow_circle:\t No new vaccine data to update \t:large_yellow_circle:"
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:\t No new vaccine data to update \t:large_yellow_circle:"
