@@ -7,7 +7,7 @@ jobs:
 
   check_vaccines:
     name: Check if vaccine data has update
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
