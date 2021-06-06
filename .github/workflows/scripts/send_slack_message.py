@@ -1,4 +1,5 @@
 import argparse
+import json
 import os
 import requests
 
@@ -8,19 +9,14 @@ SLACK_WEBHOOK = os.getenv('SLACK_WEBHOOK', '')
 
 def send_message(message):
 
-    requests.post(
+    response = requests.post(
         url=SLACK_WEBHOOK,
         headers={'Content-type': 'application/json'},
-        data={
-            "blocks": [{
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": message
-                }
-            }]
-        }
+        data=json.dumps({"text": message})
     )
+
+    if response.status_code != 200:
+        print('Request to slack returned an error %s, the response is:\n%s' % (response.status_code, response.text))
 
 
 def parse_args():
