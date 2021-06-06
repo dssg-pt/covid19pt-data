@@ -26,9 +26,10 @@ jobs:
       - name: Check for update
         run: echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
 
-      - name: Test
-        run: echo $UPDATE_VACCINE
-
       - name: There is NO updated
         if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:\t No new vaccine data to update \t:large_yellow_circle:"
+
+      - name: There is a NEW updated
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:\t New vaccine data to update \t:large_green_circle:"
