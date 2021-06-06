@@ -3,6 +3,9 @@ name: DGS - Automation
 on:
   workflow_dispatch:
 
+env:
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
 jobs:
 
   check_vaccines:
