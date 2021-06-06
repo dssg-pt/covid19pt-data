@@ -1,0 +1,31 @@
+name: DGS - Automation
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  check_vaccines:
+    name: Check if vaccine data has update
+    runs_on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python to 3.8.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.x'
+
+      - name: Install Requests package
+        run: pip install requests
+
+      - name: Check for update
+        run: echo "UPDATE_VACCINE=$(python ./scripts/check_vaccine_update.py)" >> $GITHUB_ENV
+
+      - name: Test
+        run: echo $UPDATE_VACCINE
+
+      - name: There is NO updated
+        if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
+        run: python ./scripts/send_slack_message.py --message ":large_yellow_circle:\t No new vaccine data to update \t:large_yellow_circle:"
