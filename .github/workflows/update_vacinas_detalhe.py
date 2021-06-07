@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import re
 import sys
-from util import convert, convert_to_float, convert_to_int
+from util import convert, convert_to_int
 
 if __name__ == "__main__":
 
