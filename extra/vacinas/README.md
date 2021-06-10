@@ -169,3 +169,11 @@
 - `2021-05-31_Relatório_Vacinação_16.pdf`
 - `Relatório de Vacinação nº 16 (27/01/2020 a 30/05/2021)`
 - PDF publicado a `2021-06-02` com data `2021-05-30` e dados desconhecidos
+
+### Relatório 2021-06-07
+- `2021-06-07_Dataset_Vacinação_17.csv`
+- `Dataset vacinação (17)`
+- CSV publicado a `2021-06-09` com data `2021-06-06` e dados desconhecidos
+- `2021-06-07_Relatório_Vacinação_17.pdf`
+- `Relatório de Vacinação nº 17 (27/01/2020 a 06/06/2021)`
+- PDF publicado a `2021-06-09` com data `2021-06-06` e dados desconhecidos
