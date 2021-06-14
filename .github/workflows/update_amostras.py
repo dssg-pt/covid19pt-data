@@ -110,9 +110,17 @@ def fix_amostras(data):
     for i in ["26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"]:
         data.loc[data.data == i, data.columns[1:]] = ""
 
-    FIXES = (
+    FIXES = [
         # [data DD-MM-YYYY, columns, fix_value]
-    )
+        ["09-06-2021", "amostras", 12242853],
+        ["09-06-2021", "amostras_novas", 50636],
+        ["10-06-2021", "amostras", 12267920],
+        ["10-06-2021", "amostras_novas", 25067],
+        ["11-06-2021", "amostras", 12312615],
+        ["11-06-2021", "amostras_novas", 44695],
+        ["12-06-2021", "amostras", 12342434],
+        ["12-06-2021", "amostras_novas", 29819],
+    ]
 
     for fix in FIXES:
         if DEBUG:
