@@ -1,6 +1,8 @@
 name: DGS data - vacinas
 
 on:
+  workflow_dispatch:
+
   pull_request:
     branches:
       - master
@@ -107,4 +109,3 @@ jobs:
           TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
           TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
           TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
-
