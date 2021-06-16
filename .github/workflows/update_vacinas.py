@@ -66,12 +66,11 @@ def save_vacinas(text, data, latest_data=None, latest_total=None):
     today = datetime.datetime.today().strftime("%Y-%m-%d")
     if today != last_date:
         print(f"Vaccines with no new data, today={today} last_date={last_date}")
-        sys.exit(0)
-
-    PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / "diário" / f"{today}_vacinas.json")
-    print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
-    with open(PATH_TO_JSON, "w") as f:
-        f.write(text)
+    else:
+        PATH_TO_JSON = str(Path(__file__).resolve().parents[2] / "extra" / "vacinas" / "diário" / f"{today}_vacinas.json")
+        print(f"Saving a copy for today={today} at {PATH_TO_JSON}")
+        with open(PATH_TO_JSON, "w") as f:
+            f.write(text)
 
 def get_vacinas(url, latest_data=None, latest_total=None):
     if len(sys.argv) > 1:

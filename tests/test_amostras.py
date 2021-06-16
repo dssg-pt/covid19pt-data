@@ -160,6 +160,16 @@ def test_sequentiality_new_cases(data_amostras):
                 row["data"],
             )
 
+        assert (
+            today[f"amostras"] == today[f"amostras_pcr"] + today[f"amostras_antigenio"]
+        ), "Amostras do dia {} não coerentes total={} soma={} pcr={} antigenio={}".format(
+            row["data"],
+            today[f"amostras"],
+            today[f"amostras_pcr"] + today[f"amostras_antigenio"],
+            today[f"amostras_pcr"],
+            today[f"amostras_antigenio"],
+        )
+
         for k in ["", "_pcr", "_antigenio"]:
             assert (
                 today[f"amostras{k}"]
@@ -172,16 +182,6 @@ def test_sequentiality_new_cases(data_amostras):
                 today[f"amostras{k}_novas"],
                 today[f"amostras{k}"] - yesterday[f"amostras{k}"],
             )
-
-        assert (
-            today[f"amostras"] == today[f"amostras_pcr"] + today[f"amostras_antigenio"]
-        ), "Amostras do dia {} não coerentes total={} soma={} pcr={} antigenio={}".format(
-            row["data"],
-            today[f"amostras"],
-            today[f"amostras_pcr"] + today[f"amostras_antigenio"],
-            today[f"amostras_pcr"],
-            today[f"amostras_antigenio"],
-        )
 
 
 def test_sequentiality_dates(data_amostras):
