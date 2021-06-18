@@ -97,3 +97,6 @@ Shape_Leng
 
 ### 2021-06-09-concelhos.json
 26-05-2021 a 08-06-2021 (terça-feira), publicado a 11-06-2021 (sexta-feira)
+
+### 2021-06-16-concelhos.json
+02-06-2021 a 15-06-2021 (terça-feira), publicado a 18-06-2021 (sexta-feira)
