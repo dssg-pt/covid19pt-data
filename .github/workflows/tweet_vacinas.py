@@ -34,6 +34,7 @@ POP_PT_VACINAR = 9798859
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊", "⬌"]
 
+CASAS_DECIMAIS=1
 
 # TEMP PREVISÃO 70
 POP_ADULTA = (
@@ -44,62 +45,6 @@ POP_ADULTA = (
     1545230 + # 65-79
      655739 # 80+
 )
-# Excluir confirmados (assume que já estão imunes)
-INCLUIR_PREVISAO = False
-EXCLUIR_CONFIRMADOS = True
-PERC_IMUNIDADE = 70
-
-
-def quando_imunidade(df, pop, dados=None):
-    vacinados_dia_media = math.floor(df.doses2_7 / 7)
-    inoculados_dia_media = math.floor(df.doses1_7 / 7)
-    # coeficientes desactivados para ser mais melhor bom
-    falta_vacinar = int(
-        pop
-        # assume vacinado com eficiencia 94%
-        - (df.doses2) * 0.94
-        # assume 1ª dose com eficiencia 60%
-        - (df.doses1 - df.doses2) * 0.6
-    )
-    if dados is not None:
-        falta_vacinar -= int(
-            # assume "infetado só precisa de 1 dose"
-            # inclui obitos de proposito
-            dados.confirmados * 0.5
-        )
-    media_dia = (
-        0
-        + vacinados_dia_media * 0.94
-        + inoculados_dia_media * 0.6
-    )
-    if dados is not None:
-        media_dia += int(
-           dados.confirmados_novos * 0.5
-        )
-    dias = math.ceil(falta_vacinar / media_dia)
-    quando = date.today() + timedelta(days=dias)
-    quando_f = quando.strftime("%-d de %B de %Y") # ('%Y-%m-%d')
-    if consumer_key == 'DEBUG':
-        print(
-            f"quando_imunidade: dados_dia={str(df.name)[:10]}"
-            f" vacinados_dia_media={f(vacinados_dia_media)}"
-            f" inoculados_dia_media={f(inoculados_dia_media)}"
-            f" para_vacinar={f(pop)}"
-            f" falta_vacinar={f(falta_vacinar)}"
-            f" dias={dias}"
-            f" quando={quando_f}"
-        )
-        imunizados = int(dados.confirmados) + int(df.doses1)
-        print(
-            f"imunizados: {imunizados}"
-            f" ({f(round(100 * int(imunizados) / POP_PT_2019, 2))}%)"
-            f" confirmados: {f(int(dados.confirmados))}"
-            f" ({f(round(100 * int(dados.confirmados) / POP_PT_2019, 2))}%)"
-            f" dose1: {f(int(df.doses1))}"
-            f" ({f(round(100 * int(df.doses1) / POP_PT_2019, 2))}%)"
-        )
-    return quando, falta_vacinar
-
 
 # Note: to debug the tweet content without publishing, use
 # export TWITTER_CONSUMER_KEY_VAC=DEBUG
@@ -128,40 +73,39 @@ def autenticar_twitter():
 def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
     # Começar a compôr o dicionário de dados relevantes
     today = date.today() - timedelta(days=DAYS_OFFSET)
-    dados_vacinas={'data': today.strftime("%-d de %B de %Y")}
+    dados_vacinas={
+        # 'data': today.strftime("%-d de %B de %Y"),
+        'data': today.strftime("%d %b %Y"),
+        }
 
     # Aceder ao .csv das vacinas
     path = Path(__file__).resolve().parents[2]
-    file=path / 'vacinas.csv'
-    df = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
+    df = pd.read_csv(path / 'vacinas.csv',
+        parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True
+    )
 
-    pop = POP_PT_VACINAR
-    suffix = ''
-    dados_vacinas.update({'scope': 'nacional' if incluir_ilhas else 'continente'})
     if incluir_ilhas:
         pop = POP_PT_2019
         suffix = '_nacional'
-        # https://github.com/owid/covid-19-data/blob/b796c2144748d2b70fad2a0c8d5d581d2adeab7b/scripts/scripts/vaccinations/automations/batch/portugal.py
-        source_islands=path / 'vacinas_detalhe.csv'
-        df_islands = pd.read_csv(source_islands,
+        df_detalhe = pd.read_csv(path / 'vacinas_detalhe.csv',
             parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True,
-            usecols=[
-                "data", "doses_açores", "doses1_açores", "doses2_açores",
-                "doses_madeira", "doses1_madeira", "doses2_madeira"
-            ])
-
-        df = pd.merge(df, df_islands, how="outer", on="data")
+        )
+        df = pd.merge(df, df_detalhe, how="outer", on="data", suffixes=("", "_detalhe"))
         df = df.ffill()
         df = df.assign(
-            doses_nacional=df.doses + df.doses_madeira + df.doses_açores,
-            doses1_nacional=df.doses1 + df.doses1_madeira + df.doses1_açores,
-            doses2_nacional=df.doses2 + df.doses2_madeira + df.doses2_açores,
+            # https://github.com/owid/covid-19-data/blob/b796c2144748d2b70fad2a0c8d5d581d2adeab7b/scripts/scripts/vaccinations/automations/batch/portugal.py
+            doses_nacional = df.doses + df.doses_madeira + df.doses_açores,
+            doses1_nacional = df.doses1 + df.doses1_madeira + df.doses1_açores,
+            doses2_nacional = df.doses2 + df.doses2_madeira + df.doses2_açores,
         )
-
         df['doses1_nacional_novas'] = df['doses1_nacional'].diff(1)
         df['doses2_nacional_novas'] = df['doses2_nacional'].diff(1)
         df['doses1_nacional_7'] = df['doses1_nacional'].diff(7).div(7)
         df['doses2_nacional_7'] = df['doses2_nacional'].diff(7).div(7)
+    else:
+        pop = POP_PT_VACINAR
+        suffix = ''
+    dados_vacinas.update({'scope': 'nacional' if incluir_ilhas else 'continente'})
 
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
@@ -174,57 +118,10 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, incluir_ilhas=False):
         yesterday_f = yesterday.strftime('%Y-%m-%d')
         df_yesterday = df.loc[yesterday_f]
 
-        if INCLUIR_PREVISAO:
-
-            if EXCLUIR_CONFIRMADOS:
-                # Aceder ao .csv dos dados
-                file=path / 'data.csv'
-                df_dados = pd.read_csv(file, parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True)
-
-            pop_para_vacinar = POP_ADULTA * PERC_IMUNIDADE / 100.0 if PERC_IMUNIDADE else POP_ADULTA
-            dados = None
-
-            if EXCLUIR_CONFIRMADOS:
-                dados = df_dados.iloc[[-2]]
-            quando_ontem, falta_vacinar = quando_imunidade(df_yesterday, pop_para_vacinar, dados)
-
-            if EXCLUIR_CONFIRMADOS:
-                dados = df_dados.iloc[[-1]]
-            quando, falta_vacinar = quando_imunidade(df_today, pop_para_vacinar, dados)
-            if consumer_key == 'DEBUG':
-                debug = (
-                    f"pop={f(POP_PT_2019)}"
-                    f" pop_vacinar={f(POP_PT_VACINAR)}"
-                    f" ({f(round(100 * POP_PT_VACINAR / POP_PT_2019, 2))}%)"
-                    f" pop_adulta={f(POP_ADULTA)}"
-                    f" ({f(round(100 * POP_ADULTA / POP_PT_2019, 2))}%)"
-                )
-                if EXCLUIR_CONFIRMADOS:
-                    debug += (
-                        f" confirmados={f(int(dados.confirmados))}"
-                        f" ({f(round(100 * dados.confirmados / POP_PT_2019, 2))}%)"
-                        f" ativos={f(int(dados.ativos))}"
-                        f" ({f(round(100 * dados.ativos / POP_PT_2019, 2))}%)"
-                        f" recuperados={f(int(dados.recuperados))}"
-                        f" ({f(round(100 * dados.recuperados / POP_PT_2019, 2))}%)"
-                        f" obitos={f(int(dados.obitos))}"
-                        f" ({f(round(100*dados.obitos/POP_PT_2019, 2))}%)"
-                    )
-                debug += (
-                    f" para_vacinar={f(pop_para_vacinar)}"
-                    f" ({f(round(100 * pop_para_vacinar / POP_PT_2019, 2))}%)"
-                    f" falta_vacinar={f(falta_vacinar)}"
-                    f" ({f(round(100 * falta_vacinar / POP_PT_2019, 2))}%)"
-                    f" quando_ontem={quando_ontem.strftime('%-d de %B de %Y')}"
-                    f" quando={quando.strftime('%-d de %B de %Y')}"
-                )
-                print(debug)
-
-
         dados_vacinas.update(
             {
                 'percentagem': float(100 * df_today[f'doses2{suffix}'] / pop),
-                'percentagem_inoculados': f(round(float(100 * df_today[f'doses1{suffix}'] / pop), 2)),
+                'percentagem_inoculados': f(round(float(100 * df_today[f'doses1{suffix}'] / pop), CASAS_DECIMAIS)),
                 'n_total': f(int(df_today[f'doses1{suffix}'])),
                 'n_vacinados': f(int(df_today[f'doses2{suffix}'])),
                 'novos_vacinados': f(int(df_today[f'doses2{suffix}_novas']), plus=True),
@@ -304,7 +201,7 @@ def progress(value, length=30, title = "", vmin=0.00, vmax=100.00):
 
     return (
         title + bar +
-        (" %.2f%%" % (value*100)).replace(".", ",")
+        (f" %.{CASAS_DECIMAIS}f%%" % (value*100)).replace(".", ",")
     )
 
 def compor_tweet(dados_vacinas, tweet=1):
@@ -323,23 +220,23 @@ def compor_tweet(dados_vacinas, tweet=1):
     tweet_message = ""
 
     tweet_message += (
-        "💉População 🇵🇹 {scope} incluindo ilhas:"
+        "💉População 🇵🇹 Nacional incluindo ilhas {data}:"
     ) if nacional else (
-        "💉População 🇵🇹 ({scope}) vacinada a {data}:"
+        "💉População 🇵🇹 Continente {data}:"
     )
     tweet_message += (
         "\n\n{progresso}"
-        "\n\n✌️{n_vacinados} vacinados"
+        "\n\n✌️{n_vacinados} vacinados com 2 doses"
     )
     tweet_message += "" if nacional else (
-        " ({novos_vacinados}{tendencia_vacinados},"
+        " ({novos_vacinados}{tendencia_vacinados}"
         " média 7d {media_7dias})"
     )
     tweet_message += (
-        "\n\n🤞Mais {n_inoculados} com 1ª dose"
+        "\n\n🤞Mais {n_inoculados} com 1 dose"
     )
     tweet_message += "" if nacional else (
-        " ({novos_inoculados}{tendencia_inoculados},"
+        " ({novos_inoculados}{tendencia_inoculados}"
         " média 7d {media_7dias_inoculados})"
     )
     tweet_message += (
@@ -350,9 +247,7 @@ def compor_tweet(dados_vacinas, tweet=1):
         "\n\n[2/2]"
         "\n\n➕Todos os dados em: {link_repo}"
     ) if nacional else (
-        "\n\n#vacinaçãoCovid19"
-        #" #COVID19PT"
-        "\n\n[1/2]"
+        "\n\n[1/2] #vacinaçãoCovid19"
     )
 
     dados_vacinas["link_repo"] = link_repo
@@ -368,16 +263,6 @@ def tweet_len(s):
 # ---
 # Main
 if __name__ == '__main__':
-
-    # debug progress bar
-    if False and consumer_key == 'DEBUG':
-        step = 0.5
-        for i in range(0, 1 + math.ceil(100 / step)):
-            j = min(100, i * step)
-            p = progress(j, length=20)
-            #p = progress(j, length=20, vmin=0.00, vmax=100.00, goal=PERC_IMUNE)
-            print(p)
-        sys.exit(0)
 
     dados_vac = extrair_dados_vacinas()
 
