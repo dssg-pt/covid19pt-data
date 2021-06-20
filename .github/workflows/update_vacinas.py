@@ -161,7 +161,10 @@ def fix_vacinas(data):
     # recalculate *_novas when missing or incorrect
     last = {}
     for i, row in data.iterrows():
-        for k in ["doses", "doses1", "doses2", 'pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente']:
+        for k in [
+                "doses", "doses1", "doses2",
+                'pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente',
+                ]:
             cur = row[f"{k}_novas"] or 0
             val = row[f"{k}"] or 0
             last_val = last.get(f"{k}", 0)
@@ -184,6 +187,36 @@ def convert(x):
         return int(x)
     except:
         return x
+
+def correcao_ilhas_unidose(updated):
+    PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "vacinas_detalhe.csv")
+
+    # calculate diff between doses2 and doses1 which corresponds to unidose (Janssen)
+    # that is correctly assigned to doses2/vaccinated on the weekly report, but to the
+    # doses1 on the daily report
+    df_vacinas_detalhes = pd.read_csv(PATH_TO_CSV)
+    df = pd.merge(df_vacinas_detalhes, updated, how='left', on='data', suffixes=("_semanal", "_diario"))
+    df['unidose_diff'] = df['doses2_continente'] - df['doses2_diario']
+    df = df[['data', 'unidose_diff']][17:] # 03-05-2021
+    updated = pd.merge(updated, df, how="left", on="data")
+    updated['unidose_diff'] = updated['unidose_diff'].ffill().fillna(0)
+    updated['pessoas_vacinadas_completamente'] = updated['pessoas_vacinadas_completamente'] + updated['unidose_diff']
+    updated['pessoas_vacinadas_parcialmente'] = updated['pessoas_vacinadas_parcialmente'] - updated['unidose_diff']
+    updated.drop('unidose_diff', inplace=True, axis=1)
+
+    # adds weekly values for difference between nationwide and continent (madeira and açores)
+    df = df_vacinas_detalhes
+    df['islands2_diff'] = df['doses2'] - df['doses2_continente']
+    df['islands1_diff'] = df['doses1'] - df['doses1_continente']
+    df = df[['data', 'islands2_diff', 'islands1_diff']]
+    updated = pd.merge(updated, df, how="left", on="data")
+    updated['islands2_diff'] = updated['islands2_diff'].ffill().fillna(0)
+    updated['islands1_diff'] = updated['islands1_diff'].ffill().fillna(0)
+    updated['pessoas_vacinadas_completamente'] = updated['pessoas_vacinadas_completamente'] + updated['islands2_diff']
+    updated['pessoas_vacinadas_parcialmente'] = updated['pessoas_vacinadas_parcialmente'] + updated['islands1_diff']
+    updated.drop('islands2_diff', inplace=True, axis=1)
+    updated.drop('islands1_diff', inplace=True, axis=1)
+    return updated
 
 
 if __name__ == "__main__":
@@ -282,8 +315,12 @@ if __name__ == "__main__":
 
     # add people columns
     updated['pessoas_vacinadas_completamente'] = updated['doses2']
-    updated['pessoas_vacinadas_completamente_novas'] = updated['doses2_novas']
     updated['pessoas_vacinadas_parcialmente'] = updated['doses1'] - updated['doses2']
+
+    # correção com ilhas e com unidoses
+    updated = correcao_ilhas_unidose(updated)
+
+    updated['pessoas_vacinadas_completamente_novas'] = updated['doses2_novas']
     updated['pessoas_vacinadas_parcialmente_novas'] = updated['doses1_novas'] - updated['doses2_novas']
 
     # convert values to integer
