@@ -164,6 +164,9 @@ if __name__ == "__main__":
       data_regional[f'{col}_arsalentejo'] +
       data_regional[f'{col}_arsalgarve'] +
       0)
+  # recalcula a percentagem continente
+  for i in [1, 2]:
+    data_regional[f'doses{i}_perc_continente'] = data_regional[f'doses{i}_continente'] / data_regional[f'populacao{i}_continente']
   cols = data_regional.columns
 
   # reordena por ARS (norte->sul)
