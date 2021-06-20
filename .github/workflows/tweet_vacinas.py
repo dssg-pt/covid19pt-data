@@ -248,7 +248,7 @@ def compor_tweet(dados_vacinas, tweet=1):
         tweet_message += "\n"
 
         df_last = dados_vacinas['df_last']
-        for idade in reversed(['80+', '65_79', '50_64', '25_49', '18_24']):
+        for idade in ['80+', '65_79', '50_64', '25_49', '18_24']:
             perc2 = df_last[f'doses2_perc_{idade}']
             perc1 = df_last[f'doses1_perc_{idade}']
             vacinados = f(round( perc2 * 100.0, CASAS_DECIMAIS ))
