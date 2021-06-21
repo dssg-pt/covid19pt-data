@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 20 de Junho de 2021, 15:31
+📅️ **Última actualização**: 21 de Junho de 2021, 15:21
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
 
@@ -207,6 +207,8 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `pessoas_vacinadas_completamente_novas` | Número diário de pessoas com vacinaçao completa | Inteiro >= 0 ou _vazio_ |
 | `pessoas_vacinadas_parcialmente` | Número total de pessoas com vacinaçao parcial - com apenas a primeira dose de vacinas com duas doses. Tenderá para zero conforme a população receba a segunda dose. É ajustado semanalmente como o `completamente` | Inteiro >= 0 ou _vazio_ |
 | `pessoas_vacinadas_parcialmente_novas` | Número diário de pessoas com vacinaçao parcial. Poderá ser negativo em dias que sejam administradas mais segundas doses que primeiras. | Inteiro >= 0 ou _vazio_ |
+| `vacinas` | Número total de doses de vacina. Equivalente ao `doses` mas ajustado semanalmente com os valores das ilhas. | Inteiro >= 0 ou _vazio_ |
+| `vacinas_novas` | Número diário de novas doses de vacinas. | Inteiro >= 0 ou _vazio_ |
 
 Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 
