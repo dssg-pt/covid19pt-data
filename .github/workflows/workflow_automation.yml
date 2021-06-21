@@ -36,3 +36,14 @@ jobs:
       - name: There is a NEW updated
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW VACCINE DATA AVAILABLE :large_green_circle:"
+
+      - name: Trigger workflow vaccines
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          curl \
+            -X POST \
+            -d '{"ref":"refs/heads/master"}' \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/vnd.github.v3+json' \
+            -H 'Authorization: token ${{secrets.GITHUB_TOKEN}}' \
+            'https://api.github.com/repos/dssg-pt/covid19pt-data/actions/workflows/workflow_vacinas.yml/dispatches'
