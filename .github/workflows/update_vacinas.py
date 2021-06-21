@@ -206,16 +206,18 @@ def correcao_ilhas_unidose(updated):
 
     # adds weekly values for difference between nationwide and continent (madeira and açores)
     df = df_vacinas_detalhes
-    df['islands2_diff'] = df['doses2'] - df['doses2_continente']
-    df['islands1_diff'] = df['doses1'] - df['doses1_continente']
-    df = df[['data', 'islands2_diff', 'islands1_diff']]
+    for k in ['', '2', '1']:
+        df[f'islands{k}_diff'] = df[f'doses{k}'] - df[f'doses{k}_continente']
+    df = df[['data', 'islands_diff', 'islands2_diff', 'islands1_diff']]
     updated = pd.merge(updated, df, how="left", on="data")
-    updated['islands2_diff'] = updated['islands2_diff'].ffill().fillna(0)
-    updated['islands1_diff'] = updated['islands1_diff'].ffill().fillna(0)
+    for k in ['', '2', '1']:
+        updated[f'islands{k}_diff'] = updated[f'islands{k}_diff'].ffill().fillna(0)
+    updated['vacinas'] = updated['vacinas'] + updated['islands_diff']
     updated['pessoas_vacinadas_completamente'] = updated['pessoas_vacinadas_completamente'] + updated['islands2_diff']
     updated['pessoas_vacinadas_parcialmente'] = updated['pessoas_vacinadas_parcialmente'] + updated['islands1_diff']
-    updated.drop('islands2_diff', inplace=True, axis=1)
-    updated.drop('islands1_diff', inplace=True, axis=1)
+    for k in ['', '2', '1']:
+        updated.drop(f'islands{k}_diff', inplace=True, axis=1)
+
     return updated
 
 
@@ -316,19 +318,19 @@ if __name__ == "__main__":
     # add people columns
     updated['pessoas_vacinadas_completamente'] = updated['doses2']
     updated['pessoas_vacinadas_parcialmente'] = updated['doses1'] - updated['doses2']
-
+    updated['vacinas'] = updated['doses']
     # correção com ilhas e com unidoses
     updated = correcao_ilhas_unidose(updated)
-
-    updated['pessoas_vacinadas_completamente_novas'] = updated['doses2_novas']
-    updated['pessoas_vacinadas_parcialmente_novas'] = updated['doses1_novas'] - updated['doses2_novas']
+    # recalculate daily diff
+    updated['pessoas_vacinadas_completamente_novas'] = updated['pessoas_vacinadas_completamente'].diff(1)
+    updated['pessoas_vacinadas_parcialmente_novas'] = updated['pessoas_vacinadas_parcialmente'].diff(1)
+    updated['vacinas_novas'] = updated['vacinas'].diff(1)
 
     # convert values to integer
     cols = [x for x in updated.columns if not x.startswith("data")]
     updated[cols] = updated[cols].applymap(convert)
     # fix values
     updated = fix_vacinas(updated)
-
 
     # save to .csv
     updated.to_csv(PATH_TO_CSV, index=False, line_terminator="\n")
