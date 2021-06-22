@@ -11,7 +11,7 @@ try:
 except locale.Error:
     locale.setlocale(locale.LC_TIME, "pt_PT")
 
-INCLUIR_SEMANAL=True
+INCLUIR_SEMANAL=False
 
 # ---
 # Constants
