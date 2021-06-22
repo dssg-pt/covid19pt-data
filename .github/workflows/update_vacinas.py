@@ -305,6 +305,8 @@ if __name__ == "__main__":
                         row["pessoas_vacinadas_completamente_novas"],
                         row["pessoas_vacinadas_parcialmente"],
                         row["pessoas_vacinadas_parcialmente_novas"],
+                        row["vacinas"],
+                        row["vacinas_novas"],
                     ]
                 ],
                 columns=updated.columns,
