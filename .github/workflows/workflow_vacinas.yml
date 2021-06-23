@@ -28,6 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r .github/workflows/requirements.txt
 
+      - name: Update data about vaccination details weekly
+        run: |
+          python .github/workflows/update_vacinas_detalhe.py
+        if: always()
+
       - name: Update data about vaccination
         run: |
           python .github/workflows/update_vacinas.py
@@ -43,11 +48,6 @@ jobs:
         with:
           name: pytest-vacinas-results
           path: tests/junit/test-vacinas-results.xml
-        if: always()
-
-      - name: Update data about vaccination details weekly
-        run: |
-          python .github/workflows/update_vacinas_detalhe.py
         if: always()
 
       # Until there's some tweet about amostras, just update them anytime something else updates

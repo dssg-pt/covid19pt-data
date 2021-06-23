@@ -11,7 +11,7 @@ try:
 except locale.Error:
     locale.setlocale(locale.LC_TIME, "pt_PT")
 
-INCLUIR_SEMANAL=False
+INCLUIR_SEMANAL=True
 
 # ---
 # Constants
@@ -78,6 +78,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
         # 'data': today.strftime("%-d de %B de %Y"),
         'data': today.strftime("%d %b %Y"),
         }
+    print(f"dados para {today} {dados_vacinas['data']}")
 
     # Aceder ao .csv das vacinas
     path = Path(__file__).resolve().parents[2]
@@ -87,74 +88,58 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
 
     if not ajuste_semanal:
         pop = POP_PT_VACINAR
-        suffix = ''
-        ajuste_doses1, ajuste_doses2 = 0, 0
-        data_detalhes = None
-        df_last = None
+        df_last, data_detalhes = None, None
     else:
         pop = POP_PT_2019
-        suffix = '_nacional'
-
         df_detalhe = pd.read_csv(path / 'vacinas_detalhe.csv',
             parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True,
         )
-        df = pd.merge(df, df_detalhe, how="outer", on="data", suffixes=("", "_detalhe"))
-        df = df.ffill()
-        df = df.assign(
-            # https://github.com/owid/covid-19-data/blob/b796c2144748d2b70fad2a0c8d5d581d2adeab7b/scripts/scripts/vaccinations/automations/batch/portugal.py
-            doses_nacional = df.doses + df.doses_madeira + df.doses_açores,
-            doses1_nacional = df.doses1 + df.doses1_madeira + df.doses1_açores,
-            doses2_nacional = df.doses2 + df.doses2_madeira + df.doses2_açores,
-        )
+        df_detalhe.drop([col for col in df_detalhe.columns if "_novas" in col], inplace=True, axis=1)
+        data_last = df_detalhe[-1:].index
+        df_last = df_detalhe.loc[ data_last ]
+        data_detalhes = data_last.item().strftime("%d %b %Y")
 
-        data_detalhes = df_detalhe[-1:].index
-        df_last = df.loc[ data_detalhes ]
-        data_detalhes = data_detalhes.item().strftime("%d %b %Y")
-
-        df['doses1_nacional_novas'] = df['doses1_nacional'].diff(1)
-        df['doses2_nacional_novas'] = df['doses2_nacional'].diff(1)
-        df['doses1_nacional_7'] = df['doses1_nacional'].diff(7).div(7)
-        df['doses2_nacional_7'] = df['doses2_nacional'].diff(7).div(7)
-
-        # Janssen
-        ajuste_doses1 = int(df_last['doses1_continente'] - df_last['doses1'])
-        ajuste_doses2 = int(df_last['doses2_continente'] - df_last['doses2'])
-        print(f"Ajuste dose1={ajuste_doses1} dose2={ajuste_doses2}")
+    df["doses1_7"] = df.doses1.diff(7)
+    df["doses2_7"] = df.doses2.diff(7)
 
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
-    if df.index[-1] == today and not math.isnan(df.loc[today_f].doses2):
-        # print(f"today={today_f} last_index={df.index[-1]} offset={DAYS_OFFSET}")
-        df["doses1_7"] = df.doses1.diff(7)
-        df["doses2_7"] = df.doses2.diff(7)
+    try:
         df_today = df.loc[today_f]
+    except KeyError:
+        df_today = None
+    if df_today is not None and not math.isnan(df_today.doses2):
         yesterday = date.today() - timedelta(days=DAYS_OFFSET+1)
         yesterday_f = yesterday.strftime('%Y-%m-%d')
         df_yesterday = df.loc[yesterday_f]
 
-        doses1 = int(df_today[f'doses1{suffix}'])
-        doses2 = int(df_today[f'doses2{suffix}'])
+        doses1 = int(df_today['pessoas_inoculadas' if ajuste_semanal else 'doses1'])
+        doses2 = int(df_today['pessoas_vacinadas_completamente' if ajuste_semanal else 'doses2'])
         dados_vacinas.update(
             {
-                'percentagem': float(100 * (doses2+ajuste_doses2) / pop),
-                'percentagem_vacinados': f(round(float(100 * (doses2+ajuste_doses2) / pop), CASAS_DECIMAIS)),
+                'percentagem': float(100 * doses2 / pop),
+                'percentagem_vacinados': f(round(float(100 * doses2 / pop), CASAS_DECIMAIS)),
                 'percentagem_inoculados': f(round(float(100 * doses1 / pop), CASAS_DECIMAIS)),
                 'n_total': f(int(doses1)),
-                'n_vacinados': f(int( (doses2+ajuste_doses2) )),
-                'n_inoculados': f(int(doses1) - int( (doses2+ajuste_doses2) )),
-                'novos_vacinados': f(int(df_today[f'doses2{suffix}_novas']), plus=True),
-                'tendencia_vacinados': t(int(df_today[f'doses2{suffix}_7'] - df_yesterday[f'doses2{suffix}_7'])),
-                'media_7dias': f(int(df_today[f'doses2{suffix}_7'] / 7)),
-                'novos_inoculados': f(int(df_today[f'doses1{suffix}_novas']), plus=True),
-                'tendencia_inoculados': t(int(df_today[f'doses1{suffix}_7'] - df_yesterday[f'doses1{suffix}_7'])),
-                'media_7dias_inoculados': f(int(df_today[f'doses1{suffix}_7'] / 7)),
+                'n_vacinados': f(int(doses2)),
+                'n_inoculados': f(int(doses1) - int(doses2)),
+                'novos_vacinados': f(int(df_today['doses2_novas']), plus=True),
+                'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])),
+                'media_7dias': f(int(df_today['doses2_7'] / 7)),
+                'novos_inoculados': f(int(df_today['doses1_novas']), plus=True),
+                'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])),
+                'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)),
                 'data_detalhes': data_detalhes,
                 'df_last': df_last,
             }
         )
         return dados_vacinas
-    elif consumer_key == 'DEBUG':
+    elif consumer_key == 'DEBUG' or INCLUIR_SEMANAL:
+        if DAYS_OFFSET > 7:
+            print(f"Sem dados durante uma semana, desisto. {today}, a usar dia anterior {DAYS_OFFSET+1}")
+            return {}
         # if running locally, also show tweet from yesterday for debugging
+        print(f"Sem dados para {today}, a usar dia anterior {DAYS_OFFSET+1}")
         return extrair_dados_vacinas(DAYS_OFFSET+1, ajuste_semanal=ajuste_semanal)
     else:
         return {}
@@ -353,12 +338,13 @@ def tweet_len(s):
 # Main
 if __name__ == '__main__':
 
-    dados_vac = extrair_dados_vacinas()
+    DAYS_OFFSET = 0
+    dados_vac = extrair_dados_vacinas(DAYS_OFFSET)
 
     # If there's new data, tweet
     if dados_vac:
         texto_tweet = compor_tweet(dados_vac, tweet=1)
-        dados_vac_2 = extrair_dados_vacinas(ajuste_semanal=True)
+        dados_vac_2 = extrair_dados_vacinas(DAYS_OFFSET, ajuste_semanal=True)
         texto_tweet_2 = compor_tweet(dados_vac_2, tweet=2)
         texto_tweet_3 = compor_tweet(dados_vac_2, tweet=3) if INCLUIR_SEMANAL else ""
         texto_tweet_4 = compor_tweet(dados_vac_2, tweet=4) if INCLUIR_SEMANAL else ""

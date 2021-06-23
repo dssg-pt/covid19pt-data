@@ -161,16 +161,12 @@ def fix_vacinas(data):
     # recalculate *_novas when missing or incorrect
     last = {}
     for i, row in data.iterrows():
-        for k in [
-                "doses", "doses1", "doses2",
-                'pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente',
-                ]:
+        for k in ["doses", "doses1", "doses2"]:
             cur = row[f"{k}_novas"] or 0
             val = row[f"{k}"] or 0
             last_val = last.get(f"{k}", 0)
             diff = val - last_val if val else 0
             if last_val and cur != diff:
-                # print(f"FIX {row.data} {k} from {cur} to {diff} v={val} lv={last_val}")
                 data.at[i, f"{k}_novas"] = diff
             last[f"{k}"] = val
 
@@ -195,28 +191,33 @@ def correcao_ilhas_unidose(updated):
     # that is correctly assigned to doses2/vaccinated on the weekly report, but to the
     # doses1 on the daily report
     df_vacinas_detalhes = pd.read_csv(PATH_TO_CSV)
-    df = pd.merge(df_vacinas_detalhes, updated, how='left', on='data', suffixes=("_semanal", "_diario"))
-    df['unidose_diff'] = df['doses2_continente'] - df['doses2_diario']
-    df = df[['data', 'unidose_diff']][17:] # 03-05-2021
+    df = pd.merge(df_vacinas_detalhes, updated, how='left', on='data', suffixes=("", "_diario"))
+    kk = ['', '1', '2']
+    for k in kk:
+        # diferença entre continente semanal, e continente diario (para ajustar unidose/Janssen)
+        df[f'doses{k}_diff_unidose'] = df[f'doses{k}_continente'] - df[f'doses{k}_diario']
+        # diferença entre nacional com ilhas semanal, e continente semanal (para ajustar ilhas em falta)
+        df[f'doses{k}_diff_ilhas'] = df[f'doses{k}'] - df[f'doses{k}_continente']
+    df = df[ ['data'] + [f'doses{k}_diff_unidose' for k in kk] + [f'doses{k}_diff_ilhas' for k in kk] ] # [17:] # 03-05-2021
     updated = pd.merge(updated, df, how="left", on="data")
-    updated['unidose_diff'] = updated['unidose_diff'].ffill().fillna(0)
-    updated['pessoas_vacinadas_completamente'] = updated['pessoas_vacinadas_completamente'] + updated['unidose_diff']
-    updated['pessoas_vacinadas_parcialmente'] = updated['pessoas_vacinadas_parcialmente'] - updated['unidose_diff']
-    updated.drop('unidose_diff', inplace=True, axis=1)
-
-    # adds weekly values for difference between nationwide and continent (madeira and açores)
-    df = df_vacinas_detalhes
-    for k in ['', '2', '1']:
-        df[f'islands{k}_diff'] = df[f'doses{k}'] - df[f'doses{k}_continente']
-    df = df[['data', 'islands_diff', 'islands2_diff', 'islands1_diff']]
-    updated = pd.merge(updated, df, how="left", on="data")
-    for k in ['', '2', '1']:
-        updated[f'islands{k}_diff'] = updated[f'islands{k}_diff'].ffill().fillna(0)
-    updated['vacinas'] = updated['vacinas'] + updated['islands_diff']
-    updated['pessoas_vacinadas_completamente'] = updated['pessoas_vacinadas_completamente'] + updated['islands2_diff']
-    updated['pessoas_vacinadas_parcialmente'] = updated['pessoas_vacinadas_parcialmente'] + updated['islands1_diff']
-    for k in ['', '2', '1']:
-        updated.drop(f'islands{k}_diff', inplace=True, axis=1)
+    for k in kk:
+        updated[f'doses{k}_diff_unidose'] = updated[f'doses{k}_diff_unidose'].ffill().fillna(0)
+        updated[f'doses{k}_diff_ilhas'] = updated[f'doses{k}_diff_ilhas'].ffill().fillna(0)
+    if True:
+        # ajuste janssen de doses1 para doses2
+        updated['pessoas_vacinadas_completamente'] += updated['doses2_diff_unidose']
+        updated['pessoas_vacinadas_parcialmente'] += updated['doses1_diff_unidose']
+        updated['pessoas_inoculadas'] += updated['doses2_diff_unidose'] + updated['doses1_diff_unidose']
+        updated['vacinas'] += updated['doses_diff_unidose']
+    if True:
+        # ajuste ilhas
+        updated['pessoas_vacinadas_completamente'] += updated['doses2_diff_ilhas']
+        updated['pessoas_vacinadas_parcialmente'] += updated['doses1_diff_ilhas']
+        updated['pessoas_inoculadas'] += updated['doses2_diff_ilhas'] + updated['doses1_diff_ilhas']
+        updated['vacinas'] += updated['doses_diff_ilhas']
+    for k in kk:
+        updated.drop(f'doses{k}_diff_unidose', inplace=True, axis=1)
+        updated.drop(f'doses{k}_diff_ilhas', inplace=True, axis=1)
 
     return updated
 
@@ -255,17 +256,14 @@ if __name__ == "__main__":
 
     # Find rows with differences
     merged = available.merge(
-        latest, how="outer", on=["data"], suffixes=("_available", "_latest")
+        latest, how="outer", on=["data"], suffixes=("", "_latest")
     )
     merged = merged.fillna('""')
 
     different_rows = merged[
-        (merged.doses_available != merged.doses_latest)
-        | (merged.doses_novas_available != merged.doses_novas_latest)
-        | (merged.doses1_available != merged.doses1_latest)
-        | (merged.doses1_novas_available != merged.doses1_novas_latest)
-        | (merged.doses2_available != merged.doses2_latest)
-        | (merged.doses2_novas_available != merged.doses2_novas_latest)
+        (merged.doses != merged.doses_latest)
+        | (merged.doses1 != merged.doses1_latest)
+        | (merged.doses2 != merged.doses2_latest)
     ]
 
     # Order by date
@@ -284,7 +282,7 @@ if __name__ == "__main__":
                 for j in [""]:  # ["", "_novas"]:
                     l = f"doses{k}{j}"
                     latest = row[f"{l}_latest"]
-                    available = row[f"{l}_available"]
+                    available = row[f"{l}"]
                     if latest != available and available and available != '""':
                         print(f"Update {row['data']} from {latest} to {available}")
                         updated.at[index, f"{l}"] = available
@@ -293,21 +291,7 @@ if __name__ == "__main__":
         else:
             tmp_df = pd.DataFrame(
                 [
-                    [
-                        row["data"],
-                        row["doses_available"],
-                        row["doses_novas_available"],
-                        row["doses1_available"],
-                        row["doses1_novas_available"],
-                        row["doses2_available"],
-                        row["doses2_novas_available"],
-                        row["pessoas_vacinadas_completamente"],
-                        row["pessoas_vacinadas_completamente_novas"],
-                        row["pessoas_vacinadas_parcialmente"],
-                        row["pessoas_vacinadas_parcialmente_novas"],
-                        row["vacinas"],
-                        row["vacinas_novas"],
-                    ]
+                    [row[col] for col in updated.columns]
                 ],
                 columns=updated.columns,
             )
@@ -320,12 +304,14 @@ if __name__ == "__main__":
     # add people columns
     updated['pessoas_vacinadas_completamente'] = updated['doses2']
     updated['pessoas_vacinadas_parcialmente'] = updated['doses1'] - updated['doses2']
+    updated['pessoas_inoculadas'] = updated['doses1']
     updated['vacinas'] = updated['doses']
     # correção com ilhas e com unidoses
     updated = correcao_ilhas_unidose(updated)
     # recalculate daily diff
     updated['pessoas_vacinadas_completamente_novas'] = updated['pessoas_vacinadas_completamente'].diff(1)
     updated['pessoas_vacinadas_parcialmente_novas'] = updated['pessoas_vacinadas_parcialmente'].diff(1)
+    updated['pessoas_inoculadas_novas'] = updated['pessoas_inoculadas'].diff(1)
     updated['vacinas_novas'] = updated['vacinas'].diff(1)
 
     # convert values to integer
@@ -333,6 +319,8 @@ if __name__ == "__main__":
     updated[cols] = updated[cols].applymap(convert)
     # fix values
     updated = fix_vacinas(updated)
+
+    updated = updated[ "data,doses,doses_novas,doses1,doses1_novas,doses2,doses2_novas,pessoas_vacinadas_completamente,pessoas_vacinadas_completamente_novas,pessoas_vacinadas_parcialmente,pessoas_vacinadas_parcialmente_novas,pessoas_inoculadas,pessoas_inoculadas_novas,vacinas,vacinas_novas".split(",") ]
 
     # save to .csv
     updated.to_csv(PATH_TO_CSV, index=False, line_terminator="\n")
