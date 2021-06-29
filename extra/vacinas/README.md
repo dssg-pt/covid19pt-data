@@ -141,3 +141,8 @@
 - `Dataset vacinação (19)`
 - `Relatório de Vacinação nº 19 (27/01/2020 a 20/06/2021)`
 - publicado a `2021-06-23` com data `2021-06-20`
+
+### Relatório 2021-06-28
+- `Dataset vacinação (20)`
+- `Relatório de Vacinação nº 19 (27/01/2020 a 27/06/2021)`
+- publicado a `2021-06-30` com data `2021-06-27`

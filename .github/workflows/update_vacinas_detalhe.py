@@ -32,15 +32,21 @@ if __name__ == "__main__":
       dataset12 = True
 
   # Until 2021-03-17 the first column was an unnamed numeric index
-  if len(data.columns) == 19 and data.columns[0] != 'TYPE':
+  # #20 2021-06-29 again
+  if data.columns[0] != 'TYPE' and len(data.columns) in [19, 25]:
     data.drop(data.columns[0], axis=1, inplace=True)
 
   # rename columns
   #   'TYPE', 'DATE', 'YEAR', 'WEEK', 'REGION', 'AGEGROUP',
   #   'TOTAL_VAC_1', 'TOTAL_VAC_2', 'TOTAL_VAC_UNK', 'TOTAL',
   #   'CUMUL_VAC_1', 'CUMUL_VAC_2', 'CUMUL_VAC_UNK', 'CUMUL',
-  #   'COVER_1_VAC', 'COVER', 'RECEIVED', 'DISTRIBUTED'
-  data.columns = [
+  # #20
+  #   'CUMUL_VAC_INIT', 'CUMUL_VAC_COMPLETE', 'CUMUL_VAC_LEAST',
+  #   'COVER_1_VAC', 'COVER', 
+  # #20
+  #   'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
+  #   'RECEIVED', 'DISTRIBUTED'
+  columns = [
     'tipo',
     'data', 'ano', 'semana',
     'região', 'idades',
@@ -49,6 +55,19 @@ if __name__ == "__main__":
     'doses1_perc', 'doses2_perc',
     'recebidas', 'distribuidas',
   ]
+  if len(data.columns) == 24:
+    columns = columns[0:14] + [
+      #   'CUMUL_VAC_INIT', 'CUMUL_VAC_COMPLETE', 'CUMUL_VAC_LEAST',
+      'pessoas_vacinadas_parcialmente',
+      'pessoas_vacinadas_completamente',
+      'pessoas_inoculadas',
+    ] + columns[14:16] + [
+      # 'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
+      'pessoas_vacinadas_parcialmente_perc', 
+      'pessoas_vacinadas_completamente_perc',
+      'pessoas_inoculadas_perc',
+    ] + columns[16:]
+  data.columns = columns
   # reorder columns
   data = data[[
     'tipo',
