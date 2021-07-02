@@ -47,9 +47,7 @@ if __name__ == "__main__":
   #   'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
   #   'RECEIVED', 'DISTRIBUTED'
   columns = [
-    'tipo',
-    'data', 'ano', 'semana',
-    'região', 'idades',
+    'tipo', 'data', 'ano', 'semana', 'região', 'idades',
     'doses1_novas', 'doses2_novas', 'dosesunk_novas', 'doses_novas',
     'doses1', 'doses2', 'dosesunk', 'doses',
     'doses1_perc', 'doses2_perc',
@@ -79,6 +77,12 @@ if __name__ == "__main__":
     'doses2', 'doses2_novas',
     'dosesunk', 'dosesunk_novas',
     'doses1_perc', 'doses2_perc',
+    'pessoas_vacinadas_parcialmente',
+    'pessoas_vacinadas_completamente',
+    'pessoas_inoculadas',
+    'pessoas_vacinadas_parcialmente_perc', 
+    'pessoas_vacinadas_completamente_perc',
+    'pessoas_inoculadas_perc',
   ]]
 
   # 2021-03-24 Dataset 6 contém ilhas mas tem datas inconsistentes, com continente
@@ -118,7 +122,14 @@ if __name__ == "__main__":
       'recebidas', 'distribuidas',
       'doses', 'doses_novas', 'doses1', 'doses1_novas', 'doses2', 'doses2_novas',
       'dosesunk', 'dosesunk_novas',
-      'doses1_perc', 'doses2_perc', 'populacao1', 'populacao2'
+      'doses1_perc', 'doses2_perc',
+      'pessoas_vacinadas_parcialmente',
+      'pessoas_vacinadas_completamente',
+      'pessoas_inoculadas',
+      'pessoas_vacinadas_parcialmente_perc', 
+      'pessoas_vacinadas_completamente_perc',
+      'pessoas_inoculadas_perc',
+      'populacao1', 'populacao2'
     ]]
   data_general.set_index('day', inplace=True)
 
