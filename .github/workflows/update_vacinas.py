@@ -203,18 +203,37 @@ def correcao_ilhas_unidose(updated):
     for k in kk:
         updated[f'doses{k}_diff_unidose'] = updated[f'doses{k}_diff_unidose'].ffill().fillna(0)
         updated[f'doses{k}_diff_ilhas'] = updated[f'doses{k}_diff_ilhas'].ffill().fillna(0)
+    DEBUG_ADJUSTMENT=False
     if True:
+        if DEBUG_ADJUSTMENT:
+            updated['pessoas_vacinadas_completamente_1'] = updated['pessoas_vacinadas_completamente']
+            updated['pessoas_vacinadas_parcialmente_1'] = updated['pessoas_vacinadas_parcialmente']
+            updated['pessoas_inoculadas_1'] = updated['pessoas_inoculadas']
+            updated['vacinas_1'] = updated['vacinas']
         # ajuste janssen de doses1 para doses2
         updated['pessoas_vacinadas_completamente'] += updated['doses2_diff_unidose']
         updated['pessoas_vacinadas_parcialmente'] += updated['doses1_diff_unidose']
         updated['pessoas_inoculadas'] += updated['doses2_diff_unidose'] + updated['doses1_diff_unidose']
         updated['vacinas'] += updated['doses_diff_unidose']
     if True:
+        if DEBUG_ADJUSTMENT:
+            updated['pessoas_vacinadas_completamente_2'] = updated['pessoas_vacinadas_completamente']
+            updated['pessoas_vacinadas_parcialmente_2'] = updated['pessoas_vacinadas_parcialmente']
+            updated['pessoas_inoculadas_2'] = updated['pessoas_inoculadas']
+            updated['vacinas_2'] = updated['vacinas']
         # ajuste ilhas
         updated['pessoas_vacinadas_completamente'] += updated['doses2_diff_ilhas']
         updated['pessoas_vacinadas_parcialmente'] += updated['doses1_diff_ilhas']
         updated['pessoas_inoculadas'] += updated['doses2_diff_ilhas'] + updated['doses1_diff_ilhas']
         updated['vacinas'] += updated['doses_diff_ilhas']
+    if True:
+        if DEBUG_ADJUSTMENT:
+            updated['pessoas_vacinadas_completamente_3'] = updated['pessoas_vacinadas_completamente']
+            updated['pessoas_vacinadas_parcialmente_3'] = updated['pessoas_vacinadas_parcialmente']
+            updated['pessoas_inoculadas_3'] = updated['pessoas_inoculadas']
+            updated['vacinas_3'] = updated['vacinas']
+            updated.to_csv(PATH_TO_CSV + "_debug.csv", index=False, line_terminator="\n")
+
     for k in kk:
         updated.drop(f'doses{k}_diff_unidose', inplace=True, axis=1)
         updated.drop(f'doses{k}_diff_ilhas', inplace=True, axis=1)
