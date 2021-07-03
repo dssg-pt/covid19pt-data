@@ -11,7 +11,11 @@ try:
 except locale.Error:
     locale.setlocale(locale.LC_TIME, "pt_PT")
 
-INCLUIR_SEMANAL=True
+# Monday is 0 and Sunday is 6.
+# Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
+DOW = date.today().weekday()
+
+INCLUIR_SEMANAL=DOW in [2]
 
 # ---
 # Constants
