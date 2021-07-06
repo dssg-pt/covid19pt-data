@@ -119,6 +119,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
 
         doses1 = int(df_today['pessoas_inoculadas' if ajuste_semanal else 'doses1'])
         doses2 = int(df_today['pessoas_vacinadas_completamente' if ajuste_semanal else 'doses2'])
+        vacinas = int(df_today['vacinas_novas' if ajuste_semanal else 'doses_novas'])
         dados_vacinas.update(
             {
                 'percentagem': float(100 * doses2 / pop),
@@ -127,12 +128,15 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
                 'n_total': f(int(doses1)),
                 'n_vacinados': f(int(doses2)),
                 'n_inoculados': f(int(doses1) - int(doses2)),
+                'vacinas': f(int(vacinas)),
+                # tweet 1
                 'novos_vacinados': f(int(df_today['doses2_novas']), plus=True),
                 'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])),
                 'media_7dias': f(int(df_today['doses2_7'] / 7)),
                 'novos_inoculados': f(int(df_today['doses1_novas']), plus=True),
                 'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])),
                 'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)),
+                #
                 'data_detalhes': data_detalhes,
                 'df_last': df_last,
             }
@@ -315,10 +319,13 @@ def compor_tweet(dados_vacinas, tweet=1):
         tweet_message += (
             " ({percentagem_inoculados}%)"
         )
+        tweet_message += (
+            "\n\n💉Vacinas diárias {vacinas}"
+        ) if tweet == 1 else ""
 
-    tweet_message += (
-        "\n\n#vacinaçãoCovid19"
-    ) if tweet == 1 else ""
+    #tweet_message += (
+    #    "\n\n#vacinaçãoCovid19"
+    #) if tweet == 1 else ""
 
     total_tweets = 4 if INCLUIR_SEMANAL else 2
     tweet_message += (
