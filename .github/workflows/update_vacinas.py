@@ -227,7 +227,7 @@ def correcao_ilhas_unidose(updated):
         if AJUSTE_ILHAS:
             updated[f'doses{k}_diff_ilhas'] = updated[f'doses{k}_diff_ilhas'].ffill().fillna(0)
 
-    DEBUG_ADJUSTMENT=True
+    DEBUG_ADJUSTMENT=False
 
     if DEBUG_ADJUSTMENT:
         updated['pessoas_vacinadas_completamente_1'] = updated['pessoas_vacinadas_completamente']
