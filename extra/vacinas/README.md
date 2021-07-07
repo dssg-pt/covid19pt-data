@@ -151,3 +151,9 @@
 - `Dataset vacinação (21)`
 - `Relatório de Vacinação nº 21 (27/12/2020 a 04/07/2021)`
 - publicado a `2021-07-07` com data `2021-07-04`
+- Relatório mostra que valores diários durante a semana de
+  2021-06-28 a 2021-07-04 estão inflacionados, talvez com
+  inclusão forçada do histórico de vacinação de ilhas.
+  Valores diários de 2021-06-05 parecem semelhantes aos
+  valores semanais nacionais, enquanto nas semanas anteriores
+  correspondiam apenas ao continente.
