@@ -187,46 +187,71 @@ def convert(x):
 def correcao_ilhas_unidose(updated):
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "vacinas_detalhe.csv")
 
+    AJUSTE_JANSSEN, AJUSTE_ILHAS = True, False
+
+    if not(AJUSTE_JANSSEN or AJUSTE_ILHAS):
+        return updated
+
+    # Since 2021-06-28 the weekly report includes proper columns for people - fully
+    # vaccinated, partially/init, as least one, and vaccines.
+    # Until that date:
     # calculate diff between doses2 and doses1 which corresponds to unidose (Janssen)
     # that is correctly assigned to doses2/vaccinated on the weekly report, but to the
     # doses1 on the daily report
     df_vacinas_detalhes = pd.read_csv(PATH_TO_CSV)
     df = pd.merge(df_vacinas_detalhes, updated, how='left', on='data', suffixes=("", "_diario"))
     kk = ['', '1', '2']
-    for k in kk:
-        # diferença entre continente semanal, e continente diario (para ajustar unidose/Janssen)
-        df[f'doses{k}_diff_unidose'] = df[f'doses{k}_continente'] - df[f'doses{k}_diario']
-        # diferença entre nacional com ilhas semanal, e continente semanal (para ajustar ilhas em falta)
-        df[f'doses{k}_diff_ilhas'] = df[f'doses{k}'] - df[f'doses{k}_continente']
-    df = df[ ['data'] + [f'doses{k}_diff_unidose' for k in kk] + [f'doses{k}_diff_ilhas' for k in kk] ] # [17:] # 03-05-2021
+
+    # for k in kk:
+    #     if AJUSTE_JANSSEN:
+    #         # diferença entre continente semanal, e continente diario (para ajustar unidose/Janssen)
+    #         df[f'doses{k}_diff_unidose'] = df[f'doses{k}_continente'] - df[f'doses{k}_diario']
+    #     if AJUSTE_ILHAS:
+    #         # diferença entre nacional com ilhas semanal, e continente semanal (para ajustar ilhas em falta)
+    #         df[f'doses{k}_diff_ilhas'] = df[f'doses{k}'] - df[f'doses{k}_continente']
+
+    if AJUSTE_JANSSEN:
+        df[f'doses2_diff_unidose'] = df[f'pessoas_vacinadas_completamente'] - df[f'doses2_diario']
+        df[f'doses1_diff_unidose'] = df[f'pessoas_vacinadas_parcialmente'] - df[f'doses1_diario'] + df[f'doses2_diario']
+        df[f'doses_diff_unidose'] = df[f'doses'] - df[f'doses_diario']
+
+    df = df[ 
+        ['data'] + 
+        ([f'doses{k}_diff_unidose' for k in kk] if AJUSTE_JANSSEN else [])+ 
+        ([f'doses{k}_diff_ilhas' for k in kk] if AJUSTE_ILHAS else [])
+        ] # [17:] # 03-05-2021
     updated = pd.merge(updated, df, how="left", on="data")
     for k in kk:
-        updated[f'doses{k}_diff_unidose'] = updated[f'doses{k}_diff_unidose'].ffill().fillna(0)
-        updated[f'doses{k}_diff_ilhas'] = updated[f'doses{k}_diff_ilhas'].ffill().fillna(0)
-    DEBUG_ADJUSTMENT=False
-    if True:
-        if DEBUG_ADJUSTMENT:
-            updated['pessoas_vacinadas_completamente_1'] = updated['pessoas_vacinadas_completamente']
-            updated['pessoas_vacinadas_parcialmente_1'] = updated['pessoas_vacinadas_parcialmente']
-            updated['pessoas_inoculadas_1'] = updated['pessoas_inoculadas']
-            updated['vacinas_1'] = updated['vacinas']
+        if AJUSTE_JANSSEN:
+            updated[f'doses{k}_diff_unidose'] = updated[f'doses{k}_diff_unidose'].ffill().fillna(0)
+        if AJUSTE_ILHAS:
+            updated[f'doses{k}_diff_ilhas'] = updated[f'doses{k}_diff_ilhas'].ffill().fillna(0)
+
+    DEBUG_ADJUSTMENT=True
+
+    if DEBUG_ADJUSTMENT:
+        updated['pessoas_vacinadas_completamente_1'] = updated['pessoas_vacinadas_completamente']
+        updated['pessoas_vacinadas_parcialmente_1'] = updated['pessoas_vacinadas_parcialmente']
+        updated['pessoas_inoculadas_1'] = updated['pessoas_inoculadas']
+        updated['vacinas_1'] = updated['vacinas']
+    if AJUSTE_JANSSEN:
         # ajuste janssen de doses1 para doses2
         updated['pessoas_vacinadas_completamente'] += updated['doses2_diff_unidose']
         updated['pessoas_vacinadas_parcialmente'] += updated['doses1_diff_unidose']
         updated['pessoas_inoculadas'] += updated['doses2_diff_unidose'] + updated['doses1_diff_unidose']
         updated['vacinas'] += updated['doses_diff_unidose']
-    if True:
         if DEBUG_ADJUSTMENT:
             updated['pessoas_vacinadas_completamente_2'] = updated['pessoas_vacinadas_completamente']
             updated['pessoas_vacinadas_parcialmente_2'] = updated['pessoas_vacinadas_parcialmente']
             updated['pessoas_inoculadas_2'] = updated['pessoas_inoculadas']
             updated['vacinas_2'] = updated['vacinas']
+
+    if AJUSTE_ILHAS:
         # ajuste ilhas
         updated['pessoas_vacinadas_completamente'] += updated['doses2_diff_ilhas']
         updated['pessoas_vacinadas_parcialmente'] += updated['doses1_diff_ilhas']
         updated['pessoas_inoculadas'] += updated['doses2_diff_ilhas'] + updated['doses1_diff_ilhas']
         updated['vacinas'] += updated['doses_diff_ilhas']
-    if True:
         if DEBUG_ADJUSTMENT:
             updated['pessoas_vacinadas_completamente_3'] = updated['pessoas_vacinadas_completamente']
             updated['pessoas_vacinadas_parcialmente_3'] = updated['pessoas_vacinadas_parcialmente']
@@ -235,8 +260,10 @@ def correcao_ilhas_unidose(updated):
             updated.to_csv(PATH_TO_CSV + "_debug.csv", index=False, line_terminator="\n")
 
     for k in kk:
-        updated.drop(f'doses{k}_diff_unidose', inplace=True, axis=1)
-        updated.drop(f'doses{k}_diff_ilhas', inplace=True, axis=1)
+        if AJUSTE_JANSSEN:
+            updated.drop(f'doses{k}_diff_unidose', inplace=True, axis=1)
+        if AJUSTE_ILHAS:
+            updated.drop(f'doses{k}_diff_ilhas', inplace=True, axis=1)
 
     return updated
 
