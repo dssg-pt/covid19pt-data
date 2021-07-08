@@ -257,7 +257,9 @@ def correcao_ilhas_unidose(updated):
             updated['pessoas_vacinadas_parcialmente_3'] = updated['pessoas_vacinadas_parcialmente']
             updated['pessoas_inoculadas_3'] = updated['pessoas_inoculadas']
             updated['vacinas_3'] = updated['vacinas']
-            updated.to_csv(PATH_TO_CSV + "_debug.csv", index=False, line_terminator="\n")
+    
+    if DEBUG_ADJUSTMENT:
+        updated.to_csv(PATH_TO_CSV + "_debug.csv", index=False, line_terminator="\n")
 
     for k in kk:
         if AJUSTE_JANSSEN:
