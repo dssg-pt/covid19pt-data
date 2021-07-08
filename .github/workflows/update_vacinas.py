@@ -39,21 +39,21 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
 
     # hack data incorreta dia 22-05 dizia 20-04 e devia 21
     if unix_date == 1621468800 and doses_total == 4842021:
-        unix_date = unix_date + 86400
+        unix_date += 86400
     # hack data incorreta dia 23-05 ainda dizia 20-04
     elif unix_date == 1621468800 and doses_total == 4913087:
-        unix_date = unix_date + 86400 * 2
+        unix_date += 86400 * 2
     # hack data incorreta dia 30-05 ainda dizia 28-04
     elif unix_date == 1622160000 and doses_total == 5442582:
-        unix_date = unix_date + 86400
+        unix_date += 86400
 
+    unix_date += 86400
 
     last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
     latest_date = pd.to_datetime(latest_data, format="%Y-%m-%d").strftime("%Y-%m-%d")
     if last_date == latest_date and doses_total > latest_total:
-        unix_date += 86400
         today = datetime.datetime.today().strftime("%Y-%m-%d")
-        print("FIXING DATE today={today} API date={latest_date} last date={last_date}")
+        print(f"FIXING DATE today={today} API date={latest_date} last date={last_date}")
 
     return unix_date
 
