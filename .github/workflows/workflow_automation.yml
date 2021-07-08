@@ -32,9 +32,9 @@ jobs:
       - name: Check for update
         run: echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
 
-      - name: There is NO updated
-        if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:. NO VACCINE DATA AVAILABLE :large_yellow_circle:"
+      # - name: There is NO updated
+      #   if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
+      #   run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:. NO VACCINE DATA AVAILABLE :large_yellow_circle:"
 
       - name: There is a NEW updated
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
