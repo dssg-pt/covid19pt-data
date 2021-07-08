@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: 0 * * * * # Every hour
+    # Every 15 minutes from 12 to 15h
+    - cron: 0,15,30,45 12,13,14,15 * * * 
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -40,14 +41,13 @@ jobs:
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW VACCINE DATA AVAILABLE :large_green_circle:"
 
-      # Not using for now
-      # - name: Trigger workflow vaccines
-      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-      #   run: |
-      #     curl \
-      #       -X POST \
-      #       -d '{"ref":"refs/heads/master"}' \
-      #       -H 'Content-Type: application/json' \
-      #       -H 'Accept: application/vnd.github.v3+json' \
-      #       -H 'Authorization: token ${{secrets.GITHUB_TOKEN}}' \
-      #       'https://api.github.com/repos/dssg-pt/covid19pt-data/actions/workflows/workflow_vacinas.yml/dispatches'
+      - name: Trigger workflow vaccines
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          curl \
+            -X POST \
+            -d '{"ref":"refs/heads/master"}' \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/vnd.github.v3+json' \
+            -H 'Authorization: token ${{secrets.GITHUB_TOKEN}}' \
+            'https://api.github.com/repos/dssg-pt/covid19pt-data/actions/workflows/workflow_vacinas.yml/dispatches'
