@@ -81,6 +81,11 @@ jobs:
       #     path: tests/junit/test-rt-results.xml
       #   if: always()
 
+      - name: Update readme date again
+        run: |
+          python .github/workflows/update_readme.py
+        if: always()
+
       - name: Commit all changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
