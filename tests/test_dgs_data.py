@@ -455,7 +455,10 @@ def test_sequentiality_new_cases(dgs_data):
     today = dgs_data.iloc[-1]
     yesterday = dgs_data.iloc[-2]
 
-    assert today["confirmados"] - yesterday["confirmados"] == today["confirmados_novos"]
+    assert today["confirmados"] - yesterday["confirmados"] == today["confirmados_novos"], (
+            f'({today["confirmados"]} - {yesterday["confirmados"]})'
+            f' = {today["confirmados"] - yesterday["confirmados"]} != {today["confirmados_novos"]}'
+        )
     assert today["confirmados"] > yesterday["confirmados"]
 
 
