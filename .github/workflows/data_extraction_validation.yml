@@ -113,6 +113,11 @@ jobs:
       #     path: tests/junit/test-rt-results.xml
       #   if: always()
 
+      - name: Update readme date again, before commits
+        run: |
+          python .github/workflows/update_readme.py
+        if: always()
+
       - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
         run: |
           git add -A dgs-reports-archive/
