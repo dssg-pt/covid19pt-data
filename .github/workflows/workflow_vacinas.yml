@@ -81,7 +81,7 @@ jobs:
       #     path: tests/junit/test-rt-results.xml
       #   if: always()
 
-      - name: Update readme date again
+      - name: Update readme date again, before commits
         run: |
           python .github/workflows/update_readme.py
         if: always()
