@@ -158,17 +158,30 @@ def fix_vacinas(data):
                 print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]}")
         data.loc[data.data == fix[0], fix[1]] = fix[2]
 
+    for i in range(2, 7):
+        dia = (datetime.datetime(2021, 6, 28) + datetime.timedelta(days=i)).strftime("%d-%m-%Y")
+        cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
+        data.loc[data.data == dia, cols] = ''
+
     # recalculate *_novas when missing or incorrect
     last = {}
     for i, row in data.iterrows():
-        for k in ["doses", "doses1", "doses2"]:
-            cur = row[f"{k}_novas"] or 0
-            val = row[f"{k}"] or 0
-            last_val = last.get(f"{k}", 0)
-            diff = val - last_val if val else 0
-            if last_val and cur != diff:
-                data.at[i, f"{k}_novas"] = diff
+        cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
+        for k in ["doses", "doses1", "doses2"] + cols:
+            val = row[k]
+            last_val = last.get(k, 0)
             last[f"{k}"] = val
+            # print(f"data={row.data} k={k} val={val} last_val={last_val}")
+            if val=='' or last_val=='' or np.isnan(val) or np.isnan(last_val):
+                data.at[i, f"{k}_novas"] = ''
+            else:
+                cur = row[f"{k}_novas"]
+                diff = val - last_val
+                if cur != diff:
+                    data.at[i, f"{k}_novas"] = diff
+                    # first row of pessoas has novas recalculated and empty, don't print them
+                    if i != 0 or cur != '':
+                        print(f"update i={i} data={row.data} k={k}_novas from cur={cur} to diff={diff} val={val} last_val={last_val}")
 
     return data
 

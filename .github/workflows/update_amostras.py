@@ -112,6 +112,8 @@ def fix_amostras(data):
 
     FIXES = [
         # [data DD-MM-YYYY, columns, fix_value]
+        [ "08-07-2021", ['amostras'], 13854788 ],
+        [ "08-07-2021", ['amostras_novas'], 69775 ],
     ]
 
     for fix in FIXES:
