@@ -16,7 +16,7 @@ except locale.Error:
 # Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 DOW = date.today().weekday()
 
-INCLUIR_NACIONAL=False
+INCLUIR_NACIONAL=True
 
 INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2]
 
@@ -123,10 +123,12 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
             df_yesterday = None if np.isnan(df_yesterday['doses']) else df_yesterday
         except KeyError:
             df_yesterday = None
+        has_yesterday = df_yesterday is not None and len(df_yesterday)
 
         doses1 = int(df_today['pessoas_inoculadas' if ajuste_semanal else 'doses1'])
         doses2 = int(df_today['pessoas_vacinadas_completamente' if ajuste_semanal else 'doses2'])
-        vacinas = int(df_today['vacinas_novas' if ajuste_semanal else 'doses_novas']) if df_yesterday else None
+        vacinas = df_today['vacinas_novas' if ajuste_semanal else 'doses_novas'] if has_yesterday else None
+        vacinas = int(vacinas) if vacinas is not None and not np.isnan(vacinas) else None
         dados_vacinas.update(
             {
                 'percentagem': float(100 * doses2 / pop),
@@ -135,16 +137,16 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
                 'n_total': f(int(doses1)),
                 'n_vacinados': f(int(doses2)),
                 'n_inoculados': f(int(doses1) - int(doses2)),
-                'vacinas': f(int(vacinas)) if df_yesterday else None,
+                'vacinas': f(int(vacinas)) if has_yesterday and vacinas else None,
                 # tweet 1
-                'novos_vacinados': f(int(df_today['doses2_novas']), plus=True) if df_yesterday else None,
-                'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])) if df_yesterday else None,
-                'media_7dias': f(int(df_today['doses2_7'] / 7)) if df_yesterday else None,
-                'novos_inoculados': f(int(df_today['doses1_novas']), plus=True) if df_yesterday else None,
-                'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])) if df_yesterday else None,
-                'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)) if df_yesterday else None,
+                'novos_vacinados': f(int(df_today['doses2_novas']), plus=True) if has_yesterday else None,
+                'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])) if has_yesterday else None,
+                'media_7dias': f(int(df_today['doses2_7'] / 7)) if has_yesterday else None,
+                'novos_inoculados': f(int(df_today['doses1_novas']), plus=True) if has_yesterday else None,
+                'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])) if has_yesterday else None,
+                'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)) if has_yesterday else None,
                 #
-                'has_yesterday': bool(df_yesterday),
+                'has_yesterday': bool(has_yesterday),
                 'data_detalhes': data_detalhes,
                 'df_last': df_last,
             }
