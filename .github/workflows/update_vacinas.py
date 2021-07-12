@@ -35,6 +35,10 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
     if unix_date == 1618704000 and doses_total == 3845140:
         return 1620432000 + 86400
 
+    # Dia 12-07-2021 após um fim-de-semana sem dados, volta a ser o próprio dia
+    if unix_date >= 1626048000:
+        return unix_date
+
     # Desde dia 22-04-2021 que a API tem o dia anterior (!?)
 
     # hack data incorreta dia 22-05 dizia 20-04 e devia 21
@@ -158,10 +162,20 @@ def fix_vacinas(data):
                 print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]}")
         data.loc[data.data == fix[0], fix[1]] = fix[2]
 
+    # dados diários 28-06-2021 a 04-07-2021 não fazem sentido
     for i in range(2, 7):
         dia = (datetime.datetime(2021, 6, 28) + datetime.timedelta(days=i)).strftime("%d-%m-%Y")
         cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
         data.loc[data.data == dia, cols] = ''
+    
+    # dados diários voltaram a 12-07-2021 (falta de 09 a 11 inclusive) mas continuam a não fazer sentido
+    if True:
+        dia = datetime.datetime(2021, 7, 12).strftime("%d-%m-%Y")
+        cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
+        idx = data[data.data == dia].index[0]
+        #print(f'idx={idx}')
+        #print(data.index >= idx)
+        data.loc[ data.index >= idx, cols] = ''
 
     # recalculate *_novas when missing or incorrect
     last = {}
@@ -174,6 +188,8 @@ def fix_vacinas(data):
             # print(f"data={row.data} k={k} val={val} last_val={last_val}")
             if val=='' or last_val=='' or np.isnan(val) or np.isnan(last_val):
                 data.at[i, f"{k}_novas"] = ''
+            elif row.data == '12-07-2021':
+                data.at[i, f"{k}_novas"] = ''
             else:
                 cur = row[f"{k}_novas"]
                 diff = val - last_val
@@ -182,6 +198,9 @@ def fix_vacinas(data):
                     # first row of pessoas has novas recalculated and empty, don't print them
                     if i != 0 or cur != '':
                         print(f"update i={i} data={row.data} k={k}_novas from cur={cur} to diff={diff} val={val} last_val={last_val}")
+
+    # sem dados 9 a 11-07-2021 inclusive
+    data.loc[data.data == "12-07-2021", [col for col in data.columns if '_novas' in col]] = ''
 
     return data
 
@@ -215,18 +234,19 @@ def correcao_ilhas_unidose(updated):
     df = pd.merge(df_vacinas_detalhes, updated, how='left', on='data', suffixes=("", "_diario"))
     kk = ['', '1', '2']
 
-    # for k in kk:
-    #     if AJUSTE_JANSSEN:
-    #         # diferença entre continente semanal, e continente diario (para ajustar unidose/Janssen)
-    #         df[f'doses{k}_diff_unidose'] = df[f'doses{k}_continente'] - df[f'doses{k}_diario']
-    #     if AJUSTE_ILHAS:
-    #         # diferença entre nacional com ilhas semanal, e continente semanal (para ajustar ilhas em falta)
-    #         df[f'doses{k}_diff_ilhas'] = df[f'doses{k}'] - df[f'doses{k}_continente']
 
     if AJUSTE_JANSSEN:
+        # for k in kk:
+        #     # diferença entre continente semanal, e continente diario (para ajustar unidose/Janssen)
+        #     df[f'doses{k}_diff_unidose'] = df[f'doses{k}_continente'] - df[f'doses{k}_diario']
         df[f'doses2_diff_unidose'] = df[f'pessoas_vacinadas_completamente'] - df[f'doses2_diario']
         df[f'doses1_diff_unidose'] = df[f'pessoas_vacinadas_parcialmente'] - df[f'doses1_diario'] + df[f'doses2_diario']
         df[f'doses_diff_unidose'] = df[f'doses'] - df[f'doses_diario']
+
+    if AJUSTE_ILHAS:
+        for k in kk:
+            # diferença entre nacional com ilhas semanal, e continente semanal (para ajustar ilhas em falta)
+            df[f'doses{k}_diff_ilhas'] = df[f'doses{k}'] - df[f'doses{k}_continente']
 
     df = df[ 
         ['data'] + 
@@ -300,7 +320,9 @@ if __name__ == "__main__":
     latest = pd.read_csv(PATH_TO_CSV)
     latest["data"] = pd.to_datetime(latest["data"], format="%d-%m-%Y")
 
-    latest_data, latest_total = latest.data.tail(1).values[0], int(latest.doses.tail(1))
+    latest_data, latest_total = latest.data.tail(1).values[0], latest.doses.tail(1).item()
+    if not np.isnan(latest_total): latest_total = int(latest_total)
+
     # Get the data available in the dashboard
     available = get_vacinas(URL, latest_data, latest_total)
 

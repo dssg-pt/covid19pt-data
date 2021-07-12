@@ -5,6 +5,7 @@ import math
 from datetime import date, timedelta
 from pathlib import Path
 import pandas as pd
+import numpy as np
 import locale
 try:
     locale.setlocale(locale.LC_TIME, "pt_PT.utf8")
@@ -15,7 +16,9 @@ except locale.Error:
 # Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 DOW = date.today().weekday()
 
-INCLUIR_SEMANAL=DOW in [2]
+INCLUIR_NACIONAL=False
+
+INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2]
 
 # ---
 # Constants
@@ -115,11 +118,15 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
     if df_today is not None and not math.isnan(df_today.doses2):
         yesterday = date.today() - timedelta(days=DAYS_OFFSET+1)
         yesterday_f = yesterday.strftime('%Y-%m-%d')
-        df_yesterday = df.loc[yesterday_f]
+        try:
+            df_yesterday = df.loc[yesterday_f]
+            df_yesterday = None if np.isnan(df_yesterday['doses']) else df_yesterday
+        except KeyError:
+            df_yesterday = None
 
         doses1 = int(df_today['pessoas_inoculadas' if ajuste_semanal else 'doses1'])
         doses2 = int(df_today['pessoas_vacinadas_completamente' if ajuste_semanal else 'doses2'])
-        vacinas = int(df_today['vacinas_novas' if ajuste_semanal else 'doses_novas'])
+        vacinas = int(df_today['vacinas_novas' if ajuste_semanal else 'doses_novas']) if df_yesterday else None
         dados_vacinas.update(
             {
                 'percentagem': float(100 * doses2 / pop),
@@ -128,15 +135,16 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
                 'n_total': f(int(doses1)),
                 'n_vacinados': f(int(doses2)),
                 'n_inoculados': f(int(doses1) - int(doses2)),
-                'vacinas': f(int(vacinas)),
+                'vacinas': f(int(vacinas)) if df_yesterday else None,
                 # tweet 1
-                'novos_vacinados': f(int(df_today['doses2_novas']), plus=True),
-                'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])),
-                'media_7dias': f(int(df_today['doses2_7'] / 7)),
-                'novos_inoculados': f(int(df_today['doses1_novas']), plus=True),
-                'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])),
-                'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)),
+                'novos_vacinados': f(int(df_today['doses2_novas']), plus=True) if df_yesterday else None,
+                'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])) if df_yesterday else None,
+                'media_7dias': f(int(df_today['doses2_7'] / 7)) if df_yesterday else None,
+                'novos_inoculados': f(int(df_today['doses1_novas']), plus=True) if df_yesterday else None,
+                'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])) if df_yesterday else None,
+                'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)) if df_yesterday else None,
                 #
+                'has_yesterday': bool(df_yesterday),
                 'data_detalhes': data_detalhes,
                 'df_last': df_last,
             }
@@ -227,6 +235,7 @@ def compor_tweet(dados_vacinas, tweet=1):
     # "cross fingers" is a new emoji U+1F91E and looks better.
     # On twitter both will be ok.
 
+    has_yesterday = dados_vacinas['has_yesterday']
 
     tweet_message = ""
 
@@ -292,10 +301,13 @@ def compor_tweet(dados_vacinas, tweet=1):
             "\n\n💉≥{n_vacinados}"
             " vacinação completa"
         )
-        tweet_message += (
-            " ({novos_vacinados}{tendencia_vacinados}"
-            " média 7d {media_7dias})"
-        ) if tweet == 1 else (
+        if has_yesterday:
+            tweet_message += (
+                " ({novos_vacinados}{tendencia_vacinados}"
+                " média 7d {media_7dias})"
+            ) if tweet == 1 else ""
+            
+        tweet_message += "" if tweet == 1 else (
             " ({percentagem_vacinados}%)"
         )
 
@@ -306,10 +318,11 @@ def compor_tweet(dados_vacinas, tweet=1):
             "\n\n💉Mais ≥{n_inoculados}"
             " com 1ª dose"
         )
-        tweet_message += (
-            " ({novos_inoculados}{tendencia_inoculados}"
-            " média 7d {media_7dias_inoculados})"
-        ) if tweet == 1 else ""
+        if has_yesterday:
+            tweet_message += (
+                " ({novos_inoculados}{tendencia_inoculados}"
+                " média 7d {media_7dias_inoculados})"
+            ) if tweet == 1 else ""
 
         tweet_message += (
             "\n\n👍Total {n_total} inoculados"
@@ -319,18 +332,20 @@ def compor_tweet(dados_vacinas, tweet=1):
         tweet_message += (
             " ({percentagem_inoculados}%)"
         )
-        tweet_message += (
-            "\n\n💉Vacinas diárias {vacinas}"
-        ) if tweet == 1 else ""
+        if has_yesterday:
+            tweet_message += (
+                "\n\n💉Vacinas diárias {vacinas}"
+            ) if tweet == 1 else ""
 
     #tweet_message += (
     #    "\n\n#vacinaçãoCovid19"
     #) if tweet == 1 else ""
 
-    total_tweets = 4 if INCLUIR_SEMANAL else 2
-    tweet_message += (
-        f"\n\n[{tweet}/{total_tweets}]"
-    )
+    total_tweets = 4 if INCLUIR_SEMANAL else 2 if INCLUIR_NACIONAL else 1
+    if total_tweets > 1:
+        tweet_message += (
+            f"\n\n[{tweet}/{total_tweets}]"
+        )
     tweet_message += (
         "\n\n➕Todos os dados em: {link_repo}"
     ) if tweet == total_tweets else ""
@@ -355,14 +370,15 @@ if __name__ == '__main__':
     # If there's new data, tweet
     if dados_vac:
         texto_tweet = compor_tweet(dados_vac, tweet=1)
-        dados_vac_2 = extrair_dados_vacinas(DAYS_OFFSET, ajuste_semanal=True)
-        texto_tweet_2 = compor_tweet(dados_vac_2, tweet=2)
+        dados_vac_2 = extrair_dados_vacinas(DAYS_OFFSET, ajuste_semanal=True) if INCLUIR_NACIONAL else {}
+        texto_tweet_2 = compor_tweet(dados_vac_2, tweet=2) if INCLUIR_NACIONAL else ""
         texto_tweet_3 = compor_tweet(dados_vac_2, tweet=3) if INCLUIR_SEMANAL else ""
         texto_tweet_4 = compor_tweet(dados_vac_2, tweet=4) if INCLUIR_SEMANAL else ""
 
         if consumer_key == 'DEBUG':
             print(f"Tweet 1 {tweet_len(texto_tweet)} '''\n{texto_tweet}\n'''")
-            print(f"Tweet 2 {tweet_len(texto_tweet_2)} '''\n{texto_tweet_2}\n'''")
+            if texto_tweet_2:
+                print(f"Tweet 2 {tweet_len(texto_tweet_2)} '''\n{texto_tweet_2}\n'''")
             if texto_tweet_3:
                 print(f"Tweet 3 {tweet_len(texto_tweet_3)} '''\n{texto_tweet_3}\n'''")
             if texto_tweet_4:
