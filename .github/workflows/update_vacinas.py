@@ -170,6 +170,12 @@ def fix_vacinas(data):
             dia = (datetime.datetime(2021, 6, 28) + datetime.timedelta(days=i)).strftime("%d-%m-%Y")
             cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
             data.loc[data.data == dia, cols] = ''
+        # dia 6 taskforce anuncia recorde 141K, tem 146k (ilhas), aceitável
+        # dia 7 taskforce anuncia recorde 151k, tem 158k (ilhas), aceitável
+        # dia 8 tem 182k mas dias mais tarde há recorde 156k, não pode ser
+        dia = datetime.datetime(2021, 7, 8).strftime("%d-%m-%Y")
+        cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
+        data.loc[data.data == dia, cols] = ''
     
     # recalculate *_novas when missing or incorrect
     last = {}
@@ -296,6 +302,7 @@ if __name__ == "__main__":
         "&resultType=standard"
         # "&resultOffset=0&resultRecordCount=1000"
     )
+    # print(URL)
 
     # Get latest data
     latest = pd.read_csv(PATH_TO_CSV)
