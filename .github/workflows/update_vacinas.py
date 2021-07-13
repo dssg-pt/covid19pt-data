@@ -251,7 +251,7 @@ def ajuste_dados_semanais(updated):
     for i in [5,6,7,8]:
         updated.loc[updated['data'] == f'0{i}-07-2021', ['doses2_diff', 'doses1_diff', 'doses_diff']] = diff5
 
-    DEBUG_ADJUSTMENT=True
+    DEBUG_ADJUSTMENT=False
     # updated['pessoas_vacinadas_completamente'] = updated['doses2']
     # updated['pessoas_vacinadas_parcialmente'] = updated['doses1'] - updated['doses2']
     # updated['pessoas_inoculadas'] = updated['doses1']
