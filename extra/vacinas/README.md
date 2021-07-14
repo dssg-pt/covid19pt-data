@@ -157,3 +157,8 @@
   Valores diários de 2021-06-05 parecem semelhantes aos
   valores semanais nacionais, enquanto nas semanas anteriores
   correspondiam apenas ao continente.
+
+### Relatório 2021-07-12
+- `Dataset vacinação (22)`
+- `Relatório de Vacinação nº 22 (27/12/2020 a 11/07/2021)`
+- publicado a `2021-07-14` com data `2021-07-11`

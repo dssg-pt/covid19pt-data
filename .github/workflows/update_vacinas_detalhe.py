@@ -69,7 +69,8 @@ if __name__ == "__main__":
   # reorder columns
   data = data[[
     'tipo',
-    'data', # 'ano', 'semana', # redundante
+    'data', # 'ano', # redundante
+    'semana',
     'região', 'idades',
     'recebidas', 'distribuidas',
     'doses', 'doses_novas',
@@ -84,6 +85,15 @@ if __name__ == "__main__":
     'pessoas_vacinadas_completamente_perc',
     'pessoas_inoculadas_perc',
   ]]
+
+  # 2021-07-12 Datas todas misturadas
+  # - 01/04/2021 -> 2021-01-04
+  # - 18/01/21 -> 2021-01-18
+  print(data.columns)
+  for i, row in data.iterrows():
+    new_date = datetime(2021, 1, 4) + timedelta(days=7*(row.semana-1))
+    # print(f"data={row.data} week={row.semana} new_date={new_date}")
+    data.loc[i, 'data'] = new_date.strftime('%d/%m/%Y')
 
   # 2021-03-24 Dataset 6 contém ilhas mas tem datas inconsistentes, com continente
   # a dia 15, tal como a Madeira, mas Açores a 17 e região "outro" a 16
