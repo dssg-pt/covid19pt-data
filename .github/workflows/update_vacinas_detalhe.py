@@ -89,7 +89,6 @@ if __name__ == "__main__":
   # 2021-07-12 Datas todas misturadas
   # - 01/04/2021 -> 2021-01-04
   # - 18/01/21 -> 2021-01-18
-  print(data.columns)
   for i, row in data.iterrows():
     new_date = datetime(2021, 1, 4) + timedelta(days=7*(row.semana-1))
     # print(f"data={row.data} week={row.semana} new_date={new_date}")
