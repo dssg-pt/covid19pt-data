@@ -177,19 +177,25 @@ def extrair_dados_ultimo_relatorio():
     try:
         for k in idades:
             df[f"confirmados_{k}"] = df[f"confirmados_{k}_f"] + df[f"confirmados_{k}_m"]
-            df[f"obitos_{k}"] = df[f"obitos_{k}_f"] + df[f"obitos_{k}_m"]
             k2 = k
             dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff(idades_diff)[-1])
             dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff, name=f'novos_casos_{k}')
-            dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff(idades_diff)[-1])
-            dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], skip=idades_diff, name=f'novos_obitos_{k}')
             incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_IDADE[k]
             dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
             dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}')
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
     except ValueError as e:
-        print(f"WARN: sem idades {e}")
-        dados_extraidos["sem_idades"] = True
+        print(f"WARN: sem idades confirmados {e}")
+        dados_extraidos["sem_idades_confirmados"] = True
+    try:
+        for k in idades:
+            df[f"obitos_{k}"] = df[f"obitos_{k}_f"] + df[f"obitos_{k}_m"]
+            k2 = k
+            dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff(idades_diff)[-1])
+            dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], skip=idades_diff, name=f'novos_obitos_{k}')
+    except ValueError as e:
+        print(f"WARN: sem idades obitos {e}")
+        dados_extraidos["sem_idades_obitos"] = True
 
     # diff e médias 7 e 14 dias
     for k in [7, 14]:
@@ -277,7 +283,10 @@ def extrair_dados_ultimo_relatorio():
 
 def compor_tweets(dados_para_tweets):
 
-    sem_idades = dados_para_tweets.get("sem_idades", False)
+    sem_idades_confirmados = dados_para_tweets.get("sem_idades_confirmados", False)
+    sem_idades_obitos = dados_para_tweets.get("sem_idades_obitos", False)
+    sem_idades = sem_idades_confirmados # and sem_idades_obitos
+
     dados_para_tweets["num_tweets"] = 3 if sem_idades else 4
 
     # Main tweet
@@ -287,7 +296,7 @@ def compor_tweets(dados_para_tweets):
         "🫂Novos casos: {novos_casos} | Total: {total_casos}\n"
         "🪦Novos óbitos: {novos_obitos} | Total: {total_obitos}\n"
     )
-    if not sem_idades:
+    if not sem_idades_obitos:
         tweet_message += (
             "⚱️Óbitos ≤49 anos: {novos_obitos_lt50} | 7d: {novos_obitos_lt50_7d}\n"
         )
@@ -320,14 +329,20 @@ def compor_tweets(dados_para_tweets):
     if sem_idades:
         third_tweet = ""
     else:
-        third_tweet = "🔎Idade: incidência, novos casos e óbitos:\n"
+        if sem_idades_obitos:
+            third_tweet = "🔎Idade: incidência e novos casos:\n"
+        else:
+            third_tweet = "🔎Idade: incidência, novos casos e óbitos:\n"
         for k in idades:
             k2 = "00" if k == "0_9" else "80" if k == "80_plus" else k[0:2]
             icon = f"icon_{k}"
             incidencia = f"incidencia_{k}"
             novos_casos = f"novos_casos_{k}"
             novos_obitos = f"novos_obitos_{k}"
-            third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"} {"+novos_obitos+"}\n"
+            if sem_idades_obitos:
+                third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"}\n"
+            else:
+                third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"} {"+novos_obitos+"}\n"
         third_tweet += (
             "\n"
             "[3/{num_tweets}]"
