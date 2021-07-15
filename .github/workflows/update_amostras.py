@@ -95,6 +95,30 @@ def get_amostras(url):
 
 def fix_amostras(data):
 
+    # sometimes total differs from pcr+antigenio so we just fix them blindly
+    for i, row in data.iterrows():
+        total = row['amostras']
+        expected = row['amostras_pcr'] + row['amostras_antigenio']
+        if total == expected:
+            continue
+        print(f"Override {row['data']} 'amostras' from {total} to {expected} {expected-total}")
+        data.at[i, 'amostras'] = expected
+
+    FIXES = [
+        # [data DD-MM-YYYY, [columns], fix_value, opt if_value]
+    ]
+
+    for fix in FIXES:
+        old = data.loc[data.data == fix[0], fix[1]].to_numpy()[0]
+        try:
+            old = old.tolist()
+        except AttributeError:
+            pass
+        if len(fix) >3 and fix[3] == old:
+            continue
+        print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]} {fix[2]-old}")
+        data.loc[data.data == fix[0], fix[1]] = fix[2]
+
     for i in ["26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"]:
         data.loc[data.data == i, data.columns[1:]] = 0
 
@@ -103,26 +127,11 @@ def fix_amostras(data):
     # and recalculate the diff out of them
     data.loc[1:, "amostras_novas"] = data.loc[1:, "amostras"].diff(1)
     data.loc[1:, "amostras_pcr_novas"] = data.loc[1:, "amostras_pcr"].diff(1)
-    data.loc[1:, "amostras_antigenio_novas"] = data.loc[1:, "amostras_antigenio"].diff(
-        1
-    )
+    data.loc[1:, "amostras_antigenio_novas"] = data.loc[1:, "amostras_antigenio"].diff(1)
 
     for i in ["26-02-2020", "27-02-2020", "28-02-2020", "29-02-2020"]:
         data.loc[data.data == i, data.columns[1:]] = ""
 
-    FIXES = [
-        # [data DD-MM-YYYY, [columns], fix_value]
-    ]
-
-    for fix in FIXES:
-        if DEBUG:
-            old = data.loc[data.data == fix[0], fix[1]].to_numpy()[0]
-            try:
-                old = old.tolist()
-            except AttributeError:
-                pass
-            print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]}")
-        data.loc[data.data == fix[0], fix[1]] = fix[2]
     return data
 
 
