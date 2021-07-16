@@ -124,6 +124,8 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
         except KeyError:
             df_yesterday = None
         has_yesterday = df_yesterday is not None and len(df_yesterday)
+        has_7d_yesterday = has_yesterday and not np.isnan(df_yesterday['doses1_7']) and not np.isnan(df_yesterday['doses2_7'])
+        has_7d_today = not np.isnan(df_today['doses1_7']) and not np.isnan(df_today['doses2_7'])
 
         doses1 = int(df_today['pessoas_inoculadas' if ajuste_semanal else 'doses1'])
         doses2 = int(df_today['pessoas_vacinadas_completamente' if ajuste_semanal else 'doses2'])
@@ -140,11 +142,11 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
                 'vacinas': f(int(vacinas)) if has_yesterday and vacinas else None,
                 # tweet 1
                 'novos_vacinados': f(int(df_today['doses2_novas']), plus=True) if has_yesterday else None,
-                'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])) if has_yesterday else None,
-                'media_7dias': f(int(df_today['doses2_7'] / 7)) if has_yesterday else None,
+                'tendencia_vacinados': t(int(df_today['doses2_7'] - df_yesterday['doses2_7'])) if has_7d_today and has_7d_yesterday else '',
+                'media_7dias': f(int(df_today['doses2_7'] / 7)) if has_7d_today else None,
                 'novos_inoculados': f(int(df_today['doses1_novas']), plus=True) if has_yesterday else None,
-                'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])) if has_yesterday else None,
-                'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)) if has_yesterday else None,
+                'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])) if has_7d_today and has_7d_yesterday else '',
+                'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)) if has_7d_today else None,
                 #
                 'has_yesterday': bool(has_yesterday),
                 'data_detalhes': data_detalhes,
@@ -305,8 +307,9 @@ def compor_tweet(dados_vacinas, tweet=1):
         )
         if has_yesterday:
             tweet_message += (
-                " ({novos_vacinados}{tendencia_vacinados}"
-                " média 7d {media_7dias})"
+                " ({novos_vacinados}{tendencia_vacinados}" +
+                (" média 7d {media_7dias}" if dados_vacinas['media_7dias'] else '') +
+                ")"
             ) if tweet == 1 else ""
             
         tweet_message += "" if tweet == 1 else (
@@ -322,8 +325,9 @@ def compor_tweet(dados_vacinas, tweet=1):
         )
         if has_yesterday:
             tweet_message += (
-                " ({novos_inoculados}{tendencia_inoculados}"
-                " média 7d {media_7dias_inoculados})"
+                " ({novos_inoculados}{tendencia_inoculados}" +
+                (" média 7d {media_7dias_inoculados}" if dados_vacinas['media_7dias_inoculados'] else '') +
+                ")"
             ) if tweet == 1 else ""
 
         tweet_message += (
