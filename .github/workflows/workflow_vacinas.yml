@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: startsWith(github.head_ref, 'vacinas')
+    if: startsWith(github.head_ref, 'vacinas') || github.head_ref == 'master'
     runs-on: ubuntu-latest
     container: python:3.7
 
