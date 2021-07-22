@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timedelta
 import requests
 import pandas as pd
 import numpy as np
@@ -55,10 +55,10 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
 
     unix_date += 86400
 
-    last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
+    last_date = datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
     latest_date = pd.to_datetime(latest_data, format="%Y-%m-%d").strftime("%Y-%m-%d")
     if last_date == latest_date and doses_total > latest_total:
-        today = datetime.datetime.today().strftime("%Y-%m-%d")
+        today = datetime.today().strftime("%Y-%m-%d")
         print(f"FIXING DATE today={today} API date={latest_date} last date={last_date}")
 
     return unix_date
@@ -68,8 +68,8 @@ def save_vacinas(text, data, latest_data=None, latest_total=None):
     attributes = data["features"][0]["attributes"]
     doses_total = attributes["Vacinados_Ac"]
     unix_date = fix_date(attributes["Data"] / 1000, doses_total, latest_data, latest_total)
-    last_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
-    today = datetime.datetime.today().strftime("%Y-%m-%d")
+    last_date = datetime.utcfromtimestamp(unix_date).strftime("%Y-%m-%d")
+    today = datetime.today().strftime("%Y-%m-%d")
     if today != last_date:
         print(f"Vaccines with no new data, today={today} last_date={last_date}")
     else:
@@ -100,7 +100,7 @@ def get_vacinas(url, latest_data=None, latest_total=None):
         doses2_total = attributes.get("Inoculacao2_Ac", None)
         doses2_novas = attributes.get("Inoculacao2", None)
         unix_date = fix_date(attributes["Data"] / 1000, doses_total, latest_data, latest_total)
-        frmt_date = datetime.datetime.utcfromtimestamp(unix_date)
+        frmt_date = datetime.utcfromtimestamp(unix_date)
 
         # 26-01-2021 to ? only have Vacinados without novas nor history
         if doses_novas == doses_total and doses1_total is None:
@@ -167,13 +167,13 @@ def fix_vacinas(data):
     # dados diários 28-06-2021 a 04-07-2021 não fazem sentido
     if HIDE_JULY_FIRST_WEEK:
         for i in range(2, 7):
-            dia = (datetime.datetime(2021, 6, 28) + datetime.timedelta(days=i)).strftime("%d-%m-%Y")
+            dia = (datetime(2021, 6, 28) + timedelta(days=i)).strftime("%d-%m-%Y")
             cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
             data.loc[data.data == dia, cols] = ''
         # dia 6 taskforce anuncia recorde 141K, tem 146k (ilhas), aceitável
         # dia 7 taskforce anuncia recorde 151k, tem 158k (ilhas), aceitável
         # dia 8 tem 182k mas dias mais tarde há recorde 156k, não pode ser
-        dia = datetime.datetime(2021, 7, 8).strftime("%d-%m-%Y")
+        dia = datetime(2021, 7, 8).strftime("%d-%m-%Y")
         cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
         data.loc[data.data == dia, cols] = ''
     
@@ -238,31 +238,30 @@ def ajuste_2021_07_05(df):
     return diff5
 
 def ajuste_2021_07_19(df):
-    # dados semanais 21-07 sem CSV
-    semanal_at_least_one_dose = 6_581_332
-    semanal_vac_completa = 4_860_822
-    semanal_vacinas = ( # 10_998_267
-        3_772_884 + # norte
-        1_874_256 + # centro
-        3_845_996 + # lvt
-          535_187 + # alentejo
-          450_134 + # algarve
-          267_604 + # madeira
-          252_206 + # açores
-                0 
-    )
-    print(f"ajuste_2021_07_19"
-        f" semanal_at_least_one_dose={semanal_at_least_one_dose}"
-        f" semanal_vac_completa={semanal_vac_completa}"
-        f" semanal_vacinas={semanal_vacinas}"
-    )
-    df = df.append({
-        'data': '19-07-2021',
-        'pessoas_inoculadas': semanal_at_least_one_dose,
-        'pessoas_vacinadas_completamente': semanal_vac_completa,
-        'doses': semanal_vacinas,
-    }, ignore_index=True)
-    df = df.copy()
+    # relatório semanal #23 CSV em falta
+    row = [
+            ['data', '19-07-2021'],
+            ['pessoas_inoculadas', 6_581_332],
+            ['pessoas_vacinadas_completamente', 4_860_822],
+            ['doses', ( # 10_998_267
+                3_772_884 + # norte
+                1_874_256 + # centro
+                3_845_996 + # lvt
+                535_187 + # alentejo
+                450_134 + # algarve
+                267_604 + # madeira
+                252_206 + # açores
+                        0 
+            )],
+            ['recebidas', 12_300_690],
+            ['distribuidas', 11_385_656],
+        ]
+    cols = list(map(lambda x: x[0], row))
+    data = list(map(lambda x: x[1], row))
+    if (df.data == '19-07-2021').any():
+        df.loc[df.data == '19-07-2021', cols] = data
+    else:
+        df = df.append(pd.DataFrame([data], columns=cols))
     return df
 
 def ajuste_dados_semanais(updated):
@@ -293,8 +292,6 @@ def ajuste_dados_semanais(updated):
     # fix 05-07-2021
     for i in [5,6,7,8]:
         updated.loc[updated['data'] == f'0{i}-07-2021', ['doses2_diff', 'doses1_diff', 'doses_diff']] = diff5
-
-    print(updated.tail(4))
 
     DEBUG_ADJUSTMENT=False
     # updated['pessoas_vacinadas_completamente'] = updated['doses2']
