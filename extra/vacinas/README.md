@@ -162,3 +162,8 @@
 - `Dataset vacinação (22)`
 - `Relatório de Vacinação nº 22 (27/12/2020 a 11/07/2021)`
 - publicado a `2021-07-14` com data `2021-07-11`
+
+### Relatório 2021-07-19
+- `Dataset vacinação (23)` FIXME EM FALTA!!!
+- `Relatório de Vacinação nº 23 (27/12/2020 a 18/07/2021)`
+- publicado a `2021-07-21` com data `2021-07-18`
