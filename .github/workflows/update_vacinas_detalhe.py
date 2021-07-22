@@ -143,7 +143,7 @@ if __name__ == "__main__":
   data_general.set_index('day', inplace=True)
 
   if dataset12:
-    print(f"WARNING: dados receibidas/distribuidas em falta")
+    print(f"WARNING: dados recebidas/distribuidas em falta")
     data_general['recebidas'] = [
       651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
       3400260, 4218420
@@ -226,6 +226,29 @@ if __name__ == "__main__":
 
   # concatena tudo numa wiiiiiide table
   data_wide = pd.concat([data_general, data_regional, data_ages], axis=1)
+
+  # relatório semanal #23 CSV em falta
+  row = [
+        ['data', '19-07-2021'],
+        ['pessoas_inoculadas', 6_581_332],
+        ['pessoas_vacinadas_completamente', 4_860_822],
+        ['doses', ( # 10_998_267
+            3_772_884 + # norte
+            1_874_256 + # centro
+            3_845_996 + # lvt
+              535_187 + # alentejo
+              450_134 + # algarve
+              267_604 + # madeira
+              252_206 + # açores
+                    0 
+          )],
+          ['recebidas', 12_300_690],
+          ['distribuidas', 11_385_656],
+    ]
+  cols = list(map(lambda x: x[0], row))
+  data = list(map(lambda x: x[1], row))
+  row = pd.DataFrame([data], columns=cols)
+  data_wide.loc[datetime(2021, 7, 19), cols] = data
 
   # limpa colunas vazias
   for col in [
