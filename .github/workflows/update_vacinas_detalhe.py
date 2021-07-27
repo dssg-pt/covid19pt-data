@@ -25,11 +25,14 @@ if __name__ == "__main__":
 
 
   # Dataset 12 (maybe 11) dropped RECEIVED + DISTRIBUTED
-  dataset12 = False
+  dataset_num = None
   for k in ['RECEIVED', 'DISTRIBUTED']:
     if k not in data.columns:
       data[k] = np.nan
-      dataset12 = True
+      if len(data.columns) in [18]:
+        dataset_num = 12
+      elif len(data.columns) in [24]:
+        dataset_num = 24
 
   # Until 2021-03-17 the first column was an unnamed numeric index
   # #20 2021-06-29 again
@@ -142,7 +145,7 @@ if __name__ == "__main__":
     ]]
   data_general.set_index('day', inplace=True)
 
-  if dataset12:
+  if dataset_num == 12:
     print(f"WARNING: dados recebidas/distribuidas em falta")
     data_general['recebidas'] = [
       651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
@@ -151,6 +154,22 @@ if __name__ == "__main__":
     data_general['distribuidas'] = [
       571981, 718143, 933847, 1095103, 1264093, 1462079, 1753999, 1996561, 2360167, 2679813,
       3039329, 3581288
+    ]
+  if dataset_num == 24:
+    print(f"WARNING: dados recebidas/distribuidas em falta")
+    data_general['recebidas'] = [
+      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 
+      651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
+      3400260, 4128420, 4655370, 5197920, 5728470, 6254220, 7263540, 7880400, 8604606,
+      9519240, 11510810, 12300690,
+      12886770
+    ]
+    data_general['distribuidas'] = [
+      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 
+      571981, 718143, 933847, 1095103, 1264093, 1462079, 1753999, 1996561, 2360167, 2679813,
+      3039329, 3581288, 4171038, 4686071, 5126418, 5644760, 6299315, 6896272, 7566600,
+      8357319, 10694447, 11385656,
+      12043017
     ]
 
   # dicionario para alteração do nome de idades

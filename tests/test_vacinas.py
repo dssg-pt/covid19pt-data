@@ -126,7 +126,8 @@ def test_dtype(data_vacinas, col_name, expected_dtype, int_check, extra_check):
             if (
                 row['data'].strftime("%Y-%m-%d") == '2021-03-29'
                 and col_name == 'pessoas_vacinadas_completamente_novas'
-                and val == -552
+                # and val == -552 # Relatório 22
+                and val == -377 # Relatório 24
             ):
                 continue
             assert extra_check(

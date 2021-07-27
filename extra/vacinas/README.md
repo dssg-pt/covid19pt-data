@@ -164,6 +164,11 @@
 - publicado a `2021-07-14` com data `2021-07-11`
 
 ### Relatório 2021-07-19
-- `Dataset vacinação (23)` FIXME EM FALTA!!!
+- `Dataset vacinação (23)` EM FALTA
 - `Relatório de Vacinação nº 23 (27/12/2020 a 18/07/2021)`
-- publicado a `2021-07-21` com data `2021-07-18`
+- publicado a `2021-07-21` (quarta) com data `2021-07-18`
+
+### Relatório 2021-07-26
+- `Dataset vacinação (24)`
+- `Relatório de Vacinação nº 24 (27/12/2020 a 25/07/2021)`
+- publicado a `2021-07-27` (terça noite) com data `2021-07-25`
