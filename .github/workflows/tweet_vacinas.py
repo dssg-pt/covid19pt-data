@@ -18,7 +18,7 @@ DOW = date.today().weekday()
 
 INCLUIR_NACIONAL=True
 
-INCLUIR_SEMANAL=INCLUIR_NACIONAL and True # DOW in [2] # and False # TEMP inactivo - ainda sem relatorio 2021-07-21
+INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2] # and False # TEMP inactivo - ainda sem relatorio 2021-07-21
 
 # ---
 # Constants
