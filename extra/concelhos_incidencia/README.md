@@ -82,3 +82,36 @@ Shape_Leng
 
 ### 2021-05-06-concelhos.json
 22-04-2021 a 05-05-2021 (quarta-feira), publicado a 07-05-2021 (sexta-feira)
+
+### 2021-05-13-concelhos.json
+29-04-2021 a 12-05-2021 (quarta-feira), publicado a 14-05-2021 (sexta-feira)
+
+### 2021-05-20-concelhos.json
+06-05-2021 a 19-05-2021 (quarta-feira), publicado a 21-05-2021 (sexta-feira)
+
+### 2021-05-27-concelhos.json
+13-05-2021 a 26-05-2021 (quarta-feira), publicado a 28-05-2021 (sexta-feira)
+
+### 2021-06-02-concelhos.json
+19-05-2021 a 01-06-2021 (terça-feira), publicado a 04-06-2021 (sexta-feira)
+
+### 2021-06-09-concelhos.json
+26-05-2021 a 08-06-2021 (terça-feira), publicado a 11-06-2021 (sexta-feira)
+
+### 2021-06-16-concelhos.json
+02-06-2021 a 15-06-2021 (terça-feira), publicado a 18-06-2021 (sexta-feira)
+
+### 2021-06-24-concelhos.json
+10-06-2021 a 23-06-2021 (quarta-feira), publicado a 25-06-2021 (sexta-feira)
+
+### 2021-07-01-concelhos.json
+17-06-2021 a 30-06-2021 (quarta-feira), publicado a 02-07-2021 (sexta-feira)
+
+### 2021-07-08-concelhos.json
+24-06-2021 a 07-07-2021 (quarta-feira), publicado a 09-07-2021 (sexta-feira)
+
+### 2021-07-15-concelhos.json
+01-07-2021 a 14-07-2021 (quarta-feira), publicado a 16-07-2021 (sexta-feira)
+
+### 2021-07-22-concelhos.json
+08-07-2021 a 21-07-2021 (quarta-feira), publicado a 23-07-2021 (sexta-feira)

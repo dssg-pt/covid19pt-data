@@ -1,13 +1,15 @@
 name: DGS data - vacinas
 
 on:
+  workflow_dispatch:
+
   pull_request:
     branches:
       - master
 
 jobs:
   build:
-    if: startsWith(github.head_ref, 'vacinas')
+    if: startsWith(github.head_ref, 'vacinas') || github.head_ref == 'master'
     runs-on: ubuntu-latest
     container: python:3.7
 
@@ -26,6 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r .github/workflows/requirements.txt
 
+      - name: Update data about vaccination details weekly
+        run: |
+          python .github/workflows/update_vacinas_detalhe.py
+        if: always()
+
       - name: Update data about vaccination
         run: |
           python .github/workflows/update_vacinas.py
@@ -43,11 +50,6 @@ jobs:
           path: tests/junit/test-vacinas-results.xml
         if: always()
 
-      - name: Update data about vaccination details weekly
-        run: |
-          python .github/workflows/update_vacinas_detalhe.py
-        if: always()
-
       # Until there's some tweet about amostras, just update them anytime something else updates
       - name: Update data about test samples
         run: |
@@ -61,6 +63,27 @@ jobs:
         with:
           name: pytest-amostras-results
           path: tests/junit/test-amostras-results.xml
+        if: always()
+
+      # Until there's some tweet about Rt, just update them anytime something else updates
+      - name: Update data about Rt
+        run: |
+          python .github/workflows/update_rt.py
+        if: always()
+      # TODO
+      # - name: Validate data about Rt with pytest
+      #   run: pytest tests/test_rt.py -s -vv --junitxml=tests/junit/test-rt-results.xml
+      #   if: always()
+      # - name: Upload pytest Rt results
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: pytest-rt-results
+      #     path: tests/junit/test-rt-results.xml
+      #   if: always()
+
+      - name: Update readme date again, before commits
+        run: |
+          python .github/workflows/update_readme.py
         if: always()
 
       - name: Commit all changes
@@ -91,4 +114,3 @@ jobs:
           TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
           TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
           TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
-

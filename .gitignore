@@ -146,8 +146,8 @@ static
 extra/saude/download_atividade_operacional.ipynb
 
 # editors
-.vscode
+/.vscode/
 
 # temp
-temp
+/temp/
 

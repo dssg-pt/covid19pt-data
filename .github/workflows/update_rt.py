@@ -1,50 +1,20 @@
 import datetime
-import requests
 import pandas as pd
 import numpy as np
-import sys
-import json
 from pathlib import Path
 
 URL = "http://www.insa.min-saude.pt/wp-content/uploads/{year:04d}/{month:02d}/Rt_{region}.xlsx"
 
 REGIONS = (
-    (
-        "nacional",
-        "nacional",
-    ),
-    (
-        "continente",
-        "Continente",
-    ),
-    (
-        "arsnorte",
-        "norte",
-    ),
-    (
-        "arscentro",
-        "centro",
-    ),
-    (
-        "arslvt",
-        "lvt",
-    ),
-    (
-        "arsalentejo",
-        "Alentejo",
-    ),
-    (
-        "arsalgarve",
-        "Algarve",
-    ),
-    (
-        "açores",
-        "RAA",
-    ),
-    (
-        "madeira",
-        "RAM",
-    ),
+    ("nacional", "nacional", ),
+    ("continente", "Continente", ),
+    ("arsnorte", "norte", ),
+    ("arscentro", "centro", ),
+    ("arslvt", "lvt", ),
+    ("arsalentejo", "Alentejo", ),
+    ("arsalgarve", "Algarve", ),
+    ("açores", "RAA", ),
+    ("madeira", "RAM",),
 )
 
 if __name__ == "__main__":

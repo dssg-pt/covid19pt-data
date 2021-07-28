@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import re
 import sys
-from util import convert, convert_to_float, convert_to_int
+from util import convert, convert_to_int
 
 if __name__ == "__main__":
 
@@ -23,28 +23,57 @@ if __name__ == "__main__":
   # read the "Semi-colon Separated Values"
   data = pd.read_csv(PATH_TO_CSV / last_dataset, sep=";", decimal=',')
 
+
+  # Dataset 12 (maybe 11) dropped RECEIVED + DISTRIBUTED
+  dataset_num = None
+  for k in ['RECEIVED', 'DISTRIBUTED']:
+    if k not in data.columns:
+      data[k] = np.nan
+      if len(data.columns) in [18]:
+        dataset_num = 12
+      elif len(data.columns) in [24]:
+        dataset_num = 24
+
   # Until 2021-03-17 the first column was an unnamed numeric index
-  if len(data.columns) == 19 and data.columns[0] != 'TYPE':
+  # #20 2021-06-29 again
+  if data.columns[0] != 'TYPE' and len(data.columns) in [19, 25]:
     data.drop(data.columns[0], axis=1, inplace=True)
 
   # rename columns
   #   'TYPE', 'DATE', 'YEAR', 'WEEK', 'REGION', 'AGEGROUP',
   #   'TOTAL_VAC_1', 'TOTAL_VAC_2', 'TOTAL_VAC_UNK', 'TOTAL',
   #   'CUMUL_VAC_1', 'CUMUL_VAC_2', 'CUMUL_VAC_UNK', 'CUMUL',
-  #   'COVER_1_VAC', 'COVER', 'RECEIVED', 'DISTRIBUTED'
-  data.columns = [
-    'tipo',
-    'data', 'ano', 'semana',
-    'região', 'idades',
+  # #20
+  #   'CUMUL_VAC_INIT', 'CUMUL_VAC_COMPLETE', 'CUMUL_VAC_LEAST',
+  #   'COVER_1_VAC', 'COVER', 
+  # #20
+  #   'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
+  #   'RECEIVED', 'DISTRIBUTED'
+  columns = [
+    'tipo', 'data', 'ano', 'semana', 'região', 'idades',
     'doses1_novas', 'doses2_novas', 'dosesunk_novas', 'doses_novas',
     'doses1', 'doses2', 'dosesunk', 'doses',
     'doses1_perc', 'doses2_perc',
     'recebidas', 'distribuidas',
   ]
+  if len(data.columns) == 24:
+    columns = columns[0:14] + [
+      #   'CUMUL_VAC_INIT', 'CUMUL_VAC_COMPLETE', 'CUMUL_VAC_LEAST',
+      'pessoas_vacinadas_parcialmente',
+      'pessoas_vacinadas_completamente',
+      'pessoas_inoculadas',
+    ] + columns[14:16] + [
+      # 'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
+      'pessoas_vacinadas_parcialmente_perc', 
+      'pessoas_vacinadas_completamente_perc',
+      'pessoas_inoculadas_perc',
+    ] + columns[16:]
+  data.columns = columns
   # reorder columns
   data = data[[
     'tipo',
-    'data', # 'ano', 'semana', # redundante
+    'data', # 'ano', # redundante
+    'semana',
     'região', 'idades',
     'recebidas', 'distribuidas',
     'doses', 'doses_novas',
@@ -52,7 +81,21 @@ if __name__ == "__main__":
     'doses2', 'doses2_novas',
     'dosesunk', 'dosesunk_novas',
     'doses1_perc', 'doses2_perc',
+    'pessoas_vacinadas_parcialmente',
+    'pessoas_vacinadas_completamente',
+    'pessoas_inoculadas',
+    'pessoas_vacinadas_parcialmente_perc', 
+    'pessoas_vacinadas_completamente_perc',
+    'pessoas_inoculadas_perc',
   ]]
+
+  # 2021-07-12 Datas todas misturadas
+  # - 01/04/2021 -> 2021-01-04
+  # - 18/01/21 -> 2021-01-18
+  for i, row in data.iterrows():
+    new_date = datetime(2021, 1, 4) + timedelta(days=7*(row.semana-1))
+    # print(f"data={row.data} week={row.semana} new_date={new_date}")
+    data.loc[i, 'data'] = new_date.strftime('%d/%m/%Y')
 
   # 2021-03-24 Dataset 6 contém ilhas mas tem datas inconsistentes, com continente
   # a dia 15, tal como a Madeira, mas Açores a 17 e região "outro" a 16
@@ -68,7 +111,11 @@ if __name__ == "__main__":
     data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%Y'))
   except ValueError:
     # 2021-04-29 tem ano com 2 digitos "21"
-    data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%y'))
+    try:
+      data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%y'))
+    except ValueError:
+      # relatório 12 (talvez 11) tem Y-M-D
+      data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%Y-%m-%d'))
   data['data'] = data['data'].apply(lambda x: x.replace("/", "-"))
 
   # CSV tem data do inicio da semana enquanto o PDF tem data do final da semana
@@ -87,16 +134,51 @@ if __name__ == "__main__":
       'recebidas', 'distribuidas',
       'doses', 'doses_novas', 'doses1', 'doses1_novas', 'doses2', 'doses2_novas',
       'dosesunk', 'dosesunk_novas',
-      'doses1_perc', 'doses2_perc', 'populacao1', 'populacao2'
+      'doses1_perc', 'doses2_perc',
+      'pessoas_vacinadas_parcialmente',
+      'pessoas_vacinadas_completamente',
+      'pessoas_inoculadas',
+      'pessoas_vacinadas_parcialmente_perc', 
+      'pessoas_vacinadas_completamente_perc',
+      'pessoas_inoculadas_perc',
+      'populacao1', 'populacao2'
     ]]
   data_general.set_index('day', inplace=True)
+
+  if dataset_num == 12:
+    print(f"WARNING: dados recebidas/distribuidas em falta")
+    data_general['recebidas'] = [
+      651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
+      3400260, 4218420
+    ]
+    data_general['distribuidas'] = [
+      571981, 718143, 933847, 1095103, 1264093, 1462079, 1753999, 1996561, 2360167, 2679813,
+      3039329, 3581288
+    ]
+  if dataset_num == 24:
+    print(f"WARNING: dados recebidas/distribuidas em falta")
+    data_general['recebidas'] = [
+      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 
+      651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
+      3400260, 4128420, 4655370, 5197920, 5728470, 6254220, 7263540, 7880400, 8604606,
+      9519240, 11510810, 12300690,
+      12886770
+    ]
+    data_general['distribuidas'] = [
+      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 
+      571981, 718143, 933847, 1095103, 1264093, 1462079, 1753999, 1996561, 2360167, 2679813,
+      3039329, 3581288, 4171038, 4686071, 5126418, 5644760, 6299315, 6896272, 7566600,
+      8357319, 10694447, 11385656,
+      12043017
+    ]
 
   # dicionario para alteração do nome de idades
   ages = dict([ ( k,
       re.sub('-', '_',
       re.sub(' ou mais', '+',
       re.sub(' anos', '',
-      k.lower()
+      # 2021.05.10 tem age como "NA"/float.nan
+      k.lower() if type(k) == str else 'na'
     ))) ) for k in data.idades.unique() ])
 
   # wide table de colunas por idade
@@ -140,6 +222,9 @@ if __name__ == "__main__":
       data_regional[f'{col}_arsalentejo'] +
       data_regional[f'{col}_arsalgarve'] +
       0)
+  # recalcula a percentagem continente
+  for i in [1, 2]:
+    data_regional[f'doses{i}_perc_continente'] = data_regional[f'doses{i}_continente'] / data_regional[f'populacao{i}_continente']
   cols = data_regional.columns
 
   # reordena por ARS (norte->sul)
@@ -160,6 +245,29 @@ if __name__ == "__main__":
 
   # concatena tudo numa wiiiiiide table
   data_wide = pd.concat([data_general, data_regional, data_ages], axis=1)
+
+  # relatório semanal #23 CSV em falta
+  row = [
+        ['data', '19-07-2021'],
+        ['pessoas_inoculadas', 6_581_332],
+        ['pessoas_vacinadas_completamente', 4_860_822],
+        ['doses', ( # 10_998_267
+            3_772_884 + # norte
+            1_874_256 + # centro
+            3_845_996 + # lvt
+              535_187 + # alentejo
+              450_134 + # algarve
+              267_604 + # madeira
+              252_206 + # açores
+                    0 
+          )],
+          ['recebidas', 12_300_690],
+          ['distribuidas', 11_385_656],
+    ]
+  cols = list(map(lambda x: x[0], row))
+  data = list(map(lambda x: x[1], row))
+  row = pd.DataFrame([data], columns=cols)
+  data_wide.loc[datetime(2021, 7, 19), cols] = data
 
   # limpa colunas vazias
   for col in [

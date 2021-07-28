@@ -1,0 +1,53 @@
+name: DGS - Automation
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Every 15 minutes from 12 to 15h
+    - cron: 0,15,30,45 12,13,14,15 * * * 
+
+env:
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+jobs:
+
+  check_vaccines:
+    name: Check if vaccine data has update
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python to 3.8.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.x'
+
+      - name: Install Requests package
+        run: pip install requests
+
+      - name: Update Python path
+        run: echo "PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE" >> $GITHUB_ENV
+
+      - name: Check for update
+        run: echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
+
+      # - name: There is NO updated
+      #   if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
+      #   run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:. NO VACCINE DATA AVAILABLE :large_yellow_circle:"
+
+      - name: There is a NEW updated
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW VACCINE DATA AVAILABLE :large_green_circle:"
+
+      - name: Trigger workflow vaccines
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          curl \
+            -X POST \
+            -d '{"ref":"refs/heads/master"}' \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/vnd.github.v3+json' \
+            -H 'Authorization: token ${{secrets.GITHUB_TOKEN}}' \
+            'https://api.github.com/repos/dssg-pt/covid19pt-data/actions/workflows/workflow_vacinas.yml/dispatches'

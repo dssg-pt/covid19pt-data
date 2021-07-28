@@ -10,10 +10,23 @@ if __name__ == "__main__":
 
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "data.csv")
 
-    DAYS_OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
-    today = (datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)).strftime(DMY)
+    DAYS_OFFSET = 0
+    if len(sys.argv) > 1:
+        try:
+            DAYS_OFFSET = int(sys.argv[1])
+            today = (datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)).strftime(DMY)
+            print(f"Retrieving date={today} OFFSET={DAYS_OFFSET}")
+        except ValueError:
+            DAYS_OFFSET = -1
+            today = datetime.datetime.strptime(sys.argv[1], '%Y-%m-%d').strftime(DMY)
+            print(f"Retrieving date={today}")
+    else:
+        today = (datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)).strftime(DMY)
+        if DAYS_OFFSET:
+            print(f"Retrieving date={today} OFFSET={DAYS_OFFSET}")
+        else:
+            print(f"Retrieving date={today}")
 
-    if DAYS_OFFSET == 0 and not len(sys.argv) > 1:
         csv_path = str(Path(__file__).resolve().parents[2] / "data.csv")
         latest = pd.read_csv(csv_path)
         latest_date = latest[-1:]["data"].item()
@@ -22,19 +35,22 @@ if __name__ == "__main__":
             sys.exit(0)
 
     URL = (
-        "https://services.arcgis.com/CCZiGSEQbAxxFVh3/ArcGIS/rest/services/COVID_Concelhos_DadosDiariosARS_VIEW2/FeatureServer/0/query"
+        'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/COVID_ARS_PT_HISTORICO_view/FeatureServer/0/query'
         "?f=json&outFields=*&cacheHint=false"
-        "&where=ConfirmadosAcumulado>=0&orderByFields=Data+desc"
+        '&where=1%3d1'
+        '&orderByFields=Data_ARS+desc'
+        '&resultRecordCount=10000'
     )
     print(f"Loading from '{URL}'")
     data = requests.get(URL).json()
 
     (found_date, latest_date) = (False, 0)
     for entry in data["features"]:
-        if not entry["attributes"]["Data"]:
+        attributes = entry['attributes']
+        if not attributes["Data_ARS"]:
             continue
 
-        unix_date = entry["attributes"]["Data"] / 1000
+        unix_date = attributes["Data_ARS"] / 1000
         frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime(DMY)
         latest_date = max(latest_date, unix_date)
 
@@ -43,149 +59,119 @@ if __name__ == "__main__":
 
         found_date = True
 
-        if entry["attributes"]["ARSNome"] == "Nacional":
+        if attributes["ARSNome"] == "Nacional":
 
             # Continuam
-            confirmados = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos = entry["attributes"]["Obitos"]
-            recuperados = entry["attributes"]["Recuperados"]
-            confirmados_novos = entry["attributes"]["ConfirmadosNovos"]
-            internados = entry["attributes"]["Internados"]
-            internados_enfermaria = entry["attributes"]["InternadosEnfermaria"]
-            internados_uci = entry["attributes"]["InternadosUCI"]
-            confirmados_m = entry["attributes"]["conftotalm"]
-            confirmados_f = entry["attributes"]["conftotalf"]
-
-            # apareceu no boletim 16-11-2020 mas não está na API - calculado para agora
-            confirmados_desconhecidos = confirmados - confirmados_m - confirmados_f
-
-            # Deixaram de existir
-            suspeitos = entry["attributes"].get("Suspeitos", "")
-            lab = entry["attributes"].get("AguardarResultadosLab", "")
-            vigilancia = entry["attributes"].get("EmVigil", "")
-            transmissao_importada = entry["attributes"].get("casosimportados", "")
-            confirmados_estrangeiro = entry["attributes"].get("Estrangeiro", "")
-
-            sintomas_febre = entry["attributes"].get("sintomafebre", "")
-            sintomas_tosse = entry["attributes"].get("sintomatosse", "")
-            sintomas_dores_musculares = entry["attributes"].get("sintomadores", "")
-            sintomas_cefaleia = entry["attributes"].get("sintomador", "")
-            sintomas_fraqueza_generalizada = entry["attributes"].get(
-                "sintomafraqueza", ""
-            )
-            sintomas_dificuldade_respiratoria = entry["attributes"].get(
-                "sintomadifrespiratoria", ""
-            )
-
-            # Novos mas não preenchidos (não acrescentar, deixar caso futuramente atualizem os valores)
-            transmissao_contacto = entry["attributes"].get("casoscontacto", "")
-            cadeias_transmissao = entry["attributes"].get("CadeiasTransm", "")
+            confirmados = attributes["casos"]
+            obitos = attributes["obitos"]
+            recuperados = attributes["recuperados"]
+            confirmados_novos = attributes["novos_c"]
+            internados = attributes["internamento"]
+            internados_enfermaria = attributes["internadosenfermaria"]
+            internados_uci = attributes["uci"]
+            confirmados_m = attributes["casos_h_total"]
+            confirmados_f = attributes["casos_m_total"]
+            # 2021-07-16 agora há casos_d_<idade>
+            confirmados_desconhecidos = attributes['casos_d_total'] # confirmados - confirmados_m - confirmados_f
+            vigilancia = attributes["contactos"]
+            ativos = attributes["ativos"]
 
             # Novos
-            confirmados_0_9_f = entry["attributes"]["conf0009f"]
-            confirmados_0_9_m = entry["attributes"]["conf0009m"]
-            confirmados_10_19_f = entry["attributes"]["conf1019f"]
-            confirmados_10_19_m = entry["attributes"]["conf1019m"]
-            confirmados_20_29_f = entry["attributes"]["conf2029f"]
-            confirmados_20_29_m = entry["attributes"]["conf2029m"]
-            confirmados_30_39_f = entry["attributes"]["conf3039f"]
-            confirmados_30_39_m = entry["attributes"]["conf3039m"]
-            confirmados_40_49_f = entry["attributes"]["conf4049f"]
-            confirmados_40_49_m = entry["attributes"]["conf4049m"]
-            confirmados_50_59_f = entry["attributes"]["conf5059f"]
-            confirmados_50_59_m = entry["attributes"]["conf5059m"]
-            confirmados_60_69_f = entry["attributes"]["conf6069f"]
-            confirmados_60_69_m = entry["attributes"]["conf6069m"]
-            confirmados_70_79_f = entry["attributes"]["conf7079f"]
-            confirmados_70_79_m = entry["attributes"]["conf7079m"]
-            confirmados_80_plus_f = entry["attributes"]["conf80f"]
-            confirmados_80_plus_m = entry["attributes"]["conf80m"]
+            confirmados_0_9_f = attributes["casos_m_0009"]
+            confirmados_0_9_m = attributes["casos_h_0009"]
+            confirmados_10_19_f = attributes["casos_m_1019"]
+            confirmados_10_19_m = attributes["casos_h_1019"]
+            confirmados_20_29_f = attributes["casos_m_2029"]
+            confirmados_20_29_m = attributes["casos_h_2029"]
+            confirmados_30_39_f = attributes["casos_m_3039"]
+            confirmados_30_39_m = attributes["casos_h_3039"]
+            confirmados_40_49_f = attributes["casos_m_4049"]
+            confirmados_40_49_m = attributes["casos_h_4049"]
+            confirmados_50_59_f = attributes["casos_m_5059"]
+            confirmados_50_59_m = attributes["casos_h_5059"]
+            confirmados_60_69_f = attributes["casos_m_6069"]
+            confirmados_60_69_m = attributes["casos_h_6069"]
+            confirmados_70_79_f = attributes["casos_m_7079"]
+            confirmados_70_79_m = attributes["casos_h_7079"]
+            confirmados_80_plus_f = attributes["casos_m_80"]
+            confirmados_80_plus_m = attributes["casos_h_80"]
 
-            obitos_f = entry["attributes"]["obitostotalf"]
-            obitos_m = entry["attributes"]["obitostotalm"]
+            obitos_f = attributes["obitos_m_total"]
+            obitos_m = attributes["obitos_h_total"]
             # if values exist but are zero e.g. 05-10-2020
             missing_obitos = not obitos_f or not obitos_m
             obitos_f = "" if missing_obitos else obitos_f
             obitos_m = "" if missing_obitos else obitos_m
 
-            obitos_0_9_f = entry["attributes"]["obitos0009f"]
-            obitos_0_9_f = "" if missing_obitos else obitos_0_9_f
-            obitos_0_9_m = entry["attributes"]["obitos0009m"]
-            obitos_0_9_m = "" if missing_obitos else obitos_0_9_m
-            obitos_10_19_f = entry["attributes"]["obitos1019f"]
-            obitos_10_19_f = "" if missing_obitos else obitos_10_19_f
-            obitos_10_19_m = entry["attributes"]["obitos1019m"]
-            obitos_10_19_m = "" if missing_obitos else obitos_10_19_m
-            obitos_20_29_f = entry["attributes"]["obitos2029f"]
-            obitos_20_29_f = "" if missing_obitos else obitos_20_29_f
-            obitos_20_29_m = entry["attributes"]["obitos2029m"]
-            obitos_20_29_m = "" if missing_obitos else obitos_20_29_m
-            obitos_30_39_f = entry["attributes"]["obitos3039f"]
-            obitos_30_39_f = "" if missing_obitos else obitos_30_39_f
-            obitos_30_39_m = entry["attributes"]["obitos3039m"]
-            obitos_30_39_m = "" if missing_obitos else obitos_30_39_m
-            obitos_40_49_f = entry["attributes"]["obitos4049f"]
-            obitos_40_49_f = "" if missing_obitos else obitos_40_49_f
-            obitos_40_49_m = entry["attributes"]["obitos4049m"]
-            obitos_40_49_m = "" if missing_obitos else obitos_40_49_m
-            obitos_50_59_f = entry["attributes"]["obitos5059f"]
-            obitos_50_59_f = "" if missing_obitos else obitos_50_59_f
-            obitos_50_59_m = entry["attributes"]["obitos5059m"]
-            obitos_50_59_m = "" if missing_obitos else obitos_50_59_m
-            obitos_60_69_f = entry["attributes"]["obitos6069f"]
-            obitos_60_69_f = "" if missing_obitos else obitos_60_69_f
-            obitos_60_69_m = entry["attributes"]["obitos6069m"]
-            obitos_60_69_m = "" if missing_obitos else obitos_60_69_m
-            obitos_70_79_f = entry["attributes"]["obitos7079f"]
-            obitos_70_79_f = "" if missing_obitos else obitos_70_79_f
-            obitos_70_79_m = entry["attributes"]["obitos7079m"]
-            obitos_70_79_m = "" if missing_obitos else obitos_70_79_m
-            obitos_80_plus_f = entry["attributes"]["obitos80f"]
-            obitos_80_plus_f = "" if missing_obitos else obitos_80_plus_f
-            obitos_80_plus_m = entry["attributes"]["obitos80m"]
-            obitos_80_plus_m = "" if missing_obitos else obitos_80_plus_m
+            obitos_0_9_f = attributes["obitos_m_0009"]
+            obitos_0_9_m = attributes["obitos_h_0009"]
+            obitos_10_19_f = attributes["obitos_m_1019"]
+            obitos_10_19_m = attributes["obitos_h_1019"]
+            obitos_20_29_f = attributes["obitos_m_2029"]
+            obitos_20_29_m = attributes["obitos_h_2029"]
+            obitos_30_39_f = attributes["obitos_m_3039"]
+            obitos_30_39_m = attributes["obitos_h_3039"]
+            obitos_40_49_f = attributes["obitos_m_4049"]
+            obitos_40_49_m = attributes["obitos_h_4049"]
+            obitos_50_59_f = attributes["obitos_m_5059"]
+            obitos_50_59_m = attributes["obitos_h_5059"]
+            obitos_60_69_f = attributes["obitos_m_6069"]
+            obitos_60_69_m = attributes["obitos_h_6069"]
+            obitos_70_79_f = attributes["obitos_m_7079"]
+            obitos_70_79_m = attributes["obitos_h_7079"]
+            obitos_80_plus_f = attributes["obitos_m_80"]
+            obitos_80_plus_m = attributes["obitos_h_80"]
 
-            ativos = entry["attributes"]["Activos"]
-            # note: RecuperadosNovos and ObitosNovos have strange values
-            #       maybe replaced with VarRecuperados and VarObitos
+        elif attributes["ARSNome"] == "ARS Norte":
+            confirmados_arsnorte = attributes["casos"]
+            obitos_arsnorte = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "ARS Norte":
-            confirmados_arsnorte = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_arsnorte = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "ARS Centro":
+            confirmados_arscentro = attributes["casos"]
+            obitos_arscentro = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "ARS Centro":
-            confirmados_arscentro = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_arscentro = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "ARS Lisboa e Vale do Tejo":
+            confirmados_arslvt = attributes["casos"]
+            obitos_arslvt = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "ARS Lisboa e Vale do Tejo":
-            confirmados_arslvt = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_arslvt = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "ARS Açores":
+            confirmados_acores = attributes["casos"]
+            obitos_acores = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "ARS Açores":
-            confirmados_acores = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_acores = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "ARS Madeira":
+            confirmados_madeira = attributes["casos"]
+            obitos_madeira = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "ARS Madeira":
-            confirmados_madeira = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_madeira = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "Açores":
+            confirmados_acores = attributes["casos"]
+            obitos_acores = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "Açores":
-            confirmados_acores = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_acores = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "Madeira":
+            confirmados_madeira = attributes["casos"]
+            obitos_madeira = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "Madeira":
-            confirmados_madeira = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_madeira = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "ARS Algarve":
+            confirmados_arsalgarve = attributes["casos"]
+            obitos_arsalgarve = attributes["obitos"]
 
-        elif entry["attributes"]["ARSNome"] == "ARS Algarve":
-            confirmados_arsalgarve = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_arsalgarve = entry["attributes"]["Obitos"]
-
-        elif entry["attributes"]["ARSNome"] == "ARS Alentejo":
-            confirmados_arsalentejo = entry["attributes"]["ConfirmadosAcumulado"]
-            obitos_arsalentejo = entry["attributes"]["Obitos"]
+        elif attributes["ARSNome"] == "ARS Alentejo":
+            confirmados_arsalentejo = attributes["casos"]
+            obitos_arsalentejo = attributes["obitos"]
 
         # DADOS QUE DEIXARAM DE SER DISPONIBILIZADOS
+        suspeitos = ""
+        lab = ""
+        cadeias_transmissao = ""
+        transmissao_importada = ""
+        confirmados_estrangeiro = ""
+
+        sintomas_febre = ""
+        sintomas_tosse = ""
+        sintomas_dores_musculares = ""
+        sintomas_cefaleia = ""
+        sintomas_fraqueza_generalizada = ""
+        sintomas_dificuldade_respiratoria = ""
+
         confirmados_desconhecidos_f, confirmados_desconhecidos_m = "", ""
         n_confirmados = ""
         obitos_estrangeiro, recuperados_estrangeiro = "", ""
@@ -196,6 +182,7 @@ if __name__ == "__main__":
         recuperados_arsalgarve = ""
         recuperados_acores, recuperados_madeira = "", ""
 
+        # Estão no PDF mas não na API
         incidencia_nacional, incidencia_continente = "", ""
         rt_nacional, rt_continente = "", ""
 

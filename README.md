@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 10 de Maio de 2021, 15:37
+📅️ **Última actualização**: 27 de Julho de 2021, 22:53
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
 
@@ -54,7 +54,7 @@ _Porque tudo começa com bons dados._
 O repositório está organizado da seguinte forma:
 + `data.csv`: o Pastel de Nata. Dados extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) e do [relatório diário](https://covid19.min-saude.pt/relatorio-de-situacao/) da DGS.
 + `amostras.csv`: contém dados diários relativos às amostras, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS.
-+ `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS. Nota: estes valores, tal como a dashboard e as imagens publicadas nas redes sociais, correspondem apenas à população residente no continente, excluindo as ilhas. O mesmo se aplica nos [relatórios de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) até 17-03-2021, com o relatório #6 de 24-03-2021 passando a incluir as ilhas.
++ `vacinas.csv`: contém dados diários relativos à vacinação, extraídos da [dashboard](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) da DGS. Nota: os valores de `doses`, tal como na dashboard e nas imagens publicadas nas redes sociais, correspondem apenas à população residente no continente, excluindo as ilhas. O mesmo se aplica nos [relatórios de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) até 17-03-2021, com o relatório #6 de 24-03-2021 passando a incluir as ilhas. Adicionalmente, as vacinas unidose são contabilizadas como `dose1` nos valores diários, embora sejam correctamente contabilizados e documentados como `vacinação completa` (`doses2`) no relatório semanal. Para ajustar os valores em falta para as ilhas e unidoses, os campos `pessoas` são ajustados com os valores semanais do relatório.
 + `vacinas_detalhe.csv`: contém dados detalhados semanais relativos à vacinação, extraídos do [dataset do relatório de vacinação](https://covid19.min-saude.pt/relatorio-de-vacinacao/) da DGS. Nota: até 17-03-2021 incluia apenas população residente no continente, vide nota de `vacinas.csv`. Nota: tal como todos os outros `csv`, a coluna `data` corresponde ao dia seguinte aos dados reportados (7 dias neste caso), enquanto o `Relatório PDF` refere o último dia desses 7 dias, e o `Dataset CSV` refere o primeiro dia desses 7 dias.
 + `data_concelhos.csv`: contém dados acumulados relativos aos confirmados por concelho, extraídos do [dashboard da DGS](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/) (e por isso sujeito às mesmas limitações relativamente a abrangência e protecção de dados, nomeadamente concelhos com menos de 3 confirmados não são reportados). Esta série de dados tem início a 24-03-2020 e tem cadência diária até 04-07-2020, passando a cadência semanal a 14-07-2020, e terminando a 26-10-2020. Vide os próximos dados para o novo formato.
 + `data_concelhos_14dias.csv` e `data_concelhos_incidencia.csv` contém dados de confirmados do acumulado dos 14 dias anteriores à data do reporte, no primeiro ficheiro, e proporcional a 100k habitantes no segundo ficheiro. Inclui os dados calculados do `data_concelhos.csv` desde que os daddos são semanais, nomeadamente entre 27-07-2020 (correspondendo ao periodo de 13-07-2020 a 26-07-2020) até 26-10-2020, e será actualizado conforme seja disponibilizado pela DGS (semanalmente à segunda-feira).
@@ -197,12 +197,18 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | Nome da coluna        | Significado           | Possíveis valores  |
 | ------------- |:-------------:| -----:|
 | `data` | Data a que se referem os dados | DD-MM-YYYY |
-| `doses` | Número total de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
-| `doses_novas` | Número diário de doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
-| `doses1` | Número total de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
-| `doses1_novas` | Número diário de primeiras doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
-| `doses2` | Número total de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
-| `doses2_novas` | Número diário de segundas doses de vacinas administradas | Inteiro >= 0 ou _vazio_ |
+| `doses` | Número total de doses de vacinas administradas em Portugal continental | Inteiro >= 0 ou _vazio_ |
+| `doses_novas` | Número diário de doses de vacinas administradas em Portugal continental | Inteiro >= 0 ou _vazio_ |
+| `doses1` | Número total de primeiras doses de vacinas administradas em Portugal continental. Nota: inclui unidoses | Inteiro >= 0 ou _vazio_ |
+| `doses1_novas` | Número diário de primeiras doses de vacinas administradas em Portugal continental. Nota: inclui unidoses | Inteiro >= 0 ou _vazio_ |
+| `doses2` | Número total de segundas doses de vacinas administradas em Portugal continental. Nota: exclui unidoses | Inteiro >= 0 ou _vazio_ |
+| `doses2_novas` | Número diário de segundas doses de vacinas administradas em Portugal continental. Nota: exclui unidoses | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_completamente` | Número total de pessoas com vacinação completa - com vacina unidose ou com ambas as doses - em Portugal incluindo as ilhas. Tenderá para o total da população. É ajustado semanalmente com os valores do relatório para a diferença de unidose e ilhas | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_completamente_novas` | Número diário de pessoas com vacinaçao completa | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_parcialmente` | Número total de pessoas com vacinaçao parcial - com apenas a primeira dose de vacinas com duas doses. Tenderá para zero conforme a população receba a segunda dose. É ajustado semanalmente como o `completamente` | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_parcialmente_novas` | Número diário de pessoas com vacinaçao parcial. Poderá ser negativo em dias que sejam administradas mais segundas doses que primeiras. | Inteiro >= 0 ou _vazio_ |
+| `vacinas` | Número total de doses de vacina. Equivalente ao `doses` mas ajustado semanalmente com os valores das ilhas. | Inteiro >= 0 ou _vazio_ |
+| `vacinas_novas` | Número diário de novas doses de vacinas. | Inteiro >= 0 ou _vazio_ |
 
 Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 
