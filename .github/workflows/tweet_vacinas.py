@@ -18,7 +18,7 @@ DOW = date.today().weekday()
 
 INCLUIR_NACIONAL=True
 
-INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2] # and False # TEMP inactivo - ainda sem relatorio 2021-07-21
+INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [1, 2] # and False # TEMP inactivo - ainda sem relatorio 2021-07-21
 
 # ---
 # Constants
@@ -291,7 +291,7 @@ def compor_tweet(dados_vacinas, tweet=1):
         ) if tweet == 2 else ""
 
         tweet_message += (
-            "\n\n(ajustado ao relatório semanal de {data_detalhes})"
+            "\n(ajustado ao relatório semanal de {data_detalhes})"
         ) if tweet != 1 else ""
 
         tweet_message += (
@@ -300,7 +300,7 @@ def compor_tweet(dados_vacinas, tweet=1):
 
         tweet_message += (
             "\n\n✌️{n_vacinados}"
-            " vacinados com 2 doses"
+            " com 2 doses"
         ) if tweet == 1 else (
             "\n\n💉≥{n_vacinados}"
             " vacinação completa"
@@ -317,10 +317,10 @@ def compor_tweet(dados_vacinas, tweet=1):
         )
 
         tweet_message += (
-            "\n\n🤞Mais {n_inoculados}"
+            "\n🤞{n_inoculados}"
             " com 1 dose"
         ) if tweet == 1 else (
-            "\n\n💉Mais ≥{n_inoculados}"
+            "\n💉≥{n_inoculados}"
             " com 1ª dose"
         )
         if has_yesterday:
@@ -331,13 +331,14 @@ def compor_tweet(dados_vacinas, tweet=1):
             ) if tweet == 1 else ""
 
         tweet_message += (
-            "\n\n👍Total {n_total} inoculados"
+            "\n👍{n_total} com pelo menos 1 dose"
         ) if tweet == 1 else (
-            "\n\n👍Total ≥{n_total} inoculados"
+            "\n👍≥{n_total} com pelo menos 1 dose"
         )
         tweet_message += (
             " ({percentagem_inoculados}%)"
         )
+
         if has_yesterday:
             tweet_message += (
                 "\n\n💉Vacinas diárias {vacinas}"
@@ -353,7 +354,7 @@ def compor_tweet(dados_vacinas, tweet=1):
             f"\n\n[{tweet}/{total_tweets}]"
         )
     tweet_message += (
-        "\n\n➕Todos os dados em: {link_repo}"
+        "\n➕Todos os dados em: {link_repo}"
     ) if tweet == total_tweets else ""
 
     dados_vacinas["link_repo"] = link_repo
