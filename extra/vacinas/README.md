@@ -161,14 +161,19 @@
 ### Relatório 2021-07-12
 - `Dataset vacinação (22)`
 - `Relatório de Vacinação nº 22 (27/12/2020 a 11/07/2021)`
-- publicado a `2021-07-14` com data `2021-07-11`
+- publicado a `2021-07-14` com data `2021-07-11` (domingo)
 
 ### Relatório 2021-07-19
 - `Dataset vacinação (23)` EM FALTA
 - `Relatório de Vacinação nº 23 (27/12/2020 a 18/07/2021)`
-- publicado a `2021-07-21` (quarta) com data `2021-07-18`
+- publicado a `2021-07-21` (quarta) com data `2021-07-18` (domingo)
 
 ### Relatório 2021-07-26
 - `Dataset vacinação (24)`
 - `Relatório de Vacinação nº 24 (27/12/2020 a 25/07/2021)`
-- publicado a `2021-07-27` (terça noite) com data `2021-07-25`
+- publicado a `2021-07-27` (terça noite) com data `2021-07-25` (domingo)
+
+### Relatório 2021-08-02
+- `Dataset vacinação (25)`
+- `Relatório de Vacinação nº 25 (27/12/2020 a 01/08/2021)`
+- publicado a `2021-08-03` (terça noite) com data `2021-08-01` (domingo)
