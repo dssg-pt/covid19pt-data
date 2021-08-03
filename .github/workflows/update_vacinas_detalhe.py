@@ -15,13 +15,17 @@ if __name__ == "__main__":
 
   OFFSET = 0
 
-  # Find out the latest dataset available under PATH_TO_CSV
-  datasets = [f for f in listdir(PATH_TO_CSV) if isfile(join(PATH_TO_CSV, f)) and f.endswith(".csv") and "Dataset" in f]
-  last_dataset = sorted(datasets)[-1 - OFFSET]
-  print(f"Last dataset={last_dataset}")
+  if len(sys.argv) > 1:
+    last_dataset = sys.argv[1]
+  else:
+    # Find out the latest dataset available under PATH_TO_CSV
+    datasets = [f for f in listdir(PATH_TO_CSV) if isfile(join(PATH_TO_CSV, f)) and f.endswith(".csv") and "Dataset" in f]
+    last_dataset = sorted(datasets)[-1 - OFFSET]
+    print(f"Last dataset={last_dataset}")
+    last_dataset = PATH_TO_CSV / last_dataset
 
   # read the "Semi-colon Separated Values"
-  data = pd.read_csv(PATH_TO_CSV / last_dataset, sep=";", decimal=',')
+  data = pd.read_csv(last_dataset, sep=";", decimal=',')
 
 
   # Dataset 12 (maybe 11) dropped RECEIVED + DISTRIBUTED
@@ -286,7 +290,14 @@ if __name__ == "__main__":
   cols = [x for x in data_wide.columns if not x.startswith("data") and not 'perc' in x]
   data_wide = convert(data_wide, cols, convert_to_int)
   cols = [x for x in data_wide.columns if 'perc' in x]
-  data_wide[cols] = data_wide[cols].apply(lambda x: round(x, 10))
+  #data_wide[cols] = data_wide[cols].apply(lambda x: round(x, 10))
+
+  def foo(x):
+    # print(type(x), x)
+    x = x.apply(lambda x: float(str(x).replace(",", ".")))
+    return round(x, 10)
+
+  data_wide[cols] = data_wide[cols].apply(foo)
 
   # recalcula a data, just in case
   data_wide['data'] = data_wide.index
