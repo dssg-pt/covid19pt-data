@@ -12,6 +12,15 @@ DEBUG = True
 HIDE_JULY_FIRST_WEEK = True
 
 def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
+
+    if False:
+        print(
+            f'unix_date={unix_date}'
+            f' doses_total={doses_total}'
+            f' latest_data={latest_data}'
+            f' latest_total={latest_total}'
+        )
+
     # hack data incorreta dia 31-01 dizia 01-02
     if unix_date == 1612137600 and doses_total == 336771:
         return unix_date - 86400
@@ -36,6 +45,9 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
     # hack data incorreta dia 09-05 dizia 18-04
     if unix_date == 1618704000 and doses_total == 3845140:
         return 1620432000 + 86400
+    # hack data incorrecta dia 03-08 dizia 02-08
+    if unix_date == 1627862400 and doses_total == 11791962:
+        return unix_date + 86400
 
     # Dia 12-07-2021 após um fim-de-semana sem dados, volta a ser o próprio dia
     if unix_date >= 1626048000:
