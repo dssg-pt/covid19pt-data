@@ -49,7 +49,7 @@ if __name__ == "__main__":
   #   'CUMUL_VAC_1', 'CUMUL_VAC_2', 'CUMUL_VAC_UNK', 'CUMUL',
   # #20
   #   'CUMUL_VAC_INIT', 'CUMUL_VAC_COMPLETE', 'CUMUL_VAC_LEAST',
-  #   'COVER_1_VAC', 'COVER', 
+  #   'COVER_1_VAC', 'COVER',
   # #20
   #   'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
   #   'RECEIVED', 'DISTRIBUTED'
@@ -68,7 +68,7 @@ if __name__ == "__main__":
       'pessoas_inoculadas',
     ] + columns[14:16] + [
       # 'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
-      'pessoas_vacinadas_parcialmente_perc', 
+      'pessoas_vacinadas_parcialmente_perc',
       'pessoas_vacinadas_completamente_perc',
       'pessoas_inoculadas_perc',
     ] + columns[16:]
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     'pessoas_vacinadas_parcialmente',
     'pessoas_vacinadas_completamente',
     'pessoas_inoculadas',
-    'pessoas_vacinadas_parcialmente_perc', 
+    'pessoas_vacinadas_parcialmente_perc',
     'pessoas_vacinadas_completamente_perc',
     'pessoas_inoculadas_perc',
   ]]
@@ -142,7 +142,7 @@ if __name__ == "__main__":
       'pessoas_vacinadas_parcialmente',
       'pessoas_vacinadas_completamente',
       'pessoas_inoculadas',
-      'pessoas_vacinadas_parcialmente_perc', 
+      'pessoas_vacinadas_parcialmente_perc',
       'pessoas_vacinadas_completamente_perc',
       'pessoas_inoculadas_perc',
       'populacao1', 'populacao2'
@@ -162,14 +162,14 @@ if __name__ == "__main__":
   if dataset_num == 24:
     print(f"WARNING: dados recebidas/distribuidas em falta")
     data_general['recebidas'] = [
-      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 
+      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
       651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
       3400260, 4128420, 4655370, 5197920, 5728470, 6254220, 7263540, 7880400, 8604606,
       9519240, 11510810, 12300690,
       12886770
     ]
     data_general['distribuidas'] = [
-      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 
+      np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
       571981, 718143, 933847, 1095103, 1264093, 1462079, 1753999, 1996561, 2360167, 2679813,
       3039329, 3581288, 4171038, 4686071, 5126418, 5644760, 6299315, 6896272, 7566600,
       8357319, 10694447, 11385656,
@@ -182,21 +182,37 @@ if __name__ == "__main__":
       re.sub(' ou mais', '+',
       re.sub(' anos', '',
       # 2021.05.10 tem age como "NA"/float.nan
-      k.lower() if type(k) == str else 'na'
+      k.lower() if type(k) == str else 'na' if np.isnan(k) else f'na_{k}'
     ))) ) for k in data.idades.unique() ])
 
   # wide table de colunas por idade
   data_ages = data[ data['tipo'] == 'AGES'].pivot(index='day', columns='idades', values=[
       # 'data',
       'doses', 'doses_novas', 'doses1', 'doses1_novas', 'doses2', 'doses2_novas',
-      'dosesunk', 'dosesunk_novas',
-      'doses1_perc', 'doses2_perc', 'populacao1', 'populacao2'
+      'dosesunk', 'dosesunk_novas', 'doses1_perc', 'doses2_perc',
+      'pessoas_vacinadas_parcialmente',
+      'pessoas_vacinadas_completamente',
+      'pessoas_inoculadas',
+      'pessoas_vacinadas_parcialmente_perc',
+      'pessoas_vacinadas_completamente_perc',
+      'pessoas_inoculadas_perc',
+      'populacao1', 'populacao2'
     ])
   cols = list(map(lambda x: f"{x[0]}_{ages.get(x[1], x[1])}", data_ages.columns))
   data_ages.columns = cols
   # reordena
   cols = sorted(cols, key=lambda x: x.split('_')[-1] )
   data_ages = data_ages[cols]
+  # relatório 25 tem percentagens como x% e 0.xx, que torna em 0,xx
+  for i in ['pessoas_vacinadas_parcialmente',
+      'pessoas_vacinadas_completamente',
+      'pessoas_inoculadas',]:
+      for _, age in ages.items():
+          if age == 'all': continue
+          # percentagem pode ser maior que 100% pois a população é INE 2019
+          # (relatório já fala em 2020) mas estamos em 2021 e acontece nos
+          # escalões 80+ e 70+
+          data_ages[f'{i}_perc_{age}'] = data_ages[f'{i}_{age}'] / data_ages[f'populacao1_{age}']
 
   # dicionario para alteração do nome de regiões
   ars = dict([ (k,
@@ -210,18 +226,24 @@ if __name__ == "__main__":
   # wide table de colunas por região
   cols_ars = [
     'doses', 'doses_novas', 'doses1', 'doses1_novas', 'doses2', 'doses2_novas',
-    'dosesunk', 'dosesunk_novas',
-    'doses1_perc', 'doses2_perc', 'populacao1', 'populacao2'
+    'dosesunk', 'dosesunk_novas', 'doses1_perc', 'doses2_perc',
+    'pessoas_vacinadas_parcialmente',
+    'pessoas_vacinadas_completamente',
+    'pessoas_inoculadas',
+    'pessoas_vacinadas_parcialmente_perc',
+    'pessoas_vacinadas_completamente_perc',
+    'pessoas_inoculadas_perc',
+    'populacao1', 'populacao2'
   ]
   data_regional = data[ data['tipo'] == 'REGIONAL'].pivot(index='day', columns='região', values=cols_ars)
   cols = list(map(lambda x: f"{x[0]}_{ars.get(x[1], x[1])}", data_regional.columns))
   data_regional.columns = cols
 
   # data_continente
-  for col in cols_ars:
+  for col in [x for x in cols_ars if '_perc' not in x]:
     data_regional[f'{col}_continente'] = (
-      data_regional[f'{col}_arsnorte'] + 
-      data_regional[f'{col}_arscentro'] + 
+      data_regional[f'{col}_arsnorte'] +
+      data_regional[f'{col}_arscentro'] +
       data_regional[f'{col}_arslvt'] +
       data_regional[f'{col}_arsalentejo'] +
       data_regional[f'{col}_arsalgarve'] +
@@ -263,7 +285,7 @@ if __name__ == "__main__":
               450_134 + # algarve
               267_604 + # madeira
               252_206 + # açores
-                    0 
+                    0
           )],
           ['recebidas', 12_300_690],
           ['distribuidas', 11_385_656],
@@ -292,9 +314,15 @@ if __name__ == "__main__":
   cols = [x for x in data_wide.columns if 'perc' in x]
   #data_wide[cols] = data_wide[cols].apply(lambda x: round(x, 10))
 
+  def foo2(x):
+    x = str(x).replace(",", ".")
+    # relatório 25 tem percentagens por idade com 'x%' na ultima data, e 0.xx antes
+    #if '%' in x:
+    #  x = float(x.replace('%', '')) / 100.0
+    return float(x)
+
   def foo(x):
-    # print(type(x), x)
-    x = x.apply(lambda x: float(str(x).replace(",", ".")))
+    x = x.apply(foo2)
     return round(x, 10)
 
   data_wide[cols] = data_wide[cols].apply(foo)

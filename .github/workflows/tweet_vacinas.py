@@ -12,13 +12,13 @@ try:
 except locale.Error:
     locale.setlocale(locale.LC_TIME, "pt_PT")
 
-# Monday is 0 and Sunday is 6.
-# Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
-DOW = date.today().weekday()
 
 INCLUIR_NACIONAL=True
 
-INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [1, 2] # and False # TEMP inactivo - ainda sem relatorio 2021-07-21
+# Monday is 0 and Sunday is 6.
+# Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
+DOW = date.today().weekday()
+INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2] # [1, 2] # caso saia relatorio terça noite
 
 # ---
 # Constants
@@ -255,11 +255,13 @@ def compor_tweet(dados_vacinas, tweet=1):
 
         df_last = dados_vacinas['df_last']
         for idade in ['80+', '65_79', '50_64', '25_49', '18_24']:
-            perc2 = df_last[f'doses2_perc_{idade}']
-            perc1 = df_last[f'doses1_perc_{idade}']
+            # POP é de 2019 mas relatório já começa a falar em 2020 e estamos em 2021
+            # portanto já se começa a ter mais de 100% nos escalões 80+ e 70 
+            perc2 = min(1, float(df_last[f'pessoas_vacinadas_completamente_perc_{idade}']))
+            perc1 = min(1, float(df_last[f'pessoas_inoculadas_perc_{idade}']))
             vacinados = f(round( perc2 * 100.0, CASAS_DECIMAIS ))
-            dose1 = f(round( (perc1 - perc2) * 100.0, CASAS_DECIMAIS ))
-            falta = f(round( (1 - perc1) * 100.0, CASAS_DECIMAIS ))
+            dose1 = f(round( max(0, float(perc1 - perc2)) * 100.0, CASAS_DECIMAIS ))
+            falta = f(round( max(0, float(1 - perc1)) * 100.0, CASAS_DECIMAIS ))
             idade = idade.replace("_", "-")
             tweet_message += (
                 f"\n{idade}: {vacinados}% {dose1}% {falta}%"
