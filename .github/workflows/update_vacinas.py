@@ -163,6 +163,11 @@ def fix_vacinas(data):
         ["01-02-2021", "doses2", 68752],
         # https://twitter.com/govpt/status/1356596233264132102
         # json includes doses1 and doses2 - see extra/vacinas/diário/*.json
+
+        # 2021-08-06 doses1+doses2 != doses
+        # 6884703 + 5200840 != 12086076
+        # optou-se pela solução mais conservadora e que altera apenas um valor
+        ["06-08-2021", "doses", 6884703 + 5200840]
     ]
 
     for fix in FIXES:
@@ -175,6 +180,10 @@ def fix_vacinas(data):
             if old != fix[2]:
                 print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]}")
         data.loc[data.data == fix[0], fix[1]] = fix[2]
+
+    return data
+
+def fix_vacinas2(data):
 
     # dados diários 28-06-2021 a 04-07-2021 não fazem sentido
     if HIDE_JULY_FIRST_WEEK:
@@ -420,6 +429,8 @@ if __name__ == "__main__":
     updated = updated.sort_values("data")
     updated["data"] = updated["data"].dt.strftime("%d-%m-%Y")
 
+    updated = fix_vacinas(updated)
+
     # add people columns
     updated['pessoas_vacinadas_completamente'] = updated['doses2']
     updated['pessoas_vacinadas_parcialmente'] = updated['doses1'] - updated['doses2']
@@ -438,6 +449,7 @@ if __name__ == "__main__":
     updated[cols] = updated[cols].applymap(convert)
     # fix values
     updated = fix_vacinas(updated)
+    updated = fix_vacinas2(updated)
 
     updated = updated[ "data,doses,doses_novas,doses1,doses1_novas,doses2,doses2_novas,pessoas_vacinadas_completamente,pessoas_vacinadas_completamente_novas,pessoas_vacinadas_parcialmente,pessoas_vacinadas_parcialmente_novas,pessoas_inoculadas,pessoas_inoculadas_novas,vacinas,vacinas_novas".split(",") ]
 
