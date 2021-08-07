@@ -423,7 +423,7 @@ def test_sums(dgs_data, group, total_col):
 
         assert (
             val[group].sum() == val[total_col].sum()
-        ), f"Soma difere {group} vs. {total_col}"
+        ), f"Soma difere {total_col} != {group}"
 
 
 def test_delimiter_comma():
