@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
     internados, internados_uci = 849, 184
 
-    confirmados_m, confirmados_f = 453621, 532675
+    confirmados_m, confirmados_f = 453620, 532676
     confirmados_desconhecido = 671
 
     obitos_m, obitos_f = 9167, 8300
