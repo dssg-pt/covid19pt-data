@@ -57,7 +57,7 @@ jobs:
       #   if: always()
       - name: Update data about Rt
         run: |
-          python .github/workflows/update_rt.py
+          echo DISABLED python .github/workflows/update_rt.py
         if: always()
 
       - name: Validate data with pytest
