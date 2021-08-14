@@ -5,49 +5,164 @@ on:
 
   schedule:
     # Twice per hour from 12 to 15h
-    - cron: 0,30 12,13,14,15 * * * 
+    - cron: 0,15,30,45 12,13,14,15 * * *
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
 jobs:
 
-  check_vaccines:
-    name: Check if vaccine data has update
+  check_new_data:
+    name: Check for updated covid19pt data
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+
+      # setup image to the bare minimum to do requests and check for new data
 
       - name: Setup Python to 3.8.x
         uses: actions/setup-python@v2
         with:
           python-version: '3.8.x'
 
-      - name: Install Requests package
+      - name: Install Python requests package
         run: pip install requests
 
       - name: Update Python path
         run: echo "PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
-      - name: Check for update
+
+      # -----
+
+      - name: Check for COVID19PT updates for - Vaccines
         run: echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
 
-      # - name: There is NO updated
-      #   if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
-      #   run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:. NO VACCINE DATA AVAILABLE :large_yellow_circle:"
+      - name: Check if any COVID19PT data is updated and work must be done
+        # TODO "|| xxx" to test the "or", for now. Later, add the proper additional UPDATE_XXX
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_VACCINE == 'TRUE' }}
+        run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
+
+      - name: There is a NEW data
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW DATA AVAILABLE, WORKFLOW RUNNING :large_green_circle:"
+
+      # -----
+
+      # If there any new data, setup image properly
+      - name: Configure pt_PT locale
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          sudo apt-get update -y && \
+          sudo apt-get install -y locales && \
+          echo "pt_PT.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen && \
+          sudo locale-gen pt_PT.UTF-8
+      - name: Configure pt_PT (Europe/Lisbon) timezone
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          sudo ln -fs /usr/share/zoneinfo/Europe/Lisbon /etc/localtime && \
+          sudo dpkg-reconfigure --frontend noninteractive tzdata
+      - name: Install dependencies
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          sudo python -m pip install --upgrade pip && \
+          python -m pip install -r .github/workflows/requirements.txt
+
+
+      # If there is anything to do, also look for amostras
+      # TODO add an UPDATE_AMOSTRAS
+
+      # Until there's some tweet about amostras, just update them anytime something else updates
+      - name: Update data about test samples
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          python .github/workflows/update_amostras.py
+      - name: Validate data about test samples with pytest
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
+      - name: Upload pytest samples test results
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-amostras-results
+          path: tests/junit/test-amostras-results.xml
+
+      # If there is anything to do, also look for Rt
+      # TODO add an UPDATE_RT
+
+      # Until there's some tweet about Rt, just update them anytime something else updates
+      - name: Update data about Rt
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          python .github/workflows/update_rt.py
+      # TODO
+      # - name: Validate data about Rt with pytest
+      #   if: ${{ env.UPDATE_ANY == 'TRUE' }}
+      #   run: pytest tests/test_rt.py -s -vv --junitxml=tests/junit/test-rt-results.xml
+      # - name: Upload pytest Rt results
+      #   if: ${{ env.UPDATE_ANY == 'TRUE' }}
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: pytest-rt-results
+      #     path: tests/junit/test-rt-results.xml
+
+
+      # If there is new Vaccines
+      - name: Update data about vaccination details weekly
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          python .github/workflows/update_vacinas_detalhe.py
+      - name: Update data about vaccination
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          python .github/workflows/update_vacinas.py
+      - name: Add vaccination data backup
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          git add -A extra/vacinas/di*rio/2*_vacinas.json
+      - name: Validate data about vaccination with pytest
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
+      - name: Upload pytest vaccinations results
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-vacinas-results
+          path: tests/junit/test-vacinas-results.xml
+
+
+      - name: Commit all changes
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update data for today
+          branch: ${{ github.head_ref }}
+      - name: Get latest commit id
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          echo "LAST_COMMIT=$(git rev-parse HEAD)"
+          echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      - name: Change the latest commit's status to success
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          description: 'Success'
+          context: 'build'
+          state: 'success'
+          sha: ${{env.LAST_COMMIT}}
+
+      # If there are new Vaccination data, tweet it
+      - name: Auto publish vaccine data to Twitter
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          python .github/workflows/tweet_vacinas.py
+        env:
+          TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
+          TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
+          TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
+          TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
 
       - name: There is a NEW updated
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW VACCINE DATA AVAILABLE :large_green_circle:"
-
-      - name: Trigger workflow vaccines
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: |
-          curl \
-            -X POST \
-            -d '{"ref":"refs/heads/master"}' \
-            -H 'Content-Type: application/json' \
-            -H 'Accept: application/vnd.github.v3+json' \
-            -H 'Authorization: token ${{secrets.GITHUB_TOKEN}}' \
-            'https://api.github.com/repos/dssg-pt/covid19pt-data/actions/workflows/workflow_vacinas.yml/dispatches'
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW VACCINE DATA PUBLISHED :large_green_circle:"
