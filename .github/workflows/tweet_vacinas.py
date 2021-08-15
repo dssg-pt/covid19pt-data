@@ -24,20 +24,17 @@ INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2] # [1, 2] # caso saia relatorio t
 # Constants
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
 
-# População residente em PT final 2019, via
-# https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
-# Coerente com a soma da população dos concelhos, vide POP_ARS abaixo
-POP_PT_2019 = 10295909
-
-# Internacional, estimativa
-# https://www.worldometers.info/world-population/portugal-population/
-# 2021-02-14=10.178.145 2020=10.196.709 2019=10.226.187
-# Público usa "projeção UN / OWID para 2020" = 10196707
+# Sites que comparem Portugal com outros países tipicamente usam a
+# estimativas da UN ou Worldometers ou equivalente, para serem comparáveis
 # https://population.un.org/wpp/
-# POP_PT = 10196709
+# https://www.worldometers.info/world-population/portugal-population/
 
+# Valores de Portugal usam valores INE 2019 (2020 desde Agosto 2021) para
+# ser comparáveis ARS e Concelhos e faixas etárias
+# População 2020 via relatório semanal vacinação
 # https://covid19.min-saude.pt/relatorio-de-vacinacao/
-POP_PT_VACINAR = 9798859
+POP_PT = 10_298_253  # 2019 = 10_295_909
+POP_PT_CONTINENTE = 9_802_133  # 2019 = 9_798_859
 
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊", "⬌"]
@@ -94,10 +91,10 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
     )
 
     if not ajuste_semanal:
-        pop = POP_PT_VACINAR
+        pop = POP_PT_CONTINENTE
         df_last, data_detalhes = None, None
     else:
-        pop = POP_PT_2019
+        pop = POP_PT
         df_detalhe = pd.read_csv(path / 'vacinas_detalhe.csv',
             parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True,
         )
