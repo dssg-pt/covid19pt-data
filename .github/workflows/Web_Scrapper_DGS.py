@@ -30,9 +30,19 @@ def links_of_day(path,text_to_find,day):
 # Get the latest day on the data.csv file
 def get_latest_day():
     path = Path(__file__).resolve().parents[2]
-    file=path / 'data.csv'
-    df= pd.read_csv(file)
-    day=df.iloc[-1,0]
+    #file=path / 'data.csv'
+    #df= pd.read_csv(file)
+    #day=df.iloc[-1,0]
+    pdf_folder = path / 'dgs-reports-archive/'
+
+    pdf_files = list(pdf_folder.glob('*.pdf'))
+
+    pdf_files.sort(key=lambda p: p.stem, reverse=True)
+
+    last_pdf = str(pdf_files[0])
+    # print(f'last_pdf={last_pdf}')
+    day = last_pdf[-14:-4].replace('_', '-')
+
     return day
 
 #Save on .txt file
