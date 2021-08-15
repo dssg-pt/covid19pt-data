@@ -5,7 +5,7 @@ on:
 
   schedule:
     # Every fifteen minutes from 12 to 22h
-    - cron: 0/15 12-22 * * *
+    - cron: 0/15 9-22 * * *
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -44,8 +44,11 @@ jobs:
       - name: Check for COVID19PT updates for - Daily API data
         run: echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
 
+      - name: Check for COVID19PT updates for - Daily API amostras
+        run: echo "UPDATE_AMOSTRAS=$(python .github/workflows/scripts/check_amostras_update.py)" >> $GITHUB_ENV
+
       - name: Check if any COVID19PT data is updated and if any work must be done
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' }}
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' }}
         run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
 
       - name: Ping slack if there are any updates
@@ -75,18 +78,15 @@ jobs:
 
 
       # If there is anything to do, also look for amostras
-      # TODO add an UPDATE_AMOSTRAS
-
-      # Until there's some tweet about amostras, just update them anytime something else updates
       - name: Update data about test samples (amostras)
-        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
         run: |
           python .github/workflows/update_amostras.py
       - name: Validate data about test samples (amostras) with pytest
-        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
         run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
       - name: Upload pytest samples (amostras) test results
-        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
         uses: actions/upload-artifact@master
         with:
           name: pytest-amostras-results
@@ -95,7 +95,6 @@ jobs:
 
       # If there is anything to do, also look for Rt
       # TODO add an UPDATE_RT
-
       # Until there's some tweet about Rt, just update them anytime something else updates
       - name: Update data about Rt
         if: ${{ env.UPDATE_ANY == 'TRUE' }}
@@ -233,3 +232,6 @@ jobs:
       - name: There is a NEW updated
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY DATA PUBLISHED _:large_green_circle:"
+      - name: There is a NEW updated
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY AMOSTRAS PUBLISHED _:large_green_circle:"
