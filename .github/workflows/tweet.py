@@ -17,19 +17,19 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 # População residente em PT final 2019, via
 # https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
 # Coerente com a soma da população dos concelhos, vide POP_ARS abaixo
-POP_PT = 10295909
+POP_PT = 10_298_253  # 2019 = 10_295_909
 
-# data_concelhos_new.csv:
-# df[df.data == '11-11-2020'][["ars", "population"]].groupby('ars').sum()
+# vacinas_detalhe
 POP_ARS = {
-    'norte':   3568835,  # 3.57M
-    'centro':  1650394,  # 1.65M
-    'lvt':     3674534,  # 3.67M
-    'alentejo': 466690,  # 0.46M
-    'algarve':  438406,  # 0.44M
-    'acores':   242796,  # 0.24M
-    'madeira':  254254,  # 0.25M
+    'norte':     3_559_952,  # 3_568_835,  # 3.57M
+    'centro':    1_657_882,  # 1_650_394,  # 1.65M
+    'lvt':       3_683_759,  # 3_674_534,  # 3.67M
+    'alentejo':    462_569,  #   466_690,  # 0.46M
+    'algarve':     437_971,  #   438_406,  # 0.44M
+    'madeira':     253_924,  #   254_254,  # 0.25M
+    'acores':      242_202,  #   242_796,  # 0.24M
 }
+
 POP_IDADE = {
     '0_9':     433332 + 461299,  #  0-04 + 05-09
     '10_19':   507646 + 549033,  # 10-14 + 15-19
