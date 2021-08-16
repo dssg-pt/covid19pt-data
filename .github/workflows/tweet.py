@@ -234,6 +234,7 @@ def extrair_dados_ultimo_relatorio():
             dados_extraidos[f"novos_{k}{d}_tendencia"] = calc_tendencia(df[f"{k}{d}"], diff=None, name=f'novos_{k}{d}')
 
         val = float(df[f"confirmados{d}"][-1] * 100 * 1000 / POP_PT)
+        val = val * 2 if d == 7 else val  # not 100% correct, but easier to compare with incidencia 14
         dados_extraidos[f"incidencia{d}"] = r(val, 1)
         dados_extraidos[f"icon_incidencia{d}"] = icon(val, f"incidencia{d}")
         dados_extraidos[f"incidencia{d}_tendencia"] = calc_tendencia(df[f"confirmados{d}"], diff=None, name=f'incidencia_{d}')
