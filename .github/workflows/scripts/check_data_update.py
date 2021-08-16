@@ -1,6 +1,6 @@
-import json
 import pathlib
 import sys
+import os
 import datetime
 import requests
 
@@ -8,12 +8,13 @@ import requests
 def get_most_recent_date():
     data_file = pathlib.Path('data.csv')
     with open(data_file, "r") as file:
-        last_line = file.readlines()[-1]
-    #print(f'last_line=\'{last_line}\'')
+        lines = file.readlines()
+        last_line = lines[-1]
+        # if there's these many commas, it's manual data (no confirmados nor obitos per age)
+        if ',,,,,,,,,,,,,,,,,,,,,,,,,,,,' in last_line:
+            last_line = lines[-2]
+
     last_date = last_line.split(',')[0]
-    #print(f'last_date=\'{last_date}\'')
-    #last_date = datetime.datetime.strptime(last_date, "%d-%m-%Y")
-    #print(f'last_date=\'{last_date}\'')
     return last_date
 
 
@@ -26,7 +27,6 @@ def get_data_data_from_api():
         '&orderByFields=Data_ARS+desc'
         '&resultRecordCount=10000'
     )
-    # print(f"Loading from '{URL}'")
     response = requests.get(URL)
 
     if response.status_code != 200:
@@ -35,24 +35,22 @@ def get_data_data_from_api():
     data =  response.json()
 
     latest_date = data['features'][0]['attributes']['Data_ARS']
-    #print(f'latest_date=\'{latest_date}\'')
     latest_date = datetime.datetime.utcfromtimestamp(latest_date / 1000)
-    #print(f'latest_date=\'{latest_date}\'')
     latest_date = latest_date.strftime("%d-%m-%Y")
-    #print(f'latest_date=\'{latest_date}\'')
     return latest_date
 
 
 if __name__ == '__main__':
-
     last_date = get_most_recent_date()
-
     latest_date = get_data_data_from_api()
-    #print(f"last_date={last_date} latest_date={latest_date}")
 
     try:
         assert last_date == latest_date
     except AssertionError:
+        # quick hack to remote latest date with manual data if any
+        os.system(f'cat data.csv | grep -v -E "^{latest_date}," > data2.csv')
+        os.system(f'mv data2.csv data.csv')
+
         print("TRUE")
         sys.exit()
 

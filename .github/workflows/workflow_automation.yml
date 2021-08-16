@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
   schedule:
-    # Every fifteen minutes from 12 to 22h
-    - cron: 0/15 9-22 * * *
+    # Every fifteen minutes from 12 to 23h
+    - cron: 0/15 9-23 * * *
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
