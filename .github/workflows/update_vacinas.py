@@ -165,9 +165,11 @@ def fix_vacinas(data):
         # json includes doses1 and doses2 - see extra/vacinas/diário/*.json
 
         # 2021-08-06 doses1+doses2 != doses
-        # 6884703 + 5200840 != 12086076
+        # 6884703 + 5200840 == 12085543 mas != 12086076 -> -533
         # optou-se pela solução mais conservadora e que altera apenas um valor
-        ["06-08-2021", "doses", 6884703 + 5200840]
+        ["06-08-2021", "doses", 6884703 + 5200840],
+        # idem, 7494705 + 5567766 == 13062471 mas != 13062853 -> -382
+        ["17-08-2021", "doses", 7494705 + 5567766],
     ]
 
     for fix in FIXES:
@@ -197,7 +199,7 @@ def fix_vacinas2(data):
         dia = datetime(2021, 7, 8).strftime("%d-%m-%Y")
         cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
         data.loc[data.data == dia, cols] = ''
-    
+
     # recalculate *_novas when missing or incorrect
     last = {}
     for i, row in data.iterrows():
@@ -251,7 +253,7 @@ def ajuste_2021_07_05(df):
         int( df5[f'pessoas_inoculadas'] - df5[f'doses1_diario']
             - df5['doses1_continente'] + df5['doses1']
         ),
-        int( df5[f'doses'] - df5[f'doses_diario'] 
+        int( df5[f'doses'] - df5[f'doses_diario']
             - df5['doses_continente'] + df5['doses']
         ),
     ]
@@ -272,7 +274,7 @@ def ajuste_2021_07_19(df):
                 450_134 + # algarve
                 267_604 + # madeira
                 252_206 + # açores
-                        0 
+                        0
             )],
             ['recebidas', 12_300_690],
             ['distribuidas', 11_385_656],
@@ -328,7 +330,7 @@ def ajuste_dados_semanais(updated):
 
     # ajuste doses semanais
     updated['pessoas_vacinadas_completamente'] += updated['doses2_diff']
-    updated['pessoas_inoculadas'] += updated['doses1_diff'] 
+    updated['pessoas_inoculadas'] += updated['doses1_diff']
     updated['pessoas_vacinadas_parcialmente'] = updated['pessoas_inoculadas'] - updated['pessoas_vacinadas_completamente']
     updated['vacinas'] += updated['doses_diff']
 
@@ -337,7 +339,7 @@ def ajuste_dados_semanais(updated):
         updated['pessoas_vacinadas_parcialmente_2'] = updated['pessoas_vacinadas_parcialmente']
         updated['pessoas_inoculadas_2'] = updated['pessoas_inoculadas']
         updated['vacinas_2'] = updated['vacinas']
-    
+
     if DEBUG_ADJUSTMENT:
         updated.to_csv(PATH_TO_CSV + "_debug.csv", index=False, line_terminator="\n")
 
