@@ -47,6 +47,9 @@ jobs:
       - name: Check for COVID19PT updates for - Daily API amostras
         run: echo "UPDATE_AMOSTRAS=$(python .github/workflows/scripts/check_amostras_update.py)" >> $GITHUB_ENV
 
+      - name: Output GITHUB_ENV
+        run: echo $GITHUB_ENV
+
       - name: Check if any COVID19PT data is updated and if any work must be done
         if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' }}
         run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
