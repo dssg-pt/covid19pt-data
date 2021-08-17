@@ -18,7 +18,9 @@ INCLUIR_NACIONAL=True
 # Monday is 0 and Sunday is 6.
 # Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 DOW = date.today().weekday()
-INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2] # [1, 2] # caso saia relatorio terça noite
+INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in \
+    [1, 2] # caso saia relatorio terça noite
+    #[2] 
 
 # ---
 # Constants
