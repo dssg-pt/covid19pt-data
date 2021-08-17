@@ -68,6 +68,9 @@ def f(valor):
     valor = valor if type(valor) == int else float(valor)
     return format(valor, ",").replace(".","!").replace(",",".").replace("!",",")
 
+# ajuste incidencia7 para ficar comparável com 14
+INCIDENCIA7_14=True
+
 # ICONS[key] = [5 values]
 ICONS = {}
 # OMS recomenda 5 ; Portugal tem média 10 ; picos da onda passaram 15
@@ -75,7 +78,7 @@ ICONS["positividade"] = [10, 5, 4, 1]
 # incidencia 14 dias por 100k
 ICONS["incidencia14"] = [480, 240, 120, 60]
 # incidencia 7 dias por 100k (metade de incidencia14)
-ICONS["incidencia7"] = [r(x/2) for x in ICONS["incidencia14"]]
+ICONS["incidencia7"] = ICONS["incidencia14"] if INCIDENCIA7_14 else [r(x/2) for x in ICONS["incidencia14"]]
 # confirmados = incidencia / 14 dias / 100k * população
 ICONS["confirmados"] = [r(float(x) / 14 / 100000 * POP_PT ) for x in ICONS["incidencia14"]]
 
@@ -234,7 +237,8 @@ def extrair_dados_ultimo_relatorio():
             dados_extraidos[f"novos_{k}{d}_tendencia"] = calc_tendencia(df[f"{k}{d}"], diff=None, name=f'novos_{k}{d}')
 
         val = float(df[f"confirmados{d}"][-1] * 100 * 1000 / POP_PT)
-        val = val * 2 if d == 7 else val  # not 100% correct, but easier to compare with incidencia 14
+        if INCIDENCIA7_14:
+            val = val * 2 if d == 7 else val  # not 100% correct, but easier to compare with incidencia 14
         dados_extraidos[f"incidencia{d}"] = r(val, 1)
         dados_extraidos[f"icon_incidencia{d}"] = icon(val, f"incidencia{d}")
         dados_extraidos[f"incidencia{d}_tendencia"] = calc_tendencia(df[f"confirmados{d}"], diff=None, name=f'incidencia_{d}')
