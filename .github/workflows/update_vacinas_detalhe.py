@@ -258,6 +258,8 @@ if __name__ == "__main__":
   # recalcula a percentagem continente
   for i in [1, 2]:
     data_regional[f'doses{i}_perc_continente'] = data_regional[f'doses{i}_continente'] / data_regional[f'populacao{i}_continente']
+  for i in ['pessoas_vacinadas_parcialmente', 'pessoas_vacinadas_completamente', 'pessoas_inoculadas']:
+    data_regional[f'{i}_perc_continente'] = data_regional[f'{i}_continente'] / data_regional[f'populacao1_continente']
   cols = data_regional.columns
 
   # reordena por ARS (norte->sul)
