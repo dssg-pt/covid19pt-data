@@ -48,6 +48,9 @@ def fix_date(unix_date, doses_total, latest_data=None, latest_total=None):
     # hack data incorrecta dia 03-08 dizia 02-08
     if unix_date == 1627862400 and doses_total == 11791962:
         return unix_date + 86400
+    # hack dia 23-08-2021 actualizou dia 22-08-2021
+    if unix_date == 1629590400 and doses_total == 13550289:
+        return unix_date + 86400
 
     # Dia 12-07-2021 após um fim-de-semana sem dados, volta a ser o próprio dia
     if unix_date >= 1626048000:
