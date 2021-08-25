@@ -172,6 +172,7 @@ if __name__ == "__main__":
       12886770,
       13644850, 14398170,
       15322080, # #27
+      16675410, # #28
     ]
     data_general['distribuidas'] = [
       np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
@@ -181,6 +182,7 @@ if __name__ == "__main__":
       12043017,
       12597147, 13236664,
       14093439, # #27
+      14969971, # #28
     ]
 
   # dicionario para alteração do nome de idades
