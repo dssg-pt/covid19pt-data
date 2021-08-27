@@ -190,6 +190,16 @@ if __name__ == "__main__":
         frmt_date = datetime.datetime.utcfromtimestamp(latest_date).strftime("%d-%m-%Y")
         raise Exception(f"Missing date {today}, latest date {frmt_date}")
 
+    if latest_date == 1630065600: # 27-08-2021
+        try: confirmados_arslvt += 0
+        except NameError: confirmados_arslvt = 400_723
+        try: obitos_arslvt += 0
+        except NameError: obitos_arslvt = 7_572
+        try: confirmados_madeira += 0
+        except NameError: confirmados_madeira = 11_629
+        try: obitos_madeira += 0
+        except NameError: obitos_madeira = 72
+
     try:
         TEMP_CSV = str(Path(__file__).resolve().parents[2] / ".github" / "temp.csv")
         temp = pd.read_csv(TEMP_CSV)
