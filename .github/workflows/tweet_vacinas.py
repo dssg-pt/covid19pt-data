@@ -19,7 +19,7 @@ INCLUIR_NACIONAL=True
 # Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 DOW = datetime.date.today().weekday()
 INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2]
-# INCLUIR_SEMANAL=True  # DEBUG
+INCLUIR_SEMANAL=len(sys.argv) > 2  # DEBUG
 
 # ---
 # Constants
