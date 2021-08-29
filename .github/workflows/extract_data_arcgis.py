@@ -199,8 +199,10 @@ if __name__ == "__main__":
         except NameError: confirmados_madeira = 11_629
         try: obitos_madeira += 0
         except NameError: obitos_madeira = 72
-    if latest_date == 1630152000: # 27-08-2021
-        confirmados_m = 476345
+    elif latest_date == 1630152000: # 27-08-2021
+        confirmados_m += 1  # 476345
+    elif latest_date == 1630238400: # 28-08-2021
+        confirmados_m += 1  # 477262
 
     try:
         TEMP_CSV = str(Path(__file__).resolve().parents[2] / ".github" / "temp.csv")
