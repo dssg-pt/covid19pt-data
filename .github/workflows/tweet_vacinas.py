@@ -110,6 +110,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
 
     df["doses1_7"] = df.doses1.diff(7)
     df["doses2_7"] = df.doses2.diff(7)
+    df["doses_7"] = df.doses.diff(7)
 
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
@@ -150,6 +151,9 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
                 'novos_inoculados': f(int(df_today['doses1_novas']), plus=True) if has_yesterday else None,
                 'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])) if has_7d_today and has_7d_yesterday else '',
                 'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)) if has_7d_today else None,
+                'novos_vacinas': f(int(df_today['doses_novas']), plus=True) if has_yesterday else None,
+                'tendencia_vacinas': t(int(df_today['doses_7'] - df_yesterday['doses1_7'])) if has_7d_today and has_7d_yesterday else '',
+                'media_7dias_vacinas': f(int(df_today['doses_7'] / 7)) if has_7d_today else None,
                 #
                 'has_yesterday': bool(has_yesterday),
                 'data_detalhes': data_detalhes,
@@ -307,12 +311,12 @@ def compor_tweet(dados_vacinas, tweet=1):
             "\n(ajustado ao relatório semanal de {data_detalhes})"
         )
 
-        tweet_message += (
-            "\n\n{progresso}"
-        ) if tweet == 1 else ""
+        #tweet_message += (
+        #    "\n\n{progresso}"
+        #) if tweet == 1 else ""
 
         tweet_message += (
-            "\n\n💉≥{n_vacinados}"
+            "\n\n✌️≥{n_vacinados}"
             " ({percentagem_vacinados}%)"
             #" vacinação completa"
             " completa"
@@ -321,15 +325,15 @@ def compor_tweet(dados_vacinas, tweet=1):
             " ({percentagem_vacinados}%)"
             " com 2 doses"
         )
-        if has_yesterday and tweet == 2:
+        if has_yesterday and (tweet == 1 or tweet == 2):
             tweet_message += (
                 " ({novos_vacinados}{tendencia_vacinados}" +
-                (" média 7d {media_7dias}" if dados_vacinas['media_7dias'] else '') +
+                (" média 7d {media_7dias}" if dados_vacinas['media_7dias'] and tweet == 2 else '') +
                 ")"
             )
 
         tweet_message += (
-            "\n💉≥{n_inoculados}"
+            "\n🤞≥{n_inoculados}"
             " ({percentagem_iniciados}%)"
             # " vacinação iniciada"
             " iniciada"
@@ -338,10 +342,10 @@ def compor_tweet(dados_vacinas, tweet=1):
             " ({percentagem_iniciados}%)"
             " com 1 dose"
         )
-        if has_yesterday and tweet == 2:
+        if has_yesterday and (tweet == 1 or tweet == 2):
             tweet_message += (
                 " ({novos_inoculados}{tendencia_inoculados}" +
-                (" média 7d {media_7dias_inoculados}" if dados_vacinas['media_7dias_inoculados'] else '') +
+                (" média 7d {media_7dias_inoculados}" if dados_vacinas['media_7dias_inoculados'] and tweet == 2 else '') +
                 ")"
             )
 
@@ -355,10 +359,17 @@ def compor_tweet(dados_vacinas, tweet=1):
             " pelo menos 1 dose"
         )
 
-        if has_yesterday and tweet == 1:
+        if has_yesterday and (tweet == 1 or tweet == 2):
             tweet_message += (
-                "\n\n💉Vacinas diárias {vacinas}"
+                " ({novos_vacinas}{tendencia_vacinas}" +
+                (" média 7d {media_7dias_vacinas}" if dados_vacinas['media_7dias_vacinas'] and tweet == 2 else '') +
+                ")"
             )
+
+        #if has_yesterday and tweet == 1:
+        #    tweet_message += (
+        #        "\n\n💉Vacinas diárias {vacinas}"
+        #    )
 
     total_tweets = 4 if INCLUIR_SEMANAL else 2
     if total_tweets > 1:
