@@ -35,10 +35,6 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 POP_PT = 10_298_253  # 2019 = 10_295_909
 POP_PT_CONTINENTE = 9_802_133  # 2019 = 9_798_859
 
-# https://github.com/blasf1/covid_vaccine_progress_bot/blob/main/adult_population_2020.csv
-POP_PT_VACINAVEL = 9_205_956
-POP_PT_NAO_VACINAVEL = POP_PT - POP_PT_VACINAVEL  # < 12 = 1_092_297
-
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊", "⬌"]
 
@@ -106,6 +102,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
         # relatório corresponde a segunda mas sai terça noite portanto 7+1=8 dias e várias horas
         relatorio_terca_noite = (datetime.datetime.now() - data_last.item()) < datetime.timedelta(days=9)
         if relatorio_terca_noite:
+            global INCLUIR_SEMANAL
             INCLUIR_SEMANAL=DOW in [1, 2] # caso saia relatorio terça noite
 
     df["doses1_7"] = df.doses1.diff(7)
@@ -259,28 +256,19 @@ def compor_tweet(dados_vacinas, tweet=1):
         tweet_message += "\n"
 
         df_last = dados_vacinas['df_last']
-        # populacao1_0_17 = 1_701_688
-        idades = ['80+', '65_79', '50_64', '25_49', '18_24', '0_17']
+        idades = ['80+', '65_79', '50_64', '25_49', '18_24', '12_17']
         idades.reverse()
         for idade in idades:
-            if idade == '0_17':
-                pop = df_last[f'populacao1_{idade}'] - POP_PT_NAO_VACINAVEL
-                doses2 = df_last[f'pessoas_vacinadas_completamente_{idade}']
-                doses1 = df_last[f'pessoas_inoculadas_{idade}']
-                perc2 = min(1, float(doses2 / pop))
-                perc1 = min(1, float(doses1 / pop))
-                idade = '12_17'
-            else:
-                # POP é de 2019 mas relatório já começa a falar em 2020 e estamos em 2021
-                # portanto já se começa a ter mais de 100% nos escalões 80+ e 70
-                perc2 = min(1, float(df_last[f'pessoas_vacinadas_completamente_perc_{idade}']))
-                perc1 = min(1, float(df_last[f'pessoas_inoculadas_perc_{idade}']))
-            vacinados = f(round( perc2 * 100.0, CASAS_DECIMAIS ))
-            dose1 = f(round( max(0, float(perc1 - perc2)) * 100.0, CASAS_DECIMAIS ))
-            falta = f(round( max(0, float(1 - perc1)) * 100.0, CASAS_DECIMAIS ))
+            parcial = min(1, float(df_last[f'pessoas_vacinadas_parcialmente_perc_{idade}']))
+            completa = min(1, float(df_last[f'pessoas_vacinadas_completamente_perc_{idade}']))
+            if completa + parcial >= 1:
+                completa = 1 - parcial
+            parcial_perc = round( max(0, float(parcial)) * 100.0, CASAS_DECIMAIS )
+            completa_perc = round( completa * 100.0, CASAS_DECIMAIS )
+            falta_perc = round( max(0, float(100 - parcial_perc - completa_perc)), CASAS_DECIMAIS )
             idade = idade.replace("_", "-")
             tweet_message += (
-                f"\n{idade}: {vacinados}% {dose1}% {falta}%"
+                f"\n{idade}: {f(completa_perc)}% {f(parcial_perc)}% {f(falta_perc)}%"
             )
     elif tweet == 4:
         tweet_message += (
