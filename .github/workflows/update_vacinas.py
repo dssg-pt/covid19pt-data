@@ -263,42 +263,12 @@ def ajuste_2021_07_05(df):
     df.loc[df['data'] == '05-07-2021', ['doses2_diff', 'doses1_diff', 'doses_diff']] = diff12
     return diff5
 
-def ajuste_2021_07_19(df):
-    # relatório semanal #23 CSV em falta
-    row = [
-            ['data', '19-07-2021'],
-            ['pessoas_inoculadas', 6_581_332],
-            ['pessoas_vacinadas_completamente', 4_860_822],
-            ['doses', ( # 10_998_267
-                3_772_884 + # norte
-                1_874_256 + # centro
-                3_845_996 + # lvt
-                535_187 + # alentejo
-                450_134 + # algarve
-                267_604 + # madeira
-                252_206 + # açores
-                        0
-            )],
-            ['recebidas', 12_300_690],
-            ['distribuidas', 11_385_656],
-        ]
-    cols = list(map(lambda x: x[0], row))
-    data = list(map(lambda x: x[1], row))
-    if (df.data == '19-07-2021').any():
-        df.loc[df.data == '19-07-2021', cols] = data
-    else:
-        df = df.append(pd.DataFrame([data], columns=cols))
-    return df
-
 def ajuste_dados_semanais(updated):
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "vacinas_detalhe.csv")
 
     # Para os dias do relatório, calcula a diferença entre `doses` com ´vacinas` (ilhas),
     # `doses2` com `completo` (ilhas + unidoses em falta) e `doses1` com `inoculados`
     df_vacinas_detalhes = pd.read_csv(PATH_TO_CSV)
-
-    # FIX relatório semanal 2021-07-19
-    df_vacinas_detalhes = ajuste_2021_07_19(df_vacinas_detalhes)
 
     df = pd.merge(df_vacinas_detalhes, updated, how='left', on='data', suffixes=("", "_diario"))
 

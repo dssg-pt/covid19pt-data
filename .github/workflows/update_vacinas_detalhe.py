@@ -27,7 +27,6 @@ if __name__ == "__main__":
   # read the "Semi-colon Separated Values"
   data = pd.read_csv(last_dataset, sep=";", decimal=',')
 
-
   # Dataset 12 (maybe 11) dropped RECEIVED + DISTRIBUTED
   dataset_num = None
   for k in ['RECEIVED', 'DISTRIBUTED']:
@@ -37,6 +36,13 @@ if __name__ == "__main__":
         dataset_num = 12
       elif len(data.columns) in [24]:
         dataset_num = 24
+
+  # Dataset 29 perdeu o COVER
+  # ...;COVER_1_VAC;COVER;COVER_INIT;COVER_COMPLETE;COVER_LEAST
+  # ...;COVER_1_VAC;COVER_INIT;COVER_COMPLETE;COVER_LEAST
+  misses_cover = 'COVER_INIT' in data.columns and 'COVER' not in data.columns 
+  if misses_cover:
+    data['COVER'] = np.nan
 
   # Until 2021-03-17 the first column was an unnamed numeric index
   # #20 2021-06-29 again
@@ -153,7 +159,6 @@ if __name__ == "__main__":
   data_general.set_index('day', inplace=True)
 
   if dataset_num == 12:
-    print(f"WARNING: dados recebidas/distribuidas em falta")
     data_general['recebidas'] = [
       651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
       3400260, 4218420
@@ -162,8 +167,7 @@ if __name__ == "__main__":
       571981, 718143, 933847, 1095103, 1264093, 1462079, 1753999, 1996561, 2360167, 2679813,
       3039329, 3581288
     ]
-  if dataset_num == 24:
-    print(f"WARNING: dados recebidas/distribuidas em falta")
+  elif dataset_num == 24:
     data_general['recebidas'] = [
       np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
       651900, 830730, 1002999, 1186389, 1468929, 1713540, 1883850, 2344530, 2684460, 2983590,
@@ -173,6 +177,7 @@ if __name__ == "__main__":
       13644850, 14398170,
       15322080, # #27
       16675410, # #28
+      17448090, # #29
     ]
     data_general['distribuidas'] = [
       np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
@@ -183,6 +188,7 @@ if __name__ == "__main__":
       12597147, 13236664,
       14093439, # #27
       14969971, # #28
+      15136630, # #29
     ]
 
   # dicionario para alteração do nome de idades
@@ -282,29 +288,6 @@ if __name__ == "__main__":
 
   # concatena tudo numa wiiiiiide table
   data_wide = pd.concat([data_general, data_regional, data_ages], axis=1)
-
-  # relatório semanal #23 CSV em falta
-  row = [
-        ['data', '19-07-2021'],
-        ['pessoas_inoculadas', 6_581_332],
-        ['pessoas_vacinadas_completamente', 4_860_822],
-        ['doses', ( # 10_998_267
-            3_772_884 + # norte
-            1_874_256 + # centro
-            3_845_996 + # lvt
-              535_187 + # alentejo
-              450_134 + # algarve
-              267_604 + # madeira
-              252_206 + # açores
-                    0
-          )],
-          ['recebidas', 12_300_690],
-          ['distribuidas', 11_385_656],
-    ]
-  cols = list(map(lambda x: x[0], row))
-  data = list(map(lambda x: x[1], row))
-  row = pd.DataFrame([data], columns=cols)
-  data_wide.loc[datetime(2021, 7, 19), cols] = data
 
   # limpa colunas vazias
   for col in [
