@@ -23,17 +23,12 @@ INCLUIR_SEMANAL=len(sys.argv) > 2  # DEBUG
 # Constants
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
 
-# Sites que comparem Portugal com outros países tipicamente usam a
-# estimativas da UN ou Worldometers ou equivalente, para serem comparáveis
-# https://population.un.org/wpp/
-# https://www.worldometers.info/world-population/portugal-population/
-
 # Valores de Portugal usam valores INE 2019 (2020 desde Agosto 2021) para
 # ser comparáveis ARS e Concelhos e faixas etárias
-# População 2020 via relatório semanal vacinação
+# População Censos 2021 (antes INE 2020) via relatório semanal vacinação
 # https://covid19.min-saude.pt/relatorio-de-vacinacao/
-POP_PT = 10_298_253  # 2019 = 10_295_909
-POP_PT_CONTINENTE = 9_802_133  # 2019 = 9_798_859
+POP_PT = 10_347_892  # 2020 = 10_298_253  # 2019 = 10_295_909
+POP_PT_CONTINENTE = 9_860_175  # 2020 = 9_802_133  # 2019 = 9_798_859
 
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊", "⬌"]

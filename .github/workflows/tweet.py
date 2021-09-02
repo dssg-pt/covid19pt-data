@@ -17,17 +17,17 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 # População residente em PT final 2019, via
 # https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
 # Coerente com a soma da população dos concelhos, vide POP_ARS abaixo
-POP_PT = 10_298_253  # 2019 = 10_295_909
+POP_PT = 10_347_892  # 2020 = 10_298_253  # 2019 = 10_295_909
 
 # vacinas_detalhe
 POP_ARS = {
-    'norte':     3_559_952,  # 3_568_835,  # 3.57M
-    'centro':    1_657_882,  # 1_650_394,  # 1.65M
-    'lvt':       3_683_759,  # 3_674_534,  # 3.67M
-    'alentejo':    462_569,  #   466_690,  # 0.46M
-    'algarve':     437_971,  #   438_406,  # 0.44M
-    'madeira':     253_924,  #   254_254,  # 0.25M
-    'acores':      242_202,  #   242_796,  # 0.24M
+    'norte':     3_582_397,  # 3_559_952,  # 3_568_835,  # 3.57M
+    'centro':    1_659_900,  # 1_657_882,  # 1_650_394,  # 1.65M
+    'lvt':       3_681_581,  # 3_683_759,  # 3_674_534,  # 3.67M
+    'alentejo':    468_802,  #   462_569,  #   466_690,  # 0.46M
+    'algarve':     467_495,  #   437_971,  #   438_406,  # 0.44M
+    'madeira':     251_060,  #   253_924,  #   254_254,  # 0.25M
+    'acores':      236_657,  #   242_202,  #   242_796,  # 0.24M
 }
 
 POP_IDADE = {
