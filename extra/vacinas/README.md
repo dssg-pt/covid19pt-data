@@ -197,3 +197,8 @@
 - `Dataset vacinação (29)`
 - `Relatório de Vacinação nº 29 (27/12/2020 a 29/08/2021)`
 - publicado a `2021-09-01` (quarta manhã) com data `2021-08-29` (domingo)
+
+### Relatório 2021-09-06
+- `Dataset vacinação (30)`
+- `Relatório de Vacinação nº 30 (27/12/2020 a 05/09/2021)`
+- publicado a `2021-09-07` (terça manhã) com data `2021-09-05` (domingo)

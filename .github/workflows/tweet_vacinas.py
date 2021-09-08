@@ -94,11 +94,12 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
         df_last = df_detalhe.loc[ data_last ]
         data_detalhes = data_last.item().strftime("%d %b %Y")
 
-        # relatório corresponde a segunda mas sai terça noite portanto 7+1=8 dias e várias horas
-        relatorio_terca_noite = (datetime.datetime.now() - data_last.item()) < datetime.timedelta(days=9)
+        # relatório corresponde a segunda mas sai terça noite portanto <8 dias (7 e picos)
+        print(f'now={datetime.datetime.now()} csv={data_last.item()} diff={(datetime.datetime.now() - data_last.item())} delta={datetime.timedelta(days=8)}')
+        relatorio_terca_noite = (datetime.datetime.now() - data_last.item()) < datetime.timedelta(days=8)
         if relatorio_terca_noite:
             global INCLUIR_SEMANAL
-            INCLUIR_SEMANAL=DOW in [1, 2] # caso saia relatorio terça noite
+            INCLUIR_SEMANAL=INCLUIR_SEMANAL or DOW in [1, 2] # caso saia relatorio terça noite
 
     df["doses1_7"] = df.doses1.diff(7)
     df["doses2_7"] = df.doses2.diff(7)
