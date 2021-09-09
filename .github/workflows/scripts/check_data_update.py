@@ -54,7 +54,7 @@ if __name__ == '__main__':
     last_date_csv = get_most_recent_date(exclude_manual=True)
     last_date_auto = get_most_recent_date()
     last_date_api = get_data_data_from_api()
-    print(f"CSV={last_date_csv} auto={last_date_auto} api={last_date_api}")
+    if DEBUG: print(f"CSV={last_date_csv} auto={last_date_auto} api={last_date_api}")
     if last_date_api == last_date_auto:
         # got latest data already, nothing to do
         print("FALSE")
