@@ -5,6 +5,8 @@ import re
 
 import requests
 
+DEBUG = len(sys.argv) > 1
+
 
 def get_most_recent_vaccine_file():
 
@@ -15,9 +17,9 @@ def get_most_recent_vaccine_file():
     pdf_files.sort(key=lambda p: p.stem, reverse=True)
 
     last_pdf = str(pdf_files[0])
-    # print(f'last_pdf={last_pdf}')
+    if DEBUG: print(f'last_pdf={last_pdf}')
     last_date = last_pdf[-14:-4].replace('_', '-')
-    #print(f'last_date={last_date}')
+    if DEBUG: print(f'last_date={last_date}')
 
     return last_date
 
@@ -31,10 +33,11 @@ def get_vaccine_data_from_api():
     if response.status_code != 200:
         raise ValueError('Unable to retrieve data from vaccine endpoint. Error %s: $s' % response.status_code, response.text)
 
-    #print(response.text)
-    matches = re.search(r'\| ([0-9][0-9]/[0-9][0-9]/20[0-9][0-9])</a>', response.text)
+    #if DEBUG: print(response.text)
+    matches = re.search(r'\| ([0-9][0-9]/[0-9][0-9]/20[0-9][0-9])\s*</a>', response.text)
+    if DEBUG: print(matches)
     latest_date = matches.group(1).replace('/', '-')
-    #print(latest_date)
+    if DEBUG: print(latest_date)
 
     return latest_date
 
