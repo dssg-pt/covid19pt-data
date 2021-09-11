@@ -66,6 +66,8 @@ if __name__ == '__main__':
         os.system(f'mv data2.csv data.csv')
 
         print("TRUE")
+    elif last_date_api == last_date_csv + datetime.timedelta(days=1):
+        print("TRUE")
     else:
         # missing data for more than a day, don't do anything
         print("FALSE")
