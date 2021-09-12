@@ -119,6 +119,12 @@ def get_vacinas(url, latest_data=None, latest_total=None):
         unix_date = fix_date(attributes["Data"] / 1000, doses_total, latest_data, latest_total)
         frmt_date = datetime.utcfromtimestamp(unix_date)
 
+        # 2021-09-12 o valor "Inoculacao2_Ac" não foi actualizado e é menor que o "Inoculacao2"
+        doses_total = max(doses_total, doses_novas)
+        doses1_total = max(doses1_total, doses1_novas)
+        doses2_total = max(doses2_total, doses2_novas)
+        doses_novas, doses1_novas, doses2_novas = 0, 0, 0
+
         # 26-01-2021 to ? only have Vacinados without novas nor history
         if doses_novas == doses_total and doses1_total is None:
             doses_novas = None
@@ -176,9 +182,11 @@ def fix_vacinas(data):
         # idem, 7494705 + 5567766 == 13062471 mas != 13062853 -> -382
         ["17-08-2021", "doses", 7494705 + 5567766],
         # 12-09 tem 14729376 (+125682), 8436183 (+9823), 6177334 (+0)
-        # 125 mil talvez 25 mil, faltando 15mil 2a dose
-        ["12-09-2021", "doses", 14603694 + 125682 - 100000], # 14629376
-        ["12-09-2021", "doses2", 6177334 + 25682 - 9823], # 6193193 - 15859
+        # 2a dose são os 115k do fim de semana dos 12-15
+        # update: Inoculacao2 (que devia ser o diário) está correcto mas
+        # Inoculacao2_Ac (que devia ser o acumulado) está com o valor anterior
+        # corrigido com o max(total, novas) abaixo
+        # ["12-09-2021", "doses2", 6177334 + 125682 - 9823], # 6193193 - 115859
     ]
 
     for fix in FIXES:
@@ -188,7 +196,7 @@ def fix_vacinas(data):
                 old = old.tolist()
             except AttributeError:
                 pass
-            if old != fix[2]:
+            if old != fix[2] and old > 0:
                 print(f"Override {fix[0]} {fix[1]} from {old} to {fix[2]}")
         data.loc[data.data == fix[0], fix[1]] = fix[2]
 
@@ -228,7 +236,7 @@ def fix_vacinas2(data):
                 if cur != diff:
                     data.at[i, f"{k}_novas"] = diff
                     # first row of pessoas has novas recalculated and empty, don't print them
-                    if i != 0 or cur != '':
+                    if (i != 0 or cur != '') and cur != 0:
                         print(f"update i={i} data={row.data} k={k}_novas from cur={cur} to diff={diff} val={val} last_val={last_val}")
 
     # sem dados 9 a 11-07-2021 inclusive
