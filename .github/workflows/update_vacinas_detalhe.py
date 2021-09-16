@@ -16,10 +16,11 @@ VACINAS_RECEBIDAS = [
   9519240, 11510810, 12300690,
   12886770,
   13644850, 14398170,
-  15322080, # #27
-  16675410, # #28
-  17448090, # #29
+  15322080,  # #27
+  16675410,  # #28
+  17448090,  # #29
   18136070,  # #30
+  18507560,  # #31
 ]
 VACINAS_DISTRIBUIDAS = [
   np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
@@ -28,10 +29,11 @@ VACINAS_DISTRIBUIDAS = [
   8357319, 10694447, 11385656,
   12043017,
   12597147, 13236664,
-  14093439, # #27
-  14969971, # #28
-  15136630, # #29
-  15247675, # #30
+  14093439,  # #27
+  14969971,  # #28
+  15136630,  # #29
+  15247675,  # #30
+  15554044,  # #31
 ]
 
 
@@ -87,24 +89,47 @@ if __name__ == "__main__":
   #   'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
   #   'RECEIVED', 'DISTRIBUTED'
   columns = [
+    # [0:14]
     'tipo', 'data', 'ano', 'semana', 'região', 'idades',
     'doses1_novas', 'doses2_novas', 'dosesunk_novas', 'doses_novas',
     'doses1', 'doses2', 'dosesunk', 'doses',
+    # [14:16]
     'doses1_perc', 'doses2_perc',
+    # [16:]
     'recebidas', 'distribuidas',
   ]
   if len(data.columns) == 24:
-    columns = columns[0:14] + [
-      #   'CUMUL_VAC_INIT', 'CUMUL_VAC_COMPLETE', 'CUMUL_VAC_LEAST',
-      'pessoas_vacinadas_parcialmente',
-      'pessoas_vacinadas_completamente',
-      'pessoas_inoculadas',
-    ] + columns[14:16] + [
-      # 'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
-      'pessoas_vacinadas_parcialmente_perc',
-      'pessoas_vacinadas_completamente_perc',
-      'pessoas_inoculadas_perc',
-    ] + columns[16:]
+    columns = (
+      # ;TYPE;DATE;YEAR;WEEK;REGION;AGEGROUP;
+      #'tipo', 'data', 'ano', 'semana', 'região', 'idades',
+      # TOTAL_VAC_1;TOTAL_VAC_2;TOTAL_VAC_UNK;TOTAL;
+      #'doses1_novas', 'doses2_novas', 'dosesunk_novas', 'doses_novas',
+      # CUMUL_VAC_1;CUMUL_VAC_2;CUMUL_VAC_UNK;CUMUL;
+      #'doses1', 'doses2', 'dosesunk', 'doses',
+      columns[0:14] +
+      [
+        #   'CUMUL_VAC_INIT', 'CUMUL_VAC_COMPLETE', 'CUMUL_VAC_LEAST',
+        'pessoas_vacinadas_parcialmente',
+        'pessoas_vacinadas_completamente',
+        'pessoas_inoculadas',
+      ] + 
+      # COVER_1_VAC;
+      #'doses1_perc', #' doses2_perc',
+      ( columns[14:15] if misses_cover else columns[14:16] ) + 
+      [
+        # 'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
+        'pessoas_vacinadas_parcialmente_perc',
+        'pessoas_vacinadas_completamente_perc',
+        'pessoas_inoculadas_perc',
+      ] + 
+      # <gone>
+      #'recebidas', 'distribuidas',
+      columns[16:] +
+      # missing COVER
+      ( columns[15:16] if misses_cover else [] )
+    )
+  #print(columns)
+
   data.columns = columns
   # reorder columns
   data = data[[
@@ -146,6 +171,10 @@ if __name__ == "__main__":
   }
   data['data'] = data['data'].apply(lambda x: FIX_DATA.get(x, x))
 
+  # percentagens como 0.xxx e 69% tudo misturado
+  cols = [x for x in data.columns if 'perc' in x]
+  data[cols] = data[cols].apply(lambda x: x.apply(lambda y: np.nan if '%' in str(y) else float(str(y).replace(',', '.'))))
+
   # "day" como timestamp, para ser usado como indice e para merge
   try:
     data['day'] = data['data'].apply(lambda x: datetime.strptime(x, '%d/%m/%Y'))
@@ -165,8 +194,8 @@ if __name__ == "__main__":
   data.sort_values(['day', 'tipo', 'idades', 'região'], inplace=True)
 
   # Calculate population from doses e percentagem
-  data['populacao1'] = (data['doses1'] / data['doses1_perc']).apply(lambda x: x if np.isnan(x) else np.ceil(x))
-  data['populacao2'] = (data['doses2'] / data['doses2_perc']).apply(lambda x: x if np.isnan(x) else np.ceil(x))
+  data['populacao1'] = (data['pessoas_inoculadas'] / data['pessoas_inoculadas_perc']).apply(lambda x: x if np.isnan(x) else np.ceil(x))
+  data['populacao2'] = (data['doses1'] / data['doses1_perc']).apply(lambda x: x if np.isnan(x) else np.ceil(x))
 
   # colunas tipo=general
   data_general = data[ data['tipo'] == 'GENERAL'][[
@@ -297,36 +326,29 @@ if __name__ == "__main__":
   data_wide = pd.concat([data_general, data_regional, data_ages], axis=1)
 
   # limpa colunas vazias
-  for col in [
-      "doses1_perc_outro", "doses2_perc_outro",
-      "populacao1_outro", "populacao2_outro",
-      "doses1_perc_desconhecido", "doses2_perc_desconhecido",
-      "populacao1_desconhecido", "populacao2_desconhecido",
-    ]:
+  for col in [c for c in data_wide.columns if 'outro' in c]:
     if data_wide[col].sum() != 0:
-      print(f"ERRO: Dados inesperados na coluna {col}")
+      print(f"ERRO: Dados inesperados na coluna {col} - 0 != {data_wide[col].sum()}")
       sys.exit(1)
+    #print(f"drop {col}")
     data_wide.drop(col, axis=1, inplace=True)
+
+  # recalcula percentagens que vêm arredondadas e como string "xx%"
+  for col in [col for col in data_wide.columns if "populacao" in col]:
+    data_wide[col] = data_wide[col].ffill()
+  for col in [col for col in data_wide.columns if "_perc" in col]:
+    parts = col.split('_perc')
+    key = parts[0]
+    suffix = parts[1] if len(parts) > 1 else ''
+    #print(f"col={col} key={key} suffix={suffix}")
+    data_wide[col] = data_wide[key+suffix] / data_wide['populacao1'+suffix]
 
   # limpa dados - inteiros,
   #  e floats com 10 casas para prevenir inconsistencias entre plataformas 0.3(3)
   cols = [x for x in data_wide.columns if not x.startswith("data") and not 'perc' in x]
   data_wide = convert(data_wide, cols, convert_to_int)
   cols = [x for x in data_wide.columns if 'perc' in x]
-  #data_wide[cols] = data_wide[cols].apply(lambda x: round(x, 10))
-
-  def foo2(x):
-    x = str(x).replace(",", ".")
-    # relatório 25 tem percentagens por idade com 'x%' na ultima data, e 0.xx antes
-    #if '%' in x:
-    #  x = float(x.replace('%', '')) / 100.0
-    return float(x)
-
-  def foo(x):
-    x = x.apply(foo2)
-    return round(x, 10)
-
-  data_wide[cols] = data_wide[cols].apply(foo)
+  data_wide[cols] = data_wide[cols].apply(lambda x: round(x, 10))
 
   # recalcula a data, just in case
   data_wide['data'] = data_wide.index
