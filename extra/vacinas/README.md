@@ -191,14 +191,19 @@
 ### Relatório 2021-08-23
 - `Dataset vacinação (28)`
 - `Relatório de Vacinação nº 28 (27/12/2020 a 22/08/2021)`
-- publicado a `2021-08-25` (quarta manhã) com data `2021-08-22` (domingo)
+- publicado a `2021-08-25` (quarta noite) com data `2021-08-22` (domingo)
 
 ### Relatório 2021-08-30
 - `Dataset vacinação (29)`
 - `Relatório de Vacinação nº 29 (27/12/2020 a 29/08/2021)`
-- publicado a `2021-09-01` (quarta manhã) com data `2021-08-29` (domingo)
+- publicado a `2021-09-01` (quarta noite) com data `2021-08-29` (domingo)
 
 ### Relatório 2021-09-06
 - `Dataset vacinação (30)`
 - `Relatório de Vacinação nº 30 (27/12/2020 a 05/09/2021)`
-- publicado a `2021-09-07` (terça manhã) com data `2021-09-05` (domingo)
+- publicado a `2021-09-07` (terça noite) com data `2021-09-05` (domingo)
+
+### Relatório 2021-09-13
+- `Dataset vacinação (31)`
+- `Relatório de Vacinação nº 31 (27/12/2020 a 12/09/2021)`
+- publicado a `2021-09-14` (terça noite) com data `2021-09-12` (domingo)

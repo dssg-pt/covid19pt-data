@@ -19,6 +19,9 @@ DOW = datetime.date.today().weekday()
 INCLUIR_SEMANAL=DOW in [2]
 INCLUIR_SEMANAL=len(sys.argv) > 2  # DEBUG
 
+INCLUIR_SEMANAL=True # temp quinta 16-09
+
+
 # ---
 # Constants
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
@@ -49,7 +52,6 @@ REGIONS={
 # export TWITTER_CONSUMER_KEY_VAC=DEBUG
 consumer_key = os.environ['TWITTER_CONSUMER_KEY_VAC']
 if consumer_key != 'DEBUG':
-    import tweepy
     consumer_secret = os.environ['TWITTER_CONSUMER_SECRET_VAC']
     access_token = os.environ['TWITTER_ACCESS_TOKEN_VAC']
     access_token_secret = os.environ['TWITTER_ACCESS_SECRET_VAC']
@@ -57,6 +59,7 @@ if consumer_key != 'DEBUG':
 # ---
 # Helper methods
 def autenticar_twitter():
+    import tweepy
     # authentication of consumer key and secret
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     # authentication of access token and secret
