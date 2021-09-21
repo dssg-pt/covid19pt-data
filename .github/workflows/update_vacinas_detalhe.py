@@ -21,6 +21,7 @@ VACINAS_RECEBIDAS = [
   17448090,  # #29
   18136070,  # #30
   18507560,  # #31
+  18507560,  # #32
 ]
 VACINAS_DISTRIBUIDAS = [
   np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
@@ -34,6 +35,7 @@ VACINAS_DISTRIBUIDAS = [
   15136630,  # #29
   15247675,  # #30
   15554044,  # #31
+  15554044,  # #32
 ]
 
 
@@ -69,7 +71,7 @@ if __name__ == "__main__":
   # Dataset 29 perdeu o COVER
   # ...;COVER_1_VAC;COVER;COVER_INIT;COVER_COMPLETE;COVER_LEAST
   # ...;COVER_1_VAC;COVER_INIT;COVER_COMPLETE;COVER_LEAST
-  misses_cover = 'COVER_INIT' in data.columns and 'COVER' not in data.columns 
+  misses_cover = 'COVER_INIT' in data.columns and 'COVER' not in data.columns
   if misses_cover:
     data['COVER'] = np.nan
 
@@ -112,16 +114,16 @@ if __name__ == "__main__":
         'pessoas_vacinadas_parcialmente',
         'pessoas_vacinadas_completamente',
         'pessoas_inoculadas',
-      ] + 
+      ] +
       # COVER_1_VAC;
       #'doses1_perc', #' doses2_perc',
-      ( columns[14:15] if misses_cover else columns[14:16] ) + 
+      ( columns[14:15] if misses_cover else columns[14:16] ) +
       [
         # 'COVER_INIT', 'COVER_COMPLETE', 'COVER_LEAST',
         'pessoas_vacinadas_parcialmente_perc',
         'pessoas_vacinadas_completamente_perc',
         'pessoas_inoculadas_perc',
-      ] + 
+      ] +
       # <gone>
       #'recebidas', 'distribuidas',
       columns[16:] +
@@ -225,7 +227,7 @@ if __name__ == "__main__":
     ]
   elif dataset_num == 24:
     data_general['recebidas'] = VACINAS_RECEBIDAS
-    data_general['distribuidas'] = VACINAS_DISTRIBUIDAS 
+    data_general['distribuidas'] = VACINAS_DISTRIBUIDAS
 
   # dicionario para alteração do nome de idades
   ages = dict([ ( k,
@@ -324,6 +326,66 @@ if __name__ == "__main__":
 
   # concatena tudo numa wiiiiiide table
   data_wide = pd.concat([data_general, data_regional, data_ages], axis=1)
+
+  # relatório semanal #32 CSV em falta
+  if False:
+    row = [
+          ['data', '20-09-2021'],
+          ['recebidas', 18_885_800],
+          ['distribuidas', 15_758_915],
+          ['pessoas_inoculadas', 8_889_941],
+          ['pessoas_vacinadas_completamente', 8_546_688],
+          ['pessoas_vacinadas_parcialmente', 8_889_941 - 8_546_688],
+          ['doses', (
+              5_584_026 + # norte
+              2_596_902 + # centro
+              5_489_097 + # lvt
+                735_227 + # alentejo
+                659_736 + # algarve
+                383_428 + # madeira
+                360_641 + # açores
+                      0
+            )],
+          # doses1, doses2
+          ['doses_continente', (
+              5_584_026 + # norte
+              2_596_902 + # centro
+              5_489_097 + # lvt
+                735_227 + # alentejo
+                659_736 + # algarve
+                      0
+            )],
+          ['doses_arsnorte', 5_584_026], # norte
+          ['doses_arscentro', 2_596_902], # centro
+          ['doses_arslvt', 5_489_097], # lvt
+          ['doses_arsalentejo', 735_227], # alentejo
+          ['doses_arsalgarve', 659_736], # algarve
+          ['doses_madeira', 383_428], # madeira
+          ['doses_açores', 360_641], # açores
+
+          ['pessoas_inoculadas_12_17', 538_752],
+          ['pessoas_vacinadas_completamente_12_17', 449_089],
+          ['pessoas_vacinadas_parcialmente_12_17', 538_752 - 449_089],
+          ['pessoas_inoculadas_18_24', 695_284],
+          ['pessoas_vacinadas_completamente_18_24', 635_419],
+          ['pessoas_vacinadas_parcialmente_18_24', 695_284 - 635_419],
+          ['pessoas_inoculadas_25_49', 3_123_998],
+          ['pessoas_vacinadas_completamente_25_49', 2_992_594],
+          ['pessoas_vacinadas_parcialmente_25_49', 3_123_998 - 2_992_594],
+          ['pessoas_inoculadas_50_64', 2_156_022],
+          ['pessoas_vacinadas_completamente_50_64', 2_118_649],
+          ['pessoas_vacinadas_parcialmente_50_64', 2_156_022 - 2_118_649],
+          ['pessoas_inoculadas_65_79', 1_681_600],
+          ['pessoas_vacinadas_completamente_65_79', 1_662_956],
+          ['pessoas_vacinadas_parcialmente_65_79', 1_681_600 - 1_662_956],
+          ['pessoas_inoculadas_80+', 693_992],
+          ['pessoas_vacinadas_completamente_80+', 687_935],
+          ['pessoas_vacinadas_parcialmente_80+', 693_992 - 687_935],
+      ]
+    cols = list(map(lambda x: x[0], row))
+    data = list(map(lambda x: x[1], row))
+    row = pd.DataFrame([data], columns=cols)
+    data_wide.loc[datetime(2021, 9, 20), cols] = data
 
   # limpa colunas vazias
   for col in [c for c in data_wide.columns if 'outro' in c]:

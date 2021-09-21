@@ -217,6 +217,29 @@ def fix_vacinas2(data):
         cols = ['pessoas_vacinadas_completamente', 'pessoas_vacinadas_parcialmente', 'pessoas_inoculadas', 'vacinas']
         data.loc[data.data == dia, cols] = ''
 
+    # major hack que não há mais dados de vacinas
+    if False:
+        data.loc[data.data == "20-09-2021", [
+            'pessoas_inoculadas',
+            'pessoas_vacinadas_completamente',
+            'pessoas_vacinadas_parcialmente',
+            'vacinas',
+        ]] = [
+            8_889_941,
+            8_546_688,
+            8_889_941 - 8_546_688,
+            (
+                5_584_026 + # norte
+                2_596_902 + # centro
+                5_489_097 + # lvt
+                735_227 + # alentejo
+                659_736 + # algarve
+                383_428 + # madeira
+                360_641 + # açores
+                        0
+            ),
+            ]
+
     # recalculate *_novas when missing or incorrect
     last = {}
     for i, row in data.iterrows():
