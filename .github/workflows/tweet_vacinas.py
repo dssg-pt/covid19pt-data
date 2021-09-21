@@ -382,6 +382,8 @@ def tweet_len(s):
 if __name__ == '__main__':
 
     DAYS_OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+    DAYS_OFFSET = 1  # temp 2021-09-22
+
     dados_vac_1 = extrair_dados_vacinas(DAYS_OFFSET)
 
     # If there's new data, tweet
