@@ -19,7 +19,7 @@ DOW = datetime.date.today().weekday()
 INCLUIR_SEMANAL=DOW in [2]
 INCLUIR_SEMANAL=len(sys.argv) > 2  # DEBUG
 
-INCLUIR_SEMANAL=True # temp quinta 16-09
+# INCLUIR_SEMANAL=True # temp quinta 16-09
 
 
 # ---
