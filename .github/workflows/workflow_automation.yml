@@ -124,6 +124,10 @@ jobs:
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
         run: |
           python .github/workflows/update_vacinas.py
+      - name: Show latest data about daily vaccination
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+        run: |
+          tail vacinas.csv
       - name: Add vaccination API data backup
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
         run: |
