@@ -138,4 +138,7 @@ Shape_Leng
 26-08-2021 a 08-09-2021 (quarta-feira), publicado a 10-09-2021 (sexta-feira)
 
 ### 2021-09-16-concelhos.json
-26-08-2021 a 15-09-2021 (quarta-feira), publicado a 17-09-2021 (sexta-feira)
+02-09-2021 a 15-09-2021 (quarta-feira), publicado a 17-09-2021 (sexta-feira)
+
+### 2021-09-23-concelhos.json
+09-09-2021 a 22-09-2021 (quarta-feira), publicado a 24-09-2021 (sexta-feira)
