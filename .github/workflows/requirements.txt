@@ -5,5 +5,5 @@ pytest-mock
 textract
 requests
 datetime
-tweepy=3.10
+tweepy==3.10
 openpyxl
