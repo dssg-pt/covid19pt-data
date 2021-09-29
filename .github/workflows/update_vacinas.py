@@ -187,6 +187,21 @@ def fix_vacinas(data):
         # Inoculacao2_Ac (que devia ser o acumulado) está com o valor anterior
         # corrigido com o max(total, novas) abaixo
         # ["12-09-2021", "doses2", 6177334 + 125682 - 9823], # 6193193 - 115859
+
+        # 2021-09-27 dados diários têm sido ajustados do relatório #31 de dia 13 e não
+        # do #32 dia 20 pois não houve dados dia 20. Dataset #33 também reajustou os
+        # dados do passado (como costume) portanto dados "inoculados" dá negativo.
+        # Dataset #33 tem +85344 entre 13 e 27: 13 = 8845252, 20 = 8894442 (+49190), 27 = 8930596 (+36154)
+        # Dados diários tem +90566 entre 13 e 27: 13 = 8441603, 27 = 8532169
+        # 26-09-2021,15205735,,8530494,,6675241,,8636142,,298001,,8934143,,15952609,
+        # 27-09-2021,15212273,6538,8532169,1675,6680104,4863,8663808,27666,266788,-31213,8930596,-3547,15956183,3574
+        # Como não há dados de dia 25, reajustado dia 26 para dar sempre valores
+        # positivos e, há falta de dados oficiais, os "novos" serem alinhados 26->27 com
+        # os dados diários: doses +6538 (vacinas), doses1 +1675, doses2 +4863 (completo)
+        ["26-09-2021", "vacinas", 15956183 - 6538], # era 26=15952609 e 27_diff=3574
+        ["26-09-2021", "pessoas_inoculadas", 8930596 - 6538],
+        ["26-09-2021", "pessoas_vacinadas_completamente", 8663808 - 4863],
+        ["26-09-2021", "pessoas_vacinadas_parcialmente", 8924058 - 8658945],
     ]
 
     for fix in FIXES:
