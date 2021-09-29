@@ -16,9 +16,7 @@ except locale.Error:
 # Monday is 0 and Sunday is 6.
 # Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 DOW = datetime.date.today().weekday()
-INCLUIR_SEMANAL=DOW in [2]
-INCLUIR_SEMANAL=len(sys.argv) > 2  # DEBUG
-
+INCLUIR_SEMANAL=len(sys.argv) > 2 or DOW in [2]
 # INCLUIR_SEMANAL=True # temp quinta 16-09
 
 
@@ -382,7 +380,6 @@ def tweet_len(s):
 if __name__ == '__main__':
 
     DAYS_OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
-    # DAYS_OFFSET = 1  # temp 2021-09-22
 
     dados_vac_1 = extrair_dados_vacinas(DAYS_OFFSET)
 
