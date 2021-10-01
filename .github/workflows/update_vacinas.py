@@ -198,10 +198,10 @@ def fix_vacinas(data):
         # Como não há dados de dia 25, reajustado dia 26 para dar sempre valores
         # positivos e, há falta de dados oficiais, os "novos" serem alinhados 26->27 com
         # os dados diários: doses +6538 (vacinas), doses1 +1675, doses2 +4863 (completo)
-        ["26-09-2021", "vacinas", 15956183 - 6538], # era 26=15952609 e 27_diff=3574
-        ["26-09-2021", "pessoas_inoculadas", 8930596 - 6538],
-        ["26-09-2021", "pessoas_vacinadas_completamente", 8663808 - 4863],
-        ["26-09-2021", "pessoas_vacinadas_parcialmente", 8924058 - 8658945],
+        ["26-09-2021", "vacinas", 15956183 - 6538], # 1_595_2609 -> 1_594_9645
+        ["26-09-2021", "pessoas_inoculadas", 8930596 - 1675], # 8_934_143 -> 8_928_921
+        ["26-09-2021", "pessoas_vacinadas_completamente", 8663808 - 4863], # 8_636_142 -> 8_658_945
+        ["26-09-2021", "pessoas_vacinadas_parcialmente", 8928921 - 8658945], # 266788 ->
     ]
 
     for fix in FIXES:
