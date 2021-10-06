@@ -19,6 +19,8 @@ DOW = datetime.date.today().weekday()
 INCLUIR_SEMANAL=len(sys.argv) > 2 or DOW in [2]
 # INCLUIR_SEMANAL=True # temp quinta 16-09
 
+# End Of Vaccination (27-09-2021)
+EOV = datetime.datetime.now() > datetime.datetime(2021, 9, 27)
 
 # ---
 # Constants
@@ -34,9 +36,9 @@ POP_PT_CONTINENTE = 9_860_175  # 2020 = 9_802_133  # 2019 = 9_798_859
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊", "⬌"]
 
-CASAS_DECIMAIS=1
+CASAS_DECIMAIS = 1
 
-REGIONS={
+REGIONS = {
     'arsnorte': 'Norte',
     'arscentro': 'Centro',
     'arslvt': 'LVT',
@@ -357,9 +359,11 @@ def compor_tweet(dados_vacinas, tweet=1):
         #    )
 
     total_tweets = 4 if INCLUIR_SEMANAL else 2
+    if EOV: total_tweets -= 1
     if total_tweets > 1:
+        adjusted_tweet = tweet - 1 if EOV and tweet > 1 else tweet
         tweet_message += (
-            f"\n\n[{tweet}/{total_tweets}]"
+            f"\n\n[{adjusted_tweet}/{total_tweets}]"
         )
     tweet_message += (
         "\n➕Todos os dados em: {link_repo}"
@@ -390,6 +394,8 @@ if __name__ == '__main__':
         texto_tweet_2 = compor_tweet(dados_vac_1, tweet=2)
         texto_tweet_3 = compor_tweet(dados_vac_2, tweet=3) if INCLUIR_SEMANAL else ""
         texto_tweet_4 = compor_tweet(dados_vac_2, tweet=4) if INCLUIR_SEMANAL else ""
+        if EOV:
+            texto_tweet_2, texto_tweet_3, texto_tweet_4 = texto_tweet_3, texto_tweet_4, ""
 
         if consumer_key == 'DEBUG':
             print(f"Tweet 1 {tweet_len(texto_tweet_1)} '''\n{texto_tweet_1}\n'''")
