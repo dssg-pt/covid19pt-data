@@ -282,18 +282,18 @@ jobs:
           TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
           TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
 
-      - name: There is a NEW updated
+      - name: There is a NEW update for Vaccines
         if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW VACCINE DATA PUBLISHED _:large_green_circle:"
-      - name: There is a NEW updated
+      - name: There is a NEW update for Covid PDF
         if: ${{ env.UPDATE_PDF == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW PDF DATA PUBLISHED _:large_green_circle:"
-      - name: There is a NEW updated
+      - name: There is a NEW update for Covid Data
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY DATA PUBLISHED _:large_green_circle:"
-      - name: There is a NEW updated
+      - name: There is a NEW update for Covid Amostras
         if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY AMOSTRAS PUBLISHED _:large_green_circle:"
-      - name: There is a NEW Concelhos
+      - name: There is a NEW update for Covid Concelhos
         if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW WEEKLY CONCELHOS PUBLISHED _:large_green_circle:"
