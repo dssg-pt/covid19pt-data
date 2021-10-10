@@ -34,10 +34,22 @@ def get_vaccine_data_from_api():
         raise ValueError('Unable to retrieve data from vaccine endpoint. Error %s: $s' % response.status_code, response.text)
 
     #if DEBUG: print(response.text)
-    matches = re.search(r'\| ([0-9][0-9]/[0-9][0-9]/20[0-9][0-9])\s*</a>', response.text)
-    if DEBUG: print(matches)
-    latest_date = matches.group(1).replace('/', '-')
-    if DEBUG: print(latest_date)
+    matches = re.search(
+        (
+            r'Relat.*?rio de Situa.*?o n.*?[0-9]+\s*\|'
+            r'\s*([0-9][0-9])'
+            r'\s*(?:<[^>]+>)?'
+            r'\s*/'
+            r'\s*(?:<[^>]+>)?'
+            r'\s*([0-9][0-9])'
+            r'\s*/'
+            r'\s*(?:<[^>]+>)?'
+            r'\s*(20[0-9][0-9])'
+            r'\s*.*?</a>'
+    ), response.text, re.MULTILINE)
+    if DEBUG: print(f"matches={matches}")
+    latest_date = f"{matches.group(1)}-{matches.group(2)}-{matches.group(3)}"
+    if DEBUG: print(f"latest_date={latest_date}")
 
     return latest_date
 
