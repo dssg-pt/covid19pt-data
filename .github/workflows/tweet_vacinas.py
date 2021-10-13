@@ -21,6 +21,8 @@ INCLUIR_SEMANAL=len(sys.argv) > 2 or DOW in [2]
 
 # End Of Vaccination (27-09-2021)
 EOV = datetime.datetime.now() > datetime.datetime(2021, 9, 27)
+GTE='' if EOV else '≥'
+
 
 # ---
 # Constants
@@ -294,7 +296,7 @@ def compor_tweet(dados_vacinas, tweet=1):
             "💉População 🇵🇹 Continente {data}:"
         ) if tweet == 2 else ""
 
-        tweet_message += "" if tweet == 2 else (
+        tweet_message += "" if tweet == 2 or EOV else (
             "\n(ajustado ao relatório semanal de {data_detalhes})"
         )
 
@@ -303,7 +305,7 @@ def compor_tweet(dados_vacinas, tweet=1):
         #) if tweet == 1 else ""
 
         tweet_message += (
-            "\n\n✌️≥{n_vacinados}"
+            "\n\n✌️{GTE}{n_vacinados}"
             " ({percentagem_vacinados}%)"
             #" vacinação completa"
             " completa"
@@ -320,12 +322,12 @@ def compor_tweet(dados_vacinas, tweet=1):
             )
 
         tweet_message += (
-            "\n🤞≥{n_inoculados}"
+            "\n\n🤞{GTE}{n_inoculados}"
             " ({percentagem_iniciados}%)"
             # " vacinação iniciada"
             " iniciada"
         ) if tweet == 1 else (
-            "\n🤞{n_inoculados}"
+            "\n\n🤞{n_inoculados}"
             " ({percentagem_iniciados}%)"
             " com 1 dose"
         )
@@ -337,11 +339,11 @@ def compor_tweet(dados_vacinas, tweet=1):
             )
 
         tweet_message += (
-            "\n👍≥{n_total}"
+            "\n\n👍{GTE}{n_total}"
             " ({percentagem_inoculados}%)"
             " pelo menos 1 dose"
         ) if tweet == 1 else (
-            "\n👍{n_total}"
+            "\n\n👍{n_total}"
             " ({percentagem_inoculados}%)"
             " pelo menos 1 dose"
         )
@@ -360,15 +362,16 @@ def compor_tweet(dados_vacinas, tweet=1):
 
     total_tweets = 4 if INCLUIR_SEMANAL else 2
     if EOV: total_tweets -= 1
+    adjusted_tweet = tweet - 1 if EOV and tweet > 1 else tweet
     if total_tweets > 1:
-        adjusted_tweet = tweet - 1 if EOV and tweet > 1 else tweet
         tweet_message += (
             f"\n\n[{adjusted_tweet}/{total_tweets}]"
         )
     tweet_message += (
-        "\n➕Todos os dados em: {link_repo}"
-    ) if tweet == total_tweets else ""
+        "\n\n➕Todos os dados em: {link_repo}"
+    ) if adjusted_tweet == total_tweets else ""
 
+    dados_vacinas["GTE"] = GTE
     dados_vacinas["link_repo"] = link_repo
     texto_tweet = tweet_message.format(**dados_vacinas)
 

@@ -222,3 +222,8 @@
 - `Dataset vacinação (34)`
 - `Relatório de Vacinação nº 34 (27/12/2020 a 03/10/2021)`
 - publicado a `2021-10-05` (terça noite) com data `2021-10-03` (domingo)
+
+### Relatório 2021-10-11
+- `Dataset vacinação (35)`
+- `Relatório de Vacinação nº 35 (27/12/2020 a 10/10/2021)`
+- publicado a `2021-10-12` (terça noite) com data `2021-10-10` (domingo)
