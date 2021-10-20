@@ -304,13 +304,15 @@ def compor_tweet(dados_vacinas, tweet=1):
         #    "\n\n{progresso}"
         #) if tweet == 1 else ""
 
+        tweet_message += '\n'
+
         tweet_message += (
-            "\n\n✌️{GTE}{n_vacinados}"
+            "\n✌️{GTE}{n_vacinados}"
             " ({percentagem_vacinados}%)"
             #" vacinação completa"
             " completa"
         ) if tweet == 1 else (
-            "\n\n✌️{n_vacinados}"
+            "\n✌️{n_vacinados}"
             " ({percentagem_vacinados}%)"
             " com 2 doses"
         )
@@ -322,12 +324,12 @@ def compor_tweet(dados_vacinas, tweet=1):
             )
 
         tweet_message += (
-            "\n\n🤞{GTE}{n_inoculados}"
+            "\n🤞{GTE}{n_inoculados}"
             " ({percentagem_iniciados}%)"
             # " vacinação iniciada"
             " iniciada"
         ) if tweet == 1 else (
-            "\n\n🤞{n_inoculados}"
+            "\n🤞{n_inoculados}"
             " ({percentagem_iniciados}%)"
             " com 1 dose"
         )
@@ -339,11 +341,11 @@ def compor_tweet(dados_vacinas, tweet=1):
             )
 
         tweet_message += (
-            "\n\n👍{GTE}{n_total}"
+            "\n👍{GTE}{n_total}"
             " ({percentagem_inoculados}%)"
             " pelo menos 1 dose"
         ) if tweet == 1 else (
-            "\n\n👍{n_total}"
+            "\n👍{n_total}"
             " ({percentagem_inoculados}%)"
             " pelo menos 1 dose"
         )
