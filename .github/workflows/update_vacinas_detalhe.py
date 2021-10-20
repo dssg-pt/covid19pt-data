@@ -25,6 +25,7 @@ VACINAS_RECEBIDAS = [
   19507520,  # #33
   20258230,  # #34
   20414230,  # #35
+  20836630,  # #36
 ]
 VACINAS_DISTRIBUIDAS = [
   np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,
@@ -42,6 +43,7 @@ VACINAS_DISTRIBUIDAS = [
   15814437,  # #33
   16192139,  # #34
   16394069,  # #35
+  16421977,  # #36
 ]
 
 
