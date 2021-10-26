@@ -16,7 +16,7 @@ except locale.Error:
 # Monday is 0 and Sunday is 6.
 # Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 DOW = datetime.date.today().weekday()
-INCLUIR_SEMANAL=len(sys.argv) > 2 or DOW in [2]
+INCLUIR_SEMANAL=len(sys.argv) > 2 or DOW in [1,2]
 # INCLUIR_SEMANAL=True # temp quinta 16-09
 
 # End Of Vaccination (27-09-2021)
