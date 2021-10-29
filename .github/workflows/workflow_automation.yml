@@ -67,7 +67,7 @@ jobs:
         run: echo $GITHUB_ENV
 
       - name: Check if any COVID19PT data is updated and if any work must be done
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' }}
+        if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
         run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
 
       - name: Ping slack if there are any updates
