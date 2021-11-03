@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    # Every fifteen minutes from 9-22h UTC (10-13 WEST)
+    # Every hour at minute 42 from 9-22h UTC (10-13 WEST)
     - cron: 42 9-22 * * *
 
 env:
@@ -37,9 +37,9 @@ jobs:
 
       # -----
 
-      - name: Check for COVID19PT updates for - Vaccines
-        run: |
-          echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
+      # - name: Check for COVID19PT updates for - Vaccines
+      #   run: |
+      #     echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
 
       - name: Check for COVID19PT updates for - Daily PDF
         run: |
@@ -57,7 +57,6 @@ jobs:
         run: |
           wget -c -O /tmp/concelhos.json \
           'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/IncidenciaCOVIDporConc100k_view/FeatureServer/0/query?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=false'
-
       - name: Check for COVID19PT updates for - Weekly Concelhos - compare data
         run: |
           UPDATE_CONCELHOS=$(diff -q $(ls -1 extra/concelhos_incidencia/*concelhos.json | sort -n | tail -1) /tmp/concelhos.json 2>&1 >/dev/null || echo TRUE)
@@ -67,16 +66,17 @@ jobs:
         run: echo $GITHUB_ENV
 
       - name: Check if any COVID19PT data is updated and if any work must be done
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
+        # if: ${{ env.UPDATE_VACCINE == 'TRUE' || env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
+        if: ${{ env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
         run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
 
-      - name: Ping slack if there are any updates
+      - name: Ping slack if anything updated
         if: ${{ env.UPDATE_ANY == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DATA AVAILABLE, WORKFLOW RUNNING _:large_green_circle:"
 
       # -----
 
-      # If there any new data, setup system properly
+      # If there is new data, setup system properly
       - name: Configure pt_PT locale
         if: ${{ env.UPDATE_ANY == 'TRUE' }}
         run: |
@@ -131,32 +131,32 @@ jobs:
       #     path: tests/junit/test-rt-results.xml
 
 
-      # If there is new Vaccines
-      - name: Update data about weekly vaccination details (if changed)
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: |
-          python .github/workflows/update_vacinas_detalhe.py
-      - name: Update data about daily vaccination
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: |
-          python .github/workflows/update_vacinas.py
-      - name: Show latest data about daily vaccination
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: |
-          tail vacinas.csv
-      - name: Add vaccination API data backup
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: |
-          git add -A extra/vacinas/di*rio/2*_vacinas.json
-      - name: Validate data about vaccination with pytest
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
-      - name: Upload pytest vaccinations results
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-vacinas-results
-          path: tests/junit/test-vacinas-results.xml
+      # # If there is new Vaccines
+      # - name: Update data about weekly vaccination details (if changed)
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   run: |
+      #     python .github/workflows/update_vacinas_detalhe.py
+      # - name: Update data about daily vaccination
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   run: |
+      #     python .github/workflows/update_vacinas.py
+      # - name: Show latest data about daily vaccination
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   run: |
+      #     tail vacinas.csv
+      # - name: Add vaccination API data backup
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   run: |
+      #     git add -A extra/vacinas/di*rio/2*_vacinas.json
+      # - name: Validate data about vaccination with pytest
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
+      # - name: Upload pytest vaccinations results
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: pytest-vacinas-results
+      #     path: tests/junit/test-vacinas-results.xml
 
 
       # If there is new PDF
@@ -220,16 +220,16 @@ jobs:
         with:
           name: pytest-concelhos-results
           path: tests/junit/test-concelhos-results.xml
-      - name: Add concelhos API data backup
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: |
-          git add -A extra/vacinas/di*rio/2*_vacinas.json
       - name: Update concelhos README
         if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
         run: |
           echo "" >> extra/concelhos_incidencia/README.md
           echo "### $(python .github/workflows/scripts/get_latest_friday.py 1)-concelhos.json" >> extra/concelhos_incidencia/README.md
           echo "$(python .github/workflows/scripts/get_latest_friday.py 15 true) a $(python .github/workflows/scripts/get_latest_friday.py 2 true) (quarta-feira), publicado a $(python .github/workflows/scripts/get_latest_friday.py 0 true) (sexta-feira)" >> extra/concelhos_incidencia/README.md
+      - name: Add concelhos API data backup
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: |
+          git add -A extra/concelhos_incidencia/
 
 
       # -----
@@ -260,16 +260,16 @@ jobs:
           state: 'success'
           sha: ${{env.LAST_COMMIT}}
 
-      # If there are new Vaccination data, tweet it
-      - name: Auto publish vaccine data to Twitter
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: |
-          python .github/workflows/tweet_vacinas.py
-        env:
-          TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
-          TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
-          TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
-          TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
+      # # If there are new Vaccination data, tweet it
+      # - name: Auto publish vaccine data to Twitter
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   run: |
+      #     python .github/workflows/tweet_vacinas.py
+      #   env:
+      #     TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
+      #     TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
+      #     TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
+      #     TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
 
       # If there are new daily data, tweet it
       - name: Auto publish to Twitter
@@ -282,9 +282,9 @@ jobs:
           TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
           TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
 
-      - name: There is a NEW update for Vaccines
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW VACCINE DATA PUBLISHED _:large_green_circle:"
+      # - name: There is a NEW update for Vaccines
+      #   if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
+      #   run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW VACCINE DATA PUBLISHED _:large_green_circle:"
       - name: There is a NEW update for Covid PDF
         if: ${{ env.UPDATE_PDF == 'TRUE' }}
         run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW PDF DATA PUBLISHED _:large_green_circle:"
