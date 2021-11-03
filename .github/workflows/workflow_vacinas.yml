@@ -50,37 +50,6 @@ jobs:
           path: tests/junit/test-vacinas-results.xml
         if: always()
 
-      # Until there's some tweet about amostras, just update them anytime something else updates
-      - name: Update data about test samples
-        run: |
-          python .github/workflows/update_amostras.py
-        if: always()
-      - name: Validate data about test samples with pytest
-        run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
-        if: always()
-      - name: Upload pytest samples test results
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-amostras-results
-          path: tests/junit/test-amostras-results.xml
-        if: always()
-
-      # Until there's some tweet about Rt, just update them anytime something else updates
-      - name: Update data about Rt
-        run: |
-          python .github/workflows/update_rt.py
-        if: always()
-      # TODO
-      # - name: Validate data about Rt with pytest
-      #   run: pytest tests/test_rt.py -s -vv --junitxml=tests/junit/test-rt-results.xml
-      #   if: always()
-      # - name: Upload pytest Rt results
-      #   uses: actions/upload-artifact@master
-      #   with:
-      #     name: pytest-rt-results
-      #     path: tests/junit/test-rt-results.xml
-      #   if: always()
-
       - name: Update readme date again, before commits
         run: |
           python .github/workflows/update_readme.py
@@ -106,11 +75,11 @@ jobs:
           state: 'success'
           sha: ${{env.LAST_COMMIT}}
 
-      - name: Auto publish vaccine data to Twitter
-        run: |
-          python .github/workflows/tweet_vacinas.py
-        env:
-          TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
-          TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
-          TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
-          TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
+      # - name: Auto publish vaccine data to Twitter
+      #   run: |
+      #     python .github/workflows/tweet_vacinas.py
+      #   env:
+      #     TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
+      #     TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}
+      #     TWITTER_CONSUMER_KEY_VAC: ${{ secrets.TWITTER_CONSUMER_KEY_VAC }}
+      #     TWITTER_CONSUMER_SECRET_VAC: ${{ secrets.TWITTER_CONSUMER_SECRET_VAC }}
