@@ -160,3 +160,6 @@ Shape_Leng
 
 ### 2021-11-04-concelhos.json
 21-10-2021 a 03-11-2021 (quarta-feira), publicado a 05-11-2021 (sexta-feira)
+
+### 2021-11-11-concelhos.json
+28-10-2021 a 10-11-2021 (quarta-feira), publicado a 12-11-2021 (sexta-feira)
