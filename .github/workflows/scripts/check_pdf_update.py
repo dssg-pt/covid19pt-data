@@ -36,17 +36,17 @@ def get_vaccine_data_from_api():
     #if DEBUG: print(response.text)
     matches = re.search(
         (
-            r'Relat.*?rio de Situa.*?o n.*?[0-9]+\s*\|'
-            r'\s*([0-9][0-9])'
-            r'\s*(?:<[^>]+>)?'
+            r'Relat.rio de Situa..o n.\s*[0-9]+\s*\|'
+            r'\s*([0-3][0-9])'
+            r'\s*(?:<[^>]+?>)?'
             r'\s*/'
-            r'\s*(?:<[^>]+>)?'
-            r'\s*([0-9][0-9])'
+            r'\s*(?:<[^>]+?>)?'
+            r'\s*([0-1][0-9])'
             r'\s*/'
-            r'\s*(?:<[^>]+>)?'
-            r'\s*(20[0-9][0-9])'
-            r'\s*.*?</a>'
-    ), response.text, re.MULTILINE)
+            r'\s*(?:<[^>]+?>)?'
+            r'\s*(202[0-9])'
+            r'\s*[^<]*?</a>'
+    ), response.text, re.MULTILINE | re.IGNORECASE)
     if DEBUG: print(f"matches={matches}")
     latest_date = f"{matches.group(1)}-{matches.group(2)}-{matches.group(3)}"
     if DEBUG: print(f"latest_date={latest_date}")
