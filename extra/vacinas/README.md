@@ -247,3 +247,8 @@
 - `Dataset vacinação (39)`
 - `Relatório de Vacinação nº 39 (27/12/2020 a 07/11/2021)`
 - publicado a `2021-11-10` (quarta noite) com data `2021-11-07` (domingo)
+
+### Relatório 2021-11-15
+- `Dataset vacinação (40)`
+- `Relatório de Vacinação nº 40 (27/12/2020 a 14/11/2021)`
+- publicado a `2021-11-17` (quarta noite) com data `2021-11-14` (domingo)
