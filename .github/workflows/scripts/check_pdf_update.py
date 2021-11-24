@@ -8,7 +8,7 @@ import requests
 DEBUG = len(sys.argv) > 1
 
 
-def get_most_recent_vaccine_file():
+def get_most_recent_covid_file():
 
     pdf_folder = pathlib.Path('dgs-reports-archive/')
 
@@ -24,14 +24,14 @@ def get_most_recent_vaccine_file():
     return last_date
 
 
-def get_vaccine_data_from_api():
+def get_covid_data_from_api():
 
     url = 'https://covid19.min-saude.pt/relatorio-de-situacao/'
 
     response = requests.get(url=url)
 
     if response.status_code != 200:
-        raise ValueError('Unable to retrieve data from vaccine endpoint. Error %s: $s' % response.status_code, response.text)
+        raise ValueError('Unable to retrieve data from covid site. Error %s: $s' % response.status_code, response.text)
 
     #if DEBUG: print(response.text)
     matches = re.search(
@@ -56,9 +56,9 @@ def get_vaccine_data_from_api():
 
 if __name__ == '__main__':
 
-    current_data = get_most_recent_vaccine_file()
+    current_data = get_most_recent_covid_file()
 
-    new_data = get_vaccine_data_from_api()
+    new_data = get_covid_data_from_api()
 
     try:
         assert current_data == new_data
