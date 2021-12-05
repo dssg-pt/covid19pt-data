@@ -203,12 +203,27 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `doses1_novas` | Número diário de primeiras doses de vacinas administradas em Portugal continental. Nota: inclui unidoses | Inteiro >= 0 ou _vazio_ |
 | `doses2` | Número total de segundas doses de vacinas administradas em Portugal continental. Nota: exclui unidoses | Inteiro >= 0 ou _vazio_ |
 | `doses2_novas` | Número diário de segundas doses de vacinas administradas em Portugal continental. Nota: exclui unidoses | Inteiro >= 0 ou _vazio_ |
-| `pessoas_vacinadas_completamente` | Número total de pessoas com vacinação completa - com vacina unidose ou com ambas as doses - em Portugal incluindo as ilhas. Tenderá para o total da população. É ajustado semanalmente com os valores do relatório para a diferença de unidose e ilhas | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_completamente` | Número total de pessoas com vacinação completa - com vacina unidose ou com ambas as doses - em Portugal incluindo as ilhas. Tenderá para o total da população. É ajustado semanalmente com os valores do relatório para a diferença de unidose e ilhas. A partir de 29-11-2021 é ajustado do novo relatório com o valor de vacinação completa do continente somado ao ultimo valor conhecido das ilhas. | Inteiro >= 0 ou _vazio_ |
 | `pessoas_vacinadas_completamente_novas` | Número diário de pessoas com vacinaçao completa | Inteiro >= 0 ou _vazio_ |
-| `pessoas_vacinadas_parcialmente` | Número total de pessoas com vacinaçao parcial - com apenas a primeira dose de vacinas com duas doses. Tenderá para zero conforme a população receba a segunda dose. É ajustado semanalmente como o `completamente` | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_parcialmente` | Número total de pessoas com vacinaçao parcial - com apenas a primeira dose de vacinas de dose dupla. Tenderá para zero conforme a população receba a segunda dose. É ajustado semanalmente como o `completamente` | Inteiro >= 0 ou _vazio_ |
 | `pessoas_vacinadas_parcialmente_novas` | Número diário de pessoas com vacinaçao parcial. Poderá ser negativo em dias que sejam administradas mais segundas doses que primeiras. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_inoculadas` | Número total de pessoas com pelo menos uma dose de vacina. É ajustado semanalmente como o `completamente` | Inteiro >= 0 ou _vazio_ |
+| `pessoas_inoculadas_novas` | Número diário de pessoas com a primeira (potencialmente única) dose de vacina. | Inteiro >= 0 ou _vazio_ |
 | `vacinas` | Número total de doses de vacina. Equivalente ao `doses` mas ajustado semanalmente com os valores das ilhas. | Inteiro >= 0 ou _vazio_ |
 | `vacinas_novas` | Número diário de novas doses de vacinas. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_completamente_continente` | Número total de pessoas com vacinação completa no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_vacinadas_completamente_continente_novas` | Número diário de pessoas com vacinação completa no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_reforço` | Número total de pessoas com vacinação reforço no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_reforço_novas` | Número diário de pessoas com vacinação reforço no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_gripe` | Número total de pessoas com vacinação gripe no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_refopessoas_gripe_novasrço_novas` | Número diário de pessoas com vacinação gripe no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `vacinas_reforço_e_gripe_novas` | Número diário de inoculações de vacinas contra a COVID-19 e contra a Gripe. | Inteiro >= 0 ou _vazio_ |
+| `reforço_80mais` | Número total de pessoas com vacinação reforço no continente com mais de 80 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_80mais_novas` | Número diário de pessoas com vacinação reforço no continente com mais de 80 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_70_79` | Número total de pessoas com vacinação reforço no continente com 70 a 79 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_70_79_novas` | Número diário de pessoas com vacinação reforço no continente com 70 a 79 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_65_69` | Número total de pessoas com vacinação reforço no continente com 65 a 69 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_65_69_novas` | Número diário de pessoas com vacinação reforço no continente com 65 a 69 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
 
 Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 

@@ -26,6 +26,13 @@
 - Fonte: https://covid19.min-saude.pt/relatorio-de-vacinacao/
 
 
+# Vacinas Reforço e Gripe
+- Pasta: `reforço`
+- Relatório PDF: `YYYY-mm-dd_Relatório_Vacinação_Diário_X.pdf`
+- Relatório número `X` publicado na data `YYYY-mm-dd`.
+- Fonte: https://covid19.min-saude.pt/relatorio-de-vacinacao/
+
+
 ### Relatório 2021-02-15
 - `Dataset vacinação (16/02/2021)`
 - `Relatório de Vacinação nº 1 (27/12/2020 a 14/02/2021)`
