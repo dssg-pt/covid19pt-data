@@ -124,42 +124,42 @@ def compose_tweets(DAYS_OFFSET=0):
 
     n_gripe = int(d['pessoas_gripe'])
     n_gripe_novas = int(d['pessoas_gripe_novas'])
-    p_gripe = 100.0 * n_gripe / POP_VACINAVEL
+    p_gripe = 100.0 * n_gripe / POP_REFORCO_12_64 # POP_VACINAVEL
     #n_vacinas_reforco = int(d['vacinas_reforço_e_gripe'])
     n_vacinas_reforco_novas = int(d['vacinas_reforço_e_gripe_novas'])
     #p_vacinas_reforco = int(n_vacinas_reforco / POP_REFORCO * 100_000)
 
     tweet_1 = (
         f"💉População 🇵🇹 vacinada a {data}:"
-        f"\nInoculações: {GTE}{f(n_vacinas)} +{f(n_vacinas_novas)} ({GTE}{f(p_vacinas)}%)"
+        f"\nInoculações: {GTE}{f(n_vacinas)} +{f(n_vacinas_novas)} {GTE}{f(p_vacinas)}%"
         f"\n"
         f"\nNacional"
-        f"\nVacinados: {GTE}{f(n_vacinados)} +{f(n_vacinados_novas)} ({GTE}{f(p_vacinados)}%)"
+        f"\nVacinados: {GTE}{f(n_vacinados)} +{f(n_vacinados_novas)} {GTE}{f(p_vacinados)}%"
         f"\nVacinados 12+: {GTE}{f(p_vacinaveis)}%"
         f"\n"
         f"\nContinente"
-        f"\nVacinados: {f(n_vacinados_c)} +{f(n_vacinados_c_novas)} ({f(p_vacinados_c)}%)"
-        f"\nReforço: {f(n_reforco)} +{f(n_reforco_novas)} ({f(p_reforco)}%)"
+        f"\nVacinados: {f(n_vacinados_c)} +{f(n_vacinados_c_novas)} {f(p_vacinados_c)}%"
+        f"\nReforço: {f(n_reforco)} +{f(n_reforco_novas)} {f(p_reforco)}%"
         f"\n"
         f"\nInoculações diárias: +{f(n_vacinas_reforco_novas)}"
         f"\n\n[1/2]"
     )
     tweet_2 = (
         f"💉População 🇵🇹 reforço a {data}:"
-        f"\n80+: {f(n_reforco_80)} +{f(n_reforco_80_novas)} ({f(p_reforco_80)}%)"
-        f"\n70-79: {f(n_reforco_70)} +{f(n_reforco_70_novas)} ({f(p_reforco_70)}%)"
-        f"\n65-69: {f(n_reforco_65)} +{f(n_reforco_65_novas)} ({f(p_reforco_65)}%)"
-        f"\n12-64: {f(n_reforco_resto)} +{f(n_reforco_resto_novas)} ({f(p_reforco_resto)}%)"
+        f"\n80+: {f(n_reforco_80)} +{f(n_reforco_80_novas)} {f(p_reforco_80)}%"
+        f"\n70-79: {f(n_reforco_70)} +{f(n_reforco_70_novas)} {f(p_reforco_70)}%"
+        f"\n65-69: {f(n_reforco_65)} +{f(n_reforco_65_novas)} {f(p_reforco_65)}%"
+        f"\n12-64: {f(n_reforco_resto)} +{f(n_reforco_resto_novas)} {f(p_reforco_resto)}%"
         f"\n"
-        f"\nGripe: {f(n_gripe)} +{f(n_gripe_novas)} ({f(p_gripe)}%)"
+        f"\nGripe: {f(n_gripe)} +{f(n_gripe_novas)} {f(p_gripe)}%"
         f"\n\n[2/2]"
         f"\n\n➕Todos os dados em: {link_repo}"
     )
-    print(tweet_len(tweet_1))
-    print(tweet_1)
-    print(tweet_len(tweet_2))
-    print(tweet_2)
-
+    #print(tweet_len(tweet_1))
+    #print(tweet_1)
+    #print(tweet_len(tweet_2))
+    #print(tweet_2)
+    return [tweet_1, tweet_2]
 
 
 # ---
@@ -175,7 +175,7 @@ if __name__ == '__main__':
 
     if consumer_key == 'DEBUG':
         for i, tweet in enumerate(tweets):
-            print(f"Tweet {i} {tweet_len(tweet)} '''\n{tweet}\n'''")
+            print(f"Tweet {i+1} {tweet_len(tweet)} '''\n{tweet}\n'''")
         exit(0)
 
     api = autenticar_twitter()
@@ -189,7 +189,9 @@ if __name__ == '__main__':
     try:
         prev_tweet = None
         for i, tweet in enumerate(tweets):
+            print(f"Tweet {i+1} {tweet_len(tweet)} '''\n{tweet}\n'''")
             prev_tweet = api.update_status(tweet, prev_tweet)
+            prev_tweet = prev_tweet.id_str
 
     except Exception as e:
         print("Erro a enviar o tweet", e)

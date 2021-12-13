@@ -56,6 +56,10 @@ VACINAS_DISTRIBUIDAS = [
 
 
 if __name__ == "__main__":
+  # DEPRECATED
+  print("DEPRECATED")
+  sys.exit(1)
+
 
   PATH_TO_ROOT = Path(__file__).resolve().parents[2]
   PATH_TO_CSV = PATH_TO_ROOT / "extra" / "vacinas" / "relatório"
