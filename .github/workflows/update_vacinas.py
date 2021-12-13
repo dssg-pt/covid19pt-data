@@ -393,6 +393,11 @@ def ajuste_dados_semanais(updated):
 
 
 if __name__ == "__main__":
+
+    # DEPRECATED
+    print("DEPRECATED")
+    sys.exit(1)
+
     # Constants
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / "vacinas.csv")
     URL = (
