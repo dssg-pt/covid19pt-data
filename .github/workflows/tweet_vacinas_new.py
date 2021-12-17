@@ -117,14 +117,14 @@ def compose_tweets(DAYS_OFFSET=0):
     p_reforco_65 = 100.0 * n_reforco_65 / POP_65
     n_reforco = int(d['pessoas_reforço'])
     n_reforco_novas = int(d['pessoas_reforço_novas'])
-    p_reforco = 100.0 * n_reforco / n_vacinados_c  # reforço vs vacinados, não 12+, não continente, não nacional
+    p_reforco = 100.0 * n_reforco / POP_PT_CONTINENTE
     n_reforco_resto = n_reforco - n_reforco_65 - n_reforco_70 - n_reforco_80
     n_reforco_resto_novas = n_reforco_novas - n_reforco_65_novas - n_reforco_70_novas - n_reforco_80_novas
     p_reforco_resto = 100.0 * n_reforco / POP_REFORCO_12_64
 
     n_gripe = int(d['pessoas_gripe'])
     n_gripe_novas = int(d['pessoas_gripe_novas'])
-    p_gripe = 100.0 * n_gripe / POP_REFORCO_12_64 # POP_VACINAVEL
+    p_gripe = 100.0 * n_gripe / POP_PT_CONTINENTE
     #n_vacinas_reforco = int(d['vacinas_reforço_e_gripe'])
     n_vacinas_reforco_novas = int(d['vacinas_reforço_e_gripe_novas'])
     #p_vacinas_reforco = int(n_vacinas_reforco / POP_REFORCO * 100_000)
