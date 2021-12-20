@@ -20,11 +20,19 @@ POP_PT_CONTINENTE = 9_860_175
 POP_VACINAVEL = 9_234_166
 #POP_0_11 = 1_113_726
 
-POP_65 = 620543
-POP_70 = 544016 + 429107  # 70-74 + 75-79
 POP_80 = 352218 + 316442  # 80-84 + 85 ou mais
-POP_REFORCO_65PLUS = POP_65 + POP_70 + POP_80
-POP_REFORCO_12_64 = POP_VACINAVEL - POP_REFORCO_65PLUS
+POP_70 = 544016 + 429107  # 70-74 + 75-79
+#POP_65 = 620543
+#POP_REFORCO_65PLUS = POP_65 + POP_70 + POP_80
+#POP_REFORCO_12_64 = POP_VACINAVEL - POP_REFORCO_65PLUS
+POP_60 = 672758 + 620543
+POP_50 = 747581 + 734540
+POP_REFORCO_50PLUS = POP_80 + POP_70 + POP_60 + POP_50
+POP_REFORCO_12_49 = POP_VACINAVEL - POP_REFORCO_50PLUS
+
+POP_05_12 = POP_PT - POP_VACINAVEL - 433332
+print(POP_05_12)
+
 
 POP_IDADE = {
     '0_9':     433332 + 461299,  #  0-04 + 05-09
@@ -66,7 +74,8 @@ def autenticar_twitter():
         pass
 
 def f(valor, plus=False):
-    if valor is None: return None
+    if valor is None: 
+        return "+?" if plus else ""
     valor = valor if type(valor) == int else round(float(valor), CASAS_DECIMAIS)
     r = format(valor, ",").replace(".","!").replace(",",".").replace("!",",")
     return f"+{r}" if plus and valor > 0 else r
@@ -102,6 +111,11 @@ def compose_tweets(DAYS_OFFSET=0):
     n_vacinados_c = int(d['pessoas_vacinadas_completamente_continente'])
     n_vacinados_c_novas = int(d['pessoas_vacinadas_completamente_continente_novas'])
     p_vacinados_c = 100.0 * n_vacinados_c / POP_PT_CONTINENTE
+
+    n_iniciados_05_12 = int(d['vacinação_iniciada_05_11'])
+    n_iniciados_05_12_novas = int(d['vacinação_iniciada_05_11_novas'])
+    p_iniciados_05_12 = 100.0 * n_iniciados_05_12 / POP_05_12
+
     n_vacinas = int(d['vacinas'])
     n_vacinas_novas = int(d['vacinas_novas'])
     p_vacinas = 100.0 * n_vacinas / POP_PT
@@ -112,53 +126,64 @@ def compose_tweets(DAYS_OFFSET=0):
     n_reforco_70 = int(d['reforço_70_79'])
     n_reforco_70_novas = int(d['reforço_70_79_novas'])
     p_reforco_70 = 100.0 * n_reforco_70 / POP_70
-    n_reforco_65 = int(d['reforço_65_69'])
-    n_reforco_65_novas = int(d['reforço_65_69_novas'])
-    p_reforco_65 = 100.0 * n_reforco_65 / POP_65
+    #n_reforco_65 = int(d['reforço_65_69'])
+    #n_reforco_65_novas = int(d['reforço_65_69_novas'])
+    #p_reforco_65 = 100.0 * n_reforco_65 / POP_65
+    has_60_novas = not math.isnan(d['reforço_60_69_novas'])
+    n_reforco_60 = int(d['reforço_60_69'])
+    n_reforco_60_novas = int(d['reforço_60_69_novas']) if has_60_novas else None
+    p_reforco_60 = 100.0 * n_reforco_60 / POP_60
+    n_reforco_50 = int(d['reforço_50_59'])
+    n_reforco_50_novas = int(d['reforço_50_59_novas']) if has_60_novas else None
+    p_reforco_50 = 100.0 * n_reforco_50 / POP_50
+
     n_reforco = int(d['pessoas_reforço'])
     n_reforco_novas = int(d['pessoas_reforço_novas'])
     p_reforco = 100.0 * n_reforco / POP_PT_CONTINENTE
-    n_reforco_resto = n_reforco - n_reforco_65 - n_reforco_70 - n_reforco_80
-    n_reforco_resto_novas = n_reforco_novas - n_reforco_65_novas - n_reforco_70_novas - n_reforco_80_novas
-    p_reforco_resto = 100.0 * n_reforco / POP_REFORCO_12_64
+
+    n_reforco_resto = n_reforco - n_reforco_80 - n_reforco_70 - n_reforco_60 - n_reforco_50
+    if has_60_novas:
+        n_reforco_resto_novas = n_reforco_novas - n_reforco_80_novas - n_reforco_70_novas - n_reforco_60_novas - n_reforco_50_novas
+    else:
+        n_reforco_resto_novas = None
+    p_reforco_resto = 100.0 * n_reforco_resto / POP_REFORCO_12_49
 
     n_gripe = int(d['pessoas_gripe'])
     n_gripe_novas = int(d['pessoas_gripe_novas'])
     p_gripe = 100.0 * n_gripe / POP_PT_CONTINENTE
+
     #n_vacinas_reforco = int(d['vacinas_reforço_e_gripe'])
     n_vacinas_reforco_novas = int(d['vacinas_reforço_e_gripe_novas'])
     #p_vacinas_reforco = int(n_vacinas_reforco / POP_REFORCO * 100_000)
 
     tweet_1 = (
-        f"💉População 🇵🇹 vacinada a {data}:"
-        f"\nInoculações: {GTE}{f(n_vacinas)} +{f(n_vacinas_novas)} {GTE}{f(p_vacinas)}%"
+        f"💉População 🇵🇹 vacinada até {data}:"
         f"\n"
         f"\nNacional"
-        f"\nVacinados: {GTE}{f(n_vacinados)} +{f(n_vacinados_novas)} {GTE}{f(p_vacinados)}%"
+        f"\nInoculações: {GTE}{f(n_vacinas)} {f(n_vacinas_novas, True)} {GTE}{f(p_vacinas)}%"
+        f"\nVacinados: {GTE}{f(n_vacinados)} {f(n_vacinados_novas, True)} {GTE}{f(p_vacinados)}%"
         f"\nVacinados 12+: {GTE}{f(p_vacinaveis)}%"
         f"\n"
         f"\nContinente"
-        f"\nVacinados: {f(n_vacinados_c)} +{f(n_vacinados_c_novas)} {f(p_vacinados_c)}%"
-        f"\nReforço: {f(n_reforco)} +{f(n_reforco_novas)} {f(p_reforco)}%"
-        f"\n"
-        f"\nInoculações diárias: +{f(n_vacinas_reforco_novas)}"
+        f"\nVacinados: {f(n_vacinados_c)} {f(n_vacinados_c_novas, True)} {f(p_vacinados_c)}%"
+        f"\nReforço: {f(n_reforco)} {f(n_reforco_novas, True)} {f(p_reforco)}%"
+        f"\nIniciada 5-12: {f(n_iniciados_05_12)} {f(n_iniciados_05_12_novas, True)} {f(p_iniciados_05_12)}%"
         f"\n\n[1/2]"
     )
     tweet_2 = (
-        f"💉População 🇵🇹 reforço a {data}:"
-        f"\n80+: {f(n_reforco_80)} +{f(n_reforco_80_novas)} {f(p_reforco_80)}%"
-        f"\n70-79: {f(n_reforco_70)} +{f(n_reforco_70_novas)} {f(p_reforco_70)}%"
-        f"\n65-69: {f(n_reforco_65)} +{f(n_reforco_65_novas)} {f(p_reforco_65)}%"
-        f"\n12-64: {f(n_reforco_resto)} +{f(n_reforco_resto_novas)} {f(p_reforco_resto)}%"
+        f"💉População 🇵🇹 reforço até {data}:"
+        f"\n80+: {f(n_reforco_80)} {f(n_reforco_80_novas, True)} {f(p_reforco_80)}%"
+        f"\n70s: {f(n_reforco_70)} {f(n_reforco_70_novas, True)} {f(p_reforco_70)}%"
+        f"\n60s: {f(n_reforco_60)} {f(n_reforco_60_novas, True)} {f(p_reforco_60)}%"
+        f"\n50s: {f(n_reforco_50)} {f(n_reforco_50_novas, True)} {f(p_reforco_50)}%"
+        f"\n12-49: {f(n_reforco_resto)} {f(n_reforco_resto_novas, True)} {f(p_reforco_resto)}%"
         f"\n"
-        f"\nGripe: {f(n_gripe)} +{f(n_gripe_novas)} {f(p_gripe)}%"
+        f"\nGripe: {f(n_gripe)} {f(n_gripe_novas, True)} {f(p_gripe)}%"
+        f"\n"
+        f"\nInoculações diárias: {f(n_vacinas_reforco_novas, True)}"
         f"\n\n[2/2]"
         f"\n\n➕Todos os dados em: {link_repo}"
     )
-    #print(tweet_len(tweet_1))
-    #print(tweet_1)
-    #print(tweet_len(tweet_2))
-    #print(tweet_2)
     return [tweet_1, tweet_2]
 
 

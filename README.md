@@ -224,6 +224,12 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `reforço_70_79_novas` | Número diário de pessoas com vacinação reforço no continente com 70 a 79 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
 | `reforço_65_69` | Número total de pessoas com vacinação reforço no continente com 65 a 69 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
 | `reforço_65_69_novas` | Número diário de pessoas com vacinação reforço no continente com 65 a 69 anos, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_60_69` | Número total de pessoas com vacinação reforço no continente com 60 a 69 anos, do relatório diário a partir de 19-12-2021, deixando de haver 65-69. | Inteiro >= 0 ou _vazio_ |
+| `reforço_60_69_novas` | Número diário de pessoas com vacinação reforço no continente com 60 a 69 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_50_59` | Número total de pessoas com vacinação reforço no continente com 50 a 59 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_50_59_novas` | Número diário de pessoas com vacinação reforço no continente com 50 a 59 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `vacinação_iniciada_05_11` | Número total de pessoas com vacinação iniciada no continente com 5 a 11 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `vacinação_iniciada_05_11_novas` | Número diário de pessoas com vacinação iniciada no continente com 5 a 11 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
 
 Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 
