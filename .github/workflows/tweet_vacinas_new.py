@@ -30,8 +30,7 @@ POP_50 = 747581 + 734540
 POP_REFORCO_50PLUS = POP_80 + POP_70 + POP_60 + POP_50
 POP_REFORCO_12_49 = POP_VACINAVEL - POP_REFORCO_50PLUS
 
-POP_05_12 = POP_PT - POP_VACINAVEL - 433332
-print(POP_05_12)
+POP_05_11 = POP_PT - POP_VACINAVEL - 433332
 
 
 POP_IDADE = {
@@ -112,9 +111,9 @@ def compose_tweets(DAYS_OFFSET=0):
     n_vacinados_c_novas = int(d['pessoas_vacinadas_completamente_continente_novas'])
     p_vacinados_c = 100.0 * n_vacinados_c / POP_PT_CONTINENTE
 
-    n_iniciados_05_12 = int(d['vacinação_iniciada_05_11'])
-    n_iniciados_05_12_novas = int(d['vacinação_iniciada_05_11_novas'])
-    p_iniciados_05_12 = 100.0 * n_iniciados_05_12 / POP_05_12
+    n_iniciados_05_11 = int(d['vacinação_iniciada_05_11'])
+    n_iniciados_05_11_novas = int(d['vacinação_iniciada_05_11_novas'])
+    p_iniciados_05_11 = 100.0 * n_iniciados_05_11 / POP_05_11
 
     n_vacinas = int(d['vacinas'])
     n_vacinas_novas = int(d['vacinas_novas'])
@@ -167,7 +166,7 @@ def compose_tweets(DAYS_OFFSET=0):
         f"\nContinente"
         f"\nVacinados: {f(n_vacinados_c)} {f(n_vacinados_c_novas, True)} {f(p_vacinados_c)}%"
         f"\nReforço: {f(n_reforco)} {f(n_reforco_novas, True)} {f(p_reforco)}%"
-        f"\nIniciada 5-12: {f(n_iniciados_05_12)} {f(n_iniciados_05_12_novas, True)} {f(p_iniciados_05_12)}%"
+        f"\nIniciada 5-11: {f(n_iniciados_05_11)} {f(n_iniciados_05_11_novas, True)} {f(p_iniciados_05_11)}%"
         f"\n\n[1/2]"
     )
     tweet_2 = (
