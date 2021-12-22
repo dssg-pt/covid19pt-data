@@ -157,6 +157,11 @@ def compose_tweets(DAYS_OFFSET=0):
     p_vacinados = 100.0 * n_vacinados / POP_PT
     p_vacinaveis = 100.0 * n_vacinados / POP_VACINAVEL
 
+    n_inoculados = int(d['pessoas_inoculadas'])
+    n_inoculados_novas = None # -int(d['pessoas_inoculadas_novas'])
+    p_inoculados = 100.0 * n_inoculados / POP_PT
+    p_inoculaveis = 100.0 * n_inoculados / POP_VACINAVEL
+
     n_vacinados_c = int(d['pessoas_vacinadas_completamente_continente'])
     n_vacinados_c_novas = int(d['pessoas_vacinadas_completamente_continente_novas'])
     p_vacinados_c = 100.0 * n_vacinados_c / POP_PT_CONTINENTE
@@ -188,14 +193,22 @@ def compose_tweets(DAYS_OFFSET=0):
 
     n_reforco = int(d['pessoas_reforço'])
     n_reforco_novas = int(d['pessoas_reforço_novas'])
-    p_reforco = 100.0 * n_reforco / POP_PT_CONTINENTE
+    p_reforco = 100.0 * n_reforco / POP_PT
 
-    n_reforco_resto = n_reforco - n_reforco_80 - n_reforco_70 - n_reforco_60 - n_reforco_50
+    n_reforco_c = int(d['pessoas_reforço_continente'])
+    n_reforco_c_novas = int(d['pessoas_reforço_continente_novas'])
+    p_reforco_c = 100.0 * n_reforco_c / POP_PT_CONTINENTE
+
+    n_reforco_c_resto = n_reforco_c - n_reforco_80 - n_reforco_70 - n_reforco_60 - n_reforco_50
     if has_60_novas:
-        n_reforco_resto_novas = n_reforco_novas - n_reforco_80_novas - n_reforco_70_novas - n_reforco_60_novas - n_reforco_50_novas
+        n_reforco_c_resto_novas = n_reforco_c_novas - n_reforco_80_novas - n_reforco_70_novas - n_reforco_60_novas - n_reforco_50_novas
+
+        # relatorio 21-12-2021 não aumentou os valores por idade (mas adicionou percentagens) portanto a 22 o resto fica negativo
+        if n_reforco_c_resto_novas < 0: n_reforco_c_resto_novas = None
     else:
-        n_reforco_resto_novas = None
-    p_reforco_resto = 100.0 * n_reforco_resto / POP_REFORCO_12_49
+        n_reforco_c_resto_novas = None
+    
+    p_reforco_c_resto = 100.0 * n_reforco_c_resto / POP_REFORCO_12_49
 
     n_gripe = int(d['pessoas_gripe'])
     n_gripe_novas = int(d['pessoas_gripe_novas'])
@@ -206,34 +219,40 @@ def compose_tweets(DAYS_OFFSET=0):
     #p_vacinas_reforco = int(n_vacinas_reforco / POP_REFORCO * 100_000)
 
     tweet_1 = (
-        f"💉População 🇵🇹 vacinada até {data}:"
+        f"💉População 🇵🇹 nacional vacinada até {data}:"
         f"\n"
-        f"\nNacional"
         f"\nInoculações: {GTE}{f(n_vacinas)} {f(n_vacinas_novas, True)} {GTE}{f(p_vacinas)}%"
+        f"\nInoculados: {GTE}{f(n_inoculados)} {f(n_inoculados_novas, True)} {GTE}{f(p_inoculados)}%"
+        f"\nInoculados 12+: {GTE}{f(p_inoculaveis)}%"
         f"\nVacinados: {GTE}{f(n_vacinados)} {f(n_vacinados_novas, True)} {GTE}{f(p_vacinados)}%"
         f"\nVacinados 12+: {GTE}{f(p_vacinaveis)}%"
-        f"\n"
-        f"\nContinente"
-        f"\nVacinados: {f(n_vacinados_c)} {f(n_vacinados_c_novas, True)} {f(p_vacinados_c)}%"
-        f"\nReforço: {f(n_reforco)} {f(n_reforco_novas, True)} {f(p_reforco)}%"
-        f"\nIniciada 5-11: {f(n_iniciados_05_11)} {f(n_iniciados_05_11_novas, True)} {f(p_iniciados_05_11)}%"
-        f"\n\n[1/2]"
+        f"\nReforço: {GTE}{f(n_reforco)} {GTE}{f(n_reforco_novas, True)} {GTE}{f(p_reforco)}%"
+        f"\n\n[1/3]"
     )
     tweet_2 = (
-        f"💉População 🇵🇹 reforço até {data}:"
-        f"\n80+: {f(n_reforco_80)} {f(n_reforco_80_novas, True)} {f(p_reforco_80)}%"
-        f"\n70s: {f(n_reforco_70)} {f(n_reforco_70_novas, True)} {f(p_reforco_70)}%"
-        f"\n60s: {f(n_reforco_60)} {f(n_reforco_60_novas, True)} {f(p_reforco_60)}%"
-        f"\n50s: {f(n_reforco_50)} {f(n_reforco_50_novas, True)} {f(p_reforco_50)}%"
-        f"\n12-49: {f(n_reforco_resto)} {f(n_reforco_resto_novas, True)} {f(p_reforco_resto)}%"
+        f"💉População 🇵🇹 continente vacinada até {data}:"
+        f"\n"
+        f"\nIniciada 5-11: {f(n_iniciados_05_11)} {f(n_iniciados_05_11_novas, True)} {f(p_iniciados_05_11)}%"
+        f"\nVacinados: {f(n_vacinados_c)} {f(n_vacinados_c_novas, True)} {f(p_vacinados_c)}%"
+        f"\nReforço: {f(n_reforco_c)} {f(n_reforco_c_novas, True)} {f(p_reforco_c)}%"
         f"\n"
         f"\nGripe: {f(n_gripe)} {f(n_gripe_novas, True)} {f(p_gripe)}%"
         f"\n"
         f"\nInoculações diárias: {f(n_vacinas_reforco_novas, True)}"
-        f"\n\n[2/2]"
+        f"\n\n[2/3]"
+    )
+    tweet_3 = (
+        f"💉População 🇵🇹 continente reforço por idade até {data}:"
+        f"\n"
+        f"\n80+: {f(n_reforco_80)} {f(n_reforco_80_novas, True)} {f(p_reforco_80)}%"
+        f"\n70s: {f(n_reforco_70)} {f(n_reforco_70_novas, True)} {f(p_reforco_70)}%"
+        f"\n60s: {f(n_reforco_60)} {f(n_reforco_60_novas, True)} {f(p_reforco_60)}%"
+        f"\n50s: {f(n_reforco_50)} {f(n_reforco_50_novas, True)} {f(p_reforco_50)}%"
+        f"\n12-49: {f(n_reforco_c_resto)} {f(n_reforco_c_resto_novas, True)} {f(p_reforco_c_resto)}%"
+        f"\n\n[3/3]"
         f"\n\n➕Todos os dados em: {link_repo}"
     )
-    return [tweet_1, tweet_2]
+    return [tweet_1, tweet_2, tweet_3]
 
 
 # ---
