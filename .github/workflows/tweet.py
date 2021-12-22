@@ -72,6 +72,9 @@ def f(valor):
 # ajuste incidencia7 para ficar comparável com 14
 INCIDENCIA7_14=True
 
+# usa incidencia 7 dias quando a variação é muito volátil
+INCIDENCIA7=True
+
 # ICONS[key] = [5 values]
 ICONS = {}
 # OMS recomenda 5 ; Portugal tem média 10 ; picos da onda passaram 15
@@ -172,7 +175,10 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
         dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], name=f'novos_casos_{k}', OFFSET=OFFSET)
         dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff()[-1 - OFFSET])
         dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], name=f'novos_obitos_{k}', OFFSET=OFFSET)
-        incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
+        if INCIDENCIA7:
+            incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
+        else:
+            incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
         dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
         dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, name=f'incidencia_{k}', OFFSET=OFFSET)
         dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
@@ -184,7 +190,10 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
             k2 = k
             dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff(idades_diff)[-1 - OFFSET])
             dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff, name=f'novos_casos_{k}', OFFSET=OFFSET)
-            incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
+            if INCIDENCIA7:
+                incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
+            else:
+                incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
             dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
             dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}', OFFSET=OFFSET)
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
@@ -331,6 +340,8 @@ def compor_tweets(dados_para_tweets):
         "\n"
         "[2/{num_tweets}]"
     )
+    if tweet_len(second_tweet) >= 280:
+        third_tweet = second_tweet.replace(':', '')
 
     if sem_idades:
         third_tweet = ""
@@ -353,6 +364,9 @@ def compor_tweets(dados_para_tweets):
             "\n"
             "[3/{num_tweets}]"
         )
+        if tweet_len(third_tweet) >= 280:
+            third_tweet = third_tweet.replace(':', '')
+
 
     fourth_tweet = (
         "🔎Nacional: incidência, média diária novos casos e óbitos:\n"
