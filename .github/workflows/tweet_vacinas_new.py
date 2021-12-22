@@ -15,36 +15,86 @@ except locale.Error:
 
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
 
+# https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&indOcorrCod=0008273&xlang=pt
+# POP_PT = 10_298_252
+# POP_PT_CONTINENTE = 9_802_128
+# Açores 242_201 | Madeira 253_923
+
+# Keeping these consistent with previous vaccination numbers
 POP_PT = 10_347_892
 POP_PT_CONTINENTE = 9_860_175
 POP_VACINAVEL = 9_234_166
 #POP_0_11 = 1_113_726
 
-POP_80 = 352218 + 316442  # 80-84 + 85 ou mais
-POP_70 = 544016 + 429107  # 70-74 + 75-79
-#POP_65 = 620543
+# POP_IDADE = {
+#     '0_9':      433_332 + 461_299,  #  0-04 + 05-09
+#     '10_19':    507_646 + 549_033,  # 10-14 + 15-19
+#     '20_29':    544_575 + 547_505,  # 20-24 + 25-29
+#     '30_39':    571_355 + 679_093,  # 30-34 + 35-39
+#     '40_49':    792_670 + 782_555,  # 40-44 + 45-49
+#     '50_59':    747_581 + 734_540,  # 50-54 + 55-59
+#     '60_69':    672_758 + 620_543,  # 60-64 + 65-69
+#     '65_69':          0 + 620_543,  #     0 + 65-69
+#     '70_79':    544_016 + 429_107,  # 70-74 + 75-79
+#     '80_plus':  352_218 + 316_442,  # 80-84 + 85 ou mais
+# }
+# https://www.pordata.pt/Portugal/População+residente++média+anual+total+e+por+grupo+etário-10
+POP_IDADE = {
+    'TOTAL':    10_297_081,
+    '0_9':      436_118 + 450_275,  # 433_332 + 461_299,  #  0-04 + 05-09
+    '10_19':    503_414	+ 540_882,  # 507_646 + 549_033,  # 10-14 + 15-19
+    '20_29':    557_119	+ 547_637,  # 544_575 + 547_505,  # 20-24 + 25-29
+    '30_39':    566_423	+ 661_324,  # 571_355 + 679_093,  # 30-34 + 35-39
+    '40_49':    774_449	+ 796_276,  # 792_670 + 782_555,  # 40-44 + 45-49
+    '50_59':    745_100	+ 741_435,  # 747_581 + 734_540,  # 50-54 + 55-59
+    '60_69':    681_597	+ 625_377,  # 672_758 + 620_543,  # 60-64 + 65-69
+    '65_69':          0 + 625_377,  #       0 + 620_543,  #     0 + 65-69
+    '70_79':    552_932	+ 438_002,  # 544_016 + 429_107,  # 70-74 + 75-79
+    '80_plus':  350_661	+ 328_066,  # 352_218 + 316_442,  # 80-84 + 85 ou mais
+}
+
+PROPORTION_CONTINENTE = POP_PT_CONTINENTE / POP_PT
+POP_VACINAVEL_CONTINENTE = POP_VACINAVEL * PROPORTION_CONTINENTE
+
+# Proportion is not constant per age group
+#POP_IDADE = dict (
+#    (k, v * PROPORTION_CONTINENTE) for (k, v) in POP_IDADE.items()
+#)
+
+
+# https://www.pordata.pt/DB/Municipios/Ambiente+de+Consulta/Tabela
+PROPORTIONS = {
+    'TOTAL':   9_857_593 / 10_344_802,
+    '0_14':    1_264_897 /  1_331_396,
+    '15_64':   6_257_752 /  6_589_284,
+    '65_plus': 2_334_944 /  2_424_122,
+}
+POP_IDADE = {
+    'TOTAL':    POP_IDADE['TOTAL'] * PROPORTIONS['TOTAL'],
+    '0_9':      POP_IDADE['0_9'] * PROPORTIONS['0_14'],
+    '10_19':    POP_IDADE['10_19'] * ( PROPORTIONS['0_14'] + PROPORTIONS['15_64'] ) / 2,
+    '20_29':    POP_IDADE['20_29'] * PROPORTIONS['15_64'],
+    '30_39':    POP_IDADE['30_39'] * PROPORTIONS['15_64'],
+    '40_49':    POP_IDADE['40_49'] * PROPORTIONS['15_64'],
+    '50_59':    POP_IDADE['50_59'] * PROPORTIONS['15_64'],
+    '60_69':    POP_IDADE['60_69'] * ( PROPORTIONS['15_64'] + PROPORTIONS['65_plus'] ) / 2,
+    '65_69':    POP_IDADE['65_69'] * PROPORTIONS['65_plus'],
+    '70_79':    POP_IDADE['70_79'] * PROPORTIONS['65_plus'],
+    '80_plus':  POP_IDADE['80_plus'] * PROPORTIONS['65_plus'],
+}
+
+POP_80 = POP_IDADE['80_plus']
+POP_70 = POP_IDADE['70_79']
+POP_65 = POP_IDADE['65_69']
 #POP_REFORCO_65PLUS = POP_65 + POP_70 + POP_80
 #POP_REFORCO_12_64 = POP_VACINAVEL - POP_REFORCO_65PLUS
-POP_60 = 672758 + 620543
-POP_50 = 747581 + 734540
+POP_60 = POP_IDADE['60_69']
+POP_50 = POP_IDADE['50_59']
 POP_REFORCO_50PLUS = POP_80 + POP_70 + POP_60 + POP_50
-POP_REFORCO_12_49 = POP_VACINAVEL - POP_REFORCO_50PLUS
+POP_REFORCO_12_49 = POP_VACINAVEL_CONTINENTE - POP_REFORCO_50PLUS
 
-POP_05_11 = POP_PT - POP_VACINAVEL - 433332
+POP_05_11 = POP_PT - POP_VACINAVEL_CONTINENTE - 436_118
 
-
-POP_IDADE = {
-    '0_9':     433332 + 461299,  #  0-04 + 05-09
-    '10_19':   507646 + 549033,  # 10-14 + 15-19
-    '20_29':   544575 + 547505,  # 20-24 + 25-29
-    '30_39':   571355 + 679093,  # 30-34 + 35-39
-    '40_49':   792670 + 782555,  # 40-44 + 45-49
-    '50_59':   747581 + 734540,  # 50-54 + 55-59
-    '60_69':   672758 + 620543,  # 60-64 + 65-69
-    '65_69':        0 + 620543,  #     0 + 65-69
-    '70_79':   544016 + 429107,  # 70-74 + 75-79
-    '80_plus': 352218 + 316442,  # 80-84 + 85 ou mais
-}
 
 TENDENCIA = ["⬈", "⬊", "⬌"]
 GTE = '≥'
@@ -73,7 +123,7 @@ def autenticar_twitter():
         pass
 
 def f(valor, plus=False):
-    if valor is None: 
+    if valor is None:
         return "+?" if plus else ""
     valor = valor if type(valor) == int else round(float(valor), CASAS_DECIMAIS)
     r = format(valor, ",").replace(".","!").replace(",",".").replace("!",",")
