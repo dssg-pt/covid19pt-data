@@ -5,7 +5,8 @@ on:
 
   schedule:
     # Every hour at minute 42 from 9-22h UTC (10-13 WEST)
-    - cron: 42 9-22 * * *
+    # - cron: 42 9-22 * * *
+    - cron: 12,42 7-23 * * *
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
