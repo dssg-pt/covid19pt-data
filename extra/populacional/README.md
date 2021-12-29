@@ -9,18 +9,18 @@ São fornecidos os ficheiros acima, para 2019, e versão simplificadas em CSV, c
 
 ### Densidade populacional
 - *Onde há mais e menos pessoas, em média, por km2?*
-- 2019
+- 2020, 2019
 - https://www.pordata.pt/Municipios/Densidade+populacional-452
 
 
 ### População residente, estimativas a 31 de Dezembro
 - *Onde há mais e menos pessoas no final de cada ano?*
-- 2019
+- 2020, 2019
 - https://www.pordata.pt/Municipios/População+residente++estimativas+a+31+de+Dezembro-120
 
 ### Índice de dependência de idosos
 - *Onde há mais e menos idosos por 100 pessoas em idade activa?*
-- 2019
+- 2020, 2019
 - https://www.pordata.pt/Municipios/Índice+de+dependência+de+idosos-461
 
 

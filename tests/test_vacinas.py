@@ -126,8 +126,13 @@ def test_dtype(data_vacinas, col_name, expected_dtype, int_check, extra_check):
             if (
                 row['data'].strftime("%Y-%m-%d") == '2021-03-29'
                 and col_name == 'pessoas_vacinadas_completamente_novas'
-                # and val == -552 # Relatório 22
-                and val == -377 # Relatório 24
+                # and val == -552  # Relatório 22
+                # and val == -377  # Relatório 24
+                # and val == -315  # Relatório 25
+                # and val == -235  # Relatório 26
+                # and val == -142  # Relatório 27
+                # and val == -69  # Relatório 28
+                and val > 0  # 122 # Relatório 29
             ):
                 continue
             assert extra_check(
@@ -144,7 +149,8 @@ def test_delimiter_comma():
     current_dir = Path(__file__).parent.absolute()
     csv_filepath = current_dir / ".." / "vacinas.csv"
     with open(csv_filepath, newline="") as csvfile:
-        csv.Sniffer().sniff(csvfile.read(1024), delimiters=",")
+        sample = csvfile.read()
+        csv.Sniffer().sniff(sample, delimiters=",")
 
 
 def test_blank_lines(data_vacinas):
@@ -200,10 +206,10 @@ def test_vaccines(data_vacinas):
             assert row['doses'] == row['doses1'] + row['doses2'], row['data']
         if row['pessoas_vacinadas_parcialmente'] != 'NOO':
             assert row['pessoas_inoculadas'] == row['pessoas_vacinadas_parcialmente'] + row['pessoas_vacinadas_completamente'], row['data']
-        if row['data'] >= datetime.datetime(2021, 5, 3):
-            # before, the diff is small positive and negative, maybe recuperados
-            # after, it grows due to Janssen
-            assert row['vacinas'] <= row['pessoas_vacinadas_parcialmente'] + 2 * row['pessoas_vacinadas_completamente'], row['data']
+            if row['data'] >= datetime.datetime(2021, 5, 3):
+                # before, the diff is small positive and negative, maybe recuperados
+                # after, it grows due to Janssen
+                assert row['vacinas'] <= row['pessoas_vacinadas_parcialmente'] + 2 * row['pessoas_vacinadas_completamente'], row['data']
 
 
 def test_sequentiality_dates(data_vacinas):

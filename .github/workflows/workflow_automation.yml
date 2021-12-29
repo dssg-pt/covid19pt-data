@@ -4,50 +4,238 @@ on:
   workflow_dispatch:
 
   schedule:
-    # Every 15 minutes from 12 to 15h
-    - cron: 0,15,30,45 12,13,14,15 * * * 
+    # Every hour at minute 42 from 9-22h UTC (10-13 WEST)
+    # - cron: 42 9-22 * * *
+    - cron: 12,42 7-23 * * *
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
 jobs:
 
-  check_vaccines:
-    name: Check if vaccine data has update
+  check_new_data:
+    name: Check for updated covid19pt data
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+
+      # setup image to the bare minimum to do requests and check for new data
 
       - name: Setup Python to 3.8.x
         uses: actions/setup-python@v2
         with:
           python-version: '3.8.x'
 
-      - name: Install Requests package
-        run: pip install requests
+      - name: Install Python 'requests' dependency
+        run: |
+          pip install requests
 
       - name: Update Python path
-        run: echo "PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE" >> $GITHUB_ENV
-
-      - name: Check for update
-        run: echo "UPDATE_VACCINE=$(python .github/workflows/scripts/check_vaccine_update.py)" >> $GITHUB_ENV
-
-      # - name: There is NO updated
-      #   if: ${{ env.UPDATE_VACCINE == 'FALSE' }}
-      #   run: python .github/workflows/scripts/send_slack_message.py --message ":large_yellow_circle:. NO VACCINE DATA AVAILABLE :large_yellow_circle:"
-
-      - name: There is a NEW updated
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:. NEW VACCINE DATA AVAILABLE :large_green_circle:"
-
-      - name: Trigger workflow vaccines
-        if: ${{ env.UPDATE_VACCINE == 'TRUE' }}
         run: |
-          curl \
-            -X POST \
-            -d '{"ref":"refs/heads/master"}' \
-            -H 'Content-Type: application/json' \
-            -H 'Accept: application/vnd.github.v3+json' \
-            -H 'Authorization: token ${{secrets.GITHUB_TOKEN}}' \
-            'https://api.github.com/repos/dssg-pt/covid19pt-data/actions/workflows/workflow_vacinas.yml/dispatches'
+          echo "PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE" >> $GITHUB_ENV
+
+
+      # -----
+
+      - name: Check for COVID19PT updates for - Daily PDF
+        run: |
+          echo "UPDATE_PDF=$(python .github/workflows/scripts/check_pdf_update.py)" >> $GITHUB_ENV
+
+      - name: Check for COVID19PT updates for - Daily API data
+        run: |
+          echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
+
+      - name: Check for COVID19PT updates for - Daily API amostras
+        run: |
+          echo "UPDATE_AMOSTRAS=$(python .github/workflows/scripts/check_amostras_update.py)" >> $GITHUB_ENV
+
+      - name: Check for COVID19PT updates for - Weekly Concelhos - retrieve data
+        run: |
+          wget -c -O /tmp/concelhos.json \
+          'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/IncidenciaCOVIDporConc100k_view/FeatureServer/0/query?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=false'
+      - name: Check for COVID19PT updates for - Weekly Concelhos - compare data
+        run: |
+          UPDATE_CONCELHOS=$(diff -q $(ls -1 extra/concelhos_incidencia/*concelhos.json | sort -n | tail -1) /tmp/concelhos.json 2>&1 >/dev/null || echo TRUE)
+          echo "UPDATE_CONCELHOS=${UPDATE_CONCELHOS:-FALSE}" >> $GITHUB_ENV
+
+      - name: Output GITHUB_ENV
+        run: echo $GITHUB_ENV
+
+      - name: Check if any COVID19PT data is updated and if any work must be done
+        if: ${{ env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
+
+      - name: Ping slack if anything updated
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DATA AVAILABLE, WORKFLOW RUNNING _:large_green_circle:"
+
+      # -----
+
+      # If there is new data, setup system properly
+      - name: Configure pt_PT locale
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          sudo apt-get update -y && \
+          sudo apt-get install -y locales && \
+          echo "pt_PT.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen && \
+          sudo locale-gen pt_PT.UTF-8
+      - name: Configure pt_PT (Europe/Lisbon) timezone
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          sudo ln -fs /usr/share/zoneinfo/Europe/Lisbon /etc/localtime && \
+          sudo dpkg-reconfigure --frontend noninteractive tzdata
+      - name: Install Python dependencies
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          sudo python -m pip install --upgrade pip && \
+          python -m pip install -r .github/workflows/requirements.txt
+
+
+      # If there is anything to do, also look for amostras
+      - name: Update data about test samples (amostras)
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
+        run: |
+          python .github/workflows/update_amostras.py
+      - name: Validate data about test samples (amostras) with pytest
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
+        run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
+      - name: Upload pytest samples (amostras) test results
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-amostras-results
+          path: tests/junit/test-amostras-results.xml
+
+
+      # If there is anything to do, also look for Rt
+      - name: Update data about Rt
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          python .github/workflows/update_rt.py
+
+
+      # If there is new PDF
+      - name: Scrap the report link from the DGS website
+        if: ${{ env.UPDATE_PDF == 'TRUE' }}
+        run: |
+          python .github/workflows/Web_Scrapper_DGS.py
+      - name: Download PDF
+        if: ${{ env.UPDATE_PDF == 'TRUE' }}
+        run: |
+          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
+          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
+      - name: Process PDF
+        if: ${{ env.UPDATE_PDF == 'TRUE' }}
+        run: |
+          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
+          python .github/workflows/process_report.py
+      - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
+        if: ${{ env.UPDATE_PDF == 'TRUE' }}
+        run: |
+          git add -A dgs-reports-archive/
+
+
+      # If there is new data
+      - name: Run data extraction
+        if: ${{ env.UPDATE_DATA == 'TRUE' }}
+        run: |
+          python .github/workflows/extract_data_arcgis.py
+      - name: Validate data with pytest
+        if: ${{ env.UPDATE_DATA == 'TRUE' }}
+        run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
+      - name: Upload pytest test results
+        if: ${{ env.UPDATE_DATA == 'TRUE' }}
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-results
+          path: tests/junit/test-results.xml
+
+
+      # If there is new weekly concelhos
+      - name: Update data about concelhos
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        # posted on friday, data until wednesday 23:59, therefore date is thursday
+        run: |
+          mv /tmp/concelhos.json extra/concelhos_incidencia/$(python .github/workflows/scripts/get_latest_friday.py 1)-concelhos.json
+      - name: Update data about concelhos
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: |
+          python .github/workflows/extract_dados_concelhos_incidencia.py $(ls -1 extra/concelhos_incidencia/*.json | sort -n | tail -1)
+      - name: Fix data about concelhos
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: |
+          python .github/workflows/clean_concelhos_new.py
+      - name: Validate data about test concelhos with pytest
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: |
+          pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
+      - name: Upload pytest samples test results
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        uses: actions/upload-artifact@master
+        with:
+          name: pytest-concelhos-results
+          path: tests/junit/test-concelhos-results.xml
+      - name: Update concelhos README
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: |
+          echo "" >> extra/concelhos_incidencia/README.md
+          echo "### $(python .github/workflows/scripts/get_latest_friday.py 1)-concelhos.json" >> extra/concelhos_incidencia/README.md
+          echo "$(python .github/workflows/scripts/get_latest_friday.py 15 true) a $(python .github/workflows/scripts/get_latest_friday.py 2 true) (quarta-feira), publicado a $(python .github/workflows/scripts/get_latest_friday.py 0 true) (sexta-feira)" >> extra/concelhos_incidencia/README.md
+      - name: Add concelhos API data backup
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: |
+          git add -A extra/concelhos_incidencia/
+
+
+      # -----
+
+      - name: Update readme date again, before commits
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          python .github/workflows/update_readme.py
+
+      - name: Commit all changes
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update data for today
+          branch: ${{ github.head_ref }}
+      - name: Get latest commit id
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        run: |
+          echo "LAST_COMMIT=$(git rev-parse HEAD)"
+          echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      - name: Change the latest commit's status to success
+        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          description: 'Success'
+          context: 'build'
+          state: 'success'
+          sha: ${{env.LAST_COMMIT}}
+
+      # If there are new daily data, tweet it
+      - name: Auto publish to Twitter
+        if: ${{ env.UPDATE_DATA == 'TRUE' }}
+        run: |
+          python .github/workflows/tweet.py
+        env:
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+          TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+
+      - name: There is a NEW update for Covid PDF
+        if: ${{ env.UPDATE_PDF == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW PDF DATA PUBLISHED _:large_green_circle:"
+      - name: There is a NEW update for Covid Data
+        if: ${{ env.UPDATE_DATA == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY DATA PUBLISHED _:large_green_circle:"
+      - name: There is a NEW update for Covid Amostras
+        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY AMOSTRAS PUBLISHED _:large_green_circle:"
+      - name: There is a NEW update for Covid Concelhos
+        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW WEEKLY CONCELHOS PUBLISHED _:large_green_circle:"

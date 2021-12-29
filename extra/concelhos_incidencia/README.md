@@ -118,3 +118,72 @@ Shape_Leng
 
 ### 2021-07-29-concelhos.json
 15-07-2021 a 28-07-2021 (quarta-feira), publicado a 30-07-2021 (sexta-feira)
+
+### 2021-08-05-concelhos.json
+22-07-2021 a 04-08-2021 (quarta-feira), publicado a 06-08-2021 (sexta-feira)
+
+### 2021-08-12-concelhos.json
+29-07-2021 a 11-08-2021 (quarta-feira), publicado a 13-08-2021 (sexta-feira)
+
+### 2021-08-19-concelhos.json
+05-08-2021 a 18-08-2021 (quarta-feira), publicado a 20-08-2021 (sexta-feira)
+
+### 2021-08-26-concelhos.json
+12-08-2021 a 25-08-2021 (quarta-feira), publicado a 27-08-2021 (sexta-feira)
+
+### 2021-09-02-concelhos.json
+19-08-2021 a 01-09-2021 (quarta-feira), publicado a 03-09-2021 (sexta-feira)
+
+### 2021-09-09-concelhos.json
+26-08-2021 a 08-09-2021 (quarta-feira), publicado a 10-09-2021 (sexta-feira)
+
+### 2021-09-16-concelhos.json
+02-09-2021 a 15-09-2021 (quarta-feira), publicado a 17-09-2021 (sexta-feira)
+
+### 2021-09-23-concelhos.json
+09-09-2021 a 22-09-2021 (quarta-feira), publicado a 24-09-2021 (sexta-feira)
+
+### 2021-09-30-concelhos.json
+16-09-2021 a 29-09-2021 (quarta-feira), publicado a 01-10-2021 (sexta-feira)
+
+### 2021-10-07-concelhos.json
+23-09-2021 a 06-10-2021 (quarta-feira), publicado a 08-10-2021 (sexta-feira)
+
+### 2021-10-14-concelhos.json
+30-09-2021 a 13-10-2021 (quarta-feira), publicado a 15-10-2021 (sexta-feira)
+
+### 2021-10-21-concelhos.json
+07-10-2021 a 20-10-2021 (quarta-feira), publicado a 22-10-2021 (sexta-feira)
+
+### 2021-10-28-concelhos.json
+14-10-2021 a 27-10-2021 (quarta-feira), publicado a 29-10-2021 (sexta-feira)
+
+### 2021-11-04-concelhos.json
+21-10-2021 a 03-11-2021 (quarta-feira), publicado a 05-11-2021 (sexta-feira)
+
+### 2021-11-11-concelhos.json
+28-10-2021 a 10-11-2021 (quarta-feira), publicado a 12-11-2021 (sexta-feira)
+
+### 2021-11-18-concelhos.json
+04-11-2021 a 17-11-2021 (quarta-feira), publicado a 19-11-2021 (sexta-feira)
+
+### 2021-11-25-concelhos.json
+11-11-2021 a 24-11-2021 (quarta-feira), publicado a 26-11-2021 (sexta-feira)
+
+### 2021-11-25-concelhos.json
+11-11-2021 a 24-11-2021 (quarta-feira), publicado a 26-11-2021 (sexta-feira)
+
+### 2021-12-02-concelhos.json
+18-11-2021 a 01-12-2021 (quarta-feira), publicado a 03-12-2021 (sexta-feira)
+
+### 2021-12-09-concelhos.json
+25-11-2021 a 08-12-2021 (quarta-feira), publicado a 10-12-2021 (sexta-feira)
+
+### 2021-12-16-concelhos.json
+02-12-2021 a 15-12-2021 (quarta-feira), publicado a 17-12-2021 (sexta-feira)
+
+### 2021-12-23-concelhos.json
+09-12-2021 a 22-12-2021 (quarta-feira), publicado a 24-12-2021 (sexta-feira)
+
+### 2021-12-23-concelhos.json
+09-12-2021 a 22-12-2021 (quarta-feira), publicado a 24-12-2021 (sexta-feira)

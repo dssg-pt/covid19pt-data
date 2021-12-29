@@ -26,6 +26,13 @@
 - Fonte: https://covid19.min-saude.pt/relatorio-de-vacinacao/
 
 
+# Vacinas Reforço e Gripe
+- Pasta: `reforço`
+- Relatório PDF: `YYYY-mm-dd_Relatório_Vacinação_Diário_X.pdf`
+- Relatório número `X` publicado na data `YYYY-mm-dd`.
+- Fonte: https://covid19.min-saude.pt/relatorio-de-vacinacao/
+
+
 ### Relatório 2021-02-15
 - `Dataset vacinação (16/02/2021)`
 - `Relatório de Vacinação nº 1 (27/12/2020 a 14/02/2021)`
@@ -161,14 +168,94 @@
 ### Relatório 2021-07-12
 - `Dataset vacinação (22)`
 - `Relatório de Vacinação nº 22 (27/12/2020 a 11/07/2021)`
-- publicado a `2021-07-14` com data `2021-07-11`
+- publicado a `2021-07-14` com data `2021-07-11` (domingo)
 
 ### Relatório 2021-07-19
 - `Dataset vacinação (23)` EM FALTA
 - `Relatório de Vacinação nº 23 (27/12/2020 a 18/07/2021)`
-- publicado a `2021-07-21` (quarta) com data `2021-07-18`
+- publicado a `2021-07-21` (quarta) com data `2021-07-18` (domingo)
 
 ### Relatório 2021-07-26
 - `Dataset vacinação (24)`
 - `Relatório de Vacinação nº 24 (27/12/2020 a 25/07/2021)`
-- publicado a `2021-07-27` (terça noite) com data `2021-07-25`
+- publicado a `2021-07-27` (terça noite) com data `2021-07-25` (domingo)
+
+### Relatório 2021-08-02
+- `Dataset vacinação (25)`
+- `Relatório de Vacinação nº 25 (27/12/2020 a 01/08/2021)`
+- publicado a `2021-08-03` (terça noite) com data `2021-08-01` (domingo)
+
+### Relatório 2021-08-09
+- `Dataset vacinação (26)`
+- `Relatório de Vacinação nº 26 (27/12/2020 a 08/08/2021)`
+- publicado a `2021-08-10` (terça noite) com data `2021-08-08` (domingo)
+
+### Relatório 2021-08-16
+- `Dataset vacinação (27)`
+- `Relatório de Vacinação nº 27 (27/12/2020 a 15/08/2021)`
+- publicado a `2021-08-17` (terça noite) com data `2021-08-15` (domingo)
+
+### Relatório 2021-08-23
+- `Dataset vacinação (28)`
+- `Relatório de Vacinação nº 28 (27/12/2020 a 22/08/2021)`
+- publicado a `2021-08-25` (quarta noite) com data `2021-08-22` (domingo)
+
+### Relatório 2021-08-30
+- `Dataset vacinação (29)`
+- `Relatório de Vacinação nº 29 (27/12/2020 a 29/08/2021)`
+- publicado a `2021-09-01` (quarta noite) com data `2021-08-29` (domingo)
+
+### Relatório 2021-09-06
+- `Dataset vacinação (30)`
+- `Relatório de Vacinação nº 30 (27/12/2020 a 05/09/2021)`
+- publicado a `2021-09-07` (terça noite) com data `2021-09-05` (domingo)
+
+### Relatório 2021-09-13
+- `Dataset vacinação (31)`
+- `Relatório de Vacinação nº 31 (27/12/2020 a 12/09/2021)`
+- publicado a `2021-09-14` (terça noite) com data `2021-09-12` (domingo)
+
+### Relatório 2021-09-20
+- `Dataset vacinação (32)`
+- `Relatório de Vacinação nº 32 (27/12/2020 a 19/09/2021)`
+- publicado a `2021-09-21` (terça noite) com data `2021-09-19` (domingo)
+
+### Relatório 2021-09-27
+- `Dataset vacinação (33)`
+- `Relatório de Vacinação nº 33 (27/12/2020 a 26/09/2021)`
+- publicado a `2021-09-28` (terça noite) com data `2021-09-26` (domingo)
+
+### Relatório 2021-10-04
+- `Dataset vacinação (34)`
+- `Relatório de Vacinação nº 34 (27/12/2020 a 03/10/2021)`
+- publicado a `2021-10-05` (terça noite) com data `2021-10-03` (domingo)
+
+### Relatório 2021-10-11
+- `Dataset vacinação (35)`
+- `Relatório de Vacinação nº 35 (27/12/2020 a 10/10/2021)`
+- publicado a `2021-10-12` (terça noite) com data `2021-10-10` (domingo)
+
+### Relatório 2021-10-18
+- `Dataset vacinação (36)`
+- `Relatório de Vacinação nº 36 (27/12/2020 a 17/10/2021)`
+- publicado a `2021-10-19` (terça noite) com data `2021-10-17` (domingo)
+
+### Relatório 2021-10-25
+- `Dataset vacinação (37)`
+- `Relatório de Vacinação nº 37 (27/12/2020 a 24/10/2021)`
+- publicado a `2021-10-25` (terça noite) com data `2021-10-24` (domingo)
+
+### Relatório 2021-11-01
+- `Dataset vacinação (38)`
+- `Relatório de Vacinação nº 38 (27/12/2020 a 31/10/2021)`
+- publicado a `2021-11-02` (terça noite) com data `2021-10-31` (domingo)
+
+### Relatório 2021-11-08
+- `Dataset vacinação (39)`
+- `Relatório de Vacinação nº 39 (27/12/2020 a 07/11/2021)`
+- publicado a `2021-11-10` (quarta noite) com data `2021-11-07` (domingo)
+
+### Relatório 2021-11-15
+- `Dataset vacinação (40)`
+- `Relatório de Vacinação nº 40 (27/12/2020 a 14/11/2021)`
+- publicado a `2021-11-17` (quarta noite) com data `2021-11-14` (domingo)

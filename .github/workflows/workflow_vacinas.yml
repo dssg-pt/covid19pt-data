@@ -28,87 +28,56 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r .github/workflows/requirements.txt
 
-      - name: Update data about vaccination details weekly
-        run: |
-          python .github/workflows/update_vacinas_detalhe.py
-        if: always()
+      #- name: Update data about vaccination details weekly
+      #  run: |
+      #    python .github/workflows/update_vacinas_detalhe.py
+      #  if: always()
 
-      - name: Update data about vaccination
-        run: |
-          python .github/workflows/update_vacinas.py
-        if: always()
-      - name: Add vaccination data backup
-        run: |
-          git add -A extra/vacinas/di*rio/2*_vacinas.json
-      - name: Validate data about vaccination with pytest
-        run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
-        if: always()
-      - name: Upload pytest vaccinations results
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-vacinas-results
-          path: tests/junit/test-vacinas-results.xml
-        if: always()
+      #- name: Update data about vaccination
+      #  run: |
+      #    python .github/workflows/update_vacinas.py
+      #  if: always()
+      #- name: Add vaccination data backup
+      #  run: |
+      #    git add -A extra/vacinas/di*rio/2*_vacinas.json
+      #- name: Validate data about vaccination with pytest
+      #  run: pytest tests/test_vacinas.py -s -vv --junitxml=tests/junit/test-vacinas-results.xml
+      #  if: always()
+      #- name: Upload pytest vaccinations results
+      #  uses: actions/upload-artifact@master
+      #  with:
+      #    name: pytest-vacinas-results
+      #    path: tests/junit/test-vacinas-results.xml
+      #  if: always()
 
-      # Until there's some tweet about amostras, just update them anytime something else updates
-      - name: Update data about test samples
-        run: |
-          python .github/workflows/update_amostras.py
-        if: always()
-      - name: Validate data about test samples with pytest
-        run: pytest tests/test_amostras.py -s -vv --junitxml=tests/junit/test-amostras-results.xml
-        if: always()
-      - name: Upload pytest samples test results
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-amostras-results
-          path: tests/junit/test-amostras-results.xml
-        if: always()
+      #- name: Update readme date again, before commits
+      #  run: |
+      #    python .github/workflows/update_readme.py
+      #  if: always()
 
-      # Until there's some tweet about Rt, just update them anytime something else updates
-      - name: Update data about Rt
-        run: |
-          python .github/workflows/update_rt.py
-        if: always()
-      # TODO
-      # - name: Validate data about Rt with pytest
-      #   run: pytest tests/test_rt.py -s -vv --junitxml=tests/junit/test-rt-results.xml
-      #   if: always()
-      # - name: Upload pytest Rt results
-      #   uses: actions/upload-artifact@master
-      #   with:
-      #     name: pytest-rt-results
-      #     path: tests/junit/test-rt-results.xml
-      #   if: always()
-
-      - name: Update readme date again, before commits
-        run: |
-          python .github/workflows/update_readme.py
-        if: always()
-
-      - name: Commit all changes
-        uses: stefanzweifel/git-auto-commit-action@v4.1.1
-        with:
-          commit_message: Update vacinas for today
-          branch: ${{ github.head_ref }}
-        if: always()
-      - name: Get latest commit id
-        run: |
-          echo "LAST_COMMIT=$(git rev-parse HEAD)"
-          echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
-        if: always()
-      - name: Change the latest commit's status to success
-        uses: Sibz/github-status-action@v1
-        with:
-          authToken: ${{secrets.GITHUB_TOKEN}}
-          description: 'Success'
-          context: 'build'
-          state: 'success'
-          sha: ${{env.LAST_COMMIT}}
+      #- name: Commit all changes
+      #  uses: stefanzweifel/git-auto-commit-action@v4.1.1
+      #  with:
+      #    commit_message: Update vacinas for today
+      #    branch: ${{ github.head_ref }}
+      #  if: always()
+      #- name: Get latest commit id
+      #  run: |
+      #    echo "LAST_COMMIT=$(git rev-parse HEAD)"
+      #    echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      #  if: always()
+      #- name: Change the latest commit's status to success
+      #  uses: Sibz/github-status-action@v1
+      #  with:
+      #    authToken: ${{secrets.GITHUB_TOKEN}}
+      #    description: 'Success'
+      #    context: 'build'
+      #    state: 'success'
+      #    sha: ${{env.LAST_COMMIT}}
 
       - name: Auto publish vaccine data to Twitter
-        run: |
-          python .github/workflows/tweet_vacinas.py
+        #run: python .github/workflows/tweet_vacinas.py
+        run: python .github/workflows/tweet_vacinas_new.py
         env:
           TWITTER_ACCESS_TOKEN_VAC: ${{ secrets.TWITTER_ACCESS_TOKEN_VAC }}
           TWITTER_ACCESS_SECRET_VAC: ${{ secrets.TWITTER_ACCESS_SECRET_VAC }}

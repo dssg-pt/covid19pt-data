@@ -2,6 +2,7 @@
 import pandas as pd
 from datetime import datetime
 import os
+import sys
 from pathlib import Path
 import locale
 try:
@@ -17,19 +18,19 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 # População residente em PT final 2019, via
 # https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
 # Coerente com a soma da população dos concelhos, vide POP_ARS abaixo
-POP_PT = 10295909
+POP_PT = 10_347_892  # 2020 = 10_298_253  # 2019 = 10_295_909
 
-# data_concelhos_new.csv:
-# df[df.data == '11-11-2020'][["ars", "population"]].groupby('ars').sum()
+# vacinas_detalhe
 POP_ARS = {
-    'norte':   3568835,  # 3.57M
-    'centro':  1650394,  # 1.65M
-    'lvt':     3674534,  # 3.67M
-    'alentejo': 466690,  # 0.46M
-    'algarve':  438406,  # 0.44M
-    'acores':   242796,  # 0.24M
-    'madeira':  254254,  # 0.25M
+    'norte':     3_582_397,  # 3_559_952,  # 3_568_835,  # 3.57M
+    'centro':    1_659_900,  # 1_657_882,  # 1_650_394,  # 1.65M
+    'lvt':       3_681_581,  # 3_683_759,  # 3_674_534,  # 3.67M
+    'alentejo':    468_802,  #   462_569,  #   466_690,  # 0.46M
+    'algarve':     467_495,  #   437_971,  #   438_406,  # 0.44M
+    'madeira':     251_060,  #   253_924,  #   254_254,  # 0.25M
+    'acores':      236_657,  #   242_202,  #   242_796,  # 0.24M
 }
+
 POP_IDADE = {
     '0_9':     433332 + 461299,  #  0-04 + 05-09
     '10_19':   507646 + 549033,  # 10-14 + 15-19
@@ -68,6 +69,12 @@ def f(valor):
     valor = valor if type(valor) == int else float(valor)
     return format(valor, ",").replace(".","!").replace(",",".").replace("!",",")
 
+# ajuste incidencia7 para ficar comparável com 14
+INCIDENCIA7_14=True
+
+# usa incidencia 7 dias quando a variação é muito volátil
+INCIDENCIA7=True
+
 # ICONS[key] = [5 values]
 ICONS = {}
 # OMS recomenda 5 ; Portugal tem média 10 ; picos da onda passaram 15
@@ -75,7 +82,7 @@ ICONS["positividade"] = [10, 5, 4, 1]
 # incidencia 14 dias por 100k
 ICONS["incidencia14"] = [480, 240, 120, 60]
 # incidencia 7 dias por 100k (metade de incidencia14)
-ICONS["incidencia7"] = [r(x/2) for x in ICONS["incidencia14"]]
+ICONS["incidencia7"] = ICONS["incidencia14"] if INCIDENCIA7_14 else [r(x/2) for x in ICONS["incidencia14"]]
 # confirmados = incidencia / 14 dias / 100k * população
 ICONS["confirmados"] = [r(float(x) / 14 / 100000 * POP_PT ) for x in ICONS["incidencia14"]]
 
@@ -88,11 +95,11 @@ def icon(valor, tipo):
         "🟢"                                  # <  1 | <  60
     )
 
-def calc_tendencia(df, diff=7, skip=1, name=""):
+def calc_tendencia(df, diff=7, skip=1, name="", OFFSET=0):
     """ Retorna a diferença da média 7 dias do ultimo dia para o dia anterior """
     IGNORE = 1
     df = df.diff(diff) if diff else df
-    val1, val2 = float(df[-1]), float(df[-1 - skip])
+    val1, val2 = float(df[-1 - OFFSET]), float(df[-1 - OFFSET - skip])
     diff = val1 - val2
     if diff == 0: return 0
 
@@ -115,7 +122,7 @@ def autenticar_twitter():
         print(e)
         pass
 
-def extrair_dados_ultimo_relatorio():
+def extrair_dados_ultimo_relatorio(OFFSET=0):
     dados_extraidos={}
 
     #Aceder ao csv
@@ -125,52 +132,55 @@ def extrair_dados_ultimo_relatorio():
     df.fillna(value=0)
 
     # Formatar datas
-    hoje=df.data_dados[-1]
+    hoje=df.data_dados[-1 - OFFSET]
     dados_extraidos["dia"] = datetime.strptime(hoje, '%d-%m-%Y %H:%M').strftime("%d %b %Y")
 
     ##Casos
-    dados_extraidos["total_casos"]=r(df.confirmados[-1])
-    dados_extraidos["novos_casos"]=r(df.confirmados.diff()[-1])
-    dados_extraidos["novos_casos_tendencia"]=calc_tendencia(df.confirmados, name='novos_casos')
+    dados_extraidos["total_casos"]=r(df.confirmados[-1 - OFFSET])
+    dados_extraidos["novos_casos"]=r(df.confirmados.diff()[-1 - OFFSET])
+    dados_extraidos["novos_casos_tendencia"]=calc_tendencia(df.confirmados, name='novos_casos', OFFSET=OFFSET)
 
     ##Óbitos
-    dados_extraidos["total_obitos"]=r(df.obitos[-1])
-    dados_extraidos["novos_obitos"]=r(df.obitos.diff()[-1])
-    dados_extraidos["novos_obitos_tendencia"]=calc_tendencia(df.obitos, name='obitos')
+    dados_extraidos["total_obitos"]=r(df.obitos[-1 - OFFSET])
+    dados_extraidos["novos_obitos"]=r(df.obitos.diff()[-1 - OFFSET])
+    dados_extraidos["novos_obitos_tendencia"]=calc_tendencia(df.obitos, name='obitos', OFFSET=OFFSET)
 
     ##Internados
-    dados_extraidos["internados"] = r(df.internados[-1])
-    dados_extraidos["internados_tendencia"] = calc_tendencia(df.internados, name='internados')
-    dados_extraidos["variacao_internados"]=r(df.internados.diff()[-1])
+    dados_extraidos["internados"] = r(df.internados[-1 - OFFSET])
+    dados_extraidos["internados_tendencia"] = calc_tendencia(df.internados, name='internados', OFFSET=OFFSET)
+    dados_extraidos["variacao_internados"]=r(df.internados.diff()[-1 - OFFSET])
 
-    dados_extraidos["uci"] = r(df.internados_uci[-1])
-    dados_extraidos["uci_tendencia"] = calc_tendencia(df.internados_uci, name='uci')
-    dados_extraidos["variacao_uci"]=r(df.internados_uci.diff()[-1])
+    dados_extraidos["uci"] = r(df.internados_uci[-1 - OFFSET])
+    dados_extraidos["uci_tendencia"] = calc_tendencia(df.internados_uci, name='uci', OFFSET=OFFSET)
+    dados_extraidos["variacao_uci"]=r(df.internados_uci.diff()[-1 - OFFSET])
 
     ##Ativos
-    dados_extraidos["total_ativos"]=r(df.ativos[-1])
-    dados_extraidos["total_ativos_tendencia"]=calc_tendencia(df.ativos, name='ativos')
-    dados_extraidos["novos_ativos"]=r(df.ativos.diff()[-1])
+    dados_extraidos["total_ativos"]=r(df.ativos[-1 - OFFSET])
+    dados_extraidos["total_ativos_tendencia"]=calc_tendencia(df.ativos, name='ativos', OFFSET=OFFSET)
+    dados_extraidos["novos_ativos"]=r(df.ativos.diff()[-1 - OFFSET])
     #Percentagem total
-    dados_extraidos["perc_ativos"] = r(float(100*df.ativos[-1]/df.confirmados[-1]),1)
+    dados_extraidos["perc_ativos"] = r(float(100*df.ativos[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
 
     ##Recuperados
-    dados_extraidos["total_recuperados"]=r(df.recuperados[-1])
-    dados_extraidos["total_recuperados_tendencia"]=calc_tendencia(df.recuperados, name='recuperados')
-    dados_extraidos["novos_recuperados"]=r(df.recuperados.diff()[-1])
+    dados_extraidos["total_recuperados"]=r(df.recuperados[-1 - OFFSET])
+    dados_extraidos["total_recuperados_tendencia"]=calc_tendencia(df.recuperados, name='recuperados', OFFSET=OFFSET)
+    dados_extraidos["novos_recuperados"]=r(df.recuperados.diff()[-1 - OFFSET])
     #Percentagem total
-    dados_extraidos["perc_recuperados"] = r(float(100*df.recuperados[-1]/df.confirmados[-1]),1)
+    dados_extraidos["perc_recuperados"] = r(float(100*df.recuperados[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
 
     ## Regiões
     for k in ['lvt', 'norte', 'algarve', 'centro', 'alentejo', 'acores', 'madeira']:
         k2 = k if k in ['acores', 'madeira'] else f"ars{k}"
-        dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff()[-1])
-        dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], name=f'novos_casos_{k}')
-        dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff()[-1])
-        dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], name=f'novos_obitos_{k}')
-        incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_ARS[k]
+        dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff()[-1 - OFFSET])
+        dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], name=f'novos_casos_{k}', OFFSET=OFFSET)
+        dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff()[-1 - OFFSET])
+        dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], name=f'novos_obitos_{k}', OFFSET=OFFSET)
+        if INCIDENCIA7:
+            incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
+        else:
+            incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
         dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
-        dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, name=f'incidencia_{k}')
+        dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, name=f'incidencia_{k}', OFFSET=OFFSET)
         dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
 
     ## Idades
@@ -178,11 +188,14 @@ def extrair_dados_ultimo_relatorio():
         for k in idades:
             df[f"confirmados_{k}"] = df[f"confirmados_{k}_f"] + df[f"confirmados_{k}_m"]
             k2 = k
-            dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff(idades_diff)[-1])
-            dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff, name=f'novos_casos_{k}')
-            incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1]) * 100 * 1000 / POP_IDADE[k]
+            dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff(idades_diff)[-1 - OFFSET])
+            dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff, name=f'novos_casos_{k}', OFFSET=OFFSET)
+            if INCIDENCIA7:
+                incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
+            else:
+                incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
             dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
-            dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}')
+            dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}', OFFSET=OFFSET)
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
     except ValueError as e:
         print(f"WARN: sem idades confirmados {e}")
@@ -191,8 +204,8 @@ def extrair_dados_ultimo_relatorio():
         for k in idades:
             df[f"obitos_{k}"] = df[f"obitos_{k}_f"] + df[f"obitos_{k}_m"]
             k2 = k
-            dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff(idades_diff)[-1])
-            dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], skip=idades_diff, name=f'novos_obitos_{k}')
+            dados_extraidos[f"novos_obitos_{k}"]=r(df[f"obitos_{k2}"].diff(idades_diff)[-1 - OFFSET])
+            dados_extraidos[f"novos_obitos_{k}_tendencia"]=calc_tendencia(df[f"obitos_{k2}"], skip=idades_diff, name=f'novos_obitos_{k}', OFFSET=OFFSET)
     except ValueError as e:
         print(f"WARN: sem idades obitos {e}")
         dados_extraidos["sem_idades_obitos"] = True
@@ -213,30 +226,32 @@ def extrair_dados_ultimo_relatorio():
         df_amostras[f"amostras{k}"] = df_amostras.amostras.diff(k)
 
     # amostras
-    dados_extraidos["dia_amostras"] = df_amostras.index[-1].strftime("%d %b")
-    dados_extraidos["novas_amostras_pcr"] = r(df_amostras.amostras_pcr_novas[-1])
-    dados_extraidos["novas_amostras_pcr_tendencia"] = calc_tendencia(df_amostras.amostras_pcr_novas, name='novas_amostras_pcr')
-    dados_extraidos["novas_amostras_ag"] = r(df_amostras.amostras_antigenio_novas[-1])
-    dados_extraidos["novas_amostras_ag_tendencia"] = calc_tendencia(df_amostras.amostras_antigenio_novas, name='novas_amostras_ag')
+    dados_extraidos["dia_amostras"] = df_amostras.index[-1 - OFFSET].strftime("%d %b")
+    dados_extraidos["novas_amostras_pcr"] = r(df_amostras.amostras_pcr_novas[-1 - OFFSET])
+    dados_extraidos["novas_amostras_pcr_tendencia"] = calc_tendencia(df_amostras.amostras_pcr_novas, name='novas_amostras_pcr', OFFSET=OFFSET)
+    dados_extraidos["novas_amostras_ag"] = r(df_amostras.amostras_antigenio_novas[-1 - OFFSET])
+    dados_extraidos["novas_amostras_ag_tendencia"] = calc_tendencia(df_amostras.amostras_antigenio_novas, name='novas_amostras_ag', OFFSET=OFFSET)
 
-    positividade7 = 100 * float(df[df.index == df_amostras.index[-1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1])
+    positividade7 = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1])
     dados_extraidos["perc_positividade7"] = r(positividade7, 1)
     dados_extraidos["icon_positividade7"] = icon(positividade7, "positividade")
-    positividade7_anterior = 100 * float(df[df.index == df_amostras.index[-1-1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1-1])
+    positividade7_anterior = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET -1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1 -1])
     dados_extraidos["perc_positividade7_anterior"] = r(positividade7_anterior, 1)
 
     for d in [14, 7]:
         for k in ["confirmados", "obitos"]:
-            # val = float(df[f"{k}{d}"][-1])  # total 14/7 dias, não médias
-            val = float(df[f"{k}{d}"][-1] / d)  # média diária 14/7 dias
+            # val = float(df[f"{k}{d}"][-1 - OFFSET])  # total 14/7 dias, não médias
+            val = float(df[f"{k}{d}"][-1 - OFFSET] / d)  # média diária 14/7 dias
             dados_extraidos[f"novos_{k}{d}"] = r(val)
             if k == 'confirmados': dados_extraidos[f"icon_{k}{d}"] = icon(val, "confirmados")
-            dados_extraidos[f"novos_{k}{d}_tendencia"] = calc_tendencia(df[f"{k}{d}"], diff=None, name=f'novos_{k}{d}')
+            dados_extraidos[f"novos_{k}{d}_tendencia"] = calc_tendencia(df[f"{k}{d}"], diff=None, name=f'novos_{k}{d}', OFFSET=OFFSET)
 
-        val = float(df[f"confirmados{d}"][-1] * 100 * 1000 / POP_PT)
+        val = float(df[f"confirmados{d}"][-1 - OFFSET] * 100 * 1000 / POP_PT)
+        if INCIDENCIA7_14:
+            val = val * 2 if d == 7 else val  # not 100% correct, but easier to compare with incidencia 14
         dados_extraidos[f"incidencia{d}"] = r(val, 1)
         dados_extraidos[f"icon_incidencia{d}"] = icon(val, f"incidencia{d}")
-        dados_extraidos[f"incidencia{d}_tendencia"] = calc_tendencia(df[f"confirmados{d}"], diff=None, name=f'incidencia_{d}')
+        dados_extraidos[f"incidencia{d}_tendencia"] = calc_tendencia(df[f"confirmados{d}"], diff=None, name=f'incidencia_{d}', OFFSET=OFFSET)
 
     #----
 
@@ -244,9 +259,9 @@ def extrair_dados_ultimo_relatorio():
     obitos_lt50 = r(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1).tail(1))
     obitos_lt50_7d = r(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1).tail(1))
     dados_extraidos["novos_obitos_lt50"] = obitos_lt50
-    dados_extraidos["novos_obitos_lt50_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1), diff=None, skip=idades_diff, name='novos_obitos_lt50')
+    dados_extraidos["novos_obitos_lt50_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(idades_diff).sum(axis=1), diff=None, skip=idades_diff, name='novos_obitos_lt50', OFFSET=OFFSET)
     dados_extraidos["novos_obitos_lt50_7d"] = obitos_lt50_7d
-    dados_extraidos["novos_obitos_lt50_7d_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1), diff=None, skip=idades_diff, name='novos_obitos_lt50_7d')
+    dados_extraidos["novos_obitos_lt50_7d_tendencia"] = calc_tendencia(df.loc[:, cols_obitos_lt50].diff(7).sum(axis=1), diff=None, skip=idades_diff, name='novos_obitos_lt50_7d', OFFSET=OFFSET)
 
     # -----
     # cols_confirmados_lt60 = flatten([ [f"confirmados_{x}_f", f"confirmados_{x}_m"] for x in idades[0:7]])
@@ -291,7 +306,7 @@ def compor_tweets(dados_para_tweets):
 
     # Main tweet
     tweet_message = (
-        "🆕Dados #COVID19PT 🇵🇹 {dia}:\n"
+        "🆕Dados #COVID19PT 🇵🇹 até {dia}:\n"
         "\n"
         "🫂Novos casos: {novos_casos} | Total: {total_casos}\n"
         "🪦Novos óbitos: {novos_obitos} | Total: {total_obitos}\n"
@@ -314,7 +329,7 @@ def compor_tweets(dados_para_tweets):
     )
 
     second_tweet = (
-        "🔎Região: incidência, novos casos e óbitos:\n"
+        "🔎Região: incidência, novos casos, óbitos:\n"
         "{icon_norte}Norte: {incidencia_norte} {novos_casos_norte} {novos_obitos_norte}\n"
         "{icon_centro}Centro: {incidencia_centro} {novos_casos_centro} {novos_obitos_centro}\n"
         "{icon_lvt}LVT: {incidencia_lvt} {novos_casos_lvt} {novos_obitos_lvt}\n"
@@ -325,14 +340,16 @@ def compor_tweets(dados_para_tweets):
         "\n"
         "[2/{num_tweets}]"
     )
+    if tweet_len(second_tweet) >= 280:
+        third_tweet = second_tweet.replace(':', '')
 
     if sem_idades:
         third_tweet = ""
     else:
         if sem_idades_obitos:
-            third_tweet = "🔎Idade: incidência e novos casos:\n"
+            third_tweet = "🔎Idade: incidência, novos casos:\n"
         else:
-            third_tweet = "🔎Idade: incidência, novos casos e óbitos:\n"
+            third_tweet = "🔎Idade: incidência, novos casos, óbitos:\n"
         for k in idades:
             k2 = "00" if k == "0_9" else "80" if k == "80_plus" else k[0:2]
             icon = f"icon_{k}"
@@ -347,11 +364,14 @@ def compor_tweets(dados_para_tweets):
             "\n"
             "[3/{num_tweets}]"
         )
+        if tweet_len(third_tweet) >= 280:
+            third_tweet = third_tweet.replace(':', '')
+
 
     fourth_tweet = (
-        "🔎Nacional: incidência, média diária novos casos e óbitos:\n"
+        "🔎Nacional: incidência, média diária novos casos, óbitos:\n"
         "{icon_incidencia14}14 dias: {incidencia14} {novos_confirmados14} {novos_obitos14}\n"
-        "{icon_incidencia7}7 dias: {incidencia7} {novos_confirmados7} {novos_obitos7}\n"
+        "{icon_incidencia7}7 dias eq: {incidencia7} {novos_confirmados7} {novos_obitos7}\n"
         "\n"
         "📅Amostras [{dia_amostras}]:\n"
         "🧪PCR: {novas_amostras_pcr} | Antigénio: {novas_amostras_ag}\n"
@@ -379,7 +399,9 @@ def tweet_len(s):
 
 
 if __name__ == '__main__':
-    dados_extraidos = extrair_dados_ultimo_relatorio()
+    OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+
+    dados_extraidos = extrair_dados_ultimo_relatorio(OFFSET)
     texto_tweet_1, texto_tweet_2, texto_tweet_3, texto_tweet_4 = compor_tweets(dados_extraidos)
 
     if consumer_key == 'DEBUG':

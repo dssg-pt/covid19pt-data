@@ -2,7 +2,7 @@
 import os
 import sys
 import math
-from datetime import date, timedelta
+import datetime
 from pathlib import Path
 import pandas as pd
 import numpy as np
@@ -12,39 +12,35 @@ try:
 except locale.Error:
     locale.setlocale(locale.LC_TIME, "pt_PT")
 
+
 # Monday is 0 and Sunday is 6.
 # Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
-DOW = date.today().weekday()
+DOW = datetime.date.today().weekday()
+INCLUIR_SEMANAL=len(sys.argv) > 2 or DOW in [1,2]
+# INCLUIR_SEMANAL=True # temp quinta 16-09
 
-INCLUIR_NACIONAL=True
+# End Of Vaccination (27-09-2021)
+EOV = datetime.datetime.now() > datetime.datetime(2021, 9, 27)
+GTE='' if EOV else '≥'
 
-INCLUIR_SEMANAL=INCLUIR_NACIONAL and DOW in [2] # and False # TEMP inactivo - ainda sem relatorio 2021-07-21
 
 # ---
 # Constants
 link_repo = "https://github.com/dssg-pt/covid19pt-data"
 
-# População residente em PT final 2019, via
-# https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0008273&selTab=tab0
-# Coerente com a soma da população dos concelhos, vide POP_ARS abaixo
-POP_PT_2019 = 10295909
-
-# Internacional, estimativa
-# https://www.worldometers.info/world-population/portugal-population/
-# 2021-02-14=10.178.145 2020=10.196.709 2019=10.226.187
-# Público usa "projeção UN / OWID para 2020" = 10196707
-# https://population.un.org/wpp/
-# POP_PT = 10196709
-
+# Valores de Portugal usam valores INE 2019 (2020 desde Agosto 2021) para
+# ser comparáveis ARS e Concelhos e faixas etárias
+# População Censos 2021 (antes INE 2020) via relatório semanal vacinação
 # https://covid19.min-saude.pt/relatorio-de-vacinacao/
-POP_PT_VACINAR = 9798859
+POP_PT = 10_347_892  # 2020 = 10_298_253  # 2019 = 10_295_909
+POP_PT_CONTINENTE = 9_860_175  # 2020 = 9_802_133  # 2019 = 9_798_859
 
 # TENDENCIA = ["↑", "↓"]
 TENDENCIA = ["⬈", "⬊", "⬌"]
 
-CASAS_DECIMAIS=1
+CASAS_DECIMAIS = 1
 
-REGIONS={
+REGIONS = {
     'arsnorte': 'Norte',
     'arscentro': 'Centro',
     'arslvt': 'LVT',
@@ -58,7 +54,6 @@ REGIONS={
 # export TWITTER_CONSUMER_KEY_VAC=DEBUG
 consumer_key = os.environ['TWITTER_CONSUMER_KEY_VAC']
 if consumer_key != 'DEBUG':
-    import tweepy
     consumer_secret = os.environ['TWITTER_CONSUMER_SECRET_VAC']
     access_token = os.environ['TWITTER_ACCESS_TOKEN_VAC']
     access_token_secret = os.environ['TWITTER_ACCESS_SECRET_VAC']
@@ -66,6 +61,7 @@ if consumer_key != 'DEBUG':
 # ---
 # Helper methods
 def autenticar_twitter():
+    import tweepy
     # authentication of consumer key and secret
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     # authentication of access token and secret
@@ -80,12 +76,9 @@ def autenticar_twitter():
 
 def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
     # Começar a compôr o dicionário de dados relevantes
-    today = date.today() - timedelta(days=DAYS_OFFSET)
-    dados_vacinas={
-        # 'data': today.strftime("%-d de %B de %Y"),
-        'data': today.strftime("%d %b %Y"),
-        }
-    print(f"dados para {today} {dados_vacinas['data']}")
+    today = datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET)
+    dados_vacinas={ 'data': today.strftime("%d %b %Y") }
+    #print(f"Dados para {today} {dados_vacinas['data']}")
 
     # Aceder ao .csv das vacinas
     path = Path(__file__).resolve().parents[2]
@@ -94,10 +87,10 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
     )
 
     if not ajuste_semanal:
-        pop = POP_PT_VACINAR
+        pop = POP_PT_CONTINENTE
         df_last, data_detalhes = None, None
     else:
-        pop = POP_PT_2019
+        pop = POP_PT
         df_detalhe = pd.read_csv(path / 'vacinas_detalhe.csv',
             parse_dates=[0], index_col=[0], infer_datetime_format=True, skip_blank_lines=False, dayfirst=True,
         )
@@ -106,8 +99,16 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
         df_last = df_detalhe.loc[ data_last ]
         data_detalhes = data_last.item().strftime("%d %b %Y")
 
+        # relatório corresponde a segunda mas sai terça noite portanto <8 dias (7 e picos)
+        print(f'now={datetime.datetime.now()} csv={data_last.item()} diff={(datetime.datetime.now() - data_last.item())} delta={datetime.timedelta(days=8)}')
+        relatorio_terca_noite = (datetime.datetime.now() - data_last.item()) < datetime.timedelta(days=8)
+        if relatorio_terca_noite:
+            global INCLUIR_SEMANAL
+            INCLUIR_SEMANAL=INCLUIR_SEMANAL or DOW in [1, 2] # caso saia relatorio terça noite
+
     df["doses1_7"] = df.doses1.diff(7)
     df["doses2_7"] = df.doses2.diff(7)
+    df["doses_7"] = df.doses.diff(7)
 
     # Verificar se há dados para o dia de hoje e se não são NaN
     today_f = today.strftime('%Y-%m-%d')
@@ -116,7 +117,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
     except KeyError:
         df_today = None
     if df_today is not None and not math.isnan(df_today.doses2):
-        yesterday = date.today() - timedelta(days=DAYS_OFFSET+1)
+        yesterday = datetime.date.today() - datetime.timedelta(days=DAYS_OFFSET+1)
         yesterday_f = yesterday.strftime('%Y-%m-%d')
         try:
             df_yesterday = df.loc[yesterday_f]
@@ -135,6 +136,7 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
             {
                 'percentagem': float(100 * doses2 / pop),
                 'percentagem_vacinados': f(round(float(100 * doses2 / pop), CASAS_DECIMAIS)),
+                'percentagem_iniciados': f(round(float(100 * (doses1-doses2) / pop), CASAS_DECIMAIS)),
                 'percentagem_inoculados': f(round(float(100 * doses1 / pop), CASAS_DECIMAIS)),
                 'n_total': f(int(doses1)),
                 'n_vacinados': f(int(doses2)),
@@ -147,6 +149,9 @@ def extrair_dados_vacinas(DAYS_OFFSET=0, ajuste_semanal=False):
                 'novos_inoculados': f(int(df_today['doses1_novas']), plus=True) if has_yesterday else None,
                 'tendencia_inoculados': t(int(df_today['doses1_7'] - df_yesterday['doses1_7'])) if has_7d_today and has_7d_yesterday else '',
                 'media_7dias_inoculados': f(int(df_today['doses1_7'] / 7)) if has_7d_today else None,
+                'novos_vacinas': f(int(df_today['doses_novas']), plus=True) if has_yesterday else None,
+                'tendencia_vacinas': t(int(df_today['doses_7'] - df_yesterday['doses1_7'])) if has_7d_today and has_7d_yesterday else '',
+                'media_7dias_vacinas': f(int(df_today['doses_7'] / 7)) if has_7d_today else None,
                 #
                 'has_yesterday': bool(has_yesterday),
                 'data_detalhes': data_detalhes,
@@ -248,21 +253,23 @@ def compor_tweet(dados_vacinas, tweet=1):
             "💉População 🇵🇹 Nacional por idade {data_detalhes}:"
         )
         tweet_message += "\n"
-        tweet_message += (
-            "\n(vacinados, mais 1ª dose, em falta)"
-        )
+        tweet_message += "\n(completa, iniciada, em falta)"
         tweet_message += "\n"
 
         df_last = dados_vacinas['df_last']
-        for idade in ['80+', '65_79', '50_64', '25_49', '18_24']:
-            perc2 = df_last[f'doses2_perc_{idade}']
-            perc1 = df_last[f'doses1_perc_{idade}']
-            vacinados = f(round( perc2 * 100.0, CASAS_DECIMAIS ))
-            dose1 = f(round( (perc1 - perc2) * 100.0, CASAS_DECIMAIS ))
-            falta = f(round( (1 - perc1) * 100.0, CASAS_DECIMAIS ))
+        idades = ['80+', '65_79', '50_64', '25_49', '18_24', '12_17']
+        idades.reverse()
+        for idade in idades:
+            parcial = min(1, float(df_last[f'pessoas_vacinadas_parcialmente_perc_{idade}']))
+            completa = min(1, float(df_last[f'pessoas_vacinadas_completamente_perc_{idade}']))
+            if completa + parcial >= 1:
+                completa = 1 - parcial
+            parcial_perc = round( max(0, float(parcial)) * 100.0, CASAS_DECIMAIS )
+            completa_perc = round( completa * 100.0, CASAS_DECIMAIS )
+            falta_perc = round( max(0, float(100 - parcial_perc - completa_perc)), CASAS_DECIMAIS )
             idade = idade.replace("_", "-")
             tweet_message += (
-                f"\n{idade}: {vacinados}% {dose1}% {falta}%"
+                f"\n{idade}: {f(completa_perc)}% {f(parcial_perc)}% {f(falta_perc)}%"
             )
     elif tweet == 4:
         tweet_message += (
@@ -270,7 +277,7 @@ def compor_tweet(dados_vacinas, tweet=1):
         )
         tweet_message += "\n"
         tweet_message += (
-            "\n(vacinados e 1ª dose, pp em relação a nacional)"
+            "\n(completa e iniciada, pp em relação a nacional)"
         )
         tweet_message += "\n"
 
@@ -278,84 +285,95 @@ def compor_tweet(dados_vacinas, tweet=1):
         doses1, doses2 = float(df_last['doses1_perc']), float(df_last['doses2_perc'])
         for region in ['arsnorte', 'arscentro', 'arslvt', 'arsalentejo', 'arsalgarve', 'madeira', 'açores']:
             d1, d2 = float(df_last[f'doses1_perc_{region}']), float(df_last[f'doses2_perc_{region}'])
-            #print(f"region={region} vacinados: {round( (d2-doses2)*100, 1)}pp 1ª dose: {round((d1-doses1)*100, 1)}pp")
             tweet_message += (
                 f"\n{REGIONS[region]}: {f(round( (d2-doses2)*100, 1), True)} {f(round((d1-doses1)*100, 1), True)}"
             )
 
     else:
         tweet_message += (
-            "💉População 🇵🇹 Continente {data}:"
-        ) if tweet == 1 else (
             "💉População 🇵🇹 Nacional incluindo ilhas {data}:"
+        ) if tweet == 1 else (
+            "💉População 🇵🇹 Continente {data}:"
         ) if tweet == 2 else ""
 
-        tweet_message += (
-            "\n\n(ajustado ao relatório semanal de {data_detalhes})"
-        ) if tweet != 1 else ""
-
-        tweet_message += (
-            "\n\n{progresso}"
-        ) if tweet == 1 else ""
-
-        tweet_message += (
-            "\n\n✌️{n_vacinados}"
-            " vacinados com 2 doses"
-        ) if tweet == 1 else (
-            "\n\n💉≥{n_vacinados}"
-            " vacinação completa"
+        tweet_message += "" if tweet == 2 or EOV else (
+            "\n(ajustado ao relatório semanal de {data_detalhes})"
         )
-        if has_yesterday:
+
+        #tweet_message += (
+        #    "\n\n{progresso}"
+        #) if tweet == 1 else ""
+
+        tweet_message += '\n'
+
+        tweet_message += (
+            "\n✌️{GTE}{n_vacinados}"
+            " ({percentagem_vacinados}%)"
+            #" vacinação completa"
+            " completa"
+        ) if tweet == 1 else (
+            "\n✌️{n_vacinados}"
+            " ({percentagem_vacinados}%)"
+            " com 2 doses"
+        )
+        if has_yesterday and (tweet == 1 or tweet == 2):
             tweet_message += (
                 " ({novos_vacinados}{tendencia_vacinados}" +
-                (" média 7d {media_7dias}" if dados_vacinas['media_7dias'] else '') +
+                (" média 7d {media_7dias}" if dados_vacinas['media_7dias'] and tweet == 2 else '') +
                 ")"
-            ) if tweet == 1 else ""
-            
-        tweet_message += "" if tweet == 1 else (
-            " ({percentagem_vacinados}%)"
-        )
+            )
 
         tweet_message += (
-            "\n\n🤞Mais {n_inoculados}"
-            " com 1 dose"
+            "\n🤞{GTE}{n_inoculados}"
+            " ({percentagem_iniciados}%)"
+            # " vacinação iniciada"
+            " iniciada"
         ) if tweet == 1 else (
-            "\n\n💉Mais ≥{n_inoculados}"
-            " com 1ª dose"
+            "\n🤞{n_inoculados}"
+            " ({percentagem_iniciados}%)"
+            " com 1 dose"
         )
-        if has_yesterday:
+        if has_yesterday and (tweet == 1 or tweet == 2):
             tweet_message += (
                 " ({novos_inoculados}{tendencia_inoculados}" +
-                (" média 7d {media_7dias_inoculados}" if dados_vacinas['media_7dias_inoculados'] else '') +
+                (" média 7d {media_7dias_inoculados}" if dados_vacinas['media_7dias_inoculados'] and tweet == 2 else '') +
                 ")"
-            ) if tweet == 1 else ""
+            )
 
         tweet_message += (
-            "\n\n👍Total {n_total} inoculados"
-        ) if tweet == 1 else (
-            "\n\n👍Total ≥{n_total} inoculados"
-        )
-        tweet_message += (
+            "\n👍{GTE}{n_total}"
             " ({percentagem_inoculados}%)"
+            " pelo menos 1 dose"
+        ) if tweet == 1 else (
+            "\n👍{n_total}"
+            " ({percentagem_inoculados}%)"
+            " pelo menos 1 dose"
         )
-        if has_yesterday:
+
+        if has_yesterday and (tweet == 1 or tweet == 2):
             tweet_message += (
-                "\n\n💉Vacinas diárias {vacinas}"
-            ) if tweet == 1 else ""
+                " ({novos_vacinas}{tendencia_vacinas}" +
+                (" média 7d {media_7dias_vacinas}" if dados_vacinas['media_7dias_vacinas'] and tweet == 2 else '') +
+                ")"
+            )
 
-    #tweet_message += (
-    #    "\n\n#vacinaçãoCovid19"
-    #) if tweet == 1 else ""
+        #if has_yesterday and tweet == 1:
+        #    tweet_message += (
+        #        "\n\n💉Vacinas diárias {vacinas}"
+        #    )
 
-    total_tweets = 4 if INCLUIR_SEMANAL else 2 if INCLUIR_NACIONAL else 1
+    total_tweets = 4 if INCLUIR_SEMANAL else 2
+    if EOV: total_tweets -= 1
+    adjusted_tweet = tweet - 1 if EOV and tweet > 1 else tweet
     if total_tweets > 1:
         tweet_message += (
-            f"\n\n[{tweet}/{total_tweets}]"
+            f"\n\n[{adjusted_tweet}/{total_tweets}]"
         )
     tweet_message += (
         "\n\n➕Todos os dados em: {link_repo}"
-    ) if tweet == total_tweets else ""
+    ) if adjusted_tweet == total_tweets else ""
 
+    dados_vacinas["GTE"] = GTE
     dados_vacinas["link_repo"] = link_repo
     texto_tweet = tweet_message.format(**dados_vacinas)
 
@@ -371,18 +389,21 @@ def tweet_len(s):
 if __name__ == '__main__':
 
     DAYS_OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
-    dados_vac = extrair_dados_vacinas(DAYS_OFFSET)
+
+    dados_vac_1 = extrair_dados_vacinas(DAYS_OFFSET)
 
     # If there's new data, tweet
-    if dados_vac:
-        texto_tweet = compor_tweet(dados_vac, tweet=1)
-        dados_vac_2 = extrair_dados_vacinas(DAYS_OFFSET, ajuste_semanal=True) if INCLUIR_NACIONAL else {}
-        texto_tweet_2 = compor_tweet(dados_vac_2, tweet=2) if INCLUIR_NACIONAL else ""
+    if dados_vac_1:
+        dados_vac_2 = extrair_dados_vacinas(DAYS_OFFSET, ajuste_semanal=True)
+        texto_tweet_1 = compor_tweet(dados_vac_2, tweet=1)
+        texto_tweet_2 = compor_tweet(dados_vac_1, tweet=2)
         texto_tweet_3 = compor_tweet(dados_vac_2, tweet=3) if INCLUIR_SEMANAL else ""
         texto_tweet_4 = compor_tweet(dados_vac_2, tweet=4) if INCLUIR_SEMANAL else ""
+        if EOV:
+            texto_tweet_2, texto_tweet_3, texto_tweet_4 = texto_tweet_3, texto_tweet_4, ""
 
         if consumer_key == 'DEBUG':
-            print(f"Tweet 1 {tweet_len(texto_tweet)} '''\n{texto_tweet}\n'''")
+            print(f"Tweet 1 {tweet_len(texto_tweet_1)} '''\n{texto_tweet_1}\n'''")
             if texto_tweet_2:
                 print(f"Tweet 2 {tweet_len(texto_tweet_2)} '''\n{texto_tweet_2}\n'''")
             if texto_tweet_3:
@@ -400,7 +421,7 @@ if __name__ == '__main__':
 
         # Update status and create thread
         try:
-            tweet1 = api.update_status(status = texto_tweet)
+            tweet1 = api.update_status(status = texto_tweet_1)
             if texto_tweet_2:
                 tweet2 = api.update_status(texto_tweet_2, tweet1.id_str)
             if texto_tweet_3:
