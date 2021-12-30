@@ -179,7 +179,7 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
             incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
         else:
             incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
-        dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
+        dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 0)
         dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, name=f'incidencia_{k}', OFFSET=OFFSET)
         dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
 
@@ -194,7 +194,7 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
                 incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
             else:
                 incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
-            dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
+            dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 0)
             dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}', OFFSET=OFFSET)
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
     except ValueError as e:
@@ -249,7 +249,7 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
         val = float(df[f"confirmados{d}"][-1 - OFFSET] * 100 * 1000 / POP_PT)
         if INCIDENCIA7_14:
             val = val * 2 if d == 7 else val  # not 100% correct, but easier to compare with incidencia 14
-        dados_extraidos[f"incidencia{d}"] = r(val, 1)
+        dados_extraidos[f"incidencia{d}"] = r(val, 0)
         dados_extraidos[f"icon_incidencia{d}"] = icon(val, f"incidencia{d}")
         dados_extraidos[f"incidencia{d}_tendencia"] = calc_tendencia(df[f"confirmados{d}"], diff=None, name=f'incidencia_{d}', OFFSET=OFFSET)
 
@@ -306,7 +306,7 @@ def compor_tweets(dados_para_tweets):
 
     # Main tweet
     tweet_message = (
-        "🆕Dados #COVID19PT 🇵🇹 até {dia}:\n"
+        "🆕Dados #COVID19PT 🇵🇹 a {dia}:\n"
         "\n"
         "🫂Novos casos: {novos_casos} | Total: {total_casos}\n"
         "🪦Novos óbitos: {novos_obitos} | Total: {total_obitos}\n"
@@ -329,7 +329,7 @@ def compor_tweets(dados_para_tweets):
     )
 
     second_tweet = (
-        "🔎Região: incidência, novos casos, óbitos:\n"
+        "🔎Por Região: incidência, novos casos, óbitos:\n"
         "{icon_norte}Norte: {incidencia_norte} {novos_casos_norte} {novos_obitos_norte}\n"
         "{icon_centro}Centro: {incidencia_centro} {novos_casos_centro} {novos_obitos_centro}\n"
         "{icon_lvt}LVT: {incidencia_lvt} {novos_casos_lvt} {novos_obitos_lvt}\n"
@@ -347,9 +347,9 @@ def compor_tweets(dados_para_tweets):
         third_tweet = ""
     else:
         if sem_idades_obitos:
-            third_tweet = "🔎Idade: incidência, novos casos:\n"
+            third_tweet = "🔎Por Idade: incidência, novos casos:\n"
         else:
-            third_tweet = "🔎Idade: incidência, novos casos, óbitos:\n"
+            third_tweet = "🔎Por Idade: incidência, novos casos, óbitos:\n"
         for k in idades:
             k2 = "00" if k == "0_9" else "80" if k == "80_plus" else k[0:2]
             icon = f"icon_{k}"
