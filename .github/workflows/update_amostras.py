@@ -49,6 +49,17 @@ def get_amostras(url):
         fid = attr.get("FID", None)
 
         unix_date = attr.get("Data_do_Relatorio", attr.get("Data_do_Relatório", None))
+
+        # 31-12-2022 instead of 31-12-2021
+        if unix_date and last_date and (unix_date - last_date) != 86400000:
+            print(
+                f"Invalid date"
+                f" {unix_date} {datetime.datetime.utcfromtimestamp(unix_date / 1000)}"
+                f" after"
+                f" {last_date} {datetime.datetime.utcfromtimestamp(last_date / 1000)}"
+            )
+            unix_date = last_date + 86400000
+
         frmt_date = (
             datetime.datetime.utcfromtimestamp(unix_date / 1000) if unix_date else None
         )
@@ -97,10 +108,6 @@ def fix_amostras(data):
 
     # sometimes total differs from pcr+antigenio so we just fix them blindly
     for i, row in data.iterrows():
-        if row['data'] == '31-12-2022':
-            data.at[i, 'data'] = '31-12-2021'
-            print(data.tail(1))
-
         total = row['amostras']
         expected = row['amostras_pcr'] + row['amostras_antigenio']
         if total == expected:

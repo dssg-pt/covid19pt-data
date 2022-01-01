@@ -35,6 +35,8 @@ def get_data_data_from_api():
     data =  response.json()
 
     latest_date = data['features'][0]['attributes']['Data_do_Relatorio']
+    if latest_date == 1672444800000:
+        latest_date = 1640822400000 + 86400000 # 2021-12-31
     #print(f'latest_date=\'{latest_date}\'')
     latest_date = datetime.datetime.utcfromtimestamp(latest_date / 1000)
     #print(f'latest_date=\'{latest_date}\'')
