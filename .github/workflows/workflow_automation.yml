@@ -140,8 +140,7 @@ jobs:
       - name: Run data extraction
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: |
-          python .github/workflows/extract_data_arcgis.py 1
-        #  python .github/workflows/extract_data_arcgis.py
+          python .github/workflows/extract_data_arcgis.py
       - name: Validate data with pytest
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
