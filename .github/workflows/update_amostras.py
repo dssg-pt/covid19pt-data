@@ -97,6 +97,10 @@ def fix_amostras(data):
 
     # sometimes total differs from pcr+antigenio so we just fix them blindly
     for i, row in data.iterrows():
+        if row['data'] == '31-12-2022':
+            data.at[i, 'data'] = '31-12-2021'
+            print(data.tail(1))
+
         total = row['amostras']
         expected = row['amostras_pcr'] + row['amostras_antigenio']
         if total == expected:
