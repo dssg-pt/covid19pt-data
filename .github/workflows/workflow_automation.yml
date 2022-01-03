@@ -208,7 +208,7 @@ jobs:
           echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Change the latest commit's status to success
         if: ${{ env.UPDATE_ANY == 'TRUE' }}
-        uses: Sibz/github-status-action@v1
+        uses: Sibz/github-status-action@v1.1.6
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           description: 'Success'
