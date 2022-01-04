@@ -206,7 +206,9 @@ def test_vaccines(data_vacinas):
             assert row['doses'] == row['doses1'] + row['doses2'], row['data']
         if row['pessoas_vacinadas_parcialmente'] != 'NOO':
             assert row['pessoas_inoculadas'] == row['pessoas_vacinadas_parcialmente'] + row['pessoas_vacinadas_completamente'], row['data']
-            if row['data'] >= datetime.datetime(2021, 5, 3):
+            # 2021.12.13 vacinados completamente não implica 2 doses - havia as Janssen, e agora há
+            # muitos recuperados com apenas uma dose.
+            if row['data'] >= datetime.datetime(2021, 5, 3) and row['data'] < datetime.datetime(2021, 12, 13):
                 # before, the diff is small positive and negative, maybe recuperados
                 # after, it grows due to Janssen
                 assert row['vacinas'] <= row['pessoas_vacinadas_parcialmente'] + 2 * row['pessoas_vacinadas_completamente'], row['data']
