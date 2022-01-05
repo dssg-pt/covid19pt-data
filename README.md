@@ -66,6 +66,12 @@ O repositório está organizado da seguinte forma:
 
 Em conjunto com a [VOST Portugal](https://www.vost.pt), desenvolvemos uma API disponível a todos com os dados disponibilizados deste repositório, numa tentativa de dar uma ferramenta mais acessível a todos os que querem analisar os dados. Podem aceder e consultar a documentação aqui: https://covid19-api.vost.pt
 
+A API requer autenticação básica. Os utilizadores podem pedir a senha através do envio de um e-mail para covidapi@vost.pt com a informação:
+
+Website onde a API e dados estão a ser usados, e-mail de contacto e nome da pessoa responsável.
+
+Será gerado um username e uma password e enviado por e-mail.
+
 > (Versão anterior, desatualizada)
 > Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
 
