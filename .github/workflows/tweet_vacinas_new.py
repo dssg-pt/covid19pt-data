@@ -160,7 +160,8 @@ def compose_tweets(DAYS_OFFSET=0):
     n_inoculados = int(d['pessoas_inoculadas'])
     n_inoculados_novas = None # -int(d['pessoas_inoculadas_novas'])
     p_inoculados = 100.0 * n_inoculados / POP_PT
-    p_inoculaveis = 100.0 * n_inoculados / POP_VACINAVEL
+    n_inoculados_12mais = int(d['pessoas_inoculadas_12mais'])
+    p_inoculaveis = 100.0 * n_inoculados_12mais / POP_VACINAVEL
 
     n_vacinados_c = int(d['pessoas_vacinadas_completamente_continente'])
     n_vacinados_c_novas = int(d['pessoas_vacinadas_completamente_continente_novas'])
@@ -222,9 +223,9 @@ def compose_tweets(DAYS_OFFSET=0):
         f"💉População 🇵🇹 nacional vacinada até {data}:"
         f"\n"
         f"\nInoculações: {GTE}{f(n_vacinas)} {f(n_vacinas_novas, True)} {GTE}{f(p_vacinas)}%"
-        f"\nInoculados: {GTE}{f(n_inoculados)} {f(n_inoculados_novas, True)} {GTE}{f(p_inoculados)}%"
+        f"\nInoculados 5+: {GTE}{f(n_inoculados)} {f(n_inoculados_novas, True)} {GTE}{f(p_inoculados)}%"
         f"\nInoculados 12+: {GTE}{f(p_inoculaveis)}%"
-        f"\nVacinados: {GTE}{f(n_vacinados)} {f(n_vacinados_novas, True)} {GTE}{f(p_vacinados)}%"
+        f"\nVacinados 5+: {GTE}{f(n_vacinados)} {f(n_vacinados_novas, True)} {GTE}{f(p_vacinados)}%"
         f"\nVacinados 12+: {GTE}{f(p_vacinaveis)}%"
         f"\nReforço: {GTE}{f(n_reforco)} {GTE}{f(n_reforco_novas, True)} {GTE}{f(p_reforco)}%"
         f"\n\n[1/3]"
