@@ -215,6 +215,7 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `pessoas_vacinadas_parcialmente_novas` | Número diário de pessoas com vacinaçao parcial. Poderá ser negativo em dias que sejam administradas mais segundas doses que primeiras. | Inteiro >= 0 ou _vazio_ |
 | `pessoas_inoculadas` | Número total de pessoas com pelo menos uma dose de vacina. É ajustado semanalmente como o `completamente` | Inteiro >= 0 ou _vazio_ |
 | `pessoas_inoculadas_novas` | Número diário de pessoas com a primeira (potencialmente única) dose de vacina. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_inoculadas_12mais` | Número total de pessoas com pelo menos uma dose de vacina e 12 ou mais anos. É calculado da diferença de `pessoas_inoculadas_novas` subtraindo `vacinação_iniciada_05_11`, para o valor poder ser usado quando comparado com outros países com 12+ e sem que a percentagem ultrapasse os 100%.  | Inteiro >= 0 ou _vazio_ |
 | `vacinas` | Número total de doses de vacina. Equivalente ao `doses` mas ajustado semanalmente com os valores das ilhas. | Inteiro >= 0 ou _vazio_ |
 | `vacinas_novas` | Número diário de novas doses de vacinas. | Inteiro >= 0 ou _vazio_ |
 | `pessoas_vacinadas_completamente_continente` | Número total de pessoas com vacinação completa no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
