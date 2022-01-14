@@ -196,3 +196,6 @@ Shape_Leng
 
 ### 2022-01-06-concelhos.json
 23-12-2021 a 05-01-2022 (quarta-feira), publicado a 07-01-2022 (sexta-feira)
+
+### 2022-01-13-concelhos.json
+30-12-2021 a 12-01-2022 (quarta-feira), publicado a 14-01-2022 (sexta-feira)
