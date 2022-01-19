@@ -23,8 +23,8 @@ link_repo = "https://github.com/dssg-pt/covid19pt-data"
 # Keeping these consistent with previous vaccination numbers
 POP_PT = 10_347_892
 POP_PT_CONTINENTE = 9_860_175
-POP_VACINAVEL = 9_234_166
-#POP_0_11 = 1_113_726
+POP_VACINAVEL = 9_219_054
+#POP_0_11 = 1_128_838
 
 # POP_IDADE = {
 #     '0_9':      433_332 + 461_299,  #  0-04 + 05-09
@@ -93,7 +93,7 @@ POP_50 = POP_IDADE['50_59']
 POP_REFORCO_50PLUS = POP_80 + POP_70 + POP_60 + POP_50
 POP_REFORCO_12_49 = POP_VACINAVEL_CONTINENTE - POP_REFORCO_50PLUS
 
-POP_05_11 = POP_PT - POP_VACINAVEL_CONTINENTE - 436_118
+POP_05_11 = POP_PT - POP_VACINAVEL - 436_118 # 0-4
 
 
 TENDENCIA = ["⬈", "⬊", "⬌"]
@@ -142,7 +142,7 @@ def t(valor):
         else ""
     )
 
-def compose_tweets(DAYS_OFFSET=0):
+def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
 
     path = Path(__file__).resolve().parents[2]
     df = pd.read_csv(path / 'vacinas.csv',
@@ -152,16 +152,23 @@ def compose_tweets(DAYS_OFFSET=0):
     d = df.tail(DAYS_OFFSET + 1)[-1:]
 
     data = d.index.item().strftime("%d %b %Y")
-    n_vacinados = int(d['pessoas_vacinadas_completamente'])
-    n_vacinados_novas = int(d['pessoas_vacinadas_completamente_novas'])
-    p_vacinados = 100.0 * n_vacinados / POP_PT
-    p_vacinaveis = 100.0 * n_vacinados / POP_VACINAVEL
 
     n_inoculados = int(d['pessoas_inoculadas'])
     n_inoculados_novas = None # -int(d['pessoas_inoculadas_novas'])
     p_inoculados = 100.0 * n_inoculados / POP_PT
     n_inoculados_12mais = int(d['pessoas_inoculadas_12mais'])
     p_inoculaveis = 100.0 * n_inoculados_12mais / POP_VACINAVEL
+    if p_inoculaveis > 100.0:
+        print(f"inoculados={n_inoculados_12mais} mais que inoculáveis={POP_VACINAVEL} - percentagem={p_inoculaveis}")
+        p_inoculaveis = 99.9
+        POP_VACINAVEL = int(n_inoculados_12mais / p_inoculaveis * 100)
+        print(f"inoculados={n_inoculados_12mais} mais que inoculáveis={POP_VACINAVEL} - percentagem={p_inoculaveis}")
+
+    n_vacinados = int(d['pessoas_vacinadas_completamente'])
+    n_vacinados_novas = int(d['pessoas_vacinadas_completamente_novas'])
+    p_vacinados = 100.0 * n_vacinados / POP_PT
+    p_vacinaveis = 100.0 * n_vacinados / POP_VACINAVEL
+
 
     n_vacinados_c = int(d['pessoas_vacinadas_completamente_continente'])
     n_vacinados_c_novas = int(d['pessoas_vacinadas_completamente_continente_novas'])
