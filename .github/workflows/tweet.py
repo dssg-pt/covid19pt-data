@@ -306,7 +306,7 @@ def compor_tweets(dados_para_tweets):
 
     # Main tweet
     tweet_message = (
-        "🆕Dados #COVID19PT 🇵🇹 até {dia}:\n"
+        "🆕Dados #COVID19PT 🇵🇹 a {dia}:\n"
         "\n"
         "🫂Novos casos: {novos_casos} | Total: {total_casos}\n"
         "🪦Novos óbitos: {novos_obitos} | Total: {total_obitos}\n"
@@ -329,14 +329,14 @@ def compor_tweets(dados_para_tweets):
     )
 
     second_tweet = (
-        "🔎Região: incidência, novos casos, óbitos:\n"
-        "{icon_norte}Norte: {incidencia_norte} {novos_casos_norte} {novos_obitos_norte}\n"
-        "{icon_centro}Centro: {incidencia_centro} {novos_casos_centro} {novos_obitos_centro}\n"
-        "{icon_lvt}LVT: {incidencia_lvt} {novos_casos_lvt} {novos_obitos_lvt}\n"
-        "{icon_alentejo}Alentejo: {incidencia_alentejo} {novos_casos_alentejo} {novos_obitos_alentejo}\n"
-        "{icon_algarve}Algarve: {incidencia_algarve} {novos_casos_algarve} {novos_obitos_algarve}\n"
-        "{icon_acores}Açores: {incidencia_acores} {novos_casos_acores} {novos_obitos_acores}\n"
-        "{icon_madeira}Madeira: {incidencia_madeira} {novos_casos_madeira} {novos_obitos_madeira}\n"
+        "🔎Por Região incidência, novos casos, óbitos:\n"
+        "{icon_norte}Norte {incidencia_norte} {novos_casos_norte} {novos_obitos_norte}\n"
+        "{icon_centro}Centro {incidencia_centro} {novos_casos_centro} {novos_obitos_centro}\n"
+        "{icon_lvt}LVT {incidencia_lvt} {novos_casos_lvt} {novos_obitos_lvt}\n"
+        "{icon_alentejo}Alentejo {incidencia_alentejo} {novos_casos_alentejo} {novos_obitos_alentejo}\n"
+        "{icon_algarve}Algarve {incidencia_algarve} {novos_casos_algarve} {novos_obitos_algarve}\n"
+        "{icon_madeira}Madeira {incidencia_madeira} {novos_casos_madeira} {novos_obitos_madeira}\n"
+        "{icon_acores}Açores {incidencia_acores} {novos_casos_acores} {novos_obitos_acores}\n"
         "\n"
         "[2/{num_tweets}]"
     )
@@ -346,10 +346,11 @@ def compor_tweets(dados_para_tweets):
     if sem_idades:
         third_tweet = ""
     else:
+        third_tweet = "🔎Por Idade incidência, novos casos"
         if sem_idades_obitos:
-            third_tweet = "🔎Idade: incidência, novos casos:\n"
+            third_tweet += ":\n"
         else:
-            third_tweet = "🔎Idade: incidência, novos casos, óbitos:\n"
+            third_tweet += ", óbitos:\n"
         for k in idades:
             k2 = "00" if k == "0_9" else "80" if k == "80_plus" else k[0:2]
             icon = f"icon_{k}"
@@ -358,16 +359,15 @@ def compor_tweets(dados_para_tweets):
             novos_obitos = f"novos_obitos_{k}"
             icon = "{"+icon+"}"
             icon = "" # 2022.01.20 tweet excede 280 caracteres e a incidencia está entre 1.500 e 10.000
+            third_tweet += icon+k2+" {"+incidencia+"} {"+novos_casos+"}"
             if sem_idades_obitos:
-                third_tweet += icon+k2+": {"+incidencia+"} {"+novos_casos+"}\n"
+                third_tweet += "\n"
             else:
-                third_tweet += icon+k2+": {"+incidencia+"} {"+novos_casos+"} {"+novos_obitos+"}\n"
+                third_tweet += " {"+novos_obitos+"}\n"
         third_tweet += (
             "\n"
             "[3/{num_tweets}]"
         )
-        if tweet_len(third_tweet) >= 280:
-            third_tweet = third_tweet.replace(':', '')
 
 
     fourth_tweet = (
