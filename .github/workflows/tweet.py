@@ -356,10 +356,12 @@ def compor_tweets(dados_para_tweets):
             incidencia = f"incidencia_{k}"
             novos_casos = f"novos_casos_{k}"
             novos_obitos = f"novos_obitos_{k}"
+            icon = "{"+icon+"}"
+            icon = "" # 2022.01.20 tweet excede 280 caracteres e a incidencia está entre 1.500 e 10.000
             if sem_idades_obitos:
-                third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"}\n"
+                third_tweet += icon+k2+": {"+incidencia+"} {"+novos_casos+"}\n"
             else:
-                third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"} {"+novos_obitos+"}\n"
+                third_tweet += icon+k2+": {"+incidencia+"} {"+novos_casos+"} {"+novos_obitos+"}\n"
         third_tweet += (
             "\n"
             "[3/{num_tweets}]"
