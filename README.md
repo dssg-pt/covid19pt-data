@@ -2,6 +2,8 @@
 
 📅️ **Última actualização**: 20 de Janeiro de 2022, 20:33
 
+🤖 **Twitter Bots**: [@CovidometroPT - Estatísticas diárias da COVID-19 em Portugal](https://twitter.com/CovidometroPT) e [@PlenoDVacinacao - Monitor da Vacinação COVID-19 em Portugal](https://twitter.com/PlenoDVacinacao).
+
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/discussions/), na categoria 🙌 _Montra de Projectos_.
