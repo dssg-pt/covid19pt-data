@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import datetime
 import requests
 import pandas as pd
@@ -15,9 +17,11 @@ def get_amostras(url):
     data = r.json()
     amostras = []
 
+    features = data["features"]
+
     # Sort by total amostras, which should allow us to guess the date if missing
     features = sorted(
-        data["features"],
+        features,
         key=lambda entry: entry["attributes"].get(
             "Total_Amostras__Ac", entry["attributes"].get("Amostras__Ac", None)
         ),
@@ -51,10 +55,13 @@ def get_amostras(url):
         unix_date = attr.get("Data_do_Relatorio", attr.get("Data_do_Relatório", None))
 
         # 31-12-2022 instead of 31-12-2021
-        if unix_date and last_date and (unix_date - last_date) != 86400000:
+        if unix_date == 1643673600000: # 01-02-2022 deixou de ter 31-01-2022
+            # 31-01-2022,34772184,273254,19074709,69457,15697475,203797
+            pass
+        elif unix_date and last_date and (unix_date - last_date) != 86400000:
             print(
                 f"Invalid date"
-                f" {unix_date} {datetime.datetime.utcfromtimestamp(unix_date / 1000)}"
+                f" Data_do_Relatorio={unix_date} {datetime.datetime.utcfromtimestamp(unix_date / 1000)}"
                 f" after"
                 f" {last_date} {datetime.datetime.utcfromtimestamp(last_date / 1000)}"
             )
@@ -193,15 +200,12 @@ if __name__ == "__main__":
     merged = merged.fillna('""')
 
     different_rows = merged[
-        (merged.amostras_available != merged.amostras_latest)
-        | (merged.amostras_novas_available != merged.amostras_novas_latest)
-        | (merged.amostras_pcr_available != merged.amostras_pcr_latest)
-        | (merged.amostras_pcr_novas_available != merged.amostras_pcr_novas_latest)
-        | (merged.amostras_antigenio_available != merged.amostras_antigenio_latest)
-        | (
-            merged.amostras_antigenio_novas_available
-            != merged.amostras_antigenio_novas_latest
-        )
+        ((merged.amostras_available != '""') & (merged.amostras_available != merged.amostras_latest))
+        #| (merged.amostras_novas_available != merged.amostras_novas_latest)
+        | ((merged.amostras_pcr_available != '""') & (merged.amostras_pcr_available != merged.amostras_pcr_latest))
+        #| (merged.amostras_pcr_novas_available != merged.amostras_pcr_novas_latest)
+        | ((merged.amostras_antigenio_available != '""') & (merged.amostras_antigenio_available != merged.amostras_antigenio_latest))
+        #| (merged.amostras_antigenio_novas_available != merged.amostras_antigenio_novas_latest)
     ]
 
     # Order by date
@@ -214,19 +218,19 @@ if __name__ == "__main__":
 
         # existing row
         if (updated.data == row["data"]).any():
-            index = updated.index[updated["data"] == row["data"]]
-            updated.at[index, "amostras"] = row["amostras_available"]
-            updated.at[index, "amostras_novas"] = row["amostras_novas_available"]
-            updated.at[index, "amostras_pcr"] = row["amostras_pcr_available"]
-            updated.at[index, "amostras_pcr_novas"] = row[
-                "amostras_pcr_novas_available"
-            ]
-            updated.at[index, "amostras_antigenio"] = row[
-                "amostras_antigenio_available"
-            ]
-            updated.at[index, "amostras_antigenio_novas"] = row[
-                "amostras_antigenio_novas_available"
-            ]
+            index = updated.index[updated["data"] == row["data"]].item()
+            updated.at[index, "amostras"] = \
+                row["amostras_available"]
+            updated.at[index, "amostras_novas"] = \
+                row["amostras_novas_available"]
+            updated.at[index, "amostras_pcr"] = \
+                row["amostras_pcr_available"]
+            updated.at[index, "amostras_pcr_novas"] = \
+                row["amostras_pcr_novas_available"]
+            updated.at[index, "amostras_antigenio"] = \
+                row["amostras_antigenio_available"]
+            updated.at[index, "amostras_antigenio_novas"] = \
+                row["amostras_antigenio_novas_available"]
 
         # new row
         else:
