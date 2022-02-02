@@ -46,9 +46,9 @@ jobs:
         run: |
           echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
 
-      - name: Check for COVID19PT updates for - Daily API amostras
-        run: |
-          echo "UPDATE_AMOSTRAS=$(python .github/workflows/scripts/check_amostras_update.py)" >> $GITHUB_ENV
+      #- name: Check for COVID19PT updates for - Daily API amostras
+      #  run: |
+      #    echo "UPDATE_AMOSTRAS=$(python .github/workflows/scripts/check_amostras_update.py)" >> $GITHUB_ENV
 
       - name: Check for COVID19PT updates for - Weekly Concelhos - retrieve data
         run: |
