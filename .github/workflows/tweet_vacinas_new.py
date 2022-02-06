@@ -226,19 +226,22 @@ def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
     n_vacinas_reforco_novas = int(d['vacinas_reforço_e_gripe_novas'])
     #p_vacinas_reforco = int(n_vacinas_reforco / POP_REFORCO * 100_000)
 
+    GTE=""
     tweet_1 = (
-        f"💉População 🇵🇹 nacional vacinada até {data}:"
+        f"💉População 🇵🇹 nacional vacinada a {data}:"
         f"\n"
         f"\nInoculações: {GTE}{f(n_vacinas)} {f(n_vacinas_novas, True)} {GTE}{f(p_vacinas)}%"
-        f"\nInoculados 5+: {GTE}{f(n_inoculados)} {f(n_inoculados_novas, True)} {GTE}{f(p_inoculados)}%"
-        f"\nInoculados 12+: {GTE}{f(p_inoculaveis)}%"
-        f"\nVacinados 5+: {GTE}{f(n_vacinados)} {f(n_vacinados_novas, True)} {GTE}{f(p_vacinados)}%"
-        f"\nVacinados 12+: {GTE}{f(p_vacinaveis)}%"
+        f"\nInoculados: {GTE}{f(n_inoculados)} {f(n_inoculados_novas, True)} {GTE}{f(p_inoculados)}%"
+        #f"\nInoculados 5+: {GTE}{f(n_inoculados)} {f(n_inoculados_novas, True)} {GTE}{f(p_inoculados)}%"
+        #f"\nInoculados 12+: {GTE}{f(p_inoculaveis)}%"
+        f"\nVacinados: {GTE}{f(n_vacinados)} {f(n_vacinados_novas, True)} {GTE}{f(p_vacinados)}%"
+        #f"\nVacinados 5+: {GTE}{f(n_vacinados)} {f(n_vacinados_novas, True)} {GTE}{f(p_vacinados)}%"
+        #f"\nVacinados 12+: {GTE}{f(p_vacinaveis)}%"
         f"\nReforço: {GTE}{f(n_reforco)} {GTE}{f(n_reforco_novas, True)} {GTE}{f(p_reforco)}%"
         f"\n\n[1/3]"
     )
     tweet_2 = (
-        f"💉População 🇵🇹 continente vacinada até {data}:"
+        f"💉População 🇵🇹 continente vacinada a {data}:"
         f"\n"
         f"\nIniciada 5-11: {f(n_iniciados_05_11)} {f(n_iniciados_05_11_novas, True)} {f(p_iniciados_05_11)}%"
         f"\nVacinados: {f(n_vacinados_c)} {f(n_vacinados_c_novas, True)} {f(p_vacinados_c)}%"
@@ -250,12 +253,12 @@ def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
         f"\n\n[2/3]"
     )
     tweet_3 = (
-        f"💉População 🇵🇹 continente reforço por idade até {data}:"
+        f"💉População 🇵🇹 continente reforço por idade a {data}:"
         f"\n"
         f"\n80+: {f(n_reforco_80)} {f(n_reforco_80_novas, True)} {f(p_reforco_80)}%"
-        f"\n70s: {f(n_reforco_70)} {f(n_reforco_70_novas, True)} {f(p_reforco_70)}%"
-        f"\n60s: {f(n_reforco_60)} {f(n_reforco_60_novas, True)} {f(p_reforco_60)}%"
-        f"\n50s: {f(n_reforco_50)} {f(n_reforco_50_novas, True)} {f(p_reforco_50)}%"
+        f"\n70: {f(n_reforco_70)} {f(n_reforco_70_novas, True)} {f(p_reforco_70)}%"
+        f"\n60: {f(n_reforco_60)} {f(n_reforco_60_novas, True)} {f(p_reforco_60)}%"
+        f"\n50: {f(n_reforco_50)} {f(n_reforco_50_novas, True)} {f(p_reforco_50)}%"
         f"\n12-49: {f(n_reforco_c_resto)} {f(n_reforco_c_resto_novas, True)} {f(p_reforco_c_resto)}%"
         f"\n\n[3/3]"
         f"\n\n➕Todos os dados em: {link_repo}"
