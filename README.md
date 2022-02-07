@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 7 de Fevereiro de 2022, 15:17
+📅️ **Última actualização**: 7 de Fevereiro de 2022, 15:45
 
 🤖 **Twitter Bots**: [@CovidometroPT - Estatísticas diárias da COVID-19 em Portugal](https://twitter.com/CovidometroPT) e [@PlenoDVacinacao - Monitor da Vacinação COVID-19 em Portugal](https://twitter.com/PlenoDVacinacao).
 
