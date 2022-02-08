@@ -234,7 +234,7 @@ def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
         n_reforco_c_resto_novas = None
     
     if n_reforco_18_29 and n_reforco_c_resto != 0:
-        raise Exception("soma não dá zero")
+        raise Exception(f"soma não dá zero {n_reforco_c_resto}")
 
     p_reforco_c_resto = 100.0 * n_reforco_c_resto / POP_REFORCO_12_29
 
