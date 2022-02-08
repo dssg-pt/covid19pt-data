@@ -237,8 +237,16 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `reforço_60_69_novas` | Número diário de pessoas com vacinação reforço no continente com 60 a 69 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
 | `reforço_50_59` | Número total de pessoas com vacinação reforço no continente com 50 a 59 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
 | `reforço_50_59_novas` | Número diário de pessoas com vacinação reforço no continente com 50 a 59 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_40_49` | Número total de pessoas com vacinação reforço no continente com 40 a 49 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_40_49_novas` | Número diário de pessoas com vacinação reforço no continente com 40 a 49 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_30_39` | Número total de pessoas com vacinação reforço no continente com 30 a 39 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_30_39_novas` | Número diário de pessoas com vacinação reforço no continente com 30 a 39 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_18_29` | Número total de pessoas com vacinação reforço no continente com 18 a 29 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_18_29_novas` | Número diário de pessoas com vacinação reforço no continente com 18 a 29 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
 | `vacinação_iniciada_05_11` | Número total de pessoas com vacinação iniciada no continente com 5 a 11 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
 | `vacinação_iniciada_05_11_novas` | Número diário de pessoas com vacinação iniciada no continente com 5 a 11 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `vacinação_completa_05_11` | Número total de pessoas com vacinação completa no continente com 5 a 11 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `vacinação_completa_05_11_novas` | Número diário de pessoas com vacinação completa no continente com 5 a 11 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
 
 Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 
