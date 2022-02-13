@@ -232,11 +232,12 @@ def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
         if n_reforco_c_resto_novas and n_reforco_c_resto_novas < 0: n_reforco_c_resto_novas = None
     else:
         n_reforco_c_resto_novas = None
-    
-    if n_reforco_18_29 and n_reforco_c_resto != 0:
+
+    RESTO = 1    
+    if n_reforco_18_29 and n_reforco_c_resto != RESTO:
         raise Exception(f"soma não dá zero {n_reforco_c_resto}")
 
-    p_reforco_c_resto = 100.0 * n_reforco_c_resto / POP_REFORCO_12_29
+    #p_reforco_c_resto = 100.0 * n_reforco_c_resto / POP_REFORCO_12_29
 
     n_gripe = int(d['pessoas_gripe'])
     n_gripe_novas = int(d['pessoas_gripe_novas'])
