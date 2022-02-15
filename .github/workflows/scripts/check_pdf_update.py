@@ -1,6 +1,7 @@
 import pathlib
 import sys
 import re
+import datetime
 
 import requests
 
@@ -41,8 +42,12 @@ if __name__ == '__main__':
     current_data = get_most_recent_covid_file()
     new_data = get_covid_data_from_api()
 
+    current_data = datetime.datetime.strptime(current_data, '%d-%m-%Y')
+    new_data = datetime.datetime.strptime(new_data, '%d-%m-%Y')
+    if DEBUG: print(f"current_data={current_data} new_data={new_data}")
+
     try:
-        assert current_data == new_data
+        assert new_data <= current_data
     except AssertionError:
         print("TRUE")
         sys.exit()
