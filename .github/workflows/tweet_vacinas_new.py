@@ -166,7 +166,7 @@ def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
     n_vacinados = int(d['pessoas_vacinadas_completamente'])
     n_vacinados_novas = int(d['pessoas_vacinadas_completamente_novas'])
     p_vacinados = 100.0 * n_vacinados / POP_PT
-    p_vacinaveis = 100.0 * n_vacinados / POP_VACINAVEL
+    #p_vacinaveis = 100.0 * n_vacinados / POP_VACINAVEL
 
 
     n_vacinados_c = int(d['pessoas_vacinadas_completamente_continente'])
@@ -235,7 +235,9 @@ def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
 
     RESTO = 0
     if n_reforco_18_29 and n_reforco_c_resto != RESTO:
-        raise Exception(f"soma não dá zero {n_reforco_c_resto}")
+        errmsg = f"soma não dá zero {n_reforco_c_resto}"
+        print(errmsg)
+        #raise Exception(errmsg)
 
     #p_reforco_c_resto = 100.0 * n_reforco_c_resto / POP_REFORCO_12_29
 
