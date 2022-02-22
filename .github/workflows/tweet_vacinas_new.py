@@ -92,6 +92,8 @@ POP_40 = POP_IDADE['40_49']
 POP_30 = POP_IDADE['30_39']
 POP_REFORCO_12_29 = POP_VACINAVEL_CONTINENTE - POP_80 - POP_70 - POP_60 - POP_50 - POP_40 - POP_30 
 
+POP_GRIPE_50 = POP_80 + POP_70 + POP_60 + POP_50
+
 POP_05_11 = POP_PT - POP_VACINAVEL - 436_118 # 0-4
 
 
@@ -243,7 +245,7 @@ def compose_tweets(DAYS_OFFSET=0, POP_VACINAVEL=POP_VACINAVEL):
 
     n_gripe = int(d['pessoas_gripe'])
     n_gripe_novas = int(d['pessoas_gripe_novas'])
-    p_gripe = 100.0 * n_gripe / POP_PT_CONTINENTE
+    p_gripe = 100.0 * n_gripe / POP_GRIPE_50 # POP_PT_CONTINENTE
 
     #n_vacinas_reforco = int(d['vacinas_reforço_e_gripe'])
     n_vacinas_reforco_novas = int(d['vacinas_reforço_e_gripe_novas'])
