@@ -12,12 +12,15 @@ locale.setlocale(locale.LC_TIME, "pt_PT.UTF-8")
 
 if __name__ == '__main__':
 
-    url = 'https://covid19.min-saude.pt'
+    url = 'https://covid19.min-saude.pt/'
 
     response = requests.get(
         url=url,
         headers={
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'pt-PT,pt;q=0.9',
+            'Accept-Encoding': 'br',
         },
     )
     if response.status_code != 200:
