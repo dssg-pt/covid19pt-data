@@ -10,7 +10,7 @@ DEBUG = len(sys.argv) > 1
 def get_last_date(lines, exclude_manual=False):
     last_line = lines[-1]
     # if there's these many commas, it's manual data (no confirmados nor obitos per age)
-    if not exclude_manual and ',,,,,,,,,,,,,,,,,,,,,,,,,,,,' in last_line:
+    if not exclude_manual and ',,,,,,,,,,,,,,,,,,,,,,,,,,,,' in last_line and '25-02-2022' not in last_line: 
         return get_last_date(lines[:-1], exclude_manual=exclude_manual)
     return last_line
 
