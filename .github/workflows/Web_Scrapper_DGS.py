@@ -14,7 +14,12 @@ if __name__ == '__main__':
 
     url = 'https://covid19.min-saude.pt'
 
-    response = requests.get(url=url)
+    response = requests.get(
+        url=url,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+        },
+    )
     if response.status_code != 200:
         raise ValueError('Unable to retrieve data from covid site. Error %s: $s' % response.status_code, response.text)
 

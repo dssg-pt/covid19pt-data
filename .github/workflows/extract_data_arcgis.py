@@ -42,7 +42,12 @@ if __name__ == "__main__":
         '&resultRecordCount=10000'
     )
     print(f"Loading from '{URL}'")
-    data = requests.get(URL).json()
+    data = requests.get(
+        url=URL,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+        },
+    ).json()
 
     (found_date, latest_date) = (False, 0)
     for entry in data["features"]:

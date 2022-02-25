@@ -53,7 +53,12 @@ def get_list_cases_long():
 
         resultOffset = 0
         url_cases = URL.format(resultOffset, resultOffset + recordsPerPage)
-        data = requests.get(url_cases).json()
+        data = requests.get(
+            url=url_cases,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+            },
+        ).json()
 
     casos = []
     while len(data["features"]) != 0:
@@ -177,7 +182,12 @@ def get_list_cases_long():
         if recordsPerPage:
             resultOffset += 1000
             url_cases = URL.format(resultOffset, resultOffset + recordsPerPage)
-            data = requests.get(url_cases).json()
+            data = requests.get(
+                url=url_cases,
+                headers={
+                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+                },
+            ).json()
         else:
             break
 

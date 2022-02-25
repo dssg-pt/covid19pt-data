@@ -30,7 +30,12 @@ def get_data_data_from_api():
         "&f=pjson&outFields=*&cacheHint=false"
     )
     if DEBUG: print(f"Loading from '{URL}'")
-    response = requests.get(URL)
+    response = requests.get(
+        url=URL,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+        },
+    )
 
     if response.status_code != 200:
         raise ValueError('Unable to retrieve data from data endpoint. Error %s: $s' % response.status_code, response.text)

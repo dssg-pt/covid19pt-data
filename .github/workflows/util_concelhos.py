@@ -15,7 +15,12 @@ def get_list_municipalities():
 
     resultOffset = 0
     url_concelhos = URL.format(resultOffset, resultOffset + recordsPerPage)
-    data = requests.get(url_concelhos).json()
+    data = requests.get(
+        url=url_concelhos,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+        },
+    ).json()
 
     concelhos = []
     while len(data["features"]) != 0:
@@ -25,7 +30,12 @@ def get_list_municipalities():
 
         resultOffset += 200
         url_concelhos = URL.format(resultOffset, resultOffset + recordsPerPage)
-        data = requests.get(url_concelhos).json()
+        data = requests.get(
+            url=url_concelhos,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+            },
+        ).json()
 
     concelhos_df = pd.DataFrame(data=concelhos, columns=["concelho"])
 
