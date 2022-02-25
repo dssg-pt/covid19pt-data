@@ -44,9 +44,13 @@ jobs:
       - name: Check for COVID19PT updates for - Daily PDF
         #    'https://covid19.min-saude.pt/' \
         run: |
-          wget -c -O /tmp/covid.pdf \
+          wget \
+            --server-response \
+            --inet4-only \
+            -O /tmp/covid.pdf \
             'https://covid19.min-saude.pt/wp-content/uploads/2022/02/725_DGS_boletim_20220225.pdf' \
-            --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15'
+            --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15' \
+          || true
 
 
       - name: Check for COVID19PT updates for - Daily PDF
