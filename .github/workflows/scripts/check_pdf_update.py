@@ -32,7 +32,7 @@ def get_covid_data_from_api():
         },
     )
     if response.status_code != 200:
-        raise ValueError('Unable to retrieve data from covid site. Error %s: $s' % response.status_code, response.text)
+        raise ValueError(f'Unable to retrieve data from covid site. Error {response.status_code}: "{response.text}"')
 
     # <a href="https://covid19.min-saude.pt/wp-content/uploads/2022/01/700_DGS_boletim_20220131.pdf" target="_blank">Ponto de Situação (31-01-2022)</a>
     matches = re.search((
