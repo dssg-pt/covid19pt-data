@@ -50,6 +50,7 @@ if __name__ == "__main__":
     ).json()
 
     (found_date, latest_date) = (False, 0)
+    ars = []
     for entry in data["features"]:
         attributes = entry['attributes']
         if not attributes["Data_ARS"]:
@@ -64,6 +65,7 @@ if __name__ == "__main__":
 
         found_date = True
 
+        ars.append(attributes["ARSNome"])
         if attributes["ARSNome"] == "Nacional":
 
             # Continuam
@@ -194,6 +196,9 @@ if __name__ == "__main__":
     if not found_date:
         frmt_date = datetime.datetime.utcfromtimestamp(latest_date).strftime("%d-%m-%Y")
         raise Exception(f"Missing date {today}, latest date {frmt_date}")
+
+    if 'Nacional' not in ars:
+        raise Exception(f"Dados nacionais em falta, ars={ars}")
 
     if latest_date == 1630065600: # 27-08-2021
         try: confirmados_arslvt += 0
