@@ -1,5 +1,6 @@
 # Imports
 import pandas as pd
+import numpy as np
 from datetime import datetime
 import os
 import sys
@@ -191,9 +192,15 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
             dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff(idades_diff)[-1 - OFFSET])
             dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff, name=f'novos_casos_{k}', OFFSET=OFFSET)
             if INCIDENCIA7:
-                incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
+                more_offset = 0
+                while np.isnan(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET - more_offset]):
+                    more_offset += 1
+                incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET - more_offset]) * 100 * 1000 / POP_IDADE[k]
             else:
-                incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
+                more_offset = 0
+                while np.isnan(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET - more_offset]):
+                    more_offset += 1
+                incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET - more_offset]) * 100 * 1000 / POP_IDADE[k]
             dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 0)
             dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}', OFFSET=OFFSET)
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
