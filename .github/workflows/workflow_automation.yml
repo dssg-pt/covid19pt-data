@@ -152,7 +152,7 @@ jobs:
       - name: Run data extraction
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: |
-          python .github/workflows/extract_data_arcgis.py 2
+          python .github/workflows/extract_data_arcgis.py 1
           # TEMP python .github/workflows/extract_data_arcgis.py
       - name: Validate data with pytest
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
