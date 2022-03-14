@@ -126,25 +126,25 @@ jobs:
           python .github/workflows/update_rt.py
 
 
-      # If there is new PDF
-      - name: Scrap the report link from the DGS website
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          python .github/workflows/Web_Scrapper_DGS.py
-      - name: Download PDF
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
-          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
-      - name: Process PDF
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
-          python .github/workflows/process_report.py
-      - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          git add -A dgs-reports-archive/
+      ## If there is new PDF
+      #- name: Scrap the report link from the DGS website
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    python .github/workflows/Web_Scrapper_DGS.py
+      #- name: Download PDF
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
+      #    wget -c -P .github/workflows/ $(cat .github/report_link.txt)
+      #- name: Process PDF
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
+      #    python .github/workflows/process_report.py
+      #- name: Add new PDF file to Git repo (it's the only addition to the reports folder)
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    git add -A dgs-reports-archive/
 
 
       # If there is new data
