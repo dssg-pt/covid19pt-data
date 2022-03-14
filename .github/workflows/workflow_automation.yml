@@ -55,8 +55,8 @@ jobs:
 
       - name: Check for COVID19PT updates for - Daily API data
         run: |
-          echo "UPDATE_DATA=TRUE" >> $GITHUB_ENV
-          # TEMP echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
+          echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
+          # TEMP echo "UPDATE_DATA=TRUE" >> $GITHUB_ENV
 
       - name: Check for COVID19PT updates for - Daily API amostras
         run: |
@@ -152,8 +152,8 @@ jobs:
       - name: Run data extraction
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: |
-          python .github/workflows/extract_data_arcgis.py 1
-          # TEMP python .github/workflows/extract_data_arcgis.py
+          python .github/workflows/extract_data_arcgis.py
+          # TEMP python .github/workflows/extract_data_arcgis.py 1
       - name: Validate data with pytest
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
