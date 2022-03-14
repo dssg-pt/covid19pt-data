@@ -201,7 +201,8 @@ def test_dates():
         ("obitos_f", (float, str), _check_column_with_empty),
         ("obitos_m", (float, str), _check_column_with_empty),
         # Recuperados
-        ("recuperados", (int), lambda x: x >= 0),
+        #("recuperados", (int), lambda x: x >= 0),
+        ("recuperados", (float, str), _check_column_with_empty),
         ("recuperados_arsnorte", (float, str), _check_column_with_empty),
         ("recuperados_arscentro", (float, str), _check_column_with_empty),
         ("recuperados_arslvt", (float, str), _check_column_with_empty),
