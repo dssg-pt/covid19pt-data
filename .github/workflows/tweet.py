@@ -163,11 +163,17 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
     dados_extraidos["perc_ativos"] = r(float(100*df.ativos[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
 
     ##Recuperados
-    dados_extraidos["total_recuperados"]=r(df.recuperados[-1 - OFFSET])
-    dados_extraidos["total_recuperados_tendencia"]=calc_tendencia(df.recuperados, name='recuperados', OFFSET=OFFSET)
-    dados_extraidos["novos_recuperados"]=r(df.recuperados.diff()[-1 - OFFSET])
-    #Percentagem total
-    dados_extraidos["perc_recuperados"] = r(float(100*df.recuperados[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
+    if np.isnan(df.recuperados[-1 - OFFSET]):
+        dados_extraidos["total_recuperados"]=0
+        dados_extraidos["total_recuperados_tendencia"]=0
+        dados_extraidos["novos_recuperados"]=0
+        dados_extraidos["perc_recuperados"]=0
+    else:
+        dados_extraidos["total_recuperados"]=r(df.recuperados[-1 - OFFSET])
+        dados_extraidos["total_recuperados_tendencia"]=calc_tendencia(df.recuperados, name='recuperados', OFFSET=OFFSET)
+        dados_extraidos["novos_recuperados"]=r(df.recuperados.diff()[-1 - OFFSET])
+        #Percentagem total
+        dados_extraidos["perc_recuperados"] = r(float(100*df.recuperados[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
 
     ## Regiões
     for k in ['lvt', 'norte', 'algarve', 'centro', 'alentejo', 'acores', 'madeira']:
@@ -239,10 +245,13 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
     dados_extraidos["novas_amostras_ag"] = r(df_amostras.amostras_antigenio_novas[-1 - OFFSET])
     dados_extraidos["novas_amostras_ag_tendencia"] = calc_tendencia(df_amostras.amostras_antigenio_novas, name='novas_amostras_ag', OFFSET=OFFSET)
 
-    positividade7 = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1])
+    more_offset = 0
+    while len(df[df.index == df_amostras.index[-1 - OFFSET - more_offset].strftime("%Y-%m-%d")]) == 0:
+        more_offset += 1
+    positividade7 = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET - more_offset].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1 - more_offset])
     dados_extraidos["perc_positividade7"] = r(positividade7, 1)
     dados_extraidos["icon_positividade7"] = icon(positividade7, "positividade")
-    positividade7_anterior = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET -1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1 -1])
+    positividade7_anterior = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET - more_offset -1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1 - more_offset -1])
     dados_extraidos["perc_positividade7_anterior"] = r(positividade7_anterior, 1)
 
     for d in [14, 7]:

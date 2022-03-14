@@ -268,6 +268,9 @@ if __name__ == "__main__":
     elif latest_date == 1630238400: # 28-08-2021
         confirmados_m += 1  # 477262
 
+    if recuperados == 0: recuperados = ''
+    if vigilancia == 0: vigilancia = ''
+
     try:
         TEMP_CSV = str(Path(__file__).resolve().parents[2] / ".github" / "temp.csv")
         temp = pd.read_csv(TEMP_CSV)
