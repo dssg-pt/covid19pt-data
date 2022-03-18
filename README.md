@@ -1,10 +1,13 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 17 de Março de 2022, 19:46
+📅️ **Última actualização**: 18 de Março de 2022, 13:35
+
+⚠️ **Dados diários COVID-19 e Vacinação terminaram sexta-feira 11 de Março de 2022, sendo substituidos por um novo relatório semanal conjunto - [Link DGS](https://www.dgs.pt/em-destaque/dgs-inicia-divulgacao-semanal-de-dados-epidemiologicos.aspx) - o que implica o final dos dados raw detalhados diários necessários para a maioria dos ficheiros CSV deste repositório.**
+
 
 🤖 **Twitter Bots**: [@CovidometroPT - Estatísticas diárias da COVID-19 em Portugal](https://twitter.com/CovidometroPT) e [@PlenoDVacinacao - Monitor da Vacinação COVID-19 em Portugal](https://twitter.com/PlenoDVacinacao).
 
-ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
+ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através dos relatórios do COVID-19 ([aqui](https://covid19.min-saude.pt/relatorio-de-situacao/)), da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), e da API da Dashboard da ESRI [aqui](https://covid19.min-saude.pt/relatorio-de-situacao/), desde 03/03/2020.
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/discussions/), na categoria 🙌 _Montra de Projectos_.
 
