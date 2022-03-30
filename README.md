@@ -1,8 +1,13 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 29 de Dezembro de 2021, 15:17
+📅️ **Última actualização**: 29 de Março de 2022, 17:53
 
-ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), desde 03/03/2020.
+⚠️ **Dados diários COVID-19 e Vacinação terminaram sexta-feira 11 de Março de 2022, sendo substituidos por um novo relatório semanal conjunto - [Link DGS](https://www.dgs.pt/em-destaque/dgs-inicia-divulgacao-semanal-de-dados-epidemiologicos.aspx) - o que implica o final dos dados raw detalhados diários necessários para a maioria dos ficheiros CSV deste repositório.**
+
+
+🤖 **Twitter Bots**: [@CovidometroPT - Estatísticas diárias da COVID-19 em Portugal](https://twitter.com/CovidometroPT) e [@PlenoDVacinacao - Monitor da Vacinação COVID-19 em Portugal](https://twitter.com/PlenoDVacinacao).
+
+ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através dos relatórios do COVID-19 ([aqui](https://covid19.min-saude.pt/relatorio-de-situacao/)), da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), e da API da Dashboard da ESRI [aqui](https://covid19.min-saude.pt/relatorio-de-situacao/), desde 03/03/2020.
 
 👁️ **Utilizaste estes dados para análises/plataformas/notícias?**: Deixa-nos detalhes [aqui](https://github.com/dssg-pt/covid19pt-data/discussions/), na categoria 🙌 _Montra de Projectos_.
 
@@ -65,6 +70,12 @@ O repositório está organizado da seguinte forma:
 # 📡 API Rest para os dados portugueses e mundiais
 
 Em conjunto com a [VOST Portugal](https://www.vost.pt), desenvolvemos uma API disponível a todos com os dados disponibilizados deste repositório, numa tentativa de dar uma ferramenta mais acessível a todos os que querem analisar os dados. Podem aceder e consultar a documentação aqui: https://covid19-api.vost.pt
+
+A API requer autenticação básica. Os utilizadores podem pedir a senha através do envio de um e-mail para covidapi@vost.pt com a informação:
+
+Website onde a API e dados estão a ser usados, e-mail de contacto e nome da pessoa responsável.
+
+Será gerado um username e uma password e enviado por e-mail.
 
 > (Versão anterior, desatualizada)
 > Autor: Carlos Matos | [Grupo IFT](https://grupoift.pt)
@@ -209,6 +220,7 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `pessoas_vacinadas_parcialmente_novas` | Número diário de pessoas com vacinaçao parcial. Poderá ser negativo em dias que sejam administradas mais segundas doses que primeiras. | Inteiro >= 0 ou _vazio_ |
 | `pessoas_inoculadas` | Número total de pessoas com pelo menos uma dose de vacina. É ajustado semanalmente como o `completamente` | Inteiro >= 0 ou _vazio_ |
 | `pessoas_inoculadas_novas` | Número diário de pessoas com a primeira (potencialmente única) dose de vacina. | Inteiro >= 0 ou _vazio_ |
+| `pessoas_inoculadas_12mais` | Número total de pessoas com pelo menos uma dose de vacina e 12 ou mais anos. É calculado da diferença de `pessoas_inoculadas_novas` subtraindo `vacinação_iniciada_05_11`, para o valor poder ser usado quando comparado com outros países com 12+ e sem que a percentagem ultrapasse os 100%.  | Inteiro >= 0 ou _vazio_ |
 | `vacinas` | Número total de doses de vacina. Equivalente ao `doses` mas ajustado semanalmente com os valores das ilhas. | Inteiro >= 0 ou _vazio_ |
 | `vacinas_novas` | Número diário de novas doses de vacinas. | Inteiro >= 0 ou _vazio_ |
 | `pessoas_vacinadas_completamente_continente` | Número total de pessoas com vacinação completa no continente, do relatório diário a partir de 29-11-2021. | Inteiro >= 0 ou _vazio_ |
@@ -228,8 +240,16 @@ Relativamente ao conteúdo em `vacinas.csv`:
 | `reforço_60_69_novas` | Número diário de pessoas com vacinação reforço no continente com 60 a 69 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
 | `reforço_50_59` | Número total de pessoas com vacinação reforço no continente com 50 a 59 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
 | `reforço_50_59_novas` | Número diário de pessoas com vacinação reforço no continente com 50 a 59 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `reforço_40_49` | Número total de pessoas com vacinação reforço no continente com 40 a 49 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_40_49_novas` | Número diário de pessoas com vacinação reforço no continente com 40 a 49 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_30_39` | Número total de pessoas com vacinação reforço no continente com 30 a 39 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_30_39_novas` | Número diário de pessoas com vacinação reforço no continente com 30 a 39 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_18_29` | Número total de pessoas com vacinação reforço no continente com 18 a 29 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `reforço_18_29_novas` | Número diário de pessoas com vacinação reforço no continente com 18 a 29 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
 | `vacinação_iniciada_05_11` | Número total de pessoas com vacinação iniciada no continente com 5 a 11 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
 | `vacinação_iniciada_05_11_novas` | Número diário de pessoas com vacinação iniciada no continente com 5 a 11 anos, do relatório diário a partir de 19-12-2021. | Inteiro >= 0 ou _vazio_ |
+| `vacinação_completa_05_11` | Número total de pessoas com vacinação completa no continente com 5 a 11 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
+| `vacinação_completa_05_11_novas` | Número diário de pessoas com vacinação completa no continente com 5 a 11 anos, do relatório diário a partir de 07-02-2022. | Inteiro >= 0 ou _vazio_ |
 
 Relativamente ao conteúdo em `vacinas_detalhe.csv`:
 

@@ -1,5 +1,6 @@
 # Imports
 import pandas as pd
+import numpy as np
 from datetime import datetime
 import os
 import sys
@@ -162,11 +163,17 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
     dados_extraidos["perc_ativos"] = r(float(100*df.ativos[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
 
     ##Recuperados
-    dados_extraidos["total_recuperados"]=r(df.recuperados[-1 - OFFSET])
-    dados_extraidos["total_recuperados_tendencia"]=calc_tendencia(df.recuperados, name='recuperados', OFFSET=OFFSET)
-    dados_extraidos["novos_recuperados"]=r(df.recuperados.diff()[-1 - OFFSET])
-    #Percentagem total
-    dados_extraidos["perc_recuperados"] = r(float(100*df.recuperados[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
+    if np.isnan(df.recuperados[-1 - OFFSET]):
+        dados_extraidos["total_recuperados"]=0
+        dados_extraidos["total_recuperados_tendencia"]=0
+        dados_extraidos["novos_recuperados"]=0
+        dados_extraidos["perc_recuperados"]=0
+    else:
+        dados_extraidos["total_recuperados"]=r(df.recuperados[-1 - OFFSET])
+        dados_extraidos["total_recuperados_tendencia"]=calc_tendencia(df.recuperados, name='recuperados', OFFSET=OFFSET)
+        dados_extraidos["novos_recuperados"]=r(df.recuperados.diff()[-1 - OFFSET])
+        #Percentagem total
+        dados_extraidos["perc_recuperados"] = r(float(100*df.recuperados[-1 - OFFSET]/df.confirmados[-1 - OFFSET]),1)
 
     ## Regiões
     for k in ['lvt', 'norte', 'algarve', 'centro', 'alentejo', 'acores', 'madeira']:
@@ -179,7 +186,7 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
             incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
         else:
             incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_ARS[k]
-        dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
+        dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 0)
         dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, name=f'incidencia_{k}', OFFSET=OFFSET)
         dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
 
@@ -191,10 +198,16 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
             dados_extraidos[f"novos_casos_{k}"]=r(df[f"confirmados_{k2}"].diff(idades_diff)[-1 - OFFSET])
             dados_extraidos[f"novos_casos_{k}_tendencia"]=calc_tendencia(df[f"confirmados_{k2}"], skip=idades_diff, name=f'novos_casos_{k}', OFFSET=OFFSET)
             if INCIDENCIA7:
-                incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
+                more_offset = 0
+                while np.isnan(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET - more_offset]):
+                    more_offset += 1
+                incidencia14 = 2 * float(df[f"confirmados_{k2}"].diff(7)[-1 - OFFSET - more_offset]) * 100 * 1000 / POP_IDADE[k]
             else:
-                incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET]) * 100 * 1000 / POP_IDADE[k]
-            dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 1)
+                more_offset = 0
+                while np.isnan(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET - more_offset]):
+                    more_offset += 1
+                incidencia14 = float(df[f"confirmados_{k2}"].diff(14)[-1 - OFFSET - more_offset]) * 100 * 1000 / POP_IDADE[k]
+            dados_extraidos[f"incidencia_{k}"] = r(incidencia14, 0)
             dados_extraidos[f"incidencia_{k}_tendencia"] = calc_tendencia(df[f"confirmados_{k2}"], 14, skip=idades_diff, name=f'incidencia_{k}', OFFSET=OFFSET)
             dados_extraidos[f"icon_{k}"] = icon(incidencia14, "incidencia14")
     except ValueError as e:
@@ -232,10 +245,13 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
     dados_extraidos["novas_amostras_ag"] = r(df_amostras.amostras_antigenio_novas[-1 - OFFSET])
     dados_extraidos["novas_amostras_ag_tendencia"] = calc_tendencia(df_amostras.amostras_antigenio_novas, name='novas_amostras_ag', OFFSET=OFFSET)
 
-    positividade7 = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1])
+    more_offset = 0
+    while len(df[df.index == df_amostras.index[-1 - OFFSET - more_offset].strftime("%Y-%m-%d")]) == 0:
+        more_offset += 1
+    positividade7 = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET - more_offset].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1 - more_offset])
     dados_extraidos["perc_positividade7"] = r(positividade7, 1)
     dados_extraidos["icon_positividade7"] = icon(positividade7, "positividade")
-    positividade7_anterior = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET -1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1 -1])
+    positividade7_anterior = 100 * float(df[df.index == df_amostras.index[-1 - OFFSET - more_offset -1].strftime("%Y-%m-%d")].confirmados7[-1]) / float(df_amostras.amostras7[-1 - more_offset -1])
     dados_extraidos["perc_positividade7_anterior"] = r(positividade7_anterior, 1)
 
     for d in [14, 7]:
@@ -249,7 +265,7 @@ def extrair_dados_ultimo_relatorio(OFFSET=0):
         val = float(df[f"confirmados{d}"][-1 - OFFSET] * 100 * 1000 / POP_PT)
         if INCIDENCIA7_14:
             val = val * 2 if d == 7 else val  # not 100% correct, but easier to compare with incidencia 14
-        dados_extraidos[f"incidencia{d}"] = r(val, 1)
+        dados_extraidos[f"incidencia{d}"] = r(val, 0)
         dados_extraidos[f"icon_incidencia{d}"] = icon(val, f"incidencia{d}")
         dados_extraidos[f"incidencia{d}_tendencia"] = calc_tendencia(df[f"confirmados{d}"], diff=None, name=f'incidencia_{d}', OFFSET=OFFSET)
 
@@ -306,7 +322,7 @@ def compor_tweets(dados_para_tweets):
 
     # Main tweet
     tweet_message = (
-        "🆕Dados #COVID19PT 🇵🇹 até {dia}:\n"
+        "🆕Dados #COVID19PT 🇵🇹 a {dia}:\n"
         "\n"
         "🫂Novos casos: {novos_casos} | Total: {total_casos}\n"
         "🪦Novos óbitos: {novos_obitos} | Total: {total_obitos}\n"
@@ -329,14 +345,14 @@ def compor_tweets(dados_para_tweets):
     )
 
     second_tweet = (
-        "🔎Região: incidência, novos casos, óbitos:\n"
-        "{icon_norte}Norte: {incidencia_norte} {novos_casos_norte} {novos_obitos_norte}\n"
-        "{icon_centro}Centro: {incidencia_centro} {novos_casos_centro} {novos_obitos_centro}\n"
-        "{icon_lvt}LVT: {incidencia_lvt} {novos_casos_lvt} {novos_obitos_lvt}\n"
-        "{icon_alentejo}Alentejo: {incidencia_alentejo} {novos_casos_alentejo} {novos_obitos_alentejo}\n"
-        "{icon_algarve}Algarve: {incidencia_algarve} {novos_casos_algarve} {novos_obitos_algarve}\n"
-        "{icon_acores}Açores: {incidencia_acores} {novos_casos_acores} {novos_obitos_acores}\n"
-        "{icon_madeira}Madeira: {incidencia_madeira} {novos_casos_madeira} {novos_obitos_madeira}\n"
+        "🔎Por Região incidência, novos casos, óbitos:\n"
+        "{icon_norte}Norte {incidencia_norte} {novos_casos_norte} {novos_obitos_norte}\n"
+        "{icon_centro}Centro {incidencia_centro} {novos_casos_centro} {novos_obitos_centro}\n"
+        "{icon_lvt}LVT {incidencia_lvt} {novos_casos_lvt} {novos_obitos_lvt}\n"
+        "{icon_alentejo}Alentejo {incidencia_alentejo} {novos_casos_alentejo} {novos_obitos_alentejo}\n"
+        "{icon_algarve}Algarve {incidencia_algarve} {novos_casos_algarve} {novos_obitos_algarve}\n"
+        "{icon_madeira}Madeira {incidencia_madeira} {novos_casos_madeira} {novos_obitos_madeira}\n"
+        "{icon_acores}Açores {incidencia_acores} {novos_casos_acores} {novos_obitos_acores}\n"
         "\n"
         "[2/{num_tweets}]"
     )
@@ -346,26 +362,28 @@ def compor_tweets(dados_para_tweets):
     if sem_idades:
         third_tweet = ""
     else:
+        third_tweet = "🔎Por Idade incidência, novos casos"
         if sem_idades_obitos:
-            third_tweet = "🔎Idade: incidência, novos casos:\n"
+            third_tweet += ":\n"
         else:
-            third_tweet = "🔎Idade: incidência, novos casos, óbitos:\n"
+            third_tweet += ", óbitos:\n"
         for k in idades:
             k2 = "00" if k == "0_9" else "80" if k == "80_plus" else k[0:2]
             icon = f"icon_{k}"
             incidencia = f"incidencia_{k}"
             novos_casos = f"novos_casos_{k}"
             novos_obitos = f"novos_obitos_{k}"
+            icon = "{"+icon+"}"
+            icon = "" # 2022.01.20 tweet excede 280 caracteres e a incidencia está entre 1.500 e 10.000
+            third_tweet += icon+k2+" {"+incidencia+"} {"+novos_casos+"}"
             if sem_idades_obitos:
-                third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"}\n"
+                third_tweet += "\n"
             else:
-                third_tweet += "{"+icon+"}"+k2+": {"+incidencia+"} {"+novos_casos+"} {"+novos_obitos+"}\n"
+                third_tweet += " {"+novos_obitos+"}\n"
         third_tweet += (
             "\n"
             "[3/{num_tweets}]"
         )
-        if tweet_len(third_tweet) >= 280:
-            third_tweet = third_tweet.replace(':', '')
 
 
     fourth_tweet = (

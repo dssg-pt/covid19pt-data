@@ -42,9 +42,56 @@ if __name__ == "__main__":
         '&resultRecordCount=10000'
     )
     print(f"Loading from '{URL}'")
-    data = requests.get(URL).json()
+    data = requests.get(
+        url=URL,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15',
+        },
+    ).json()
+
+
+    confirmados_0_9_f = ''
+    confirmados_0_9_m = ''
+    confirmados_10_19_f = ''
+    confirmados_10_19_m = ''
+    confirmados_20_29_f = ''
+    confirmados_20_29_m = ''
+    confirmados_30_39_f = ''
+    confirmados_30_39_m = ''
+    confirmados_40_49_f = ''
+    confirmados_40_49_m = ''
+    confirmados_50_59_f = ''
+    confirmados_50_59_m = ''
+    confirmados_60_69_f = ''
+    confirmados_60_69_m = ''
+    confirmados_70_79_f = ''
+    confirmados_70_79_m = ''
+    confirmados_80_plus_f = ''
+    confirmados_80_plus_m = ''
+
+    obitos_f = ''
+    obitos_m = ''
+    obitos_0_9_f = ''
+    obitos_0_9_m = ''
+    obitos_10_19_f = ''
+    obitos_10_19_m = ''
+    obitos_20_29_f = ''
+    obitos_20_29_m = ''
+    obitos_30_39_f = ''
+    obitos_30_39_m = ''
+    obitos_40_49_f = ''
+    obitos_40_49_m = ''
+    obitos_50_59_f = ''
+    obitos_50_59_m = ''
+    obitos_60_69_f = ''
+    obitos_60_69_m = ''
+    obitos_70_79_f = ''
+    obitos_70_79_m = ''
+    obitos_80_plus_f = ''
+    obitos_80_plus_m = ''
 
     (found_date, latest_date) = (False, 0)
+    ars = []
     for entry in data["features"]:
         attributes = entry['attributes']
         if not attributes["Data_ARS"]:
@@ -59,6 +106,7 @@ if __name__ == "__main__":
 
         found_date = True
 
+        ars.append(attributes["ARSNome"])
         if attributes["ARSNome"] == "Nacional":
 
             # Continuam
@@ -190,6 +238,22 @@ if __name__ == "__main__":
         frmt_date = datetime.datetime.utcfromtimestamp(latest_date).strftime("%d-%m-%Y")
         raise Exception(f"Missing date {today}, latest date {frmt_date}")
 
+    if 'Nacional' not in ars:
+        if today != '25-02-2022':
+            raise Exception(f"Dados nacionais em falta, date {today} ars {ars}")
+        confirmados = 3_241_451
+        obitos = 20_973
+        recuperados = 2_764_245
+        confirmados_novos = 10_376
+        internados = 1_501
+        internados_uci = 98
+        internados_enfermaria = internados - internados_uci 
+        confirmados_m = 1_509_201
+        confirmados_f = 1_729_369
+        confirmados_desconhecidos = 2_881
+        vigilancia = 438_633
+        ativos = 456_233 
+        
     if latest_date == 1630065600: # 27-08-2021
         try: confirmados_arslvt += 0
         except NameError: confirmados_arslvt = 400_723
@@ -203,6 +267,9 @@ if __name__ == "__main__":
         confirmados_m += 1  # 476345
     elif latest_date == 1630238400: # 28-08-2021
         confirmados_m += 1  # 477262
+
+    if recuperados == 0: recuperados = ''
+    if vigilancia == 0: vigilancia = ''
 
     try:
         TEMP_CSV = str(Path(__file__).resolve().parents[2] / ".github" / "temp.csv")

@@ -187,3 +187,42 @@ Shape_Leng
 
 ### 2021-12-23-concelhos.json
 09-12-2021 a 22-12-2021 (quarta-feira), publicado a 24-12-2021 (sexta-feira)
+
+### 2021-12-30-concelhos.json
+16-12-2021 a 29-12-2021 (quarta-feira), publicado a 31-12-2021 (sexta-feira)
+
+### 2021-12-30-concelhos.json
+16-12-2021 a 29-12-2021 (quarta-feira), publicado a 31-12-2021 (sexta-feira)
+
+### 2022-01-06-concelhos.json
+23-12-2021 a 05-01-2022 (quarta-feira), publicado a 07-01-2022 (sexta-feira)
+
+### 2022-01-13-concelhos.json
+30-12-2021 a 12-01-2022 (quarta-feira), publicado a 14-01-2022 (sexta-feira)
+
+### 2022-01-20-concelhos.json
+06-01-2022 a 19-01-2022 (quarta-feira), publicado a 21-01-2022 (sexta-feira)
+
+### 2022-01-27-concelhos.json
+13-01-2022 a 26-01-2022 (quarta-feira), publicado a 28-01-2022 (sexta-feira)
+
+### 2022-01-27-concelhos.json
+13-01-2022 a 26-01-2022 (quarta-feira), publicado a 28-01-2022 (sexta-feira)
+
+### 2022-02-03-concelhos.json
+20-01-2022 a 02-02-2022 (quarta-feira), publicado a 04-02-2022 (sexta-feira)
+
+### 2022-02-10-concelhos.json
+27-01-2022 a 09-02-2022 (quarta-feira), publicado a 11-02-2022 (sexta-feira)
+
+### 2022-02-10-concelhos.json
+27-01-2022 a 09-02-2022 (quarta-feira), publicado a 11-02-2022 (sexta-feira)
+
+### 2022-02-10-concelhos.json
+27-01-2022 a 09-02-2022 (quarta-feira), publicado a 11-02-2022 (sexta-feira)
+
+### 2022-02-17-concelhos.json
+03-02-2022 a 16-02-2022 (quarta-feira), publicado a 18-02-2022 (sexta-feira)
+
+### 2022-03-03-concelhos.json
+17-02-2022 a 02-03-2022 (quarta-feira), publicado a 04-03-2022 (sexta-feira)

@@ -4,9 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    # Every hour at minute 42 from 9-22h UTC (10-13 WEST)
-    # - cron: 42 9-22 * * *
-    - cron: 12,42 7-23 * * *
+    - cron: 42 7-23 * * *
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -37,14 +35,28 @@ jobs:
 
 
       # -----
+      
+      #- name: What Is My IP
+      #  run: |
+      #    host -t txt -c ch whoami.cloudflare 1.0.0.1
 
-      - name: Check for COVID19PT updates for - Daily PDF
-        run: |
-          echo "UPDATE_PDF=$(python .github/workflows/scripts/check_pdf_update.py)" >> $GITHUB_ENV
+      #- name: Check for COVID19PT updates for - Daily PDF
+      #  run: |
+      #    wget \
+      #      --server-response \
+      #      -O /tmp/covid.pdf \
+      #      --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15' \
+      #      'https://covid19.min-saude.pt/' \
+      #    || true
+
+      #- name: Check for COVID19PT updates for - Daily PDF
+      #  run: |
+      #    echo "UPDATE_PDF=$(python .github/workflows/scripts/check_pdf_update.py)" >> $GITHUB_ENV
 
       - name: Check for COVID19PT updates for - Daily API data
         run: |
           echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
+          # TEMP echo "UPDATE_DATA=TRUE" >> $GITHUB_ENV
 
       - name: Check for COVID19PT updates for - Daily API amostras
         run: |
@@ -115,25 +127,25 @@ jobs:
           python .github/workflows/update_rt.py
 
 
-      # If there is new PDF
-      - name: Scrap the report link from the DGS website
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          python .github/workflows/Web_Scrapper_DGS.py
-      - name: Download PDF
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
-          wget -c -P .github/workflows/ $(cat .github/report_link.txt)
-      - name: Process PDF
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
-          python .github/workflows/process_report.py
-      - name: Add new PDF file to Git repo (it's the only addition to the reports folder)
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: |
-          git add -A dgs-reports-archive/
+      ## If there is new PDF
+      #- name: Scrap the report link from the DGS website
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    python .github/workflows/Web_Scrapper_DGS.py
+      #- name: Download PDF
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
+      #    wget -c -P .github/workflows/ $(cat .github/report_link.txt)
+      #- name: Process PDF
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    ls -la dgs-reports-archive/Relatório-de-Situação-*_$(date +%d_%m_%Y).pdf || \
+      #    python .github/workflows/process_report.py
+      #- name: Add new PDF file to Git repo (it's the only addition to the reports folder)
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: |
+      #    git add -A dgs-reports-archive/
 
 
       # If there is new data
@@ -141,6 +153,7 @@ jobs:
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: |
           python .github/workflows/extract_data_arcgis.py
+          # TEMP python .github/workflows/extract_data_arcgis.py 1
       - name: Validate data with pytest
         if: ${{ env.UPDATE_DATA == 'TRUE' }}
         run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
@@ -208,7 +221,7 @@ jobs:
           echo "LAST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Change the latest commit's status to success
         if: ${{ env.UPDATE_ANY == 'TRUE' }}
-        uses: Sibz/github-status-action@v1
+        uses: Sibz/github-status-action@v1.1.6
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           description: 'Success'
