@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 9 de Abril de 2022, 15:46
+📅️ **Última actualização**: 10 de Abril de 2022, 12:46
 
 ⚠️ **Dados diários COVID-19 e Vacinação terminaram sexta-feira 11 de Março de 2022, sendo substituidos por um novo relatório semanal conjunto - [Link DGS](https://www.dgs.pt/em-destaque/dgs-inicia-divulgacao-semanal-de-dados-epidemiologicos.aspx) - o que implica o final dos dados raw detalhados diários necessários para a maioria dos ficheiros CSV deste repositório.**
 
