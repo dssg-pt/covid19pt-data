@@ -1,3 +1,10 @@
+
+# 2022.04.29
+# - most data is no longer available so this automation is currently only looking
+#   for amostras, still available daily, and at that time it also tries to 
+#   update Rt data (XLS to CSV) if available.
+#   It does not push notifications to slack anymore.
+
 name: DGS - Automation
 
 on:
@@ -53,34 +60,34 @@ jobs:
       #  run: |
       #    echo "UPDATE_PDF=$(python .github/workflows/scripts/check_pdf_update.py)" >> $GITHUB_ENV
 
-      - name: Check for COVID19PT updates for - Daily API data
-        run: |
-          echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
-          # TEMP echo "UPDATE_DATA=TRUE" >> $GITHUB_ENV
+      #- name: Check for COVID19PT updates for - Daily API data
+      #  run: |
+      #    echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
+      #    # TEMP echo "UPDATE_DATA=TRUE" >> $GITHUB_ENV
 
       - name: Check for COVID19PT updates for - Daily API amostras
         run: |
           echo "UPDATE_AMOSTRAS=$(python .github/workflows/scripts/check_amostras_update.py)" >> $GITHUB_ENV
 
-      - name: Check for COVID19PT updates for - Weekly Concelhos - retrieve data
-        run: |
-          wget -c -O /tmp/concelhos.json \
-          'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/IncidenciaCOVIDporConc100k_view/FeatureServer/0/query?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=false'
-      - name: Check for COVID19PT updates for - Weekly Concelhos - compare data
-        run: |
-          UPDATE_CONCELHOS=$(diff -q $(ls -1 extra/concelhos_incidencia/*concelhos.json | sort -n | tail -1) /tmp/concelhos.json 2>&1 >/dev/null || echo TRUE)
-          echo "UPDATE_CONCELHOS=${UPDATE_CONCELHOS:-FALSE}" >> $GITHUB_ENV
+      #- name: Check for COVID19PT updates for - Weekly Concelhos - retrieve data
+      #  run: |
+      #    wget -c -O /tmp/concelhos.json \
+      #    'https://services.arcgis.com/CCZiGSEQbAxxFVh3/arcgis/rest/services/IncidenciaCOVIDporConc100k_view/FeatureServer/0/query?f=pjson&where=1%3d1&outFields=*&returnGeometry=false&cacheHint=false'
+      #- name: Check for COVID19PT updates for - Weekly Concelhos - compare data
+      #  run: |
+      #    UPDATE_CONCELHOS=$(diff -q $(ls -1 extra/concelhos_incidencia/*concelhos.json | sort -n | tail -1) /tmp/concelhos.json 2>&1 >/dev/null || echo TRUE)
+      #    echo "UPDATE_CONCELHOS=${UPDATE_CONCELHOS:-FALSE}" >> $GITHUB_ENV
 
       - name: Output GITHUB_ENV
         run: echo $GITHUB_ENV
 
-      - name: Check if any COVID19PT data is updated and if any work must be done
-        if: ${{ env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
+      #- name: Check if any COVID19PT data is updated and if any work must be done
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
 
-      - name: Ping slack if anything updated
-        if: ${{ env.UPDATE_ANY == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DATA AVAILABLE, WORKFLOW RUNNING _:large_green_circle:"
+      #- name: Ping slack if anything updated
+      #  if: ${{ env.UPDATE_ANY == 'TRUE' }}
+      #  run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DATA AVAILABLE, WORKFLOW RUNNING _:large_green_circle:"
 
       # -----
 
@@ -148,57 +155,57 @@ jobs:
       #    git add -A dgs-reports-archive/
 
 
-      # If there is new data
-      - name: Run data extraction
-        if: ${{ env.UPDATE_DATA == 'TRUE' }}
-        run: |
-          python .github/workflows/extract_data_arcgis.py
-          # TEMP python .github/workflows/extract_data_arcgis.py 1
-      - name: Validate data with pytest
-        if: ${{ env.UPDATE_DATA == 'TRUE' }}
-        run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
-      - name: Upload pytest test results
-        if: ${{ env.UPDATE_DATA == 'TRUE' }}
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-results
-          path: tests/junit/test-results.xml
+      ## If there is new data
+      #- name: Run data extraction
+      #  if: ${{ env.UPDATE_DATA == 'TRUE' }}
+      #  run: |
+      #    python .github/workflows/extract_data_arcgis.py
+      #    # TEMP python .github/workflows/extract_data_arcgis.py 1
+      #- name: Validate data with pytest
+      #  if: ${{ env.UPDATE_DATA == 'TRUE' }}
+      #  run: pytest tests/test_dgs_data.py -s -vv --junitxml=tests/junit/test-results.xml
+      #- name: Upload pytest test results
+      #  if: ${{ env.UPDATE_DATA == 'TRUE' }}
+      #  uses: actions/upload-artifact@master
+      #  with:
+      #    name: pytest-results
+      #    path: tests/junit/test-results.xml
 
 
-      # If there is new weekly concelhos
-      - name: Update data about concelhos
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        # posted on friday, data until wednesday 23:59, therefore date is thursday
-        run: |
-          mv /tmp/concelhos.json extra/concelhos_incidencia/$(python .github/workflows/scripts/get_latest_friday.py 1)-concelhos.json
-      - name: Update data about concelhos
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: |
-          python .github/workflows/extract_dados_concelhos_incidencia.py $(ls -1 extra/concelhos_incidencia/*.json | sort -n | tail -1)
-      - name: Fix data about concelhos
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: |
-          python .github/workflows/clean_concelhos_new.py
-      - name: Validate data about test concelhos with pytest
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: |
-          pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
-      - name: Upload pytest samples test results
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        uses: actions/upload-artifact@master
-        with:
-          name: pytest-concelhos-results
-          path: tests/junit/test-concelhos-results.xml
-      - name: Update concelhos README
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: |
-          echo "" >> extra/concelhos_incidencia/README.md
-          echo "### $(python .github/workflows/scripts/get_latest_friday.py 1)-concelhos.json" >> extra/concelhos_incidencia/README.md
-          echo "$(python .github/workflows/scripts/get_latest_friday.py 15 true) a $(python .github/workflows/scripts/get_latest_friday.py 2 true) (quarta-feira), publicado a $(python .github/workflows/scripts/get_latest_friday.py 0 true) (sexta-feira)" >> extra/concelhos_incidencia/README.md
-      - name: Add concelhos API data backup
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: |
-          git add -A extra/concelhos_incidencia/
+      ## If there is new weekly concelhos
+      #- name: Update data about concelhos
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  # posted on friday, data until wednesday 23:59, therefore date is thursday
+      #  run: |
+      #    mv /tmp/concelhos.json extra/concelhos_incidencia/$(python .github/workflows/scripts/get_latest_friday.py 1)-concelhos.json
+      #- name: Update data about concelhos
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  run: |
+      #    python .github/workflows/extract_dados_concelhos_incidencia.py $(ls -1 extra/concelhos_incidencia/*.json | sort -n | tail -1)
+      #- name: Fix data about concelhos
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  run: |
+      #    python .github/workflows/clean_concelhos_new.py
+      #- name: Validate data about test concelhos with pytest
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  run: |
+      #    pytest tests/test_concelhos.py -s -vv --junitxml=tests/junit/test-concelhos-results.xml
+      #- name: Upload pytest samples test results
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  uses: actions/upload-artifact@master
+      #  with:
+      #    name: pytest-concelhos-results
+      #    path: tests/junit/test-concelhos-results.xml
+      #- name: Update concelhos README
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  run: |
+      #    echo "" >> extra/concelhos_incidencia/README.md
+      #    echo "### $(python .github/workflows/scripts/get_latest_friday.py 1)-concelhos.json" >> extra/concelhos_incidencia/README.md
+      #    echo "$(python .github/workflows/scripts/get_latest_friday.py 15 true) a $(python .github/workflows/scripts/get_latest_friday.py 2 true) (quarta-feira), publicado a $(python .github/workflows/scripts/get_latest_friday.py 0 true) (sexta-feira)" >> extra/concelhos_incidencia/README.md
+      #- name: Add concelhos API data backup
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  run: |
+      #    git add -A extra/concelhos_incidencia/
 
 
       # -----
@@ -229,26 +236,29 @@ jobs:
           state: 'success'
           sha: ${{env.LAST_COMMIT}}
 
-      # If there are new daily data, tweet it
-      - name: Auto publish to Twitter
-        if: ${{ env.UPDATE_DATA == 'TRUE' }}
-        run: |
-          python .github/workflows/tweet.py
-        env:
-          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
-          TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
-          TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+      # -----
 
-      - name: There is a NEW update for Covid PDF
-        if: ${{ env.UPDATE_PDF == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW PDF DATA PUBLISHED _:large_green_circle:"
-      - name: There is a NEW update for Covid Data
-        if: ${{ env.UPDATE_DATA == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY DATA PUBLISHED _:large_green_circle:"
-      - name: There is a NEW update for Covid Amostras
-        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY AMOSTRAS PUBLISHED _:large_green_circle:"
-      - name: There is a NEW update for Covid Concelhos
-        if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
-        run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW WEEKLY CONCELHOS PUBLISHED _:large_green_circle:"
+      ## If there are new daily data, tweet it
+      #- name: Auto publish to Twitter
+      #  if: ${{ env.UPDATE_DATA == 'TRUE' }}
+      #  run: |
+      #    python .github/workflows/tweet.py
+      #  env:
+      #    TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      #    TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+      #    TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+      #    TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+
+      #- name: There is a NEW update for Covid PDF
+      #  if: ${{ env.UPDATE_PDF == 'TRUE' }}
+      #  run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW PDF DATA PUBLISHED _:large_green_circle:"
+      #- name: There is a NEW update for Covid Data
+      #  if: ${{ env.UPDATE_DATA == 'TRUE' }}
+      #  run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY DATA PUBLISHED _:large_green_circle:"
+      #- name: There is a NEW update for Covid Amostras
+      #  if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
+      #  run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW DAILY AMOSTRAS PUBLISHED _:large_green_circle:"
+      #- name: There is a NEW update for Covid Concelhos
+      #  if: ${{ env.UPDATE_CONCELHOS == 'TRUE' }}
+      #  run: python .github/workflows/scripts/send_slack_message.py --message ":large_green_circle:_ NEW WEEKLY CONCELHOS PUBLISHED _:large_green_circle:"
+
