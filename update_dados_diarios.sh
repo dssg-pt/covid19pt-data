@@ -13,6 +13,6 @@ if [ "x$(git status | grep -E "modified|new file)")" != "x" ] ; then
 	git add README*
 
 	git commit -m "dados diarios"
-	git push
+	git push && git push dssg
 fi
 
