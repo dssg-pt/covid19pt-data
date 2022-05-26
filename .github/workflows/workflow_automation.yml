@@ -65,6 +65,35 @@ jobs:
       #    echo "UPDATE_DATA=$(python .github/workflows/scripts/check_data_update.py)" >> $GITHUB_ENV
       #    # TEMP echo "UPDATE_DATA=TRUE" >> $GITHUB_ENV
 
+      - name: Check for COVID19PT updates for daily cases and deaths
+        run: |
+          curl -gsN 'https://covid19.min-saude.pt/numero-de-novos-casos-e-obitos-por-dia/' > covid.html \
+          && ls -la covid.html
+
+      - name: extract urls
+        run: |
+          cat covid.html | \
+          perl -ne 's/http/\nhttp/g;print' | \
+          perl -ne '/(http[^"]+\.xls[^"]*)/&&print"$1\n"' | \
+          sort -n | uniq > covid.txt \
+          && ls -la covid.txt && wc -l covid.txt && tail covid.txt
+
+      - name: create missing folder
+        run: |
+          [ -d dados_diarios ] || mkdir dados_diarios
+
+      - name: check if there are missing files to download
+        run: |
+            T=$(cat covid.txt | \
+            while read a ; do \
+            b=${a:0:78}; c=$(basename $b); \
+            [ -r "dados_diarios/$c.xlsx" ] || echo "dados_diarios/$c.xlsx" "$a"; \
+            done) ; \
+            echo $T ; \
+            if [ "x$T" = "x" ] ; then TT='FALSE' ; else TT='TRUE' ; fi ; \
+            echo "UPDATE_DIARIO=$TT" >> $GITHUB_ENV
+
+
       - name: Check for COVID19PT updates for - Daily API amostras
         run: |
           echo "UPDATE_AMOSTRAS=$(python .github/workflows/scripts/check_amostras_update.py)" >> $GITHUB_ENV
