@@ -1,11 +1,12 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 25 de Maio de 2022, 14:55
+📅️ **Última actualização**: 26 de Maio de 2022, 11:36
+
+⚠️ **Dados diários COVID-19 para casos confirmados e óbitos retomaram sexta-feira 25 de Março de 2022 em [Link DGS](https://covid19.min-saude.pt/numero-de-novos-casos-e-obitos-por-dia/), com cópia disponíveis na pasta `dados_diarios`e a conversão do XLSX para CSV em `dados_diarios.csv`. É expectável que não correspondam aos dados semanais presentes no ficheiro original `dados.csv`.**
 
 ⚠️ **Dados diários COVID-19 e Vacinação terminaram sexta-feira 11 de Março de 2022, sendo substituidos por um novo relatório semanal conjunto - [Link DGS](https://www.dgs.pt/em-destaque/dgs-inicia-divulgacao-semanal-de-dados-epidemiologicos.aspx) - o que implica o final dos dados raw detalhados diários necessários para a maioria dos ficheiros CSV deste repositório.**
 
-
-🤖 **Twitter Bots**: [@CovidometroPT - Estatísticas diárias da COVID-19 em Portugal](https://twitter.com/CovidometroPT) e [@PlenoDVacinacao - Monitor da Vacinação COVID-19 em Portugal](https://twitter.com/PlenoDVacinacao).
+🤖 **Twitter Bots [INACTIVOS]**: [@CovidometroPT - Estatísticas diárias da COVID-19 em Portugal](https://twitter.com/CovidometroPT) e [@PlenoDVacinacao - Monitor da Vacinação COVID-19 em Portugal](https://twitter.com/PlenoDVacinacao).
 
 ℹ️ **Fonte dos dados**: [Direcção Geral de Saúde](https://www.dgs.pt/) - Ministério da Saúde Português, através dos relatórios do COVID-19 ([aqui](https://covid19.min-saude.pt/relatorio-de-situacao/)), da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data), e da API da Dashboard da ESRI [aqui](https://covid19.min-saude.pt/relatorio-de-situacao/), desde 03/03/2020.
 
