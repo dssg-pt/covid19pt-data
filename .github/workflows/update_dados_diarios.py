@@ -26,7 +26,7 @@ if __name__ == "__main__":
     data = data.applymap(lambda x: int(x))
     data = data[[data.columns[2], data.columns[0], data.columns[3], data.columns[1]]]
 
-    print(data.tail(2))
+    #print(data.tail(2))
     data.to_csv(ROOT / 'dados_diarios.csv', sep=",")
 
 

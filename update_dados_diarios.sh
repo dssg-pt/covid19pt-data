@@ -9,6 +9,7 @@ python3 .github/workflows/update_dados_diarios.py $(ls dados_diarios/*.xls* | so
 git add dados_diarios/*.xls*
 git add dados_diarios.csv
 git add update_dados_diarios.sh
+git add .github/workflows/update_dados_diarios.py
 
 if [ "x$(git status | grep -E "modified|new file)")" != "x" ] ; then
 	git status
