@@ -7,7 +7,12 @@ python3 .github/workflows/update_dados_diarios.py $(ls dados_diarios/*.xls* | so
 git add dados_diarios/*.xls*
 git add dados_diarios.csv
 
-git status
+if [ "x$(git status | grep -E "modified|new file)")" != "x" ] ; then
+	git status
+	python3 .github/workflows/update_readme.py 
+	git add README*
 
-
+	git commit -m "dados diarios"
+	git push
+fi
 
