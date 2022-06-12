@@ -11,7 +11,8 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: 42 7-23 * * *
+    # once per day look for Rt
+    - cron: 0 18 * * *
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -81,9 +82,10 @@ jobs:
       - name: Output GITHUB_ENV
         run: echo $GITHUB_ENV
 
-      - name: Check if any COVID19PT data is updated and if any work must be done
+      #- name: Check if any COVID19PT data is updated and if any work must be done
+      - name: Force UPDATE_ANY to True
       #  if: ${{ env.UPDATE_PDF == 'TRUE' || env.UPDATE_DATA == 'TRUE' || env.UPDATE_AMOSTRAS == 'TRUE' || env.UPDATE_CONCELHOS == 'TRUE' }}
-        if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
+        #if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
         run: echo "UPDATE_ANY=TRUE" >> $GITHUB_ENV
 
       #- name: Ping slack if anything updated
@@ -112,7 +114,7 @@ jobs:
           python -m pip install -r .github/workflows/requirements.txt
 
 
-      # If there is anything to do, also look for amostras
+      # Amostras is gone since 2022-05-31 but let's look for updates for a while
       - name: Update data about test samples (amostras)
         if: ${{ env.UPDATE_AMOSTRAS == 'TRUE' }}
         run: |
@@ -128,7 +130,7 @@ jobs:
           path: tests/junit/test-amostras-results.xml
 
 
-      # If there is anything to do, also look for Rt
+      # Look for updated Rt. History shows updates every 2 or 3 days
       - name: Update data about Rt
         if: ${{ env.UPDATE_ANY == 'TRUE' }}
         run: |
