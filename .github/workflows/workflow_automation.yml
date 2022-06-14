@@ -1,7 +1,7 @@
 
 # 2022.04.29
 # - most data is no longer available so this automation is currently only looking
-#   for amostras, still available daily, and at that time it also tries to 
+#   for amostras, still available daily, and at that time it also tries to
 #   update Rt data (XLS to CSV) if available.
 #   It does not push notifications to slack anymore.
 
@@ -43,7 +43,7 @@ jobs:
 
 
       # -----
-      
+
       #- name: What Is My IP
       #  run: |
       #    host -t txt -c ch whoami.cloudflare 1.0.0.1
@@ -213,8 +213,12 @@ jobs:
 
       # -----
 
+      - name: Check if any file changed
+        run: |
+          [[ $(git status --porcelain --untracked-files=no) ]] && echo "HAS_CHANGES=TRUE" >> $GITHUB_ENV
+
       - name: Update readme date again, before commits
-        if: ${{ env.UPDATE_ANY == 'TRUE' }}
+        if: ${{ env.HAS_CHANGES == 'TRUE' }}
         run: |
           python .github/workflows/update_readme.py
 
