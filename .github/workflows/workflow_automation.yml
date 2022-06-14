@@ -215,7 +215,8 @@ jobs:
 
       - name: Check if any file changed
         run: |
-          [[ $(git status --porcelain --untracked-files=no) ]] && echo "HAS_CHANGES=TRUE" >> $GITHUB_ENV
+          git status --porcelain --untracked-files=no
+          if [[ $(git status --porcelain --untracked-files=no) ]] ; then echo "HAS_CHANGES=TRUE" >> $GITHUB_ENV ; fi
 
       - name: Update readme date again, before commits
         if: ${{ env.HAS_CHANGES == 'TRUE' }}
