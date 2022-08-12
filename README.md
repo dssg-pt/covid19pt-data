@@ -1,6 +1,6 @@
 # 😷️🇵🇹 Dados relativos à pandemia COVID-19 em Portugal
 
-📅️ **Última actualização**: 11 de Agosto de 2022, 13:28
+📅️ **Última actualização**: 12 de Agosto de 2022, 14:29
 
 ⚠️ **Dados diários COVID-19 para casos confirmados e óbitos retomaram sexta-feira 25 de Março de 2022 em [Link DGS](https://covid19.min-saude.pt/numero-de-novos-casos-e-obitos-por-dia/), com cópia disponíveis na pasta `dados_diarios`e a conversão do XLSX para CSV em `dados_diarios.csv`. É expectável que não correspondam aos dados semanais presentes no ficheiro original `dados.csv`.**
 
