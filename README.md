@@ -2,12 +2,12 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-📅️ **Última actualização**: 9 de Setembro de 2022, 01:40
+📅️ **Última actualização**: 9 de Setembro de 2022, 13:41
 =======
-📅️ **Última actualização**: 9 de Setembro de 2022, 01:40
+📅️ **Última actualização**: 9 de Setembro de 2022, 13:41
 >>>>>>> 070ea9e49232b5d66c0028dacd48aae56bd4873d
 =======
-📅️ **Última actualização**: 9 de Setembro de 2022, 01:40
+📅️ **Última actualização**: 9 de Setembro de 2022, 13:41
 >>>>>>> 62ab67556bcee6917cfe2631c4dbaa372639d7c1
 
 ⚠️ **Dados diários COVID-19 para casos confirmados e óbitos retomaram sexta-feira 25 de Março de 2022 em [Link DGS](https://covid19.min-saude.pt/numero-de-novos-casos-e-obitos-por-dia/), com cópia disponíveis na pasta `dados_diarios`e a conversão do XLSX para CSV em `dados_diarios.csv`. É expectável que não correspondam aos dados semanais presentes no ficheiro original `dados.csv`.**
