@@ -5,21 +5,21 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-📅️ **Última actualização**: 12 de Setembro de 2022, 21:47
+📅️ **Última actualização**: 13 de Setembro de 2022, 17:47
 =======
-📅️ **Última actualização**: 12 de Setembro de 2022, 21:47
+📅️ **Última actualização**: 13 de Setembro de 2022, 17:47
 >>>>>>> 070ea9e49232b5d66c0028dacd48aae56bd4873d
 =======
-📅️ **Última actualização**: 12 de Setembro de 2022, 21:47
+📅️ **Última actualização**: 13 de Setembro de 2022, 17:47
 >>>>>>> 62ab67556bcee6917cfe2631c4dbaa372639d7c1
 =======
-📅️ **Última actualização**: 12 de Setembro de 2022, 21:47
+📅️ **Última actualização**: 13 de Setembro de 2022, 17:47
 >>>>>>> b9b711832bde23701aeabfc029a0f2e15f926b2d
 =======
-📅️ **Última actualização**: 12 de Setembro de 2022, 21:47
+📅️ **Última actualização**: 13 de Setembro de 2022, 17:47
 >>>>>>> 5b8d04a9be42940c77b43dc3bf087cf12a177d6b
 =======
-📅️ **Última actualização**: 12 de Setembro de 2022, 21:47
+📅️ **Última actualização**: 13 de Setembro de 2022, 17:47
 >>>>>>> f33c5e127e1663c18eef85cef16444bf6507ab96
 
 ⚠️ **Dados diários COVID-19 para casos confirmados e óbitos retomaram sexta-feira 25 de Março de 2022 em [Link DGS](https://covid19.min-saude.pt/numero-de-novos-casos-e-obitos-por-dia/), com cópia disponíveis na pasta `dados_diarios`e a conversão do XLSX para CSV em `dados_diarios.csv`. É expectável que não correspondam aos dados semanais presentes no ficheiro original `dados.csv`.**
