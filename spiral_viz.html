@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Portugal: A Spiral Journey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2em;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 0.9em;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        #canvas {
+            flex: 1;
+            display: block;
+            cursor: grab;
+        }
+
+        #canvas:active {
+            cursor: grabbing;
+        }
+
+        #controls {
+            position: absolute;
+            top: 120px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 300px;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .control-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.85em;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        select, input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        input[type="range"] {
+            cursor: pointer;
+        }
+
+        #tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+            display: none;
+            font-size: 0.85em;
+            max-width: 250px;
+            z-index: 1000;
+        }
+
+        .tooltip-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #00d4ff;
+        }
+
+        .tooltip-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 4px 0;
+            padding: 2px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tooltip-label {
+            color: #aaa;
+        }
+
+        .tooltip-value {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        #stats {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 200px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .stat-label {
+            color: #aaa;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        .cases { color: #ff6b6b; }
+        .deaths { color: #ff006e; }
+        .vaccinated { color: #06ffa5; }
+        .recovered { color: #00d4ff; }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0e27;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 10000;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .legend {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 0.85em;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div class="loader"></div>
+        <div>Loading COVID-19 data...</div>
+    </div>
+
+    <div id="container">
+        <div id="header">
+            <h1>COVID-19 Portugal: A Spiral Journey</h1>
+            <div class="subtitle">An interactive visualization of the pandemic through time and space</div>
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+        <div id="controls">
+            <div class="control-group">
+                <label class="control-label">Data Layer</label>
+                <select id="dataLayer">
+                    <option value="confirmados_novos">New Cases</option>
+                    <option value="obitos">Deaths</option>
+                    <option value="internados">Hospitalized</option>
+                    <option value="internados_uci">ICU</option>
+                    <option value="doses_novas">New Vaccinations</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Visualization Mode</label>
+                <select id="vizMode">
+                    <option value="spiral">Spiral Galaxy</option>
+                    <option value="particles">Particle Flow</option>
+                    <option value="waves">Waves</option>
+                    <option value="bars">Radial Bars</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <button id="playPause">Play Animation</button>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Speed</label>
+                <input type="range" id="speed" min="1" max="10" value="5">
+            </div>
+
+            <div class="control-group">
+                <button id="reset">Reset View</button>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color cases" style="background: #ff6b6b;"></div>
+                    <span>Cases</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color deaths" style="background: #ff006e;"></div>
+                    <span>Deaths</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color vaccinated" style="background: #06ffa5;"></div>
+                    <span>Vaccinations</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color recovered" style="background: #00d4ff;"></div>
+                    <span>Hospitalized</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="stats">
+            <div class="stat-row">
+                <span class="stat-label">Date:</span>
+                <span class="stat-value" id="currentDate">--</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Total Cases:</span>
+                <span class="stat-value cases" id="totalCases">--</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Total Deaths:</span>
+                <span class="stat-value deaths" id="totalDeaths">--</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Vaccinations:</span>
+                <span class="stat-value vaccinated" id="totalVaccinations">--</span>
+            </div>
+        </div>
+
+        <div id="tooltip">
+            <div class="tooltip-title" id="tooltipTitle"></div>
+            <div id="tooltipContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let data = [];
+        let vaccinationData = [];
+        let canvas, ctx;
+        let animationId;
+        let isPlaying = false;
+        let currentFrame = 0;
+        let camera = { x: 0, y: 0, zoom: 1 };
+        let particles = [];
+        let mouse = { x: 0, y: 0 };
+        let isDragging = false;
+        let dragStart = { x: 0, y: 0 };
+
+        // Configuration
+        const config = {
+            spiralTightness: 0.1,
+            spiralGrowth: 0.5,
+            particleCount: 1000,
+            animationSpeed: 5,
+            colors: {
+                confirmados_novos: '#ff6b6b',
+                obitos: '#ff006e',
+                internados: '#00d4ff',
+                internados_uci: '#7b2ff7',
+                doses_novas: '#06ffa5'
+            }
+        };
+
+        // Initialize
+        async function init() {
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Mouse events
+            canvas.addEventListener('mousemove', onMouseMove);
+            canvas.addEventListener('mousedown', onMouseDown);
+            canvas.addEventListener('mouseup', onMouseUp);
+            canvas.addEventListener('wheel', onWheel);
+            canvas.addEventListener('mouseleave', onMouseLeave);
+
+            // Control events
+            document.getElementById('playPause').addEventListener('click', togglePlayPause);
+            document.getElementById('reset').addEventListener('click', resetView);
+            document.getElementById('dataLayer').addEventListener('change', updateVisualization);
+            document.getElementById('vizMode').addEventListener('change', updateVisualization);
+            document.getElementById('speed').addEventListener('input', (e) => {
+                config.animationSpeed = parseInt(e.target.value);
+            });
+
+            // Load data
+            await loadData();
+
+            // Hide loading screen
+            document.getElementById('loading').style.display = 'none';
+
+            // Start render loop
+            render();
+        }
+
+        async function loadData() {
+            try {
+                // Load main data
+                const response1 = await fetch('data.csv');
+                const text1 = await response1.text();
+                data = parseCSV(text1);
+
+                // Load vaccination data
+                const response2 = await fetch('vacinas.csv');
+                const text2 = await response2.text();
+                vaccinationData = parseCSV(text2);
+
+                // Merge vaccination data into main data
+                mergeVaccinationData();
+
+                // Filter out rows with no date
+                data = data.filter(row => row.data);
+
+                console.log(`Loaded ${data.length} data points`);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').innerHTML = '<div>Error loading data. Please make sure the CSV files are in the same directory.</div>';
+            }
+        }
+
+        function parseCSV(text) {
+            const lines = text.split('\n');
+            const headers = lines[0].split(',');
+            const data = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+
+                const values = lines[i].split(',');
+                const row = {};
+
+                for (let j = 0; j < headers.length; j++) {
+                    const value = values[j];
+                    row[headers[j]] = isNaN(value) || value === '' ? value : parseFloat(value);
+                }
+
+                data.push(row);
+            }
+
+            return data;
+        }
+
+        function mergeVaccinationData() {
+            const vaccinationMap = new Map();
+            vaccinationData.forEach(row => {
+                vaccinationMap.set(row.data, row);
+            });
+
+            data.forEach(row => {
+                const vData = vaccinationMap.get(row.data);
+                if (vData) {
+                    row.doses_novas = vData.doses_novas || 0;
+                    row.doses = vData.doses || 0;
+                }
+            });
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight - 100; // Subtract header height
+        }
+
+        function onMouseMove(e) {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+
+            if (isDragging) {
+                const dx = e.clientX - dragStart.x;
+                const dy = e.clientY - dragStart.y;
+                camera.x += dx;
+                camera.y += dy;
+                dragStart.x = e.clientX;
+                dragStart.y = e.clientY;
+            }
+
+            // Check for hover
+            checkHover(mouse.x, mouse.y);
+        }
+
+        function onMouseDown(e) {
+            isDragging = true;
+            dragStart.x = e.clientX;
+            dragStart.y = e.clientY;
+        }
+
+        function onMouseUp() {
+            isDragging = false;
+        }
+
+        function onMouseLeave() {
+            document.getElementById('tooltip').style.display = 'none';
+        }
+
+        function onWheel(e) {
+            e.preventDefault();
+            const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+            camera.zoom *= zoomFactor;
+            camera.zoom = Math.max(0.1, Math.min(5, camera.zoom));
+        }
+
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            document.getElementById('playPause').textContent = isPlaying ? 'Pause Animation' : 'Play Animation';
+        }
+
+        function resetView() {
+            camera = { x: 0, y: 0, zoom: 1 };
+            currentFrame = 0;
+            isPlaying = false;
+            document.getElementById('playPause').textContent = 'Play Animation';
+        }
+
+        function updateVisualization() {
+            particles = [];
+            currentFrame = 0;
+        }
+
+        function checkHover(x, y) {
+            const centerX = canvas.width / 2 + camera.x;
+            const centerY = canvas.height / 2 + camera.y;
+
+            // Find closest data point
+            let closestDist = Infinity;
+            let closestPoint = null;
+
+            for (let i = 0; i < data.length; i++) {
+                const angle = i * 0.15;
+                const radius = 50 + i * 2 * camera.zoom;
+                const px = centerX + Math.cos(angle) * radius;
+                const py = centerY + Math.sin(angle) * radius;
+
+                const dist = Math.sqrt((px - x) ** 2 + (py - y) ** 2);
+                if (dist < closestDist && dist < 30) {
+                    closestDist = dist;
+                    closestPoint = data[i];
+                }
+            }
+
+            if (closestPoint) {
+                showTooltip(x, y, closestPoint);
+            } else {
+                document.getElementById('tooltip').style.display = 'none';
+            }
+        }
+
+        function showTooltip(x, y, dataPoint) {
+            const tooltip = document.getElementById('tooltip');
+            const title = document.getElementById('tooltipTitle');
+            const content = document.getElementById('tooltipContent');
+
+            title.textContent = dataPoint.data || 'N/A';
+
+            let html = '';
+            if (dataPoint.confirmados_novos !== undefined) {
+                html += `<div class="tooltip-row"><span class="tooltip-label">New Cases:</span><span class="tooltip-value">${dataPoint.confirmados_novos || 0}</span></div>`;
+            }
+            if (dataPoint.obitos !== undefined) {
+                html += `<div class="tooltip-row"><span class="tooltip-label">Deaths:</span><span class="tooltip-value">${dataPoint.obitos || 0}</span></div>`;
+            }
+            if (dataPoint.internados !== undefined) {
+                html += `<div class="tooltip-row"><span class="tooltip-label">Hospitalized:</span><span class="tooltip-value">${dataPoint.internados || 0}</span></div>`;
+            }
+            if (dataPoint.doses_novas !== undefined && dataPoint.doses_novas > 0) {
+                html += `<div class="tooltip-row"><span class="tooltip-label">Vaccinations:</span><span class="tooltip-value">${dataPoint.doses_novas || 0}</span></div>`;
+            }
+
+            content.innerHTML = html;
+
+            tooltip.style.left = (x + 20) + 'px';
+            tooltip.style.top = (y + 20) + 'px';
+            tooltip.style.display = 'block';
+        }
+
+        function render() {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.2)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const vizMode = document.getElementById('vizMode').value;
+
+            switch(vizMode) {
+                case 'spiral':
+                    renderSpiral();
+                    break;
+                case 'particles':
+                    renderParticles();
+                    break;
+                case 'waves':
+                    renderWaves();
+                    break;
+                case 'bars':
+                    renderRadialBars();
+                    break;
+            }
+
+            if (isPlaying) {
+                currentFrame += config.animationSpeed / 10;
+                if (currentFrame >= data.length) {
+                    currentFrame = 0;
+                }
+            }
+
+            updateStats();
+            requestAnimationFrame(render);
+        }
+
+        function renderSpiral() {
+            const centerX = canvas.width / 2 + camera.x;
+            const centerY = canvas.height / 2 + camera.y;
+            const dataLayer = document.getElementById('dataLayer').value;
+
+            // Draw spiral path
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+
+            for (let i = 0; i < data.length; i++) {
+                const angle = i * 0.15;
+                const radius = 50 + i * 2 * camera.zoom;
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+
+            // Draw data points
+            const maxValue = Math.max(...data.map(d => d[dataLayer] || 0));
+
+            for (let i = 0; i < Math.min(currentFrame || data.length, data.length); i++) {
+                const angle = i * 0.15;
+                const radius = 50 + i * 2 * camera.zoom;
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+
+                const value = data[i][dataLayer] || 0;
+                const normalizedValue = value / maxValue;
+                const size = 3 + normalizedValue * 10;
+
+                // Glow effect
+                const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 2);
+                gradient.addColorStop(0, config.colors[dataLayer]);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(x, y, size * 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Core
+                ctx.fillStyle = config.colors[dataLayer];
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Draw center marker
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function renderParticles() {
+            const centerX = canvas.width / 2 + camera.x;
+            const centerY = canvas.height / 2 + camera.y;
+            const dataLayer = document.getElementById('dataLayer').value;
+            const maxValue = Math.max(...data.map(d => d[dataLayer] || 0));
+
+            // Create particles if needed
+            if (particles.length < config.particleCount) {
+                for (let i = particles.length; i < config.particleCount; i++) {
+                    particles.push({
+                        angle: Math.random() * Math.PI * 2,
+                        radius: Math.random() * 100,
+                        speed: 0.5 + Math.random() * 2,
+                        size: 1 + Math.random() * 3,
+                        dataIndex: Math.floor(Math.random() * data.length)
+                    });
+                }
+            }
+
+            // Update and draw particles
+            particles.forEach(p => {
+                const dataPoint = data[p.dataIndex];
+                const value = dataPoint ? dataPoint[dataLayer] || 0 : 0;
+                const normalizedValue = value / maxValue;
+
+                p.angle += 0.01 * p.speed;
+                p.radius += p.speed * (0.5 + normalizedValue);
+
+                if (p.radius > 800) {
+                    p.radius = 50;
+                    p.angle = Math.random() * Math.PI * 2;
+                    p.dataIndex = Math.floor(Math.random() * data.length);
+                }
+
+                const x = centerX + Math.cos(p.angle) * p.radius * camera.zoom;
+                const y = centerY + Math.sin(p.angle) * p.radius * camera.zoom;
+
+                const alpha = 0.3 + normalizedValue * 0.7;
+                ctx.fillStyle = config.colors[dataLayer] + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+                ctx.beginPath();
+                ctx.arc(x, y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function renderWaves() {
+            const centerX = canvas.width / 2 + camera.x;
+            const centerY = canvas.height / 2 + camera.y;
+            const dataLayer = document.getElementById('dataLayer').value;
+            const maxValue = Math.max(...data.map(d => d[dataLayer] || 0));
+
+            const time = Date.now() * 0.001;
+
+            // Draw multiple wave rings
+            for (let ring = 0; ring < 10; ring++) {
+                ctx.beginPath();
+                const baseRadius = 50 + ring * 80;
+
+                for (let angle = 0; angle < Math.PI * 2; angle += 0.1) {
+                    const dataIndex = Math.floor((angle / (Math.PI * 2)) * data.length);
+                    const dataPoint = data[dataIndex];
+                    const value = dataPoint ? dataPoint[dataLayer] || 0 : 0;
+                    const normalizedValue = value / maxValue;
+
+                    const wave = Math.sin(angle * 3 + time + ring) * 20 * normalizedValue;
+                    const radius = (baseRadius + wave) * camera.zoom;
+
+                    const x = centerX + Math.cos(angle) * radius;
+                    const y = centerY + Math.sin(angle) * radius;
+
+                    if (angle === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+
+                ctx.closePath();
+                const alpha = 0.5 - ring * 0.05;
+                ctx.strokeStyle = config.colors[dataLayer] + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+        }
+
+        function renderRadialBars() {
+            const centerX = canvas.width / 2 + camera.x;
+            const centerY = canvas.height / 2 + camera.y;
+            const dataLayer = document.getElementById('dataLayer').value;
+            const maxValue = Math.max(...data.map(d => d[dataLayer] || 0));
+
+            const visibleData = data.slice(0, currentFrame || data.length);
+            const angleStep = (Math.PI * 2) / visibleData.length;
+
+            visibleData.forEach((dataPoint, i) => {
+                const value = dataPoint[dataLayer] || 0;
+                const normalizedValue = value / maxValue;
+
+                const angle = i * angleStep - Math.PI / 2;
+                const innerRadius = 50 * camera.zoom;
+                const outerRadius = (50 + normalizedValue * 300) * camera.zoom;
+
+                const x1 = centerX + Math.cos(angle) * innerRadius;
+                const y1 = centerY + Math.sin(angle) * innerRadius;
+                const x2 = centerX + Math.cos(angle) * outerRadius;
+                const y2 = centerY + Math.sin(angle) * outerRadius;
+
+                const gradient = ctx.createLinearGradient(x1, y1, x2, y2);
+                gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+                gradient.addColorStop(1, config.colors[dataLayer]);
+
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = Math.max(1, angleStep * 100 * camera.zoom);
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.stroke();
+            });
+        }
+
+        function updateStats() {
+            const currentIndex = Math.floor(currentFrame) || 0;
+            if (currentIndex >= 0 && currentIndex < data.length) {
+                const dataPoint = data[currentIndex];
+                document.getElementById('currentDate').textContent = dataPoint.data || '--';
+                document.getElementById('totalCases').textContent = (dataPoint.confirmados || 0).toLocaleString();
+                document.getElementById('totalDeaths').textContent = (dataPoint.obitos || 0).toLocaleString();
+                document.getElementById('totalVaccinations').textContent = (dataPoint.doses || 0).toLocaleString();
+            }
+        }
+
+        // Start the application
+        init();
+    </script>
+</body>
+</html>
